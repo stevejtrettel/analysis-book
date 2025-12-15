@@ -1,0 +1,38 @@
+
+# Quarto generated
+/_book/
+/.quarto/
+*_files/
+
+# Rendered outputs
+*.pdf
+*.epub
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*~
+.vscode/
+.Rproj.user/
+.Rhistory
+
+**/*.quarto_ipynb
