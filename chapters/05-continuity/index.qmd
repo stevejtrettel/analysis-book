@@ -1,0 +1,9 @@
+# Continuity
+
+{{< include 01-definition-properties.qmd >}}
+
+{{< include 02-power-series.qmd >}}
+
+{{< include 03-completeness.qmd >}}
+
+{{< include 04-compactness.qmd >}}

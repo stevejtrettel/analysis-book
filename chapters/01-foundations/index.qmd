@@ -1,0 +1,14 @@
+# Foundations
+
+
+{{< include 01-sets.qmd >}}
+
+{{< include 02-operations.qmd >}}
+
+{{< include 03-order.qmd >}}
+
+{{< include 04-inadequacy.qmd >}}
+
+{{< include 05-completeness.qmd >}}
+
+{{< include 06-reals.qmd >}}

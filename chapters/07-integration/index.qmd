@@ -1,0 +1,7 @@
+# Integration
+
+{{< include 01-axioms.qmd >}}
+
+{{< include 02-darboux.qmd >}}
+
+{{< include 03-computation.qmd >}}
