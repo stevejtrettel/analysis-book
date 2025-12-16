@@ -1,13 +1,15 @@
 # Differentiation
 
-{{< include 01-definition-properties.qmd >}}
+{{< include 00-history.qmd >}}
 
-{{< include 02-chain-inverse.qmd >}}
+{{< include 01-rules.qmd >}}
 
-{{< include 03-mean-value.qmd >}}
+{{< include 02-mvt.qmd >}}
 
-{{< include 04-applications.qmd >}}
+{{< include 03-derivative-function.qmd >}}
 
-{{< include 05-power-series.qmd >}}
+{{< include 04-power-series.qmd >}}
 
-{{< include 06-taylors-theorem.qmd >}}
+{{< include 05-newton.qmd >}}
+
+{{< include 06-exp.qmd >}}

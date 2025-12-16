@@ -1,7 +1,11 @@
 # Integration
 
+{{< include 00-history.qmd >}}
+
 {{< include 01-axioms.qmd >}}
 
-{{< include 02-darboux.qmd >}}
+{{< include 02-geometry.qmd >}}
 
-{{< include 03-computation.qmd >}}
+{{< include 03-darboux.qmd >}}
+
+{{< include 04-computation.qmd >}}

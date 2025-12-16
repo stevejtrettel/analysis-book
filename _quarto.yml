@@ -23,7 +23,7 @@ book:
         - chapters/06-differentiation/index.qmd
         - chapters/07-integration/index.qmd
         - chapters/08-calculus/index.qmd
-        - chapters/09-advanced-integration/index.qmd
+        - chapters/09-complete-integral/index.qmd
 
     - part: "Function Space"
       chapters:

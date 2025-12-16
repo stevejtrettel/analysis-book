@@ -1,9 +1,0 @@
-# Advanced Integration
-
-{{< include 01-improper.qmd >}}
-
-{{< include 02-integrability.qmd >}}
-
-{{< include 03-limits.qmd >}}
-
-{{< include 04-other-integrals.qmd >}}

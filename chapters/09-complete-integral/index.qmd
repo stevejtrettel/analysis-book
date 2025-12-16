@@ -1,0 +1,13 @@
+# Completing the Integral
+
+{{< include 00-history.qmd >}}
+
+{{< include 01-integrability.qmd >}}
+
+{{< include 02-daniell.qmd >}}
+
+{{< include 03-convergence.qmd >}}
+
+{{< include 04-measure.qmd >}}
+
+{{< include 05-why-lebesgue.qmd >}}
