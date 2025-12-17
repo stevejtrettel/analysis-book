@@ -6,7 +6,7 @@
 
 {{< include 02-ordered-fields.qmd >}}
 
-{{< include 03-inadequacy.qmd >}}
+{{< include 03-incompleteness.qmd >}}
 
 {{< include 04-completeness.qmd >}}
 

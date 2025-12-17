@@ -1,1 +1,225 @@
-## Operations
+# Ordered Fields {#sec-foundations-ordered-fields}
+
+[PROSE: Opening—we axiomatize arithmetic abstractly.]
+
+
+## The Field Axioms
+
+:::{#def-foundations-field}
+## Field
+A *field* is a set $\FF$ with two binary operations, addition ($+$) and multiplication ($\cdot$), satisfying:
+
+**Commutativity.** $a + b = b + a$ and $a \cdot b = b \cdot a$
+
+**Associativity.** $(a + b) + c = a + (b + c)$ and $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
+
+**Identities.** There exist distinct elements $0, 1 \in \FF$ with $a + 0 = a$ and $a \cdot 1 = a$
+
+**Inverses.** For each $a$, there exists $-a$ with $a + (-a) = 0$. For each $a \neq 0$, there exists $a^{-1}$ with $a \cdot a^{-1} = 1$
+
+**Distributivity.** $a \cdot (b + c) = a \cdot b + a \cdot c$
+:::
+
+[PROSE: Example ℚ. Non-example ℤ. Notation conventions. Numerals via $2 = 1+1$, etc., and base-10.]
+
+[INLINE EXERCISE: Prove $2 + 2 = 4$.]
+
+
+## Consequences of the Field Axioms
+
+:::{#prp-foundations-uniqueness-inverses}
+## Uniqueness of Inverses
+Additive and multiplicative inverses are unique.
+:::
+:::{.proof}
+:::
+
+[PROSE: Corollaries $-(-a) = a$ and $(a^{-1})^{-1} = a$.]
+
+:::{#prp-foundations-zero-multiplication}
+## Multiplication by Zero
+$0 \cdot a = 0$ for all $a$.
+:::
+:::{.proof}
+:::
+
+:::{#prp-foundations-negation}
+## Negation by Multiplication
+$(-1) \cdot a = -a$ for all $a$.
+:::
+:::{.proof}
+:::
+
+[PROSE: Corollaries $(-1)(-1) = 1$ and $(-a)(-b) = ab$.]
+
+[INLINE EXERCISE: Prove $(a + b)(a - b) = a^2 - b^2$.]
+
+
+## The Positivity Axioms
+
+:::{#def-foundations-ordered-field}
+## Ordered Field
+An *ordered field* is a field $\FF$ with a distinguished subset $P \subseteq \FF$ (the *positive elements*) satisfying:
+
+**Closure under addition.** If $a, b \in P$, then $a + b \in P$
+
+**Closure under multiplication.** If $a, b \in P$, then $a \cdot b \in P$
+
+**Trichotomy.** For each $a \in \FF$, exactly one holds: $a \in P$, or $a = 0$, or $-a \in P$
+:::
+
+:::{#def-foundations-inequality}
+## Inequality
+For $a, b \in \FF$: we write $a < b$ to mean $b - a \in P$, and $a \leq b$ to mean $a < b$ or $a = b$.
+:::
+
+[PROSE: Example ℚ is an ordered field.]
+
+
+## Properties of Order
+
+:::{#prp-foundations-squares-nonnegative}
+## Squares are Nonnegative
+$a^2 \geq 0$ for all $a$, with equality iff $a = 0$.
+:::
+:::{.proof}
+:::
+
+:::{#cor-foundations-one-positive}
+## One is Positive
+$1 > 0$.
+:::
+:::{.proof}
+:::
+
+:::{#prp-foundations-transitivity}
+## Transitivity
+If $a < b$ and $b < c$, then $a < c$.
+:::
+:::{.proof}
+:::
+
+:::{#prp-foundations-inequality-addition}
+## Inequalities and Addition
+If $a < b$, then $a + c < b + c$.
+:::
+:::{.proof}
+:::
+
+:::{#prp-foundations-inequality-multiplication}
+## Inequalities and Multiplication
+If $a < b$ and $c > 0$, then $ac < bc$. If $a < b$ and $c < 0$, then $ac > bc$.
+:::
+:::{.proof}
+:::
+
+[PROSE: This explains why multiplying by negatives reverses inequalities.]
+
+[INLINE EXERCISE: If $0 < a < b$, prove $a^2 < b^2$.]
+
+
+## Absolute Value
+
+:::{#def-foundations-absolute-value}
+## Absolute Value
+$$|a| = \begin{cases} a & \text{if } a \geq 0 \\ -a & \text{if } a < 0 \end{cases}$$
+:::
+
+[PROSE: Properties $|a| \geq 0$, $|ab| = |a||b|$. Geometric interpretation: $|a - b|$ is the distance between $a$ and $b$ on the number line.]
+
+:::{#prp-foundations-triangle-inequality}
+## Triangle Inequality
+$|a + b| \leq |a| + |b|$
+:::
+:::{.proof}
+:::
+
+:::{#cor-foundations-reverse-triangle}
+## Reverse Triangle Inequality
+$\bigl||a| - |b|\bigr| \leq |a - b|$
+:::
+:::{.proof}
+:::
+
+[INLINE EXERCISE: Prove $|a_1 + \cdots + a_n| \leq |a_1| + \cdots + |a_n|$ by induction.]
+
+
+## Intervals
+
+[PROSE: With order and distance in hand, we can describe subsets of the number line by specifying which points lie between two endpoints.]
+
+:::{#def-foundations-intervals}
+## Intervals
+For $a, b \in \FF$ with $a < b$:
+
+- $(a, b) = \{x \in \FF : a < x < b\}$ — *open interval*
+- $[a, b] = \{x \in \FF : a \leq x \leq b\}$ — *closed interval*
+- $[a, b) = \{x \in \FF : a \leq x < b\}$ — *half-open*
+- $(a, b] = \{x \in \FF : a < x \leq b\}$ — *half-open*
+:::
+
+:::{#rem-foundations-interval-absolute-value}
+## Intervals and Absolute Value
+The open interval centered at $a$ with radius $r > 0$ can be written
+$$(a - r, a + r) = \{x \in \FF : |x - a| < r\}$$
+Similarly, $[a - r, a + r] = \{x : |x - a| \leq r\}$.
+:::
+
+[PROSE: For unbounded sets, we introduce symbols $\infty$ and $-\infty$. These are *not* elements of the field—they are purely notational shorthand for "unbounded."]
+
+:::{#def-foundations-rays}
+## Rays
+For $a \in \FF$:
+
+- $[a, \infty) = \{x \in \FF : x \geq a\}$
+- $(a, \infty) = \{x \in \FF : x > a\}$
+- $(-\infty, a] = \{x \in \FF : x \leq a\}$
+- $(-\infty, a) = \{x \in \FF : x < a\}$
+- $(-\infty, \infty) = \FF$
+:::
+
+:::{#rem-foundations-infinity-not-number}
+## A Warning
+The symbols $\infty$ and $-\infty$ are convenient notation, but they are not elements of any ordered field. Expressions like "$\infty + 1$" or "$\infty / \infty$" are meaningless in this context.
+:::
+
+
+## Bernoulli's Inequality
+
+:::{#prp-foundations-bernoulli}
+## Bernoulli's Inequality
+For $x > -1$ and $n \in \NN$: $(1 + x)^n \geq 1 + nx$.
+:::
+:::{.proof}
+:::
+
+[PROSE: Used in Chapter 2 to bound $(1 + 1/n)^n$.]
+
+
+## Roots and Rational Powers
+
+:::{#def-foundations-rational-powers}
+## Roots and Rational Powers
+If $y \geq 0$ satisfies $y^n = a$, write $y = \sqrt[n]{a}$. For $p/q \in \QQ$ with $q > 0$, define $a^{p/q} = (\sqrt[q]{a})^p$ when the root exists.
+:::
+
+[PROSE: Existence requires completeness (Section 1.5). This is notation only.]
+
+
+## Exercises
+
+1. **(Zero-Product Property)** If $ab = 0$, prove $a = 0$ or $b = 0$.
+
+2. **(Fraction Addition)** Prove $\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}$.
+
+3. **(Finite Geometric Sum)** Prove $1 + r + \cdots + r^n = \frac{1 - r^{n+1}}{1 - r}$ for $r \neq 1$.
+
+4. **($\CC$ not orderable)** Prove $\CC$ cannot be an ordered field.
+
+5. Prove that in an ordered field, if $a < b$ then $a < \frac{a+b}{2} < b$. (The midpoint lies strictly between the endpoints.)
+
+6. Let $a, b \in \FF$ with $a < b$. Prove $(a, b) \neq \varnothing$.
+
+7. **(★ Binary Arithmetic)** Compute $1011_2 + 110_2$ in base 2.
+
+8. **(★ Base-$b$ Representations)** Prove uniqueness of base-$b$ representations.

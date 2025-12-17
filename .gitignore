@@ -36,3 +36,5 @@ Thumbs.db
 .Rhistory
 
 **/*.quarto_ipynb
+
+/.luarc.json

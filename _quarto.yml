@@ -32,5 +32,14 @@ book:
         - chapters/12-fourier/index.qmd
         - chapters/13-topics/index.qmd
 format:
-  stevejtrettel/course-notes-html: default
-  stevejtrettel/course-notes-pdf: default
+  stevejtrettel/course-notes-html:
+    include-before-body: 
+       - "_formatting/dollar.tex"
+       - "_formatting/macros.tex"
+       - "_formatting/dollar.tex"
+  stevejtrettel/course-notes-pdf:
+    toc: true
+    include-in-header: 
+      - "_formatting/macros.tex"
+    include-before-body:
+      - "_formatting/theorem-spacing.tex"

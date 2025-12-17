@@ -1,0 +1,165 @@
+# Incompleteness {#sec-foundations-incompleteness}
+
+[PROSE: Opening—ℚ satisfies field and order axioms, is dense, seems adequate. But it has holes that break calculus.]
+
+
+## The Irrationality of √2
+
+[PROSE: Greeks discovered not every length is rational. Diagonal of unit square has length √2 by Pythagorean theorem.]
+
+:::{#thm-foundations-sqrt2-irrational}
+## Irrationality of √2
+There is no rational number whose square is 2.
+:::
+:::{.proof}
+:::
+
+[PROSE: This is a genuine gap—geometry demands √2 exist, but ℚ doesn't have it.]
+
+[INLINE EXERCISE: Adapt the proof to show √3 is irrational.]
+
+
+## Attempts to Patch the Rationals
+
+[PROSE: Natural response to a gap is to fill it.]
+
+### Adjoining Roots
+
+:::{#def-foundations-Q-adjoin-sqrt2}
+## The Field ℚ(√2)
+$$\QQ(\sqrt{2}) = \{a + b\sqrt{2} : a, b \in \QQ\}$$
+:::
+
+[PROSE: Closed under field operations (show formulas for +, ×, inverse). So ℚ(√2) is a field containing ℚ and √2. Problem solved?]
+
+[PROSE: No—√3 is not in ℚ(√2). Patched one hole, left infinitely many. Adjoin √3 too? Still miss √5, √7, √(2+√3), etc.]
+
+### Constructible Numbers
+
+[PROSE: Let geometry guide us. What numbers can we construct with compass and straightedge from two points distance 1 apart?]
+
+[PROSE: Line-line intersections: linear equations, stay in current field. Circle-line and circle-circle: quadratic equations, introduce square roots.]
+
+[PROSE: Constructible numbers = iterate forever: start with ℚ, allow arbitrary nested square roots. Includes √2, √3, √(2+√(3+√5)). This is a field, much larger than finite extensions. But still incomplete.]
+
+:::{#thm-foundations-doubling-cube-impossible}
+## Impossibility of Doubling the Cube
+$\sqrt[3]{2}$ is not constructible.
+:::
+
+[PROSE: Proved by Wantzel 1837, resolving ancient Greek problem. Key: constructible numbers satisfy polynomials of degree 2ⁿ, but ∛2 satisfies x³−2 irreducibly. We won't prove this.]
+
+[PROSE: Squaring the circle—is √π constructible? No: Lindemann 1882 proved π is transcendental.]
+
+### Algebraic Numbers
+
+[PROSE: Constructibles limited by geometry. Every constructible satisfies some polynomial, but there are more roots (like ∛2). Abandon geometry, think algebraically.]
+
+:::{#def-foundations-algebraic}
+## Algebraic Numbers
+A real number is *algebraic* if it is a root of some polynomial with integer coefficients. The set of algebraic numbers is denoted $\AA$.
+:::
+
+[PROSE: Includes √2, ∛2, golden ratio, everything expressible by radicals. Build 𝔸 degree by degree to infinity.]
+
+:::{#rem-foundations-algebraic-closure}
+## Algebraic Closure
+Taking roots of polynomials with algebraic coefficients produces nothing new—if α is algebraic and β satisfies a polynomial over ℚ(α), then β is algebraic over ℚ. The algebraic numbers are closed under this operation.
+:::
+
+[PROSE: This suggests 𝔸 is natural. Surely this is everything?]
+
+:::{#thm-foundations-pi-transcendental}
+## Transcendence of π
+$\pi$ is not algebraic.
+:::
+
+[PROSE: Lindemann 1882. Numbers that aren't algebraic are called transcendental. So π escapes the largest algebraically-defined system.]
+
+### The Hopelessness
+
+[PROSE: Could adjoin π to 𝔸. But then miss √π, ⁴√π, 2^π... After all that, another transcendental appears. Pattern: we cannot patch our way to completeness. Each construction leaves holes. Need fundamentally different approach.]
+
+
+## Gaps Break Calculus
+
+[PROSE: One might ask—does this matter? ℚ is dense. Perhaps missing some exotic numbers is fine for practical purposes?]
+
+[PROSE: No. Holes don't just offend geometric sensibilities. They destroy the theorems that make calculus work.]
+
+### The Intermediate Value Theorem Fails
+
+:::{#exm-foundations-ivt-fails}
+## IVT Fails in ℚ
+Let $f(x) = x^2 - 2$ on $[1, 2] \cap \QQ$. Then $f(1) = -1 < 0$ and $f(2) = 2 > 0$. If IVT held in ℚ, some $c \in [1,2] \cap \QQ$ would satisfy $f(c) = 0$. But $f(c) = 0$ means $c^2 = 2$, which has no rational solution.
+:::
+
+[PROSE: IVT guarantees continuous functions hit every value between endpoints. Foundation of existence arguments: roots, fixed points, solutions to f(x)=y. Without IVT, cannot prove solutions exist.]
+
+### The Extreme Value Theorem Fails
+
+:::{#exm-foundations-evt-fails}
+## EVT Fails in ℚ
+Let $f(x) = \dfrac{1}{x^2 - 2}$ on $[1, 2] \cap \QQ$. Since $\sqrt{2} \notin \QQ$, this is defined and continuous at every rational in $[1,2]$. Yet $f$ is unbounded: as $x \to \sqrt{2}$ through rationals, $|f(x)| \to \infty$.
+:::
+
+[PROSE: The hole at √2 lets a continuous function escape to infinity. EVT guarantees continuous functions on closed intervals achieve max/min. Without EVT, optimization has no foundation.]
+
+### The Mean Value Theorem Fails
+
+[PROSE: MVT is proved using EVT (via Rolle). Since EVT fails in ℚ, MVT fails.]
+
+[PROSE: MVT connects derivatives to function behavior: f′>0 implies f increasing, f′=0 implies f constant, bounded derivatives give Lipschitz, Taylor approximations. Without MVT, local info (derivative) doesn't control global behavior.]
+
+[PROSE: The cascade: gaps break EVT → breaks MVT → severs derivative-function connection → calculus collapses.]
+
+:::{#rem-foundations-algorithms-fail}
+## Algorithms Fail Too
+Newton's method for $x^2 = 2$ starting from $x_0 = 1$ generates rationals that "should" converge to $\sqrt{2}$. Bisection on $[1,2]$ narrows to intervals around $\sqrt{2}$. Both produce Cauchy sequences, but the limit doesn't exist in $\QQ$.
+:::
+
+
+## The Axiomatic Approach
+
+[PROSE: We've reached an impasse. Cannot patch ℚ by adjoining numbers. Algebraics—largest natural extension—still have holes. These holes destroy calculus theorems.]
+
+[PROSE: Different strategy: define ℝ by properties, not construction. Key property is completeness—precise "no holes." Won't say what reals are, just what they do.]
+
+[PROSE: Axiomatic method: specify rules, not internal structure. Payoff: complete ordered field has no gaps, so IVT/EVT/MVT hold. Calculus works. Next section develops this.]
+
+
+## Exercises
+
+1. Prove that $\sqrt{6}$ is irrational.
+
+2. Prove that if $p$ is prime, then $\sqrt{p}$ is irrational.
+
+3. Verify that $\QQ(\sqrt{2})$ is a field by checking closure under $+, -, \times, \div$.
+
+4. **(★)** Prove that $\sqrt{3} \notin \QQ(\sqrt{2})$.
+
+   *Hint: Suppose $\sqrt{3} = a + b\sqrt{2}$ with $a, b \in \QQ$. Square both sides.*
+
+5. Prove that $\sqrt{2} + \sqrt{3}$ is irrational.
+
+   *Hint: Square it, and use the previous exercise.*
+
+6. **(★)** Show that $\QQ(\sqrt{2}, \sqrt{3}) = \{a + b\sqrt{2} + c\sqrt{3} + d\sqrt{6} : a, b, c, d \in \QQ\}$ is a field.
+
+7. The bisection algorithm for $\sqrt{2}$ produces sequences $(a_n)$, $(b_n)$ with $a_1 = 1$, $b_1 = 2$, and at each step:
+   $$a_{n+1}, b_{n+1} = \begin{cases} 
+   \dfrac{a_n + b_n}{2},\, b_n & \text{if } \left(\dfrac{a_n+b_n}{2}\right)^{\!2} < 2 \\[6pt]
+   a_n,\, \dfrac{a_n + b_n}{2} & \text{if } \left(\dfrac{a_n+b_n}{2}\right)^{\!2} > 2
+   \end{cases}$$
+   Prove that $a_n^2 < 2 < b_n^2$ for all $n$, and that $b_n - a_n = 2^{1-n}$.
+
+8. **(★★ Guided Exploration: Liouville Numbers)**
+
+   A real number $x$ is a *Liouville number* if for every positive integer $n$, there exist integers $p, q$ with $q > 1$ and 
+   $$\left| x - \frac{p}{q} \right| < \frac{1}{q^n}.$$
+
+   (a) Define $L = \sum_{k=1}^{\infty} 10^{-k!}$. Show $L$ is a Liouville number by taking $p/q$ to be truncations.
+
+   (b) Liouville (1844) proved: if $\alpha$ is algebraic of degree $d$, there exists $c > 0$ such that $|\alpha - p/q| > c/q^d$ for all $p/q \neq \alpha$. Explain why Liouville numbers are transcendental.
+   
+   (c) Conclude that transcendental numbers exist—nearly 40 years before Lindemann proved π transcendental.

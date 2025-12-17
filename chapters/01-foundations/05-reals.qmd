@@ -1,1 +1,240 @@
+# The Real Numbers {#sec-foundations-reals}
+
+[PROSE: Opening—the bold move. We *declare* the real numbers to be a complete ordered field. This is the axiomatic method: we specify properties, not construction. We don't say what real numbers *are*, we say what they *do*.]
+
+:::{#def-foundations-real-numbers}
 ## The Real Numbers
+The *real numbers* $\RR$ are a complete ordered field.
+:::
+
+[PROSE: Historical context. This was Huntington's approach (1903). But one might worry: do such axioms describe anything at all? (Easy to write inconsistent axioms.) And if they do, do they pick out one thing or many? (Group axioms describe a whole subject, not one example.)]
+
+:::{#thm-foundations-reals-unique}
+## Existence and Uniqueness
+There exists a complete ordered field, and it is unique up to isomorphism.
+:::
+
+[PROSE: We won't prove this—existence requires a construction (Dedekind cuts or Cauchy sequences), uniqueness requires showing any two complete ordered fields are isomorphic. But the theorem is important: our axioms completely characterize something. This is evidence we've succeeded.]
+
+:::{#rem-foundations-sup-inf-infinity}
+## Conventions for Sup and Inf
+Using the notation from §1.2, we extend our sup and inf conventions: if $S$ is nonempty but not bounded above, we write $\sup S = \infty$. If $S$ is nonempty but not bounded below, we write $\inf S = -\infty$. For the empty set, we adopt the convention $\sup \varnothing = -\infty$ and $\inf \varnothing = \infty$.
+:::
+
+
+## No Infinite Numbers
+
+[PROSE: What have we created? First, we check there are no "monsters"—no infinite or infinitesimal numbers. The real line is "normal."]
+
+:::{#thm-foundations-N-unbounded}
+## ℕ is Unbounded
+The natural numbers have no upper bound in $\RR$. Equivalently: for any $x \in \RR$, there exists $n \in \NN$ with $n > x$.
+:::
+:::{.proof}
+:::
+
+[PROSE: Proof uses completeness: if ℕ were bounded, sup ℕ would exist. Let s = sup ℕ. Then s - 1 is not an upper bound, so some n ∈ ℕ satisfies n > s - 1. But then n + 1 > s, contradicting s being an upper bound.]
+
+:::{#cor-foundations-no-infinitesimals}
+## No Infinitesimals
+For any $\varepsilon > 0$, there exists $n \in \NN$ with $1/n < \varepsilon$.
+:::
+:::{.proof}
+:::
+
+[PROSE: Brief comment—people have wondered about formalizing infinitesimal numbers (numbers smaller than every 1/n but positive). In fact they don't exist in ℝ: if ε were infinitesimal, then 1/ε would be infinite, contradicting the theorem above.]
+
+
+## The Archimedean Property
+
+[PROSE: Repackage the above as the Archimedean property. Historical note: Archimedes took this as an axiom in *The Sphere and the Cylinder*. Also appears in Euclid Book V. Mnemonic: "you can empty the ocean with a teaspoon"—no matter how small a is, enough copies na will exceed any b.]
+
+:::{#def-foundations-archimedean}
+## Archimedean Field
+An ordered field $\FF$ is *Archimedean* if for every positive $a, b \in \FF$, there exists $n \in \NN$ with $na > b$.
+:::
+
+:::{#thm-foundations-reals-archimedean}
+## Complete Fields are Archimedean
+Every complete ordered field is Archimedean.
+:::
+:::{.proof}
+:::
+
+[PROSE: Proof: given positive a, b, the number b/a is finite (no infinites), so some n > b/a, hence na > b.]
+
+[INLINE EXERCISE: Prove ℚ is Archimedean directly from the definition of rational numbers.]
+
+
+## Density
+
+:::{#thm-foundations-Q-dense}
+## Density of ℚ
+Between any two real numbers lies a rational.
+:::
+:::{.proof}
+:::
+
+[PROSE: Proof outline: Let a < b. By Archimedean, choose n with 1/n < b - a. By Archimedean again, the set {m ∈ ℤ : m > na} is nonempty and bounded below. Let m be its least element. Then a < m/n < b.]
+
+:::{#thm-foundations-irrationals-dense}
+## Density of Irrationals
+Between any two real numbers lies an irrational.
+:::
+:::{.proof}
+:::
+
+[PROSE: Proof: Let a < b. Choose rational r with a - √2 < r < b - √2. Then a < r + √2 < b, and r + √2 is irrational.]
+
+[PROSE: Interpretation—ℚ is everywhere dense in ℝ. There are no "chunks" of pure irrationals. We filled gaps, we didn't add alien regions.]
+
+
+## Roots Exist
+
+[PROSE: The crisis of 1.3 was that √2 doesn't exist in ℚ. Now we prove it exists in ℝ.]
+
+:::{#thm-foundations-sqrt2-exists}
+## Existence of √2
+There exists a positive real number whose square is 2.
+:::
+:::{.proof}
+:::
+
+[PROSE: Full proof. Let S = {x ∈ ℝ : x > 0, x² < 2}. S is nonempty (1 ∈ S) and bounded above (2 is an upper bound). By completeness, s = sup S exists. We show s² = 2 by ruling out s² < 2 and s² > 2.
+
+**Case s² < 2**: Find h > 0 small enough that (s+h)² < 2, so s+h ∈ S, contradicting s = sup S.
+
+**Case s² > 2**: Find h > 0 small enough that (s-h)² > 2, so s-h is still an upper bound, contradicting s being least.
+
+Work out the explicit bounds on h in each case.]
+
+:::{#def-foundations-nth-root}
+## nth Roots
+For $a \geq 0$ and $n \in \NN$, define
+$$\sqrt[n]{a} = \sup\{x \geq 0 : x^n < a\}$$
+:::
+
+:::{#thm-foundations-nth-root-exists}
+## nth Roots Exist
+For $a \geq 0$ and $n \in \NN$, we have $(\sqrt[n]{a})^n = a$.
+:::
+
+[PROSE: State theorem; proof similar to √2, details in exercises.]
+
+
+## Rational and Real Exponents
+
+[PROSE: With roots in hand, we can define rational exponents, then extend to all real exponents using completeness.]
+
+:::{#def-foundations-rational-exponents}
+## Rational Exponents
+For $a > 0$ and $p/q \in \QQ$ with $q > 0$, define
+$$a^{p/q} = \left(\sqrt[q]{a}\right)^p$$
+:::
+
+[PROSE: This is well-defined (independent of representation of p/q) and satisfies the expected laws: $a^{r+s} = a^r a^s$, $a^{rs} = (a^r)^s$, and for $a > 1$, $r < s$ implies $a^r < a^s$.]
+
+:::{#def-foundations-real-exponents}
+## Real Exponents
+For $a > 1$ and $x \in \RR$, define
+$$a^x = \sup\{a^r : r \in \QQ,\, r < x\}$$
+For $0 < a < 1$, define $a^x = (1/a)^{-x}$.
+:::
+
+[PROSE: The functional equation $a^{x+y} = a^x \cdot a^y$ holds for all real x, y.]
+
+
+## Logarithms
+
+:::{#def-foundations-logarithm}
+## Logarithms
+For $a > 0$, $a \neq 1$, and $y > 0$, define
+$$\log_a(y) = \sup\{r \in \QQ : a^r < y\}$$
+:::
+
+[PROSE: This satisfies $\log_a(xy) = \log_a(x) + \log_a(y)$, and $a^{\log_a(y)} = y$, and $\log_a(a^x) = x$. So log and exp are inverses.]
+
+[PROSE: Interpretation—completeness lets us build all the functions we need: roots, exponentials, logarithms. These are the "new treasures" that ℝ provides.]
+
+
+## Uncountability
+
+[PROSE: We've built ℝ to have no holes. It turns out to be unimaginably vast—uncountably infinite.]
+
+:::{#thm-foundations-R-uncountable}
+## ℝ is Uncountable
+The real numbers cannot be put in bijection with $\NN$.
+:::
+:::{.proof}
+:::
+
+[PROSE: Proof via nested intervals. Suppose [0,1] is countable: list elements as x₁, x₂, x₃, ... Build nested intervals [aₙ, bₙ] avoiding xₙ at each stage, with lengths → 0. By nested interval theorem, intersection contains some L. But L ≠ xₙ for all n. Contradiction.]
+
+:::{#cor-foundations-irrationals-uncountable}
+## Irrationals are Uncountable
+The set $\RR \setminus \QQ$ of irrational numbers is uncountable.
+:::
+:::{.proof}
+:::
+
+[PROSE: Proof: ℝ = ℚ ∪ (ℝ \ ℚ). If irrationals were countable, ℝ would be union of two countable sets, hence countable.]
+
+
+## The Bigger Picture
+
+[PROSE: Since ℝ is uncountable but ℚ is countable, "most" real numbers are irrational in a precise sense.]
+
+[PROSE: More striking: the algebraic numbers 𝔸 are countable (there are countably many polynomials, each with finitely many roots). So transcendental numbers exist—in fact "most" reals are transcendental!]
+
+[PROSE: Even more striking: computable numbers (those whose digits can be output by an algorithm) are countable. So "most" reals cannot be computed. Definable numbers (those specifiable by a finite sentence) are countable. So "most" reals cannot even be described.]
+
+[PROSE: Closing—we built ℝ to fill the holes in ℚ. It turned out to be an uncountable ocean in which the rationals, algebraics, and computables are a countable dust.]
+
+
+## Exercises
+
+1. Prove that $\QQ$ is Archimedean directly from the definition of rational numbers as fractions $p/q$.
+
+2. **(Existence of √3)** Adapt the proof of @thm-foundations-sqrt2-exists to show that $\sqrt{3}$ exists in $\RR$.
+
+3. **(Existence of √a)** Let $a > 0$. Prove that there exists a positive real number whose square is $a$.
+
+4. **(★ Existence of nth roots)** Let $a > 0$ and $n \in \NN$. Prove that $(\sqrt[n]{a})^n = a$.
+
+   *Hint: Adapt the √2 argument. You'll need to find appropriate bounds on h in each case.*
+
+5. Prove that rational exponents are well-defined: if $p/q = p'/q'$ with $q, q' > 0$, then $(\sqrt[q]{a})^p = (\sqrt[q']{a})^{p'}$.
+
+6. Prove that for $a > 1$ and $r, s \in \QQ$, we have $a^{r+s} = a^r \cdot a^s$.
+
+7. **(★ Functional equation for real exponents)** Prove that for $a > 1$ and $x, y \in \RR$, we have $a^{x+y} = a^x \cdot a^y$.
+
+8. **(★★ Guided Exploration: Cantor's Diagonal Argument)**
+
+   Here is another proof that $\RR$ is uncountable.
+
+   (a) Suppose $(0, 1)$ is countable. List its elements as $x_1, x_2, x_3, \ldots$ where each $x_i$ has a decimal expansion $x_i = 0.d_{i1}d_{i2}d_{i3}\ldots$
+   
+   (b) Construct a new number $y = 0.e_1 e_2 e_3 \ldots$ where $e_n \neq d_{nn}$ (and $e_n \neq 0, 9$ to avoid issues with non-unique decimal representations).
+   
+   (c) Explain why $y \neq x_n$ for all $n$, reaching a contradiction.
+
+9. **(★★ Guided Exploration: Countability of ℚ)**
+
+   (a) Prove that $\NN \times \NN$ is countable by describing an explicit bijection with $\NN$. 
+   
+   *Hint: List pairs by diagonals: (1,1), (1,2), (2,1), (1,3), (2,2), (3,1), ...*
+   
+   (b) Prove that a countable union of countable sets is countable.
+   
+   (c) Conclude that $\QQ$ is countable.
+
+10. **(★★ Guided Exploration: Countability of Algebraic Numbers)**
+
+    (a) For each $n \in \NN$, let $A_n$ be the set of algebraic numbers that are roots of some polynomial of degree $n$ with integer coefficients whose absolute values sum to at most $n$. Prove $A_n$ is finite.
+    
+    (b) Prove that $\AA = \bigcup_{n=1}^{\infty} A_n$.
+    
+    (c) Conclude that the algebraic numbers are countable.
+    
+    (d) Conclude that transcendental numbers exist (without constructing one!).
