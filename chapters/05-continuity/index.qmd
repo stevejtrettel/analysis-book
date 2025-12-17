@@ -1,10 +1,10 @@
 # Continuity
 
+{{< include 00-history.qmd >}}
+
 {{< include 01-definition-properties.qmd >}}
 
-{{< include 02-power-series.qmd >}}
+{{< include 02-limits.qmd >}}
 
-{{< include 03-completeness.qmd >}}
-
-{{< include 04-compactness.qmd >}}
+{{< include 03-intervals.qmd >}}
 

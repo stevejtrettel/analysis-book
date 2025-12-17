@@ -1,9 +1,13 @@
 # Limits
 
+{{< include 00-history.qmd >}}
+
 {{< include 01-convergence.qmd >}}
 
 {{< include 02-limit-laws.qmd >}}
 
-{{< include 03-sums-products.qmd >}}
+{{< include 03-mct.qmd >}}
 
-{{< include 04-recursive.qmd >}}
+{{< include 04-infinite-processes.qmd >}}
+
+{{< include 05-representing-reals.qmd >}}

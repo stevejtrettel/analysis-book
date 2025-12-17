@@ -1,7 +1,11 @@
 # Exchanging Limits
 
+{{< include 00-history.qmd >}}
+
 {{< include 01-iterated-limits.qmd >}}
 
-{{< include 02-limits-sums.qmd >}}
+{{< include 02-double-sums.qmd >}}
 
-{{< include 03-rearrangements.qmd >}}
+{{< include 03-limits-sums.qmd >}}
+
+{{< include 04-rearrangements.qmd >}}

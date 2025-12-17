@@ -14,7 +14,7 @@ book:
       chapters:
         - chapters/01-foundations/index.qmd
         - chapters/02-limits/index.qmd
-        - chapters/03-proving-convergence/index.qmd
+        - chapters/03-detecting-convergence/index.qmd
         - chapters/04-exchanging-limits/index.qmd
         
     - part: "Functions"
