@@ -31,6 +31,8 @@ book:
         - chapters/11-function-space/index.qmd
         - chapters/12-fourier/index.qmd
         - chapters/13-topics/index.qmd
+
+        
 format:
   stevejtrettel/course-notes-html:
     include-before-body: 
@@ -41,5 +43,3 @@ format:
     toc: true
     include-in-header: 
       - "_formatting/macros.tex"
-    include-before-body:
-      - "_formatting/theorem-spacing.tex"

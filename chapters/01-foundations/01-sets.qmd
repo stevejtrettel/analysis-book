@@ -1,142 +1,37 @@
-# Sets and Functions {#sec-foundations-sets-functions}
+## Sets and Functions {#sec-foundations-sets-functions}
 
-[PROSE: Opening—before we can discuss numbers, we need the language of sets and functions. This section establishes notation and vocabulary. Most of this should be familiar from an introduction to proofs course; we collect it here for reference.]
+**Narrative**
+- Before discussing numbers, we need the language of sets and functions
+- This is vocabulary and notation—mostly review from intro to proofs
+- Functions are assignments, not formulas: "1 if rational, 0 if irrational" is a valid function
+- Injective/surjective/bijective capture ways functions "match up" sets
+- Inverses exist precisely when bijective
+- Foreshadowing: Cantor's argument (no surjection $A \to \mathcal{P}(A)$) connects to uncountability later
 
+**Definitions**
+- Set, element, membership ($\in$, $\notin$)
+- Set-builder notation: $\{x : P(x)\}$
+- Standard sets: $\NN$, $\ZZ$, $\QQ$ (convention: $0 \notin \NN$)
+- Subset: $A \subseteq B$
+- Set equality: $A = B$ iff $A \subseteq B$ and $B \subseteq A$
+- Union, intersection, difference
+- Cartesian product: $A \times B$
+- Function: $f: A \to B$, domain, codomain, range
+- Injective: $f(x_1) = f(x_2) \Rightarrow x_1 = x_2$
+- Surjective: range equals codomain
+- Bijective: injective and surjective
+- Composition: $(g \circ f)(x) = g(f(x))$
+- Inverse function: $f^{-1}$
 
-## Sets
+**Results**
+- $f$ has an inverse iff $f$ is bijective
 
-:::{#def-foundations-set}
-## Set
-A *set* is a collection of objects, called *elements* (or *members*).
-:::
-
-[PROSE: Notation. We write $x \in A$ to mean $x$ is an element of $A$, and $x \notin A$ to mean $x$ is not an element of $A$.]
-
-[PROSE: Specifying sets. A set can be described by listing its elements: $\{1, 2, 3\}$. For larger or infinite sets, we use set-builder notation: $\{x : P(x)\}$ is the set of all $x$ satisfying property $P$.]
-
-:::{#def-foundations-standard-sets}
-## Standard Number Sets
-- $\NN = \{1, 2, 3, \ldots\}$ — the *natural numbers*
-- $\ZZ = \{\ldots, -2, -1, 0, 1, 2, \ldots\}$ — the *integers*
-- $\QQ = \{p/q : p, q \in \ZZ,\, q \neq 0\}$ — the *rational numbers*
-:::
-
-[PROSE: Note that our convention is $0 \notin \NN$. Some texts include $0$ in $\NN$; one must check conventions.]
-
-:::{#def-foundations-subset}
-## Subset
-$A \subseteq B$ means every element of $A$ is an element of $B$: 
-$$A \subseteq B \iff \forall x,\, (x \in A \implies x \in B)$$
-:::
-
-:::{#def-foundations-set-equality}
-## Set Equality
-$A = B$ means $A \subseteq B$ and $B \subseteq A$.
-:::
-
-[PROSE: To prove two sets are equal, we typically prove containment both ways.]
-
-
-## Set Operations
-
-:::{#def-foundations-set-operations}
-## Union, Intersection, Difference
-
-- *Union*: $A \cup B = \{x : x \in A \text{ or } x \in B\}$
-- *Intersection*: $A \cap B = \{x : x \in A \text{ and } x \in B\}$
-- *Difference*: $A \setminus B = \{x : x \in A \text{ and } x \notin B\}$
-:::
-
-:::{#def-foundations-cartesian-product}
-## Cartesian Product
-$A \times B = \{(a, b) : a \in A,\, b \in B\}$
-:::
-
-[PROSE: The Cartesian product consists of ordered pairs. Note $(a, b) \neq (b, a)$ unless $a = b$.]
-
-[INLINE EXERCISE: Prove $(A \cup B)^c = A^c \cap B^c$ where $A^c$ denotes the complement of $A$. (De Morgan's Law)]
-
-
-## Functions
-
-:::{#def-foundations-function}
-## Function
-A *function* $f: A \to B$ is a rule that assigns to each element of $A$ exactly one element of $B$.
-
-- $A$ is the *domain*
-- $B$ is the *codomain*
-- $f(A) = \{f(x) : x \in A\}$ is the *range* (or *image*)
-:::
-
-[PROSE: Important: functions are assignments, not formulas. The rule "f(x) = 1 if x is rational, 0 if x is irrational" defines a perfectly good function ℝ → {0, 1}, even though there's no algebraic formula.]
-
-[PROSE: Notation. We write $f: A \to B$ to indicate the domain and codomain, and $x \mapsto f(x)$ to indicate what $f$ does to elements. For example, $f: \RR \to \RR$, $x \mapsto x^2$.]
-
-
-## Types of Functions
-
-:::{#def-foundations-injective}
-## Injective
-A function $f: A \to B$ is *injective* (or *one-to-one*) if 
-$$f(x_1) = f(x_2) \implies x_1 = x_2$$
-:::
-
-:::{#def-foundations-surjective}
-## Surjective
-A function $f: A \to B$ is *surjective* (or *onto*) if for every $y \in B$, there exists $x \in A$ with $f(x) = y$. Equivalently, $f(A) = B$.
-:::
-
-:::{#def-foundations-bijective}
-## Bijective
-A function is *bijective* if it is both injective and surjective.
-:::
-
-[PROSE: Examples. The function $f: \RR \to \RR$, $x \mapsto x^2$ is neither injective ($f(1) = f(-1)$) nor surjective ($-1$ is not in the range). The function $f: \RR \to \RR$, $x \mapsto x^3$ is bijective.]
-
-
-## Operations on Functions
-
-:::{#def-foundations-composition}
-## Composition
-If $f: A \to B$ and $g: B \to C$, the *composition* $g \circ f: A \to C$ is defined by
-$$(g \circ f)(x) = g(f(x))$$
-:::
-
-[PROSE: Note the order: $g \circ f$ means "first $f$, then $g$."]
-
-:::{#def-foundations-inverse}
-## Inverse Function
-If $f: A \to B$ is bijective, the *inverse* $f^{-1}: B \to A$ is defined by $f^{-1}(y) = x$ where $f(x) = y$.
-:::
-
-:::{#prp-foundations-inverse-iff-bijective}
-## Inverses and Bijections
-A function $f: A \to B$ has an inverse if and only if $f$ is bijective.
-:::
-:::{.proof}
-:::
-
-[PROSE: Proof outline. If $f$ has an inverse, then $f$ is injective (if $f(x_1) = f(x_2)$, apply $f^{-1}$ to both sides) and surjective (for any $y \in B$, we have $f(f^{-1}(y)) = y$). Conversely, if $f$ is bijective, then for each $y \in B$ there exists a unique $x \in A$ with $f(x) = y$, so defining $f^{-1}(y) = x$ gives a well-defined function.]
-
-
-## Exercises
-
-1. Prove $(A \cap B)^c = A^c \cup B^c$. (De Morgan's Law)
-
-2. Prove $A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$.
-
-3. Prove that composition of functions is associative: if $f: A \to B$, $g: B \to C$, and $h: C \to D$, then $h \circ (g \circ f) = (h \circ g) \circ f$.
-
-4. Let $f: A \to B$ be bijective. Prove that $f^{-1}$ is also bijective, and $(f^{-1})^{-1} = f$.
-
-5. Let $f: A \to B$ and $g: B \to C$ be bijective. Prove that $g \circ f$ is bijective, and $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$.
-
-6. Prove: $f: A \to B$ is bijective if and only if there exists $g: B \to A$ with $g \circ f = \mathrm{id}_A$ and $f \circ g = \mathrm{id}_B$.
-
-7. Let $f: A \to B$ and $g: B \to C$.
-   - If $g \circ f$ is injective, must $f$ be injective? Must $g$?
-   - If $g \circ f$ is surjective, must $f$ be surjective? Must $g$?
-
-8. **(★)** Prove that for any set $A$, there is no surjection $f: A \to \mathcal{P}(A)$, where $\mathcal{P}(A)$ is the power set of $A$ (the set of all subsets of $A$).
-
-   *Hint: Consider the set $S = \{a \in A : a \notin f(a)\}$.*
+**Exercises**
+1. De Morgan: $(A \cap B)^c = A^c \cup B^c$
+2. $A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$
+3. Composition is associative
+4. $f$ bijective $\Rightarrow$ $f^{-1}$ bijective and $(f^{-1})^{-1} = f$
+5. $f, g$ bijective $\Rightarrow$ $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$
+6. $f$ bijective iff left and right inverse exists
+7. $g \circ f$ injective/surjective: what about $f$ and $g$?
+8. ★ No surjection $A \to \mathcal{P}(A)$ (Cantor)

@@ -2,559 +2,375 @@
 
 ## Overview
 
-In Chapter 2, proving convergence and computing the limit were often the same act: limit laws gave both existence and value. But many sequences resist explicit computation. This chapter develops tools that detect convergence from the sequence itself — without knowing the limit. The capstone: all these tools are secretly equivalent, different faces of completeness.
+In Chapter 2, proving convergence and computing the limit were often the same act: limit laws gave both existence and value. But many sequences resist explicit computation. How do we prove convergence when we don't know what the sequence converges *to*?
 
-**The arc:**
-> Series tests (comparison in disguise) → Subsequences → Cauchy criterion → Contractions → The unity of completeness
+This chapter develops two complementary approaches, then synthesizes them.
+
+**Part A** extends the monotone convergence theorem. If we can dominate a sequence by something monotone and convergent, we inherit convergence. These *comparison techniques* are practical tools that reduce new problems to solved ones.
+
+**Part B** asks a deeper question: what does completeness say about arbitrary bounded sequences that may have no monotone structure at all? This leads to Bolzano-Weierstrass and a complete understanding of subsequential limits.
+
+**Part C** extracts an intrinsic criterion from Part B. Examining what "limsup equals liminf" really means, we discover the Cauchy condition—a characterization using only *distances*, not order. We then step back and observe that all our convergence theorems are equivalent faces of completeness.
+
+**Part D** synthesizes both threads. The contraction mapping theorem combines comparison with geometric series (Part A) and Cauchy completeness (Part C) to guarantee convergence of iterative processes—and tells us *how fast* they converge.
 
 ---
 
 ## Historical Prelude (Unnumbered)
 
 ### The Problem
-
-Infinite series are dangerous. Grandi's series 1 − 1 + 1 − 1 + ··· can be "summed" to 0, 1, or 1/2 depending on how you group terms. Euler boldly computed Σ1/n² = π²/6 using infinite product manipulations that weren't justified. Sometimes he was right, sometimes wrong. Riemann showed that even convergent series can be rearranged to give *any* sum.
-
-Which series can we trust? When are our manipulations valid?
+- Grandi's series: $1 - 1 + 1 - 1 + \cdots$ "sums" to 0, 1, or 1/2
+- Euler's bold computations: sometimes right, sometimes wrong
+- Riemann rearrangement: even convergent series can sum to anything
+- Which series can we trust?
 
 ### The Development
-
-**Cauchy's Tests (1821)**
-
-Cauchy's *Cours d'analyse* brought order to chaos. He defined convergence precisely (Chapter 2) and gave the first rigorous tests: comparison, ratio, root. These detect convergence without computing the sum.
-
-Most remarkably, his "Cauchy criterion" said: if terms of a sequence get close to *each other*, convergence is guaranteed. You don't need to know what they're approaching.
-
-**Absolute Convergence**
-
-The key distinction emerged: a series Σaₙ is *absolutely convergent* if Σ|aₙ| converges. Such series behave well — you can rearrange terms, multiply series, manipulate freely. Euler's methods worked for absolutely convergent series.
-
-*Conditionally convergent* series (convergent but not absolutely) are treacherous. The alternating harmonic series converges to ln(2), but rearrangements give any number you want.
-
-**The Unity of Completeness**
-
-Meanwhile, Bolzano (1817) proved bounded sequences have accumulation points. By century's end, mathematicians realized: Cauchy's criterion, Bolzano-Weierstrass, monotone convergence — all equivalent! Each captures completeness of ℝ differently.
+- **Cauchy's tests (1821)**: comparison, ratio, root—detect convergence without computing sums
+- **The Cauchy criterion**: terms getting close to *each other* guarantees convergence
+- **Absolute vs conditional convergence**: the key distinction for safe manipulation
+- **Bolzano (1817)**: bounded sequences have accumulation points
+- **The unity**: by century's end, all these notions recognized as equivalent
 
 ### The Message
-
-This chapter develops tools to detect convergence from the sequence itself. We'll prove tests that work without knowing the limit, and discover that all our existence theorems are secretly the same theorem — different views of completeness.
+This chapter develops tools to detect convergence from the sequence itself and discovers that all our existence theorems are secretly the same theorem.
 
 ---
 
-## 3.1 Series Tests
+# Part A: Monotone Methods
 
-### The Master Technique: Comparison
+**Theme:** We already have MCT. Extend its reach by reducing new problems to this solved case.
 
-For nonnegative series, the key insight is simple: convergence is equivalent to bounded partial sums (MCT!). So we compare to series we already understand.
+## 3.1 Comparison
 
-### Absolute Convergence
+### The Master Technique
+- For nonnegative series: convergence ⟺ bounded partial sums (MCT!)
+- Strategy: compare to series we already understand
 
-**Definition**: A series Σaₙ *converges absolutely* if Σ|aₙ| converges. It *converges conditionally* if Σaₙ converges but Σ|aₙ| diverges.
-
-**Theorem**: Absolute convergence implies convergence.
-
-*Proof*: Note that 0 ≤ aₙ + |aₙ| ≤ 2|aₙ|.
-
-If Σ|aₙ| converges, then Σ(aₙ + |aₙ|) converges by comparison.
-
-Thus Σaₙ = Σ(aₙ + |aₙ|) − Σ|aₙ| converges (difference of convergent series). ∎
-
-**Why absolute convergence matters**: Absolutely convergent series can be rearranged freely — any rearrangement converges to the same sum. Conditionally convergent series cannot: Riemann proved any conditionally convergent series can be rearranged to converge to any value (or diverge).
-
-### The Comparison Test
-
-**Theorem (Comparison Test)**: Suppose 0 ≤ aₙ ≤ bₙ for all n.
-- If Σbₙ converges, then Σaₙ converges.
-- If Σaₙ diverges, then Σbₙ diverges.
-
-*Proof*: Let Aₙ = Σₖ₌₁ⁿ aₖ and Bₙ = Σₖ₌₁ⁿ bₖ. Then Aₙ ≤ Bₙ for all n.
-
-If Σbₙ converges, then (Bₙ) is bounded, so (Aₙ) is bounded. Since aₙ ≥ 0, (Aₙ) is increasing. By MCT, Σaₙ converges.
-
-The divergence statement is the contrapositive. ∎
-
-**Example**: Σ1/n² converges.
-
-*Proof*: For n ≥ 2: 1/n² < 1/n(n−1) = 1/(n−1) − 1/n.
-
-So Σₙ₌₂^N 1/n² < Σₙ₌₂^N (1/(n−1) − 1/n) = 1 − 1/N < 1.
-
-Partial sums bounded by 1 + 1 = 2 ⟹ converges. ∎
-
-**Remark**: We've proved Σ1/n² converges but haven't computed its value! This is the paradigm of Chapter 3: existence without explicit computation. (The value is π²/6, first computed by Euler.)
-
-**Example**: Σ1/n diverges (the harmonic series).
-
-*Proof*: Group terms:
-
-$$1 + \frac{1}{2} + \left(\frac{1}{3} + \frac{1}{4}\right) + \left(\frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8}\right) + \cdots$$
-
-$$> 1 + \frac{1}{2} + \frac{2}{4} + \frac{4}{8} + \cdots = 1 + \frac{1}{2} + \frac{1}{2} + \frac{1}{2} + \cdots$$
-
-Partial sums unbounded ⟹ diverges. ∎
+### Comparison Test
+- **Theorem**: $0 \le a_n \le b_n$ and $\sum b_n$ converges ⟹ $\sum a_n$ converges
+- Proof via MCT on partial sums
+- **Example**: $\sum 1/n^2$ converges (compare to telescoping $\sum 1/n(n-1)$)
+- **Example**: $\sum 1/n$ diverges (grouping argument)
+- **Remark**: We proved $\sum 1/n^2$ converges without computing its value—the paradigm of this chapter
 
 ### Limit Comparison
+- **Theorem**: $a_n, b_n > 0$, $a_n/b_n \to L \in (0, \infty)$ ⟹ $\sum a_n$ and $\sum b_n$ share convergence behavior
+- **Example**: $\sum (n^2 + 1)/(n^4 + 3n)$ via comparison to $1/n^2$
 
-**Theorem (Limit Comparison Test)**: Suppose aₙ, bₙ > 0 and:
+### Comparison with Geometric Series
+- Geometric series $\sum r^n$: converges iff $|r| < 1$
+- **Ratio Test**: $|a_{n+1}/a_n| \to L < 1$ ⟹ convergence
+- **Root Test**: $|a_n|^{1/n} \to L < 1$ ⟹ convergence
+- Both detect "essentially geometric" behavior
+- **Example**: $\sum n!/n^n$ converges (ratio $\to 1/e$)
+- **Remark**: Root test often stronger; will strengthen further with limsup in §3.2
 
-$$\lim_{n \to \infty} \frac{a_n}{b_n} = L$$
+### Absolute and Conditional Convergence
+- **Definition**: Absolute convergence ($\sum |a_n|$ converges) vs conditional
+- **Theorem**: Absolute convergence ⟹ convergence
+- Proof: $0 \le a_n + |a_n| \le 2|a_n|$, then comparison
+- **Why it matters**: Absolutely convergent series can be rearranged freely; conditionally convergent cannot (Riemann)
 
-where 0 < L < ∞. Then Σaₙ converges if and only if Σbₙ converges.
+### Alternating Series Test
+- **Theorem (Leibniz)**: $b_n \searrow 0$ ⟹ $\sum (-1)^{n+1} b_n$ converges
+- Proof: Even partial sums increasing, odd decreasing, gap → 0, MCT + recombination
+- **Example**: Alternating harmonic series converges (conditionally)
+- **Remark**: Unlike comparison, this uses MCT directly on partial sums
 
-*Proof*: Since aₙ/bₙ → L, for large n:
-
-$$\frac{L}{2} < \frac{a_n}{b_n} < 2L$$
-
-So (L/2)bₙ < aₙ < 2Lbₙ. Apply comparison. ∎
-
-**Example**: Does Σ(n² + 1)/(n⁴ + 3n) converge?
-
-Compare to 1/n²: 
-
-$$\frac{(n^2+1)/(n^4+3n)}{1/n^2} = \frac{n^2(n^2+1)}{n^4+3n} = \frac{n^4+n^2}{n^4+3n} \to 1$$
-
-Since Σ1/n² converges, so does Σ(n²+1)/(n⁴+3n). ∎
-
-### Comparison with Geometric Series: Ratio and Root Tests
-
-The geometric series Σrⁿ converges for |r| < 1 and diverges for |r| ≥ 1. The ratio and root tests detect when a series is "essentially geometric."
-
-**Theorem (Ratio Test)**: Let aₙ > 0 and suppose:
-
-$$L = \lim_{n \to \infty} \frac{a_{n+1}}{a_n}$$
-
-exists (possibly infinite). Then:
-- If L < 1, then Σaₙ converges.
-- If L > 1, then Σaₙ diverges.
-- If L = 1, the test is inconclusive.
-
-*Proof of convergence*: Choose r with L < r < 1. For large n, aₙ₊₁/aₙ < r.
-
-So aₙ₊₁ < raₙ < r²aₙ₋₁ < ··· < rⁿ⁻ᴺaₙ for n > N.
-
-Thus aₙ < Crⁿ for some constant C. Comparison with geometric series gives absolute convergence, hence convergence.
-
-*Proof of divergence*: If L > 1, then aₙ₊₁ > aₙ for large n, so aₙ ↛ 0. Series diverges.
-
-*Inconclusive*: Σ1/n has ratio n/(n+1) → 1 and diverges. Σ1/n² has ratio n²/(n+1)² → 1 and converges. ∎
-
-**Example**: Σn!/nⁿ converges.
-
-$$\frac{a_{n+1}}{a_n} = \frac{(n+1)!/(n+1)^{n+1}}{n!/n^n} = \frac{n^n}{(n+1)^n} = \left(\frac{n}{n+1}\right)^n = \frac{1}{(1+1/n)^n} \to \frac{1}{e} < 1$$
-
-∎
-
-**Theorem (Root Test)**: Let:
-
-$$L = \lim_{n \to \infty} |a_n|^{1/n}$$
-
-(if it exists). Then:
-- If L < 1, then Σaₙ converges absolutely.
-- If L > 1, then Σaₙ diverges.
-- If L = 1, the test is inconclusive.
-
-*Proof*: If L < 1, choose r with L < r < 1. For large n, |aₙ|^{1/n} < r, so |aₙ| < rⁿ. Comparison with geometric series gives absolute convergence.
-
-If L > 1, then |aₙ| > 1 for large n, so aₙ ↛ 0. Divergence. ∎
-
-**Example**: Σ(n/(2n+1))ⁿ converges.
-
-$$|a_n|^{1/n} = \frac{n}{2n+1} \to \frac{1}{2} < 1$$
-
-∎
-
-**Remark**: The root test is often stronger than the ratio test. When both limits exist and are finite, they're equal, but the root test limit may exist when the ratio test limit doesn't.
-
-### The Alternating Series Test
-
-For series with signs, comparison doesn't directly apply. But cancellation can help:
-
-**Theorem (Leibniz)**: If (bₙ) is decreasing with bₙ → 0, then Σ(−1)ⁿ⁺¹bₙ converges.
-
-Moreover, the partial sums satisfy: S₂ₙ is increasing, S₂ₙ₊₁ is decreasing, and the limit lies between any consecutive partial sums.
-
-*Proof*: 
-
-S₂ₙ₊₂ = S₂ₙ + (b₂ₙ₊₁ − b₂ₙ₊₂) ≥ S₂ₙ (since bₙ decreasing).
-
-S₂ₙ₊₃ = S₂ₙ₊₁ − (b₂ₙ₊₂ − b₂ₙ₊₃) ≤ S₂ₙ₊₁.
-
-Also S₂ₙ = S₂ₙ₊₁ − b₂ₙ₊₁ ≤ S₂ₙ₊₁, so every even partial sum is below every odd one.
-
-By MCT, S₂ₙ → L₊ and S₂ₙ₊₁ → L₋ with L₊ ≤ L₋.
-
-But S₂ₙ₊₁ − S₂ₙ = b₂ₙ₊₁ → 0, so L₊ = L₋. ∎
-
-**Example**: The alternating harmonic series Σ(−1)ⁿ⁺¹/n converges.
-
-Note: Σ1/n diverges, so this is conditionally convergent.
-
-**Remark**: Unlike the other tests, the alternating series test uses MCT directly, not comparison.
+### The Limits of Monotone Methods
+- All these techniques rely on monotonicity *somewhere*
+- What about sequences that simply bounce around?
+- What does completeness say about them?
 
 ---
 
-## 3.2 Subsequences
+# Part B: Bounded Sequences
 
-### Subsequential Limits
+**Theme:** What can completeness tell us about the *structure* of an arbitrary bounded sequence?
 
-**Definition**: A *subsequence* of (aₙ) is a sequence (aₙₖ) where n₁ < n₂ < n₃ < ···.
+## 3.2 Subsequences and Subsequential Limits
 
-**Theorem**: If aₙ → L, then every subsequence aₙₖ → L.
-
-*Proof*: Given ε > 0, choose N with n > N ⟹ |aₙ − L| < ε. For k large enough, nₖ > N, so |aₙₖ − L| < ε. ∎
-
-**Contrapositive**: If two subsequences have different limits, the original sequence diverges.
-
-**Example**: (−1)ⁿ diverges because the subsequences a₂ₖ = 1 and a₂ₖ₊₁ = −1 have different limits.
-
-**Definition**: L is a *subsequential limit* (or *accumulation point*) of (aₙ) if some subsequence converges to L.
+### Subsequences
+- **Definition**: Subsequence $(a_{n_k})$ with $n_1 < n_2 < n_3 < \cdots$
+- **Theorem**: $a_n \to L$ ⟹ every subsequence $\to L$
+- **Contrapositive**: Two subsequences with different limits ⟹ divergence
+- **Example**: $((-1)^n)$ diverges
+- **Definition**: Subsequential limit / accumulation point
 
 ### Bolzano-Weierstrass Theorem
+- **Theorem**: Every bounded sequence has a convergent subsequence
+- Proof via bisection → nested intervals (completeness!)
+- **Remark**: Fails in ℚ (decimal approximations to π)
 
-**Theorem (Bolzano-Weierstrass)**: Every bounded sequence has a convergent subsequence.
-
-*Proof*: Let (aₙ) be bounded, say aₙ ∈ [A, B] for all n.
-
-**Bisection construction**: Divide [A, B] in half. At least one half contains infinitely many terms. Call it I₁.
-
-Divide I₁ in half. At least one half contains infinitely many terms. Call it I₂.
-
-Continue: get nested intervals I₁ ⊃ I₂ ⊃ I₃ ⊃ ··· with |Iₖ| = (B−A)/2ᵏ, each containing infinitely many terms.
-
-Pick n₁ with aₙ₁ ∈ I₁. Pick n₂ > n₁ with aₙ₂ ∈ I₂. Continue.
-
-By nested intervals (completeness), ∩Iₖ = {L} for some L. Since aₙₖ ∈ Iₖ and |Iₖ| → 0, we have aₙₖ → L. ∎
-
-**Remark**: This theorem fails in ℚ. The sequence 3, 3.1, 3.14, 3.141, 3.1415, ... (decimal approximations to π) is bounded in ℚ but has no rational subsequential limit.
+### Two Subsequential Limits ⟹ Divergence
+- **Theorem**: Bounded sequence with exactly one subsequential limit converges to it
+- So divergence of bounded sequences means multiple subsequential limits
+- To understand divergence, study the *set* of subsequential limits
 
 ### Limsup and Liminf
+- **Definition**: 
+  - $\limsup a_n = \lim_{n \to \infty} \sup_{k \ge n} a_k$
+  - $\liminf a_n = \lim_{n \to \infty} \inf_{k \ge n} a_k$
+- **Why they exist**: $M_n = \sup_{k \ge n} a_k$ is decreasing and bounded below → MCT
+- **Theorem**: $\limsup a_n$ = largest subsequential limit; $\liminf a_n$ = smallest
+- Proof that limsup is achieved: construct subsequence via $a_{k_n} > M_n - 1/n$
+- **Theorem**: $a_n \to L$ ⟺ $\limsup a_n = \liminf a_n = L$
 
-**Definition**: For a bounded sequence (aₙ):
+### Root Test Revisited
+- **Theorem (Strong Form)**: Let $L = \limsup |a_n|^{1/n}$. Then $L < 1$ ⟹ convergence; $L > 1$ ⟹ divergence
+- Works even when limit doesn't exist—only need limsup
+- **Application**: Radius of convergence $R = 1/\limsup |a_n|^{1/n}$
 
-$$\limsup_{n \to \infty} a_n = \lim_{n \to \infty} \sup_{k \geq n} a_k$$
-
-$$\liminf_{n \to \infty} a_n = \lim_{n \to \infty} \inf_{k \geq n} a_k$$
-
-**Why these exist**: Let sₙ = sup{aₖ : k ≥ n}. Then (sₙ) is decreasing (sup over smaller set) and bounded below. By MCT, sₙ → limsup. Similarly for liminf.
-
-**Theorem**: For a bounded sequence (aₙ):
-1. limsup aₙ = largest subsequential limit
-2. liminf aₙ = smallest subsequential limit
-
-*Proof of (1)*: Let L = limsup aₙ and sₙ = sup{aₖ : k ≥ n}.
-
-**L is a subsequential limit**: For each n, there exists kₙ ≥ n with aₖₙ > sₙ − 1/n (by definition of sup). Since sₙ → L, we have aₖₙ → L.
-
-**L is largest**: If aₙₘ → M, then aₙₘ ≤ sₙₘ, so M = lim aₙₘ ≤ lim sₙₘ = L. ∎
-
-**Theorem**: aₙ → L if and only if limsup aₙ = liminf aₙ = L.
-
-*Proof*: (⟹) If aₙ → L, then L is the only subsequential limit.
-
-(⟸) If limsup = liminf = L, then:
-
-$$\inf_{k \geq n} a_k \leq a_n \leq \sup_{k \geq n} a_k$$
-
-Both bounds → L, so by squeeze, aₙ → L. ∎
-
-### The Root Test Revisited
-
-**Theorem (Root Test, Strong Form)**: Let L = limsup |aₙ|^{1/n}. Then:
-- If L < 1, then Σaₙ converges absolutely.
-- If L > 1, then Σaₙ diverges.
-
-*Proof*: If L < 1, choose r with L < r < 1. By definition of limsup, |aₙ|^{1/n} < r for all sufficiently large n. So |aₙ| < rⁿ. Comparison with geometric series gives convergence.
-
-If L > 1, then |aₙ|^{1/n} > 1 for infinitely many n (since L is a subsequential limit of |aₙ|^{1/n}). So |aₙ| > 1 infinitely often, meaning aₙ ↛ 0. Divergence. ∎
-
-### Radius of Convergence
-
-**Definition**: For a power series Σaₙxⁿ, the *radius of convergence* is:
-
-$$R = \frac{1}{\limsup |a_n|^{1/n}}$$
-
-with conventions 1/0 = ∞ and 1/∞ = 0.
-
-**Theorem**: The power series Σaₙxⁿ:
-- Converges absolutely for |x| < R
-- Diverges for |x| > R
-
-*Proof*: Apply the strong root test to Σaₙxⁿ. We have:
-
-$$\limsup |a_n x^n|^{1/n} = |x| \limsup |a_n|^{1/n} = |x|/R$$
-
-This is < 1 when |x| < R (convergence) and > 1 when |x| > R (divergence). ∎
-
-**Remark**: At |x| = R, anything can happen — need case-by-case analysis.
+### Riemann Rearrangement Theorem
+- **Theorem**: If $\sum a_n$ converges conditionally, then for any $L \in \mathbb{R} \cup \{\pm\infty\}$, some rearrangement converges to $L$
+- Proof sketch: positive and negative parts both diverge; alternate to hit any target
+- **Moral**: Conditional convergence is fragile; absolute convergence is robust
 
 ---
 
-## 3.3 Cauchy Sequences
+# Part C: The Cauchy Criterion
 
-### Motivation
+**Theme:** Can we detect convergence using only *distances*, not order?
 
-We've seen:
-- MCT: monotone + bounded ⟹ converges (limit = sup)
-- BW: bounded ⟹ has convergent subsequence
+## 3.3 From Oscillation to Cauchy
 
-But what if the sequence isn't monotone and we can't identify the limit or bound?
+### The Oscillation of the Tail
+- We have: $a_n \to L$ ⟺ $\limsup a_n = \liminf a_n$
+- Define tail oscillation: $\omega_n = \sup_{k \ge n} a_k - \inf_{k \ge n} a_k$
+- **Observation 1**: Convergence ⟺ $\omega_n \to 0$
+- **Observation 2**: $\omega_n < \varepsilon$ means all pairs $j, k \ge n$ satisfy $|a_j - a_k| < \varepsilon$
+- We've *derived* an intrinsic condition using only distances!
 
-**Key observation**: In a convergent sequence, terms get close to *each other*:
-
-$$|a_m - a_n| \leq |a_m - L| + |L - a_n| < \varepsilon/2 + \varepsilon/2 = \varepsilon$$
-
-for large m, n. Can we reverse this?
-
-### The Definition
-
-**Definition**: A sequence (aₙ) is *Cauchy* if for every ε > 0, there exists N such that:
-
-$$m, n > N \implies |a_m - a_n| < \varepsilon$$
-
-**Remark**: This is an *intrinsic* condition — it refers only to the sequence itself, not to any external limit.
+### The Cauchy Condition
+- **Definition**: $(a_n)$ is Cauchy if $\forall \varepsilon > 0$, $\exists N$: $m, n > N \Longrightarrow |a_m - a_n| < \varepsilon$
+- **Remark**: Intrinsic (no external limit), metric (no order)
+- Doesn't require boundedness as hypothesis—Cauchy ⟹ bounded
 
 ### Cauchy Sequences Converge
+- **Theorem**: A sequence converges ⟺ it is Cauchy
+- Proof (⟸): Cauchy ⟹ bounded ⟹ BW gives convergent subsequence ⟹ whole sequence converges to same limit
+- **Corollary (Cauchy criterion for series)**: $\sum a_n$ converges ⟺ partial sums are Cauchy
+- **Corollary**: $\sum a_n$ converges ⟹ $a_n \to 0$ (but not conversely!)
 
-**Theorem (Cauchy Criterion)**: A sequence converges if and only if it is Cauchy.
+### The Significance of Cauchy
+- **Intrinsic**: Examines only the sequence itself
+- **Metric**: Uses only distances, not order
+- **Necessary and sufficient**: Unlike comparison tests
+- Generalizes to spaces without order (function spaces, $\mathbb{R}^n$)
 
-*Proof*:
+## 3.4 The Many Faces of Completeness
 
-(⟹) Already shown above.
+### The Equivalences
+We've seen completeness manifest as:
+- Least Upper Bound (the axiom)
+- Monotone Convergence Theorem
+- Nested Intervals Property
+- Bolzano-Weierstrass
+- Cauchy Completeness
 
-(⟸) Suppose (aₙ) is Cauchy.
+**Theorem**: For an ordered field $F$, the following are equivalent:
+1. (LUB) Every nonempty set bounded above has a supremum
+2. (MCT) Every monotone bounded sequence converges
+3. (Nested Intervals + Archimedean) Nested intervals with shrinking length have nonempty intersection
+4. (BW) Every bounded sequence has a convergent subsequence
+5. (Cauchy) Every Cauchy sequence converges
 
-**Step 1**: (aₙ) is bounded.
+### Proof of Equivalences
+- (1) ⟹ (2): Proved in Chapter 2
+- (2) ⟹ (3): Both endpoint sequences converge by MCT; gap → 0 forces same limit
+- (3) ⟹ (4): Bisection proof of BW
+- (4) ⟹ (5): Our proof that Cauchy ⟹ convergent
+- (5) ⟹ (1): Bisection construction of sup via Cauchy sequence
 
-Take ε = 1. There exists N with m, n > N ⟹ |aₘ − aₙ| < 1.
-
-So |aₙ| ≤ |aₙ − aₙ₊₁| + |aₙ₊₁| < 1 + |aₙ₊₁| for n > N.
-
-Thus |aₙ| ≤ max(|a₁|, ..., |aₙ|, 1 + |aₙ₊₁|) for all n.
-
-**Step 2**: By Bolzano-Weierstrass, (aₙ) has a convergent subsequence aₙₖ → L.
-
-**Step 3**: aₙ → L.
-
-Given ε > 0, choose N such that:
-- m, n > N ⟹ |aₘ − aₙ| < ε/2 (Cauchy)
-- nₖ > N ⟹ |aₙₖ − L| < ε/2 (subsequence converges)
-
-For n > N, choose k with nₖ > N. Then:
-
-$$|a_n - L| \leq |a_n - a_{n_k}| + |a_{n_k} - L| < \varepsilon/2 + \varepsilon/2 = \varepsilon$$
-
-∎
-
-### The Cauchy Criterion for Series
-
-**Corollary**: Σaₙ converges if and only if for every ε > 0, there exists N such that:
-
-$$m > n > N \implies |a_{n+1} + a_{n+2} + \cdots + a_m| < \varepsilon$$
-
-*Proof*: Apply Cauchy criterion to partial sums. ∎
-
-**Corollary**: If Σaₙ converges, then aₙ → 0.
-
-*Proof*: Take m = n + 1 in the Cauchy criterion. ∎
-
-**Warning**: The converse is false! aₙ = 1/n → 0, but Σ1/n diverges.
+### The Significance
+- **Philosophical**: Completeness isn't just "sup exists"—it manifests in many equivalent ways
+- **Practical**: Choose whichever characterization fits the problem
+- **Forward-looking**: Cauchy completeness generalizes to metric spaces without order
 
 ---
 
-## 3.4 Contraction Mappings
+# Part D: Contraction Mappings
+
+**Theme:** Synthesize both threads—comparison with geometric series (Part A) + Cauchy completeness (Part C)—to analyze iterative processes.
+
+## 3.5 The Contraction Mapping Theorem
 
 ### The Setup
+- Recall from Chapter 2: if $a_{n+1} = f(a_n)$ converges to $L$, then $L = f(L)$
+- But *when* does it converge?
+- Key insight: if $f$ "shrinks distances," convergence is guaranteed
 
-Recall from Chapter 2: for a recursive sequence aₙ₊₁ = f(aₙ), if the sequence converges to L, then L = f(L). But *when* does it converge?
+### Contractions
+- **Definition**: $f: I \to I$ is a contraction with constant $c \in (0,1)$ if $|f(x) - f(y)| \le c|x - y|$ for all $x, y \in I$
 
-**Key insight**: If f "shrinks distances," convergence is guaranteed.
+### The Theorem
+**Theorem (Contraction Mapping Theorem)**: If $f: I \to I$ is a contraction with constant $c$, then:
+1. $f$ has a unique fixed point $L \in I$
+2. For any $a_1 \in I$, the sequence $a_{n+1} = f(a_n)$ converges to $L$
+3. **Convergence rate**: $|a_n - L| \le c^{n-1}|a_1 - L|$
 
-### The Contraction Mapping Theorem
+**Proof**:
+- Step 1: $|a_{n+1} - a_n| \le c^{n-1}|a_2 - a_1|$ (contraction property)
+- Step 2: Comparison with geometric series ⟹ $(a_n)$ is Cauchy
+- Step 3: Cauchy completeness ⟹ $(a_n) \to L$
+- Step 4: Continuity of $f$ (Lipschitz ⟹ continuous) ⟹ $L = f(L)$
+- Step 5: Uniqueness from contraction property
 
-**Definition**: A function f: I → I (where I is a closed interval) is a *contraction* if there exists c ∈ (0, 1) such that:
+**Remark**: The proof combines Part A (geometric comparison) with Part C (Cauchy completeness).
 
-$$|f(x) - f(y)| \leq c|x - y| \quad \text{for all } x, y \in I$$
+### Revisiting Chapter 2: Convergence Rates
 
-**Theorem (Contraction Mapping Theorem)**: If f: I → I is a contraction, then:
-1. f has a unique fixed point L ∈ I (i.e., f(L) = L)
-2. For any a₁ ∈ I, the sequence aₙ₊₁ = f(aₙ) converges to L
-3. The convergence is geometric: |aₙ − L| ≤ cⁿ⁻¹|a₁ − L|
+The contraction mapping theorem doesn't just prove convergence—it tells us *how fast*. Let's revisit three iterative processes from Chapter 2.
 
-*Proof*:
+#### Example 1: Nested Radicals for φ
 
-**Existence**: Let a₁ ∈ I and aₙ₊₁ = f(aₙ). We show (aₙ) is Cauchy.
+The nested radical $\sqrt{1 + \sqrt{1 + \sqrt{1 + \cdots}}}$ comes from $f(x) = \sqrt{1 + x}$.
 
-|aₙ₊₁ − aₙ| = |f(aₙ) − f(aₙ₋₁)| ≤ c|aₙ − aₙ₋₁| ≤ ··· ≤ cⁿ⁻¹|a₂ − a₁|
+**Claim**: $f$ is a contraction on $[1, 2]$ with constant $c = 1/(2\sqrt{2})$.
 
-For m > n:
+*Verification that $f: [1,2] \to [1,2]$*:
+- $f(1) = \sqrt{2} \approx 1.414$ ✓
+- $f(2) = \sqrt{3} \approx 1.732$ ✓
 
-$$|a_m - a_n| \leq |a_m - a_{m-1}| + \cdots + |a_{n+1} - a_n|$$
-$$\leq (c^{m-2} + \cdots + c^{n-1})|a_2 - a_1| = c^{n-1} \frac{1 - c^{m-n}}{1-c}|a_2 - a_1|$$
-$$< \frac{c^{n-1}}{1-c}|a_2 - a_1| \to 0$$
+*Finding the contraction constant* (conjugate trick):
+$$|\sqrt{1+x} - \sqrt{1+y}| = \frac{|x - y|}{\sqrt{1+x} + \sqrt{1+y}}$$
 
-So (aₙ) is Cauchy, hence converges to some L.
+On $[1, 2]$: $\sqrt{1+x} \ge \sqrt{2}$, so denominator $\ge 2\sqrt{2}$.
 
-Since aₙ₊₁ = f(aₙ) and f is continuous (Lipschitz ⟹ continuous), L = f(L).
+Thus $|f(x) - f(y)| \le \dfrac{1}{2\sqrt{2}}|x - y|$ with $c = \dfrac{1}{2\sqrt{2}} \approx 0.354$.
 
-**Uniqueness**: If f(L) = L and f(M) = M, then:
+#### Example 2: Continued Fractions for φ
 
-$$|L - M| = |f(L) - f(M)| \leq c|L - M|$$
+The continued fraction $[1; 1, 1, 1, \ldots]$ comes from $f(x) = 1 + 1/x$.
 
-Since c < 1, this implies |L − M| = 0. ∎
+**Claim**: $f$ is a contraction on $[1.5, 2]$ with constant $c = 4/9$.
 
-### Connection to Derivative
+*Verification that $f: [1.5, 2] \to [1.5, 2]$*:
+- $f(1.5) = 5/3 \approx 1.667$ ✓
+- $f(2) = 1.5$ ✓
 
-**Theorem**: If f is differentiable on [a, b] with |f'(x)| ≤ c < 1 for all x, and f: [a,b] → [a,b], then f is a contraction.
+*Finding the contraction constant*:
+$$\left|\frac{1}{x} - \frac{1}{y}\right| = \frac{|x - y|}{xy}$$
 
-*Proof*: By the Mean Value Theorem:
+On $[1.5, 2]$: $xy \ge 2.25$, so $|f(x) - f(y)| \le \dfrac{4}{9}|x - y|$.
 
-$$|f(x) - f(y)| = |f'(\xi)||x - y| \leq c|x - y|$$
+**Remark**: On $[1, 2]$, we only get $c \le 1$—not a contraction! The domain matters.
 
-∎
+#### Example 3: Archimedes' Ratio for π
 
-**Remark**: This connects to Chapter 6 — the contraction condition becomes a derivative condition.
+The ratio $r_n = a_n/b_n$ satisfies $r_{2n} = g(r_n)$ where $g(r) = \sqrt{(r+1)/2}$.
+
+**Claim**: $g$ is a contraction on $[0, 1]$ with constant $c = 1/(2\sqrt{2})$.
+
+*Verification that $g: [0, 1] \to [0, 1]$*:
+- $g(0) = 1/\sqrt{2} \approx 0.707$ ✓
+- $g(1) = 1$ ✓
+
+*Finding the contraction constant* (conjugate trick):
+$$\left|\sqrt{\frac{x+1}{2}} - \sqrt{\frac{y+1}{2}}\right| = \frac{|x - y|/2}{\sqrt{(x+1)/2} + \sqrt{(y+1)/2}}$$
+
+On $[0, 1]$: $\sqrt{(x+1)/2} \ge 1/\sqrt{2}$, so denominator $\ge \sqrt{2}$.
+
+Thus $|g(x) - g(y)| \le \dfrac{1}{2\sqrt{2}}|x - y|$.
+
+#### Comparison of Convergence Rates
+
+| Method | Map | Domain | Contraction Constant |
+|--------|-----|--------|---------------------|
+| Nested radical for $\phi$ | $\sqrt{1+x}$ | $[1, 2]$ | $1/(2\sqrt{2}) \approx 0.354$ |
+| Continued fraction for $\phi$ | $1 + 1/x$ | $[1.5, 2]$ | $4/9 \approx 0.444$ |
+| Archimedes ratio | $\sqrt{(r+1)/2}$ | $[0, 1]$ | $1/(2\sqrt{2}) \approx 0.354$ |
+
+**Interpretation**: Smaller $c$ = faster convergence. After $n$ iterations, error is multiplied by $c^n$.
+
+**The algebraic trick**: Both square root examples used the conjugate identity $|\sqrt{a} - \sqrt{b}| = |a-b|/(\sqrt{a} + \sqrt{b})$. This transforms differences of square roots into quotients where we can bound the denominator. A useful technique for proving Lipschitz bounds without calculus.
 
 ### Applications
 
-**Example**: Show that aₙ₊₁ = cos(aₙ) converges for any starting value a₁ ∈ [0, 1].
+**Example**: $a_{n+1} = \cos(a_n)$ converges for any $a_1 \in [0, 1]$.
 
-On [0, 1]: |cos'(x)| = |sin(x)| ≤ sin(1) ≈ 0.84 < 1.
+Show $\cos: [0,1] \to [0,1]$ is a contraction:
+- $\cos(0) = 1$, $\cos(1) \approx 0.54$, both in $[0,1]$ ✓
+- $|\cos x - \cos y| = 2|\sin(\frac{x+y}{2})||\sin(\frac{x-y}{2})| \le 2 \cdot 1 \cdot |x-y|/2 = |x-y| \cdot \sin(1)$
+- Actually: use $|\cos x - \cos y| \le |x - y|$ (mean value intuition) with $c = \sin(1) \approx 0.84 < 1$
 
-Also cos: [0, 1] → [cos(1), 1] ⊂ [0, 1].
+The sequence converges to the unique solution of $x = \cos(x)$.
 
-So cos is a contraction on [0, 1]. The sequence converges to the unique solution of x = cos(x). ∎
+**Example**: Newton's method for $\sqrt{2}$.
 
-**Example**: Newton's method for √2.
+$x_{n+1} = (x_n + 2/x_n)/2 = f(x_n)$.
 
-xₙ₊₁ = (xₙ + 2/xₙ)/2 = f(xₙ).
+On $[1, 2]$: Show $f$ is a contraction (exercise). This explains the rapid convergence observed in Chapter 2.
 
-On [1, 2]: f'(x) = (1 − 2/x²)/2. At x = √2, f'(√2) = 0.
-
-For x ∈ [1, 2]: |f'(x)| = |1 − 2/x²|/2 ≤ 1/2 < 1.
-
-So f is a contraction near √2, explaining the rapid convergence. ∎
-
-**Preview**: In Chapter 6 (Newton's method) and Chapter 11 (Picard iteration for ODEs), contractions guarantee existence of solutions.
-
----
-
-## 3.5 The Many Faces of Completeness
-
-### The Equivalences
-
-We have proved convergence theorems using completeness in different guises:
-- **MCT** (Chapter 2): uses sup/inf
-- **Bolzano-Weierstrass**: uses nested intervals
-- **Cauchy criterion**: uses BW
-
-These are all *equivalent* to completeness! Any one can be taken as the definition of ℝ.
-
-**Theorem**: The following are equivalent for an ordered field F:
-1. **(Completeness)** Every nonempty subset bounded above has a supremum
-2. **(MCT)** Every monotone bounded sequence converges
-3. **(Nested Intervals + Archimedean)** If [aₙ, bₙ] are nested with bₙ − aₙ → 0, then ∩[aₙ, bₙ] is a single point
-4. **(Bolzano-Weierstrass)** Every bounded sequence has a convergent subsequence
-5. **(Cauchy)** Every Cauchy sequence converges
-
-### Proof of Equivalences
-
-**(1) ⟹ (2)**: We proved this in Chapter 2. If (aₙ) is increasing and bounded, then sup{aₙ} exists and equals the limit.
-
-**(2) ⟹ (3)**: The sequence (aₙ) is increasing and bounded above (by any bₘ). By MCT, aₙ → L. Similarly bₙ → M. Since aₙ ≤ bₙ, we have L ≤ M. Since bₙ − aₙ → 0, L = M. So ∩[aₙ, bₙ] = {L}.
-
-**(3) ⟹ (4)**: This is exactly the proof of Bolzano-Weierstrass by bisection.
-
-**(4) ⟹ (5)**: This is exactly our proof that Cauchy sequences converge.
-
-**(5) ⟹ (1)**: Let S be nonempty and bounded above. We construct a Cauchy sequence converging to sup S.
-
-Since S is nonempty, pick a₁ ∈ S. Since S is bounded above, pick b₁ an upper bound.
-
-Bisect [a₁, b₁]. If the midpoint is an upper bound for S, let b₂ = midpoint, a₂ = a₁. Otherwise, there's an element of S greater than midpoint; let a₂ be such an element, b₂ = b₁.
-
-Continue: get (aₙ) ∈ S with aₙ increasing, (bₙ) upper bounds with bₙ decreasing, and bₙ − aₙ → 0.
-
-Both sequences are Cauchy (check!). By (5), aₙ → L.
-
-**Claim**: L = sup S.
-
-L is an upper bound: if x > L, then x > bₙ for large n (since bₙ → L), and bₙ is an upper bound.
-
-L is least: if M < L, then M < aₙ for large n, but aₙ ∈ S, so M is not an upper bound. ∎
-
-### The Significance
-
-**Philosophical point**: Completeness isn't just "sup exists." It's a property that manifests in many equivalent ways:
-- Algebraically (sup)
-- Sequentially (MCT, BW, Cauchy)
-- Geometrically (nested intervals)
-
-Each form is useful in different contexts. The real numbers are *uniquely* characterized by being a complete ordered field.
-
-**Historical point**: Cauchy sequences provide a *construction* of ℝ from ℚ. Start with ℚ, form equivalence classes of Cauchy sequences, define arithmetic, verify completeness. This is how we *know* ℝ exists!
+**Preview**: Contraction mappings appear in Chapter 6 (Newton's method analysis) and Chapter 11 (Picard iteration for ODEs).
 
 ---
 
 ## Chapter Summary
 
-| Section | Purpose |
-|---------|---------|
-| Prelude | The danger of divergent series; the search for rigor |
-| 3.1 Series Tests | Comparison (direct and with geometric), alternating |
-| 3.2 Subsequences | Bolzano-Weierstrass, limsup/liminf |
-| 3.3 Cauchy Sequences | Intrinsic criterion for convergence |
-| 3.4 Contraction Mappings | Fixed points via shrinking |
-| 3.5 Many Faces | All equivalent to completeness |
+| Part | Theme | Key Results |
+|------|-------|-------------|
+| **A: Monotone Methods** | Reduce to MCT | Comparison, ratio, root tests |
+| **B: Bounded Sequences** | Structure of subsequential limits | Bolzano-Weierstrass, limsup/liminf |
+| **C: Cauchy Criterion** | Intrinsic metric characterization | Cauchy ⟺ convergent; equivalence of completeness notions |
+| **D: Contractions** | Synthesis + convergence rates | Fixed points via geometric comparison + Cauchy |
+
+---
 
 ## Key Theorems
 
-1. **Absolute convergence ⟹ convergence**
-2. **Comparison test**: 0 ≤ aₙ ≤ bₙ and Σbₙ converges ⟹ Σaₙ converges
-3. **Ratio test**: |aₙ₊₁/aₙ| → L < 1 ⟹ convergence
-4. **Root test**: |aₙ|^{1/n} → L < 1 ⟹ convergence
-5. **Alternating series test**: bₙ ↓ 0 ⟹ Σ(−1)ⁿbₙ converges
-6. **Bolzano-Weierstrass**: bounded ⟹ has convergent subsequence
+1. **Comparison test**: $0 \le a_n \le b_n$ and $\sum b_n$ converges ⟹ $\sum a_n$ converges
+2. **Ratio/root tests**: Comparison with geometric series
+3. **Absolute convergence ⟹ convergence**
+4. **Alternating series test**: $b_n \searrow 0$ ⟹ $\sum(-1)^n b_n$ converges
+5. **Bolzano-Weierstrass**: Bounded ⟹ has convergent subsequence
+6. **Limsup/liminf characterization**: $a_n \to L$ ⟺ $\limsup a_n = \liminf a_n = L$
 7. **Cauchy criterion**: Cauchy ⟺ convergent
-8. **Contraction mapping theorem**: contractions have unique fixed points
-9. **Equivalence**: MCT ⟺ BW ⟺ Cauchy ⟺ completeness
+8. **Equivalence of completeness**: LUB ⟺ MCT ⟺ Nested Intervals ⟺ BW ⟺ Cauchy
+9. **Contraction mapping theorem**: Contractions have unique fixed points; all orbits converge geometrically
+
+---
 
 ## Exercises (Selected)
 
-### Section 3.1
-- Prove Σ1/(n log n) diverges (hint: creative grouping)
-- Test: Σn²/2ⁿ, Σn!/nⁿ, Σ(2n)!/(n!)²
-- Show ratio test is inconclusive for all p-series
-- **(Extended)** Prove Cauchy condensation: for decreasing aₙ ≥ 0, Σaₙ converges ⟺ Σ2ⁿa_{2ⁿ} converges
-- **(Extended)** Use Cauchy condensation to prove: Σ1/nᵖ converges ⟺ p > 1
+### Section 3.1 (Comparison)
+- Prove $\sum 1/(n \log n)$ diverges
+- Test: $\sum n^2/2^n$, $\sum n!/n^n$, $\sum (2n)!/(n!)^2$
+- Show ratio test is inconclusive for all $p$-series
+- Prove Cauchy condensation test
 
-### Section 3.2
-- Find all subsequential limits of ((−1)ⁿ(1 + 1/n))
-- Prove limsup(aₙ + bₙ) ≤ limsup aₙ + limsup bₙ (when does equality hold?)
-- Find radius of convergence: Σnⁿxⁿ/n!, Σxⁿ/(n·2ⁿ)
+### Section 3.2 (Subsequences)
+- Find all subsequential limits of $((-1)^n(1 + 1/n))$
+- Prove $\limsup(a_n + b_n) \le \limsup a_n + \limsup b_n$
+- Find radius of convergence: $\sum n^n x^n / n!$, $\sum x^n/(n \cdot 2^n)$
+- Prove Riemann rearrangement theorem
 
-### Section 3.3
-- Prove directly (without BW) that Cauchy sequences are bounded
-- Show (sin n) is not Cauchy
-- Prove: if (aₙ) is Cauchy and has a subsequence converging to L, then aₙ → L
+### Section 3.3 (Cauchy)
+- Prove directly that Cauchy sequences are bounded
+- Show $(\sin n)$ is not Cauchy
+- Prove: Cauchy sequence with convergent subsequence converges to that subsequence's limit
 
-### Section 3.4
-- Show f(x) = (x + 2/x)/2 is a contraction on [1, 2]
-- Prove: if f is a contraction with constant c, then |aₙ − L| ≤ cⁿ/(1−c)|a₂ − a₁|
-- Find the fixed point of f(x) = (x² + 1)/3 on [0, 1]
+### Section 3.4 (Equivalences)
+- Prove (3) ⟹ (4) in detail
+- Give example of non-Archimedean ordered field where nested intervals fail
+- Outline construction of ℝ from ℚ via Cauchy sequences
 
-### Section 3.5
-- Prove (3) ⟹ (4) in detail (the bisection argument)
-- Show the Archimedean property is needed: give an example of a non-Archimedean ordered field where nested intervals can have empty intersection
-- Outline the construction of ℝ from ℚ via Cauchy sequences
+### Section 3.5 (Contractions)
+- Verify $f(x) = (x + 2/x)/2$ is a contraction on $[1, 2]$ (find constant)
+- Prove: if $f$ has contraction constant $c$, then $|a_n - L| \le c^{n-1}/(1-c) \cdot |a_2 - a_1|$
+- Find fixed point of $f(x) = (x^2 + 1)/3$ on $[0, 1]$
+- Compare: How many iterations of nested radical vs continued fraction are needed to approximate $\phi$ to 6 decimal places?
+
+---
 
 ## Dependencies
 
 **Requires from earlier chapters**:
-- Chapter 1: Completeness, sup/inf, Archimedean property
-- Chapter 2: Convergence definition, limit laws, MCT, geometric series
+- Chapter 1: Completeness axiom, sup/inf, Archimedean property, nested intervals
+- Chapter 2: Convergence definition, limit laws, MCT, geometric series, the iterative sequences for $\phi$ and $\pi$
 
 **Sets up for later chapters**:
-- Chapter 4: Tannery/dominated convergence
-- Chapter 5: Sequential characterization of continuity, BW for compactness
-- Chapter 6: Contraction ↔ |f'| < 1, Newton's method
-- Chapter 11: Picard iteration via contraction mapping
+- Chapter 4: Limit interchange theorems
+- Chapter 5: Sequential characterization of continuity, compactness via BW
+- Chapter 6: Contraction ↔ $|f'| < 1$, Newton's method analysis
+- Chapter 11: Picard iteration for ODEs via contraction mapping

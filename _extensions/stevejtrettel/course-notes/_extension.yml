@@ -20,13 +20,19 @@ contributes:
       fontfamily: libertinus
       fontsize: 10pt
       toc: true
-      toc-depth: 2
+      toc-depth: 3
+      number-depth: 1
       include-in-header:
         - preamble.tex
+        - fonts.tex
+        - spacing.tex
       geometry:
-        - letterpaper
-        - left=1.5in
-        - right=1.5in
-        - top=1.25in
-        - bottom=1.25in
+        - paperwidth=6.25in
+        - paperheight=9.25in
+        - textwidth=4.5in
+        - textheight=7.25in
+        - left=0.75in
+        - right=0.75in
+        - top=0.75in
+        - bottom=1in
       keep-tex: true

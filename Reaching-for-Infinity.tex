@@ -8,9 +8,9 @@
   letterpaper,
 ]{scrbook}
 \usepackage{xcolor}
-\usepackage[letterpaper,left=1.5in,right=1.5in,top=1.25in,bottom=1.25in]{geometry}
+\usepackage[paperwidth=6.25in,paperheight=9.25in,textwidth=4.5in,textheight=7.25in,left=0.75in,right=0.75in,top=0.75in,bottom=1in]{geometry}
 \usepackage{amsmath,amssymb}
-\setcounter{secnumdepth}{5}
+\setcounter{secnumdepth}{1}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -108,6 +108,8 @@
 
 % Course Notes - PDF Preamble
 % Fonts and title styling
+
+
 \usepackage{anyfontsize}
 \newcommand\titleFontSize{\fontsize{50pt}{55pt}\selectfont}
 \usepackage{marginnote}
@@ -131,7 +133,69 @@
 \tikzset{tail reversed/.code={\pgfsetarrowsstart{tikzcd to}}}
 \tikzset{2tail/.code={\pgfsetarrowsstart{Implies[reversed]}}}
 \tikzset{2tail reversed/.code={\pgfsetarrowsstart{Implies}}}
-\tikzset{no body/.style={/tikz/dash pattern=on 0 off 1mm}}
+\tikzset{no body/.style={/tikz/dash pattern=on 0 off 1mm}}% Larger chapter and section titles
+\setkomafont{chapter}{\Huge\bfseries}
+\setkomafont{section}{\huge\bfseries}
+\setkomafont{subsection}{\large\bfseries}
+
+% ============================================
+% SPACING CONFIGURATION
+% ============================================
+
+% --------------------------------------------
+% Paragraph Style
+% --------------------------------------------
+\KOMAoptions{parskip=never}
+\setlength{\parindent}{1.5em}
+
+% --------------------------------------------
+% Section Headings
+% Format: beforeskip = space above title
+%         afterskip  = space below title
+% --------------------------------------------
+\RedeclareSectionCommand[
+  beforeskip=0.75\baselineskip,
+  afterskip=0.1\baselineskip
+]{section}
+
+\RedeclareSectionCommand[
+  beforeskip=0.5\baselineskip,
+  afterskip=0.05\baselineskip
+]{subsection}
+
+\RedeclareSectionCommand[
+  beforeskip=0.4\baselineskip,
+  afterskip=0.05\baselineskip
+]{subsubsection}
+
+% --------------------------------------------
+% Theorem Environments
+% Negative vspace compensates for amsthm's 
+% built-in spacing around theorem blocks
+% --------------------------------------------
+\newcommand{\thmbeforeskip}{-0.5\baselineskip}
+\newcommand{\thmafterskip}{-0.4\baselineskip}
+
+\BeforeBeginEnvironment{theorem}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{theorem}{\vspace{\thmafterskip}}
+
+\BeforeBeginEnvironment{definition}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{definition}{\vspace{\thmafterskip}}
+
+\BeforeBeginEnvironment{proposition}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{proposition}{\vspace{\thmafterskip}}
+
+\BeforeBeginEnvironment{example}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{example}{\vspace{\thmafterskip}}
+
+\BeforeBeginEnvironment{corollary}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{corollary}{\vspace{\thmafterskip}}
+
+\BeforeBeginEnvironment{remark}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{remark}{\vspace{\thmafterskip}}
+
+\BeforeBeginEnvironment{proof}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{proof}{\vspace{\thmafterskip}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\QQ}{\mathbb{Q}}
@@ -192,23 +256,6 @@
 \@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
-\usepackage{amsthm}
-\theoremstyle{definition}
-\newtheorem{example}{Example}[chapter]
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[chapter]
-\theoremstyle{plain}
-\newtheorem{corollary}{Corollary}[chapter]
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[chapter]
-\theoremstyle{plain}
-\newtheorem{proposition}{Proposition}[chapter]
-\theoremstyle{remark}
-\AtBeginDocument{\renewcommand*{\proofname}{Proof}}
-\newtheorem*{remark}{Remark}
-\newtheorem*{solution}{Solution}
-\newtheorem{refremark}{Remark}[chapter]
-\newtheorem{refsolution}{Solution}[chapter]
 \makeatother
 \makeatletter
 \makeatother
@@ -235,7 +282,7 @@
 
 \renewcommand*\contentsname{Table of contents}
 {
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 \tableofcontents
 }
 
@@ -256,1554 +303,737 @@ To learn more about Quarto books visit
 
 \chapter{Foundations}\label{foundations}
 
-\chapter{Sets and Functions}\label{sec-foundations-sets-functions}
-
-{[}PROSE: Opening---before we can discuss numbers, we need the language
-of sets and functions. This section establishes notation and vocabulary.
-Most of this should be familiar from an introduction to proofs course;
-we collect it here for reference.{]}
-
-\section{Sets}\label{sets}
-
-\begin{definition}[Set]\protect\hypertarget{def-foundations-set}{}\label{def-foundations-set}
-
-A \emph{set} is a collection of objects, called \emph{elements} (or
-\emph{members}).
-
-\end{definition}
-
-{[}PROSE: Notation. We write \(x \in A\) to mean \(x\) is an element of
-\(A\), and \(x \notin A\) to mean \(x\) is not an element of \(A\).{]}
-
-{[}PROSE: Specifying sets. A set can be described by listing its
-elements: \(\{1, 2, 3\}\). For larger or infinite sets, we use
-set-builder notation: \(\{x : P(x)\}\) is the set of all \(x\)
-satisfying property \(P\).{]}
-
-\begin{definition}[Standard Number
-Sets]\protect\hypertarget{def-foundations-standard-sets}{}\label{def-foundations-standard-sets}
-
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \(\NN = \{1, 2, 3, \ldots\}\) --- the \emph{natural numbers}
-\item
-  \(\ZZ = \{\ldots, -2, -1, 0, 1, 2, \ldots\}\) --- the \emph{integers}
-\item
-  \(\QQ = \{p/q : p, q \in \ZZ,\, q \neq 0\}\) --- the \emph{rational
-  numbers}
-\end{itemize}
-
-\end{definition}
-
-{[}PROSE: Note that our convention is \(0 \notin \NN\). Some texts
-include \(0\) in \(\NN\); one must check conventions.{]}
-
-\begin{definition}[Subset]\protect\hypertarget{def-foundations-subset}{}\label{def-foundations-subset}
-
-\(A \subseteq B\) means every element of \(A\) is an element of \(B\):
-\[A \subseteq B \iff \forall x,\, (x \in A \implies x \in B)\]
-
-\end{definition}
-
-\begin{definition}[Set
-Equality]\protect\hypertarget{def-foundations-set-equality}{}\label{def-foundations-set-equality}
-
-\(A = B\) means \(A \subseteq B\) and \(B \subseteq A\).
-
-\end{definition}
-
-{[}PROSE: To prove two sets are equal, we typically prove containment
-both ways.{]}
-
-\section{Set Operations}\label{set-operations}
-
-\begin{definition}[Union, Intersection,
-Difference]\protect\hypertarget{def-foundations-set-operations}{}\label{def-foundations-set-operations}
-
-~
-
-\begin{itemize}
-\tightlist
-\item
-  \emph{Union}: \(A \cup B = \{x : x \in A \text{ or } x \in B\}\)
-\item
-  \emph{Intersection}:
-  \(A \cap B = \{x : x \in A \text{ and } x \in B\}\)
-\item
-  \emph{Difference}:
-  \(A \setminus B = \{x : x \in A \text{ and } x \notin B\}\)
-\end{itemize}
-
-\end{definition}
-
-\begin{definition}[Cartesian
-Product]\protect\hypertarget{def-foundations-cartesian-product}{}\label{def-foundations-cartesian-product}
-
-\(A \times B = \{(a, b) : a \in A,\, b \in B\}\)
-
-\end{definition}
-
-{[}PROSE: The Cartesian product consists of ordered pairs. Note
-\((a, b) \neq (b, a)\) unless \(a = b\).{]}
-
-{[}INLINE EXERCISE: Prove \((A \cup B)^c = A^c \cap B^c\) where \(A^c\)
-denotes the complement of \(A\). (De Morgan's Law){]}
-
-\section{Functions}\label{functions}
-
-\begin{definition}[Function]\protect\hypertarget{def-foundations-function}{}\label{def-foundations-function}
-
-A \emph{function} \(f: A \to B\) is a rule that assigns to each element
-of \(A\) exactly one element of \(B\).
-
-\begin{itemize}
-\tightlist
-\item
-  \(A\) is the \emph{domain}
-\item
-  \(B\) is the \emph{codomain}
-\item
-  \(f(A) = \{f(x) : x \in A\}\) is the \emph{range} (or \emph{image})
-\end{itemize}
-
-\end{definition}
-
-{[}PROSE: Important: functions are assignments, not formulas. The rule
-``f(x) = 1 if x is rational, 0 if x is irrational'' defines a perfectly
-good function ℝ → \{0, 1\}, even though there's no algebraic formula.{]}
-
-{[}PROSE: Notation. We write \(f: A \to B\) to indicate the domain and
-codomain, and \(x \mapsto f(x)\) to indicate what \(f\) does to
-elements. For example, \(f: \RR \to \RR\), \(x \mapsto x^2\).{]}
-
-\section{Types of Functions}\label{types-of-functions}
-
-\begin{definition}[Injective]\protect\hypertarget{def-foundations-injective}{}\label{def-foundations-injective}
-
-A function \(f: A \to B\) is \emph{injective} (or \emph{one-to-one}) if
-\[f(x_1) = f(x_2) \implies x_1 = x_2\]
-
-\end{definition}
-
-\begin{definition}[Surjective]\protect\hypertarget{def-foundations-surjective}{}\label{def-foundations-surjective}
-
-A function \(f: A \to B\) is \emph{surjective} (or \emph{onto}) if for
-every \(y \in B\), there exists \(x \in A\) with \(f(x) = y\).
-Equivalently, \(f(A) = B\).
-
-\end{definition}
-
-\begin{definition}[Bijective]\protect\hypertarget{def-foundations-bijective}{}\label{def-foundations-bijective}
-
-A function is \emph{bijective} if it is both injective and surjective.
-
-\end{definition}
-
-{[}PROSE: Examples. The function \(f: \RR \to \RR\), \(x \mapsto x^2\)
-is neither injective (\(f(1) = f(-1)\)) nor surjective (\(-1\) is not in
-the range). The function \(f: \RR \to \RR\), \(x \mapsto x^3\) is
-bijective.{]}
-
-\section{Operations on Functions}\label{operations-on-functions}
-
-\begin{definition}[Composition]\protect\hypertarget{def-foundations-composition}{}\label{def-foundations-composition}
-
-If \(f: A \to B\) and \(g: B \to C\), the \emph{composition}
-\(g \circ f: A \to C\) is defined by \[(g \circ f)(x) = g(f(x))\]
-
-\end{definition}
-
-{[}PROSE: Note the order: \(g \circ f\) means ``first \(f\), then
-\(g\).''{]}
-
-\begin{definition}[Inverse
-Function]\protect\hypertarget{def-foundations-inverse}{}\label{def-foundations-inverse}
-
-If \(f: A \to B\) is bijective, the \emph{inverse} \(f^{-1}: B \to A\)
-is defined by \(f^{-1}(y) = x\) where \(f(x) = y\).
-
-\end{definition}
-
-\begin{proposition}[Inverses and
-Bijections]\protect\hypertarget{prp-foundations-inverse-iff-bijective}{}\label{prp-foundations-inverse-iff-bijective}
-
-A function \(f: A \to B\) has an inverse if and only if \(f\) is
-bijective.
-
-\end{proposition}
-
-{[}PROSE: Proof outline. If \(f\) has an inverse, then \(f\) is
-injective (if \(f(x_1) = f(x_2)\), apply \(f^{-1}\) to both sides) and
-surjective (for any \(y \in B\), we have \(f(f^{-1}(y)) = y\)).
-Conversely, if \(f\) is bijective, then for each \(y \in B\) there
-exists a unique \(x \in A\) with \(f(x) = y\), so defining
-\(f^{-1}(y) = x\) gives a well-defined function.{]}
-
-\section{Exercises}\label{exercises}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Prove \((A \cap B)^c = A^c \cup B^c\). (De Morgan's Law)
-\item
-  Prove
-  \(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)\).
-\item
-  Prove that composition of functions is associative: if \(f: A \to B\),
-  \(g: B \to C\), and \(h: C \to D\), then
-  \(h \circ (g \circ f) = (h \circ g) \circ f\).
-\item
-  Let \(f: A \to B\) be bijective. Prove that \(f^{-1}\) is also
-  bijective, and \((f^{-1})^{-1} = f\).
-\item
-  Let \(f: A \to B\) and \(g: B \to C\) be bijective. Prove that
-  \(g \circ f\) is bijective, and
-  \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\).
-\item
-  Prove: \(f: A \to B\) is bijective if and only if there exists
-  \(g: B \to A\) with \(g \circ f = \mathrm{id}_A\) and
-  \(f \circ g = \mathrm{id}_B\).
-\item
-  Let \(f: A \to B\) and \(g: B \to C\).
-
-  \begin{itemize}
-  \tightlist
-  \item
-    If \(g \circ f\) is injective, must \(f\) be injective? Must \(g\)?
-  \item
-    If \(g \circ f\) is surjective, must \(f\) be surjective? Must
-    \(g\)?
-  \end{itemize}
-\item
-  \textbf{(★)} Prove that for any set \(A\), there is no surjection
-  \(f: A \to \mathcal{P}(A)\), where \(\mathcal{P}(A)\) is the power set
-  of \(A\) (the set of all subsets of \(A\)).
-
-  \emph{Hint: Consider the set \(S = \{a \in A : a \notin f(a)\}\).}
-\end{enumerate}
-
-\chapter{Ordered Fields}\label{sec-foundations-ordered-fields}
-
-{[}PROSE: Opening---we axiomatize arithmetic abstractly.{]}
-
-\section{The Field Axioms}\label{the-field-axioms}
-
-\begin{definition}[Field]\protect\hypertarget{def-foundations-field}{}\label{def-foundations-field}
-
-A \emph{field} is a set \(\FF\) with two binary operations, addition
-(\(+\)) and multiplication (\(\cdot\)), satisfying:
-
-\textbf{Commutativity.} \(a + b = b + a\) and \(a \cdot b = b \cdot a\)
-
-\textbf{Associativity.} \((a + b) + c = a + (b + c)\) and
-\((a \cdot b) \cdot c = a \cdot (b \cdot c)\)
-
-\textbf{Identities.} There exist distinct elements \(0, 1 \in \FF\) with
-\(a + 0 = a\) and \(a \cdot 1 = a\)
-
-\textbf{Inverses.} For each \(a\), there exists \(-a\) with
-\(a + (-a) = 0\). For each \(a \neq 0\), there exists \(a^{-1}\) with
-\(a \cdot a^{-1} = 1\)
-
-\textbf{Distributivity.} \(a \cdot (b + c) = a \cdot b + a \cdot c\)
-
-\end{definition}
-
-{[}PROSE: Example ℚ. Non-example ℤ. Notation conventions. Numerals via
-\(2 = 1+1\), etc., and base-10.{]}
-
-{[}INLINE EXERCISE: Prove \(2 + 2 = 4\).{]}
-
-\section{Consequences of the Field
-Axioms}\label{consequences-of-the-field-axioms}
-
-\begin{proposition}[Uniqueness of
-Inverses]\protect\hypertarget{prp-foundations-uniqueness-inverses}{}\label{prp-foundations-uniqueness-inverses}
-
-Additive and multiplicative inverses are unique.
-
-\end{proposition}
-
-{[}PROSE: Corollaries \(-(-a) = a\) and \((a^{-1})^{-1} = a\).{]}
-
-\begin{proposition}[Multiplication by
-Zero]\protect\hypertarget{prp-foundations-zero-multiplication}{}\label{prp-foundations-zero-multiplication}
-
-\(0 \cdot a = 0\) for all \(a\).
-
-\end{proposition}
-
-\begin{proposition}[Negation by
-Multiplication]\protect\hypertarget{prp-foundations-negation}{}\label{prp-foundations-negation}
-
-\((-1) \cdot a = -a\) for all \(a\).
-
-\end{proposition}
-
-{[}PROSE: Corollaries \((-1)(-1) = 1\) and \((-a)(-b) = ab\).{]}
-
-{[}INLINE EXERCISE: Prove \((a + b)(a - b) = a^2 - b^2\).{]}
-
-\section{The Positivity Axioms}\label{the-positivity-axioms}
-
-\begin{definition}[Ordered
-Field]\protect\hypertarget{def-foundations-ordered-field}{}\label{def-foundations-ordered-field}
-
-An \emph{ordered field} is a field \(\FF\) with a distinguished subset
-\(P \subseteq \FF\) (the \emph{positive elements}) satisfying:
-
-\textbf{Closure under addition.} If \(a, b \in P\), then \(a + b \in P\)
-
-\textbf{Closure under multiplication.} If \(a, b \in P\), then
-\(a \cdot b \in P\)
-
-\textbf{Trichotomy.} For each \(a \in \FF\), exactly one holds:
-\(a \in P\), or \(a = 0\), or \(-a \in P\)
-
-\end{definition}
-
-\begin{definition}[Inequality]\protect\hypertarget{def-foundations-inequality}{}\label{def-foundations-inequality}
-
-For \(a, b \in \FF\): we write \(a < b\) to mean \(b - a \in P\), and
-\(a \leq b\) to mean \(a < b\) or \(a = b\).
-
-\end{definition}
-
-{[}PROSE: Example ℚ is an ordered field.{]}
-
-\section{Properties of Order}\label{properties-of-order}
-
-\begin{proposition}[Squares are
-Nonnegative]\protect\hypertarget{prp-foundations-squares-nonnegative}{}\label{prp-foundations-squares-nonnegative}
-
-\(a^2 \geq 0\) for all \(a\), with equality iff \(a = 0\).
-
-\end{proposition}
-
-\begin{corollary}[One is
-Positive]\protect\hypertarget{cor-foundations-one-positive}{}\label{cor-foundations-one-positive}
-
-\(1 > 0\).
-
-\end{corollary}
-
-\begin{proposition}[Transitivity]\protect\hypertarget{prp-foundations-transitivity}{}\label{prp-foundations-transitivity}
-
-If \(a < b\) and \(b < c\), then \(a < c\).
-
-\end{proposition}
-
-\begin{proposition}[Inequalities and
-Addition]\protect\hypertarget{prp-foundations-inequality-addition}{}\label{prp-foundations-inequality-addition}
-
-If \(a < b\), then \(a + c < b + c\).
-
-\end{proposition}
-
-\begin{proposition}[Inequalities and
-Multiplication]\protect\hypertarget{prp-foundations-inequality-multiplication}{}\label{prp-foundations-inequality-multiplication}
-
-If \(a < b\) and \(c > 0\), then \(ac < bc\). If \(a < b\) and
-\(c < 0\), then \(ac > bc\).
-
-\end{proposition}
-
-{[}PROSE: This explains why multiplying by negatives reverses
-inequalities.{]}
-
-{[}INLINE EXERCISE: If \(0 < a < b\), prove \(a^2 < b^2\).{]}
-
-\section{Absolute Value}\label{absolute-value}
-
-\begin{definition}[Absolute
-Value]\protect\hypertarget{def-foundations-absolute-value}{}\label{def-foundations-absolute-value}
-
-\[|a| = \begin{cases} a & \text{if } a \geq 0 \\ -a & \text{if } a < 0 \end{cases}\]
-
-\end{definition}
-
-{[}PROSE: Properties \(|a| \geq 0\), \(|ab| = |a||b|\). Geometric
-interpretation: \(|a - b|\) is the distance between \(a\) and \(b\) on
-the number line.{]}
-
-\begin{proposition}[Triangle
-Inequality]\protect\hypertarget{prp-foundations-triangle-inequality}{}\label{prp-foundations-triangle-inequality}
-
-\(|a + b| \leq |a| + |b|\)
-
-\end{proposition}
-
-\begin{corollary}[Reverse Triangle
-Inequality]\protect\hypertarget{cor-foundations-reverse-triangle}{}\label{cor-foundations-reverse-triangle}
-
-\(\bigl||a| - |b|\bigr| \leq |a - b|\)
-
-\end{corollary}
-
-{[}INLINE EXERCISE: Prove
-\(|a_1 + \cdots + a_n| \leq |a_1| + \cdots + |a_n|\) by induction.{]}
-
-\section{Intervals}\label{intervals}
-
-{[}PROSE: With order and distance in hand, we can describe subsets of
-the number line by specifying which points lie between two endpoints.{]}
-
-\begin{definition}[Intervals]\protect\hypertarget{def-foundations-intervals}{}\label{def-foundations-intervals}
-
-For \(a, b \in \FF\) with \(a < b\):
-
-\begin{itemize}
-\tightlist
-\item
-  \((a, b) = \{x \in \FF : a < x < b\}\) --- \emph{open interval}
-\item
-  \([a, b] = \{x \in \FF : a \leq x \leq b\}\) --- \emph{closed
-  interval}
-\item
-  \([a, b) = \{x \in \FF : a \leq x < b\}\) --- \emph{half-open}
-\item
-  \((a, b] = \{x \in \FF : a < x \leq b\}\) --- \emph{half-open}
-\end{itemize}
-
-\end{definition}
-
-\begin{refremark}[Intervals and Absolute Value]
-The open interval centered at \(a\) with radius \(r > 0\) can be written
-\[(a - r, a + r) = \{x \in \FF : |x - a| < r\}\] Similarly,
-\([a - r, a + r] = \{x : |x - a| \leq r\}\).
-
-\label{rem-foundations-interval-absolute-value}
-
-\end{refremark}
-
-{[}PROSE: For unbounded sets, we introduce symbols \(\infty\) and
-\(-\infty\). These are \emph{not} elements of the field---they are
-purely notational shorthand for ``unbounded.''{]}
-
-\begin{definition}[Rays]\protect\hypertarget{def-foundations-rays}{}\label{def-foundations-rays}
-
-For \(a \in \FF\):
-
-\begin{itemize}
-\tightlist
-\item
-  \([a, \infty) = \{x \in \FF : x \geq a\}\)
-\item
-  \((a, \infty) = \{x \in \FF : x > a\}\)
-\item
-  \((-\infty, a] = \{x \in \FF : x \leq a\}\)
-\item
-  \((-\infty, a) = \{x \in \FF : x < a\}\)
-\item
-  \((-\infty, \infty) = \FF\)
-\end{itemize}
-
-\end{definition}
-
-\begin{refremark}[A Warning]
-The symbols \(\infty\) and \(-\infty\) are convenient notation, but they
-are not elements of any ordered field. Expressions like
-``\(\infty + 1\)'' or ``\(\infty / \infty\)'' are meaningless in this
-context.
-
-\label{rem-foundations-infinity-not-number}
-
-\end{refremark}
-
-\section{Bernoulli's Inequality}\label{bernoullis-inequality}
-
-\begin{proposition}[Bernoulli's
-Inequality]\protect\hypertarget{prp-foundations-bernoulli}{}\label{prp-foundations-bernoulli}
-
-For \(x > -1\) and \(n \in \NN\): \((1 + x)^n \geq 1 + nx\).
-
-\end{proposition}
-
-{[}PROSE: Used in Chapter 2 to bound \((1 + 1/n)^n\).{]}
-
-\section{Roots and Rational Powers}\label{roots-and-rational-powers}
-
-\begin{definition}[Roots and Rational
-Powers]\protect\hypertarget{def-foundations-rational-powers}{}\label{def-foundations-rational-powers}
-
-If \(y \geq 0\) satisfies \(y^n = a\), write \(y = \sqrt[n]{a}\). For
-\(p/q \in \QQ\) with \(q > 0\), define \(a^{p/q} = (\sqrt[q]{a})^p\)
-when the root exists.
-
-\end{definition}
-
-{[}PROSE: Existence requires completeness (Section 1.5). This is
-notation only.{]}
-
-\section{Exercises}\label{exercises-1}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  \textbf{(Zero-Product Property)} If \(ab = 0\), prove \(a = 0\) or
-  \(b = 0\).
-\item
-  \textbf{(Fraction Addition)} Prove
-  \(\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}\).
-\item
-  \textbf{(Finite Geometric Sum)} Prove
-  \(1 + r + \cdots + r^n = \frac{1 - r^{n+1}}{1 - r}\) for \(r \neq 1\).
-\item
-  \textbf{(\(\CC\) not orderable)} Prove \(\CC\) cannot be an ordered
-  field.
-\item
-  Prove that in an ordered field, if \(a < b\) then
-  \(a < \frac{a+b}{2} < b\). (The midpoint lies strictly between the
-  endpoints.)
-\item
-  Let \(a, b \in \FF\) with \(a < b\). Prove
-  \((a, b) \neq \varnothing\).
-\item
-  \textbf{(★ Binary Arithmetic)} Compute \(1011_2 + 110_2\) in base 2.
-\item
-  \textbf{(★ Base-\(b\) Representations)} Prove uniqueness of base-\(b\)
-  representations.
-\end{enumerate}
-
-\chapter{Incompleteness}\label{sec-foundations-incompleteness}
-
-{[}PROSE: Opening---ℚ satisfies field and order axioms, is dense, seems
-adequate. But it has holes that break calculus.{]}
-
-\section{The Irrationality of √2}\label{the-irrationality-of-2}
-
-{[}PROSE: Greeks discovered not every length is rational. Diagonal of
-unit square has length √2 by Pythagorean theorem.{]}
-
-\begin{theorem}[Irrationality of
-√2]\protect\hypertarget{thm-foundations-sqrt2-irrational}{}\label{thm-foundations-sqrt2-irrational}
-
-There is no rational number whose square is 2.
-
-\end{theorem}
-
-{[}PROSE: This is a genuine gap---geometry demands √2 exist, but ℚ
-doesn't have it.{]}
-
-{[}INLINE EXERCISE: Adapt the proof to show √3 is irrational.{]}
-
-\section{Attempts to Patch the
-Rationals}\label{attempts-to-patch-the-rationals}
-
-{[}PROSE: Natural response to a gap is to fill it.{]}
-
-\subsection{Adjoining Roots}\label{adjoining-roots}
-
-\begin{definition}[The Field
-ℚ(√2)]\protect\hypertarget{def-foundations-Q-adjoin-sqrt2}{}\label{def-foundations-Q-adjoin-sqrt2}
-
-\[\QQ(\sqrt{2}) = \{a + b\sqrt{2} : a, b \in \QQ\}\]
-
-\end{definition}
-
-{[}PROSE: Closed under field operations (show formulas for +, ×,
-inverse). So ℚ(√2) is a field containing ℚ and √2. Problem solved?{]}
-
-{[}PROSE: No---√3 is not in ℚ(√2). Patched one hole, left infinitely
-many. Adjoin √3 too? Still miss √5, √7, √(2+√3), etc.{]}
-
-\subsection{Constructible Numbers}\label{constructible-numbers}
-
-{[}PROSE: Let geometry guide us. What numbers can we construct with
-compass and straightedge from two points distance 1 apart?{]}
-
-{[}PROSE: Line-line intersections: linear equations, stay in current
-field. Circle-line and circle-circle: quadratic equations, introduce
-square roots.{]}
-
-{[}PROSE: Constructible numbers = iterate forever: start with ℚ, allow
-arbitrary nested square roots. Includes √2, √3, √(2+√(3+√5)). This is a
-field, much larger than finite extensions. But still incomplete.{]}
-
-\begin{theorem}[Impossibility of Doubling the
-Cube]\protect\hypertarget{thm-foundations-doubling-cube-impossible}{}\label{thm-foundations-doubling-cube-impossible}
-
-\(\sqrt[3]{2}\) is not constructible.
-
-\end{theorem}
-
-{[}PROSE: Proved by Wantzel 1837, resolving ancient Greek problem. Key:
-constructible numbers satisfy polynomials of degree 2ⁿ, but ∛2 satisfies
-x³−2 irreducibly. We won't prove this.{]}
-
-{[}PROSE: Squaring the circle---is √π constructible? No: Lindemann 1882
-proved π is transcendental.{]}
-
-\subsection{Algebraic Numbers}\label{algebraic-numbers}
-
-{[}PROSE: Constructibles limited by geometry. Every constructible
-satisfies some polynomial, but there are more roots (like ∛2). Abandon
-geometry, think algebraically.{]}
-
-\begin{definition}[Algebraic
-Numbers]\protect\hypertarget{def-foundations-algebraic}{}\label{def-foundations-algebraic}
-
-A real number is \emph{algebraic} if it is a root of some polynomial
-with integer coefficients. The set of algebraic numbers is denoted
-\(\AA\).
-
-\end{definition}
-
-{[}PROSE: Includes √2, ∛2, golden ratio, everything expressible by
-radicals. Build 𝔸 degree by degree to infinity.{]}
-
-\begin{refremark}[Algebraic Closure]
-Taking roots of polynomials with algebraic coefficients produces nothing
-new---if α is algebraic and β satisfies a polynomial over ℚ(α), then β
-is algebraic over ℚ. The algebraic numbers are closed under this
-operation.
-
-\label{rem-foundations-algebraic-closure}
-
-\end{refremark}
-
-{[}PROSE: This suggests 𝔸 is natural. Surely this is everything?{]}
-
-\begin{theorem}[Transcendence of
-π]\protect\hypertarget{thm-foundations-pi-transcendental}{}\label{thm-foundations-pi-transcendental}
-
-\(\pi\) is not algebraic.
-
-\end{theorem}
-
-{[}PROSE: Lindemann 1882. Numbers that aren't algebraic are called
-transcendental. So π escapes the largest algebraically-defined
-system.{]}
-
-\subsection{The Hopelessness}\label{the-hopelessness}
-
-{[}PROSE: Could adjoin π to 𝔸. But then miss √π, ⁴√π, 2\^{}π\ldots{}
-After all that, another transcendental appears. Pattern: we cannot patch
-our way to completeness. Each construction leaves holes. Need
-fundamentally different approach.{]}
-
-\section{Gaps Break Calculus}\label{gaps-break-calculus}
-
-{[}PROSE: One might ask---does this matter? ℚ is dense. Perhaps missing
-some exotic numbers is fine for practical purposes?{]}
-
-{[}PROSE: No.~Holes don't just offend geometric sensibilities. They
-destroy the theorems that make calculus work.{]}
-
-\subsection{The Intermediate Value Theorem
-Fails}\label{the-intermediate-value-theorem-fails}
-
-\begin{example}[IVT Fails in
-ℚ]\protect\hypertarget{exm-foundations-ivt-fails}{}\label{exm-foundations-ivt-fails}
-
-Let \(f(x) = x^2 - 2\) on \([1, 2] \cap \QQ\). Then \(f(1) = -1 < 0\)
-and \(f(2) = 2 > 0\). If IVT held in ℚ, some \(c \in [1,2] \cap \QQ\)
-would satisfy \(f(c) = 0\). But \(f(c) = 0\) means \(c^2 = 2\), which
-has no rational solution.
-
-\end{example}
-
-{[}PROSE: IVT guarantees continuous functions hit every value between
-endpoints. Foundation of existence arguments: roots, fixed points,
-solutions to f(x)=y. Without IVT, cannot prove solutions exist.{]}
-
-\subsection{The Extreme Value Theorem
-Fails}\label{the-extreme-value-theorem-fails}
-
-\begin{example}[EVT Fails in
-ℚ]\protect\hypertarget{exm-foundations-evt-fails}{}\label{exm-foundations-evt-fails}
-
-Let \(f(x) = \dfrac{1}{x^2 - 2}\) on \([1, 2] \cap \QQ\). Since
-\(\sqrt{2} \notin \QQ\), this is defined and continuous at every
-rational in \([1,2]\). Yet \(f\) is unbounded: as \(x \to \sqrt{2}\)
-through rationals, \(|f(x)| \to \infty\).
-
-\end{example}
-
-{[}PROSE: The hole at √2 lets a continuous function escape to infinity.
-EVT guarantees continuous functions on closed intervals achieve max/min.
-Without EVT, optimization has no foundation.{]}
-
-\subsection{The Mean Value Theorem
-Fails}\label{the-mean-value-theorem-fails}
-
-{[}PROSE: MVT is proved using EVT (via Rolle). Since EVT fails in ℚ, MVT
-fails.{]}
-
-{[}PROSE: MVT connects derivatives to function behavior: f′\textgreater0
-implies f increasing, f′=0 implies f constant, bounded derivatives give
-Lipschitz, Taylor approximations. Without MVT, local info (derivative)
-doesn't control global behavior.{]}
-
-{[}PROSE: The cascade: gaps break EVT → breaks MVT → severs
-derivative-function connection → calculus collapses.{]}
-
-\begin{refremark}[Algorithms Fail Too]
-Newton's method for \(x^2 = 2\) starting from \(x_0 = 1\) generates
-rationals that ``should'' converge to \(\sqrt{2}\). Bisection on
-\([1,2]\) narrows to intervals around \(\sqrt{2}\). Both produce Cauchy
-sequences, but the limit doesn't exist in \(\QQ\).
-
-\label{rem-foundations-algorithms-fail}
-
-\end{refremark}
-
-\section{The Axiomatic Approach}\label{the-axiomatic-approach}
-
-{[}PROSE: We've reached an impasse. Cannot patch ℚ by adjoining numbers.
-Algebraics---largest natural extension---still have holes. These holes
-destroy calculus theorems.{]}
-
-{[}PROSE: Different strategy: define ℝ by properties, not construction.
-Key property is completeness---precise ``no holes.'' Won't say what
-reals are, just what they do.{]}
-
-{[}PROSE: Axiomatic method: specify rules, not internal structure.
-Payoff: complete ordered field has no gaps, so IVT/EVT/MVT hold.
-Calculus works. Next section develops this.{]}
-
-\section{Exercises}\label{exercises-2}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Prove that \(\sqrt{6}\) is irrational.
-\item
-  Prove that if \(p\) is prime, then \(\sqrt{p}\) is irrational.
-\item
-  Verify that \(\QQ(\sqrt{2})\) is a field by checking closure under
-  \(+, -, \times, \div\).
-\item
-  \textbf{(★)} Prove that \(\sqrt{3} \notin \QQ(\sqrt{2})\).
-
-  \emph{Hint: Suppose \(\sqrt{3} = a + b\sqrt{2}\) with
-  \(a, b \in \QQ\). Square both sides.}
-\item
-  Prove that \(\sqrt{2} + \sqrt{3}\) is irrational.
-
-  \emph{Hint: Square it, and use the previous exercise.}
-\item
-  \textbf{(★)} Show that
-  \(\QQ(\sqrt{2}, \sqrt{3}) = \{a + b\sqrt{2} + c\sqrt{3} + d\sqrt{6} : a, b, c, d \in \QQ\}\)
-  is a field.
-\item
-  The bisection algorithm for \(\sqrt{2}\) produces sequences \((a_n)\),
-  \((b_n)\) with \(a_1 = 1\), \(b_1 = 2\), and at each step:
-  \[a_{n+1}, b_{n+1} = \begin{cases} 
-  \dfrac{a_n + b_n}{2},\, b_n & \text{if } \left(\dfrac{a_n+b_n}{2}\right)^{\!2} < 2 \\[6pt]
-  a_n,\, \dfrac{a_n + b_n}{2} & \text{if } \left(\dfrac{a_n+b_n}{2}\right)^{\!2} > 2
-  \end{cases}\] Prove that \(a_n^2 < 2 < b_n^2\) for all \(n\), and that
-  \(b_n - a_n = 2^{1-n}\).
-\item
-  \textbf{(★★ Guided Exploration: Liouville Numbers)}
-
-  A real number \(x\) is a \emph{Liouville number} if for every positive
-  integer \(n\), there exist integers \(p, q\) with \(q > 1\) and
-  \[\left| x - \frac{p}{q} \right| < \frac{1}{q^n}.\]
-
-  \begin{enumerate}
-  \def\labelenumii{(\alph{enumii})}
-  \item
-    Define \(L = \sum_{k=1}^{\infty} 10^{-k!}\). Show \(L\) is a
-    Liouville number by taking \(p/q\) to be truncations.
-  \item
-    Liouville (1844) proved: if \(\alpha\) is algebraic of degree \(d\),
-    there exists \(c > 0\) such that \(|\alpha - p/q| > c/q^d\) for all
-    \(p/q \neq \alpha\). Explain why Liouville numbers are
-    transcendental.
-  \item
-    Conclude that transcendental numbers exist---nearly 40 years before
-    Lindemann proved π transcendental.
-  \end{enumerate}
-\end{enumerate}
-
-\chapter{Completeness}\label{sec-foundations-completeness}
-
-{[}PROSE: Opening---recall from 1.3 the bisection algorithm zooming in
-on √2. We had nested intervals {[}1, 2{]} ⊃ {[}1.4, 1.5{]} ⊃ {[}1.41,
-1.42{]} ⊃ ··· that should trap √2. In ℚ, the intersection is empty. We
-want to identify a property that guarantees a number exists there.{]}
-
-{[}PROSE: Look at the endpoints. Left endpoints \{1, 1.4, 1.41, \ldots\}
-form an increasing set---we want to say ``maximum'' but no maximum
-exists. Right endpoints \{2, 1.5, 1.42, \ldots\} form a decreasing
-set---we want to say ``minimum'' but no minimum exists. We need a way to
-name the ``target'' these endpoints approach, even when it's not
-achieved.{]}
-
-\section{Bounds}\label{bounds}
-
-\begin{definition}[Bounds]\protect\hypertarget{def-foundations-bounds}{}\label{def-foundations-bounds}
-
-Let \(S\) be a nonempty subset of an ordered field.
-
-\begin{itemize}
-\tightlist
-\item
-  \(M\) is an \emph{upper bound} for \(S\) if \(x \leq M\) for all
-  \(x \in S\)
-\item
-  \(S\) is \emph{bounded above} if an upper bound exists
-\item
-  \(m\) is a \emph{lower bound} for \(S\) if \(m \leq x\) for all
-  \(x \in S\)
-\item
-  \(S\) is \emph{bounded below} if a lower bound exists
-\item
-  \(S\) is \emph{bounded} if it is both bounded above and below
-\end{itemize}
-
-\end{definition}
-
-{[}PROSE: Examples. The interval (0, 1) is bounded above by 1, also by
-2, by 47, etc. Many upper bounds exist. The natural numbers ℕ have lower
-bounds (0, −5, etc.) but no upper bound.{]}
-
-\section{Supremum and Infimum}\label{supremum-and-infimum}
-
-{[}PROSE: Among all upper bounds, we want the \emph{best} one---the
-smallest. This may or may not be in the set.{]}
-
-\begin{definition}[Supremum]\protect\hypertarget{def-foundations-supremum}{}\label{def-foundations-supremum}
-
-Let \(S\) be a nonempty set that is bounded above. The \emph{supremum}
-of \(S\), written \(\sup S\), is the \emph{least upper bound}: a number
-\(\sigma\) such that
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \(\sigma\) is an upper bound for \(S\)
-\item
-  If \(M\) is any upper bound for \(S\), then \(\sigma \leq M\)
-\end{enumerate}
-
-\end{definition}
-
-\begin{definition}[Infimum]\protect\hypertarget{def-foundations-infimum}{}\label{def-foundations-infimum}
-
-Let \(S\) be a nonempty set that is bounded below. The \emph{infimum} of
-\(S\), written \(\inf S\), is the \emph{greatest lower bound}: a number
-\(\lambda\) such that
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \(\lambda\) is a lower bound for \(S\)
-\item
-  If \(m\) is any lower bound for \(S\), then \(m \leq \lambda\)
-\end{enumerate}
-
-\end{definition}
-
-\begin{example}[Supremum Not in the
-Set]\protect\hypertarget{exm-foundations-sup-not-in-set}{}\label{exm-foundations-sup-not-in-set}
-
-Let \(S = \{1 - 1/n : n \in \NN\} = \{0, 1/2, 2/3, 3/4, \ldots\}\). The
-upper bounds for \(S\) are all numbers \(\geq 1\). The least of these is
-\(1\), so \(\sup S = 1\). But \(1 \notin S\)---the supremum need not
-belong to the set.
-
-\end{example}
-
-\begin{example}[Supremum in the
-Set]\protect\hypertarget{exm-foundations-sup-in-set}{}\label{exm-foundations-sup-in-set}
-
-Let \(S = [0, 1] = \{x : 0 \leq x \leq 1\}\). Then \(\sup S = 1\) and
-\(1 \in S\). When the supremum is in the set, it is also the maximum.
-
-\end{example}
-
-\begin{example}[Open
-Interval]\protect\hypertarget{exm-foundations-open-interval-sup}{}\label{exm-foundations-open-interval-sup}
-
-Let \(S = (0, 1)\). Then \(\sup S = 1\) and \(\inf S = 0\), but neither
-belongs to \(S\).
-
-\end{example}
-
-\begin{example}[No Supremum in
-ℚ]\protect\hypertarget{exm-foundations-no-sup-in-Q}{}\label{exm-foundations-no-sup-in-Q}
-
-Let \(S = \{x \in \QQ : x > 0,\, x^2 < 2\}\). This set is bounded above
-in \(\QQ\)---for instance, \(2\) is an upper bound. But \(S\) has no
-supremum in \(\QQ\): any rational upper bound \(M\) satisfies
-\(M^2 \geq 2\), and if \(M^2 > 2\) we can find a smaller upper bound.
-The least upper bound would satisfy \(M^2 = 2\), which has no rational
-solution.
-
-\end{example}
-
-{[}PROSE: This example shows precisely how ``holes'' in ℚ manifest: as
-bounded sets without suprema.{]}
-
-\begin{proposition}[Uniqueness]\protect\hypertarget{prp-foundations-supremum-unique}{}\label{prp-foundations-supremum-unique}
-
-If \(\sup S\) exists, it is unique. Similarly for \(\inf S\).
-
-\end{proposition}
-
-{[}INLINE EXERCISE: Prove uniqueness of the supremum. Hint: if
-\(\sigma\) and \(\sigma'\) are both least upper bounds, show
-\(\sigma \leq \sigma'\) and \(\sigma' \leq \sigma\).{]}
-
-\section{Completeness}\label{completeness}
-
-{[}PROSE: The example of S = \{x ∈ ℚ : x² \textless{} 2\} shows that not
-every ordered field has suprema. We give a name to those that do.{]}
-
-\begin{definition}[Complete Ordered
-Field]\protect\hypertarget{def-foundations-complete-ordered-field}{}\label{def-foundations-complete-ordered-field}
-
-An ordered field is \emph{complete} if every nonempty subset that is
-bounded above has a supremum.
-
-\end{definition}
-
-\begin{theorem}[ℚ is Not
-Complete]\protect\hypertarget{thm-foundations-Q-not-complete}{}\label{thm-foundations-Q-not-complete}
-
-The rational numbers are not a complete ordered field.
-
-\end{theorem}
-
-{[}PROSE: Proof: the set S = \{x ∈ ℚ : x \textgreater{} 0, x²
-\textless{} 2\} is bounded above but has no supremum in ℚ, as shown
-above.{]}
-
-\begin{proposition}[Existence of
-Infima]\protect\hypertarget{prp-foundations-infimum-exists}{}\label{prp-foundations-infimum-exists}
-
-In a complete ordered field, every nonempty set that is bounded below
-has an infimum.
-
-\end{proposition}
-
-{[}PROSE: Proof is a nice exercise using \(\sup(-S) = -\inf(S)\). State
-result here, defer proof to exercises.{]}
-
-INLINE EXERCISE: Prove~\ref{prp-foundations-infimum-exists}
-
-\section{The ε-Characterization}\label{the-ux3b5-characterization}
-
-{[}PROSE: How do we actually use suprema in proofs? The key technique:
-``get within ε of the sup.''{]}
-
-\begin{proposition}[ε-Characterization of
-Supremum]\protect\hypertarget{prp-foundations-epsilon-sup}{}\label{prp-foundations-epsilon-sup}
-
-Let \(S\) be nonempty and bounded above. Then \(\sigma = \sup S\) if and
-only if:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \(\sigma\) is an upper bound for \(S\)
-\item
-  For every \(\varepsilon > 0\), there exists \(x \in S\) with
-  \(x > \sigma - \varepsilon\)
-\end{enumerate}
-
-\end{proposition}
-
-{[}PROSE: Interpretation: condition 2 says ``nothing smaller than σ is
-an upper bound''---for any ε, we can find an element of S within ε of σ.
-This is the workhorse for supremum arguments.{]}
-
-\begin{proposition}[ε-Characterization of
-Infimum]\protect\hypertarget{prp-foundations-epsilon-inf}{}\label{prp-foundations-epsilon-inf}
-
-Let \(S\) be nonempty and bounded below. Then \(\lambda = \inf S\) if
-and only if:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \(\lambda\) is a lower bound for \(S\)
-\item
-  For every \(\varepsilon > 0\), there exists \(x \in S\) with
-  \(x < \lambda + \varepsilon\)
-\end{enumerate}
-
-\end{proposition}
-
-{[}PROSE: State without repeating the proof---symmetric argument.{]}
-
-\section{Working with Suprema and
-Infima}\label{working-with-suprema-and-infima}
-
-{[}PROSE: Students need to see how to apply these definitions. We work
-through examples carefully.{]}
-
-\begin{example}[Translation]\protect\hypertarget{exm-foundations-sup-translation}{}\label{exm-foundations-sup-translation}
-
-Let \(A\) be a bounded set and \(c \in \FF\). Define
-\(A + c = \{a + c : a \in A\}\). Then \[\sup(A + c) = \sup A + c\]
-
-\end{example}
-
-{[}PROSE: Proof has two parts: (1) show \(\sup A + c\) is an upper bound
-for \(A + c\), (2) show it's the least. Work through both steps
-explicitly---this is a model for how sup arguments go.{]}
-
-\begin{example}[Scaling by a Positive
-Constant]\protect\hypertarget{exm-foundations-sup-scaling}{}\label{exm-foundations-sup-scaling}
-
-Let \(A\) be a bounded set and \(c > 0\). Define
-\(cA = \{ca : a \in A\}\). Then \[\sup(cA) = c \cdot \sup A\]
-
-\end{example}
-
-{[}PROSE: Similar two-part structure. Emphasize: this fails for
-\(c < 0\) (sup and inf swap).{]}
-
-\begin{proposition}[Subsets Have Smaller
-Suprema]\protect\hypertarget{prp-foundations-sup-subset}{}\label{prp-foundations-sup-subset}
-
-If \(A \subseteq B\) and both are nonempty and bounded above, then
-\(\sup A \leq \sup B\).
-
-\end{proposition}
-
-{[}PROSE: Key insight: \(\sup B\) is an upper bound for \(B\), hence for
-\(A\), hence \(\geq \sup A\).{]}
-
-{[}INLINE EXERCISE: State and prove the analogous result for infima.{]}
-
-\begin{proposition}[Supremum of a
-Union]\protect\hypertarget{prp-foundations-sup-union}{}\label{prp-foundations-sup-union}
-
-If \(A\) and \(B\) are nonempty and bounded above, then
-\[\sup(A \cup B) = \max\{\sup A, \sup B\}\]
-
-\end{proposition}
-
-\section{The Nested Interval
-Property}\label{the-nested-interval-property}
-
-{[}PROSE: Now we prove that completeness delivers what we wanted: in a
-complete ordered field, nested intervals have nonempty intersection.{]}
-
-\begin{definition}[Nested
-Intervals]\protect\hypertarget{def-foundations-nested-intervals}{}\label{def-foundations-nested-intervals}
-
-A sequence of intervals \(I_1, I_2, I_3, \ldots\) is \emph{nested} if
-\(I_{n+1} \subseteq I_n\) for all \(n\).
-
-\end{definition}
-
-\begin{theorem}[Nested Interval
-Property]\protect\hypertarget{thm-foundations-nested-intervals}{}\label{thm-foundations-nested-intervals}
-
-Let \(\FF\) be a complete ordered field, and let
-\([a_1, b_1] \supseteq [a_2, b_2] \supseteq [a_3, b_3] \supseteq \cdots\)
-be a nested sequence of closed intervals in \(\FF\). Then
-\[\bigcap_{n=1}^{\infty} [a_n, b_n] \neq \varnothing\]
-
-\end{theorem}
-
-{[}PROSE: Proof outline: Let \(A = \{a_1, a_2, a_3, \ldots\}\). This is
-nonempty and bounded above by any \(b_n\) (since intervals are nested).
-By completeness, \(\alpha = \sup A\) exists. Show
-\(\alpha \in [a_n, b_n]\) for all \(n\): we have \(a_n \leq \alpha\)
-(since \(\alpha\) is an upper bound for \(A\)) and \(\alpha \leq b_n\)
-(since \(b_n\) is an upper bound for \(A\), so the least upper bound
-satisfies \(\alpha \leq b_n\)).{]}
-
-\begin{refremark}[When the Intersection is a Single Point]
-If additionally \(\sup\{a_n\} = \inf\{b_n\}\)---for instance, if the
-interval lengths \(b_n - a_n\) shrink to zero---then the intersection
-contains exactly one point.
-
-\label{rem-foundations-nested-single-point}
-
-\end{refremark}
-
-{[}PROSE: Closing paragraph---the nested interval property is exactly
-what ancient mathematicians assumed when approximating π or √2.
-Completeness makes it a theorem. In the next section, we take the bold
-step of \emph{assuming} completeness as an axiom, defining the real
-numbers as a complete ordered field, and exploring what this buys us.{]}
-
-\section{Exercises}\label{exercises-3}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Prove the infimum of a set is unique when it exists.
-\item
-  Prove the ε-characterization of infimum: a lower bound \(\lambda\) for
-  a set \(S\) is the infimum if and only if for every
-  \(\varepsilon > 0\) there exists \(x \in S\) with
-  \(x < \lambda + \varepsilon\).
-\item
-  Let \(A, B\) be nonempty bounded subsets of a complete field with
-  \(A \subseteq B\). Prove that \(\sup A \leq \sup B\).
-\item
-  Let \(c > 0\) and \(A\) be a bounded set. Prove
-  \(\sup(cA) = c \cdot \sup A\).
-\item
-  Let \(A, B\) be nonempty bounded sets. Prove:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \(\sup(A \cup B) = \max\{\sup A, \sup B\}\)
-  \item
-    \(\inf(A \cup B) = \min\{\inf A, \inf B\}\)
-  \end{itemize}
-\item
-  For each set, find the supremum and infimum, or explain why they don't
-  exist:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \([1, 3]\)
-  \item
-    \([1, 3)\)
-  \item
-    \(\{x \in \QQ : x^2 < 1\}\)
-  \item
-    \(\{x \in \QQ : x^3 < 1\}\)
-  \item
-    \(\{1 + 1/n : n \in \NN\}\)
-  \item
-    \(\{1 + (-1)^n/n : n \in \NN\}\)
-  \end{itemize}
-\item
-  For each set, find the supremum and infimum, or explain why they don't
-  exist:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \(\{(-1)^n/n : n \in \NN\}\)
-  \item
-    Fix \(\beta \in (0,1)\) and let \(B = \{\beta^n : n \in \NN\}\)
-  \item
-    Fix \(\gamma > 1\) and let \(C = \{\gamma^n : n \in \NN\}\)
-  \end{itemize}
-\item
-  Let \(A, B\) be nonempty with \(\sup A < \sup B\). Prove there exists
-  \(b \in B\) which is an upper bound for \(A\). Give an example showing
-  this can fail if we only assume \(\sup A \leq \sup B\).
-\item
-  Let \(A, B\) be open intervals with \(\sup A = \inf B\). True or
-  false: it is possible to add a single point to \(A \cup B\) so the
-  result is an interval. Explain your reasoning.
-\item
-  Show that the nested interval theorem fails for open intervals: find a
-  sequence of nested open intervals whose intersection is empty.
-\item
-  \textbf{(★)} Let \([a_n, b_n]\) be nested closed intervals and assume
-  \(\sup\{a_n\} = \inf\{b_n\}\). Prove \(\bigcap_n [a_n, b_n]\) contains
-  exactly one point.
-\item
-  \textbf{(★ Equivalents to Completeness)} Prove the following are
-  equivalent:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \begin{enumerate}
-    \def\labelenumii{(\arabic{enumii})}
-    \tightlist
-    \item
-      Every nonempty set bounded above has a supremum
-    \end{enumerate}
-  \item
-    \begin{enumerate}
-    \def\labelenumii{(\arabic{enumii})}
-    \setcounter{enumii}{1}
-    \tightlist
-    \item
-      Every nonempty set bounded below has an infimum
-    \end{enumerate}
-  \end{itemize}
-
-  \emph{Hint: For a set \(S\), consider \(-S = \{-s : s \in S\}\) and
-  show \(\sup(-S) = -\inf(S)\).}
-\end{enumerate}
-
-\chapter{The Real Numbers}\label{sec-foundations-reals}
-
-{[}PROSE: Opening---the bold move. We \emph{declare} the real numbers to
-be a complete ordered field. This is the axiomatic method: we specify
-properties, not construction. We don't say what real numbers \emph{are},
-we say what they \emph{do}.{]}
-
-\begin{definition}[The Real
-Numbers]\protect\hypertarget{def-foundations-real-numbers}{}\label{def-foundations-real-numbers}
-
-The \emph{real numbers} \(\RR\) are a complete ordered field.
-
-\end{definition}
-
-{[}PROSE: Historical context. This was Huntington's approach (1903). But
-one might worry: do such axioms describe anything at all? (Easy to write
-inconsistent axioms.) And if they do, do they pick out one thing or
-many? (Group axioms describe a whole subject, not one example.){]}
-
-\begin{theorem}[Existence and
-Uniqueness]\protect\hypertarget{thm-foundations-reals-unique}{}\label{thm-foundations-reals-unique}
-
-There exists a complete ordered field, and it is unique up to
-isomorphism.
-
-\end{theorem}
-
-{[}PROSE: We won't prove this---existence requires a construction
-(Dedekind cuts or Cauchy sequences), uniqueness requires showing any two
-complete ordered fields are isomorphic. But the theorem is important:
-our axioms completely characterize something. This is evidence we've
-succeeded.{]}
-
-\begin{refremark}[Conventions for Sup and Inf]
-Using the notation from §1.2, we extend our sup and inf conventions: if
-\(S\) is nonempty but not bounded above, we write \(\sup S = \infty\).
-If \(S\) is nonempty but not bounded below, we write
-\(\inf S = -\infty\). For the empty set, we adopt the convention
-\(\sup \varnothing = -\infty\) and \(\inf \varnothing = \infty\).
-
-\label{rem-foundations-sup-inf-infinity}
-
-\end{refremark}
-
-\section{No Infinite Numbers}\label{no-infinite-numbers}
-
-{[}PROSE: What have we created? First, we check there are no
-``monsters''---no infinite or infinitesimal numbers. The real line is
-``normal.''{]}
-
-\begin{theorem}[ℕ is
-Unbounded]\protect\hypertarget{thm-foundations-N-unbounded}{}\label{thm-foundations-N-unbounded}
-
-The natural numbers have no upper bound in \(\RR\). Equivalently: for
-any \(x \in \RR\), there exists \(n \in \NN\) with \(n > x\).
-
-\end{theorem}
-
-{[}PROSE: Proof uses completeness: if ℕ were bounded, sup ℕ would exist.
-Let s = sup ℕ. Then s - 1 is not an upper bound, so some n ∈ ℕ satisfies
-n \textgreater{} s - 1. But then n + 1 \textgreater{} s, contradicting s
-being an upper bound.{]}
-
-\begin{corollary}[No
-Infinitesimals]\protect\hypertarget{cor-foundations-no-infinitesimals}{}\label{cor-foundations-no-infinitesimals}
-
-For any \(\varepsilon > 0\), there exists \(n \in \NN\) with
-\(1/n < \varepsilon\).
-
-\end{corollary}
-
-{[}PROSE: Brief comment---people have wondered about formalizing
-infinitesimal numbers (numbers smaller than every 1/n but positive). In
-fact they don't exist in ℝ: if ε were infinitesimal, then 1/ε would be
-infinite, contradicting the theorem above.{]}
-
-\section{The Archimedean Property}\label{the-archimedean-property}
-
-{[}PROSE: Repackage the above as the Archimedean property. Historical
-note: Archimedes took this as an axiom in \emph{The Sphere and the
-Cylinder}. Also appears in Euclid Book V. Mnemonic: ``you can empty the
-ocean with a teaspoon''---no matter how small a is, enough copies na
-will exceed any b.{]}
-
-\begin{definition}[Archimedean
-Field]\protect\hypertarget{def-foundations-archimedean}{}\label{def-foundations-archimedean}
-
-An ordered field \(\FF\) is \emph{Archimedean} if for every positive
-\(a, b \in \FF\), there exists \(n \in \NN\) with \(na > b\).
-
-\end{definition}
-
-\begin{theorem}[Complete Fields are
-Archimedean]\protect\hypertarget{thm-foundations-reals-archimedean}{}\label{thm-foundations-reals-archimedean}
-
-Every complete ordered field is Archimedean.
-
-\end{theorem}
-
-{[}PROSE: Proof: given positive a, b, the number b/a is finite (no
-infinites), so some n \textgreater{} b/a, hence na \textgreater{} b.{]}
-
-{[}INLINE EXERCISE: Prove ℚ is Archimedean directly from the definition
-of rational numbers.{]}
-
-\section{Density}\label{density}
-
-\begin{theorem}[Density of
-ℚ]\protect\hypertarget{thm-foundations-Q-dense}{}\label{thm-foundations-Q-dense}
-
-Between any two real numbers lies a rational.
-
-\end{theorem}
-
-{[}PROSE: Proof outline: Let a \textless{} b. By Archimedean, choose n
-with 1/n \textless{} b - a. By Archimedean again, the set \{m ∈ ℤ : m
-\textgreater{} na\} is nonempty and bounded below. Let m be its least
-element. Then a \textless{} m/n \textless{} b.{]}
-
-\begin{theorem}[Density of
-Irrationals]\protect\hypertarget{thm-foundations-irrationals-dense}{}\label{thm-foundations-irrationals-dense}
-
-Between any two real numbers lies an irrational.
-
-\end{theorem}
-
-{[}PROSE: Proof: Let a \textless{} b. Choose rational r with a - √2
-\textless{} r \textless{} b - √2. Then a \textless{} r + √2 \textless{}
-b, and r + √2 is irrational.{]}
-
-{[}PROSE: Interpretation---ℚ is everywhere dense in ℝ. There are no
-``chunks'' of pure irrationals. We filled gaps, we didn't add alien
-regions.{]}
-
-\section{Roots Exist}\label{roots-exist}
-
-{[}PROSE: The crisis of 1.3 was that √2 doesn't exist in ℚ. Now we prove
-it exists in ℝ.{]}
-
-\begin{theorem}[Existence of
-√2]\protect\hypertarget{thm-foundations-sqrt2-exists}{}\label{thm-foundations-sqrt2-exists}
-
-There exists a positive real number whose square is 2.
-
-\end{theorem}
-
-{[}PROSE: Full proof. Let S = \{x ∈ ℝ : x \textgreater{} 0, x²
-\textless{} 2\}. S is nonempty (1 ∈ S) and bounded above (2 is an upper
-bound). By completeness, s = sup S exists. We show s² = 2 by ruling out
-s² \textless{} 2 and s² \textgreater{} 2.
-
-\textbf{Case s² \textless{} 2}: Find h \textgreater{} 0 small enough
-that (s+h)² \textless{} 2, so s+h ∈ S, contradicting s = sup S.
-
-\textbf{Case s² \textgreater{} 2}: Find h \textgreater{} 0 small enough
-that (s-h)² \textgreater{} 2, so s-h is still an upper bound,
-contradicting s being least.
-
-Work out the explicit bounds on h in each case.{]}
-
-\begin{definition}[nth
-Roots]\protect\hypertarget{def-foundations-nth-root}{}\label{def-foundations-nth-root}
-
-For \(a \geq 0\) and \(n \in \NN\), define
-\[\sqrt[n]{a} = \sup\{x \geq 0 : x^n < a\}\]
-
-\end{definition}
-
-\begin{theorem}[nth Roots
-Exist]\protect\hypertarget{thm-foundations-nth-root-exists}{}\label{thm-foundations-nth-root-exists}
-
-For \(a \geq 0\) and \(n \in \NN\), we have \((\sqrt[n]{a})^n = a\).
-
-\end{theorem}
-
-{[}PROSE: State theorem; proof similar to √2, details in exercises.{]}
-
-\section{Rational and Real Exponents}\label{rational-and-real-exponents}
-
-{[}PROSE: With roots in hand, we can define rational exponents, then
-extend to all real exponents using completeness.{]}
-
-\begin{definition}[Rational
-Exponents]\protect\hypertarget{def-foundations-rational-exponents}{}\label{def-foundations-rational-exponents}
-
-For \(a > 0\) and \(p/q \in \QQ\) with \(q > 0\), define
-\[a^{p/q} = \left(\sqrt[q]{a}\right)^p\]
-
-\end{definition}
-
-{[}PROSE: This is well-defined (independent of representation of p/q)
-and satisfies the expected laws: \(a^{r+s} = a^r a^s\),
-\(a^{rs} = (a^r)^s\), and for \(a > 1\), \(r < s\) implies
-\(a^r < a^s\).{]}
-
-\begin{definition}[Real
-Exponents]\protect\hypertarget{def-foundations-real-exponents}{}\label{def-foundations-real-exponents}
-
-For \(a > 1\) and \(x \in \RR\), define
-\[a^x = \sup\{a^r : r \in \QQ,\, r < x\}\] For \(0 < a < 1\), define
-\(a^x = (1/a)^{-x}\).
-
-\end{definition}
-
-{[}PROSE: The functional equation \(a^{x+y} = a^x \cdot a^y\) holds for
-all real x, y.{]}
-
-\section{Logarithms}\label{logarithms}
-
-\begin{definition}[Logarithms]\protect\hypertarget{def-foundations-logarithm}{}\label{def-foundations-logarithm}
-
-For \(a > 0\), \(a \neq 1\), and \(y > 0\), define
-\[\log_a(y) = \sup\{r \in \QQ : a^r < y\}\]
-
-\end{definition}
-
-{[}PROSE: This satisfies \(\log_a(xy) = \log_a(x) + \log_a(y)\), and
-\(a^{\log_a(y)} = y\), and \(\log_a(a^x) = x\). So log and exp are
-inverses.{]}
-
-{[}PROSE: Interpretation---completeness lets us build all the functions
-we need: roots, exponentials, logarithms. These are the ``new
-treasures'' that ℝ provides.{]}
-
-\section{Uncountability}\label{uncountability}
-
-{[}PROSE: We've built ℝ to have no holes. It turns out to be
-unimaginably vast---uncountably infinite.{]}
-
-\begin{theorem}[ℝ is
-Uncountable]\protect\hypertarget{thm-foundations-R-uncountable}{}\label{thm-foundations-R-uncountable}
-
-The real numbers cannot be put in bijection with \(\NN\).
-
-\end{theorem}
-
-{[}PROSE: Proof via nested intervals. Suppose {[}0,1{]} is countable:
-list elements as x₁, x₂, x₃, \ldots{} Build nested intervals {[}aₙ,
-bₙ{]} avoiding xₙ at each stage, with lengths → 0. By nested interval
-theorem, intersection contains some L. But L ≠ xₙ for all
-n.~Contradiction.{]}
-
-\begin{corollary}[Irrationals are
-Uncountable]\protect\hypertarget{cor-foundations-irrationals-uncountable}{}\label{cor-foundations-irrationals-uncountable}
-
-The set \(\RR \setminus \QQ\) of irrational numbers is uncountable.
-
-\end{corollary}
-
-{[}PROSE: Proof: ℝ = ℚ ∪ (ℝ ~ℚ). If irrationals were countable, ℝ would
-be union of two countable sets, hence countable.{]}
-
-\section{The Bigger Picture}\label{the-bigger-picture}
-
-{[}PROSE: Since ℝ is uncountable but ℚ is countable, ``most'' real
-numbers are irrational in a precise sense.{]}
-
-{[}PROSE: More striking: the algebraic numbers 𝔸 are countable (there
-are countably many polynomials, each with finitely many roots). So
-transcendental numbers exist---in fact ``most'' reals are
-transcendental!{]}
-
-{[}PROSE: Even more striking: computable numbers (those whose digits can
-be output by an algorithm) are countable. So ``most'' reals cannot be
-computed. Definable numbers (those specifiable by a finite sentence) are
-countable. So ``most'' reals cannot even be described.{]}
-
-{[}PROSE: Closing---we built ℝ to fill the holes in ℚ. It turned out to
-be an uncountable ocean in which the rationals, algebraics, and
-computables are a countable dust.{]}
-
-\section{Exercises}\label{exercises-4}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Prove that \(\QQ\) is Archimedean directly from the definition of
-  rational numbers as fractions \(p/q\).
-\item
-  \textbf{(Existence of √3)} Adapt the proof of
-  Theorem~\ref{thm-foundations-sqrt2-exists} to show that \(\sqrt{3}\)
-  exists in \(\RR\).
-\item
-  \textbf{(Existence of √a)} Let \(a > 0\). Prove that there exists a
-  positive real number whose square is \(a\).
-\item
-  \textbf{(★ Existence of nth roots)} Let \(a > 0\) and \(n \in \NN\).
-  Prove that \((\sqrt[n]{a})^n = a\).
-
-  \emph{Hint: Adapt the √2 argument. You'll need to find appropriate
-  bounds on h in each case.}
-\item
-  Prove that rational exponents are well-defined: if \(p/q = p'/q'\)
-  with \(q, q' > 0\), then \((\sqrt[q]{a})^p = (\sqrt[q']{a})^{p'}\).
-\item
-  Prove that for \(a > 1\) and \(r, s \in \QQ\), we have
-  \(a^{r+s} = a^r \cdot a^s\).
-\item
-  \textbf{(★ Functional equation for real exponents)} Prove that for
-  \(a > 1\) and \(x, y \in \RR\), we have \(a^{x+y} = a^x \cdot a^y\).
-\item
-  \textbf{(★★ Guided Exploration: Cantor's Diagonal Argument)}
-
-  Here is another proof that \(\RR\) is uncountable.
-
-  \begin{enumerate}
-  \def\labelenumii{(\alph{enumii})}
-  \item
-    Suppose \((0, 1)\) is countable. List its elements as
-    \(x_1, x_2, x_3, \ldots\) where each \(x_i\) has a decimal expansion
-    \(x_i = 0.d_{i1}d_{i2}d_{i3}\ldots\)
-  \item
-    Construct a new number \(y = 0.e_1 e_2 e_3 \ldots\) where
-    \(e_n \neq d_{nn}\) (and \(e_n \neq 0, 9\) to avoid issues with
-    non-unique decimal representations).
-  \item
-    Explain why \(y \neq x_n\) for all \(n\), reaching a contradiction.
-  \end{enumerate}
-\item
-  \textbf{(★★ Guided Exploration: Countability of ℚ)}
-
-  \begin{enumerate}
-  \def\labelenumii{(\alph{enumii})}
-  \tightlist
-  \item
-    Prove that \(\NN \times \NN\) is countable by describing an explicit
-    bijection with \(\NN\).
-  \end{enumerate}
-
-  \emph{Hint: List pairs by diagonals: (1,1), (1,2), (2,1), (1,3),
-  (2,2), (3,1), \ldots{}}
-
-  \begin{enumerate}
-  \def\labelenumii{(\alph{enumii})}
-  \setcounter{enumii}{1}
-  \item
-    Prove that a countable union of countable sets is countable.
-  \item
-    Conclude that \(\QQ\) is countable.
-  \end{enumerate}
-\item
-  \textbf{(★★ Guided Exploration: Countability of Algebraic Numbers)}
-
-  \begin{enumerate}
-  \def\labelenumii{(\alph{enumii})}
-  \item
-    For each \(n \in \NN\), let \(A_n\) be the set of algebraic numbers
-    that are roots of some polynomial of degree \(n\) with integer
-    coefficients whose absolute values sum to at most \(n\). Prove
-    \(A_n\) is finite.
-  \item
-    Prove that \(\AA = \bigcup_{n=1}^{\infty} A_n\).
-  \item
-    Conclude that the algebraic numbers are countable.
-  \item
-    Conclude that transcendental numbers exist (without constructing
-    one!).
-  \end{enumerate}
-\end{enumerate}
+\section{Sets and Functions}\label{sec-foundations-sets-functions}
+
+\textbf{Narrative} - Before discussing numbers, we need the language of
+sets and functions - This is vocabulary and notation---mostly review
+from intro to proofs - Functions are assignments, not formulas: ``1 if
+rational, 0 if irrational'' is a valid function -
+Injective/surjective/bijective capture ways functions ``match up'' sets
+- Inverses exist precisely when bijective - Foreshadowing: Cantor's
+argument (no surjection \(A \to \mathcal{P}(A)\)) connects to
+uncountability later
+
+\textbf{Definitions} - Set, element, membership (\(\in\), \(\notin\)) -
+Set-builder notation: \(\{x : P(x)\}\) - Standard sets: \(\NN\),
+\(\ZZ\), \(\QQ\) (convention: \(0 \notin \NN\)) - Subset:
+\(A \subseteq B\) - Set equality: \(A = B\) iff \(A \subseteq B\) and
+\(B \subseteq A\) - Union, intersection, difference - Cartesian product:
+\(A \times B\) - Function: \(f: A \to B\), domain, codomain, range -
+Injective: \(f(x_1) = f(x_2) \Rightarrow x_1 = x_2\) - Surjective: range
+equals codomain - Bijective: injective and surjective - Composition:
+\((g \circ f)(x) = g(f(x))\) - Inverse function: \(f^{-1}\)
+
+\textbf{Results} - \(f\) has an inverse iff \(f\) is bijective
+
+\textbf{Exercises} 1. De Morgan: \((A \cap B)^c = A^c \cup B^c\) 2.
+\(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)\) 3.
+Composition is associative 4. \(f\) bijective \(\Rightarrow\) \(f^{-1}\)
+bijective and \((f^{-1})^{-1} = f\) 5. \(f, g\) bijective
+\(\Rightarrow\) \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\) 6. \(f\)
+bijective iff left and right inverse exists 7. \(g \circ f\)
+injective/surjective: what about \(f\) and \(g\)? 8. ★ No surjection
+\(A \to \mathcal{P}(A)\) (Cantor)
+
+\section{Ordered Fields}\label{sec-foundations-ordered-fields}
+
+\textbf{Narrative} - We axiomatize arithmetic abstractly: field axioms
+capture \(+\) and \(\times\) - \(\QQ\) is a field; \(\ZZ\) is not (no
+multiplicative inverses) - Consequences flow from axioms: uniqueness of
+inverses, \(0 \cdot a = 0\), \((-1)(-1) = 1\) - Add order via positivity
+axioms: trichotomy, closure under \(+\) and \(\times\) - Squares are
+nonnegative; \(1 > 0\); multiplying by negatives reverses inequalities -
+Absolute value measures distance: \(|a - b|\) is distance between \(a\)
+and \(b\) - Triangle inequality: fundamental tool for estimation -
+Intervals: notation for ``chunks'' of the number line - Warning:
+\(\infty\) and \(-\infty\) are notation, not numbers - Bernoulli's
+inequality: \((1+x)^n \geq 1 + nx\)---used later for bounding \(e\) -
+Roots notation introduced, but existence requires completeness (coming
+in 1.5)
+
+\textbf{Definitions} - Field: \(+\), \(\times\) with commutativity,
+associativity, identities, inverses, distributivity - Ordered field:
+field with positive elements \(P\) satisfying closure and trichotomy -
+Inequality: \(a < b\) means \(b - a \in P\) - Absolute value:
+\(|a| = a\) if \(a \geq 0\), \(-a\) if \(a < 0\) - Intervals: \((a,b)\),
+\([a,b]\), \([a,b)\), \((a,b]\) - Rays: \([a, \infty)\),
+\((a, \infty)\), \((-\infty, a]\), \((-\infty, a)\) - Roots notation:
+\(\sqrt[n]{a}\), rational powers \(a^{p/q}\)
+
+\textbf{Results} - Uniqueness of additive and multiplicative inverses -
+\(0 \cdot a = 0\) - \((-1) \cdot a = -a\) - \(a^2 \geq 0\), with
+equality iff \(a = 0\) - \(1 > 0\) - Transitivity of \(<\) -
+\(a < b \Rightarrow a + c < b + c\) - \(a < b\) and
+\(c > 0 \Rightarrow ac < bc\); \(c < 0\) reverses - Triangle inequality:
+\(|a + b| \leq |a| + |b|\) - Reverse triangle inequality:
+\(||a| - |b|| \leq |a - b|\) - Bernoulli: \((1 + x)^n \geq 1 + nx\) for
+\(x > -1\)
+
+\textbf{Remarks} - \((a - r, a + r) = \{x : |x - a| < r\}\) -
+\(\infty\), \(-\infty\) are notation only, not field elements
+
+\textbf{Exercises} 1. Zero-product property:
+\(ab = 0 \Rightarrow a = 0\) or \(b = 0\) 2. Fraction addition formula
+3. Finite geometric sum 4. \(\CC\) cannot be ordered 5.
+\(a < b \Rightarrow a < \frac{a+b}{2} < b\) 6.
+\((a, b) \neq \varnothing\) when \(a < b\) 7. ★ Binary arithmetic 8. ★
+Uniqueness of base-\(b\) representations
+
+\section{Incompleteness}\label{sec-foundations-incompleteness}
+
+\textbf{Narrative} - Greeks discover \(\sqrt{2}\) irrational: geometry
+demands a number \(\QQ\) doesn't have - First patch attempt: adjoin
+\(\sqrt{2}\) to get \(\QQ(\sqrt{2})\)---but now \(\sqrt{3}\) is missing
+- Adjoin more roots? Still miss \(\sqrt{5}\), \(\sqrt{7}\),
+\(\sqrt{2 + \sqrt{3}}\), \ldots{} - Go to infinity: constructible
+numbers (all nested square roots)---but miss \(\sqrt[3]{2}\) - Go to
+infinity again: algebraic numbers \(\AA\) (all polynomial roots)---but
+miss \(\pi\) - Hopelessness: every patch leaves holes, can't construct
+our way to completeness - The real crisis: gaps aren't just
+aesthetic---they break calculus - IVT, EVT, MVT all fail in \(\QQ\);
+derivatives lose connection to function behavior - Newton's method and
+bisection produce sequences with no limit in \(\QQ\) - New strategy
+needed: define \(\RR\) by properties (completeness), not construction
+
+\textbf{Definitions} -
+\(\QQ(\sqrt{2}) = \{a + b\sqrt{2} : a, b \in \QQ\}\) - Constructible
+numbers: iterated square roots from \(\QQ\) - Algebraic numbers \(\AA\):
+roots of polynomials with integer coefficients - Transcendental: not
+algebraic
+
+\textbf{Results} - \(\sqrt{2}\) is irrational - \(\QQ(\sqrt{2})\) is a
+field, but \(\sqrt{3} \notin \QQ(\sqrt{2})\) - Doubling the cube
+impossible: \(\sqrt[3]{2}\) not constructible - \(\pi\) is
+transcendental (Lindemann 1882) - Algebraic closure: \(\AA\) closed
+under polynomial roots
+
+\textbf{Examples} - IVT fails in \(\QQ\): \(f(x) = x^2 - 2\) on
+\([1,2] \cap \QQ\) - EVT fails in \(\QQ\): \(f(x) = 1/(x^2 - 2)\)
+unbounded on \([1,2] \cap \QQ\) - MVT fails in \(\QQ\) (depends on EVT)
+
+\textbf{Remarks} - Constructibles satisfy polynomials of degree \(2^n\);
+\(\sqrt[3]{2}\) satisfies degree 3
+
+\textbf{Exercises} 1. \(\sqrt{6}\) irrational 2. \(\sqrt{p}\) irrational
+for \(p\) prime 3. Verify \(\QQ(\sqrt{2})\) is a field 4. ★
+\(\sqrt{3} \notin \QQ(\sqrt{2})\) 5. \(\sqrt{2} + \sqrt{3}\) irrational
+6. ★ \(\QQ(\sqrt{2}, \sqrt{3})\) is a field 7. Bisection algorithm:
+\(a_n^2 < 2 < b_n^2\) and \(b_n - a_n = 2^{1-n}\) 8. ★★ Liouville
+numbers: construct transcendentals before Lindemann
+
+\section{Completeness}\label{sec-foundations-completeness}
+
+\textbf{Narrative} - Recall bisection for \(\sqrt{2}\): nested intervals
+\([1,2] \supset [1.4, 1.5] \supset [1.41, 1.42] \supset \cdots\) - In
+\(\QQ\), intersection is empty---the target doesn't exist - Left
+endpoints increase, right endpoints decrease---want ``max'' and ``min''
+but they don't exist - Need a way to name the target these endpoints
+approach - Supremum: the least upper bound---may or may not be in the
+set - Key example: \(\{x \in \QQ : x^2 < 2\}\) has no supremum in
+\(\QQ\)---this is how holes manifest - Completeness axiom: every
+nonempty set bounded above has a supremum -
+\(\varepsilon\)-characterization: the workhorse for supremum
+arguments---``get within \(\varepsilon\) of the sup'' - Working with
+sup: translation, scaling, subsets, unions - Nested Interval Property:
+completeness delivers what we wanted---nested closed intervals have
+nonempty intersection - This is what ancient mathematicians assumed when
+approximating \(\pi\) or \(\sqrt{2}\) - Next section: assume
+completeness as an axiom, define \(\RR\), explore what this buys us
+
+\textbf{Definitions} - Bounds: upper bound, lower bound, bounded
+above/below/bounded - Supremum: least upper bound - Infimum: greatest
+lower bound - Complete ordered field: every nonempty set bounded above
+has a supremum - Nested intervals: \(I_{n+1} \subseteq I_n\) for all
+\(n\)
+
+\textbf{Results} - Uniqueness of sup and inf - \(\QQ\) is not complete -
+In a complete field, infima also exist -
+\(\varepsilon\)-characterization of sup: can get within \(\varepsilon\)
+of sup - \(\varepsilon\)-characterization of inf -
+\(\sup(A + c) = \sup A + c\) - \(\sup(cA) = c \cdot \sup A\) for
+\(c > 0\) - \(A \subseteq B \Rightarrow \sup A \leq \sup B\) -
+\(\sup(A \cup B) = \max\{\sup A, \sup B\}\) - Nested Interval Property:
+\(\bigcap [a_n, b_n] \neq \varnothing\) in complete fields
+
+\textbf{Examples} - \(\sup\{1 - 1/n\} = 1 \notin S\) -
+\(\sup[0,1] = 1 \in S\) - \((0,1)\): sup and inf not in set -
+\(\{x \in \QQ : x^2 < 2\}\) has no sup in \(\QQ\)
+
+\textbf{Remarks} - Lengths \(\to 0\) implies intersection is single
+point - Nested intervals fails in \(\QQ\)
+
+\textbf{Exercises} 1. Uniqueness of inf 2.
+\(\varepsilon\)-characterization of inf 3.
+\(A \subseteq B \Rightarrow \sup A \leq \sup B\) 4.
+\(\sup(cA) = c \cdot \sup A\) 5. Sup/inf of unions 6. Find sup/inf:
+\([1,3]\), \([1,3)\), \(\{x \in \QQ : x^2 < 1\}\), etc. 7. Find sup/inf:
+\(\{(-1)^n/n\}\), \(\{\beta^n\}\), \(\{\gamma^n\}\) 8.
+\(\sup A < \sup B \Rightarrow\) some \(b \in B\) is upper bound for
+\(A\) 9. Open intervals with \(\sup A = \inf B\): can one point make an
+interval? 10. Nested open intervals with empty intersection 11. ★
+Lengths \(\to 0\) implies single point 12. ★ Sup-completeness
+\(\Leftrightarrow\) inf-completeness
+
+\section{The Real Numbers}\label{sec-foundations-reals}
+
+\textbf{Narrative} - The bold move: we \emph{declare} \(\RR\) to be a
+complete ordered field - Axiomatic method: specify properties, not
+construction---we say what reals \emph{do}, not what they \emph{are} -
+Existence and uniqueness theorem: these axioms describe exactly one
+thing (up to isomorphism) - First check: no monsters---no infinite or
+infinitesimal numbers - \(\NN\) unbounded: if bounded, \(\sup \NN\)
+would exist, but then \((\sup \NN) - 1\) not an upper bound,
+contradiction - Archimedean property: ``you can empty the ocean with a
+teaspoon''---enough copies of any positive number exceed any bound -
+Complete \(\Rightarrow\) Archimedean - Density: \(\QQ\) and irrationals
+both dense in \(\RR\)---we filled gaps, didn't add alien regions - The
+payoff: \(\sqrt{2}\) exists! Use completeness: \(\sup\{x : x^2 < 2\}\)
+works - With roots, we build rational exponents, then real exponents,
+then logarithms - Completeness lets us build all the functions we
+need---these are the ``new treasures'' of \(\RR\) - Surprise: \(\RR\) is
+uncountable (nested intervals proof) - \(\QQ\) countable, \(\RR\)
+uncountable \(\Rightarrow\) ``most'' reals are irrational - \(\AA\)
+countable \(\Rightarrow\) transcendentals exist, in fact ``most'' reals
+are transcendental - Computables countable, definables countable
+\(\Rightarrow\) ``most'' reals cannot even be described - Closing: we
+built \(\RR\) to fill holes in \(\QQ\); it turned out to be an
+uncountable ocean in which rationals, algebraics, and computables are
+countable dust
+
+\textbf{Definitions} - \(\RR\): a complete ordered field (axiomatic) -
+Archimedean field: for all positive \(a, b\), some \(n \in \NN\) has
+\(na > b\) - nth root: \(\sqrt[n]{a} = \sup\{x \geq 0 : x^n < a\}\) -
+Rational exponents: \(a^{p/q} = (\sqrt[q]{a})^p\) - Real exponents:
+\(a^x = \sup\{a^r : r \in \QQ, r < x\}\) for \(a > 1\) - Logarithm:
+\(\log_a(y) = \sup\{r \in \QQ : a^r < y\}\)
+
+\textbf{Results} - Existence and uniqueness of complete ordered field
+(stated without proof) - \(\NN\) is unbounded in \(\RR\) - No
+infinitesimals: for all \(\varepsilon > 0\), some \(n\) has
+\(1/n < \varepsilon\) - Complete fields are Archimedean - Density of
+\(\QQ\): between any two reals lies a rational - Density of irrationals:
+between any two reals lies an irrational - \(\sqrt{2}\) exists in
+\(\RR\) - nth roots exist: \((\sqrt[n]{a})^n = a\) - Functional
+equations: \(a^{x+y} = a^x a^y\), \(\log_a(xy) = \log_a x + \log_a y\) -
+\(\RR\) is uncountable (nested intervals proof) - Irrationals are
+uncountable
+
+\textbf{Remarks} - Conventions: \(\sup S = \infty\) (unbounded above),
+\(\inf S = -\infty\) (unbounded below) - \(\sup \varnothing = -\infty\),
+\(\inf \varnothing = \infty\) - \(\AA\) countable \(\Rightarrow\)
+transcendentals exist - Computables countable, definables countable:
+``most'' reals indescribable
+
+\textbf{Exercises} 1. \(\QQ\) is Archimedean directly 2. \(\sqrt{3}\)
+exists 3. \(\sqrt{a}\) exists for \(a > 0\) 4. ★ nth roots exist 5.
+Rational exponents well-defined 6. \(a^{r+s} = a^r a^s\) for rational
+\(r, s\) 7. ★ \(a^{x+y} = a^x a^y\) for real \(x, y\) 8. ★★ Cantor's
+diagonal argument 9. ★★ Countability of \(\QQ\) 10. ★★ Countability of
+algebraic numbers \(\Rightarrow\) transcendentals exist
 
 \chapter{Limits}\label{limits}
 
 \section{Convergence}\label{convergence}
 
+\textbf{Narrative} - Sequences formalize ``infinite processes''---what
+the Babylonians and Archimedes were really doing - Sequences are
+functions \(\NN \to \RR\) (or more generally \(I \to \RR\) for infinite
+\(I \subset \ZZ\)), but we think of them as ordered lists - Two ways to
+specify: closed formula vs recursive definition - The
+\(\varepsilon\)-\(N\) definition: ``eventually stay arbitrarily close''
+- Unpack as a game/challenge: adversary picks tolerance \(\varepsilon\),
+you must produce threshold \(N\) - Work examples from scratch---this is
+where students learn the craft of analysis - Uniqueness: limits are
+unique (triangle inequality / \(\varepsilon/2\) argument) - Convergence
+depends only on the tail---first finitely many terms are irrelevant -
+Boundedness: convergent \(\Rightarrow\) bounded, but converse is false
+
+\textbf{Definitions} - Sequence (function \(\NN \to \RR\), or
+\(I \to \RR\) for infinite index set \(I \subset \ZZ\)) - Convergence:
+\(\forall \varepsilon > 0\, \exists N\, \forall n > N\, |a_n - L| < \varepsilon\)
+- Limit notation: \(a_n \to L\), \(\lim_{n \to \infty} a_n = L\) -
+Convergent / divergent - Bounded sequence: \(\exists M > 0\) with
+\(|a_n| \leq M\) for all \(n\) - Tail of a sequence - Subsequence:
+\((a_{n_k})\) where \(n_1 < n_2 < n_3 < \cdots\) - Diverges to
+\(\infty\): \(\forall M > 0\, \exists N\, \forall n > N\, a_n > M\) -
+Diverges to \(-\infty\): similarly
+
+\textbf{Results} - Uniqueness of limits - Convergent sequences are
+bounded - Convergence depends only on the tail (shifted sequences have
+the same limit)
+
+\textbf{Examples (worked from definition)} - \(1/n \to 0\) (the
+fundamental example) - Constant sequence \(c \to c\) - \(n/(n+1) \to 1\)
+- \(a^n \to 0\) for \(|a| < 1\) (uses Bernoulli) - \(a^{1/n} \to 1\) for
+\(a > 0\) (uses Bernoulli) - \((-1)^n\) diverges (no limit exists) -
+\(n^2\) diverges to \(\infty\)
+
+\textbf{Exercises} 1. Prove directly: \((n^2 + 1)/(n^2 + n) \to 1\) 2.
+Prove directly: \((2n - 2)/(5n + 1) \to 2/5\) 3. Prove: if \(a_n \to L\)
+and \(a_n \geq 0\) for all \(n\), then \(L \geq 0\) 4. Prove: if
+\(a_n \to L\), then \(|a_n| \to |L|\) 5. Find the flaw: ``Let
+\(L = 1 + 1 + 1 + \cdots\). Then \(L = 1 + L\), so \(0 = 1\).'' 6.
+Prove: \((-1)^n\) diverges (carefully negate the definition) 7. Prove:
+\(a^n\) diverges to \(\infty\) for \(a > 1\) 8. Give examples or explain
+impossibility: - Infinitely many terms equal zero, but doesn't converge
+to zero - Infinitely many terms equal zero, converges to nonzero -
+Sequence of irrationals converging to a rational - Convergent sequence
+where every term is an integer 9. Give examples: two divergent sequences
+whose sum converges; whose product converges 10. ★ Prove:
+\(n^{1/n} \to 1\) 11. ★ Interleaved sequences: if \(a_n \to L\) and
+\(b_n \to L\), then \(a_1, b_1, a_2, b_2, \ldots \to L\) 12. ★ If
+\(a_n \to 0\) and \(|b_n - L| < a_n\) for all \(n\), prove \(b_n \to L\)
+
 \section{Limit Laws}\label{limit-laws}
 
-\section{Infinite Sums and Products}\label{infinite-sums-and-products}
+\textbf{Narrative} - Goal: avoid using the \(\varepsilon\)-\(N\)
+definition directly wherever possible - How does convergence interact
+with the ordered field structure? - Limits and inequalities: bounds on
+sequences give bounds on limits - Warning: strict inequality not
+preserved (\(1/n < 1\) but \(\lim 1/n = 0 \not< 1\)) - Squeeze theorem:
+incredibly useful---bound a complicated sequence by simpler ones -
+Limits and algebra: limit laws let us compute limits from simpler pieces
+- Proof structure: present ``Sketch'' then ``Formal'' for
+products/quotients---students need to see the discovery process - Square
+root theorem: \(\lim \sqrt{s_n} = \sqrt{\lim s_n}\)---preview of
+continuity - Applications: rational functions, conjugate tricks,
+exponentials beat polynomials - Babylonian method via Pell equation:
+complete proof that \(p_n/q_n \to \sqrt{2}\) - Key lesson: limit laws
+tell us \emph{what} the limit is, but not \emph{that} it exists
 
-\section{Recursive Sequences}\label{recursive-sequences}
+\textbf{Definitions} - (None new---this section is about theorems)
+
+\textbf{Results} - Limits of nonnegative sequences are nonnegative -
+Bounds on sequences give bounds on limits:
+\(L \leq a_n \leq U \Rightarrow L \leq \lim a_n \leq U\) - Squeeze
+theorem - Limit laws: sum, difference, constant multiple, product,
+quotient - Square root: \(\lim \sqrt{s_n} = \sqrt{\lim s_n}\) for
+\(s_n \geq 0\) - \(\lim 1/n^p = 0\) for positive integer \(p\)
+(corollary of product law) - \textbf{Density of rationals}: between any
+two reals lies a rational (Archimedean property) - \textbf{Every real is
+a limit of rationals}: for any \(x\), find \(r_n \in \QQ\) with
+\(x - 1/n < r_n < x + 1/n\); squeeze gives \(r_n \to x\) -
+\textbf{Subsequences inherit limits}: if \(a_n \to L\), then every
+subsequence \(a_{n_k} \to L\) - \textbf{Even/odd recombination}: if even
+and odd subsequences both \(\to L\), then \(a_n \to L\)
+
+\textbf{Examples (worked)} - \(n/(n^2 + 1) \to 0\) via squeeze (compare
+to \(1/n\)) - \((3n^2 + 2n)/(n^2 - 1) \to 3\) (divide by highest power)
+- \(\sqrt{n+1} - \sqrt{n} \to 0\) (conjugate trick) -
+\(n^k / a^n \to 0\) for \(a > 1\) (exponentials beat polynomials---uses
+binomial theorem) - Babylonian/Pell: if \(p_n^2 = 2q_n^2 \pm 1\) and
+\(q_n \to \infty\), then \(p_n/q_n \to \sqrt{2}\) - Alternating harmonic
+partial sums: \(S_n = 1 - 1/2 + 1/3 - \cdots \pm 1/n\) converges - Even
+\(S_{2n}\): increasing, bounded above → MCT - Odd \(S_{2n+1}\):
+decreasing, bounded below → MCT - Gap
+\(S_{2n+1} - S_{2n} = 1/(2n+1) \to 0\) → same limit - Even/odd
+recombination → whole sequence converges - (Can't do this with limit
+laws alone!)
+
+\textbf{Remarks} - Strict inequality not preserved by limits - Quotient
+law requires nonzero denominator \emph{and} nonzero limit - Cannot apply
+quotient law when numerator and denominator both \(\to \infty\) (Pell
+sequence!)
+
+\textbf{Exercises} 1. Prove: if \(a_n \geq L\) for all \(n\) and \(a_n\)
+converges, then \(\lim a_n \geq L\) 2. (Error bounds) If
+\(|a_n - L| \leq \alpha_n\) and \(\alpha_n \to 0\), prove \(a_n \to L\)
+3. Prove \(\sqrt{s_n} \to 0\) when \(s_n \to 0\) (simpler than general
+case) 4. Write the formal proof of the product limit law from the sketch
+5. Write the formal proof of the reciprocal limit law from the sketch 6.
+Compute: \(\lim (1 + 2 + \cdots + n)/n^2\) 7. Compute:
+\(\lim (\sqrt{n^2 + n} - n)\) 8. Prove: \(\lim n^k / a^n = 0\) for
+\(a > 1\) and fixed \(k\) (use binomial theorem) 9. Use squeeze to show
+\((\sin n)/n \to 0\) (use \(|\sin x| \leq 1\)) 10. Generalize even/odd
+recombination: if \((a_n)\) decomposes into finitely many subsequences
+each converging to \(L\), then \(a_n \to L\) 11. (Zigzag reproof of
+\(\sqrt{2}\)) The Pell sequence \(p_n/q_n\) alternates above and below
+\(\sqrt{2}\). Show odd-indexed terms are increasing, even-indexed are
+decreasing, and use MCT + recombination to reprove convergence. 12. ★
+Generalize the zigzag technique: if \(p_n^2 = Nq_n^2 \pm 1\) with
+\(q_n \to \infty\), prove \(p_n/q_n \to \sqrt{N}\) 13. ★ (Infinity
+arithmetic) Prove: if \(s_n \to \infty\) and \(k > 0\), then
+\(ks_n \to \infty\) 14. ★ (Infinity arithmetic) Prove: if
+\(s_n \to \infty\) and \(t_n\) converges or \(t_n \to \infty\), then
+\(s_n + t_n \to \infty\) 15. ★ (Infinity arithmetic) Prove: if
+\(s_n \to \infty\) and \(t_n \to \infty\), then \(s_n t_n \to \infty\)
+16. ★ (Infinity arithmetic) Give examples where \(s_n, t_n \to \infty\)
+but \(s_n/t_n \to 0\), \(\to 2\), and \(\to \infty\) 17. ★ For every
+\(x \in \RR\), construct a sequence of irrationals \(y_n \to x\) 18.
+Prove: between any two reals lies an irrational (use density of
+rationals + \(\sqrt{2}\))
+
+\section{Monotone Convergence}\label{monotone-convergence}
+
+\textbf{Narrative} - Limit laws (2.2): new limits from old via field
+operations---but can't bootstrap from nothing! - Limit laws can't prove
+a sequence of rationals converges to an irrational - Example: in 2.2 we
+proved \((p_n/q_n)^2 \to 2\), then used \(\sqrt{\cdot}\) law---we never
+directly showed \(p_n/q_n \to \sqrt{2}\) - Now: MCT uses
+\emph{completeness} (not just field axioms) to guarantee convergence -
+The limit is the sup---completeness guarantees it exists! - The
+nonnegative series criterion: partial sums increasing, so MCT applies -
+First series examples: \(\sum 1/2^n\) converges (bounded), \(\sum 1/n\)
+diverges (unbounded) - Babylonian revisited: MCT makes the proof trivial
+(compare to Pell approach in 2.2) - The number \(e\): sandwich between
+increasing and decreasing sequences - Exponentials as limits: reconciles
+Chapter 1 sup definition with sequence limits
+
+\textbf{Definitions} - Increasing: \(a_n \leq a_{n+1}\) for all \(n\) -
+Strictly increasing: \(a_n < a_{n+1}\) for all \(n\) - Decreasing:
+\(a_n \geq a_{n+1}\) for all \(n\) - Monotone: increasing or decreasing
+- Infinite series: \(\sum_{n=1}^\infty a_n = \lim_{N \to \infty} S_N\)
+where \(S_N = \sum_{k=1}^N a_k\) - The number \(e\):
+\(e = \lim (1 + 1/n)^n\)
+
+\textbf{Results} - \textbf{Monotone Convergence Theorem}: monotone +
+bounded ⟹ convergent - Moreover: increasing bounded above ⟹ converges to
+sup; decreasing bounded below ⟹ converges to inf - \textbf{Nonnegative
+series criterion}: if \(a_n \geq 0\), then \(\sum a_n\) converges iff
+partial sums are bounded - \textbf{\((1+1/n)^n\) is increasing}
+(Bernoulli or AM-GM) - \textbf{\((1+1/n)^n\) is bounded above by 3}
+(binomial theorem) - \textbf{\((1+1/n)^{n+1}\) is decreasing} (exercise)
+- \textbf{Both sequences converge to the same limit \(e\)} -
+\textbf{Exponentials as limits}: if \(r_n \to x\) (rationals), then
+\(a^{r_n} \to a^x\)
+
+\textbf{Examples (worked)} - \(\sum 1/2^n\) converges: partial sums
+\(S_N = 2 - 1/2^N < 2\), bounded, apply MCT - \(\sum 1/n\) diverges:
+grouping argument shows partial sums unbounded - Babylonian sequence
+converges via MCT: - \(x_n \geq \sqrt{2}\) for \(n \geq 2\) (AM-GM) -
+\(x_n\) decreasing (since \(x_n^2 \geq 2\)) - MCT ⟹ converges; limit
+laws ⟹ limit is \(\sqrt{2}\) - Compare to Pell proof in 2.2: this is
+much simpler!
+
+\textbf{Remarks} - MCT uses completeness---fails in \(\QQ\) (the
+sequence \(1, 1.4, 1.41, \ldots\) approximating \(\sqrt{2}\)) -
+Historical: compound interest leads to \(e\) (Bernoulli,
+\textasciitilde1683) - Significance of \(e\) will become clear in
+Chapter 6 (natural exponential) - The nested interval characterization:
+\(\{e\} = \bigcap [(1+1/n)^n, (1+1/n)^{n+1}]\)
+
+\textbf{Exercises} 1. Prove MCT for the decreasing case 2. Prove
+\((1+1/n)^{n+1}\) is decreasing 3. Prove \((1+1/n)^n\) and
+\((1+1/n)^{n+1}\) have the same limit 4. Use the nested interval bounds
+to estimate \(e\) to two decimal places 5. Prove: if \(r_n \to 0\)
+(rationals), then \(a^{r_n} \to 1\) for any \(a > 0\) 6. Prove: if
+\(r_n, s_n \to x\) are both monotone rational sequences, then
+\(\lim a^{r_n} = \lim a^{s_n}\) 7. Recursive sequence: \(a_1 = 1\),
+\(a_{n+1} = \sqrt{2 + a_n}\). Prove bounded by 2, increasing, and find
+limit. 8. Prove: if \((a_n)\) is increasing and has a convergent
+subsequence, then \((a_n)\) converges 9. ★ Find the limit of
+\(a_1 = 2\), \(a_{n+1} = a_n/2 + 1/a_n\) (modify Babylonian for
+\(\sqrt{2}\)) 10. ★ Prove directly that \((1+1/n)^n < 3\) using
+\(k! \geq 2^{k-1}\)
+
+\section{Infinite Processes}\label{infinite-processes}
+
+\textbf{Narrative} - This section: techniques for COMPUTING infinite
+sums/products, and examples - Series are just recursive sequences:
+\(s_{n+1} = s_n + a_n\) - Distinguish terms \(a_n\) from partial sums
+\(S_n\)---crucial! - Telescoping: looks hard, secretly easy---everything
+cancels - Geometric series: the workhorse, closed form \(1/(1-r)\) -
+Infinite products: the multiplicative analog - Products reduce to series
+via log (mentioned---proof needs continuity from Ch 5) - Recursive
+sequences: the ``operation manual'' for finding limits - Golden ratio
+and Fibonacci: beautiful applications
+
+\textbf{Definitions} - Series: \(\sum a_n\) means \(\lim S_N\) where
+\(S_N = \sum_{k=1}^N a_k\) - Partial sums - Telescoping series:
+\(a_n = t_n - t_{n-1}\) - Geometric series: consecutive terms have
+common ratio \(r\) - Infinite product: \(\prod a_n = \lim P_N\) where
+\(P_N = \prod_{k=1}^N a_k\) - Telescoping product:
+\(a_n = t_n / t_{n-1}\)
+
+\textbf{Results} - Series addition:
+\(\sum(a_n + b_n) = \sum a_n + \sum b_n\) - Scalar multiple:
+\(\sum ca_n = c \sum a_n\) - Telescoping series:
+\(\sum_{k=1}^N (t_k - t_{k-1}) = t_N - t_0\) - Geometric partial sums:
+\(\sum_{k=0}^N r^k = (1 - r^{N+1})/(1-r)\) - \textbf{Geometric series
+theorem}: \(|r| < 1 \Rightarrow \sum r^n = 1/(1-r)\);
+\(|r| \geq 1 \Rightarrow\) diverges - \textbf{Alternating series test}:
+if \(a_n \searrow 0\) (monotone decreasing to 0), then
+\(\sum (-1)^n a_n\) converges - Proof: even partial sums increasing, odd
+decreasing, both bounded, MCT + recombination - \(\sum 1/n^2\) converges
+(bound by \(\sum 1/(n(n-1))\) which telescopes) - Fibonacci/Binet:
+\(F_n = (\phi^n - \psi^n)/\sqrt{5}\) - Fibonacci ratios:
+\(F_{n+1}/F_n \to \phi\)
+
+\textbf{Examples (worked)} - \(\sum 1/(n(n+1)) = 1\) (telescoping via
+partial fractions) - \(\sum 1/(n^2 + 3n)\) (telescoping with lag) -
+Archimedes' quadrature of parabola: area = \(4/3 \cdot T\) -
+\(\prod_{n=2}^\infty (1 - 1/n^2) = 1/2\) (telescoping product) -
+\(\sum (-1)^{n+1}/n\) converges (alternating series test---convergence
+shown in 2.2 via MCT) - \(\sqrt{1 + \sqrt{1 + \cdots}} = \phi\)
+(recursive sequence manual) - Briggs's method for computing
+\(\log_{10}(2)\)
+
+\textbf{Recursive Sequence Operation Manual} 1. Prove bounded (by
+induction) 2. Prove monotone (by induction) 3. Apply MCT → convergent 4.
+Use recursive definition + limit laws → equation for \(L\) 5. Solve
+equation → find \(L\)
+
+\textbf{Remarks} - Convergence depends only on tail---can ignore first
+finitely many terms - Products reduce to series:
+\(\log(\prod a_n) = \sum \log(a_n)\) (needs continuity) - Historical:
+Viète's product, Wallis product, Euler's product for \(\sin\),
+\(\zeta(s)\) as prime product - Geometric series gives first ``power
+series'' \(f(x) = 1/(1-x)\)
+
+\textbf{Exercises} 1. Prove \(\sum ca_n = c \sum a_n\) 2. Prove
+\(\sum 1/(4n^2 - 1)\) telescopes; find sum 3. Prove geometric partial
+sum formula by induction 4. Prove geometric series diverges for
+\(|r| \geq 1\) 5. Compute \(\sum n/2^n\) (differentiate geometric series
+or telescoping trick) 6. Compute \(\sum 1/(n^2 + 3n + 2)\) 7. Prove
+\(\sum 1/n^s\) converges for \(s \geq 2\) 8. Find limit: \(a_1 = 1\),
+\(a_{n+1} = (a_n + 3)/(a_n + 1)\) 9. Find limit:
+\(\sqrt{2}^{\sqrt{2}^{\sqrt{2}^{\cdots}}}\) 10. Find limit:
+\(1/(1 + 1/(1 + 1/(1 + \cdots)))\) (continued fraction for \(\phi\)) 11.
+Prove Binet's formula by induction 12. Prove \(F_{n+1}/F_n \to \phi\)
+using Binet 13. (Koch fractal) Prove perimeter diverges, area converges
+14. (Archimedes parabola) Set up geometric series for area 15. ★ Prove
+\(\prod a_n\) converges iff \(\sum (a_n - 1)\) converges (for
+\(a_n > 0\) near 1) 16. ★ Find \(\prod_{n=2}^\infty (n^2-1)/n^2\)
 
 \section{Representing Real Numbers}\label{representing-real-numbers}
+
+\textbf{Narrative Arc} - We proved every real is a limit of rationals
+(2.2)---but \emph{which} rationals? \emph{How} do we find them? - This
+section: systematic, algorithmic ways to represent any real as a limit -
+The naming problem: why infinite processes are \emph{necessary} -
+Decimals: familiar, algorithmic, almost unique - Continued fractions:
+less familiar, but in some ways more natural - Pell equations resolved:
+the \(\sqrt{2}\) story comes full circle
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{The Naming Problem}\label{the-naming-problem}
+
+\textbf{Opening Discussion} - Rationals have finite descriptions: pairs
+of integers \((p, q)\) - Integers have finite descriptions: strings of
+digits in base 10 - So rationals = finite strings of symbols → countable
+set - But reals are uncountable! - \textbf{Key insight}: finite strings
+from any finite alphabet are countable - Even countably many symbols
+with finite strings → still countable - \textbf{Conclusion}:
+representing reals \emph{requires} infinite processes---limits are not
+optional, they're \emph{necessary}
+
+\textbf{Density of Rationals} (recall from 2.2) - Between any two reals
+lies a rational - Every real is a limit of rationals - But this is
+non-constructive: ``some sequence exists'' doesn't tell us \emph{which
+one} - Goal: explicit algorithms that produce the approximating sequence
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Decimal Expansions}\label{decimal-expansions}
+
+\textbf{Integers in Base 10} (quick review) -
+\(n = d_k \cdot 10^k + d_{k-1} \cdot 10^{k-1} + \cdots + d_1 \cdot 10 + d_0\)
+- Digits \(d_i \in \{0, 1, \ldots, 9\}\) - Unique if we forbid leading
+zeros - Remark: base 10 is arbitrary; everything works for any base
+\(b \geq 2\) (exercises)
+
+\textbf{Finite Decimals} - Extend to negative powers:
+\(0.d_1 d_2 \cdots d_n = \sum_{k=1}^n d_k / 10^k\) - These are rationals
+with denominator \(10^n\) - Not all rationals! \(1/3\) has no finite
+decimal in base 10 - Which rationals have finite decimals? Those whose
+denominator (in lowest terms) divides some \(10^n\) - This depends on
+the base---annoying! (In base 3, \(1/3 = 0.1\) is finite)
+
+\textbf{Infinite Decimals: Definition} - An infinite decimal
+\(0.d_1 d_2 d_3 \ldots\) represents the infinite series
+\[\sum_{n=1}^\infty \frac{d_n}{10^n}\] - For integers:
+\(N.d_1 d_2 d_3 \ldots = N + 0.d_1 d_2 d_3 \ldots\)
+
+\textbf{Goal 1: Every Decimal Converges} - Partial sums
+\(S_N = \sum_{k=1}^N d_k / 10^k\) - \(S_N\) is increasing (all
+\(d_k \geq 0\)) -
+\(S_N \leq 9/10 + 9/100 + \cdots = 9 \cdot (1/10)/(1 - 1/10) = 1\) - MCT
+→ every decimal represents some real in \([0, 1]\)
+
+\textbf{Goal 2: Every Real Has a Decimal (Existence)} - Greedy algorithm
+for \(x \in [0, 1)\): - \(d_1 = \lfloor 10x \rfloor\) -
+\(d_n = \lfloor 10^n x \rfloor - 10 \lfloor 10^{n-1} x \rfloor\) -
+Equivalently: \(d_n = \lfloor 10 \cdot \{10^{n-1} x\} \rfloor\) where
+\(\{y\}\) = fractional part - \textbf{Theorem}: The decimal
+\(0.d_1 d_2 d_3 \ldots\) converges to \(x\) - Proof: Show
+\(S_n \leq x < S_n + 1/10^n\), then squeeze
+
+\textbf{Goal 3: Uniqueness} - \textbf{Theorem}: Decimal representations
+are \emph{almost} unique - The only ambiguity:
+\(0.d_1 \cdots d_k 999\ldots = 0.d_1 \cdots (d_k + 1) 000\ldots\) -
+Example: \(0.999\ldots = 1.000\ldots\) - Proof of \(0.999\ldots = 1\):
+geometric series \(\sum 9/10^n = (9/10)/(1 - 1/10) = 1\) -
+\textbf{Convention}: Avoid trailing 9s → unique representation
+
+\textbf{Characterizing Rationals} - \textbf{Theorem}: \(x \in \QQ\) if
+and only if decimal expansion eventually repeats - Proof (⟸): Repeating
+block is geometric series, hence rational - Proof (⟹): Long division of
+\(p/q\) cycles through at most \(q\) remainders - \textbf{Corollary}:
+\(x\) is irrational iff decimal never repeats
+
+\textbf{Remarks on Irrational Decimals} - Non-repeating decimals are
+``most'' reals (uncountably many!) - Examples: -
+\(\sqrt{2} = 1.41421356\ldots\) (algebraic, irrational) - Liouville's
+number
+\(L = \sum_{n=1}^\infty 10^{-n!} = 0.1100010000000000000000001\ldots\)
+(transcendental!) - Most reals are not just irrational but
+\emph{uncomputable}---no algorithm can produce their digits
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Continued Fractions}\label{continued-fractions}
+
+\textbf{Motivation: What Would Aliens Do?} - Decimals privilege powers
+of 10---arbitrary! - Is there a more ``natural'' representation? -
+Continued fractions: built from floor function and reciprocals---more
+intrinsic operations
+
+\textbf{Definition} - A continued fraction is:
+\[[a_0; a_1, a_2, a_3, \ldots] = a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{a_3 + \cdots}}}\]
+- Convention: \(a_0 \in \ZZ\), \(a_n \in \ZZ_{\geq 1}\) for \(n \geq 1\)
+- The \(a_n\) are called \emph{partial quotients}
+
+\textbf{Convergents} - The \(n\)th convergent is the rational
+\(p_n/q_n = [a_0; a_1, \ldots, a_n]\) - \textbf{Recurrence relations}: -
+\(p_{-1} = 1\), \(p_0 = a_0\), \(p_n = a_n p_{n-1} + p_{n-2}\) -
+\(q_{-1} = 0\), \(q_0 = 1\), \(q_n = a_n q_{n-1} + q_{n-2}\) - Proof:
+induction
+
+\textbf{Key Identity} - \textbf{Theorem}:
+\(p_n q_{n-1} - p_{n-1} q_n = (-1)^{n-1}\) - Proof: induction using
+recurrence - \textbf{Corollary}: \(\gcd(p_n, q_n) = 1\) (convergents are
+always in lowest terms) - \textbf{Corollary}:
+\(\displaystyle\frac{p_n}{q_n} - \frac{p_{n-1}}{q_{n-1}} = \frac{(-1)^{n-1}}{q_n q_{n-1}}\)
+
+\textbf{Convergence of Continued Fractions} - \textbf{Theorem}: Even
+convergents \(p_0/q_0, p_2/q_2, \ldots\) are increasing -
+\textbf{Theorem}: Odd convergents \(p_1/q_1, p_3/q_3, \ldots\) are
+decreasing - \textbf{Theorem}: Every even convergent \textless{} every
+odd convergent - Proof: Use the corollary above; track signs from
+\((-1)^{n-1}\) - \textbf{Theorem}: Every continued fraction converges -
+Proof: - Even convergents: increasing, bounded above by \(p_1/q_1\) →
+MCT → some \(L_+\) - Odd convergents: decreasing, bounded below by
+\(p_0/q_0\) → MCT → some \(L_-\) - Gap:
+\(|p_n/q_n - p_{n-1}/q_{n-1}| = 1/(q_n q_{n-1}) \to 0\) since
+\(q_n \to \infty\) - So \(L_+ = L_-\) - Even/odd recombination → whole
+sequence converges
+
+\textbf{Every Real Has a Continued Fraction (Existence)} - Greedy
+algorithm for \(x\): - \(a_0 = \lfloor x \rfloor\) - If
+\(x \notin \ZZ\): \(x_1 = 1/(x - a_0)\), \(a_1 = \lfloor x_1 \rfloor\) -
+Continue: \(x_{n+1} = 1/(x_n - a_n)\),
+\(a_{n+1} = \lfloor x_{n+1} \rfloor\) - Process terminates iff \(x\) is
+rational - \textbf{Theorem}: The convergents \(p_n/q_n \to x\)
+
+\textbf{Uniqueness} - \textbf{Theorem}: CF expansion is unique if we
+require: - \(a_n \geq 1\) for \(n \geq 1\) - For finite CFs, final term
+\(a_n > 1\) (otherwise
+\([a_0; \ldots, a_n] = [a_0; \ldots, a_{n-1} + 1]\))
+
+\textbf{Characterizing Rationals and Quadratics} - \textbf{Theorem}:
+\(x \in \QQ\) iff CF expansion is finite - \textbf{Theorem (Lagrange)}:
+\(x\) is a quadratic irrational iff CF expansion is eventually periodic
+- (Lagrange's theorem: guided exercise)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Best Approximation}\label{best-approximation}
+
+\textbf{Theorem}: Convergents give best rational approximations:
+\[\left| x - \frac{p_n}{q_n} \right| < \frac{1}{q_n q_{n+1}} < \frac{1}{q_n^2}\]
+
+\textbf{Theorem}: If \(|x - p/q| < |x - p_n/q_n|\) with \(q \leq q_n\),
+then \(p/q = p_k/q_k\) for some \(k < n\).
+
+In other words: among all rationals with denominator \(\leq q_n\), the
+convergent \(p_n/q_n\) is closest to \(x\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{The Pell Connection: \(\sqrt{2}\)
+Revisited}{The Pell Connection: \textbackslash sqrt\{2\} Revisited}}\label{the-pell-connection-sqrt2-revisited}
+
+\textbf{Example}:
+\(\sqrt{2} = [1; 2, 2, 2, \ldots] = [1; \overline{2}]\)
+
+\emph{Proof}: - \(a_0 = \lfloor \sqrt{2} \rfloor = 1\) -
+\(x_1 = 1/(\sqrt{2} - 1) = (\sqrt{2} + 1)/((\sqrt{2})^2 - 1) = \sqrt{2} + 1\)
+- \(a_1 = \lfloor \sqrt{2} + 1 \rfloor = 2\) -
+\(x_2 = 1/(\sqrt{2} + 1 - 2) = 1/(\sqrt{2} - 1) = \sqrt{2} + 1 = x_1\) -
+Pattern repeats!
+
+\textbf{Convergents}: \(1/1, 3/2, 7/5, 17/12, 41/29, 99/70, \ldots\)
+
+\textbf{Theorem}: These are exactly the solutions to
+\(p^2 - 2q^2 = \pm 1\) (Pell equation)!
+
+\emph{Proof}: The key identity
+\(p_n q_{n-1} - p_{n-1} q_n = (-1)^{n-1}\) combined with the recurrence
+gives: \[p_n^2 - 2q_n^2 = (-1)^n\]
+
+\textbf{The Full Circle}: - Chapter 1: Defined \(\sqrt{2}\) as
+\(\sup\{r \in \QQ : r^2 < 2\}\) - Section 2.2: Babylonian sequence
+converges; Pell equation gives \(p_n/q_n \to \sqrt{2}\) - Section 2.3:
+MCT gives another proof of Babylonian convergence - Section 2.5:
+Continued fractions reveal \emph{why} Pell works---convergents of
+\(\sqrt{2}\)!
+
+\textbf{Example}:
+\(\phi = (1 + \sqrt{5})/2 = [1; 1, 1, 1, \ldots] = [1; \overline{1}]\) -
+Convergents are \(F_{n+1}/F_n\) (Fibonacci ratios!) - This explains why
+\(F_{n+1}/F_n \to \phi\) (Section 2.4)
+
+\textbf{Example}: \(e = [2; 1, 2, 1, 1, 4, 1, 1, 6, 1, 1, 8, \ldots]\) -
+Pattern: \([2; \overline{1, 2k, 1}]\) for \(k = 1, 2, 3, \ldots\) -
+Proof requires integration theory---see Chapter 7 (Integration
+Applications)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Definitions} - Decimal expansion - Repeating/eventually
+repeating decimal - Continued fraction \([a_0; a_1, a_2, \ldots]\) -
+Partial quotients - Convergents \(p_n/q_n\)
+
+\textbf{Results} - Every decimal converges to a real (MCT) - Every real
+has a decimal expansion (greedy algorithm) - Decimal uniqueness (up to
+trailing 9s) - Rationals ↔ eventually repeating decimals - Every CF
+converges (MCT + even/odd recombination) - Every real has a CF expansion
+- CF uniqueness (with conventions) - Rationals ↔ finite CFs - Quadratic
+irrationals ↔ eventually periodic CFs (Lagrange) - Best approximation
+property - Convergents of \(\sqrt{N}\) solve \(p^2 - Nq^2 = \pm 1\)
+
+\textbf{Examples (worked)} - \(0.999\ldots = 1\) (geometric series) -
+\(1/7 = 0.\overline{142857}\) (long division) -
+\(\sqrt{2} = [1; \overline{2}]\) with convergents
+\(1, 3/2, 7/5, 17/12, \ldots\) - \(\phi = [1; \overline{1}]\) with
+Fibonacci convergents - Computing first few convergents via recurrence
+
+\textbf{Exercises} 1. Find decimal expansion of \(1/7\), \(1/11\),
+\(1/13\) 2. Find which rationals have finite decimal expansions in base
+10 3. Prove
+\(0.\overline{d_1 d_2 \cdots d_k} = (d_1 d_2 \cdots d_k) / (10^k - 1)\)
+4. Prove \((b-1)\) repeating equals \(1\) in base \(b\) (generalize
+\(0.999\ldots = 1\)) 5. Find CF expansion of \(\sqrt{3}\), \(\sqrt{5}\),
+\(\sqrt{7}\) 6. Compute first 5 convergents of \(\sqrt{3}\) using
+recurrence 7. Verify \(p_n^2 - 3q_n^2 = \pm 1\) for convergents of
+\(\sqrt{3}\) 8. Prove: if CF is \([a_0; \overline{a_1}]\) (period 1),
+then \(x = (a_0 + \sqrt{a_0^2 + 4a_1})/2\) or similar 9. (Guided:
+Lagrange warmup) If \(x = [a; \overline{b}]\), find \(x\) as a quadratic
+irrational 10. (Guided: Lagrange warmup) If \(x = [\overline{a, b}]\)
+(period 2), set up the equation \(x\) satisfies 11. Prove the recurrence
+relations for \(p_n, q_n\) by induction 12. Prove
+\(p_n q_{n-1} - p_{n-1} q_n = (-1)^{n-1}\) by induction 13. Prove
+convergents are always in lowest terms 14. Prove \(q_n \geq F_n\)
+(Fibonacci), so \(q_n \to \infty\) 15. ★ (Lagrange's theorem) Prove: if
+CF of \(x\) is eventually periodic, then \(x\) is a quadratic irrational
+16. ★ (Lagrange's theorem, converse) Prove: if \(x\) is a quadratic
+irrational, its CF is eventually periodic 17. ★ Prove the best
+approximation theorem 18. ★ (Base \(\phi\)) Investigate representations
+in base \(\phi = (1+\sqrt{5})/2\). What digits are needed? Is there a
+uniqueness convention? How does this relate to Zeckendorf's
+representation? 19. ★ Prove that ``most'' reals are uncomputable
+(countability argument)
 
 \chapter{Proving Convergence}\label{proving-convergence}
 
@@ -1871,7 +1101,7 @@ Theorem}\label{power-series-taylors-theorem}
 
 \section{The Fundamental Theorem}\label{the-fundamental-theorem}
 
-\section{Logarithms}\label{logarithms-2}
+\section{Logarithms}\label{logarithms}
 
 \section{Trigonometry}\label{trigonometry}
 

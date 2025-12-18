@@ -1,238 +1,58 @@
-# Completeness {#sec-foundations-completeness}
-
-[PROSE: Opening—recall from 1.3 the bisection algorithm zooming in on √2. We had nested intervals [1, 2] ⊃ [1.4, 1.5] ⊃ [1.41, 1.42] ⊃ ··· that should trap √2. In ℚ, the intersection is empty. We want to identify a property that guarantees a number exists there.]
-
-[PROSE: Look at the endpoints. Left endpoints {1, 1.4, 1.41, ...} form an increasing set—we want to say "maximum" but no maximum exists. Right endpoints {2, 1.5, 1.42, ...} form a decreasing set—we want to say "minimum" but no minimum exists. We need a way to name the "target" these endpoints approach, even when it's not achieved.]
-
-
-## Bounds
-
-:::{#def-foundations-bounds}
-## Bounds
-Let $S$ be a nonempty subset of an ordered field.
-
-- $M$ is an *upper bound* for $S$ if $x \leq M$ for all $x \in S$
-- $S$ is *bounded above* if an upper bound exists
-- $m$ is a *lower bound* for $S$ if $m \leq x$ for all $x \in S$
-- $S$ is *bounded below* if a lower bound exists
-- $S$ is *bounded* if it is both bounded above and below
-:::
-
-[PROSE: Examples. The interval (0, 1) is bounded above by 1, also by 2, by 47, etc. Many upper bounds exist. The natural numbers ℕ have lower bounds (0, −5, etc.) but no upper bound.]
-
-
-## Supremum and Infimum
-
-[PROSE: Among all upper bounds, we want the *best* one—the smallest. This may or may not be in the set.]
-
-:::{#def-foundations-supremum}
-## Supremum
-Let $S$ be a nonempty set that is bounded above. The *supremum* of $S$, written $\sup S$, is the *least upper bound*: a number $\sigma$ such that
-
-1. $\sigma$ is an upper bound for $S$
-2. If $M$ is any upper bound for $S$, then $\sigma \leq M$
-:::
-
-:::{#def-foundations-infimum}
-## Infimum
-Let $S$ be a nonempty set that is bounded below. The *infimum* of $S$, written $\inf S$, is the *greatest lower bound*: a number $\lambda$ such that
-
-1. $\lambda$ is a lower bound for $S$
-2. If $m$ is any lower bound for $S$, then $m \leq \lambda$
-:::
-
-:::{#exm-foundations-sup-not-in-set}
-## Supremum Not in the Set
-Let $S = \{1 - 1/n : n \in \NN\} = \{0, 1/2, 2/3, 3/4, \ldots\}$. The upper bounds for $S$ are all numbers $\geq 1$. The least of these is $1$, so $\sup S = 1$. But $1 \notin S$—the supremum need not belong to the set.
-:::
-
-:::{#exm-foundations-sup-in-set}
-## Supremum in the Set
-Let $S = [0, 1] = \{x : 0 \leq x \leq 1\}$. Then $\sup S = 1$ and $1 \in S$. When the supremum is in the set, it is also the maximum.
-:::
-
-:::{#exm-foundations-open-interval-sup}
-## Open Interval
-Let $S = (0, 1)$. Then $\sup S = 1$ and $\inf S = 0$, but neither belongs to $S$.
-:::
-
-:::{#exm-foundations-no-sup-in-Q}
-## No Supremum in ℚ
-Let $S = \{x \in \QQ : x > 0,\, x^2 < 2\}$. This set is bounded above in $\QQ$—for instance, $2$ is an upper bound. But $S$ has no supremum in $\QQ$: any rational upper bound $M$ satisfies $M^2 \geq 2$, and if $M^2 > 2$ we can find a smaller upper bound. The least upper bound would satisfy $M^2 = 2$, which has no rational solution.
-:::
-
-[PROSE: This example shows precisely how "holes" in ℚ manifest: as bounded sets without suprema.]
-
-:::{#prp-foundations-supremum-unique}
-## Uniqueness
-If $\sup S$ exists, it is unique. Similarly for $\inf S$.
-:::
-:::{.proof}
-:::
-
-[INLINE EXERCISE: Prove uniqueness of the supremum. Hint: if $\sigma$ and $\sigma'$ are both least upper bounds, show $\sigma \leq \sigma'$ and $\sigma' \leq \sigma$.]
-
-
-## Completeness
-
-[PROSE: The example of S = {x ∈ ℚ : x² < 2} shows that not every ordered field has suprema. We give a name to those that do.]
-
-:::{#def-foundations-complete-ordered-field}
-## Complete Ordered Field
-An ordered field is *complete* if every nonempty subset that is bounded above has a supremum.
-:::
-
-:::{#thm-foundations-Q-not-complete}
-## ℚ is Not Complete
-The rational numbers are not a complete ordered field.
-:::
-:::{.proof}
-:::
-
-[PROSE: Proof: the set S = {x ∈ ℚ : x > 0, x² < 2} is bounded above but has no supremum in ℚ, as shown above.]
-
-:::{#prp-foundations-infimum-exists}
-## Existence of Infima
-In a complete ordered field, every nonempty set that is bounded below has an infimum.
-:::
-
-[PROSE: Proof is a nice exercise using $\sup(-S) = -\inf(S)$. State result here, defer proof to exercises.]
-
-[INLINE EXERCISE: Prove @prp-foundations-infimum-exists. Hint: Consider the set $-S = \{-x : x \in S\}$.]
-
-
-## The ε-Characterization
-
-[PROSE: How do we actually use suprema in proofs? The key technique: "get within ε of the sup."]
-
-:::{#prp-foundations-epsilon-sup}
-## ε-Characterization of Supremum
-Let $S$ be nonempty and bounded above. Then $\sigma = \sup S$ if and only if:
-
-1. $\sigma$ is an upper bound for $S$
-2. For every $\varepsilon > 0$, there exists $x \in S$ with $x > \sigma - \varepsilon$
-:::
-:::{.proof}
-:::
-
-[PROSE: Interpretation: condition 2 says "nothing smaller than σ is an upper bound"—for any ε, we can find an element of S within ε of σ. This is the workhorse for supremum arguments.]
-
-:::{#prp-foundations-epsilon-inf}
-## ε-Characterization of Infimum
-Let $S$ be nonempty and bounded below. Then $\lambda = \inf S$ if and only if:
-
-1. $\lambda$ is a lower bound for $S$
-2. For every $\varepsilon > 0$, there exists $x \in S$ with $x < \lambda + \varepsilon$
-:::
-
-[PROSE: State without repeating the proof—symmetric argument.]
-
-
-## Working with Suprema and Infima
-
-[PROSE: Students need to see how to apply these definitions. We work through examples carefully.]
-
-:::{#exm-foundations-sup-translation}
-## Translation
-Let $A$ be a bounded set and $c \in \FF$. Define $A + c = \{a + c : a \in A\}$. Then
-$$\sup(A + c) = \sup A + c$$
-:::
-
-[PROSE: Proof has two parts: (1) show $\sup A + c$ is an upper bound for $A + c$, (2) show it's the least. Work through both steps explicitly—this is a model for how sup arguments go.]
-
-:::{#exm-foundations-sup-scaling}
-## Scaling by a Positive Constant
-Let $A$ be a bounded set and $c > 0$. Define $cA = \{ca : a \in A\}$. Then
-$$\sup(cA) = c \cdot \sup A$$
-:::
-
-[PROSE: Similar two-part structure. Emphasize: this fails for $c < 0$ (sup and inf swap).]
-
-:::{#prp-foundations-sup-subset}
-## Subsets Have Smaller Suprema
-If $A \subseteq B$ and both are nonempty and bounded above, then $\sup A \leq \sup B$.
-:::
-:::{.proof}
-:::
-
-[PROSE: Key insight: $\sup B$ is an upper bound for $B$, hence for $A$, hence $\geq \sup A$.]
-
-[INLINE EXERCISE: State and prove the analogous result for infima.]
-
-:::{#prp-foundations-sup-union}
-## Supremum of a Union
-If $A$ and $B$ are nonempty and bounded above, then
-$$\sup(A \cup B) = \max\{\sup A, \sup B\}$$
-:::
-:::{.proof}
-:::
-
-
-## The Nested Interval Property
-
-[PROSE: Now we prove that completeness delivers what we wanted: in a complete ordered field, nested intervals have nonempty intersection.]
-
-:::{#def-foundations-nested-intervals}
-## Nested Intervals
-A sequence of intervals $I_1, I_2, I_3, \ldots$ is *nested* if $I_{n+1} \subseteq I_n$ for all $n$.
-:::
-
-:::{#thm-foundations-nested-intervals}
-## Nested Interval Property
-Let $\FF$ be a complete ordered field, and let $[a_1, b_1] \supseteq [a_2, b_2] \supseteq [a_3, b_3] \supseteq \cdots$ be a nested sequence of closed intervals in $\FF$. Then
-$$\bigcap_{n=1}^{\infty} [a_n, b_n] \neq \varnothing$$
-:::
-:::{.proof}
-:::
-
-[PROSE: Proof outline: Let $A = \{a_1, a_2, a_3, \ldots\}$. This is nonempty and bounded above by any $b_n$ (since intervals are nested). By completeness, $\alpha = \sup A$ exists. Show $\alpha \in [a_n, b_n]$ for all $n$: we have $a_n \leq \alpha$ (since $\alpha$ is an upper bound for $A$) and $\alpha \leq b_n$ (since $b_n$ is an upper bound for $A$, so the least upper bound satisfies $\alpha \leq b_n$).]
-
-:::{#rem-foundations-nested-single-point}
-## When the Intersection is a Single Point
-If additionally $\sup\{a_n\} = \inf\{b_n\}$—for instance, if the interval lengths $b_n - a_n$ shrink to zero—then the intersection contains exactly one point.
-:::
-
-
-[PROSE: Closing paragraph—the nested interval property is exactly what ancient mathematicians assumed when approximating π or √2. Completeness makes it a theorem. In the next section, we take the bold step of *assuming* completeness as an axiom, defining the real numbers as a complete ordered field, and exploring what this buys us.]
-
-
-## Exercises
-
-1. Prove the infimum of a set is unique when it exists.
-
-2. Prove the ε-characterization of infimum: a lower bound $\lambda$ for a set $S$ is the infimum if and only if for every $\varepsilon > 0$ there exists $x \in S$ with $x < \lambda + \varepsilon$.
-
-3. Let $A, B$ be nonempty bounded subsets of a complete field with $A \subseteq B$. Prove that $\sup A \leq \sup B$.
-
-4. Let $c > 0$ and $A$ be a bounded set. Prove $\sup(cA) = c \cdot \sup A$.
-
-5. Let $A, B$ be nonempty bounded sets. Prove:
-   - $\sup(A \cup B) = \max\{\sup A, \sup B\}$
-   - $\inf(A \cup B) = \min\{\inf A, \inf B\}$
-
-6. For each set, find the supremum and infimum, or explain why they don't exist:
-   - $[1, 3]$
-   - $[1, 3)$
-   - $\{x \in \QQ : x^2 < 1\}$
-   - $\{x \in \QQ : x^3 < 1\}$
-   - $\{1 + 1/n : n \in \NN\}$
-   - $\{1 + (-1)^n/n : n \in \NN\}$
-
-7. For each set, find the supremum and infimum, or explain why they don't exist:
-   - $\{(-1)^n/n : n \in \NN\}$
-   - Fix $\beta \in (0,1)$ and let $B = \{\beta^n : n \in \NN\}$
-   - Fix $\gamma > 1$ and let $C = \{\gamma^n : n \in \NN\}$
-
-8. Let $A, B$ be nonempty with $\sup A < \sup B$. Prove there exists $b \in B$ which is an upper bound for $A$. Give an example showing this can fail if we only assume $\sup A \leq \sup B$.
-
-9. Let $A, B$ be open intervals with $\sup A = \inf B$. True or false: it is possible to add a single point to $A \cup B$ so the result is an interval. Explain your reasoning.
-
-10. Show that the nested interval theorem fails for open intervals: find a sequence of nested open intervals whose intersection is empty.
-
-11. **(★)** Let $[a_n, b_n]$ be nested closed intervals and assume $\sup\{a_n\} = \inf\{b_n\}$. Prove $\bigcap_n [a_n, b_n]$ contains exactly one point.
-
-12. **(★ Equivalents to Completeness)** Prove the following are equivalent:
-    - (1) Every nonempty set bounded above has a supremum
-    - (2) Every nonempty set bounded below has an infimum
-    
-    *Hint: For a set $S$, consider $-S = \{-s : s \in S\}$ and show $\sup(-S) = -\inf(S)$.*
+## Completeness {#sec-foundations-completeness}
+
+**Narrative**
+- Recall bisection for $\sqrt{2}$: nested intervals $[1,2] \supset [1.4, 1.5] \supset [1.41, 1.42] \supset \cdots$
+- In $\QQ$, intersection is empty—the target doesn't exist
+- Left endpoints increase, right endpoints decrease—want "max" and "min" but they don't exist
+- Need a way to name the target these endpoints approach
+- Supremum: the least upper bound—may or may not be in the set
+- Key example: $\{x \in \QQ : x^2 < 2\}$ has no supremum in $\QQ$—this is how holes manifest
+- Completeness axiom: every nonempty set bounded above has a supremum
+- $\varepsilon$-characterization: the workhorse for supremum arguments—"get within $\varepsilon$ of the sup"
+- Working with sup: translation, scaling, subsets, unions
+- Nested Interval Property: completeness delivers what we wanted—nested closed intervals have nonempty intersection
+- This is what ancient mathematicians assumed when approximating $\pi$ or $\sqrt{2}$
+- Next section: assume completeness as an axiom, define $\RR$, explore what this buys us
+
+**Definitions**
+- Bounds: upper bound, lower bound, bounded above/below/bounded
+- Supremum: least upper bound
+- Infimum: greatest lower bound
+- Complete ordered field: every nonempty set bounded above has a supremum
+- Nested intervals: $I_{n+1} \subseteq I_n$ for all $n$
+
+**Results**
+- Uniqueness of sup and inf
+- $\QQ$ is not complete
+- In a complete field, infima also exist
+- $\varepsilon$-characterization of sup: can get within $\varepsilon$ of sup
+- $\varepsilon$-characterization of inf
+- $\sup(A + c) = \sup A + c$
+- $\sup(cA) = c \cdot \sup A$ for $c > 0$
+- $A \subseteq B \Rightarrow \sup A \leq \sup B$
+- $\sup(A \cup B) = \max\{\sup A, \sup B\}$
+- Nested Interval Property: $\bigcap [a_n, b_n] \neq \varnothing$ in complete fields
+
+**Examples**
+- $\sup\{1 - 1/n\} = 1 \notin S$
+- $\sup[0,1] = 1 \in S$
+- $(0,1)$: sup and inf not in set
+- $\{x \in \QQ : x^2 < 2\}$ has no sup in $\QQ$
+
+**Remarks**
+- Lengths $\to 0$ implies intersection is single point
+- Nested intervals fails in $\QQ$
+
+**Exercises**
+1. Uniqueness of inf
+2. $\varepsilon$-characterization of inf
+3. $A \subseteq B \Rightarrow \sup A \leq \sup B$
+4. $\sup(cA) = c \cdot \sup A$
+5. Sup/inf of unions
+6. Find sup/inf: $[1,3]$, $[1,3)$, $\{x \in \QQ : x^2 < 1\}$, etc.
+7. Find sup/inf: $\{(-1)^n/n\}$, $\{\beta^n\}$, $\{\gamma^n\}$
+8. $\sup A < \sup B \Rightarrow$ some $b \in B$ is upper bound for $A$
+9. Open intervals with $\sup A = \inf B$: can one point make an interval?
+10. Nested open intervals with empty intersection
+11. ★ Lengths $\to 0$ implies single point
+12. ★ Sup-completeness $\Leftrightarrow$ inf-completeness

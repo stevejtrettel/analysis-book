@@ -1,0 +1,58 @@
+% ============================================
+% SPACING CONFIGURATION
+% ============================================
+
+% --------------------------------------------
+% Paragraph Style
+% --------------------------------------------
+\KOMAoptions{parskip=never}
+\setlength{\parindent}{1.5em}
+
+% --------------------------------------------
+% Section Headings
+% Format: beforeskip = space above title
+%         afterskip  = space below title
+% --------------------------------------------
+\RedeclareSectionCommand[
+  beforeskip=0.75\baselineskip,
+  afterskip=0.1\baselineskip
+]{section}
+
+\RedeclareSectionCommand[
+  beforeskip=0.5\baselineskip,
+  afterskip=0.05\baselineskip
+]{subsection}
+
+\RedeclareSectionCommand[
+  beforeskip=0.4\baselineskip,
+  afterskip=0.05\baselineskip
+]{subsubsection}
+
+% --------------------------------------------
+% Theorem Environments
+% Negative vspace compensates for amsthm's 
+% built-in spacing around theorem blocks
+% --------------------------------------------
+\newcommand{\thmbeforeskip}{-0.5\baselineskip}
+\newcommand{\thmafterskip}{-0.4\baselineskip}
+
+\BeforeBeginEnvironment{theorem}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{theorem}{\vspace{\thmafterskip}}
+
+\BeforeBeginEnvironment{definition}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{definition}{\vspace{\thmafterskip}}
+
+\BeforeBeginEnvironment{proposition}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{proposition}{\vspace{\thmafterskip}}
+
+\BeforeBeginEnvironment{example}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{example}{\vspace{\thmafterskip}}
+
+\BeforeBeginEnvironment{corollary}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{corollary}{\vspace{\thmafterskip}}
+
+\BeforeBeginEnvironment{remark}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{remark}{\vspace{\thmafterskip}}
+
+\BeforeBeginEnvironment{proof}{\vspace{\thmbeforeskip}}
+\AfterEndEnvironment{proof}{\vspace{\thmafterskip}}

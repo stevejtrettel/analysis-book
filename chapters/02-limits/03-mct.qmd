@@ -1,1 +1,89 @@
-## Infinite Sums and Products
+## Monotone Convergence
+
+
+**Narrative**
+- Limit laws (2.2): new limits from old via field operations—but can't bootstrap from nothing!
+- Limit laws can't prove a sequence of rationals converges to an irrational
+- Example: in 2.2 we proved $(p_n/q_n)^2 \to 2$, then used $\sqrt{\cdot}$ law—we never directly showed $p_n/q_n \to \sqrt{2}$
+- Now: MCT uses *completeness* (not just field axioms) to guarantee convergence
+- The limit is the sup—completeness guarantees it exists!
+- The nonnegative series criterion: partial sums increasing, so MCT applies
+- First series examples: $\sum 1/2^n$ converges (bounded), $\sum 1/n$ diverges (unbounded)
+- Babylonian revisited: MCT makes the proof trivial (compare to Pell approach in 2.2)
+- The number $e$: sandwich between increasing and decreasing sequences
+- **Archimedes revisited**: MCT shows both sequences converge—but to the same limit?
+
+**Definitions**
+- Increasing: $a_n \leq a_{n+1}$ for all $n$
+- Strictly increasing: $a_n < a_{n+1}$ for all $n$
+- Decreasing: $a_n \geq a_{n+1}$ for all $n$
+- Monotone: increasing or decreasing
+- Infinite series: $\sum_{n=1}^\infty a_n = \lim_{N \to \infty} S_N$ where $S_N = \sum_{k=1}^N a_k$
+- The number $e$: $e = \lim (1 + 1/n)^n$
+- Arithmetic mean: $A(a,b) = (a+b)/2$
+- Geometric mean: $G(a,b) = \sqrt{ab}$
+- Harmonic mean: $H(a,b) = 2ab/(a+b)$
+
+**Results**
+- **Monotone Convergence Theorem**: monotone + bounded ⟹ convergent
+  - Moreover: increasing bounded above ⟹ converges to sup; decreasing bounded below ⟹ converges to inf
+- **Nonnegative series criterion**: if $a_n \geq 0$, then $\sum a_n$ converges iff partial sums are bounded
+- **$(1+1/n)^n$ is increasing** (Bernoulli or AM-GM)
+- **$(1+1/n)^n$ is bounded above by 3** (binomial theorem)
+- **$(1+1/n)^{n+1}$ is decreasing** (exercise)
+- **Both sequences converge to the same limit $e$**
+- **Exponentials as limits**: if $r_n \to x$ (rationals), then $a^{r_n} \to a^x$
+- **AM-GM-HM inequality**: $H(a,b) \leq G(a,b) \leq A(a,b)$ with equality iff $a = b$
+- **Means lie between**: if $a < b$, then $a < H(a,b) < G(a,b) < A(a,b) < b$
+
+**Archimedes Sequences: Convergence via MCT**
+- Recall: $b_{2n} = H(a_n, b_n)$, $a_{2n} = G(a_n, b_{2n})$
+- **Theorem**: $(a_n)$ is increasing along the doubling subsequence
+  - Proof: $a_{2n} = \sqrt{a_n \cdot b_{2n}} > \sqrt{a_n \cdot a_n} = a_n$ since $b_{2n} > a_n$
+- **Theorem**: $(b_n)$ is decreasing along the doubling subsequence
+  - Proof: $b_{2n} = H(a_n, b_n) < b_n$ since harmonic mean $<$ larger input
+- **Theorem**: $a_n < b_n$ for all $n$ (by induction, using means lie between)
+- **Corollary**: Both sequences converge by MCT
+  - $(a_n)$ increasing, bounded above by $b_6$ → converges to some $L_a$
+  - $(b_n)$ decreasing, bounded below by $a_6$ → converges to some $L_b$
+- **Area fact**: $B_n = b_n$ exactly (circumscribed area = circumscribed half-perimeter for unit circle)
+- **Looking ahead**: We have $L_a \leq L_b$. Are they equal? Yes! We prove this in Section 2.4 using a clever ratio technique.
+
+**Examples (worked)**
+- $\sum 1/2^n$ converges: partial sums $S_N = 2 - 1/2^N < 2$, bounded, apply MCT
+- $\sum 1/n$ diverges: grouping argument shows partial sums unbounded
+- Babylonian sequence converges via MCT:
+  - $x_n \geq \sqrt{2}$ for $n \geq 2$ (AM-GM)
+  - $x_n$ decreasing (since $x_n^2 \geq 2$)
+  - MCT ⟹ converges; limit laws ⟹ limit is $\sqrt{2}$
+  - Compare to Pell proof in 2.2: this is much simpler!
+
+**Remarks**
+- MCT uses completeness—fails in $\QQ$ (the sequence $1, 1.4, 1.41, \ldots$ approximating $\sqrt{2}$)
+- Historical: compound interest leads to $e$ (Bernoulli, ~1683)
+- Significance of $e$ will become clear in Chapter 6 (natural exponential)
+- The nested interval characterization: $\{e\} = \bigcap [(1+1/n)^n, (1+1/n)^{n+1}]$
+
+**Exercises**
+1. Prove MCT for the decreasing case
+2. Prove $(1+1/n)^{n+1}$ is decreasing
+3. Prove $(1+1/n)^n$ and $(1+1/n)^{n+1}$ have the same limit
+4. Use the nested interval bounds to estimate $e$ to two decimal places
+5. Prove: if $r_n \to 0$ (rationals), then $a^{r_n} \to 1$ for any $a > 0$
+6. Prove: if $r_n, s_n \to x$ are both monotone rational sequences, then $\lim a^{r_n} = \lim a^{s_n}$
+7. Recursive sequence: $a_1 = 1$, $a_{n+1} = \sqrt{2 + a_n}$. Prove bounded by 2, increasing, and find limit.
+8. Prove: if $(a_n)$ is increasing and has a convergent subsequence, then $(a_n)$ converges
+9. ★ Find the limit of $a_1 = 2$, $a_{n+1} = a_n/2 + 1/a_n$ (modify Babylonian for $\sqrt{2}$)
+10. ★ Prove directly that $(1+1/n)^n < 3$ using $k! \geq 2^{k-1}$
+
+**AM-GM-HM Exercises**
+11. Prove the AM-GM inequality: $\sqrt{ab} \leq (a+b)/2$ for $a, b > 0$
+12. Prove the GM-HM inequality: $H(a,b) \leq G(a,b)$
+13. Prove: if $a < b$, then $a < H(a,b) < G(a,b) < A(a,b) < b$
+14. Prove: $H(a,b) = 1/A(1/a, 1/b)$ (harmonic mean is reciprocal of arithmetic mean of reciprocals)
+
+**Archimedes Exercises**
+15. Prove from the recurrence that $a_n < b_{2n} < b_n$ for all $n \geq 6$
+16. Prove from the recurrence that $a_n < a_{2n} < b_{2n}$ for all $n \geq 6$
+17. Verify the area fact: show that a circumscribed regular $n$-gon around a unit circle has area $B_n = b_n$
+18. ★ Show that the inscribed area satisfies $A_n = a_n \cos(\pi/n)$. What does this approach as $n \to \infty$?

@@ -1,1 +1,78 @@
 ## Convergence
+
+
+**Narrative**
+- Sequences formalize "infinite processes"—what the Babylonians and Archimedes were really doing
+- Sequences are functions $\NN \to \RR$ (or more generally $I \to \RR$ for infinite $I \subset \ZZ$), but we think of them as ordered lists
+- Two ways to specify: closed formula vs recursive definition
+- The $\varepsilon$-$N$ definition: "eventually stay arbitrarily close"
+- Unpack as a game/challenge: adversary picks tolerance $\varepsilon$, you must produce threshold $N$
+- Work examples from scratch—this is where students learn the craft of analysis
+- Uniqueness: limits are unique (triangle inequality / $\varepsilon/2$ argument)
+- Convergence depends only on the tail—first finitely many terms are irrelevant
+- Boundedness: convergent $\Rightarrow$ bounded, but converse is false
+- **Archimedes' sequences**: introduce inscribed/circumscribed polygon half-perimeters as a running example—a story that will unfold through Chapters 2 and 3
+
+**Definitions**
+- Sequence (function $\NN \to \RR$, or $I \to \RR$ for infinite index set $I \subset \ZZ$)
+- Convergence: $\forall \varepsilon > 0\, \exists N\, \forall n > N\, |a_n - L| < \varepsilon$
+- Limit notation: $a_n \to L$, $\lim_{n \to \infty} a_n = L$
+- Convergent / divergent
+- Bounded sequence: $\exists M > 0$ with $|a_n| \leq M$ for all $n$
+- Tail of a sequence
+- Subsequence: $(a_{n_k})$ where $n_1 < n_2 < n_3 < \cdots$
+- Diverges to $\infty$: $\forall M > 0\, \exists N\, \forall n > N\, a_n > M$
+- Diverges to $-\infty$: similarly
+
+**Results**
+- Uniqueness of limits
+- Convergent sequences are bounded
+- Convergence depends only on the tail (shifted sequences have the same limit)
+
+**Examples (worked from definition)**
+- $1/n \to 0$ (the fundamental example)
+- Constant sequence $c \to c$
+- $n/(n+1) \to 1$
+- $a^n \to 0$ for $|a| < 1$ (uses Bernoulli)
+- $a^{1/n} \to 1$ for $a > 0$ (uses Bernoulli)
+- $(-1)^n$ diverges (no limit exists)
+- $n^2$ diverges to $\infty$
+
+**Archimedes' Sequences (Running Example)**
+- For a circle of radius 1, define:
+  - $a_n$ = half-perimeter of inscribed regular $n$-gon
+  - $b_n$ = half-perimeter of circumscribed regular $n$-gon
+- Starting values (hexagon): $a_6 = 3$, $b_6 = 2\sqrt{3} \approx 3.464$
+- Geometric fact: $a_n < (\text{half-circumference}) < b_n$
+- So $3 < \pi < 3.465$ already from the hexagon!
+- The **doubling recurrence** (stated, derived in exercises or via trig):
+  - $b_{2n} = H(a_n, b_n) = \frac{2a_n b_n}{a_n + b_n}$ (harmonic mean)
+  - $a_{2n} = G(a_n, b_{2n}) = \sqrt{a_n \cdot b_{2n}}$ (geometric mean)
+- This gives a subsequence $a_6, a_{12}, a_{24}, \ldots$ and $b_6, b_{12}, b_{24}, \ldots$
+- Questions: Do these converge? To the same limit? (Answers in 2.3 and 3.4)
+
+**Exercises**
+1. Prove directly: $(n^2 + 1)/(n^2 + n) \to 1$
+2. Prove directly: $(2n - 2)/(5n + 1) \to 2/5$
+3. Prove: if $a_n \to L$ and $a_n \geq 0$ for all $n$, then $L \geq 0$
+4. Prove: if $a_n \to L$, then $|a_n| \to |L|$
+5. Find the flaw: "Let $L = 1 + 1 + 1 + \cdots$. Then $L = 1 + L$, so $0 = 1$."
+6. Prove: $(-1)^n$ diverges (carefully negate the definition)
+7. Prove: $a^n$ diverges to $\infty$ for $a > 1$
+8. Give examples or explain impossibility:
+   - Infinitely many terms equal zero, but doesn't converge to zero
+   - Infinitely many terms equal zero, converges to nonzero
+   - Sequence of irrationals converging to a rational
+   - Convergent sequence where every term is an integer
+9. Give examples: two divergent sequences whose sum converges; whose product converges
+10. ★ Prove: $n^{1/n} \to 1$
+11. ★ Interleaved sequences: if $a_n \to L$ and $b_n \to L$, then $a_1, b_1, a_2, b_2, \ldots \to L$
+12. ★ If $a_n \to 0$ and $|b_n - L| < a_n$ for all $n$, prove $b_n \to L$
+
+**Archimedes Exercises**
+13. Verify $a_6 = 3$ by computing the perimeter of a regular hexagon inscribed in a unit circle.
+14. Verify $b_6 = 2\sqrt{3}$ by computing the perimeter of a regular hexagon circumscribed about a unit circle.
+15. Using the doubling recurrence, compute $a_{12}, b_{12}, a_{24}, b_{24}$ (leave in exact form with square roots).
+16. Make a table of numerical values for $a_n, b_n, b_n - a_n$ for $n = 6, 12, 24, 48, 96$. What bounds does this give for $\pi$?
+17. (Guided) Derive the recurrence $b_{2n} = H(a_n, b_n)$ using the half-angle identity $\tan(\theta/2) = \frac{\sin\theta}{1 + \cos\theta}$ and the formulas $a_n = n\sin(\pi/n)$, $b_n = n\tan(\pi/n)$.
+18. (Guided) Derive the recurrence $a_{2n} = G(a_n, b_{2n})$ using appropriate trig identities.
