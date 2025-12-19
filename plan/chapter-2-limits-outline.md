@@ -2,247 +2,389 @@
 
 ## Overview
 
-This chapter introduces the central concept of analysis: the limit of a sequence. We develop the definition, learn to compute limits algebraically, and discover that completeness guarantees convergence for monotone bounded sequences. These tools unlock infinite processes—series, products, recursions—and show that every real number is a limit of rationals.
+Chapter 1 ended with a revelation: ℝ is uncountable. There are vastly more real numbers than we can name with finite descriptions. The rationals, the algebraics, even the computable numbers — all are countable dust in an uncountable ocean.
+
+How do we access the rest? **Sequences are our tools.** A sequence of rationals can converge to an irrational. A sequence of known values can pin down an unknown. Every real number — even the unnameable ones — is the limit of a sequence of rationals.
+
+This chapter develops the theory of sequences as tools for exploring ℝ.
 
 **The arc:**
-> Definition → Compute limits → Completeness guarantees existence → Infinite processes → Every real is a limit
+> Sequences as tools → What is convergence? → Limit laws from ordered field axioms → MCT from completeness → Every real can be reached
 
 ---
 
 ## Historical Prelude (Unnumbered)
 
-### The Problem
+### The Second Crisis
 
-What does it mean for an infinite process to "equal" something? We write 1/2 + 1/4 + 1/8 + ··· = 1, but we can never finish adding. Zeno's paradoxes (5th century BCE) challenged whether infinite processes make sense at all: to walk across a room, you must first go halfway, then half of what remains, then half again—infinitely many steps. How do you ever arrive?
+The irrationality of √2 was the first crisis. The second came two millennia later: what *is* a limit?
 
-### The Development
+Newton's fluxions and Leibniz's infinitesimals built calculus on intuition about quantities "approaching" values or being "infinitely small." The results were spectacular. The foundations were incoherent.
 
-**Informal Limits (Newton, Leibniz, Euler)**
+Berkeley's famous criticism (1734): infinitesimals are "ghosts of departed quantities." Are they zero or not? If zero, you can't divide by them. If nonzero, you can't discard them. The calculus worked, but nobody could say why.
 
-For centuries, mathematicians used limits intuitively. Euler happily wrote 1 − 1 + 1 − 1 + ··· = 1/2 by setting x = −1 in 1/(1−x) = 1 + x + x² + ···. Sometimes these manipulations gave correct answers, sometimes nonsense.
+### The Resolution
 
-**Cauchy's Definition (1821)**
+Cauchy and Weierstrass (19th century) replaced vague intuition with precise quantification. A sequence "approaches" L doesn't mean the terms get mystically closer — it means: *for any tolerance you demand, eventually all terms fall within that tolerance*.
 
-Cauchy gave the first clear definition: a sequence (aₙ) converges to L if the terms eventually stay arbitrarily close to L. "Let the difference aₙ − L be a quantity which decreases indefinitely as n increases."
-
-**Weierstrass's Precision (1860s)**
-
-Weierstrass made Cauchy's "arbitrarily close" precise with ε and N: for every ε > 0, there exists N such that n > N implies |aₙ − L| < ε. No more vague "decreases indefinitely"—just quantifiers and inequalities.
+The ε-N definition transforms philosophy into calculation.
 
 ### The Message
 
-The ε-N definition looks pedantic but is essential. It tells us exactly what we must verify, enables rigorous proofs, and distinguishes convergent from divergent sequences. Zeno's paradox dissolves: the infinite sum 1/2 + 1/4 + 1/8 + ··· really does equal 1, in a precise sense we can now define.
+This chapter develops the ε-N framework and discovers its power. Limits aren't just technically useful — they're *necessary*. The real numbers are uncountable, but our descriptions are finite. Limits bridge the gap: infinite processes let finite creatures name infinite objects.
 
 ---
 
-## 2.1 Definition
+## 2.1 Sequences and Series
 
-### Sequences
+### Tools for Reaching Real Numbers
+
+Chapter 1 showed ℝ is uncountable, but finite descriptions are countable. How do we access the vast majority of real numbers?
+
+**Key insight**: Infinite processes bridge the gap.
+
+Sequences let us *name* numbers we can't write down finitely. We'll prove by chapter's end: every real is the limit of a sequence of rationals.
+
+### What Is a Sequence?
 
 **Definition**: A *sequence* is a function a: ℕ → ℝ. We write aₙ for a(n) and denote the sequence by (aₙ) or (a₁, a₂, a₃, ...).
 
-**Examples**:
-- aₙ = 1/n: the sequence (1, 1/2, 1/3, 1/4, ...)
-- aₙ = (−1)ⁿ: the sequence (−1, 1, −1, 1, ...)
-- aₙ = n²: the sequence (1, 4, 9, 16, ...)
+**Two ways to specify**:
+- *Closed form*: aₙ = 1/n, aₙ = n²/(n² + 1), aₙ = (-1)ⁿ
+- *Recursive*: a₁ = 2, aₙ₊₁ = (aₙ + 2/aₙ)/2
 
-### The Definition of Convergence
+### Many Objects Are Secretly Sequences
 
-**Definition**: A sequence (aₙ) *converges to L* if for every ε > 0, there exists N ∈ ℕ such that:
+**Series**: An infinite sum Σaₙ = a₁ + a₂ + a₃ + ⋯ is really the sequence of *partial sums*:
+$$S_n = a_1 + a_2 + \cdots + a_n$$
 
-$$n > N \implies |a_n - L| < \varepsilon$$
+The series "equals" L means the sequence (Sₙ) converges to L.
 
-We write aₙ → L or lim_{n→∞} aₙ = L, and call L the *limit* of the sequence.
+**Products**: An infinite product Πaₙ = a₁ · a₂ · a₃ · ⋯ is really the sequence of *partial products*:
+$$P_n = a_1 \cdot a_2 \cdot \cdots \cdot a_n$$
 
-A sequence that converges to some limit is called *convergent*. A sequence that does not converge is *divergent*.
+**Recursive processes**: Given a₁ and a rule aₙ₊₁ = f(aₙ), we get a sequence.
 
-**Unpacking the definition**:
-- "For every ε > 0": no matter how small a tolerance you specify
-- "There exists N": I can find a starting point
-- "n > N implies |aₙ − L| < ε": after which all terms are within ε of L
+**Unifying principle**: Master sequences, master them all.
 
-### Examples from the Definition
+### Historical Examples: Tools in Action
 
-**Example**: Prove 1/n → 0.
+**Archimedes and the Parabola**
 
-*Proof*: Let ε > 0. Choose N = ⌈1/ε⌉. For n > N:
+Archimedes computed the area under a parabola by inscribing triangles. If T is the area of the first triangle, he showed the total area is:
+$$T + \frac{T}{4} + \frac{T}{16} + \frac{T}{64} + \cdots$$
 
-$$|1/n - 0| = 1/n < 1/N \leq \varepsilon$$
+This is a series. The partial sums Sₙ = T(1 + 1/4 + ⋯ + 1/4ⁿ) form a sequence. Archimedes claimed S = 4T/3.
 
-∎
+**The Babylonians and √2**
 
-**Example**: Prove c → c (constant sequence).
+The Babylonians (~1800 BCE) computed √2 by iteration:
+- Start with x₁ = 2
+- Compute x₂ = (x₁ + 2/x₁)/2 = 1.5
+- Compute x₃ = (x₂ + 2/x₂)/2 = 1.4167...
+- Continue: x₄ = 1.41422...
 
-*Proof*: Let ε > 0. Choose N = 1. For n > N:
+This is a recursive sequence. It "approaches" √2 — but what does that mean?
 
-$$|c - c| = 0 < \varepsilon$$
+**The question**: Both examples produce sequences that seem to "approach" a value. How do we make this precise? How do we prove it?
 
-∎
+### When Algebra Gives Closed Forms
 
-**Example**: Prove aⁿ → 0 for |a| < 1.
+Most sequences have no nice formula for Sₙ or Pₙ. But some do — and pure algebra (no limits yet!) gives the formula.
 
-*Proof*: If a = 0, trivial. Otherwise, write |a| = 1/(1+h) for some h > 0.
+### Geometric Partial Sums
 
-By Bernoulli's inequality: (1+h)ⁿ ≥ 1 + nh, so |a|ⁿ ≤ 1/(1+nh).
+**Claim**: For r ≠ 1:
+$$S_n = 1 + r + r^2 + \cdots + r^n = \frac{1 - r^{n+1}}{1 - r}$$
 
-Given ε > 0, choose N > (1/ε − 1)/h. For n > N:
+*Proof*: Compute Sₙ − rSₙ:
+$$S_n - rS_n = (1 + r + \cdots + r^n) - (r + r^2 + \cdots + r^{n+1}) = 1 - r^{n+1}$$
 
-$$|a^n - 0| = |a|^n \leq \frac{1}{1+nh} < \varepsilon$$
+So Sₙ(1 − r) = 1 − r^{n+1}, giving the formula. ∎
 
-∎
+**Remark**: This is pure algebra. We haven't said what happens as n → ∞.
 
-### Uniqueness of Limits
+### Telescoping Series
 
-**Theorem**: If aₙ → L and aₙ → M, then L = M.
+**The idea**: If consecutive terms cancel, only the endpoints survive.
 
-*Proof*: Suppose L ≠ M. Let ε = |L − M|/2 > 0.
+**Definition**: A series *telescopes* if aₖ = tₖ − tₖ₋₁ for some sequence (tₖ).
 
-Since aₙ → L, there exists N₁ with n > N₁ ⟹ |aₙ − L| < ε.
+**Theorem**: If aₖ = tₖ − tₖ₋₁, then:
+$$S_n = \sum_{k=1}^{n} a_k = t_n - t_0$$
 
-Since aₙ → M, there exists N₂ with n > N₂ ⟹ |aₙ − M| < ε.
+*Proof*:
+$$S_n = (t_1 - t_0) + (t_2 - t_1) + (t_3 - t_2) + \cdots + (t_n - t_{n-1}) = t_n - t_0$$
 
-For n > max(N₁, N₂):
+Everything cancels except the endpoints. ∎
 
-$$|L - M| \leq |L - a_n| + |a_n - M| < \varepsilon + \varepsilon = |L - M|$$
+**Example**: Compute Σ1/(k(k+1)).
 
-Contradiction. ∎
+Use partial fractions: 1/(k(k+1)) = 1/k − 1/(k+1).
 
-### Convergent Sequences Are Bounded
+This is tₖ − tₖ₋₁ with tₖ = −1/(k+1) (or equivalently, tₖ = 1/k with a shift).
 
-**Definition**: A sequence (aₙ) is *bounded* if there exists M > 0 such that |aₙ| ≤ M for all n.
+So Sₙ = (1 − 1/2) + (1/2 − 1/3) + ⋯ + (1/n − 1/(n+1)) = 1 − 1/(n+1).
 
-**Theorem**: Every convergent sequence is bounded.
+**Remark**: We have Sₙ = 1 − 1/(n+1). What happens as n → ∞? That requires convergence (§2.2) and limit laws (§2.3).
 
-*Proof*: Suppose aₙ → L. Choose N such that n > N ⟹ |aₙ − L| < 1.
+### Telescoping Products
 
-For n > N: |aₙ| ≤ |aₙ − L| + |L| < 1 + |L|.
+**The idea**: Same principle multiplicatively.
 
-Let M = max(|a₁|, |a₂|, ..., |aₙ|, 1 + |L|). Then |aₙ| ≤ M for all n. ∎
+**Definition**: A product *telescopes* if aₖ = tₖ/tₖ₋₁ for some sequence (tₖ).
 
-**Warning**: The converse is false! (−1)ⁿ is bounded but divergent.
+**Theorem**: If aₖ = tₖ/tₖ₋₁, then:
+$$P_n = \prod_{k=1}^{n} a_k = \frac{t_n}{t_0}$$
+
+**Example**: Compute Π_{k=2}^{n}(1 − 1/k²).
+
+Factor: 1 − 1/k² = (k−1)(k+1)/k² = [(k−1)/k] · [(k+1)/k].
+
+Write as:
+$$\prod_{k=2}^{n} \frac{(k-1)(k+1)}{k^2} = \prod_{k=2}^{n} \frac{k-1}{k} \cdot \prod_{k=2}^{n} \frac{k+1}{k}$$
+
+First product: (1/2)(2/3)(3/4)⋯((n−1)/n) = 1/n.
+
+Second product: (3/2)(4/3)(5/4)⋯((n+1)/n) = (n+1)/2.
+
+So Pₙ = (1/n) · (n+1)/2 = (n+1)/(2n).
+
+**Remark**: We have Pₙ = (n+1)/(2n). What happens as n → ∞?
+
+### The Question
+
+We've computed:
+- Geometric: Sₙ = (1 − r^{n+1})/(1 − r)
+- Telescoping series: Sₙ = 1 − 1/(n+1)
+- Telescoping product: Pₙ = (n+1)/(2n)
+- Babylonian: x₁ = 2, x₂ = 1.5, x₃ = 1.4167, ...
+
+What happens "as n → ∞"? What does "→" even mean?
+
+This is the question of **convergence** — next section.
 
 ---
 
-## 2.2 Limit Laws
+## 2.2 Convergence
 
-### Limits and Inequalities
+### The Definition
 
-**Theorem (Preservation of Inequalities)**: If aₙ → L, bₙ → M, and aₙ ≤ bₙ for all n, then L ≤ M.
+**Motivation**: What should "aₙ approaches L" mean?
 
-*Proof*: Suppose L > M. Let ε = (L − M)/2. For large n:
+Informal: the terms get arbitrarily close to L and stay close.
 
-$$a_n > L - \varepsilon = \frac{L + M}{2} = M + \varepsilon > b_n$$
+Precise: no matter how small a tolerance ε > 0 you specify, eventually (past some threshold N) all terms are within ε of L.
 
-Contradiction. ∎
+**The ε-N game**: Think of it as a challenge. An adversary picks any tolerance ε > 0. You must respond with a threshold N. You win if all terms past N are within ε of L. A sequence converges iff you have a winning strategy for every ε.
 
-**Warning**: Strict inequality is not preserved! aₙ = 1/n < 1 for all n, but lim aₙ = 0 ≤ 1, not 0 < 1.
+**Definition**: A sequence (aₙ) *converges* to L, written aₙ → L or lim aₙ = L, if:
+$$\forall \varepsilon > 0 \, \exists N \in \mathbb{N} \, \forall n > N: |a_n - L| < \varepsilon$$
 
-**Theorem (Squeeze Theorem)**: If aₙ ≤ bₙ ≤ cₙ for all n and aₙ → L, cₙ → L, then bₙ → L.
+**Definition**: A sequence *converges* if it converges to some L. Otherwise it *diverges*.
 
-*Proof*: Given ε > 0, choose N such that n > N ⟹ |aₙ − L| < ε and |cₙ − L| < ε.
+### First Examples (Worked from the Definition)
 
-For n > N:
+**Example**: 1/n → 0.
 
-$$L - \varepsilon < a_n \leq b_n \leq c_n < L + \varepsilon$$
+*Proof*: Let ε > 0. By the Archimedean property, choose N > 1/ε. For n > N:
+$$|1/n - 0| = 1/n < 1/N < \varepsilon$$
+∎
 
-So |bₙ − L| < ε. ∎
+**Example**: Constant sequence c → c.
 
-### Limits and Algebra
+*Proof*: Let ε > 0. Choose N = 1. For n > N: |c − c| = 0 < ε. ∎
+
+**Example**: n/(n+1) → 1.
+
+*Proof*: Let ε > 0. We have |n/(n+1) − 1| = 1/(n+1). Choose N > 1/ε − 1. For n > N:
+$$|n/(n+1) - 1| = 1/(n+1) < 1/(N+1) < \varepsilon$$
+∎
+
+**Example**: (−1)ⁿ diverges.
+
+*Proof*: Suppose (−1)ⁿ → L for some L. Take ε = 1/2. Then eventually all terms are within 1/2 of L.
+
+But the terms alternate between 1 and −1, which are distance 2 apart. They cannot both be within 1/2 of any single value L. Contradiction. ∎
+
+**Remark**: This proof doesn't use subsequences — just the observation that consecutive terms can't both be close to L.
+
+### Geometric Sequences
+
+**Lemma (Bernoulli's Inequality)**: For x ≥ −1 and n ∈ ℕ:
+$$(1 + x)^n \geq 1 + nx$$
+
+*Proof*: Induction on n. ∎
+
+**Theorem**: For |r| < 1, we have rⁿ → 0.
+
+*Proof idea*: For 0 < |r| < 1, write |r| = 1/(1+h) where h > 0. By Bernoulli, (1+h)ⁿ ≥ 1 + nh, so |r|ⁿ ≤ 1/(1+nh) → 0.
+
+**Theorem**: For |r| > 1, the sequence (rⁿ) diverges. For r > 1, it diverges to +∞.
+
+**Remark**: For r = 1: constant sequence 1 → 1. For r = −1: (−1)ⁿ diverges.
+
+### Basic Properties
+
+**Theorem (Uniqueness of Limits)**: If aₙ → L and aₙ → M, then L = M.
+
+*Proof idea*: If L ≠ M, take ε = |L−M|/2. Eventually terms are within ε of L and within ε of M. Triangle inequality gives contradiction.
+
+**Definition**: A sequence (aₙ) is *bounded* if there exists M > 0 with |aₙ| ≤ M for all n.
+
+**Theorem**: Convergent sequences are bounded.
+
+*Proof idea*: Take ε = 1. Eventually |aₙ − L| < 1, so |aₙ| < 1 + |L|. The finitely many earlier terms are bounded by their maximum.
+
+**Remark**: Converse is false! (−1)ⁿ is bounded but divergent.
+
+**Theorem (Tails Determine Convergence)**: Changing finitely many terms doesn't affect convergence or the limit.
+
+*Proof idea*: The ε-N definition only examines terms past threshold N.
+
+### Divergence to Infinity
+
+**Definition**: We say aₙ → +∞ if for every M > 0, there exists N with aₙ > M for all n > N.
+
+Similarly aₙ → −∞ if for every M > 0, there exists N with aₙ < −M for all n > N.
+
+**Example**: n² → +∞.
+
+*Proof*: Given M > 0, choose N > √M. For n > N: n² > N² > M. ∎
+
+---
+
+## 2.3 Limit Theorems
+
+### Limits Respect Order
+
+**Theorem**: If aₙ → L and aₙ ≥ 0 for all n, then L ≥ 0.
+
+*Proof idea*: If L < 0, take ε = |L|/2. Eventually aₙ < L/2 < 0, contradicting aₙ ≥ 0.
+
+**Theorem**: If aₙ → L, bₙ → M, and aₙ ≤ bₙ for all n, then L ≤ M.
+
+*Proof idea*: Apply previous theorem to bₙ − aₙ ≥ 0.
+
+**Warning**: Strict inequality is NOT preserved. We have 1/n > 0 for all n, but lim 1/n = 0, not > 0.
+
+**Theorem (Squeeze Theorem)**: If aₙ ≤ bₙ ≤ cₙ and aₙ → L and cₙ → L, then bₙ → L.
+
+*Proof idea*: Given ε, eventually L − ε < aₙ ≤ bₙ ≤ cₙ < L + ε.
+
+### Limits Respect Algebra
 
 **Theorem (Limit Laws)**: Suppose aₙ → L and bₙ → M. Then:
-1. aₙ + bₙ → L + M
-2. aₙ − bₙ → L − M
-3. caₙ → cL for any constant c
-4. aₙbₙ → LM
-5. aₙ/bₙ → L/M (provided M ≠ 0 and bₙ ≠ 0)
 
-*Proof of (1)*: Given ε > 0, choose N₁ with n > N₁ ⟹ |aₙ − L| < ε/2, and N₂ with n > N₂ ⟹ |bₙ − M| < ε/2.
+1. *Sum*: aₙ + bₙ → L + M
+2. *Difference*: aₙ − bₙ → L − M
+3. *Constant multiple*: caₙ → cL
+4. *Product*: aₙbₙ → LM
+5. *Quotient*: aₙ/bₙ → L/M (provided M ≠ 0 and bₙ ≠ 0)
 
-For n > max(N₁, N₂):
+*Proof ideas*:
+- Sum: Triangle inequality, split ε/2.
+- Product: Use aₙbₙ − LM = aₙ(bₙ − M) + M(aₙ − L), plus boundedness of (aₙ).
+- Quotient: First prove 1/bₙ → 1/M, then apply product.
 
-$$|(a_n + b_n) - (L + M)| \leq |a_n - L| + |b_n - M| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$$
+**Theorem (Square Root Law)**: If sₙ → L with sₙ ≥ 0 and L ≥ 0, then √sₙ → √L.
 
-∎
+*Proof idea*: Conjugate trick — |√sₙ − √L| = |sₙ − L|/(√sₙ + √L).
 
-*Proof of (4)*: We have:
+### Applications: Finishing What We Started
 
-$$|a_n b_n - LM| = |a_n b_n - a_n M + a_n M - LM| \leq |a_n||b_n - M| + |M||a_n - L|$$
+Now we can complete the computations from §2.1.
 
-Since (aₙ) is bounded (say |aₙ| ≤ K), and both |bₙ − M| and |aₙ − L| become small, the product goes to 0. ∎
+**Geometric Series**
 
-*Proof of (5)*: First show 1/bₙ → 1/M. Since bₙ → M ≠ 0, we have |bₙ| > |M|/2 for large n.
+From §2.1: Sₙ = (1 − r^{n+1})/(1 − r).
 
-$$\left|\frac{1}{b_n} - \frac{1}{M}\right| = \frac{|M - b_n|}{|b_n||M|} < \frac{2|M - b_n|}{M^2}$$
+From §2.2: rⁿ → 0 for |r| < 1.
 
-This → 0. Then aₙ/bₙ = aₙ · (1/bₙ) → L · (1/M). ∎
+By limit laws:
+$$\lim_{n \to \infty} S_n = \lim_{n \to \infty} \frac{1 - r^{n+1}}{1-r} = \frac{1 - 0}{1-r} = \frac{1}{1-r}$$
 
-### Applications
+**Theorem**: For |r| < 1:
+$$\sum_{n=0}^{\infty} r^n = \frac{1}{1-r}$$
 
-**Example**: Compute lim (3n² + 2n)/(n² − 1).
+**Archimedes Resolved**
 
-Divide numerator and denominator by n²:
+The area under the parabola is:
+$$T\left(1 + \frac{1}{4} + \frac{1}{16} + \cdots\right) = T \cdot \frac{1}{1 - 1/4} = \frac{4T}{3}$$
 
-$$\frac{3n^2 + 2n}{n^2 - 1} = \frac{3 + 2/n}{1 - 1/n^2} \to \frac{3 + 0}{1 - 0} = 3$$
+Our tools have reached the answer Archimedes knew!
 
-**Example**: Prove √(n+1) − √n → 0.
+**Telescoping Series**
 
-Multiply by conjugate:
+From §2.1: Sₙ = 1 − 1/(n+1).
 
-$$\sqrt{n+1} - \sqrt{n} = \frac{(n+1) - n}{\sqrt{n+1} + \sqrt{n}} = \frac{1}{\sqrt{n+1} + \sqrt{n}} \to 0$$
+By limit laws: Sₙ → 1 − 0 = 1.
 
-**Example**: Prove nᵏ/aⁿ → 0 for a > 1, k fixed.
+**Theorem**:
+$$\sum_{k=1}^{\infty} \frac{1}{k(k+1)} = 1$$
 
-Write a = 1 + h for h > 0. By the binomial theorem:
+**Telescoping Product**
 
-$$a^n = (1+h)^n \geq \binom{n}{k+1} h^{k+1} \geq \frac{(n-k)^{k+1}}{(k+1)!} h^{k+1}$$
+From §2.1: Pₙ = (n+1)/(2n) = (1/2)(1 + 1/n).
 
-for large n. So:
+By limit laws: Pₙ → (1/2)(1 + 0) = 1/2.
 
-$$\frac{n^k}{a^n} \leq \frac{n^k (k+1)!}{(n-k)^{k+1} h^{k+1}} \to 0$$
+**Theorem**:
+$$\prod_{k=2}^{\infty} \left(1 - \frac{1}{k^2}\right) = \frac{1}{2}$$
 
-∎
+**More Applications**
 
-### Computing √2: The Babylonian Method
+- Rational functions: divide by highest power, apply limit laws
+- Conjugate trick: √(n+1) − √n = 1/(√(n+1) + √n) → 0
 
-**Setup**: Define the sequence:
-- x₁ = 1
-- xₙ₊₁ = (xₙ + 2/xₙ)/2
+### Density of Rationals
 
-**Claim**: If this converges to L, then L = √2.
+**Theorem (Density of ℚ)**: Between any two real numbers lies a rational.
 
-*Proof*: Taking limits: L = (L + 2/L)/2 ⟹ 2L = L + 2/L ⟹ L = 2/L ⟹ L² = 2.
+*Proof*: Uses Archimedean property to find suitable denominator.
 
-Since xₙ > 0 for all n (check!), L > 0, so L = √2. ∎
+**Theorem**: Every real number is the limit of a sequence of rationals.
 
-**But does it converge?** We'll prove this in Section 2.3 using MCT.
+*Proof*: Given x ∈ ℝ, use density to find rₙ ∈ ℚ with |rₙ − x| < 1/n. By squeeze, rₙ → x.
 
-**A complete proof via Pell's equation**: Define integer sequences by:
-- p₁ = 1, q₁ = 1
-- pₙ₊₁ = pₙ + 2qₙ, qₙ₊₁ = pₙ + qₙ
+**Payoff**: Sequences of rationals really do reach all of ℝ!
 
-**Claim**: pₙ/qₙ → √2.
+**Interpretation**: ℚ is dense in ℝ. The rationals are everywhere, filling every interval. Yet they're countable, while ℝ is not. We've filled holes without adding isolated regions.
 
-**Key identity** (verify by induction): pₙ² − 2qₙ² = (−1)ⁿ.
+### The Limits of Limit Laws
 
-Therefore:
+**Key observation**: Limit laws tell us *what* the limit is, but not *that* it exists.
 
-$$\left(\frac{p_n}{q_n}\right)^2 = 2 + \frac{(-1)^n}{q_n^2} \to 2$$
+If we know aₙ → L and bₙ → M, we can conclude aₙ + bₙ → L + M. But limit laws can't conjure convergence from nothing.
 
-Since pₙ/qₙ > 0, we have pₙ/qₙ → √2. ∎
+**Example**: The Babylonian sequence x₁ = 2, xₙ₊₁ = (xₙ + 2/xₙ)/2.
 
-**Remark**: The Pell sequences and Babylonian sequences are related (exercise).
+*If* we knew xₙ → L, limit laws would give:
+$$L = \frac{L + 2/L}{2} \implies L^2 = 2 \implies L = \sqrt{2}$$
+
+But this doesn't prove convergence! We've only shown: *if* the sequence converges, *then* it converges to √2.
+
+We need a new tool that uses completeness to guarantee existence...
 
 ---
 
-## 2.3 Monotone Convergence
+## 2.4 Monotone Convergence
 
-### The Theorem
+### The Key Insight
+
+Limit laws derive new limits from old, using the ordered field axioms. But they can't prove a sequence of rationals converges to an irrational — that would require creating √2 from nothing.
+
+The Monotone Convergence Theorem uses *completeness* to guarantee existence.
+
+### Monotone Sequences
 
 **Definition**: A sequence (aₙ) is:
-- *increasing* if aₙ ≤ aₙ₊₁ for all n
-- *strictly increasing* if aₙ < aₙ₊₁ for all n
-- *decreasing* if aₙ ≥ aₙ₊₁ for all n
-- *monotone* if it is increasing or decreasing
+- *Increasing* if aₙ ≤ aₙ₊₁ for all n
+- *Strictly increasing* if aₙ < aₙ₊₁ for all n
+- *Decreasing* if aₙ ≥ aₙ₊₁ for all n
+- *Monotone* if it is increasing or decreasing
+
+### The Theorem
 
 **Theorem (Monotone Convergence Theorem)**: A monotone bounded sequence converges.
 
@@ -250,375 +392,182 @@ Moreover:
 - If (aₙ) is increasing and bounded above, then aₙ → sup{aₙ : n ∈ ℕ}
 - If (aₙ) is decreasing and bounded below, then aₙ → inf{aₙ : n ∈ ℕ}
 
-*Proof*: Suppose (aₙ) is increasing and bounded above. Let L = sup{aₙ}.
+*Proof idea (increasing case)*: Let L = sup{aₙ}. By the ε-characterization of supremum, for any ε > 0, some aₙ > L − ε. Since (aₙ) is increasing, all later terms are also > L − ε. Since L is an upper bound, all terms are ≤ L < L + ε. So eventually |aₙ − L| < ε.
 
-Given ε > 0, by definition of sup, there exists N with aₙ > L − ε.
+**Remark**: This is where completeness enters the theory of limits. MCT fails in ℚ: the sequence 1, 1.4, 1.41, 1.414, ... is increasing and bounded in ℚ, but has no rational limit.
 
-For n > N: L − ε < aₙ ≤ aₙ ≤ L < L + ε (using monotonicity and L = sup).
+### The Babylonian Sequence and √2
 
-So |aₙ − L| < ε. ∎
+**Sequence**: x₁ = 2, xₙ₊₁ = (xₙ + 2/xₙ)/2.
 
-**Remark**: This theorem uses completeness! The sup exists because ℝ is complete. The theorem fails in ℚ: the sequence 1, 1.4, 1.41, 1.414, ... is monotone and bounded but has no rational limit.
+**Theorem**: xₙ → √2.
 
-### The Babylonian Sequence Converges
+*Proof outline*:
 
-**Claim**: The Babylonian sequence xₙ₊₁ = (xₙ + 2/xₙ)/2 with x₁ = 1 converges.
-
-*Proof*: 
-
-**Step 1**: xₙ ≥ √2 for n ≥ 2.
+**Step 1**: xₙ ≥ √2 for all n ≥ 2.
 
 By AM-GM: xₙ₊₁ = (xₙ + 2/xₙ)/2 ≥ √(xₙ · 2/xₙ) = √2.
 
 **Step 2**: (xₙ) is decreasing for n ≥ 2.
 
-xₙ₊₁ ≤ xₙ ⟺ (xₙ + 2/xₙ)/2 ≤ xₙ ⟺ xₙ + 2/xₙ ≤ 2xₙ ⟺ 2/xₙ ≤ xₙ ⟺ xₙ² ≥ 2. ✓
+Since xₙ² ≥ 2: xₙ₊₁ = (xₙ + 2/xₙ)/2 ≤ (xₙ + xₙ)/2 = xₙ.
 
-**Step 3**: By MCT, (xₙ) converges. By Section 2.2, the limit is √2. ∎
+**Step 3**: By MCT, xₙ → L for some L ≥ √2.
 
-### Series with Nonnegative Terms
+**Step 4**: By limit laws (as computed in §2.3): L = √2.
 
-**Definition**: An *infinite series* Σ_{n=1}^∞ aₙ is the limit of partial sums Sₙ = Σ_{k=1}^n aₖ, if it exists.
+**Payoff**: Our tool reaches √2! The Babylonian sequence, defined using only rationals, converges to an irrational.
 
-**Theorem**: If aₙ ≥ 0 for all n, then Σaₙ converges if and only if the partial sums are bounded.
-
-*Proof*: Partial sums Sₙ = a₁ + a₂ + ··· + aₙ are increasing (since aₙ ≥ 0).
-
-By MCT: (Sₙ) converges ⟺ (Sₙ) is bounded. ∎
-
-**Example**: Σ1/n² converges.
-
-*Proof*: For n ≥ 2: 1/n² < 1/n(n−1) = 1/(n−1) − 1/n.
-
-So Sₙ = 1 + Σₖ₌₂ⁿ 1/k² < 1 + Σₖ₌₂ⁿ (1/(k−1) − 1/k) = 1 + (1 − 1/n) < 2.
-
-Partial sums bounded ⟹ converges. ∎
-
-**Example**: Σ1/n diverges (the harmonic series).
-
-*Proof*: Group terms:
-
-$$1 + \frac{1}{2} + \left(\frac{1}{3} + \frac{1}{4}\right) + \left(\frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8}\right) + \cdots$$
-
-$$> 1 + \frac{1}{2} + \frac{2}{4} + \frac{4}{8} + \cdots = 1 + \frac{1}{2} + \frac{1}{2} + \frac{1}{2} + \cdots$$
-
-Partial sums unbounded ⟹ diverges. ∎
+**Historical note**: This algorithm was known to the Babylonians ~1800 BCE. It converges remarkably fast: each iteration roughly doubles the number of correct digits.
 
 ### The Number e
 
-**Definition/Theorem**: The sequence (1 + 1/n)ⁿ is increasing, bounded above by 3, and therefore converges. Its limit is denoted *e*.
+**Definition**: We define e = lim(1 + 1/n)ⁿ, provided this limit exists.
 
-*Proof of increasing*: By the AM-GM inequality applied to n copies of (1 + 1/n) and one copy of 1:
+**Theorem**: The sequence aₙ = (1 + 1/n)ⁿ is increasing and bounded above by 3. Hence e exists.
 
-$$\frac{n(1 + 1/n) + 1}{n+1} \geq \sqrt[n+1]{(1 + 1/n)^n \cdot 1}$$
+*Proof of increasing*: By AM-GM inequality (outline).
 
-$$\frac{n + 1 + 1}{n+1} = 1 + \frac{1}{n+1} \geq \sqrt[n+1]{(1 + 1/n)^n}$$
+*Proof of bounded*: By binomial theorem and k! ≥ 2^{k−1}.
 
-$$\left(1 + \frac{1}{n+1}\right)^{n+1} \geq (1 + 1/n)^n$$
+**Theorem**: The sequence bₙ = (1 + 1/n)^{n+1} is decreasing and bounded below.
 
-∎
+**Corollary**: Both sequences converge to e. The nested intervals [(1+1/n)ⁿ, (1+1/n)^{n+1}] all contain e, with lengths → 0.
 
-*Proof of bounded*: By the binomial theorem:
+**Remark**: Better estimates give e ≈ 2.71828...
 
-$$(1 + 1/n)^n = \sum_{k=0}^{n} \binom{n}{k} \frac{1}{n^k} = \sum_{k=0}^{n} \frac{1}{k!} \cdot \frac{n(n-1)\cdots(n-k+1)}{n^k}$$
+### More MCT Examples
 
-$$< \sum_{k=0}^{n} \frac{1}{k!} < 1 + 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \cdots = 3$$
+**Nested radicals**: a₁ = 1, aₙ₊₁ = √(2 + aₙ).
 
-(using k! ≥ 2^{k-1} for k ≥ 1). ∎
+- Bounded above by 2 (induction)
+- Increasing (check aₙ₊₁² − aₙ² > 0)
+- MCT ⟹ converges; limit laws ⟹ limit is 2
 
-**Numerical value**: e ≈ 2.71828...
+**Interpretation**: √(2 + √(2 + √(2 + ⋯))) = 2.
 
-**Historical note**: This limit arose from compound interest. If you invest $1 at 100% annual interest, compounded n times per year, you have (1 + 1/n)ⁿ dollars at year's end. Bernoulli (~1683) noticed this approaches a limit as n → ∞.
+**Power tower**: a₁ = 1, aₙ₊₁ = (√2)^{aₙ}.
 
-**Remark**: The significance of e—why it deserves a name—will become clear in Chapter 6, where we discover it's the base of the "natural" exponential.
+- Bounded above by 2 (induction)
+- Increasing (verify)
+- MCT ⟹ converges; limit laws ⟹ limit is 2
 
-### Exponentials as Limits
+**Interpretation**: √2^{√2^{√2^{⋯}}} = 2.
 
-In Chapter 1, we defined aˣ = sup{a^r : r ∈ ℚ, r < x} for a > 1 and x ∈ ℝ. This is conceptually clean but hard to compute with. Here's a more practical characterization:
+### Series via MCT
 
-**Theorem**: For a > 0 and x ∈ ℝ, if (rₙ) is any sequence of rationals with rₙ → x, then a^{rₙ} → aˣ.
+**Theorem (Nonnegative Series Criterion)**: If aₙ ≥ 0, then Σaₙ converges iff the partial sums Sₙ are bounded.
 
-*Proof*: We prove for a > 1 and x > 0 (other cases similar).
+*Proof*: Partial sums are increasing (since aₙ ≥ 0). Apply MCT.
 
-**Step 1**: If rₙ ↑ x (increasing to x), then a^{rₙ} ↑ aˣ.
+**Example**: Σ1/2ⁿ converges.
 
-The sequence (a^{rₙ}) is increasing (since a > 1 and rₙ increasing). By definition of aˣ as sup, a^{rₙ} ≤ aˣ for all n. Given ε > 0, by definition of sup, there exists rational r < x with a^r > aˣ − ε. Eventually rₙ > r, so a^{rₙ} > a^r > aˣ − ε. By MCT, a^{rₙ} → aˣ.
+*Proof*: Sₙ = 2 − 1/2ⁿ < 2. Bounded, so converges. (We already know the sum is 2.)
 
-**Step 2**: For general rₙ → x, squeeze between increasing and decreasing rational sequences converging to x. ∎
+**Example**: Σ1/n² converges.
 
-**Remark**: This theorem says we can compute aˣ as a limit of "computable" quantities a^{p/q}.
+*Proof*: For n ≥ 2: 1/n² < 1/(n(n−1)) = 1/(n−1) − 1/n (telescoping!).
 
----
+So Sₙ < 1 + Σₖ₌₂ⁿ (1/(k−1) − 1/k) = 1 + (1 − 1/n) < 2.
 
-## 2.4 Infinite Processes
+Bounded, so converges.
 
-This section studies sequences built by infinite iteration: adding infinitely many terms (series), multiplying infinitely many factors (products), or repeatedly applying a function (recursion).
-
-### Series as Sequences
-
-**Definition**: Given a sequence (aₙ), the *infinite series* Σ_{n=1}^∞ aₙ is defined as:
-
-$$\sum_{n=1}^{\infty} a_n = \lim_{N \to \infty} \sum_{n=1}^{N} a_n = \lim_{N \to \infty} S_N$$
-
-if this limit exists. The Sₙ are called *partial sums*.
-
-**Remark**: A series is just a sequence (of partial sums) in disguise. All our theorems about sequences apply.
-
-### Telescoping Series
-
-**Technique**: If aₙ = bₙ − bₙ₊₁, then:
-
-$$S_N = \sum_{n=1}^{N} (b_n - b_{n+1}) = b_1 - b_{N+1}$$
-
-**Example**: Σ_{n=1}^∞ 1/(n(n+1)) = 1.
-
-*Proof*: 1/(n(n+1)) = 1/n − 1/(n+1).
-
-So Sₙ = (1 − 1/2) + (1/2 − 1/3) + ··· + (1/N − 1/(N+1)) = 1 − 1/(N+1) → 1. ∎
-
-**Example**: Σ_{n=2}^∞ 1/(n² − 1) = 3/4.
-
-*Proof*: 1/(n² − 1) = 1/((n−1)(n+1)) = (1/2)(1/(n−1) − 1/(n+1)).
-
-This is "telescoping with step 2." Work out the partial sums (exercise). ∎
-
-### Geometric Series
-
-**Theorem**: For |x| < 1:
-
-$$\sum_{n=0}^{\infty} x^n = \frac{1}{1-x}$$
-
-*Proof*: The finite sum has closed form:
-
-$$S_N = 1 + x + x^2 + \cdots + x^N = \frac{1 - x^{N+1}}{1 - x}$$
-
-(Proof: multiply Sₙ by (1−x) and observe cancellation.)
-
-Since |x| < 1, we have x^{N+1} → 0, so:
-
-$$S_N \to \frac{1 - 0}{1 - x} = \frac{1}{1-x}$$
-
-∎
-
-**Remark**: This is our first *power series*—the sum depends on a parameter x. The formula only works for |x| < 1; at x = 1, the series 1 + 1 + 1 + ··· diverges.
-
-**Example**: 0.999... = 1.
-
-*Proof*: 0.999... = 9/10 + 9/100 + 9/1000 + ··· = (9/10) · 1/(1 − 1/10) = (9/10) · (10/9) = 1. ∎
-
-### Computing Logarithms: Briggs's Method
-
-**Historical context**: In Chapter 1, we defined log_a(x) as the unique y with aʸ = x. But how do we *compute* logarithms?
-
-Henry Briggs (1624) computed 30,000 logarithms to 14 decimal places using only arithmetic and square roots. Here's his method for log₁₀(2):
-
-**The algorithm**: Compare 2 to 10^{1/2}, 10^{1/4}, 10^{1/8}, ... successively.
-
-- 10^{1/2} ≈ 3.16... > 2, so log₁₀(2) < 1/2. First bit: 0.
-- 10^{1/4} ≈ 1.78... < 2, so log₁₀(2) > 1/4. Second bit: 1.
-- 10^{3/8} = 10^{1/4} · 10^{1/8} ≈ 2.37... > 2, so log₁₀(2) < 3/8. Third bit: 0.
-- Continue...
-
-**Output**: log₁₀(2) = 0.0100110001... in binary, i.e., log₁₀(2) = 1/4 + 1/8 + 1/32 + ...
-
-**Convergence**: The partial sums differ from log₁₀(2) by at most 1/2ᵏ after k steps (geometric series!).
-
-**Remark**: Computing 10^{1/2ᵏ} requires only repeated square roots. Briggs's tables enabled practical astronomical calculations for centuries.
-
-### Infinite Products
-
-**Definition**: The *infinite product* Π_{n=1}^∞ aₙ is:
-
-$$\prod_{n=1}^{\infty} a_n = \lim_{N \to \infty} \prod_{n=1}^{N} a_n$$
-
-if this limit exists and is nonzero.
-
-**Example**: Π_{n=2}^∞ (1 − 1/n²) = 1/2.
-
-*Proof*: 
-
-$$\prod_{n=2}^{N} \left(1 - \frac{1}{n^2}\right) = \prod_{n=2}^{N} \frac{(n-1)(n+1)}{n^2} = \prod_{n=2}^{N} \frac{n-1}{n} \cdot \prod_{n=2}^{N} \frac{n+1}{n}$$
-
-$$= \frac{1}{N} \cdot \frac{N+1}{2} = \frac{N+1}{2N} \to \frac{1}{2}$$
-
-∎
-
-### Products Reduce to Series
-
-**Key observation**: Taking logarithms converts products to sums.
-
-For finite products: log(Π aₙ) = Σ log(aₙ).
-
-For infinite products: we want log(lim Pₙ) = lim log(Pₙ). This is true if log is continuous—which we'll prove in Chapter 5.
-
-**Consequence**: Most questions about infinite product convergence reduce to series questions.
-
-### Recursive Sequences
-
-**Setup**: Define a sequence by:
-- a₁ = (some starting value)
-- aₙ₊₁ = f(aₙ)
-
-**Method for finding limits**: If aₙ → L and f is continuous, then L = f(L). Solve for L.
-
-**Example**: Let a₁ = 1, aₙ₊₁ = √(2 + aₙ). Find the limit (assuming it exists).
-
-If aₙ → L, then L = √(2 + L), so L² = 2 + L, giving L² − L − 2 = 0, so L = 2 or L = −1.
-
-Since aₙ > 0 for all n, L = 2.
-
-**Proving convergence**: Use MCT! Show (aₙ) is monotone and bounded.
-- Bounded: Show 0 < aₙ < 2 by induction.
-- Increasing: aₙ₊₁ > aₙ ⟺ √(2 + aₙ) > aₙ ⟺ 2 + aₙ > aₙ² ⟺ aₙ² − aₙ − 2 < 0, true for aₙ < 2.
-
-### Fibonacci and the Golden Ratio
-
-**Definition**: The Fibonacci sequence is F₁ = 1, F₂ = 1, Fₙ₊₁ = Fₙ + Fₙ₋₁.
-
-**Theorem (Binet's Formula)**:
-
-$$F_n = \frac{\varphi^n - \psi^n}{\sqrt{5}}$$
-
-where φ = (1 + √5)/2 ≈ 1.618 and ψ = (1 − √5)/2 ≈ −0.618.
-
-*Proof*: Verify by induction, using φ² = φ + 1 and ψ² = ψ + 1. ∎
-
-**Theorem**: Fₙ₊₁/Fₙ → φ.
-
-*Proof*: 
-
-$$\frac{F_{n+1}}{F_n} = \frac{\varphi^{n+1} - \psi^{n+1}}{\varphi^n - \psi^n} = \varphi \cdot \frac{1 - (\psi/\varphi)^{n+1}}{1 - (\psi/\varphi)^n}$$
-
-Since |ψ/φ| = |ψ|/φ < 1, we have (ψ/φ)ⁿ → 0, so the ratio → φ · (1/1) = φ. ∎
-
-**Remark**: The golden ratio φ = [1; 1, 1, 1, ...] as a continued fraction—we'll see this in Section 2.5.
+**Remark**: We've proven convergence *without computing the limit*. The sum is π²/6, but proving this requires Fourier analysis!
 
 ---
 
 ## 2.5 Representing Real Numbers
 
-Every real number is a limit of rationals. This section gives two canonical ways to represent any real as such a limit: decimal expansions and continued fractions.
+### The Naming Problem
 
-### Density of Rationals
+How do we describe a specific real number?
 
-**Theorem**: Between any two real numbers lies a rational.
+- Rationals: finite data (two integers p, q)
+- Integers: finite strings of digits
 
-*Proof*: Given a < b, choose n with 1/n < b − a (Archimedean property). Consider the rationals k/n for k ∈ ℤ. Some k/n lies in (a, b). ∎
+But ℝ is uncountable, while finite strings form a countable set.
 
-**Corollary**: Every real is a limit of rationals.
-
-*Proof*: For any x ∈ ℝ, use density to find rₙ ∈ ℚ with x − 1/n < rₙ < x + 1/n. Then rₙ → x. ∎
-
-**Remark**: This is non-constructive—we know rationals exist but haven't produced them. Decimals and continued fractions give explicit constructions.
+**Conclusion**: Representing arbitrary reals *requires* infinite processes. Limits aren't just convenient — they're necessary.
 
 ### Decimal Expansions
 
-**Theorem**: Every real x ∈ [0, 1) has a decimal expansion:
+**Integers in Base 10** (review): n = dₖ·10ᵏ + dₖ₋₁·10^{k−1} + ⋯ + d₁·10 + d₀.
 
-$$x = \sum_{n=1}^{\infty} \frac{d_n}{10^n} = 0.d_1 d_2 d_3 \ldots$$
+**Finite Decimals**: 0.d₁d₂...dₙ = Σₖ₌₁ⁿ dₖ/10ᵏ.
 
-where each dₙ ∈ {0, 1, ..., 9}.
+These are rationals with denominators dividing some power of 10.
 
-*Proof*: Define the digits by the greedy algorithm:
-- d₁ = ⌊10x⌋
-- d₂ = ⌊10²x⌋ − 10d₁ = ⌊10(10x − d₁)⌋
-- In general: dₙ = ⌊10ⁿx⌋ − 10⌊10ⁿ⁻¹x⌋
+**Infinite Decimals**: 0.d₁d₂d₃... represents the series Σₙ₌₁^∞ dₙ/10ⁿ.
 
-Let Sₙ = Σₖ₌₁ⁿ dₖ/10ᵏ. Then:
-- Sₙ is increasing (dₙ ≥ 0)
-- Sₙ ≤ x for all n (by construction)
-- Sₙ ≤ S_{n+1} ≤ ··· ≤ x < Sₙ + 1/10ⁿ
+### Every Decimal Converges
 
-By MCT, Sₙ → L ≤ x. But x < Sₙ + 1/10ⁿ → L, so x ≤ L. Thus L = x. ∎
+**Theorem**: Every infinite decimal represents a real number in [0, 1].
 
-**Uniqueness**: Decimal expansions are almost unique. The only ambiguity: 0.999... = 1.000..., and similarly. Every real has either one or two decimal expansions.
+*Proof*: The partial sums Sₙ = Σₖ₌₁ⁿ dₖ/10ᵏ are increasing (all dₖ ≥ 0).
 
-**Characterizing rationals**: x is rational if and only if its decimal expansion eventually repeats.
+They're bounded: Sₙ ≤ 9/10 + 9/100 + ⋯ = 9 · (1/10)/(1 − 1/10) = 1.
 
-*Proof*: (⟸) Repeating decimals are geometric series, hence rational.
+By MCT, the series converges.
 
-(⟹) Long division of p/q cycles through at most q remainders, so must eventually repeat. ∎
+### Every Real Has a Decimal
 
-### Continued Fractions
+**Theorem**: Every x ∈ [0, 1) has a decimal expansion.
 
-**Definition**: A *continued fraction* is an expression:
+*Construction (Greedy algorithm)*:
+- d₁ = ⌊10x⌋ (the "tenths digit")
+- dₙ = ⌊10ⁿx⌋ − 10⌊10^{n−1}x⌋
 
-$$[a_0; a_1, a_2, a_3, \ldots] = a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{a_3 + \cdots}}}$$
+**Theorem**: The decimal 0.d₁d₂d₃... constructed above converges to x.
 
-where a₀ ∈ ℤ and aₙ ∈ ℕ for n ≥ 1.
+*Proof idea*: By construction, Sₙ ≤ x < Sₙ + 1/10ⁿ. Apply squeeze.
 
-**Definition**: The *n-th convergent* is:
+### Uniqueness (Almost)
 
-$$\frac{p_n}{q_n} = [a_0; a_1, \ldots, a_n]$$
+**Theorem**: Decimal representations are unique except:
+$$0.d_1 d_2 \cdots d_k 999\ldots = 0.d_1 d_2 \cdots (d_k + 1) 000\ldots$$
 
-**Theorem (Recurrence)**: The convergents satisfy:
-- p₋₁ = 1, p₀ = a₀, pₙ = aₙpₙ₋₁ + pₙ₋₂
-- q₋₁ = 0, q₀ = 1, qₙ = aₙqₙ₋₁ + qₙ₋₂
+**Example**: 0.999... = 1.
 
-*Proof*: Induction. ∎
+*Proof*: 0.999... = Σ9/10ⁿ = 9 · (1/10)/(1 − 1/10) = 1.
 
-**Theorem**: pₙqₙ₋₁ − pₙ₋₁qₙ = (−1)ⁿ⁻¹.
+**Convention**: Avoid trailing 9s. Then every real has a unique decimal expansion.
 
-*Proof*: Induction using the recurrence. ∎
+### Characterizing Rationals
 
-**Corollary**: 
+**Theorem**: x ∈ ℚ if and only if its decimal expansion is eventually repeating.
 
-$$\frac{p_n}{q_n} - \frac{p_{n-1}}{q_{n-1}} = \frac{(-1)^{n-1}}{q_n q_{n-1}}$$
+*Proof (⟸)*: A repeating block is a geometric series, hence rational.
 
-### Convergence of Continued Fractions
+*Proof (⟹)*: Long division of p by q cycles through at most q remainders. Once a remainder repeats, the digits repeat.
 
-**Theorem**: The even convergents p₀/q₀, p₂/q₂, p₄/q₄, ... are increasing. The odd convergents p₁/q₁, p₃/q₃, ... are decreasing. Every even convergent is less than every odd convergent.
+**Corollary**: x is irrational iff its decimal never becomes periodic.
 
-*Proof*: From the corollary:
-- p₂ₖ/q₂ₖ − p₂ₖ₋₂/q₂ₖ₋₂ = (p₂ₖ/q₂ₖ − p₂ₖ₋₁/q₂ₖ₋₁) + (p₂ₖ₋₁/q₂ₖ₋₁ − p₂ₖ₋₂/q₂ₖ₋₂) > 0
+### Irrationals and Transcendentals
 
-(Work out signs from (−1)ⁿ⁻¹.) Similarly for odd. ∎
+**Examples**:
+- √2 = 1.41421356... (algebraic irrational, non-repeating)
+- Liouville's number L = Σ10^{−n!} = 0.110001000000000000000001... (transcendental)
 
-**Theorem**: Every continued fraction converges.
+**The big picture**:
+- Rationals: countable, eventually periodic decimals
+- Algebraic irrationals (like √2): countable, non-repeating
+- Transcendentals: uncountable, "most" reals
 
-*Proof*: Even convergents are increasing and bounded above (by any odd convergent). By MCT, they converge to some L₊.
+Most real numbers cannot be described by any finite means. Decimals give a systematic way to approximate any real, but the full decimal of a "generic" real cannot be computed by any algorithm.
 
-Odd convergents are decreasing and bounded below. By MCT, they converge to some L₋.
+### Preview: Other Representations
 
-Since |pₙ/qₙ − pₙ₋₁/qₙ₋₁| = 1/(qₙqₙ₋₁) → 0 (as qₙ → ∞), we have L₊ = L₋. ∎
+Decimals privilege base 10 — an arbitrary choice. Other representations exist:
 
-**Theorem**: Every real has a continued fraction expansion.
+- **Binary**: base 2, digits 0 and 1
+- **Continued fractions**: [a₀; a₁, a₂, ...] = a₀ + 1/(a₁ + 1/(a₂ + ⋯))
 
-*Proof*: Given x, define:
-- a₀ = ⌊x⌋, x₁ = 1/(x − a₀) if x ∉ ℤ
-- aₙ = ⌊xₙ⌋, xₙ₊₁ = 1/(xₙ − aₙ) if xₙ ∉ ℤ
+Continued fractions have remarkable properties:
+- Convergents give "best" rational approximations
+- Quadratic irrationals ↔ eventually periodic CFs
+- The CF for √2 explains the Pell equation
 
-This terminates (giving a finite continued fraction) iff x is rational. ∎
-
-**Theorem (Best Approximation)**: The convergents give the best rational approximations:
-
-$$\left| x - \frac{p_n}{q_n} \right| < \frac{1}{q_n q_{n+1}}$$
-
-and if p/q is closer to x than pₙ/qₙ, then q > qₙ.
-
-### Examples
-
-**Example**: √2 = [1; 2, 2, 2, ...].
-
-*Proof*: Let x = √2. Then a₀ = 1, and:
-
-$$x_1 = \frac{1}{\sqrt{2} - 1} = \frac{\sqrt{2} + 1}{(\sqrt{2} - 1)(\sqrt{2} + 1)} = \sqrt{2} + 1$$
-
-So a₁ = 2, and x₂ = 1/(√2 + 1 − 2) = 1/(√2 − 1) = √2 + 1 = x₁.
-
-The pattern repeats: √2 = [1; 2, 2, 2, ...]. ∎
-
-**Convergents**: 1/1, 3/2, 7/5, 17/12, 41/29, ...
-
-These are precisely the solutions to the Pell equation p² − 2q² = ±1!
-
-**Example**: φ = (1 + √5)/2 = [1; 1, 1, 1, ...].
-
-The convergents are Fₙ₊₁/Fₙ—Fibonacci ratios.
-
-**Example**: e = [2; 1, 2, 1, 1, 4, 1, 1, 6, 1, 1, 8, ...].
-
-The pattern is [2; 1, 2k, 1] for k = 1, 2, 3, ... (remarkable but proof is beyond our scope).
+We develop this theory in Chapter 4, once we have tools for sequences that oscillate rather than march monotonically.
 
 ---
 
@@ -626,63 +575,85 @@ The pattern is [2; 1, 2k, 1] for k = 1, 2, 3, ... (remarkable but proof is beyon
 
 | Section | Purpose |
 |---------|---------|
-| Prelude | From Zeno to Weierstrass |
-| 2.1 Definition | ε-N definition, uniqueness, boundedness |
-| 2.2 Limit Laws | Algebra and inequalities; computing limits |
-| 2.3 MCT | Completeness guarantees convergence; the number e |
-| 2.4 Infinite Processes | Series, products, recursion |
-| 2.5 Representing Reals | Decimals and continued fractions |
+| Prelude | The crisis of foundations; ε-N as resolution |
+| 2.1 Sequences and Series | Sequences as tools; algebraic closed forms |
+| 2.2 Convergence | The ε-N definition; basic examples |
+| 2.3 Limit Theorems | Ordered field axioms → limit laws; applications |
+| 2.4 Monotone Convergence | Completeness → existence; e and √2 |
+| 2.5 Representing Reals | Decimals; every real reachable |
 
 ## Key Theorems
 
-1. **Uniqueness**: Limits are unique
-2. **Convergent ⟹ bounded**
-3. **Limit laws**: Sum, product, quotient of limits
-4. **Squeeze theorem**
-5. **MCT**: Monotone bounded sequences converge
-6. **Geometric series**: Σxⁿ = 1/(1−x) for |x| < 1
-7. **(1 + 1/n)ⁿ → e**
-8. **aˣ = lim a^{rₙ}** for rₙ → x
-9. **Every real has a decimal expansion**
-10. **Continued fractions converge**
+1. **Geometric partial sums**: Sₙ = (1 − r^{n+1})/(1 − r)
+2. **Telescoping series**: Σ(tₖ − tₖ₋₁) = tₙ − t₀
+3. **Telescoping products**: Π(tₖ/tₖ₋₁) = tₙ/t₀
+4. **Uniqueness of limits**
+5. **Convergent ⟹ bounded** (converse false)
+6. **rⁿ → 0 for |r| < 1** (Bernoulli)
+7. **Limit laws**: sum, product, quotient, square root
+8. **Squeeze theorem**
+9. **Geometric series**: Σrⁿ = 1/(1−r) for |r| < 1
+10. **Density of ℚ**: every real is a limit of rationals
+11. **Monotone Convergence Theorem**
+12. **e exists**: (1 + 1/n)ⁿ is increasing and bounded
+13. **Babylonian → √2** via MCT
+14. **Every decimal converges**; **every real has a decimal**
+15. **Rationals ↔ eventually periodic decimals**
+
+---
 
 ## Exercises (Selected)
 
 ### Section 2.1
-- Prove directly: (n² + 1)/(n² + n) → 1
-- Find the flaw: "Let L = 1 + 1 + 1 + ···. Then L = 1 + L, so 0 = 1."
-- Prove: if aₙ → L and aₙ ≥ 0, then L ≥ 0
+- Prove the geometric partial sum formula by induction
+- Find a telescoping form for Σ1/((2k−1)(2k+1))
+- Compute Π_{k=1}^{n}(1 + 1/k) — does it telescope?
+- Compute the first 5 terms of the Babylonian sequence for √3
 
 ### Section 2.2
-- Prove: √(n² + n) − n → 1/2
-- Compute: lim (1 + 2 + ··· + n)/n²
-- Show pₙ/qₙ from Pell's equation equals every other term of the Babylonian sequence
+- Prove from the definition: (2n−1)/(3n+2) → 2/3
+- Prove from the definition: n/(n² + 1) → 0
+- Prove: if aₙ → L, then |aₙ| → |L|
+- Find the flaw: "Let S = 1 + 1 + 1 + ⋯. Then S = 1 + S, so 0 = 1."
+- Prove: a^{1/n} → 1 for any a > 0
+- ★ Prove: n^{1/n} → 1
 
 ### Section 2.3
-- Prove (1 + 1/n)^{n+1} is decreasing (so e is trapped between increasing and decreasing sequences)
-- Show Σ1/n! converges and equals e
-- Prove: if aₙ is increasing and has a convergent subsequence, then aₙ converges
+- Prove the product limit law formally
+- Prove the reciprocal limit law
+- Compute: lim(1 + 2 + ⋯ + n)/n²
+- Compute: lim(√(n² + n) − n)
+- Prove: |aₙ − L| ≤ bₙ and bₙ → 0 ⟹ aₙ → L
+- Use the telescoping product to prove: Σ_{k=2}^∞ log(1 − 1/k²) = −log 2
 
 ### Section 2.4
-- Compute: Σ n/2ⁿ
-- Compute: Σ 1/(n² + 3n + 2)
-- Prove Wallis's product: Π (4n²)/(4n² − 1) = π/2 (assuming knowledge of π)
-- Find the limit of a₁ = 1, aₙ₊₁ = (aₙ + 3)/(aₙ + 1)
+- Prove MCT for the decreasing case
+- Prove (1 + 1/n)^{n+1} is decreasing
+- Prove (1 + 1/n)ⁿ and (1 + 1/n)^{n+1} have the same limit
+- Let a₁ = 1, aₙ₊₁ = (aₙ + 3)/(aₙ + 1). Prove convergence and find the limit.
+- Prove Σ1/n! converges
+- ★ Prove: if aₙ₊₁/aₙ → L < 1, then aₙ → 0
 
 ### Section 2.5
-- Find the continued fraction for √3
-- Prove: x is rational iff its continued fraction is finite
-- Find the first 5 convergents of π = [3; 7, 15, 1, 292, ...]
+- Find the decimal expansion of 1/7
+- Which rationals have terminating (finite) decimal expansions?
+- Prove: 0.(d₁d₂...dₖ) = (d₁d₂...dₖ)/(10ᵏ − 1) where the bar denotes repetition
+- Prove: in base b, 0.(b−1)(b−1)(b−1)... = 1 (generalize 0.999... = 1)
+- Construct a decimal that is clearly irrational (no eventual period)
+- ★ Prove: every real is the limit of a sequence of irrationals
+
+---
 
 ## Dependencies
 
 **Requires from Chapter 1**:
-- Completeness (sup/inf exist)
+- Completeness axiom (sup/inf exist)
 - Archimedean property
-- aˣ defined as sup of rational powers
-- log defined as inverse of exponential
+- Ordered field axioms
+- Triangle inequality
 
 **Sets up for later chapters**:
-- Chapter 3: Comparison tests, Cauchy, Bolzano-Weierstrass
-- Chapter 5: Sequential characterization of continuity
-- Chapter 6: Exponential series Σxⁿ/n!
+- Chapter 3: Subsequences, Bolzano-Weierstrass, limsup/liminf, Cauchy
+- Chapter 4: Series tests, continued fractions, Archimedes' π, contractions
+- Chapter 5: Rearrangements, double sums, Tannery
+- Chapter 6: Defining exp, log, trig via series

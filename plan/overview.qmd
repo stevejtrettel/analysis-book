@@ -1,0 +1,414 @@
+
+## Chapter 2: Limits
+
+**Overall narrative**: Chapter 1 revealed ℝ is uncountable — vastly more numbers than finite descriptions can name. How do we access them? Sequences are our tools. A sequence of rationals can reach any real. This chapter develops sequences as tools for exploring ℝ.
+
+**The arc:**
+> Sequences as tools → What is convergence? → Limit laws from ordered field axioms → MCT from completeness → Every real can be reached
+
+---
+
+### Historical Prelude
+- Newton/Leibniz: what *is* a limit? "Ghosts of departed quantities"
+- The crisis: calculus works but foundations are incoherent
+- Cauchy/Weierstrass: ε-N definition replaces philosophy with calculation
+
+---
+
+### 2.1 Sequences and Series
+
+**Tools for Reaching Real Numbers**
+- Chapter 1: ℝ is uncountable, finite descriptions are countable
+- **Key insight**: Infinite processes bridge the gap
+- Sequences let us *name* numbers we can't write down
+- Preview: we'll prove every real is the limit of a sequence of rationals
+
+**What Is a Sequence?**
+- Definition: function ℕ → ℝ; a list a₁, a₂, a₃, ...
+- Two ways to specify: closed form vs recursive
+
+**Many Objects Are Secretly Sequences**
+- Series Σaₙ: the sequence of partial sums Sₙ = a₁ + a₂ + ⋯ + aₙ
+- Products Πaₙ: the sequence of partial products Pₙ = a₁ · a₂ · ⋯ · aₙ
+- Recursive processes: aₙ₊₁ = f(aₙ)
+- **Unifying principle**: Master sequences, master them all
+
+**Historical Examples: Tools in Action**
+- *Archimedes and the parabola*: Sₙ = T(1 + 1/4 + ⋯ + 1/4ⁿ) — tool for finding area
+- *Babylonians and √2*: xₙ₊₁ = (xₙ + 2/xₙ)/2 — tool for finding √2
+- Both produce sequences; both "approach" something — but what does that mean?
+
+**When Algebra Gives Closed Forms**
+- Most sequences have no closed form for Sₙ or Pₙ
+- But some do — and pure algebra (no limits!) gives the formula
+
+**Geometric Partial Sums**
+- Sₙ = 1 + r + r² + ⋯ + rⁿ
+- Trick: compute Sₙ - rSₙ = 1 - rⁿ⁺¹
+- Formula: Sₙ = (1 - rⁿ⁺¹)/(1 - r) for r ≠ 1
+
+**Telescoping Series**
+- Idea: terms cancel in pairs, leaving only endpoints
+- If aₖ = tₖ - tₖ₋₁, then Sₙ = Σₖ₌₁ⁿ aₖ = tₙ - t₀
+- Example: 1/(k(k+1)) = 1/k - 1/(k+1), so Σₖ₌₁ⁿ 1/(k(k+1)) = 1 - 1/(n+1)
+
+**Telescoping Products**
+- Same idea multiplicatively: terms cancel
+- If aₖ = tₖ/tₖ₋₁, then Pₙ = Πₖ aₖ = tₙ/t₀
+- Example: (1 - 1/k²) = (k-1)(k+1)/k² = [(k-1)/k] · [(k+1)/k]
+- Πₖ₌₂ⁿ (1 - 1/k²) = (1/2) · ((n+1)/n) = (n+1)/(2n)
+
+**The Question**
+- We have Sₙ = (1 - rⁿ⁺¹)/(1-r) and Sₙ = 1 - 1/(n+1) and Pₙ = (n+1)/(2n)
+- What happens as n → ∞? What does "→" mean?
+- This is **convergence** — next section
+
+---
+
+### 2.2 Convergence
+
+**The Definition**
+- Motivation: "approaches" means "eventually stays arbitrarily close"
+- The ε-N game: adversary picks tolerance, you find threshold
+- Definition: aₙ → L if ∀ε > 0 ∃N: n > N ⟹ |aₙ - L| < ε
+- Convergent vs divergent
+
+**Examples Worked from Definition**
+- 1/n → 0 (the fundamental example; use Archimedean property)
+- Constant sequence c → c
+- n/(n+1) → 1
+- (-1)ⁿ diverges (direct argument: terms can't both be close to any L)
+
+**Geometric Sequences**
+- Lemma (Bernoulli's Inequality): (1+x)ⁿ ≥ 1 + nx for x ≥ -1
+- Theorem: rⁿ → 0 for |r| < 1
+- Theorem: rⁿ diverges for |r| > 1; diverges to +∞ for r > 1
+
+**Basic Properties**
+- Uniqueness of limits
+- Convergent ⟹ bounded (converse false: (-1)ⁿ)
+- Tails determine convergence
+
+**Divergence to Infinity**
+- Definition: aₙ → +∞, aₙ → -∞
+- Example: n² → +∞
+
+---
+
+### 2.3 Limit Theorems
+
+**Limits Respect Order**
+- Theorem: aₙ → L and aₙ ≥ 0 ⟹ L ≥ 0
+- Theorem: aₙ ≤ bₙ and both converge ⟹ limits respect ≤
+- Warning: strict inequality not preserved
+- Squeeze theorem
+
+**Limits Respect Algebra**
+- Limit laws: sum, difference, product, quotient, square root
+- These follow from ordered field axioms
+
+**Applications: Finishing What We Started**
+- **Geometric series**: Sₙ = (1 - rⁿ⁺¹)/(1-r) → 1/(1-r) using rⁿ → 0 and limit laws
+- **Archimedes resolved**: 1 + 1/4 + 1/16 + ⋯ = 1/(1 - 1/4) = 4/3
+- **Telescoping series**: Sₙ = 1 - 1/(n+1) → 1, so Σ1/(k(k+1)) = 1
+- **Telescoping product**: Pₙ = (n+1)/(2n) → 1/2, so Π(1 - 1/k²) = 1/2
+- Conjugate trick: √(n+1) - √n → 0
+
+**Density of Rationals**
+- Theorem: between any two reals lies a rational
+- Theorem: every real is the limit of a sequence of rationals
+- **Payoff**: Sequences really do reach all of ℝ!
+
+**The Limits of Limit Laws**
+- Limit laws tell us *what* the limit is, not *that* it exists
+- Babylonian example: *if* xₙ → L, then L = √2 — but doesn't prove convergence
+- We need a new tool...
+
+---
+
+### 2.4 Monotone Convergence
+
+**The Key Insight**
+- Limit laws use ordered field axioms
+- To prove existence (not just compute), we need completeness
+
+**Monotone Sequences**
+- Definitions: increasing, decreasing, monotone
+
+**The Theorem**
+- MCT: monotone + bounded ⟹ convergent
+- Increasing bounded above → converges to sup
+- Decreasing bounded below → converges to inf
+- Proof uses completeness (ε-characterization of sup)
+
+**The Babylonian Sequence**
+- x₁ = 2, xₙ₊₁ = (xₙ + 2/xₙ)/2
+- Show: xₙ ≥ √2 for n ≥ 2 (AM-GM)
+- Show: (xₙ) decreasing (since xₙ² ≥ 2)
+- MCT ⟹ converges; limit laws ⟹ limit is √2
+- **Payoff**: Our tool reaches √2!
+
+**The Number e**
+- Definition: e = lim(1 + 1/n)ⁿ
+- Theorem: (1 + 1/n)ⁿ increasing, bounded above by 3
+- Theorem: (1 + 1/n)ⁿ⁺¹ decreasing, bounded below
+- Both converge to e; nested intervals locate e
+
+**More MCT Examples**
+- Nested radicals: √(2 + √(2 + ⋯)) = 2
+- Power tower: √2^√2^⋯ = 2
+
+**Series via MCT**
+- Nonnegative series: converges iff partial sums bounded
+- Σ1/2ⁿ converges (partial sums < 2)
+- Σ1/n² converges (compare to telescoping Σ1/(k(k-1)))
+
+---
+
+### 2.5 Representing Real Numbers
+
+**The Naming Problem**
+- Finite descriptions: countable
+- ℝ: uncountable
+- Conclusion: infinite processes *necessary* to name reals
+
+**Decimal Expansions**
+- Definition: 0.d₁d₂d₃... = Σdₙ/10ⁿ
+- Every decimal converges (MCT: partial sums increasing, bounded)
+- Every real has a decimal (greedy algorithm)
+- Uniqueness up to trailing 9s; 0.999... = 1
+
+**Characterizing Rationals**
+- Theorem: x ∈ ℚ ⟺ eventually periodic decimal
+- Irrationals: non-repeating decimals (√2, Liouville's number)
+
+**Preview**
+- Decimals privilege base 10 — arbitrary
+- Continued fractions: another representation, developed in Chapter 4
+- We'll see: CFs give "best" rational approximations, explain Pell equations
+
+---
+
+
+## Chapter 3: Sequences and Completeness
+
+**Overall narrative**: Chapter 2 handled monotone sequences via MCT. What about bounded sequences with no monotone structure? What does completeness force on *all* bounded sequences?
+
+---
+
+### Historical Prelude
+- Bolzano (1817): bounded sequences have accumulation points
+- Cauchy's criterion: terms getting close to *each other*
+- By century's end: recognized these are equivalent faces of completeness
+
+---
+
+### 3.1 Subsequences
+- Definition of subsequence (n₁ < n₂ < n₃ < ...)
+- Motivation: probing a sequence's behavior by examining parts
+- Theorem: subsequences of convergent sequences inherit the limit
+- Contrapositive: two subsequences with different limits ⟹ divergence
+- Cleaner proof that (-1)ⁿ diverges (subsequences → 1 and → -1)
+- Definition: subsequential limit (accumulation point)
+
+---
+
+### 3.2 Bolzano-Weierstrass
+- Theorem: every bounded sequence has a convergent subsequence
+- Proof via bisection → nested intervals (completeness!)
+- Remark: fails in ℚ
+- Corollary: bounded + exactly one subsequential limit ⟹ convergent
+- Reframing: divergence of bounded sequences means *multiple* subsequential limits
+- Motivation: study the *set* of all subsequential limits
+
+---
+
+### 3.3 Limsup and Liminf
+- For bounded sequence, set of subsequential limits is nonempty (BW) and bounded
+- Definition via subsequential limits: limsup = largest, liminf = smallest
+- Alternative definition via tails: limsup = lim(sup of tail), liminf = lim(inf of tail)
+- Prove these agree
+- Theorem: limsup is achieved (some subsequence converges to it)
+- Theorem: convergence ⟺ limsup = liminf
+- Examples: compute limsup/liminf for oscillating sequences
+
+---
+
+### 3.4 The Cauchy Criterion
+- Observation: limsup = liminf means "tail oscillation" → 0
+- Define tail oscillation ωₙ = sup(tail) - inf(tail)
+- ωₙ → 0 ⟺ convergence
+- Unpack: ωₙ < ε means all pairs j, k ≥ n satisfy |aⱼ - aₖ| < ε
+- This *is* the Cauchy condition — derived naturally from limsup/liminf!
+- Definition: Cauchy sequence
+- Theorem: convergent ⟺ Cauchy
+- Proof sketch (⟸): Cauchy ⟹ bounded ⟹ BW ⟹ convergent subsequence ⟹ whole sequence converges
+- Significance: intrinsic (examines only the sequence), metric (uses distance, not order)
+
+---
+
+### 3.5 The Many Faces of Completeness
+- Completeness has appeared as:
+  1. LUB (axiom)
+  2. MCT
+  3. Nested Intervals
+  4. Bolzano-Weierstrass
+  5. Cauchy completeness
+- Theorem: for an ordered field, all five are equivalent
+- Sketch the equivalence cycle (or key implications)
+- Why it matters: Cauchy generalizes to metric spaces without order
+- Historical note: Cantor's construction of ℝ via Cauchy sequences of rationals
+
+---
+
+
+## Chapter 4: Infinite Processes
+
+**Overall narrative**: Series, products, recursive iterations, continued fractions — these are all "doing something infinitely many times." They're all sequences, and we apply our theory from Ch 2–3 to develop specialized techniques.
+
+---
+
+### Historical Prelude
+- Euler's bold manipulations: sometimes right, sometimes wrong
+- Cauchy's tests (1821): detect convergence without computing
+- From art to science: systematic techniques
+
+---
+
+### 4.1 Finding Monotonicity
+- Not all sequences are monotone, but some *decompose* into monotone pieces
+- **Lemma (Even-Odd)**: If even-indexed terms → L and odd-indexed terms → L, then aₙ → L
+- Generalization to k subsequences (state, assign HW)
+- **Alternating Series Test**: bₙ ↘ 0 ⟹ Σ(−1)ⁿbₙ converges
+  - Even partial sums ↑, odd partial sums ↓, gap → 0
+- Example: alternating harmonic series
+- **√2 continued fraction**: √2 = [1; 2̄]
+  - Even convergents ↑, odd convergents ↓, gap → 0
+  - Prove convergence; note the tail is [2; 2̄] which "repeats" — we'll exploit this in §4.3
+- **Wallis product**: zig-zag partial products
+  - Odd partial products ↓, even partial products ↑, gap → 0
+
+---
+
+### 4.2 Comparison
+- **Comparison Test**: 0 ≤ aₙ ≤ bₙ and Σbₙ converges ⟹ Σaₙ converges
+- **Limit Comparison**: aₙ/bₙ → L ∈ (0, ∞) ⟹ same behavior
+- **Absolute convergence**: definition, implies convergence
+- **Ratio Test**: comparison with geometric series via ratios
+- **Root Test**: comparison with geometric series via n-th roots
+- **Root Test (strong form)**: limsup version
+- **Viète product**: factors → 1 geometrically fast, Cauchy/comparison gives convergence
+- Remark: products with factors approaching 1 "fast enough" — connects to series via log (forward reference to Ch 6)
+
+---
+
+### 4.3 Contraction Mappings
+- Recursive sequences aₙ₊₁ = f(aₙ): when do they converge?
+- **Definition**: contraction with constant c ∈ (0,1)
+- **Theorem**: unique fixed point, all orbits converge, rate |aₙ − L| ≤ cⁿ⁻¹|a₁ − L|
+- Proof: geometric comparison → Cauchy → completeness
+- Revisit Ch 2 examples with convergence rates: Babylonian/√2, nested radicals
+- **√2 continued fraction revisited**: the tail [2; 2̄] satisfies t = 2 + 1/t
+  - Iteration f(x) = 2 + 1/x is a contraction on [2, 3]
+  - Fixed point is 1 + √2; then √2 = t − 1, same convergence rate
+  - Periodic CF ↔ iteration — preview of Lagrange
+- Remark: for those who know calculus, xₙ₊₁ = cos(xₙ) is another example
+
+---
+
+### 4.4 Continued Fractions
+- Definition: [a₀; a₁, a₂, ...]
+- Convergents pₙ/qₙ and recurrence relations
+- Key identity: pₙqₙ₋₁ − pₙ₋₁qₙ = (−1)ⁿ⁻¹
+- **Convergence**: even convergents ↑, odd ↓, apply §4.1 technique
+- Every real has a CF; uniqueness
+- **Lagrange**: quadratic irrationals ↔ eventually periodic
+  - Connection to contraction maps: periodicity gives iteration
+- Best rational approximation property
+- **Pell connection**: convergents of √N solve p² − Nq² = ±1
+  - Full √2 story complete: CF [1; 2̄] explains Pell solutions and Babylonian
+- **The golden ratio surprise**: φ = [1; 1̄]
+  - All 1s means slowest-growing denominators (Fibonacci!)
+  - Worst case for rational approximation: "most irrational number"
+
+---
+
+### 4.5 Archimedes' π
+- Inscribed/circumscribed polygon half-perimeters aₙ, bₙ
+- Doubling recurrence: b₂ₙ = H(aₙ, bₙ), a₂ₙ = G(aₙ, b₂ₙ)
+- Each sequence monotone → MCT → converge separately
+- **Ratio trick**: rₙ = aₙ/bₙ → 1 (contraction or direct analysis)
+- **Definition**: π = lim aₙ = lim bₙ
+- Corollaries: circumference = 2π, area = π
+- **Viète derived**: connect polygon ratios to nested radical product, show equals 2/π
+- Archimedes' numerical bounds
+
+---
+
+
+
+## Chapter 5: Commutativity and Limits (working title)
+
+**Overall narrative**: Operations that work freely for finite sums need conditions for infinite ones. Rearranging terms, swapping order of summation, interchanging a limit with a sum — all can fail without the right hypotheses. This chapter maps out when these operations are safe.
+
+---
+
+### Historical Prelude
+- Euler's free manipulations: often right, sometimes wrong
+- Riemann's shocking theorem (1854): rearrangements can change the sum
+- Tannery, Mertens: conditions that make interchange safe
+- The moral: infinity requires discipline
+
+---
+
+### 5.1 Rearrangements
+- **Definition**: rearrangement via bijection π: ℕ → ℕ
+- **Theorem**: absolutely convergent series can be rearranged freely (same sum)
+- **Theorem (Riemann)**: conditionally convergent series can be rearranged to any value in ℝ ∪ {±∞}
+- Proof sketch: positive and negative parts both diverge; alternate to hit target
+- Example: rearranging alternating harmonic to (3/2)ln(2)
+- Moral: absolute = robust, conditional = fragile
+
+---
+
+### 5.2 Iterated Limits
+- **Definition**: double sequence a_{mn}
+- **Definition**: iterated limits lim_m lim_n a_{mn} vs lim_n lim_m a_{mn}
+- Examples where they differ: m/(m+n), (m-n)/(m+n), mn/(m²+n²)
+- **Definition**: double limit lim_{m,n→∞} a_{mn}
+- **Theorem**: if double limit exists and both iterated limits exist, they agree
+- Remark: converse false — equal iterated limits don't guarantee double limit exists
+
+---
+
+### 5.3 Double Sums
+- **Definition**: double series Σ_m Σ_n a_{mn}
+- Order can matter: example where Σ_m Σ_n ≠ Σ_n Σ_m
+- **Definition**: absolute convergence over the grid (Σ_{m,n} |a_{mn}| < ∞)
+- **Theorem**: absolute convergence ⟹ can swap order, same sum
+- **More generally**: under absolute convergence, any ordering works
+  - Rows, columns (iterated sums)
+  - Expanding squares
+  - Anti-diagonals
+- **Cauchy product**: Σaₙ times Σbₙ, summed along anti-diagonals (j + k = n)
+  - cₙ = Σ_{k=0}^n aₖb_{n-k}
+- **Theorem**: both series absolutely convergent ⟹ Cauchy product converges absolutely to (Σaₙ)(Σbₙ)
+- **Theorem (Mertens)**: one absolutely convergent + one convergent ⟹ Cauchy product converges to (Σaₙ)(Σbₙ)
+- **Application**: (1/(1-x))² = Σ(n+1)xⁿ via squaring geometric series
+- **Application**: (Σxⁿ/n!)(Σyⁿ/n!) = Σ(x+y)ⁿ/n! via binomial identity
+  - "This series has a remarkable property... deserves a name" (preview of Ch6)
+
+---
+
+### 5.4 Limits and Sums (Tannery)
+- Different situation: lim_n Σ_k a_k(n) vs Σ_k lim_n a_k(n)
+- Example where they differ: a_k(n) = 1/n for k ≤ n, else 0
+- **Theorem (Tannery)**: if |a_k(n)| ≤ M_k for all n, and ΣM_k < ∞, then limit and sum commute
+- Proof outline: split into head and tail, control each
+- **Big application**: (1 + x/n)ⁿ = Σxᵏ/k!
+  - Binomial expansion → for each k, the k-th term → xᵏ/k!
+  - Domination: |term| ≤ |x|ᵏ/k!, and Σ|x|ᵏ/k! converges
+  - Tannery applies: can interchange
+- **Corollary**: e = Σ1/n! (connecting Ch2 limit definition to series)
+
+---
