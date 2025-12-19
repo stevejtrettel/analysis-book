@@ -1,3 +1,112 @@
+Let me read through the Chapter 1 files to create a matching bullet-point outline.Now I have the full picture. Let me create the matching bullet-point outline:
+
+---
+
+## Chapter 1: Foundations
+
+**Overall narrative**: We need a number system where calculus works. ℚ has holes that break IVT, EVT, and MVT. Patching holes one-by-one fails — every fix leaves more gaps. Solution: define ℝ axiomatically as a *complete* ordered field. Completeness fills all holes at once. Surprise: the resulting ℝ is uncountable.
+
+**The arc:**
+> Language of sets → Ordered field axioms → ℚ's incompleteness → Completeness axiom → ℝ exists and is uncountable
+
+---
+
+### Historical Prelude
+- Greeks discover √2 irrational: geometry demands numbers ℚ lacks
+- 2000 years of workarounds
+- 19th century crisis: calculus needs rigorous foundations
+- Dedekind, Cantor, Weierstrass: axiomatize completeness
+
+---
+
+### 1.1 Sets and Functions
+- **Language we need**: sets, membership, subsets, unions, intersections
+- Set-builder notation; standard sets ℕ, ℤ, ℚ
+- Cartesian products
+- **Functions**: domain, codomain, range
+- Injective, surjective, bijective
+- Composition and inverses
+- Theorem: f has inverse iff f bijective
+- Foreshadowing: no surjection A → 𝒫(A) (Cantor)
+
+---
+
+### 1.2 Ordered Fields
+- **Field axioms**: +, ×, identities, inverses, distributivity
+- ℚ is a field; ℤ is not
+- Consequences: uniqueness of inverses, 0·a = 0, (−1)(−1) = 1
+- **Order axioms**: positive elements P with closure and trichotomy
+- Consequences: squares ≥ 0, 1 > 0, multiplying by negatives reverses
+- **Absolute value**: |a| as distance from 0; |a − b| as distance between a, b
+- Triangle inequality: |a + b| ≤ |a| + |b|
+- Reverse triangle inequality
+- Intervals: notation for (a,b), [a,b], rays
+- Bernoulli's inequality: (1+x)ⁿ ≥ 1 + nx
+- Roots notation introduced (existence requires completeness)
+
+---
+
+### 1.3 Incompleteness of ℚ
+- **The first crisis**: √2 irrational — geometry demands a number ℚ lacks
+- Proof: √2 irrational (classic)
+- **Patching attempt 1**: ℚ(√2) = {a + b√2 : a,b ∈ ℚ} — but √3 missing
+- **Patching attempt 2**: Constructible numbers (nested square roots) — but ∛2 missing
+- **Patching attempt 3**: Algebraic numbers 𝔸 — but π missing (Lindemann 1882)
+- Every patch leaves holes; can't construct our way out
+- **The real crisis**: gaps break calculus
+  - IVT fails in ℚ: f(x) = x² − 2 on [1,2] ∩ ℚ
+  - EVT fails in ℚ: f(x) = 1/(x² − 2) unbounded on [1,2] ∩ ℚ
+  - MVT fails (depends on EVT)
+- Bisection, Newton's method produce sequences with no limit in ℚ
+- **New strategy needed**: define ℝ by properties, not construction
+
+---
+
+### 1.4 Completeness
+- **Motivation**: bisection gives nested intervals [1,2] ⊃ [1.4,1.5] ⊃ [1.41,1.42] ⊃ ...
+- In ℚ, intersection empty — target doesn't exist
+- **Bounds**: upper bound, lower bound, bounded
+- **Supremum**: least upper bound (may or may not be in set)
+- **Infimum**: greatest lower bound
+- Examples: sup{1 − 1/n} = 1 ∉ S; sup[0,1] = 1 ∈ S
+- Key example: {x ∈ ℚ : x² < 2} has no sup in ℚ — this is how holes manifest
+- **Completeness axiom**: every nonempty set bounded above has a supremum
+- ε-characterization: for any ε > 0, some element exceeds sup − ε
+- Working with sup: translation, scaling, subsets, unions
+- Infima exist in complete fields (take sup of lower bounds)
+- **Nested Interval Property**: in complete fields, nested closed intervals have nonempty intersection
+- Lengths → 0 implies intersection is single point
+
+---
+
+### 1.5 The Real Numbers
+- **The bold move**: define ℝ as a complete ordered field
+- Axiomatic method: say what reals *do*, not what they *are*
+- Existence and uniqueness theorem (stated)
+- **No monsters**: ℕ unbounded, no infinitesimals
+- **Archimedean property**: na > b for some n (completeness implies this)
+- **Density of ℚ**: between any two reals lies a rational
+- **Density of irrationals**: between any two reals lies an irrational
+- **The payoff**: √2 exists! sup{x : x² < 2} works
+- nth roots exist; rational exponents; real exponents via sup
+- Logarithms via sup
+- **Surprise**: ℝ is uncountable (nested intervals proof)
+- ℚ countable, ℝ uncountable ⟹ "most" reals irrational
+- 𝔸 countable ⟹ transcendentals exist, "most" reals transcendental
+- Computables countable ⟹ "most" reals indescribable
+- **Closing**: We built ℝ to fill holes in ℚ; it's an uncountable ocean where rationals, algebraics, computables are countable dust
+
+---
+
+**Summary of the arc:**
+- 1.1: Language (sets, functions) — tools we need
+- 1.2: Ordered fields — arithmetic and order axioms
+- 1.3: ℚ is incomplete — can't patch our way out
+- 1.4: Completeness — the axiom that fills all holes
+- 1.5: ℝ exists, is unique, is uncountable
+
+---
+
 
 ## Chapter 2: Limits
 
@@ -410,5 +519,137 @@
   - Domination: |term| ≤ |x|ᵏ/k!, and Σ|x|ᵏ/k! converges
   - Tannery applies: can interchange
 - **Corollary**: e = Σ1/n! (connecting Ch2 limit definition to series)
+
+---
+
+
+
+
+## Chapter 6: Continuity
+
+**Overall narrative**: We've studied sequences converging to numbers. Which functions "respect" that structure? The answer is continuity — functions that preserve convergence. On closed bounded intervals, continuous functions have remarkable forced properties. Power series provide a fundamental way to build continuous functions.
+
+**The arc:**
+> Definition(s) of continuity → Building continuous functions → Power series are continuous → Properties on [a,b] → Uniform continuity
+
+---
+
+### Historical Prelude
+- What is a function? Euler's formulas → Fourier's challenge → Dirichlet's general definition
+- What is continuity? Intuition: "no breaks," "draw without lifting pen"
+- Dirichlet's function (1829): 1 on rationals, 0 on irrationals — discontinuous everywhere
+- Weierstrass's monster (1872): continuous everywhere, differentiable nowhere
+- These examples forced rigorous definitions
+
+---
+
+### 6.1 Continuity
+
+**[NOTE: Need to decide which is primary]**
+
+**Option A (Sequences first)**:
+- Motivation: which functions preserve convergence?
+- Sequential definition: f continuous at a iff (xₙ → a ⟹ f(xₙ) → f(a))
+- ε-δ definition as equivalent local formulation
+- Prove equivalence
+
+**Option B (ε-δ first)**:
+- Historical motivation: capturing "no breaks"
+- ε-δ definition: ∀ε > 0 ∃δ > 0: |x - a| < δ ⟹ |f(x) - f(a)| < ε
+- Connection to ε-N game from Ch 2
+- Sequential characterization as equivalent (often easier for proofs)
+- Prove equivalence
+
+**Then (either way):**
+- Limits of functions: lim_{x→a} f(x) (with 0 < |x - a|)
+- Sequential characterization of function limits
+- One-sided limits
+- Continuity ⟺ lim_{x→a} f(x) = f(a)
+- Types of discontinuities: removable, jump, essential
+- Examples: sin(x)/x at 0 (removable), sign(x) at 0 (jump), sin(1/x) at 0 (essential), Dirichlet (essential everywhere)
+
+---
+
+### 6.2 Building Continuous Functions
+- **Algebra of continuous functions**: sums, differences, products, quotients
+  - Proof via sequential characterization + limit laws from Ch 2
+- **Composition**: g continuous at a, f continuous at g(a) ⟹ f ∘ g continuous at a
+- **Corollaries**: |f|, max(f,g), min(f,g) continuous
+- **Basic examples**:
+  - Constants and f(x) = x are continuous
+  - Polynomials (induction on sums/products)
+  - Rational functions (where denominator ≠ 0)
+  - √x on [0, ∞)
+
+---
+
+### 6.3 Power Series I: Continuity
+- **Definition**: power series Σaₙxⁿ
+- **Radius of convergence R**: recall ratio/root tests from Ch 4
+- **Theorem**: Power series are continuous on (-R, R)
+  - Proof via Tannery (Ch 5)
+- **Theorem (Abel)**: If Σaₙ converges, then lim_{x→1⁻} Σaₙxⁿ = Σaₙ
+  - Power series is left-continuous at boundary when series converges there
+- **Why Abel matters**: The xⁿ example
+  - fₙ(x) = xⁿ converges pointwise on [0,1]
+  - Limit exists at endpoint x = 1 (it's 1)
+  - But limit function f is discontinuous at x = 1!
+  - Convergence at endpoint doesn't automatically give continuity
+  - Abel says power series are special: convergence of series ⟹ continuity
+- **Remark**: Full story of when limits of functions preserve continuity in Function Spaces chapter
+- **Preview**: Power Series II in derivatives chapter (term-by-term differentiation)
+
+---
+
+### 6.4 Continuous Functions on [a,b]
+
+**The Intermediate Value Theorem**:
+- **Theorem (IVT)**: If f continuous on [a,b] and y between f(a) and f(b), then f(c) = y for some c
+- Proof via completeness: c = sup{x : f(x) < y}
+- **Corollary**: Continuous image of interval is interval
+- **Applications**:
+  - nth roots exist (f(x) = xⁿ)
+  - Fixed point theorem: f: [a,b] → [a,b] continuous ⟹ f(c) = c for some c
+  - Every odd-degree polynomial has a real root
+
+**Boundedness and the Extreme Value Theorem**:
+- **Theorem**: Continuous on [a,b] ⟹ bounded
+  - Proof via Bolzano-Weierstrass
+- **Theorem (EVT)**: Continuous on [a,b] ⟹ attains maximum and minimum
+  - Proof via BW: xₙ with f(xₙ) → sup f; extract convergent subsequence
+
+**Monotone Functions and Inverses**:
+- **Definition**: increasing, decreasing, strictly monotone
+- **Theorem**: Monotone on (a,b) ⟹ one-sided limits exist at every point
+  - Proof via sup/inf
+- **Corollary**: Monotone functions have only jump discontinuities
+- **Theorem**: Strictly monotone ⟹ injective
+- **Theorem**: Strictly monotone + continuous on [a,b] ⟹ inverse is continuous
+  - Proof: f injective (strict monotone) + surjective onto range (IVT) ⟹ f⁻¹ exists; continuity via subsequential limits
+- **Payoff**: When we define log = exp⁻¹, arcsin = sin⁻¹, etc., continuity is automatic
+
+---
+
+### 6.5 Uniform Continuity
+
+**The Problem**:
+- In ordinary continuity, δ depends on ε *and* the point a
+- Can one δ work for all points simultaneously?
+
+**Definition**: f uniformly continuous on S if ∀ε > 0 ∃δ > 0: x, y ∈ S and |x - y| < δ ⟹ |f(x) - f(y)| < ε
+
+**Non-examples**:
+- f(x) = 1/x on (0,1): near 0, need smaller and smaller δ
+- f(x) = x² on ℝ: as x → ∞, function changes faster and faster
+
+**Theorem**: Uniformly continuous ⟹ continuous (trivial)
+
+**Theorem**: Continuous on [a,b] ⟹ uniformly continuous on [a,b]
+- Proof via BW: if not, get sequences xₙ, yₙ with |xₙ - yₙ| → 0 but |f(xₙ) - f(yₙ)| ≥ ε; extract convergent subsequence, get contradiction
+
+**Extension Theorem**: Uniformly continuous on (a,b) ⟹ extends to continuous function on [a,b]
+- Proof: show lim_{x→a⁺} f(x) exists via Cauchy criterion
+
+**Corollary**: Uniformly continuous on bounded set ⟹ bounded
 
 ---

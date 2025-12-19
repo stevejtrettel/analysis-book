@@ -14,23 +14,24 @@ book:
       chapters:
         - chapters/01-foundations/index.qmd
         - chapters/02-limits/index.qmd
-        - chapters/03-detecting-convergence/index.qmd
-        - chapters/04-exchanging-limits/index.qmd
+        - chapters/03-theory-convergence/index.qmd
+        - chapters/04-infinite-processes/index.qmd
+        - chapters/05-exchanging-limits/index.qmd
         
     - part: "Functions"
       chapters:
-        - chapters/05-continuity/index.qmd
-        - chapters/06-differentiation/index.qmd
-        - chapters/07-integration/index.qmd
-        - chapters/08-calculus/index.qmd
-        - chapters/09-complete-integral/index.qmd
+        - chapters/06-continuity/index.qmd
+        - chapters/07-differentiation/index.qmd
+        - chapters/08-integration/index.qmd
+        - chapters/09-calculus/index.qmd
+        - chapters/10-complete-integral/index.qmd
 
     - part: "Function Space"
       chapters:
-        - chapters/10-metrics/index.qmd
-        - chapters/11-function-space/index.qmd
-        - chapters/12-fourier/index.qmd
-        - chapters/13-topics/index.qmd
+        - chapters/11-metrics/index.qmd
+        - chapters/12-function-space/index.qmd
+        - chapters/13-fourier/index.qmd
+        - chapters/14-topics/index.qmd
 
         
 format:

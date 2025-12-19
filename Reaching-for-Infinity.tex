@@ -275,7 +275,7 @@
 
 \title{Reaching for Infinity}
 \author{Steve Trettel}
-\date{2025-12-17}
+\date{2025-12-19}
 \begin{document}
 \frontmatter
 \maketitle
@@ -546,7 +546,10 @@ you must produce threshold \(N\) - Work examples from scratch---this is
 where students learn the craft of analysis - Uniqueness: limits are
 unique (triangle inequality / \(\varepsilon/2\) argument) - Convergence
 depends only on the tail---first finitely many terms are irrelevant -
-Boundedness: convergent \(\Rightarrow\) bounded, but converse is false
+Boundedness: convergent \(\Rightarrow\) bounded, but converse is false -
+\textbf{Archimedes' sequences}: introduce inscribed/circumscribed
+polygon half-perimeters as a running example---a story that will unfold
+through Chapters 2 and 3
 
 \textbf{Definitions} - Sequence (function \(\NN \to \RR\), or
 \(I \to \RR\) for infinite index set \(I \subset \ZZ\)) - Convergence:
@@ -568,6 +571,20 @@ fundamental example) - Constant sequence \(c \to c\) - \(n/(n+1) \to 1\)
 \(a > 0\) (uses Bernoulli) - \((-1)^n\) diverges (no limit exists) -
 \(n^2\) diverges to \(\infty\)
 
+\textbf{Archimedes' Sequences (Running Example)} - For a circle of
+radius 1, define: - \(a_n\) = half-perimeter of inscribed regular
+\(n\)-gon - \(b_n\) = half-perimeter of circumscribed regular \(n\)-gon
+- Starting values (hexagon): \(a_6 = 3\),
+\(b_6 = 2\sqrt{3} \approx 3.464\) - Geometric fact:
+\(a_n < (\text{half-circumference}) < b_n\) - So \(3 < \pi < 3.465\)
+already from the hexagon! - The \textbf{doubling recurrence} (stated,
+derived in exercises or via trig): -
+\(b_{2n} = H(a_n, b_n) = \frac{2a_n b_n}{a_n + b_n}\) (harmonic mean) -
+\(a_{2n} = G(a_n, b_{2n}) = \sqrt{a_n \cdot b_{2n}}\) (geometric mean) -
+This gives a subsequence \(a_6, a_{12}, a_{24}, \ldots\) and
+\(b_6, b_{12}, b_{24}, \ldots\) - Questions: Do these converge? To the
+same limit? (Answers in 2.3 and 3.4)
+
 \textbf{Exercises} 1. Prove directly: \((n^2 + 1)/(n^2 + n) \to 1\) 2.
 Prove directly: \((2n - 2)/(5n + 1) \to 2/5\) 3. Prove: if \(a_n \to L\)
 and \(a_n \geq 0\) for all \(n\), then \(L \geq 0\) 4. Prove: if
@@ -583,6 +600,20 @@ whose sum converges; whose product converges 10. ★ Prove:
 \(n^{1/n} \to 1\) 11. ★ Interleaved sequences: if \(a_n \to L\) and
 \(b_n \to L\), then \(a_1, b_1, a_2, b_2, \ldots \to L\) 12. ★ If
 \(a_n \to 0\) and \(|b_n - L| < a_n\) for all \(n\), prove \(b_n \to L\)
+
+\textbf{Archimedes Exercises} 13. Verify \(a_6 = 3\) by computing the
+perimeter of a regular hexagon inscribed in a unit circle. 14. Verify
+\(b_6 = 2\sqrt{3}\) by computing the perimeter of a regular hexagon
+circumscribed about a unit circle. 15. Using the doubling recurrence,
+compute \(a_{12}, b_{12}, a_{24}, b_{24}\) (leave in exact form with
+square roots). 16. Make a table of numerical values for
+\(a_n, b_n, b_n - a_n\) for \(n = 6, 12, 24, 48, 96\). What bounds does
+this give for \(\pi\)? 17. (Guided) Derive the recurrence
+\(b_{2n} = H(a_n, b_n)\) using the half-angle identity
+\(\tan(\theta/2) = \frac{\sin\theta}{1 + \cos\theta}\) and the formulas
+\(a_n = n\sin(\pi/n)\), \(b_n = n\tan(\pi/n)\). 18. (Guided) Derive the
+recurrence \(a_{2n} = G(a_n, b_{2n})\) using appropriate trig
+identities.
 
 \section{Limit Laws}\label{limit-laws}
 
@@ -635,6 +666,19 @@ law requires nonzero denominator \emph{and} nonzero limit - Cannot apply
 quotient law when numerator and denominator both \(\to \infty\) (Pell
 sequence!)
 
+\textbf{The √2 vs π Comparison (Running Theme)} \textbar{} Aspect
+\textbar{} \(\sqrt{2}\) \textbar{} \(\pi\) \textbar{}
+\textbar--------\textbar-----------\textbar-------\textbar{} \textbar{}
+Definition \textbar{} \(\sup\{r \in \QQ : r^2 < 2\}\) \textbar{}
+(Coming: intersection of polygon bounds) \textbar{} \textbar{}
+Approximating sequence \textbar{} Babylonian
+\(x_{n+1} = (x_n + 2/x_n)/2\) \textbar{} Archimedes \(a_n, b_n\)
+\textbar{} \textbar{} Recurrence type \textbar{} Single sequence
+\textbar{} Coupled sequences \textbar{} \textbar{} Key identity
+\textbar{} Pell: \(p_n^2 - 2q_n^2 = \pm 1\) \textbar{} HG means
+\textbar{} \textbar{} Nature \textbar{} Algebraic \textbar{} (Later:
+transcendental) \textbar{}
+
 \textbf{Exercises} 1. Prove: if \(a_n \geq L\) for all \(n\) and \(a_n\)
 converges, then \(\lim a_n \geq L\) 2. (Error bounds) If
 \(|a_n - L| \leq \alpha_n\) and \(\alpha_n \to 0\), prove \(a_n \to L\)
@@ -676,15 +720,17 @@ nonnegative series criterion: partial sums increasing, so MCT applies -
 First series examples: \(\sum 1/2^n\) converges (bounded), \(\sum 1/n\)
 diverges (unbounded) - Babylonian revisited: MCT makes the proof trivial
 (compare to Pell approach in 2.2) - The number \(e\): sandwich between
-increasing and decreasing sequences - Exponentials as limits: reconciles
-Chapter 1 sup definition with sequence limits
+increasing and decreasing sequences - \textbf{Archimedes revisited}: MCT
+shows both sequences converge---but to the same limit?
 
 \textbf{Definitions} - Increasing: \(a_n \leq a_{n+1}\) for all \(n\) -
 Strictly increasing: \(a_n < a_{n+1}\) for all \(n\) - Decreasing:
 \(a_n \geq a_{n+1}\) for all \(n\) - Monotone: increasing or decreasing
 - Infinite series: \(\sum_{n=1}^\infty a_n = \lim_{N \to \infty} S_N\)
 where \(S_N = \sum_{k=1}^N a_k\) - The number \(e\):
-\(e = \lim (1 + 1/n)^n\)
+\(e = \lim (1 + 1/n)^n\) - Arithmetic mean: \(A(a,b) = (a+b)/2\) -
+Geometric mean: \(G(a,b) = \sqrt{ab}\) - Harmonic mean:
+\(H(a,b) = 2ab/(a+b)\)
 
 \textbf{Results} - \textbf{Monotone Convergence Theorem}: monotone +
 bounded ⟹ convergent - Moreover: increasing bounded above ⟹ converges to
@@ -695,7 +741,27 @@ partial sums are bounded - \textbf{\((1+1/n)^n\) is increasing}
 (binomial theorem) - \textbf{\((1+1/n)^{n+1}\) is decreasing} (exercise)
 - \textbf{Both sequences converge to the same limit \(e\)} -
 \textbf{Exponentials as limits}: if \(r_n \to x\) (rationals), then
-\(a^{r_n} \to a^x\)
+\(a^{r_n} \to a^x\) - \textbf{AM-GM-HM inequality}:
+\(H(a,b) \leq G(a,b) \leq A(a,b)\) with equality iff \(a = b\) -
+\textbf{Means lie between}: if \(a < b\), then
+\(a < H(a,b) < G(a,b) < A(a,b) < b\)
+
+\textbf{Archimedes Sequences: Convergence via MCT} - Recall:
+\(b_{2n} = H(a_n, b_n)\), \(a_{2n} = G(a_n, b_{2n})\) -
+\textbf{Theorem}: \((a_n)\) is increasing along the doubling subsequence
+- Proof:
+\(a_{2n} = \sqrt{a_n \cdot b_{2n}} > \sqrt{a_n \cdot a_n} = a_n\) since
+\(b_{2n} > a_n\) - \textbf{Theorem}: \((b_n)\) is decreasing along the
+doubling subsequence - Proof: \(b_{2n} = H(a_n, b_n) < b_n\) since
+harmonic mean \(<\) larger input - \textbf{Theorem}: \(a_n < b_n\) for
+all \(n\) (by induction, using means lie between) - \textbf{Corollary}:
+Both sequences converge by MCT - \((a_n)\) increasing, bounded above by
+\(b_6\) → converges to some \(L_a\) - \((b_n)\) decreasing, bounded
+below by \(a_6\) → converges to some \(L_b\) - \textbf{Area fact}:
+\(B_n = b_n\) exactly (circumscribed area = circumscribed half-perimeter
+for unit circle) - \textbf{Looking ahead}: We have \(L_a \leq L_b\). Are
+they equal? Yes! We prove this in Section 2.4 using a clever ratio
+technique.
 
 \textbf{Examples (worked)} - \(\sum 1/2^n\) converges: partial sums
 \(S_N = 2 - 1/2^N < 2\), bounded, apply MCT - \(\sum 1/n\) diverges:
@@ -725,6 +791,21 @@ subsequence, then \((a_n)\) converges 9. ★ Find the limit of
 \(a_1 = 2\), \(a_{n+1} = a_n/2 + 1/a_n\) (modify Babylonian for
 \(\sqrt{2}\)) 10. ★ Prove directly that \((1+1/n)^n < 3\) using
 \(k! \geq 2^{k-1}\)
+
+\textbf{AM-GM-HM Exercises} 11. Prove the AM-GM inequality:
+\(\sqrt{ab} \leq (a+b)/2\) for \(a, b > 0\) 12. Prove the GM-HM
+inequality: \(H(a,b) \leq G(a,b)\) 13. Prove: if \(a < b\), then
+\(a < H(a,b) < G(a,b) < A(a,b) < b\) 14. Prove:
+\(H(a,b) = 1/A(1/a, 1/b)\) (harmonic mean is reciprocal of arithmetic
+mean of reciprocals)
+
+\textbf{Archimedes Exercises} 15. Prove from the recurrence that
+\(a_n < b_{2n} < b_n\) for all \(n \geq 6\) 16. Prove from the
+recurrence that \(a_n < a_{2n} < b_{2n}\) for all \(n \geq 6\) 17.
+Verify the area fact: show that a circumscribed regular \(n\)-gon around
+a unit circle has area \(B_n = b_n\) 18. ★ Show that the inscribed area
+satisfies \(A_n = a_n \cos(\pi/n)\). What does this approach as
+\(n \to \infty\)?
 
 \section{Infinite Processes}\label{infinite-processes}
 
@@ -773,6 +854,48 @@ induction) 2. Prove monotone (by induction) 3. Apply MCT → convergent 4.
 Use recursive definition + limit laws → equation for \(L\) 5. Solve
 equation → find \(L\)
 
+\textbf{Technique: Proving Two Sequences Have the Same Limit} - Suppose
+\(a_n \to L_a\) and \(b_n \to L_b\) (both converge by MCT) - If we can
+show \(a_n/b_n \to 1\), then \(L_a/L_b = 1\), so \(L_a = L_b\) - The
+ratio often satisfies its own nice recursion!
+
+\textbf{Archimedes' π: Completing the Story} - Recall from 2.3:
+\(a_n \to L_a\), \(b_n \to L_b\) (MCT), with \(L_a \leq L_b\) - Define
+\(r_n = a_n/b_n \in (0, 1)\) - \textbf{Lemma}: \(r_{2n} = g(r_n)\) where
+\(g(r) = \sqrt{(r+1)/2}\) - Proof:
+\[\frac{a_n}{b_{2n}} = \frac{a_n(a_n + b_n)}{2a_n b_n} = \frac{r_n + 1}{2}\]
+\[r_{2n} = \frac{a_{2n}}{b_{2n}} = \sqrt{\frac{a_n}{b_{2n}}} = \sqrt{\frac{r_n + 1}{2}}\]
+- \textbf{Apply the Operation Manual to \((r_n)\)}: 1. Bounded:
+\(r_n < 1\) (since \(a_n < b_n\)) ✓ 2. Monotone: \(r_{n+1} > r_n\) iff
+\((r_n+1)/2 > r_n^2\) iff \((2r_n+1)(r_n-1) < 0\) ✓ (since \(r_n < 1\))
+3. MCT → \(r_n \to L\) for some \(L \leq 1\) 4. Taking limits:
+\(L = \sqrt{(L+1)/2}\), so \(2L^2 = L + 1\), so \((2L+1)(L-1) = 0\) 5.
+\(L = 1\) (since \(L > 0\)) - \textbf{Conclusion}:
+\(r_n = a_n/b_n \to 1\), so \(L_a = L_b\)
+
+\textbf{Definition}: The number \(\pi\) is the common limit:
+\[\pi = \lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n\]
+
+\textbf{Corollaries}: - \(a_n < \pi < b_n\) for all \(n\) (rigorous
+error bounds from geometry!) - The circumference of a unit circle is
+\(2\pi\) - The area of a unit circle is \(\pi\) (since
+\(B_n = b_n \to \pi\)) - \textbf{Archimedes' Theorem}: Area
+\(= \frac{1}{2} \times\) Circumference \(\times\) Radius
+
+\textbf{The Complete √2 vs π Comparison}: \textbar{} Aspect \textbar{}
+\(\sqrt{2}\) \textbar{} \(\pi\) \textbar{}
+\textbar--------\textbar-----------\textbar-------\textbar{} \textbar{}
+Definition \textbar{} \(\sup\{r : r^2 < 2\}\) \textbar{}
+\(\lim a_n = \lim b_n\) (polygons) \textbar{} \textbar{} Approximating
+sequence \textbar{} Babylonian (single) \textbar{} Archimedes (coupled)
+\textbar{} \textbar{} MCT proof \textbar{} Monotone + bounded \textbar{}
+Ratio trick: \(a_n/b_n \to 1\) \textbar{} \textbar{} Error bounds
+\textbar{} From Pell: \(|p_n/q_n - \sqrt{2}| < 1/(2q_n^2)\) \textbar{}
+From geometry: \(a_n < \pi < b_n\) \textbar{} \textbar{} CF pattern
+\textbar{} \([1; \overline{2}]\) (periodic) \textbar{}
+\([3; 7, 15, 1, 292, \ldots]\) (none!) \textbar{} \textbar{} Nature
+\textbar{} Algebraic \textbar{} Transcendental \textbar{}
+
 \textbf{Remarks} - Convergence depends only on tail---can ignore first
 finitely many terms - Products reduce to series:
 \(\log(\prod a_n) = \sum \log(a_n)\) (needs continuity) - Historical:
@@ -794,6 +917,20 @@ using Binet 13. (Koch fractal) Prove perimeter diverges, area converges
 14. (Archimedes parabola) Set up geometric series for area 15. ★ Prove
 \(\prod a_n\) converges iff \(\sum (a_n - 1)\) converges (for
 \(a_n > 0\) near 1) 16. ★ Find \(\prod_{n=2}^\infty (n^2-1)/n^2\)
+
+\textbf{Archimedes Exercises} 17. Verify the formula
+\(r_{2n} = \sqrt{(r_n + 1)/2}\) by computing \(r_6 = a_6/b_6\) and
+checking \(r_{12} = g(r_6)\) matches \(a_{12}/b_{12}\). 18. Show that
+\(g(r) = \sqrt{(r+1)/2}\) satisfies \(g(r) > r\) for all
+\(r \in (0, 1)\). Conclude \((r_n)\) is increasing. 19. Verify the
+algebraic steps: \((2L+1)(L-1) = 0\) gives \(L = 1\) or \(L = -1/2\)
+from \(2L^2 - L - 1 = 0\). 20. Using the bounds \(a_n < \pi < b_n\),
+compute Archimedes' bounds \(3\frac{10}{71} < \pi < 3\frac{1}{7}\) from
+\(n = 96\). 21. ★ Prove the gap estimate directly:
+\(b_{2n} - a_{2n} < \frac{1}{2}(b_n - a_n)\). (This gives an alternative
+proof that \(L_a = L_b\).) 22. ★ Viète's formula: Starting from the
+square (\(n = 4\)), derive
+\(\frac{2}{\pi} = \frac{\sqrt{2}}{2} \cdot \frac{\sqrt{2 + \sqrt{2}}}{2} \cdot \frac{\sqrt{2 + \sqrt{2 + \sqrt{2}}}}{2} \cdots\)
 
 \section{Representing Real Numbers}\label{representing-real-numbers}
 
@@ -989,6 +1126,15 @@ Pattern: \([2; \overline{1, 2k, 1}]\) for \(k = 1, 2, 3, \ldots\) -
 Proof requires integration theory---see Chapter 7 (Integration
 Applications)
 
+Remark: Unlike ee e, whose continued fraction
+{[}2;1,2,1,1,4,1,1,6,\ldots{]}{[}2; 1, 2, 1, 1, 4, 1, 1, 6, \ldots{]}
+{[}2;1,2,1,1,4,1,1,6,\ldots{]} follows a beautiful pattern, the
+continued fraction of pi={[}3;7,15,1,292,1,1,\ldots{]} pi = {[}3; 7, 15,
+1, 292, 1, 1, \ldots{]} pi={[}3;7,15,1,292,1,1,\ldots{]} has no known
+pattern. This remains one of the mysteries surrounding pi pi --- despite
+being one of the most studied numbers in mathematics, its CF appears as
+random as a ``typical'' real number.
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \textbf{Definitions} - Decimal expansion - Repeating/eventually
@@ -1035,7 +1181,7 @@ uniqueness convention? How does this relate to Zeckendorf's
 representation? 19. ★ Prove that ``most'' reals are uncomputable
 (countability argument)
 
-\chapter{Proving Convergence}\label{proving-convergence}
+\chapter{The Theory of Convergence}\label{the-theory-of-convergence}
 
 \section{Series Tests}\label{series-tests}
 
@@ -1047,6 +1193,8 @@ representation? 19. ★ Prove that ``most'' reals are uncomputable
 
 \section{The Many Faces of
 Completeness}\label{the-many-faces-of-completeness}
+
+\chapter{Infinite Processes}\label{infinite-processes-1}
 
 \chapter{Exchanging Limits}\label{exchanging-limits}
 

@@ -1,4 +1,4 @@
-# Proving Convergence
+# The Theory of Convergence
 
 {{< include 00-history.qmd >}}
 
