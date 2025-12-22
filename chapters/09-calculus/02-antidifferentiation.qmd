@@ -1,0 +1,31 @@
+## Antidifferentiation
+
+
+**Power Series III: Term-by-Term Integration**
+
+- Theorem: If f(x) = Σaₙxⁿ has radius R, then for |x| < R:
+  - ∫₀ˣ f(t) dt = Σ aₙxⁿ⁺¹/(n+1), same radius R
+- Completes the trilogy:
+  - Power Series I (Ch 6): Continuity
+  - Power Series II (Ch 7): Term-by-term differentiation
+  - Power Series III (Ch 9): Term-by-term integration
+
+**Integration by Substitution**
+
+- Theorem: ∫ₐᵇ f(g(x))g'(x) dx = ∫_{g(a)}^{g(b)} f(u) du
+- Chain rule in reverse
+- Example: ∫₀¹ x·eˣ² dx = ½(e − 1)
+- Example: ∫₀¹ x²√(1−x³) dx = 2/9
+
+**Integration by Parts**
+
+- Theorem: ∫ₐᵇ f g' = fg|ₐᵇ − ∫ₐᵇ f' g
+- Product rule in reverse
+- Example: ∫₀¹ x·eˣ dx = 1
+- Example: ∫₀^{π/2} x cos(x) dx = π/2 − 1
+
+**Taylor's Theorem with Integral Remainder**
+
+- Theorem: f(x) = Σₖ₌₀ⁿ f⁽ᵏ⁾(a)(x−a)ᵏ/k! + (1/n!)∫ₐˣ (x−t)ⁿ f⁽ⁿ⁺¹⁾(t) dt
+- Proof: Repeated integration by parts
+- Lagrange form follows by applying MVT for integrals to the remainder

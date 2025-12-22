@@ -24,7 +24,7 @@ book:
         - chapters/07-differentiation/index.qmd
         - chapters/08-integration/index.qmd
         - chapters/09-calculus/index.qmd
-        - chapters/10-complete-integral/index.qmd
+        - chapters/10-extending-integral/index.qmd
 
     - part: "Function Space"
       chapters:

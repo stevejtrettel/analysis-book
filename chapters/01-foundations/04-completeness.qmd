@@ -1,6 +1,7 @@
 ## Completeness {#sec-foundations-completeness}
 
 **Narrative**
+
 - Recall bisection for $\sqrt{2}$: nested intervals $[1,2] \supset [1.4, 1.5] \supset [1.41, 1.42] \supset \cdots$
 - In $\QQ$, intersection is empty—the target doesn't exist
 - Left endpoints increase, right endpoints decrease—want "max" and "min" but they don't exist
@@ -15,6 +16,7 @@
 - Next section: assume completeness as an axiom, define $\RR$, explore what this buys us
 
 **Definitions**
+
 - Bounds: upper bound, lower bound, bounded above/below/bounded
 - Supremum: least upper bound
 - Infimum: greatest lower bound
@@ -22,6 +24,7 @@
 - Nested intervals: $I_{n+1} \subseteq I_n$ for all $n$
 
 **Results**
+
 - Uniqueness of sup and inf
 - $\QQ$ is not complete
 - In a complete field, infima also exist
@@ -34,16 +37,19 @@
 - Nested Interval Property: $\bigcap [a_n, b_n] \neq \varnothing$ in complete fields
 
 **Examples**
+
 - $\sup\{1 - 1/n\} = 1 \notin S$
 - $\sup[0,1] = 1 \in S$
 - $(0,1)$: sup and inf not in set
 - $\{x \in \QQ : x^2 < 2\}$ has no sup in $\QQ$
 
 **Remarks**
+
 - Lengths $\to 0$ implies intersection is single point
 - Nested intervals fails in $\QQ$
 
 **Exercises**
+
 1. Uniqueness of inf
 2. $\varepsilon$-characterization of inf
 3. $A \subseteq B \Rightarrow \sup A \leq \sup B$

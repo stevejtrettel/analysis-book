@@ -2,9 +2,13 @@
 
 {{< include 00-history.qmd >}}
 
-{{< include 01-definition-properties.qmd >}}
+{{< include 01-definition.qmd >}}
 
-{{< include 02-limits.qmd >}}
+{{< include 02-building.qmd >}}
 
-{{< include 03-intervals.qmd >}}
+{{< include 03-power-series.qmd >}}
+
+{{< include 04-closed-intervals.qmd >}}
+
+{{< include 05-uniform.qmd >}}
 

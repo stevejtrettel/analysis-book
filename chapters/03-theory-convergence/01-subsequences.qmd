@@ -1,0 +1,9 @@
+## Subsequences
+
+
+- Definition of subsequence (n₁ < n₂ < n₃ < ...)
+- Motivation: probing a sequence's behavior by examining parts
+- Theorem: subsequences of convergent sequences inherit the limit
+- Contrapositive: two subsequences with different limits ⟹ divergence
+- Cleaner proof that (-1)ⁿ diverges (subsequences → 1 and → -1)
+- Definition: subsequential limit (accumulation point)

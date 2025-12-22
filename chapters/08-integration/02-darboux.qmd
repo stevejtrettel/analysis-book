@@ -1,0 +1,49 @@
+## The Darboux Construction
+
+
+### The Definition
+
+- For continuous f on [a,b], define: ∫ₐᵇ f = sup_P L(f,P) = inf_P U(f,P)
+- We must verify this definition satisfies our three axioms
+
+**Partitions and Refinements**
+
+- Partition P of [a,b]: finite set {x₀, ..., xₙ} with a = x₀ < ... < xₙ = b
+- Refinement: Q refines P if P ⊂ Q
+- **Lemma**: Refinements improve bounds: P ⊂ Q ⟹ L(f,P) ≤ L(f,Q) ≤ U(f,Q) ≤ U(f,P)
+- **Corollary**: Every lower sum ≤ every upper sum (use common refinement)
+
+**Verification of Axiom 1 (Rectangles)**
+
+- For constant k: mᵢ = Mᵢ = k for any partition
+- So L(k,P) = U(k,P) = k(b−a)
+- Therefore ∫k = k(b−a) ✓
+
+**Verification of Axiom 2 (Monotonicity)**
+
+- If f ≤ g on [a,b], then on each subinterval: inf f ≤ inf g, sup f ≤ sup g
+- So L(f,P) ≤ L(g,P) and U(f,P) ≤ U(g,P) for all P
+- Taking sup over L and inf over U preserves inequality
+- Therefore f ≤ g ⟹ ∫f ≤ ∫g ✓
+
+**Verification of Axiom 3 (Additivity)**
+
+- For partitions P of [a,c] and Q of [c,b], P ∪ Q is a partition of [a,b]
+- L(f, P∪Q) = L(f,P) + L(f,Q) and similarly for U
+- Taking sup/inf: ∫ₐᵇ f = ∫ₐᶜ f + ∫ᶜᵇ f ✓
+
+**The Integral Exists**
+
+- **Theorem**: For continuous f on [a,b], the Darboux integral exists and satisfies all three axioms
+- The forced value is the actual value
+
+**Payoff: Other Integrable Functions**
+
+**(Probably mostly skip this!)**
+
+- The definition ∫f = sup L = inf U makes sense whenever sup L = inf U
+- **Corollary**: Bounded functions with finitely many discontinuities are integrable
+  - Near discontinuities: contribution to U − L bounded by 2M · (small width)
+  - Away from discontinuities: uniform continuity controls U − L
+- **Exercise**: Monotone functions on [a,b] are integrable
+- We don't belabor integrability criteria here — the Lebesgue integral (later chapter) gives a fuller picture

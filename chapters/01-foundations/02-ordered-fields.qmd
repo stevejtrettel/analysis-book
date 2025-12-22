@@ -1,6 +1,7 @@
 ## Ordered Fields {#sec-foundations-ordered-fields}
 
 **Narrative**
+
 - We axiomatize arithmetic abstractly: field axioms capture $+$ and $\times$
 - $\QQ$ is a field; $\ZZ$ is not (no multiplicative inverses)
 - Consequences flow from axioms: uniqueness of inverses, $0 \cdot a = 0$, $(-1)(-1) = 1$
@@ -14,6 +15,7 @@
 - Roots notation introduced, but existence requires completeness (coming in 1.5)
 
 **Definitions**
+
 - Field: $+$, $\times$ with commutativity, associativity, identities, inverses, distributivity
 - Ordered field: field with positive elements $P$ satisfying closure and trichotomy
 - Inequality: $a < b$ means $b - a \in P$
@@ -23,6 +25,7 @@
 - Roots notation: $\sqrt[n]{a}$, rational powers $a^{p/q}$
 
 **Results**
+
 - Uniqueness of additive and multiplicative inverses
 - $0 \cdot a = 0$
 - $(-1) \cdot a = -a$
@@ -36,10 +39,12 @@
 - Bernoulli: $(1 + x)^n \geq 1 + nx$ for $x > -1$
 
 **Remarks**
+
 - $(a - r, a + r) = \{x : |x - a| < r\}$
 - $\infty$, $-\infty$ are notation only, not field elements
 
 **Exercises**
+
 1. Zero-product property: $ab = 0 \Rightarrow a = 0$ or $b = 0$
 2. Fraction addition formula
 3. Finite geometric sum

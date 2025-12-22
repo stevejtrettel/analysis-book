@@ -2,12 +2,12 @@
 
 {{< include 00-history.qmd >}}
 
-{{< include 01-convergence.qmd >}}
+{{< include 01-sequences.qmd >}}
 
-{{< include 02-limit-laws.qmd >}}
+{{< include 02-convergence.qmd >}}
 
-{{< include 03-mct.qmd >}}
+{{< include 03-limit-laws.qmd >}}
 
-{{< include 04-infinite-processes.qmd >}}
+{{< include 04-mct.qmd >}}
 
-{{< include 05-representing-reals.qmd >}}
+{{< include 05-decimals.qmd >}}

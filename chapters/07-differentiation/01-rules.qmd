@@ -1,1 +1,29 @@
-## Definition & Properties
+## Differentiation Rules
+
+- f differentiable at a if lim_{h→0} (f(a+h) - f(a))/h exists
+- Alternative form: lim_{x→a} (f(x) - f(a))/(x - a)
+- Notation: f'(a), df/dx, Df(a)
+
+**Differentiability Implies Continuity**
+
+- Theorem: f differentiable at a ⟹ f continuous at a
+- Warning: converse false! |x| at 0
+
+**Basic Rules**
+
+- Linearity: (f + g)' = f' + g', (cf)' = cf'
+- Product rule: (fg)' = f'g + fg'
+- Quotient rule: (f/g)' = (f'g - fg')/g²
+- Power rule: (xⁿ)' = nxⁿ⁻¹
+
+**Chain Rule**
+
+- Theorem: (f ∘ g)'(a) = f'(g(a)) · g'(a)
+- Proof via auxiliary function φ (handles g(a+h) = g(a) case)
+- Leibniz notation: dy/dx = (dy/du)(du/dx)
+
+**Inverse Function Derivative**
+
+- Theorem: (f⁻¹)'(f(a)) = 1/f'(a) when f'(a) ≠ 0
+- Leibniz notation: dx/dy = 1/(dy/dx)
+- Example: (√x)' = 1/(2√x)

@@ -1,0 +1,16 @@
+## Power Series
+
+- **Definition**: power series Σaₙxⁿ
+- **Radius of convergence R**: recall ratio/root tests from Ch 4
+- **Theorem**: Power series are continuous on (−R, R)
+  - Proof via Tannery (Ch 5)
+- **Theorem (Abel)**: If Σaₙ converges, then lim_{x→1⁻} Σaₙxⁿ = Σaₙ
+  - Power series is left-continuous at boundary when series converges there
+- **Why Abel matters**: The xⁿ example
+  - fₙ(x) = xⁿ converges pointwise on [0,1]
+  - Limit exists at endpoint x = 1 (it's 1)
+  - But limit function f is discontinuous at x = 1!
+  - Convergence at endpoint doesn't automatically give continuity
+  - Abel says power series are special: convergence of series ⟹ continuity
+- **Remark**: Full story of when limits of functions preserve continuity in Function Spaces chapter
+- **Preview**: Power Series II in derivatives chapter (term-by-term differentiation)

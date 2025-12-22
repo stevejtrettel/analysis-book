@@ -1,0 +1,53 @@
+## Trigonometry
+
+
+
+**Defining Arcsine**
+
+- Definition: arcsin(y) = ∫₀ʸ 1/√(1−t²) dt for y ∈ [−1, 1]
+- This is arc length from (1,0) to (√(1−y²), y) on unit circle
+
+**Defining π (ALREADY HAVE: JUST REVIEW)**
+
+- Definition: π/2 = arcsin(1) = ∫₀¹ 1/√(1−t²) dt
+- Rigorous definition as quarter-circle arc length
+
+**Defining Sine and Cosine**
+
+- Definition: sin: [−π/2, π/2] → [−1, 1] is inverse of arcsin
+- Definition: cos(θ) = √(1 − sin²θ) with appropriate sign, or cos(θ) = sin(π/2 − θ)
+- Immediate: sin²θ + cos²θ = 1
+
+**Derivatives**
+
+- arcsin'(y) = 1/√(1−y²) by FTC I
+- sin'(θ) = cos(θ) by inverse function theorem
+- cos'(θ) = −sin(θ) by differentiating sin² + cos² = 1
+
+**The Differential Equation**
+
+- Theorem: sin and cos satisfy y'' = −y
+- Uniqueness lemma: y'' = −y with y(0) = y'(0) = 0 ⟹ y ≡ 0
+  - Proof: E(t) = y² + (y')² has E' = 0, so E constant; E(0) = 0
+- Corollary: Solutions to y'' = −y determined by initial conditions
+
+**Addition Formulas**
+
+- sin(α + β) = sin α cos β + cos α sin β
+- cos(α + β) = cos α cos β − sin α sin β
+- Proof: Both sides satisfy y'' = −y with same initial conditions
+
+**Special Values and Periodicity**
+
+- sin(0) = 0, cos(0) = 1 (definition)
+- sin(π/2) = 1, cos(π/2) = 0 (definition)
+- sin(π) = 0, cos(π) = −1 (addition formulas)
+- sin(2π) = 0, cos(2π) = 1
+- sin(π/4) = cos(π/4) = 1/√2
+- Theorem: sin, cos periodic with period 2π (uniqueness argument)
+- π is smallest positive zero of sin
+
+**Taylor Series**
+
+- sin(x) = x − x³/3! + x⁵/5! − ⋯ (all x)
+- cos(x) = 1 − x²/2! + x⁴/4! − ⋯ (all x)

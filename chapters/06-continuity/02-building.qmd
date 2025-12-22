@@ -1,0 +1,11 @@
+## Building Continuous Functions
+
+- **Algebra of continuous functions**: sums, differences, products, quotients
+  - Proof via sequential characterization + limit laws from Ch 2
+- **Composition**: g continuous at a, f continuous at g(a) ⟹ f ∘ g continuous at a
+- **Corollaries**: |f|, max(f,g), min(f,g) continuous
+- **Basic examples**:
+  - Constants and f(x) = x are continuous
+  - Polynomials (induction on sums/products)
+  - Rational functions (where denominator ≠ 0)
+  - √x on $[0,\infty)$

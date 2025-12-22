@@ -1,0 +1,44 @@
+## Measure Theory
+
+**Null Sets**
+
+- Definition: $E$ is null if for every $\varepsilon > 0$, $E$ covered by countably many intervals of total length $< \varepsilon$
+- Equivalently: $\chi_E \in L^1$ and $I(\chi_E) = 0$
+- Examples: finite sets, countable sets, Cantor set
+
+**Properties of Null Sets**
+
+- Subset of null is null
+- Countable union of null sets is null
+- Proof: cover $n$th set with intervals of total length $\varepsilon / 2^n$
+
+**Almost Everywhere**
+
+- Definition: Property holds a.e. if it fails only on a null set
+- "$f = g$ a.e." means $\{x : f(x) \neq g(x)\}$ is null
+- "$f_n \to f$ a.e." means $\{x : f_n(x) \not\to f(x)\}$ is null
+
+**The A.E. Modification Theorem**
+
+- Theorem: If $f = g$ a.e. and $f \in L^1$, then $g \in L^1$ and $I(f) = I(g)$
+- Striking: modify on infinitely many points, integral unchanged
+- False for Darboux: $f = 0$, $g = \chi_{\mathbb{Q}}$, differ on null set, but $\chi_{\mathbb{Q}}$ not Darboux integrable
+
+**Measurable Sets**
+
+- Definition: $E$ is measurable if $\chi_E \in L^1$
+- Examples: intervals, open sets, closed sets, countable unions/intersections
+- Non-measurable sets exist (requires axiom of choice)
+
+**Lebesgue Measure**
+
+- Definition: $\mu(E) = I(\chi_E)$ for measurable $E$
+- Properties: $\mu(E) \geq 0$, $\mu(\varnothing) = 0$, $\mu([a,b]) = b - a$
+- Countable additivity: $\mu\left( \bigsqcup E_n \right) = \sum \mu(E_n)$
+- Proof via DCT
+
+**The Integral-First Philosophy**
+
+- Traditional: measure → measurable functions → integral
+- Our approach: integral → measure as byproduct
+- For analysis, the integral is primary; measure serves it

@@ -1,6 +1,3 @@
-Let me read through the Chapter 1 files to create a matching bullet-point outline.Now I have the full picture. Let me create the matching bullet-point outline:
-
----
 
 ## Chapter 1: Foundations
 
@@ -12,6 +9,7 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 ---
 
 ### Historical Prelude
+
 - Greeks discover √2 irrational: geometry demands numbers ℚ lacks
 - 2000 years of workarounds
 - 19th century crisis: calculus needs rigorous foundations
@@ -20,6 +18,7 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 ---
 
 ### 1.1 Sets and Functions
+
 - **Language we need**: sets, membership, subsets, unions, intersections
 - Set-builder notation; standard sets ℕ, ℤ, ℚ
 - Cartesian products
@@ -47,6 +46,7 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 ---
 
 ### 1.3 Incompleteness of ℚ
+
 - **The first crisis**: √2 irrational — geometry demands a number ℚ lacks
 - Proof: √2 irrational (classic)
 - **Patching attempt 1**: ℚ(√2) = {a + b√2 : a,b ∈ ℚ} — but √3 missing
@@ -63,6 +63,7 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 ---
 
 ### 1.4 Completeness
+
 - **Motivation**: bisection gives nested intervals [1,2] ⊃ [1.4,1.5] ⊃ [1.41,1.42] ⊃ ...
 - In ℚ, intersection empty — target doesn't exist
 - **Bounds**: upper bound, lower bound, bounded
@@ -80,6 +81,7 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 ---
 
 ### 1.5 The Real Numbers
+
 - **The bold move**: define ℝ as a complete ordered field
 - Axiomatic method: say what reals *do*, not what they *are*
 - Existence and uniqueness theorem (stated)
@@ -99,6 +101,7 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 ---
 
 **Summary of the arc:**
+
 - 1.1: Language (sets, functions) — tools we need
 - 1.2: Ordered fields — arithmetic and order axioms
 - 1.3: ℚ is incomplete — can't patch our way out
@@ -118,6 +121,7 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 ---
 
 ### Historical Prelude
+
 - Newton/Leibniz: what *is* a limit? "Ghosts of departed quantities"
 - The crisis: calculus works but foundations are incoherent
 - Cauchy/Weierstrass: ε-N definition replaces philosophy with calculation
@@ -127,47 +131,56 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 ### 2.1 Sequences and Series
 
 **Tools for Reaching Real Numbers**
+
 - Chapter 1: ℝ is uncountable, finite descriptions are countable
 - **Key insight**: Infinite processes bridge the gap
 - Sequences let us *name* numbers we can't write down
 - Preview: we'll prove every real is the limit of a sequence of rationals
 
 **What Is a Sequence?**
+
 - Definition: function ℕ → ℝ; a list a₁, a₂, a₃, ...
 - Two ways to specify: closed form vs recursive
 
 **Many Objects Are Secretly Sequences**
+
 - Series Σaₙ: the sequence of partial sums Sₙ = a₁ + a₂ + ⋯ + aₙ
 - Products Πaₙ: the sequence of partial products Pₙ = a₁ · a₂ · ⋯ · aₙ
 - Recursive processes: aₙ₊₁ = f(aₙ)
 - **Unifying principle**: Master sequences, master them all
 
 **Historical Examples: Tools in Action**
+
 - *Archimedes and the parabola*: Sₙ = T(1 + 1/4 + ⋯ + 1/4ⁿ) — tool for finding area
 - *Babylonians and √2*: xₙ₊₁ = (xₙ + 2/xₙ)/2 — tool for finding √2
 - Both produce sequences; both "approach" something — but what does that mean?
 
 **When Algebra Gives Closed Forms**
+
 - Most sequences have no closed form for Sₙ or Pₙ
 - But some do — and pure algebra (no limits!) gives the formula
 
 **Geometric Partial Sums**
+
 - Sₙ = 1 + r + r² + ⋯ + rⁿ
 - Trick: compute Sₙ - rSₙ = 1 - rⁿ⁺¹
 - Formula: Sₙ = (1 - rⁿ⁺¹)/(1 - r) for r ≠ 1
 
 **Telescoping Series**
+
 - Idea: terms cancel in pairs, leaving only endpoints
 - If aₖ = tₖ - tₖ₋₁, then Sₙ = Σₖ₌₁ⁿ aₖ = tₙ - t₀
 - Example: 1/(k(k+1)) = 1/k - 1/(k+1), so Σₖ₌₁ⁿ 1/(k(k+1)) = 1 - 1/(n+1)
 
 **Telescoping Products**
+
 - Same idea multiplicatively: terms cancel
 - If aₖ = tₖ/tₖ₋₁, then Pₙ = Πₖ aₖ = tₙ/t₀
 - Example: (1 - 1/k²) = (k-1)(k+1)/k² = [(k-1)/k] · [(k+1)/k]
 - Πₖ₌₂ⁿ (1 - 1/k²) = (1/2) · ((n+1)/n) = (n+1)/(2n)
 
 **The Question**
+
 - We have Sₙ = (1 - rⁿ⁺¹)/(1-r) and Sₙ = 1 - 1/(n+1) and Pₙ = (n+1)/(2n)
 - What happens as n → ∞? What does "→" mean?
 - This is **convergence** — next section
@@ -177,28 +190,33 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 ### 2.2 Convergence
 
 **The Definition**
+
 - Motivation: "approaches" means "eventually stays arbitrarily close"
 - The ε-N game: adversary picks tolerance, you find threshold
 - Definition: aₙ → L if ∀ε > 0 ∃N: n > N ⟹ |aₙ - L| < ε
 - Convergent vs divergent
 
 **Examples Worked from Definition**
+
 - 1/n → 0 (the fundamental example; use Archimedean property)
 - Constant sequence c → c
 - n/(n+1) → 1
 - (-1)ⁿ diverges (direct argument: terms can't both be close to any L)
 
 **Geometric Sequences**
+
 - Lemma (Bernoulli's Inequality): (1+x)ⁿ ≥ 1 + nx for x ≥ -1
 - Theorem: rⁿ → 0 for |r| < 1
 - Theorem: rⁿ diverges for |r| > 1; diverges to +∞ for r > 1
 
 **Basic Properties**
+
 - Uniqueness of limits
 - Convergent ⟹ bounded (converse false: (-1)ⁿ)
 - Tails determine convergence
 
 **Divergence to Infinity**
+
 - Definition: aₙ → +∞, aₙ → -∞
 - Example: n² → +∞
 
@@ -207,16 +225,19 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 ### 2.3 Limit Theorems
 
 **Limits Respect Order**
+
 - Theorem: aₙ → L and aₙ ≥ 0 ⟹ L ≥ 0
 - Theorem: aₙ ≤ bₙ and both converge ⟹ limits respect ≤
 - Warning: strict inequality not preserved
 - Squeeze theorem
 
 **Limits Respect Algebra**
+
 - Limit laws: sum, difference, product, quotient, square root
 - These follow from ordered field axioms
 
 **Applications: Finishing What We Started**
+
 - **Geometric series**: Sₙ = (1 - rⁿ⁺¹)/(1-r) → 1/(1-r) using rⁿ → 0 and limit laws
 - **Archimedes resolved**: 1 + 1/4 + 1/16 + ⋯ = 1/(1 - 1/4) = 4/3
 - **Telescoping series**: Sₙ = 1 - 1/(n+1) → 1, so Σ1/(k(k+1)) = 1
@@ -224,11 +245,13 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 - Conjugate trick: √(n+1) - √n → 0
 
 **Density of Rationals**
+
 - Theorem: between any two reals lies a rational
 - Theorem: every real is the limit of a sequence of rationals
 - **Payoff**: Sequences really do reach all of ℝ!
 
 **The Limits of Limit Laws**
+
 - Limit laws tell us *what* the limit is, not *that* it exists
 - Babylonian example: *if* xₙ → L, then L = √2 — but doesn't prove convergence
 - We need a new tool...
@@ -238,19 +261,23 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 ### 2.4 Monotone Convergence
 
 **The Key Insight**
+
 - Limit laws use ordered field axioms
 - To prove existence (not just compute), we need completeness
 
 **Monotone Sequences**
+
 - Definitions: increasing, decreasing, monotone
 
 **The Theorem**
+
 - MCT: monotone + bounded ⟹ convergent
 - Increasing bounded above → converges to sup
 - Decreasing bounded below → converges to inf
 - Proof uses completeness (ε-characterization of sup)
 
 **The Babylonian Sequence**
+
 - x₁ = 2, xₙ₊₁ = (xₙ + 2/xₙ)/2
 - Show: xₙ ≥ √2 for n ≥ 2 (AM-GM)
 - Show: (xₙ) decreasing (since xₙ² ≥ 2)
@@ -258,16 +285,19 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 - **Payoff**: Our tool reaches √2!
 
 **The Number e**
+
 - Definition: e = lim(1 + 1/n)ⁿ
 - Theorem: (1 + 1/n)ⁿ increasing, bounded above by 3
 - Theorem: (1 + 1/n)ⁿ⁺¹ decreasing, bounded below
 - Both converge to e; nested intervals locate e
 
 **More MCT Examples**
+
 - Nested radicals: √(2 + √(2 + ⋯)) = 2
 - Power tower: √2^√2^⋯ = 2
 
 **Series via MCT**
+
 - Nonnegative series: converges iff partial sums bounded
 - Σ1/2ⁿ converges (partial sums < 2)
 - Σ1/n² converges (compare to telescoping Σ1/(k(k-1)))
@@ -277,21 +307,25 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 ### 2.5 Representing Real Numbers
 
 **The Naming Problem**
+
 - Finite descriptions: countable
 - ℝ: uncountable
 - Conclusion: infinite processes *necessary* to name reals
 
 **Decimal Expansions**
+
 - Definition: 0.d₁d₂d₃... = Σdₙ/10ⁿ
 - Every decimal converges (MCT: partial sums increasing, bounded)
 - Every real has a decimal (greedy algorithm)
 - Uniqueness up to trailing 9s; 0.999... = 1
 
 **Characterizing Rationals**
+
 - Theorem: x ∈ ℚ ⟺ eventually periodic decimal
 - Irrationals: non-repeating decimals (√2, Liouville's number)
 
 **Preview**
+
 - Decimals privilege base 10 — arbitrary
 - Continued fractions: another representation, developed in Chapter 4
 - We'll see: CFs give "best" rational approximations, explain Pell equations
@@ -534,7 +568,8 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 
 ---
 
-### Historical Prelude
+## Historical Prelude
+
 - What is a function? Euler's formulas → Fourier's challenge → Dirichlet's general definition
 - What is continuity? Intuition: "no breaks," "draw without lifting pen"
 - Dirichlet's function (1829): 1 on rationals, 0 on irrationals — discontinuous everywhere
@@ -543,25 +578,28 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 
 ---
 
-### 6.1 Continuity
+## 6.1 Continuity
 
-**[NOTE: Need to decide which is primary]**
+**[NOTE: Need to decide which definition is primary]**
 
 **Option A (Sequences first)**:
+
 - Motivation: which functions preserve convergence?
 - Sequential definition: f continuous at a iff (xₙ → a ⟹ f(xₙ) → f(a))
 - ε-δ definition as equivalent local formulation
 - Prove equivalence
 
 **Option B (ε-δ first)**:
+
 - Historical motivation: capturing "no breaks"
-- ε-δ definition: ∀ε > 0 ∃δ > 0: |x - a| < δ ⟹ |f(x) - f(a)| < ε
+- ε-δ definition: ∀ε > 0 ∃δ > 0: |x − a| < δ ⟹ |f(x) − f(a)| < ε
 - Connection to ε-N game from Ch 2
 - Sequential characterization as equivalent (often easier for proofs)
 - Prove equivalence
 
 **Then (either way):**
-- Limits of functions: lim_{x→a} f(x) (with 0 < |x - a|)
+
+- Limits of functions: lim_{x→a} f(x) (with 0 < |x − a|)
 - Sequential characterization of function limits
 - One-sided limits
 - Continuity ⟺ lim_{x→a} f(x) = f(a)
@@ -570,7 +608,8 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 
 ---
 
-### 6.2 Building Continuous Functions
+## 6.2 Building Continuous Functions
+
 - **Algebra of continuous functions**: sums, differences, products, quotients
   - Proof via sequential characterization + limit laws from Ch 2
 - **Composition**: g continuous at a, f continuous at g(a) ⟹ f ∘ g continuous at a
@@ -583,10 +622,11 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 
 ---
 
-### 6.3 Power Series I: Continuity
+## 6.3 Power Series I: Continuity
+
 - **Definition**: power series Σaₙxⁿ
 - **Radius of convergence R**: recall ratio/root tests from Ch 4
-- **Theorem**: Power series are continuous on (-R, R)
+- **Theorem**: Power series are continuous on (−R, R)
   - Proof via Tannery (Ch 5)
 - **Theorem (Abel)**: If Σaₙ converges, then lim_{x→1⁻} Σaₙxⁿ = Σaₙ
   - Power series is left-continuous at boundary when series converges there
@@ -601,9 +641,10 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 
 ---
 
-### 6.4 Continuous Functions on [a,b]
+## 6.4 Continuous Functions on [a,b]
 
-**The Intermediate Value Theorem**:
+### The Intermediate Value Theorem
+
 - **Theorem (IVT)**: If f continuous on [a,b] and y between f(a) and f(b), then f(c) = y for some c
 - Proof via completeness: c = sup{x : f(x) < y}
 - **Corollary**: Continuous image of interval is interval
@@ -612,13 +653,15 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
   - Fixed point theorem: f: [a,b] → [a,b] continuous ⟹ f(c) = c for some c
   - Every odd-degree polynomial has a real root
 
-**Boundedness and the Extreme Value Theorem**:
+### Boundedness and the Extreme Value Theorem
+
 - **Theorem**: Continuous on [a,b] ⟹ bounded
   - Proof via Bolzano-Weierstrass
 - **Theorem (EVT)**: Continuous on [a,b] ⟹ attains maximum and minimum
   - Proof via BW: xₙ with f(xₙ) → sup f; extract convergent subsequence
 
-**Monotone Functions and Inverses**:
+### Monotone Functions and Inverses
+
 - **Definition**: increasing, decreasing, strictly monotone
 - **Theorem**: Monotone on (a,b) ⟹ one-sided limits exist at every point
   - Proof via sup/inf
@@ -630,26 +673,1490 @@ Let me read through the Chapter 1 files to create a matching bullet-point outlin
 
 ---
 
-### 6.5 Uniform Continuity
+## 6.5 Uniform Continuity
 
-**The Problem**:
+### The Problem
+
 - In ordinary continuity, δ depends on ε *and* the point a
 - Can one δ work for all points simultaneously?
 
-**Definition**: f uniformly continuous on S if ∀ε > 0 ∃δ > 0: x, y ∈ S and |x - y| < δ ⟹ |f(x) - f(y)| < ε
+### Definition
 
-**Non-examples**:
+- f uniformly continuous on S if ∀ε > 0 ∃δ > 0: x, y ∈ S and |x − y| < δ ⟹ |f(x) − f(y)| < ε
+
+### Non-examples
+
 - f(x) = 1/x on (0,1): near 0, need smaller and smaller δ
 - f(x) = x² on ℝ: as x → ∞, function changes faster and faster
 
-**Theorem**: Uniformly continuous ⟹ continuous (trivial)
+### Results
 
-**Theorem**: Continuous on [a,b] ⟹ uniformly continuous on [a,b]
-- Proof via BW: if not, get sequences xₙ, yₙ with |xₙ - yₙ| → 0 but |f(xₙ) - f(yₙ)| ≥ ε; extract convergent subsequence, get contradiction
-
-**Extension Theorem**: Uniformly continuous on (a,b) ⟹ extends to continuous function on [a,b]
-- Proof: show lim_{x→a⁺} f(x) exists via Cauchy criterion
-
-**Corollary**: Uniformly continuous on bounded set ⟹ bounded
+- **Theorem**: Uniformly continuous ⟹ continuous (trivial)
+- **Theorem**: Continuous on [a,b] ⟹ uniformly continuous on [a,b]
+  - Proof via BW: if not, get sequences xₙ, yₙ with |xₙ − yₙ| → 0 but |f(xₙ) − f(yₙ)| ≥ ε; extract convergent subsequence, get contradiction
+- **Extension Theorem**: Uniformly continuous on (a,b) ⟹ extends to continuous function on [a,b]
+  - Proof: show lim_{x→a⁺} f(x) exists via Cauchy criterion
+- **Corollary**: Uniformly continuous on bounded set ⟹ bounded
 
 ---
+
+## Chapter Summary
+
+| Section | Purpose |
+|---------|---------|
+| Prelude | Functions wilder than expected; need rigorous definitions |
+| 6.1 Continuity | Definitions (sequential, ε-δ), limits of functions, discontinuities |
+| 6.2 Building | Algebra of continuous functions, basic examples |
+| 6.3 Power Series I | Continuity inside radius, Abel at boundary |
+| 6.4 Functions on [a,b] | IVT, EVT, monotone inverses |
+| 6.5 Uniform Continuity | One δ for all points; closed intervals force it |
+
+## Key Theorems
+
+1. Sequential ⟺ ε-δ characterization of continuity
+2. Algebra: sums, products, quotients, compositions preserve continuity
+3. Power series continuous on (−R, R) via Tannery
+4. Abel's theorem: continuity at boundary when series converges
+5. IVT: continuous image of interval is interval
+6. EVT: continuous on [a,b] ⟹ bounded and attains bounds
+7. Continuous on [a,b] ⟹ uniformly continuous
+8. Strictly monotone + continuous ⟹ continuous inverse
+
+---
+
+## Exercises (Selected)
+
+### Section 6.1
+
+- Prove f(x) = x sin(1/x) (with f(0) = 0) is continuous at 0
+- Show Dirichlet's function is discontinuous everywhere
+- Classify discontinuities of f(x) = ⌊x⌋ (floor function)
+- If f and g continuous and f = g on a dense set, prove f = g everywhere
+
+### Section 6.2
+
+- Prove max(f, g) = (f + g + |f − g|)/2
+- Give an example where f + g is continuous but f and g are not
+- Prove f continuous and nonzero at a ⟹ f nonzero on some neighborhood of a
+
+### Section 6.3
+
+- Use Abel's theorem to show ln(2) = 1 − 1/2 + 1/3 − 1/4 + ⋯
+- If Σaₙxⁿ = 0 for all x in (−r, r), prove aₙ = 0 for all n
+- Prove Σxⁿ/n is continuous on (−1, 1) and left-continuous at x = 1
+
+### Section 6.4
+
+- Prove every polynomial of odd degree has a real root
+- Show f(x) = x + sin(x) has a unique fixed point
+- Give an example of a bounded continuous function on (0,1) that doesn't attain its sup
+- If f strictly increasing and continuous on [a,b], prove f⁻¹ is strictly increasing
+
+### Section 6.5
+
+- Give an example of a continuous function on (0,1) that is not uniformly continuous
+- Prove f(x) = √x is uniformly continuous on [0, ∞)
+- Prove f Lipschitz (|f(x) − f(y)| ≤ K|x − y|) ⟹ f uniformly continuous
+- Is sin(x²) uniformly continuous on ℝ?
+
+---
+
+## Dependencies
+
+**Requires from earlier chapters**:
+
+- Completeness of ℝ, sup/inf (Chapter 1)
+- Sequences, limit laws, Bolzano-Weierstrass, Cauchy sequences (Chapters 2–3)
+- Series, ratio/root tests, radius of convergence (Chapter 4)
+- Tannery's theorem (Chapter 5)
+
+**Sets up for later chapters**:
+
+- Derivatives: EVT → Rolle → MVT; inverse function theorem; Power Series II
+- Integration: uniform continuity → continuous functions are integrable
+- Function Spaces: uniform convergence (full treatment of limits preserving continuity)
+
+
+---
+
+
+
+## Chapter 7: Differentiation
+
+**Overall narrative**: Differentiation captures instantaneous rate of change. The derivative f' is itself a function, and we can apply our tools to it. The Mean Value Theorem connects f' to the behavior of f. Power series are infinitely differentiable and equal their Taylor series — but general smooth functions need not be. The exponential is the crown jewel: built entirely from calculus.
+
+**The arc:**
+> Definition and rules → MVT (what f' says about f) → Power Series II: Taylor's theorem → The exponential → Newton's method
+
+---
+
+### Historical Prelude
+
+- Fermat's method of adequality (1630s): finding maxima/minima by mysterious small increments
+- Newton's fluxions, Leibniz's infinitesimals (1680s): calculus works, but what ARE these things?
+- Berkeley's critique (1734): "ghosts of departed quantities"
+- Weierstrass (1860s): the ε-δ definition finally makes it rigorous
+- Weierstrass's monster (1872): continuous but nowhere differentiable — the gap between continuous and differentiable is vast
+
+---
+
+### 7.1 Differentiation Rules
+
+**The Definition**
+
+- f differentiable at a if lim_{h→0} (f(a+h) - f(a))/h exists
+- Alternative form: lim_{x→a} (f(x) - f(a))/(x - a)
+- Notation: f'(a), df/dx, Df(a)
+
+**Differentiability Implies Continuity**
+
+- Theorem: f differentiable at a ⟹ f continuous at a
+- Warning: converse false! |x| at 0
+
+**Basic Rules**
+
+- Linearity: (f + g)' = f' + g', (cf)' = cf'
+- Product rule: (fg)' = f'g + fg'
+- Quotient rule: (f/g)' = (f'g - fg')/g²
+- Power rule: (xⁿ)' = nxⁿ⁻¹
+
+**Chain Rule**
+
+- Theorem: (f ∘ g)'(a) = f'(g(a)) · g'(a)
+- Proof via auxiliary function φ (handles g(a+h) = g(a) case)
+- Leibniz notation: dy/dx = (dy/du)(du/dx)
+
+**Inverse Function Derivative**
+
+- Theorem: (f⁻¹)'(f(a)) = 1/f'(a) when f'(a) ≠ 0
+- Leibniz notation: dx/dy = 1/(dy/dx)
+- Example: (√x)' = 1/(2√x)
+
+---
+
+### 7.2 The Mean Value Theorem and Consequences
+
+**Fermat's Theorem**
+
+- Theorem: f has local extremum at c and f differentiable at c ⟹ f'(c) = 0
+- Proof: one-sided difference quotients have opposite signs
+
+**Rolle's Theorem**
+
+- Theorem: f continuous on [a,b], differentiable on (a,b), f(a) = f(b) ⟹ f'(c) = 0 for some c ∈ (a,b)
+- Proof via EVT + Fermat
+
+**The Mean Value Theorem**
+
+- Theorem: f continuous on [a,b], differentiable on (a,b) ⟹ f(b) - f(a) = f'(c)(b-a) for some c
+- Proof: apply Rolle to g(x) = f(x) - [(f(b)-f(a))/(b-a)](x-a)
+- Geometric interpretation: some tangent parallel to secant
+
+**Cauchy's Mean Value Theorem**
+
+- Theorem: (f(b) - f(a))g'(c) = (g(b) - g(a))f'(c) for some c
+- Proof: Rolle applied to appropriate combination
+
+**Consequences: f' Controls f**
+
+- Theorem: f' = 0 on interval ⟹ f constant
+- Theorem: f' > 0 on interval ⟹ f strictly increasing
+- Corollary: f' ≥ 0 ⟺ f increasing; f' ≤ 0 ⟺ f decreasing
+- Remark: first/second derivative tests for extrema in exercises
+
+**Darboux's Theorem**
+
+- Theorem: If f differentiable on [a,b] and k between f'(a) and f'(b), then f'(c) = k for some c
+- Consequence: f' has IVP even if discontinuous
+- Consequence: f' cannot have jump discontinuities
+
+**Lipschitz Functions**
+
+- Definition: |f(x) - f(y)| ≤ K|x - y| for all x, y
+- Theorem: |f'| ≤ K on interval ⟹ f is Lipschitz with constant K
+- Corollary: Lipschitz ⟹ uniformly continuous
+- Connection: |f'| < 1 ⟹ contraction (links to Ch 4 and Newton)
+
+**L'Hôpital's Rule**
+
+- Theorem: f(a) = g(a) = 0, g' ≠ 0 near a, lim f'/g' = L ⟹ lim f/g = L
+- Proof via Cauchy MVT
+- Warning: must check lim f'/g' exists
+- Remark: ∞/∞ form and x → ∞ in exercises
+
+---
+
+### 7.3 Power Series II: Taylor's Theorem
+
+**Higher Derivatives**
+
+- Definition: f'', f''', ..., f⁽ⁿ⁾
+- Notation: f⁽⁰⁾ = f
+
+**Taylor Polynomials**
+
+- Definition: Pₙ(x) = Σₖ₌₀ⁿ f⁽ᵏ⁾(a)/k! (x-a)ᵏ
+- Unique polynomial of degree ≤ n matching f, f', ..., f⁽ⁿ⁾ at a
+
+**Taylor's Theorem**
+
+- Generalized Rolle: f, f', ..., f⁽ⁿ⁾ all vanish at a, and f(b) = 0 ⟹ f⁽ⁿ⁺¹⁾(c) = 0 for some c
+- Polynomial MVT: f and h share first n derivatives at a, and f(b) = h(b) ⟹ f⁽ⁿ⁺¹⁾(c) = h⁽ⁿ⁺¹⁾(c)
+- Theorem (Lagrange remainder): f(x) = Pₙ(x) + f⁽ⁿ⁺¹⁾(c)/(n+1)! (x-a)ⁿ⁺¹
+- Error bound: |f(x) - Pₙ(x)| ≤ M/(n+1)! |x-a|ⁿ⁺¹ where M bounds |f⁽ⁿ⁺¹⁾|
+
+**Term-by-Term Differentiation**
+
+- Lemma: Σaₙxⁿ and Σnaₙxⁿ⁻¹ have same radius of convergence
+- Theorem: f(x) = Σaₙxⁿ ⟹ f'(x) = Σnaₙxⁿ⁻¹ on (-R, R)
+- Proof via Tannery/dominated convergence
+- Corollary: Power series are infinitely differentiable
+- Corollary: aₙ = f⁽ⁿ⁾(0)/n! — power series equal their Taylor series
+
+**When Does the Taylor Series Converge to f?**
+
+- Key question: Rₙ(x) → 0?
+- Power series: always yes (by construction)
+- General smooth functions: not necessarily!
+- Preview: smooth ≠ analytic (example requires exp, see 7.4)
+
+**Warning: Takagi's Function**
+
+- Definition: T(x) = Σ s(2ⁿx)/2ⁿ where s(x) = dist(x, nearest integer)
+- Theorem: T is continuous everywhere, differentiable nowhere
+- Proof sketch: uniform convergence gives continuity; careful difference quotient analysis gives nowhere differentiable
+- **The lesson**: Power series (limits of polynomials) are infinitely differentiable. But general limits of differentiable functions can be nowhere differentiable.
+- Remark: Full story of when limits preserve differentiability in Function Spaces chapter
+
+---
+
+### 7.4 The Exponential Function
+
+**The Functional Equation Constrains the Derivative**
+
+- Theorem: If aˣ differentiable, then (aˣ)' = cₐ · aˣ for some constant cₐ
+- Which base gives cₐ = 1?
+
+**Building exp from Calculus**
+
+- We seek: exp' = exp and exp(0) = 1
+- Taylor says: must have exp(x) = Σxⁿ/n!
+- This series converges for all x (ratio test)
+
+**Verifying exp Works**
+
+- Theorem: exp'(x) = exp(x) (term-by-term differentiation)
+- Theorem: exp(x+y) = exp(x)exp(y) (Cauchy product — callback to Ch 5!)
+- So exp is an exponential for some base
+
+**Identifying the Base**
+
+- Definition: e = exp(1) = Σ1/n!
+- Theorem: exp(x) = eˣ
+- Theorem: e = lim(1 + 1/n)ⁿ (connects to Ch 2 definition and Ch 5 Tannery)
+
+**Computing e**
+
+- Error bound: 0 < e - Sₙ < 1/(n! · n)
+- Example: S₁₀ gives e ≈ 2.7182818 to 7 decimals
+
+**e Is Irrational**
+
+- Theorem: e ∉ ℚ
+- Proof: q!·e = (integer) + (something in (0,1)), contradiction
+
+**General Exponentials**
+
+- Corollary: (aˣ)' = cₐ · aˣ where cₐ = lim(aʰ-1)/h
+- Remark: cₐ = ln(a), defined via integration in Ch 8
+
+**Warning: Smooth ≠ Analytic**
+
+- Definition: f(x) = e^{-1/x²} for x ≠ 0, f(0) = 0
+- Theorem: f is smooth and f⁽ⁿ⁾(0) = 0 for all n
+- Consequence: Taylor series at 0 is identically 0, but f ≠ 0
+- **The lesson**: Smooth functions can fail to equal their Taylor series. Power series are special — they're analytic by construction.
+
+---
+
+### 7.5 Newton's Method
+
+**The Algorithm**
+
+- Problem: Find root of f(x) = 0
+- Newton iteration: xₙ₊₁ = xₙ - f(xₙ)/f'(xₙ)
+- Geometric interpretation: follow tangent line to x-axis
+
+**Convergence via Contraction**
+
+- Define g(x) = x - f(x)/f'(x); fixed point of g is root of f
+- Compute: g'(x) = f(x)f''(x)/(f'(x))²
+- At simple root r: g'(r) = 0
+- Theorem: For x₀ near r, Newton converges
+- Proof: g'(r) = 0 ⟹ |g'| < 1 near r ⟹ g is contraction
+
+**Quadratic Convergence via Taylor**
+
+- Theorem: εₙ₊₁ ≈ [f''(r)/(2f'(r))] εₙ²
+- Proof: Taylor expand f(xₙ) around r
+- Consequence: errors square — digits roughly double each step
+
+**Examples**
+
+- √2: xₙ₊₁ = (xₙ + 2/xₙ)/2 — the Babylonian method! (callback to Ch 2)
+- ∛5: xₙ₊₁ = (2xₙ + 5/xₙ²)/3
+
+**Failure Modes**
+
+- Multiple roots: g'(r) ≠ 0, only linear convergence
+- Bad starting points: may cycle, diverge, or find wrong root
+- f'(xₙ) = 0: division by zero
+
+**Looking Ahead**
+
+- Newton is fixed-point iteration: xₙ₊₁ = g(xₙ)
+- Picard iteration for ODEs: same idea in function space
+- Contraction mapping theorem (Ch 4) guarantees convergence in both settings
+
+---
+
+## Chapter Summary
+
+| Section | Purpose |
+|---------|---------|
+| Prelude | Historical development; Weierstrass's monster |
+| 7.1 Rules | Definition and computational machinery |
+| 7.2 MVT | f' controls f; Darboux, Lipschitz |
+| 7.3 Power Series II | Taylor's theorem; term-by-term differentiation; Takagi warning |
+| 7.4 Exponential | Build exp; smooth ≠ analytic |
+| 7.5 Newton | Fixed-point iteration; preview Picard |
+
+## Key Theorems
+
+1. Differentiable ⟹ continuous (converse false)
+2. Chain rule and inverse function derivative
+3. Mean Value Theorem
+4. f' = 0 ⟹ constant; f' > 0 ⟹ increasing
+5. Darboux: f' has IVP
+6. Taylor's theorem with Lagrange remainder
+7. Term-by-term differentiation of power series
+8. exp' = exp; exp(x+y) = exp(x)exp(y)
+9. e is irrational
+10. Newton converges quadratically near simple roots
+
+---
+
+## Exercises (Selected)
+
+### Section 7.1
+
+- Prove (xⁿ)' = nxⁿ⁻¹ by induction
+- Product rule for three functions: (fgh)' = ?
+- Prove: f differentiable at a and f(a) ≠ 0 ⟹ 1/f differentiable at a
+
+### Section 7.2
+
+- First derivative test for local extrema
+- Second derivative test for local extrema
+- L'Hôpital for ∞/∞ form
+- L'Hôpital as x → ∞
+- Construct f with f' discontinuous but bounded
+
+**Guided Exercises: Convexity**
+
+- Definition: f convex if f(λx + (1-λ)y) ≤ λf(x) + (1-λ)f(y)
+- Prove: f differentiable and convex ⟺ f' increasing
+- Corollary: f'' ≥ 0 ⟺ f convex
+- Prove: f convex ⟹ f(y) ≥ f(x) + f'(x)(y-x) (tangent lines lie below graph)
+- Prove: f convex on open interval ⟹ f continuous
+- ★ Jensen's inequality
+
+### Section 7.3
+
+- Taylor series of 1/(1-x)², 1/(1-x)³ by differentiation
+- sin and cos Taylor series (assuming these functions exist)
+- Prove Taylor with integral remainder (connects to Ch 8)
+- ★ Complete Takagi nowhere-differentiability proof
+
+### Section 7.4
+
+- Prove exp(x) ≥ 1 + x for all x
+- Prove e < 3 using partial sums
+- Show eˣ/xⁿ → ∞ as x → ∞ (exponential beats polynomial)
+- Compute e to 10 decimal places; how many terms needed?
+- ★ Complete the induction: f(x) = e^{-1/x²} has f⁽ⁿ⁾(0) = 0
+
+### Section 7.5
+
+- Apply Newton to find ⁴√7
+- What happens applying Newton to f(x) = x³ starting at x₀ = 1?
+- Modified Newton for multiple roots
+- ★ Newton for f(x) = x² - a gives Babylonian method
+
+---
+
+## Dependencies
+
+**Requires from earlier chapters**:
+
+- Limits, continuity, IVT, EVT (Ch 6)
+- Bolzano-Weierstrass (Ch 3)
+- Series, radius of convergence (Ch 4)
+- Cauchy product, Tannery (Ch 5)
+- (1 + x/n)ⁿ = Σxⁿ/n! (Ch 5)
+- Contraction mapping theorem (Ch 4)
+
+**Sets up for later chapters**:
+
+- Ch 8 (Integration): FTC uses MVT consequences
+- Ch 8 (Elementary Functions): Inverse function derivative for log, arcsin; identify cₐ = ln(a)
+- Function Spaces: Picard iteration generalizes Newton
+
+
+
+
+---
+
+
+# Chapter 8: Integration
+
+## Overview
+
+Integration is an independent subject, older than calculus. We formalize it axiomatically: the axioms force the value of integrals for continuous functions. We then verify that this forced value actually defines an integral satisfying the axioms — so integrals exist. With existence secured, we rigorously define classical geometric quantities.
+
+**The arc:**
+> History → Axioms force the value → Darboux verifies existence → Geometry defined → Computing (exponential tease)
+
+---
+
+## Historical Prelude
+
+- **The problem**: What is area under a curve? What is arc length? Ancient questions.
+- **Archimedes** (~250 BCE): Method of exhaustion
+  - Computed ∫₀¹ x² = 1/3 by trapping between rectangles
+  - Studied arc length of convex curves; stated convexity axiom he couldn't prove
+  - Integration without calculus — pure geometric reasoning
+- **Cavalieri** (1630s): Method of indivisibles
+  - Areas as "sums of lines," volumes as "stacks of slices"
+  - Cavalieri's principle: equal cross-sections ⟹ equal volumes
+  - Philosophically suspect, computationally powerful
+- **Fermat** (1630s): ∫₀¹ xⁿ = 1/(n+1) using geometric partitions
+  - Forty years before Newton and Leibniz!
+- **The message**: Integration existed for 2000 years before FTC connected it to differentiation
+
+---
+
+## 8.1 The Axiomatic Integral
+
+### The Axioms
+
+- What properties should ∫[a,b] f have?
+- **Axiom 1 (Rectangles)**: ∫[a,b] k = k(b−a) for constant k
+- **Axiom 2 (Monotonicity)**: f ≤ g on [a,b] ⟹ ∫[a,b] f ≤ ∫[a,b] g
+- **Axiom 3 (Additivity)**: ∫[a,b] f = ∫[a,c] f + ∫[c,b] f for c ∈ (a,b)
+- These say nothing about *which* functions are integrable — only how the integral behaves
+
+### Theorems from the Axioms
+
+- **Bounds theorem**: m ≤ f ≤ M ⟹ m(b−a) ≤ ∫f ≤ M(b−a)
+  - Proof from monotonicity + rectangles
+- **Continuity of F**: F(x) = ∫ₐˣ f is continuous
+  - Proof from additivity + bounds
+
+### Upper and Lower Sums
+
+- Partition P = {a = x₀ < x₁ < ... < xₙ = b}
+- mᵢ = inf f on [xᵢ₋₁, xᵢ], Mᵢ = sup f on [xᵢ₋₁, xᵢ]
+- Lower sum L(f,P) = Σ mᵢ(xᵢ − xᵢ₋₁)
+- Upper sum U(f,P) = Σ Mᵢ(xᵢ − xᵢ₋₁)
+
+### The Trapping Theorem
+
+- **Theorem**: Any integral satisfying the axioms must satisfy L(f,P) ≤ ∫f ≤ U(f,P) for all P
+- Proof: Apply axioms to each subinterval, sum
+- **Corollary**: sup_P L(f,P) ≤ ∫f ≤ inf_P U(f,P)
+
+### When is the Value Forced?
+
+- If sup_P L(f,P) = inf_P U(f,P), there is only one possible value for ∫f
+- The axioms completely determine the integral in this case
+- Key question: For which functions does sup L = inf U?
+
+### Theorem: Continuous Functions Have Forced Values
+
+- **Theorem**: If f is continuous on [a,b], then sup_P L(f,P) = inf_P U(f,P)
+- Proof:
+  - f continuous on compact [a,b] ⟹ f uniformly continuous
+  - Given ε > 0, choose δ from uniform continuity
+  - Partition P with mesh < δ ⟹ Mᵢ − mᵢ < ε/(b−a) on each subinterval
+  - So U(f,P) − L(f,P) < ε
+  - Since ε arbitrary, sup L = inf U
+- **Corollary**: If f is continuous and an integral satisfying the axioms exists, then the axioms force its value uniquely
+
+### Examples: Values Forced by the Axioms
+
+- **Example**: For f(x) = x on [0,1], the integral must equal 1/2
+  - Uniform partition Pₙ: L(f,Pₙ) = (n−1)/(2n), U(f,Pₙ) = (n+1)/(2n)
+  - Both → 1/2, so sup L = inf U = 1/2
+- **Example**: For f(x) = x² on [0,1], the integral must equal 1/3
+  - Calculation using Σi² = n(n+1)(2n+1)/6 shows sup L = inf U = 1/3
+- These values are *forced by the axioms* for any integral that exists
+
+### The Question
+
+- We know *what* the integral must be for continuous functions
+- But does an integral satisfying the axioms actually *exist*?
+- We must verify that defining ∫f = sup L = inf U actually satisfies the axioms
+
+---
+
+## 8.2 The Darboux Integral
+
+### The Definition
+
+- For continuous f on [a,b], define: ∫ₐᵇ f = sup_P L(f,P) = inf_P U(f,P)
+- We must verify this definition satisfies our three axioms
+
+### Partitions and Refinements
+
+- Partition P of [a,b]: finite set {x₀, ..., xₙ} with a = x₀ < ... < xₙ = b
+- Refinement: Q refines P if P ⊂ Q
+- **Lemma**: Refinements improve bounds: P ⊂ Q ⟹ L(f,P) ≤ L(f,Q) ≤ U(f,Q) ≤ U(f,P)
+- **Corollary**: Every lower sum ≤ every upper sum (use common refinement)
+
+### Verification of Axiom 1 (Rectangles)
+
+- For constant k: mᵢ = Mᵢ = k for any partition
+- So L(k,P) = U(k,P) = k(b−a)
+- Therefore ∫k = k(b−a) ✓
+
+### Verification of Axiom 2 (Monotonicity)
+
+- If f ≤ g on [a,b], then on each subinterval: inf f ≤ inf g, sup f ≤ sup g
+- So L(f,P) ≤ L(g,P) and U(f,P) ≤ U(g,P) for all P
+- Taking sup over L and inf over U preserves inequality
+- Therefore f ≤ g ⟹ ∫f ≤ ∫g ✓
+
+### Verification of Axiom 3 (Additivity)
+
+- For partitions P of [a,c] and Q of [c,b], P ∪ Q is a partition of [a,b]
+- L(f, P∪Q) = L(f,P) + L(f,Q) and similarly for U
+- Taking sup/inf: ∫ₐᵇ f = ∫ₐᶜ f + ∫ᶜᵇ f ✓
+
+### The Integral Exists
+
+- **Theorem**: For continuous f on [a,b], the Darboux integral exists and satisfies all three axioms
+- The forced value is the actual value
+
+### Payoff: Other Integrable Functions
+
+- The definition ∫f = sup L = inf U makes sense whenever sup L = inf U
+- **Corollary**: Bounded functions with finitely many discontinuities are integrable
+  - Near discontinuities: contribution to U − L bounded by 2M · (small width)
+  - Away from discontinuities: uniform continuity controls U − L
+- **Exercise**: Monotone functions on [a,b] are integrable
+- We don't belabor integrability criteria here — the Lebesgue integral (later chapter) gives a fuller picture
+
+---
+
+## 8.3 Integration and Geometry
+
+With existence secured for continuous functions, we can rigorously define classical geometric quantities.
+
+### Arc Length
+
+- **Motivation**: Approximate curve by segments; segment length ≈ √(1 + (f')²) Δx
+- **Definition**: Arc length of y = f(x) on [a,b] is ∫ₐᵇ √(1 + (f')²) dx (when f' continuous)
+- **Example**: Upper semicircle y = √(1−x²) has arc length ∫₋₁¹ 1/√(1−x²) dx
+  - Improper integral (blows up at ±1)
+  - If it converges, this *defines* π as the semicircle's length
+
+### Archimedes' Inequality for Convex Curves
+
+- Archimedes needed this as an *axiom*; we can *prove* it
+- **Theorem**: Among convex curves with same endpoints, the one closer to the chord is shorter
+- Proof uses convexity facts from Ch 7 guided exercises:
+  - f convex ⟺ f' increasing
+  - f'' ≥ 0 ⟺ f convex
+- **Corollary**: Straight line is shortest path between two points
+- **Corollary**: Convex curve lies between inscribed and circumscribed polygon lengths
+
+### The Two Definitions of π Agree
+
+- **Ch 4 definition**: π = lim (perimeter of inscribed n-gon in unit circle)/2
+- **Ch 8 definition**: π = arc length of unit semicircle = ∫₋₁¹ 1/√(1−x²) dx
+- **Theorem**: These are equal
+- Proof: By Archimedes' inequality, semicircle arc length is trapped between inscribed and circumscribed polygon perimeters, which both → π (Ch 4)
+
+### Area Between Curves
+
+- **Definition**: If f ≥ g on [a,b], area between curves = ∫ₐᵇ [f(x) − g(x)] dx
+- **Example**: Area of unit disk = ∫₋₁¹ 2√(1−x²) dx
+  - This defines "area of disk" rigorously
+  - We will show this equals π (the same π!) after developing more tools
+
+### Volume by Slicing (Cavalieri Rigorous)
+
+- **Definition**: Solid with cross-sectional area A(x) has volume ∫ₐᵇ A(x) dx
+- **Cavalieri's Principle**: Equal cross-sections ⟹ equal volumes (immediate)
+- **Example (Pyramid)**: V = ∫₀ʰ (sx/h)² dx = s²h/3 = (1/3) · base · height
+- **Example (Cone)**: V = ∫₀ʰ π(rx/h)² dx = πr²h/3
+- **Example (Sphere)**: V = ∫₋ᴿᴿ π(R² − x²) dx = (4/3)πR³
+
+### Volume of Revolution
+
+- **Definition**: Rotating y = f(x) around x-axis gives volume ∫ₐᵇ π[f(x)]² dx
+- Cross-sections are disks of radius f(x)
+
+---
+
+## 8.4 Computing Integrals
+
+### The Direct Method
+
+1. Choose partitions Pₙ with mesh → 0
+2. Compute L(f, Pₙ) and U(f, Pₙ)
+3. Show both converge to same limit
+4. That limit is ∫f
+
+### Example: ∫₀¹ xⁿ = 1/(n+1)
+
+- Uniform partition Pₙ = {0, 1/n, 2/n, ..., 1}
+- U(xⁿ, Pₙ) = (1/n^{n+1}) Σᵢⁿ iⁿ
+- Sum is polynomial of degree n+1 with leading coefficient 1/(n+1)
+- So U → 1/(n+1); similarly L → 1/(n+1)
+- Confirms the axiomatic prediction from 8.1
+
+### Example: ∫₀¹ eˣ = e − 1
+
+- U(eˣ, Pₙ) = (1/n) · e^{1/n}(e−1)/(e^{1/n}−1) via geometric series
+- As n → ∞: e^{1/n} → 1 and (e^{1/n}−1)/(1/n) → 1
+- So U → e − 1; similarly L → e − 1
+
+### Example: ∫₀¹ 2ˣ = 1/ln 2
+
+- Similar calculation yields (2−1)/ln 2 = 1/ln 2
+
+### The Exponential Observation
+
+- We computed: ∫₀¹ eˣ = e¹ − e⁰
+- The integral of eˣ equals eˣ evaluated at endpoints!
+- For polynomials: elaborate Σiⁿ calculations
+- For exponential: the answer "knows" the boundary values
+- **The hint**: (eˣ)' = eˣ. Integrating eˣ gives back eˣ.
+- Is there a general principle connecting integration and differentiation?
+- Chapter 9 reveals the Fundamental Theorem of Calculus
+
+---
+
+## Chapter Summary
+
+| Section | Purpose |
+|---------|---------|
+| Prelude | Integration existed 2000 years before calculus |
+| 8.1 Axiomatic | Axioms force the value for continuous functions |
+| 8.2 Darboux | Verify the forced value satisfies axioms → integral exists |
+| 8.3 Geometry | Define arc length, area, volume; π consistency |
+| 8.4 Computing | Direct computation; exponential hints at FTC |
+
+## Key Theorems
+
+1. **Trapping Theorem** (8.1): Any integral satisfying axioms has L(f,P) ≤ ∫f ≤ U(f,P)
+2. **Continuous Functions Forced** (8.1): For continuous f, sup L = inf U, so the value is determined
+3. **Axiom Verification** (8.2): Darboux integral satisfies all three axioms
+4. **Archimedes' Inequality** (8.3): Among convex curves, closer to chord ⟹ shorter
+5. **π Consistency** (8.3): Polygon limit = arc length integral
+
+## Definitions Introduced
+
+- Arc length: ∫√(1+(f')²) dx
+- Area between curves: ∫(f−g) dx
+- Volume by slicing: ∫A(x) dx (Cavalieri rigorous)
+- Volume of revolution: ∫π[f(x)]² dx
+
+---
+
+## Exercises (Selected)
+
+### Section 8.1
+
+- Use the axioms to show: if x³ integrable on [0,1] then ∫₀¹ x³ = 1/4
+- Prove the bounds theorem from the axioms
+- Show that for f(x) = x on [0,2], sup L = inf U = 2
+
+### Section 8.2
+
+- Prove: f integrable on [a,b] iff for all ε > 0, exists P with U(f,P) − L(f,P) < ε
+- Prove: f monotone on [a,b] ⟹ f integrable
+- Give an example of a bounded function with sup L < inf U (hence not Darboux integrable)
+
+### Section 8.3
+
+- Compute arc length of y = x^{3/2} from x = 0 to x = 1
+- Use Cavalieri to show: cylinder and "leaning cylinder" (same base, same height) have equal volume
+- Prove: volume of cone = (1/3) · base · height using integration
+
+**Guided Exercises: Archimedes' Inequality**
+
+- Recall from Ch 7: f convex ⟺ f' increasing
+- Prove: if f convex on [a,b], the graph lies below the chord connecting endpoints
+- Prove: if f, g convex with same endpoints and f ≤ g, then arc length of f ≤ arc length of g
+- Conclude: straight line is shortest path between two points
+- Conclude: convex curve length lies between inscribed and circumscribed polygon lengths
+
+### Section 8.4
+
+- Compute ∫₀¹ x⁴ directly using Σi⁴ = n(n+1)(2n+1)(3n²+3n−1)/30
+- Compute ∫₀² eˣ directly
+- ★ Compute ∫₀¹ 1/(1+x²) using Riemann sums (relates to arctan; preview of Ch 9)
+
+---
+
+## Dependencies
+
+**Requires from earlier chapters**:
+
+- Supremum and infimum (Ch 1)
+- Continuity and uniform continuity (Ch 6)
+- Compactness of [a,b] (Ch 6)
+- Convexity: f'' ≥ 0 ⟺ f convex (Ch 7 exercises)
+- π via polygon limits (Ch 4)
+
+**Sets up for later chapters**:
+
+- Ch 9 (FTC): Connects integration to differentiation; Power Series III
+- Ch 9 (Elementary Functions): Defines log, trig via integrals
+- Later chapter: Lebesgue integral extends integrability
+
+
+
+---
+
+
+
+
+# Chapter 9: Calculus
+
+## Overview
+
+This chapter reveals the connection between differentiation and integration—the Fundamental Theorem of Calculus. This single theorem transforms integration from laborious Riemann sums into algebraic manipulation, immediately unlocks solutions to important differential equations, and enables us to finally define and compute the elementary functions.
+
+**The arc:**
+> FTC → Antidifferentiation techniques → ODEs → Logarithms → Trig → Computing π
+
+---
+
+## Historical Prelude
+
+- **The problem**: Differentiation finds rates; integration finds areas. Separate subjects for 2000 years.
+- **Barrow** (1660s): Proved A'(x) = f(x) geometrically, missed computational significance
+- **Newton and Leibniz** (1680s): Understood the power — integration is anti-differentiation
+- **Before FTC**: Each curve required Archimedes-style exhaustion
+- **After FTC**: Find antiderivative, evaluate at endpoints — systematic procedure
+- **The message**: Two millennia of geometric technique subsumed into one theorem
+
+---
+
+## 9.1 The Fundamental Theorem
+
+### Signed Integrals
+
+- Convention: ∫ᵇₐ f = −∫ₐᵇ f for a < b
+- Makes FTC statements cleaner, allows variable endpoint to move either direction
+
+### MVT for Integrals
+
+- Theorem: f continuous on [a,b] ⟹ ∃c ∈ (a,b) with ∫ₐᵇ f = f(c)(b−a)
+- Interpretation: integral = average value × length
+
+### FTC I
+
+- Theorem: f continuous, F(x) = ∫ₐˣ f(t) dt ⟹ F'(x) = f(x)
+- Interpretation: differentiation undoes integration
+- Corollary: Every continuous function has an antiderivative
+
+### FTC II
+
+- Theorem: F' = f on [a,b] ⟹ ∫ₐᵇ f = F(b) − F(a)
+- Notation: F(x)|ₐᵇ = F(b) − F(a)
+- **Callback**: Explains Ch 8 observation that ∫₀¹ eˣ = e − 1 = e¹ − e⁰
+
+### Linearity
+
+- Corollary: ∫(αf + βg) = α∫f + β∫g
+- Proof via FTC II from linearity of differentiation
+
+---
+
+## 9.2 Antidifferentiation
+
+### Power Series III: Term-by-Term Integration
+
+- Theorem: If f(x) = Σaₙxⁿ has radius R, then for |x| < R:
+  - ∫₀ˣ f(t) dt = Σ aₙxⁿ⁺¹/(n+1), same radius R
+- Completes the trilogy:
+  - Power Series I (Ch 6): Continuity
+  - Power Series II (Ch 7): Term-by-term differentiation
+  - Power Series III (Ch 9): Term-by-term integration
+
+### Integration by Substitution
+
+- Theorem: ∫ₐᵇ f(g(x))g'(x) dx = ∫_{g(a)}^{g(b)} f(u) du
+- Chain rule in reverse
+- Example: ∫₀¹ x·eˣ² dx = ½(e − 1)
+- Example: ∫₀¹ x²√(1−x³) dx = 2/9
+
+### Integration by Parts
+
+- Theorem: ∫ₐᵇ f g' = fg|ₐᵇ − ∫ₐᵇ f' g
+- Product rule in reverse
+- Example: ∫₀¹ x·eˣ dx = 1
+- Example: ∫₀^{π/2} x cos(x) dx = π/2 − 1
+
+### Taylor's Theorem with Integral Remainder
+
+- Theorem: f(x) = Σₖ₌₀ⁿ f⁽ᵏ⁾(a)(x−a)ᵏ/k! + (1/n!)∫ₐˣ (x−t)ⁿ f⁽ⁿ⁺¹⁾(t) dt
+- Proof: Repeated integration by parts
+- Lagrange form follows by applying MVT for integrals to the remainder
+
+---
+
+## 9.3 Differential Equations
+
+### Introduction
+
+- FTC says every continuous function has an antiderivative
+- This immediately solves certain differential equations
+- Three classes where existence follows from our tools
+
+### Quadrature: y' = f(x)
+
+- Theorem: y' = f(x) with y(a) = y₀ has unique solution y = y₀ + ∫ₐˣ f(t) dt
+- Existence: FTC I
+- Uniqueness: If y₁, y₂ solutions, then (y₁ − y₂)' = 0, so constant
+
+### Special Functions Defined by Quadrature
+
+- FTC guarantees existence even when no elementary antiderivative exists
+- **Error function**: erf(x) = (2/√π) ∫₀ˣ e^{−t²} dt — probability
+- **Sine integral**: Si(x) = ∫₀ˣ (sin t)/t dt — signal processing
+- **Fresnel integrals**: S(x), C(x) — optics
+- **Logarithmic integral**: li(x) = ∫₂ˣ 1/(ln t) dt — prime number theorem
+
+### First-Order Linear: y' + P(x)y = Q(x)
+
+- Theorem: If P, Q continuous near a, unique solution exists
+- Method: Integrating factor μ(x) = e^{∫ₐˣ P(t) dt}
+- Existence: All integrals exist by FTC
+- Example: y' + 2y = eˣ with y(0) = 1
+
+### Separable: y' = f(x)g(y)
+
+- If g(y) ≠ 0, separate: dy/g(y) = f(x) dx
+- Integrate: G(y) = F(x) + C where G' = 1/g, F' = f
+- Key insight: G exists by FTC, G strictly monotone, so G invertible
+- We prove existence without computing G⁻¹ explicitly
+- Example: y' = xy gives y = Ae^{x²/2}
+- Example: y' = y² with y(0) = 1 gives y = 1/(1−x) — blows up at x = 1!
+
+### Limits of Elementary Methods
+
+- y' = x + y² — no algebraic trick works
+- Solution exists, but proof requires new tools:
+  - Picard iteration, contraction mappings, completeness
+- This is Chapter 12
+
+---
+
+## 9.4 Logarithms
+
+### The Integral Definition
+
+- Definition: L(x) = ∫₁ˣ 1/t dt for x > 0
+- Goal: Prove L is a logarithm, identify which one
+
+### L is a Logarithm
+
+- Theorem: L(xy) = L(x) + L(y) for all x, y > 0
+- Proof: Substitution u = t/x in ∫ₓˣʸ 1/t dt gives ∫₁ʸ 1/u du = L(y)
+- Corollary: L = log_b for some base b
+
+### Which Logarithm?
+
+- L'(x) = 1/x by FTC I
+- Let E = L⁻¹. By inverse function theorem: E'(y) = E(y)
+- So E satisfies E' = E with E(0) = 1
+- From Ch 7: unique solution is eˣ
+- Therefore E = exp, so L = ln
+
+### Basic Properties
+
+- ln(1) = 0
+- ln'(x) = 1/x
+- ln increasing (since 1/x > 0 for x > 0)
+- ln(x) → ∞ as x → ∞
+- ln(x) → −∞ as x → 0⁺
+- Corollary: (eˣ)' = eˣ (alternative proof)
+- Corollary: log_a'(x) = 1/(x ln a)
+
+### Growth of the Logarithm
+
+- Theorem: For any α > 0, lim_{x→∞} ln(x)/xᵅ = 0
+- Logarithms grow slower than any positive power
+
+### Taylor Series for Logarithms
+
+- Theorem: ln(1+x) = x − x²/2 + x³/3 − x⁴/4 + ⋯ for |x| < 1
+- Proof: Integrate 1/(1+t) = 1 − t + t² − ⋯ using Power Series III
+- At x = 1 (Abel's theorem): ln(2) = 1 − 1/2 + 1/3 − 1/4 + ⋯
+
+### Faster Computation
+
+- Problem: Series for ln(2) converges slowly (~1000 terms for 3 decimals)
+- Better: ln((1+x)/(1−x)) = 2(x + x³/3 + x⁵/5 + ⋯)
+- For ln(2): use x = 1/3, terms decay like (1/3)^{2k+1}
+- Few terms give many digits
+
+---
+
+## 9.5 Trigonometry
+
+### Improper Integrals (Remark)
+
+- When integrand unbounded at endpoint: ∫ₐᵇ f = lim_{c→b⁻} ∫ₐᶜ f
+- Converges if limit exists
+- Example: ∫₀¹ 1/√(1−t²) dt converges (compare to ∫ 1/√(1−t) near t = 1)
+
+### Defining Arcsine
+
+- Definition: arcsin(y) = ∫₀ʸ 1/√(1−t²) dt for y ∈ [−1, 1]
+- This is arc length from (1,0) to (√(1−y²), y) on unit circle
+
+### Defining π
+
+- Definition: π/2 = arcsin(1) = ∫₀¹ 1/√(1−t²) dt
+- Rigorous definition as quarter-circle arc length
+
+### Defining Sine and Cosine
+
+- Definition: sin: [−π/2, π/2] → [−1, 1] is inverse of arcsin
+- Definition: cos(θ) = √(1 − sin²θ) with appropriate sign, or cos(θ) = sin(π/2 − θ)
+- Immediate: sin²θ + cos²θ = 1
+
+### Derivatives
+
+- arcsin'(y) = 1/√(1−y²) by FTC I
+- sin'(θ) = cos(θ) by inverse function theorem
+- cos'(θ) = −sin(θ) by differentiating sin² + cos² = 1
+
+### The Differential Equation
+
+- Theorem: sin and cos satisfy y'' = −y
+- Uniqueness lemma: y'' = −y with y(0) = y'(0) = 0 ⟹ y ≡ 0
+  - Proof: E(t) = y² + (y')² has E' = 0, so E constant; E(0) = 0
+- Corollary: Solutions to y'' = −y determined by initial conditions
+
+### Addition Formulas
+
+- sin(α + β) = sin α cos β + cos α sin β
+- cos(α + β) = cos α cos β − sin α sin β
+- Proof: Both sides satisfy y'' = −y with same initial conditions
+
+### Special Values and Periodicity
+
+- sin(0) = 0, cos(0) = 1 (definition)
+- sin(π/2) = 1, cos(π/2) = 0 (definition)
+- sin(π) = 0, cos(π) = −1 (addition formulas)
+- sin(2π) = 0, cos(2π) = 1
+- sin(π/4) = cos(π/4) = 1/√2
+- Theorem: sin, cos periodic with period 2π (uniqueness argument)
+- π is smallest positive zero of sin
+
+### Taylor Series
+
+- sin(x) = x − x³/3! + x⁵/5! − ⋯ (all x)
+- cos(x) = 1 − x²/2! + x⁴/4! − ⋯ (all x)
+
+---
+
+## 9.6 Computing π
+
+### Two Constants for the Circle
+
+- Perimeter constant: circumference of unit circle = 2π
+- Area constant: area of unit disk = ∫₋₁¹ 2√(1−x²) dx
+- Are they the same π?
+
+### Archimedes' Theorem
+
+- Theorem: Area of unit disk = π (the perimeter constant)
+- Proof: IBP relates ∫√(1−x²) dx to ∫ 1/√(1−x²) dx
+- Result: ∫₀¹ √(1−x²) dx = π/4
+- Completes π journey: geometric (Ch 4) → integral (Ch 8) → series (here)
+
+### Arctangent
+
+- Definition: arctan(x) = ∫₀ˣ 1/(1+t²) dt
+- Key properties:
+  - arctan'(x) = 1/(1+x²) — rational function, no square roots!
+  - arctan(0) = 0
+  - arctan(x) → π/2 as x → ∞
+  - arctan(1) = π/4
+
+### π as Integral of Rational Function
+
+- Theorem: π/4 = ∫₀¹ 1/(1+t²) dt
+- Remarkable: π defined via circles equals integral of polynomials
+
+### Taylor Series for Arctangent
+
+- Theorem: arctan(x) = x − x³/3 + x⁵/5 − ⋯ for |x| < 1
+- Proof: Integrate 1/(1+t²) = 1 − t² + t⁴ − ⋯ using Power Series III
+
+### Gregory-Leibniz Series
+
+- π/4 = 1 − 1/3 + 1/5 − 1/7 + ⋯ (by Abel at x = 1)
+- Problem: ~1000 terms for 2 decimals (boundary convergence is slow)
+
+### Better Formulas
+
+- Proposition: π/4 = arctan(1/2) + arctan(1/3)
+  - Proof via tangent addition formula
+  - Terms decay like (1/2)^{2k+1} + (1/3)^{2k+1}
+- Machin (1706): π/4 = 4 arctan(1/5) − arctan(1/239)
+  - 9 terms give 15 digits
+  - Machin computed 100 digits by hand
+
+---
+
+## Chapter Summary
+
+| Section | Purpose |
+|---------|---------|
+| Prelude | FTC as the unification of calculus |
+| 9.1 FTC | The theorem and what it means |
+| 9.2 Antidifferentiation | Power Series III; substitution; parts |
+| 9.3 ODEs | What FTC immediately gives us; special functions; limits |
+| 9.4 Logarithms | Define ln via integral; compute via series |
+| 9.5 Trigonometry | Define trig via integrals; derive all from y'' = −y |
+| 9.6 Computing π | Area = perimeter constant; efficient series |
+
+## Key Theorems
+
+1. **FTC I**: (∫ₐˣ f)' = f
+2. **FTC II**: ∫ₐᵇ f = F(b) − F(a) where F' = f
+3. **Power Series III**: Term-by-term integration within radius R
+4. **ODE Existence**: Quadrature, linear, separable all have solutions via FTC
+5. **L = ln**: The integral ∫₁ˣ 1/t dt is the natural logarithm
+6. **Uniqueness for y'' = −y**: Solutions determined by initial conditions
+7. **Archimedes' Theorem**: Area of disk = π (perimeter constant)
+8. **Gregory-Leibniz**: π/4 = 1 − 1/3 + 1/5 − ⋯
+
+---
+
+## Exercises (Selected)
+
+### Section 9.1
+
+- Prove: if F' = G' = f on [a,b], then F and G differ by a constant
+
+### Section 9.2
+
+- Prove Taylor's theorem with integral remainder via repeated IBP
+- Use substitution to compute ∫₀¹ x/(1+x⁴) dx
+- Use IBP to derive reduction formula for ∫ xⁿ eˣ dx
+- Prove: ∫₀^π sin²x dx = ∫₀^π cos²x dx = π/2
+
+### Section 9.3
+
+- Solve y' + 3y = e^{2x} with y(0) = 1
+- Solve y' = y/x with y(1) = 2
+- Verify erf'(x) = (2/√π)e^{−x²}, erf(0) = 0, erf odd, erf(∞) = 1
+- Bernoulli equations: y' + P(x)y = Q(x)yⁿ reduces to linear via v = y^{1−n}
+- Homogeneous equations: y' = f(y/x) reduces to separable via v = y/x
+- Second-order constant coefficient: y'' + ay' + by = 0 via characteristic equation
+
+### Section 9.4
+
+- Compute ln(2) via slow series: how many terms for 2 decimals?
+- Compute ln(2) via fast series: how many terms for 6 decimals?
+- Compute ln(3) using ln((1+x)/(1−x)) with appropriate x
+- Prove ln(x) < x − 1 for x > 1 using integral definition
+- Historical: Compute ln(2) by repeated square roots (Briggs' method)
+
+### Section 9.5
+
+- Compute sin(π/6), cos(π/3) from addition/half-angle formulas
+- Prove tan'(x) = sec²(x)
+- Derive (arccos)'(x), (arctan)'(x) from definitions
+- Hyperbolic functions: sinh, cosh satisfy y'' = y; derive parallel properties
+
+### Section 9.6
+
+- Wallis product: π/2 = (2·2)/(1·3) · (4·4)/(3·5) · ⋯ (guided, via ∫₀^{π/2} sinⁿx)
+- Find other Machin-like formulas
+- Compute π to 6 decimals using arctan(1/2) + arctan(1/3)
+
+---
+
+## Dependencies
+
+**Requires from earlier chapters**:
+
+- Differentiation, MVT, inverse function theorem (Ch 7)
+- Integration, geometric definitions, Darboux integral (Ch 8)
+- Series, convergence tests, Abel's theorem (Ch 4, 5)
+- Inverse functions and monotonicity (Ch 6)
+- Exponential function and e (Ch 7)
+
+
+---
+
+
+
+
+
+# Chapter 10: Completing the Integral (Bullet Outline)
+
+## Overview
+
+This chapter extends the integral from continuous functions to the Lebesgue integral via the Daniell construction. The narrative arc:
+
+**Exploration → Limitation → Construction → Payoff → Vocabulary → Perspective**
+
+We first explore what our axiomatic integral already handles, discovering it's a vector space with many nice properties—but it's not closed under limits. Demanding closure under monotone limits while preserving linearity forces a unique extension: the Lebesgue integral.
+
+---
+
+## Historical Prelude
+
+- Fourier (1807): any function as sum of sines and cosines
+- Required interchanging integrals and infinite sums
+- 19th century: increasing concern about foundations
+- Riemann's integral handled more than continuous functions, but not enough
+- Lebesgue (1902): the right extension, designed for limits
+
+---
+
+## 10.1 The Convergence Problem
+
+### Beyond Continuous Functions
+
+- Our axiomatic integral was built for continuous functions
+- But the construction works more broadly
+- Upper and lower sums make sense for any bounded function
+- **Definition**: f is *Darboux integrable* if upper integral = lower integral
+- What functions does this capture?
+
+### The Class of Integrable Functions
+
+**Many functions are integrable**:
+- Continuous functions (by construction)
+- Piecewise continuous functions (split at discontinuities)
+- Monotone functions (upper/lower sums telescope)
+- The ruler function (discontinuous on dense set, still integrable)
+- General principle: discontinuities must be "small"
+
+**It's a vector space**:
+- If f, g integrable and α, β ∈ ℝ, then αf + βg integrable
+- ∫(αf + βg) = α∫f + β∫g
+- Linearity inherited from the construction
+- We can do algebra with integrable functions
+
+### The Boundary
+
+- χ_Q: discontinuous everywhere, not integrable
+- Upper integral = 1, lower integral = 0
+- Not just pathological—it's the boundary of our class
+
+### Power Series III Was Special
+
+- Callback to Chapter 9: term-by-term integration worked
+- ∫(Σaₙxⁿ) = Σaₙxⁿ⁺¹/(n+1)
+- Used for ln(1+x), arctan, computing π
+- You might expect limits generally behave this well
+
+### The Convergence Problem
+
+- **Failure Mode 1**: fₙ = n·χ_{[0,1/n]} → 0 but ∫fₙ = 1
+  - Limit integrable, integrals don't converge correctly
+- **Failure Mode 2**: fₙ = χ_{q₁,...,qₙ} ↗ χ_Q
+  - Each fₙ integrable with ∫fₙ = 0
+  - Limit not integrable
+
+**The class of Darboux integrable functions is not closed under limits.**
+
+### Why This Matters
+
+- Fourier series: need ∫ and Σ to interchange
+- Parameter integrals: need ∫ and d/dt to interchange
+- Power series were the exception; general limits fail
+
+### A Sanity Check
+
+- gₙ = tent functions ↗ χ_{(0,1)}
+- ∫gₙ → 1 = ∫χ_{(0,1)}
+- Limit interchange works here ✓
+
+### The Key Observation
+
+- In Failure Mode 2: ∫fₙ = 0 → 0, obvious candidate is 0
+- Problem isn't wrong answer—it's no answer when there's an obvious candidate
+- Could we extend by *defining* ∫χ_Q = 0?
+
+### What We Want
+
+- **Preserve linearity**: we have a vector space, want to keep it
+- **Add MCT**: increasing limits with bounded integrals should work
+- The remarkable fact: demanding both forces a unique extension
+
+---
+
+## 10.2 The Daniell Construction
+
+### The Plan
+
+- Two stages: first close under monotone limits, then close under subtraction
+- Must verify the extension still satisfies integral properties
+- Must verify MCT survives the second extension
+
+### Dini's Theorem
+
+- Lemma: If fₙ ∈ C[a,b] and fₙ ↘ 0 pointwise, then I(fₙ) → 0
+- Key technical tool bridging pointwise convergence to integral convergence
+- Proof uses compactness of [a,b]
+
+### Upper Functions
+
+- Definition: f ∈ L↑ if fₙ ∈ C[a,b] with fₙ ↗ f pointwise
+- Examples: continuous functions, χ_{(a,b]}
+- Define I⁺(f) = lim I(fₙ)
+
+### Well-Definedness of I⁺
+
+- Must show: different approximating sequences give same answer
+- Key Lemma: If fₙ ↗ f and g ∈ C[a,b] with g ≤ f, then I(g) ≤ lim I(fₙ)
+- Proof uses Dini's theorem on the gap hₙ = g − (fₙ ∧ g) ↘ 0
+- Corollary: I⁺ well-defined
+
+### Properties of I⁺
+
+- Extension: agrees with I on C[a,b]
+- Monotonicity: f ≤ g ⟹ I⁺(f) ≤ I⁺(g)
+- Additive: I⁺(f + g) = I⁺(f) + I⁺(g)
+- Positive homogeneity: c ≥ 0 ⟹ I⁺(cf) = cI⁺(f)
+- MCT for L↑: fₙ ∈ L↑, fₙ ↗ f, sup I⁺(fₙ) < ∞ ⟹ f ∈ L↑ and I⁺(fₙ) → I⁺(f)
+
+### The Linearity Problem
+
+- L↑ is a cone, not a vector space
+- Closed under addition and positive scalars
+- Not closed under subtraction: if fₙ ↗ f, then −fₙ ↘ −f (wrong direction)
+- We need subtraction for basic analysis
+
+### Integrable Functions
+
+- Definition: f ∈ L¹ if f = g − h for some g, h ∈ L↑ with I⁺(g), I⁺(h) < ∞
+- Define I(f) = I⁺(g) − I⁺(h)
+- Must verify well-defined: if g₁ − h₁ = g₂ − h₂, then I⁺(g₁) − I⁺(h₁) = I⁺(g₂) − I⁺(h₂)
+- Proof: g₁ + h₂ = g₂ + h₁, both in L↑, apply additivity
+
+### Properties of I on L¹
+
+- L¹ is a vector space
+- I is linear
+- Extension, monotonicity, interval additivity inherited
+
+### MCT Survives
+
+- Key Lemma: If f ∈ L¹ and f ≥ 0, then f ∈ L↑
+- Theorem (MCT for L¹): fₙ ∈ L¹, fₙ ↗ f, sup I(fₙ) < ∞ ⟹ f ∈ L¹ and I(fₙ) → I(f)
+- Proof: WLOG fₙ ≥ 0 (subtract f₁), apply key lemma, use MCT for L↑
+
+### What We've Built
+
+- An integral on L¹ ⊃ C[a,b]
+- Satisfies original properties plus linearity plus MCT
+- Next: harvest the consequences
+
+---
+
+## 10.3 Convergence Theorems
+
+### Monotone Convergence Theorem
+
+- Theorem (MCT): fₙ ∈ L¹, fₙ ↗ f, sup I(fₙ) < ∞ ⟹ f ∈ L¹ and I(fₙ) → I(f)
+- Already proved in 10.2; state cleanly here as the first payoff
+
+### Dominated Convergence Theorem
+
+- Theorem (DCT): fₙ ∈ L¹, fₙ → f pointwise, |fₙ| ≤ g for some g ∈ L¹ ⟹ f ∈ L¹ and I(fₙ) → I(f)
+- The workhorse theorem—this is what you actually use
+- Proof via MCT applied to inf/sup sequences
+
+### Revisiting the Failures
+
+- Spike functions fₙ = n·χ_{[0,1/n]}: no dominating function (would need g(0) = ∞)
+- DCT diagnoses exactly why interchange fails
+- Not a pathology—a precise answer
+
+### Application: Differentiating Under the Integral
+
+- Setup: F(t) = ∫ₐᵇ f(x,t) dx
+- Theorem: If ∂f/∂t exists and |∂f/∂t| ≤ g ∈ L¹, then F'(t) = ∫ₐᵇ (∂f/∂t) dx
+- Proof: Apply DCT to difference quotients
+
+### Application: Integrating Series Term-by-Term
+
+- Setup: Σfₙ where each fₙ ∈ L¹
+- Theorem: If Σ∫|fₙ| < ∞, then ∫Σfₙ = Σ∫fₙ
+- Proof: Partial sums dominated by Σ|fₙ|, apply DCT
+
+### Completeness
+
+- Theorem: If fₙ ∈ L¹ and Σ∫|fₙ₊₁ − fₙ| < ∞, then fₙ converges to some f ∈ L¹
+- Equivalently: Cauchy sequences in the ∫|·| sense converge
+- False for Darboux integrable functions
+- "Completing the Integral"—we've filled the holes
+
+### Series Closure
+
+- Theorem: If fₙ ∈ L¹ and Σ∫|fₙ| < ∞, then Σfₙ ∈ L¹
+- False for Darboux: fₙ = χ_{qₙ}, each integrable, sum is χ_Q
+- L¹ closed under absolutely convergent series
+
+---
+
+## 10.4 Null Sets and Measure
+
+### Null Sets
+
+- Definition: E is null if for every ε > 0, E covered by countably many intervals of total length < ε
+- Equivalently: χ_E ∈ L¹ and I(χ_E) = 0
+- Examples: finite sets, countable sets, Cantor set
+
+### Properties of Null Sets
+
+- Subset of null is null
+- Countable union of null sets is null
+- Proof: cover nth set with intervals of total length ε/2ⁿ
+
+### Almost Everywhere
+
+- Definition: Property holds a.e. if it fails only on a null set
+- "f = g a.e." means {x : f(x) ≠ g(x)} is null
+- "fₙ → f a.e." means {x : fₙ(x) ↛ f(x)} is null
+
+### The A.E. Modification Theorem
+
+- Theorem: If f = g a.e. and f ∈ L¹, then g ∈ L¹ and I(f) = I(g)
+- Striking: modify on infinitely many points, integral unchanged
+- False for Darboux: f = 0, g = χ_Q, differ on null set, but χ_Q not Darboux integrable
+
+### Measurable Sets
+
+- Definition: E is measurable if χ_E ∈ L¹
+- Examples: intervals, open sets, closed sets, countable unions/intersections
+- Non-measurable sets exist (requires axiom of choice)
+
+### Lebesgue Measure
+
+- Definition: μ(E) = I(χ_E) for measurable E
+- Properties: μ(E) ≥ 0, μ(∅) = 0, μ([a,b]) = b − a
+- Countable additivity: μ(⊔Eₙ) = Σμ(Eₙ)
+- Proof via DCT
+
+### The Integral-First Philosophy
+
+- Traditional: measure → measurable functions → integral
+- Our approach: integral → measure as byproduct
+- For analysis, the integral is primary; measure serves it
+
+---
+
+## 10.5 Why Lebesgue?
+
+### Uniqueness
+
+- Theorem: Any extension of I from C[a,b] satisfying linearity and MCT must agree with ours
+- Proof sketch: MCT forces values on L↑, linearity forces values on L¹
+- There was no choice—MCT determined everything
+
+### Maximality
+
+- Theorem: L¹ is the largest class where f integrable ⟹ |f| integrable
+- "Absolute integrability" property
+- Extensions beyond (like HK) lose this
+
+### Connection to Derivatives
+
+- Theorem: f ∈ L¹ iff f = F' a.e. for some absolutely continuous F
+- FTC for Lebesgue: cleaner than Darboux version
+- Preview of absolute continuity
+
+### Completeness Revisited
+
+- L¹ with d(f,g) = ∫|f − g| is complete
+- In fact: L¹ is the completion of C[a,b] under this metric
+- Every element of L¹ is a limit of continuous functions
+- We added exactly the missing limits—nothing more
+
+### A General Machine
+
+- The construction used the length axiom μ([c,d]) = d − c only as input
+- Positivity, linearity, Daniell's condition did the work
+- Replace with μ((c,d]) = g(d) − g(c) for increasing right-continuous g
+- Same machine produces a new integral
+- In Chapter N: this captures all finite Borel measures on [a,b]—the Riesz representation theorem
+
+### Beyond Lebesgue: The Henstock-Kurzweil Integral
+
+- Lebesgue isn't the only extension
+- HK: every derivative is integrable, full FTC
+- Example: F(x) = x² sin(1/x²), differentiable everywhere, F' not Lebesgue integrable
+- Tradeoff: HK has better FTC, but no Lᵖ theory
+- Different integrals answer different questions
+
+### Closing Perspective
+
+- Darboux: simplest integral for area under curves
+- Lebesgue: largest integral with good limit behavior
+- HK: largest integral with full FTC
+- For functional analysis: Lebesgue is essential
+
+---
+
+## Chapter Summary
+
+| Section | Purpose |
+|---------|---------|
+| 10.1 | Exploration and limitation: what Darboux can do, why limits fail |
+| 10.2 | Construction: L↑ for MCT, L¹ for linearity |
+| 10.3 | Payoff: DCT, applications, completeness, series closure |
+| 10.4 | Vocabulary: null sets, a.e., measure |
+| 10.5 | Perspective: uniqueness, maximality, generalization, alternatives |
+
+## Key Theorems
+
+1. **MCT**: Monotone limits with bounded integrals converge
+2. **DCT**: Dominated pointwise limits converge
+3. **Completeness**: L¹ is complete
+4. **Series closure**: Absolutely convergent series stay in L¹
+5. **A.E. modification**: Changing f on null set preserves integrability and integral
+6. **Uniqueness**: MCT + linearity forces the Lebesgue integral
+
+---
+
+## Dependencies
+
+**Requires from earlier chapters**:
+- Continuous functions on [a,b] (Ch 6)
+- Integration of continuous functions, Darboux construction (Ch 8)
+- Power Series III, term-by-term integration (Ch 9)
+- Series and convergence (Ch 4–5)
+
+**Sets up for later chapters**:
+- Metric spaces: L¹ as key completeness example
+- Function spaces: Lᵖ spaces
+- Fourier analysis: DCT for series manipulation
+- Measure theory: Riesz representation, general measures

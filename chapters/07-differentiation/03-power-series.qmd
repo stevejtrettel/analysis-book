@@ -1,0 +1,42 @@
+## Power Series & Taylors Theorem
+
+
+**Higher Derivatives**
+
+- Definition: f'', f''', ..., f⁽ⁿ⁾
+- Notation: f⁽⁰⁾ = f
+
+**Taylor Polynomials**
+
+- Definition: Pₙ(x) = Σₖ₌₀ⁿ f⁽ᵏ⁾(a)/k! (x-a)ᵏ
+- Unique polynomial of degree ≤ n matching f, f', ..., f⁽ⁿ⁾ at a
+
+**Taylor's Theorem**
+
+- Generalized Rolle: f, f', ..., f⁽ⁿ⁾ all vanish at a, and f(b) = 0 ⟹ f⁽ⁿ⁺¹⁾(c) = 0 for some c
+- Polynomial MVT: f and h share first n derivatives at a, and f(b) = h(b) ⟹ f⁽ⁿ⁺¹⁾(c) = h⁽ⁿ⁺¹⁾(c)
+- Theorem (Lagrange remainder): f(x) = Pₙ(x) + f⁽ⁿ⁺¹⁾(c)/(n+1)! (x-a)ⁿ⁺¹
+- Error bound: |f(x) - Pₙ(x)| ≤ M/(n+1)! |x-a|ⁿ⁺¹ where M bounds |f⁽ⁿ⁺¹⁾|
+
+**Term-by-Term Differentiation**
+
+- Lemma: Σaₙxⁿ and Σnaₙxⁿ⁻¹ have same radius of convergence
+- Theorem: f(x) = Σaₙxⁿ ⟹ f'(x) = Σnaₙxⁿ⁻¹ on (-R, R)
+- Proof via Tannery/dominated convergence
+- Corollary: Power series are infinitely differentiable
+- Corollary: aₙ = f⁽ⁿ⁾(0)/n! — power series equal their Taylor series
+
+**When Does the Taylor Series Converge to f?**
+
+- Key question: Rₙ(x) → 0?
+- Power series: always yes (by construction)
+- General smooth functions: not necessarily!
+- Preview: smooth ≠ analytic (example requires exp, see 7.4)
+
+**Warning: Takagi's Function**
+
+- Definition: T(x) = Σ s(2ⁿx)/2ⁿ where s(x) = dist(x, nearest integer)
+- Theorem: T is continuous everywhere, differentiable nowhere
+- Proof sketch: uniform convergence gives continuity; careful difference quotient analysis gives nowhere differentiable
+- **The lesson**: Power series (limits of polynomials) are infinitely differentiable. But general limits of differentiable functions can be nowhere differentiable.
+- Remark: Full story of when limits preserve differentiability in Function Spaces chapter

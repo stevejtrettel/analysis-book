@@ -1,0 +1,49 @@
+## Logarithms
+
+
+**The Integral Definition**
+
+- Definition: L(x) = ∫₁ˣ 1/t dt for x > 0
+- Goal: Prove L is a logarithm, identify which one
+
+**L is a Logarithm**
+
+- Theorem: L(xy) = L(x) + L(y) for all x, y > 0
+- Proof: Substitution u = t/x in ∫ₓˣʸ 1/t dt gives ∫₁ʸ 1/u du = L(y)
+- Corollary: L = log_b for some base b
+
+**Which Logarithm?**
+
+- L'(x) = 1/x by FTC I
+- Let E = L⁻¹. By inverse function theorem: E'(y) = E(y)
+- So E satisfies E' = E with E(0) = 1
+- From Ch 7: unique solution is eˣ
+- Therefore E = exp, so L = ln
+
+**Basic Properties**
+
+- ln(1) = 0
+- ln'(x) = 1/x
+- ln increasing (since 1/x > 0 for x > 0)
+- ln(x) → ∞ as x → ∞
+- ln(x) → −∞ as x → 0⁺
+- Corollary: (eˣ)' = eˣ (alternative proof)
+- Corollary: log_a'(x) = 1/(x ln a)
+
+**Growth of the Logarithm**
+
+- Theorem: For any α > 0, lim_{x→∞} ln(x)/xᵅ = 0
+- Logarithms grow slower than any positive power
+
+**Taylor Series for Logarithms**
+
+- Theorem: ln(1+x) = x − x²/2 + x³/3 − x⁴/4 + ⋯ for |x| < 1
+- Proof: Integrate 1/(1+t) = 1 − t + t² − ⋯ using Power Series III
+- At x = 1 (Abel's theorem): ln(2) = 1 − 1/2 + 1/3 − 1/4 + ⋯
+
+**Faster Computation**
+
+- Problem: Series for ln(2) converges slowly (~1000 terms for 3 decimals)
+- Better: ln((1+x)/(1−x)) = 2(x + x³/3 + x⁵/5 + ⋯)
+- For ln(2): use x = 1/3, terms decay like (1/3)^{2k+1}
+- Few terms give many digits

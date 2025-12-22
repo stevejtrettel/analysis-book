@@ -1,0 +1,11 @@
+## The Cauchy Condition
+
+- Observation: limsup = liminf means "tail oscillation" → 0
+- Define tail oscillation ωₙ = sup(tail) - inf(tail)
+- ωₙ → 0 ⟺ convergence
+- Unpack: ωₙ < ε means all pairs j, k ≥ n satisfy |aⱼ - aₖ| < ε
+- This *is* the Cauchy condition — derived naturally from limsup/liminf!
+- Definition: Cauchy sequence
+- Theorem: convergent ⟺ Cauchy
+- Proof sketch (⟸): Cauchy ⟹ bounded ⟹ BW ⟹ convergent subsequence ⟹ whole sequence converges
+- Significance: intrinsic (examines only the sequence), metric (uses distance, not order)

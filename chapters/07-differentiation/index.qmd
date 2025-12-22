@@ -6,10 +6,8 @@
 
 {{< include 02-mvt.qmd >}}
 
-{{< include 03-derivative-function.qmd >}}
+{{< include 03-power-series.qmd >}}
 
-{{< include 04-power-series.qmd >}}
+{{< include 04-exp.qmd >}}
 
 {{< include 05-newton.qmd >}}
-
-{{< include 06-exp.qmd >}}

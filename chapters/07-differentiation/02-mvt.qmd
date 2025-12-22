@@ -1,1 +1,50 @@
 ## The Mean Value Theorem
+
+
+**Fermat's Theorem**
+
+- Theorem: f has local extremum at c and f differentiable at c ⟹ f'(c) = 0
+- Proof: one-sided difference quotients have opposite signs
+
+**Rolle's Theorem**
+
+- Theorem: f continuous on [a,b], differentiable on (a,b), f(a) = f(b) ⟹ f'(c) = 0 for some c ∈ (a,b)
+- Proof via EVT + Fermat
+
+**The Mean Value Theorem**
+
+- Theorem: f continuous on [a,b], differentiable on (a,b) ⟹ f(b) - f(a) = f'(c)(b-a) for some c
+- Proof: apply Rolle to g(x) = f(x) - [(f(b)-f(a))/(b-a)](x-a)
+- Geometric interpretation: some tangent parallel to secant
+
+**Cauchy's Mean Value Theorem**
+
+- Theorem: (f(b) - f(a))g'(c) = (g(b) - g(a))f'(c) for some c
+- Proof: Rolle applied to appropriate combination
+
+**Consequences: f' Controls f**
+
+- Theorem: f' = 0 on interval ⟹ f constant
+- Theorem: f' > 0 on interval ⟹ f strictly increasing
+- Corollary: f' ≥ 0 ⟺ f increasing; f' ≤ 0 ⟺ f decreasing
+- Remark: first/second derivative tests for extrema in exercises
+
+**Darboux's Theorem**
+
+- Theorem: If f differentiable on [a,b] and k between f'(a) and f'(b), then f'(c) = k for some c
+- Consequence: f' has IVP even if discontinuous
+- Consequence: f' cannot have jump discontinuities
+
+**Lipschitz Functions**
+
+- Definition: |f(x) - f(y)| ≤ K|x - y| for all x, y
+- Theorem: |f'| ≤ K on interval ⟹ f is Lipschitz with constant K
+- Corollary: Lipschitz ⟹ uniformly continuous
+- Connection: |f'| < 1 ⟹ contraction (links to Ch 4 and Newton)
+
+**L'Hôpital's Rule**
+
+- Theorem: f(a) = g(a) = 0, g' ≠ 0 near a, lim f'/g' = L ⟹ lim f/g = L
+- Proof via Cauchy MVT
+- Warning: must check lim f'/g' exists
+- Remark: ∞/∞ form and x → ∞ in exercises

@@ -1,1 +1,36 @@
 ## Computing Integrals
+
+**The Direct Method**
+
+1. Choose partitions Pₙ with mesh → 0
+2. Compute L(f, Pₙ) and U(f, Pₙ)
+3. Show both converge to same limit
+4. That limit is ∫f
+
+**Example: ∫₀¹ xⁿ = 1/(n+1)**
+
+- Uniform partition Pₙ = {0, 1/n, 2/n, ..., 1}
+- U(xⁿ, Pₙ) = (1/n^{n+1}) Σᵢⁿ iⁿ
+- Sum is polynomial of degree n+1 with leading coefficient 1/(n+1)
+- So U → 1/(n+1); similarly L → 1/(n+1)
+- Confirms the axiomatic prediction from 8.1
+
+**Example: ∫₀¹ eˣ = e − 1**
+
+- U(eˣ, Pₙ) = (1/n) · e^{1/n}(e−1)/(e^{1/n}−1) via geometric series
+- As n → ∞: e^{1/n} → 1 and (e^{1/n}−1)/(1/n) → 1
+- So U → e − 1; similarly L → e − 1
+
+**Example: ∫₀¹ 2ˣ = 1/ln 2**
+
+- Similar calculation yields (2−1)/ln 2 = 1/ln 2
+
+**The Exponential Observation**
+
+- We computed: ∫₀¹ eˣ = e¹ − e⁰
+- The integral of eˣ equals eˣ evaluated at endpoints!
+- For polynomials: elaborate Σiⁿ calculations
+- For exponential: the answer "knows" the boundary values
+- **The hint**: (eˣ)' = eˣ. Integrating eˣ gives back eˣ.
+- Is there a general principle connecting integration and differentiation?
+- Chapter 9 reveals the Fundamental Theorem of Calculus

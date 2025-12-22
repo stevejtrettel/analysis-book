@@ -2,6 +2,7 @@
 
 
 **Narrative**
+
 - The bold move: we *declare* $\RR$ to be a complete ordered field
 - Axiomatic method: specify properties, not construction—we say what reals *do*, not what they *are*
 - Existence and uniqueness theorem: these axioms describe exactly one thing (up to isomorphism)
@@ -20,6 +21,7 @@
 - Closing: we built $\RR$ to fill holes in $\QQ$; it turned out to be an uncountable ocean in which rationals, algebraics, and computables are countable dust
 
 **Definitions**
+
 - $\RR$: a complete ordered field (axiomatic)
 - Archimedean field: for all positive $a, b$, some $n \in \NN$ has $na > b$
 - nth root: $\sqrt[n]{a} = \sup\{x \geq 0 : x^n < a\}$
@@ -28,6 +30,7 @@
 - Logarithm: $\log_a(y) = \sup\{r \in \QQ : a^r < y\}$
 
 **Results**
+
 - Existence and uniqueness of complete ordered field (stated without proof)
 - $\NN$ is unbounded in $\RR$
 - No infinitesimals: for all $\varepsilon > 0$, some $n$ has $1/n < \varepsilon$
@@ -41,12 +44,14 @@
 - Irrationals are uncountable
 
 **Remarks**
+
 - Conventions: $\sup S = \infty$ (unbounded above), $\inf S = -\infty$ (unbounded below)
 - $\sup \varnothing = -\infty$, $\inf \varnothing = \infty$
 - $\AA$ countable $\Rightarrow$ transcendentals exist
 - Computables countable, definables countable: "most" reals indescribable
 
 **Exercises**
+
 1. $\QQ$ is Archimedean directly
 2. $\sqrt{3}$ exists
 3. $\sqrt{a}$ exists for $a > 0$

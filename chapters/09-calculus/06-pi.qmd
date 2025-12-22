@@ -1,0 +1,47 @@
+## Calculating $\pi$
+
+**Two Constants for the Circle**
+
+- Perimeter constant: circumference of unit circle = 2π
+- Area constant: area of unit disk = ∫₋₁¹ 2√(1−x²) dx
+- Are they the same π? (We know they are from archimedes complicated argument but what about a calcuus based one?)
+
+**Archimedes' Theorem**
+
+- Theorem: Area of unit disk = π (the perimeter constant)
+- Proof: IBP relates ∫√(1−x²) dx to ∫ 1/√(1−x²) dx
+- Result: ∫₀¹ √(1−x²) dx = π/4
+- Completes π journey: geometric (Ch 4) → integral (Ch 8) → series (here)
+
+**Arctangent**
+
+- Definition: arctan(x) = ∫₀ˣ 1/(1+t²) dt
+- Key properties:
+  - arctan'(x) = 1/(1+x²) — rational function, no square roots!
+  - arctan(0) = 0
+  - arctan(x) → π/2 as x → ∞
+  - arctan(1) = π/4
+
+**π as Integral of Rational Function**
+
+- Theorem: π/4 = ∫₀¹ 1/(1+t²) dt
+- Remarkable: π defined via circles equals integral of polynomials
+
+**Taylor Series for Arctangent**
+
+- Theorem: arctan(x) = x − x³/3 + x⁵/5 − ⋯ for |x| < 1
+- Proof: Integrate 1/(1+t²) = 1 − t² + t⁴ − ⋯ using Power Series III
+
+**Gregory-Leibniz Series**
+
+- π/4 = 1 − 1/3 + 1/5 − 1/7 + ⋯ (by Abel at x = 1)
+- Problem: ~1000 terms for 2 decimals (boundary convergence is slow)
+
+**Better Formulas**
+
+- Proposition: π/4 = arctan(1/2) + arctan(1/3)
+  - Proof via tangent addition formula
+  - Terms decay like (1/2)^{2k+1} + (1/3)^{2k+1}
+- Machin (1706): π/4 = 4 arctan(1/5) − arctan(1/239)
+  - 9 terms give 15 digits
+  - Machin computed 100 digits by hand

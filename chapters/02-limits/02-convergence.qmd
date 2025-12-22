@@ -1,0 +1,32 @@
+## Convergence
+
+**The Definition**
+
+- Motivation: "approaches" means "eventually stays arbitrarily close"
+- The ε-N game: adversary picks tolerance, you find threshold
+- Definition: aₙ → L if ∀ε > 0 ∃N: n > N ⟹ |aₙ - L| < ε
+- Convergent vs divergent
+
+**Examples Worked from Definition**
+
+- 1/n → 0 (the fundamental example; use Archimedean property)
+- Constant sequence c → c
+- n/(n+1) → 1
+- (-1)ⁿ diverges (direct argument: terms can't both be close to any L)
+
+**Geometric Sequences**
+
+- Lemma (Bernoulli's Inequality): (1+x)ⁿ ≥ 1 + nx for x ≥ -1
+- Theorem: rⁿ → 0 for |r| < 1
+- Theorem: rⁿ diverges for |r| > 1; diverges to +∞ for r > 1
+
+**Basic Properties**
+
+- Uniqueness of limits
+- Convergent ⟹ bounded (converse false: (-1)ⁿ)
+- Tails determine convergence
+
+**Divergence to Infinity**
+
+- Definition: aₙ → +∞, aₙ → -∞
+- Example: n² → +∞

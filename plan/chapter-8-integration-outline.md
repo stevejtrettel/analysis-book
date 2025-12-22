@@ -1,13 +1,13 @@
-# Chapter 7: Integration
+# Chapter 8: Integration
 
 ## Overview
 
-This chapter develops integration as an independent subject, formalized axiomatically. The key insight: axiomatic analysis *predicts* the construction, and enables geometric definitions, before we verify that integrable functions exist.
+This chapter develops integration as an independent subject, formalized axiomatically. The key insight: axiomatic analysis *forces* the value of the integral for continuous functions, and then we verify that this forced value actually satisfies the axioms — proving the integral exists.
 
 **The arc:**
-> History (prelude) → Axioms → Geometry as definitions → Construction verifies → Computation
+> History (prelude) → Axioms force the value → Darboux verifies existence → Geometry defined → Computing (exponential tease)
 
-Students see that integration existed for 2000 years before calculus, that axioms let us *define* geometric quantities rigorously, and that the Darboux construction is an inevitable consequence of axiomatic reasoning.
+Students see that integration existed for 2000 years before calculus, that axioms determine integrals uniquely for continuous functions, and that the Darboux construction is the inevitable verification that these forced values actually work.
 
 ---
 
@@ -26,7 +26,7 @@ What is the area under a curve? What is the length of a curved line? These quest
 - Result: Area = 1/3 (equivalently, ∫₀¹ x² = 1/3)
 - Key idea: Trap the unknown area between known bounds, show the gap shrinks to zero
 
-Archimedes also studied arc length, proving fundamental facts about the lengths of convex curves—that a chord is shorter than any convex arc with the same endpoints, and that among convex curves sharing endpoints, the one lying closer to the chord is shorter.
+Archimedes also studied arc length, proving fundamental facts about the lengths of convex curves—that a chord is shorter than any convex arc with the same endpoints, and that among convex curves sharing endpoints, the one lying closer to the chord is shorter. He could not prove this last fact; he took it as an axiom. We will prove it.
 
 This is integration without calculus—pure geometric reasoning.
 
@@ -56,11 +56,11 @@ Forty years before Newton and Leibniz!
 
 Integration was a computational subject for two millennia before the Fundamental Theorem connected it to differentiation. Archimedes, Cavalieri, and Fermat computed areas, volumes, and arc lengths by direct methods—trapping quantities between bounds.
 
-We now formalize what they were doing. Our axioms will let us *define* these geometric quantities rigorously—and then we'll verify that such definitions actually work.
+We now formalize what they were doing. Our axioms will force the value of integrals for continuous functions—and then we'll verify that these values actually define an integral.
 
 ---
 
-## 7.1 The Axiomatic Integral
+## 8.1 The Axiomatic Integral
 
 ### The Axioms
 
@@ -80,32 +80,6 @@ What properties should an integral have? We propose three axioms for ∫[a,b] f:
 
 These axioms say nothing about which functions are integrable—only how the integral must behave on those that are.
 
-### Definitions from the Axioms
-
-Once we have an integral satisfying these axioms, we can define:
-
-**Improper integrals over unbounded domains**:
-
-$$\int_a^\infty f = \lim_{b \to \infty} \int_a^b f$$
-
-when this limit exists.
-
-**Improper integrals of unbounded functions**:
-
-If f is unbounded near b, define:
-
-$$\int_a^b f = \lim_{c \to b^-} \int_a^c f$$
-
-when this limit exists.
-
-**The indefinite integral**:
-
-For f integrable on [a,b], define F : [a,b] → ℝ by:
-
-$$F(x) = \int_a^x f$$
-
-This is "the integral as a function of its upper limit."
-
 ### Theorems from the Axioms
 
 We can prove theorems using only the axioms—no construction needed.
@@ -114,7 +88,7 @@ We can prove theorems using only the axioms—no construction needed.
 
 $$m(b-a) \leq \int_{[a,b]} f \leq M(b-a)$$
 
-*Proof*: By monotonicity, ∫m ≤ ∫f ≤ ∫M. By rectangles, ∫m = m(b−a) and ∫M = M(b−a). ∎
+*Proof*: By monotonicity, ∫m ≤ ∫f ≤ ∫M. By the rectangle axiom, ∫m = m(b−a) and ∫M = M(b−a). ∎
 
 *Interpretation*: The integral is trapped between the areas of inscribed and circumscribed rectangles.
 
@@ -130,14 +104,21 @@ $$m \cdot h \leq F(x+h) - F(x) \leq M \cdot h$$
 
 As h → 0, both bounds → 0, so F(x+h) → F(x). Similarly for h < 0. ∎
 
-### The Main Theorem: Integrals are Trapped
+### Upper and Lower Sums
 
-This is the key insight that predicts the construction.
+**Definition**: A *partition* of [a,b] is a finite set P = {x₀, x₁, ..., xₙ} with:
 
-**Definition (Preview)**: For a bounded function f on [a,b] and a partition P = {a = x₀ < x₁ < ... < xₙ = b}:
+$$a = x_0 < x_1 < x_2 < \cdots < x_n = b$$
 
-- **Lower sum**: L(f,P) = Σᵢ mᵢ(xᵢ − xᵢ₋₁) where mᵢ = inf{f(x) : x ∈ [xᵢ₋₁, xᵢ]}
-- **Upper sum**: U(f,P) = Σᵢ Mᵢ(xᵢ − xᵢ₋₁) where Mᵢ = sup{f(x) : x ∈ [xᵢ₋₁, xᵢ]}
+**Definition**: For a bounded function f on [a,b] and a partition P:
+
+$$m_i = \inf\{f(x) : x \in [x_{i-1}, x_i]\}$$
+$$M_i = \sup\{f(x) : x \in [x_{i-1}, x_i]\}$$
+
+$$L(f, P) = \sum_{i=1}^{n} m_i (x_i - x_{i-1}) \quad \text{(lower sum)}$$
+$$U(f, P) = \sum_{i=1}^{n} M_i (x_i - x_{i-1}) \quad \text{(upper sum)}$$
+
+### The Trapping Theorem
 
 **Theorem (Trapping)**: Any integral satisfying the axioms must satisfy:
 
@@ -149,7 +130,7 @@ for every partition P.
 
 $$\int_{[x_{i-1}, x_i]} m_i \leq \int_{[x_{i-1}, x_i]} f \leq \int_{[x_{i-1}, x_i]} M_i$$
 
-By rectangles:
+By the rectangle axiom:
 
 $$m_i(x_i - x_{i-1}) \leq \int_{[x_{i-1}, x_i]} f \leq M_i(x_i - x_{i-1})$$
 
@@ -161,46 +142,214 @@ That is, L(f,P) ≤ ∫f ≤ U(f,P). ∎
 
 **Corollary**: For any partition P, L(f,P) ≤ U(f,P).
 
-**Corollary**: If f is integrable, its integral is the unique value trapped between all upper and lower sums:
+**Corollary**: sup_P L(f,P) ≤ ∫f ≤ inf_P U(f,P).
 
-$$\int_{[a,b]} f = \sup_P L(f,P) = \inf_P U(f,P)$$
+### When is the Value Forced?
 
-*This predicts the Darboux definition*: A function should be integrable precisely when sup L(f,P) = inf U(f,P).
+If sup_P L(f,P) = inf_P U(f,P), there is exactly one number trapped between all lower sums and all upper sums. In this case, the axioms completely determine ∫f — it must equal this common value.
 
-### Constraining Values
+Key question: For which functions does sup L = inf U?
 
-Even without knowing if integrals exist, we can determine their values.
+### Continuous Functions Have Forced Values
 
-**Example**: If x is integrable on [0,1], then ∫₀¹ x = 1/2.
+**Theorem**: If f is continuous on [a,b], then sup_P L(f,P) = inf_P U(f,P).
 
-*Proof*: Use the partition Pₙ = {0, 1/n, 2/n, ..., 1}.
+*Proof*: We show U(f, P) − L(f, P) can be made arbitrarily small.
 
-Lower sum: L(x, Pₙ) = Σᵢ₌₁ⁿ ((i−1)/n) · (1/n) = (n−1)/(2n)
+Since f is continuous on [a,b] (compact), f is uniformly continuous: for any ε > 0, there exists δ > 0 such that |x − y| < δ implies |f(x) − f(y)| < ε/(b−a).
 
-Upper sum: U(x, Pₙ) = Σᵢ₌₁ⁿ (i/n) · (1/n) = (n+1)/(2n)
+Choose a partition P with mesh < δ (each subinterval has length < δ).
+
+On each subinterval [xᵢ₋₁, xᵢ], continuity on a compact set implies f achieves its sup Mᵢ and inf mᵢ. Since the subinterval has length < δ:
+
+$$M_i - m_i < \frac{\varepsilon}{b-a}$$
+
+Therefore:
+
+$$U(f, P) - L(f, P) = \sum_i (M_i - m_i)(x_i - x_{i-1}) < \frac{\varepsilon}{b-a} \sum_i (x_i - x_{i-1}) = \varepsilon$$
+
+Since ε was arbitrary, sup L = inf U. ∎
+
+**Corollary**: If f is continuous and an integral satisfying the axioms exists, then the axioms force its value uniquely: it must equal sup L = inf U.
+
+### Examples: Values Forced by the Axioms
+
+**Example**: If f(x) = x is integrable on [0,1], then ∫₀¹ x = 1/2.
+
+*Proof*: Use the uniform partition Pₙ = {0, 1/n, 2/n, ..., 1}.
+
+On [$(i-1)/n$, $i/n$], we have mᵢ = (i−1)/n and Mᵢ = i/n.
+
+Lower sum: 
+$$L(x, P_n) = \sum_{i=1}^{n} \frac{i-1}{n} \cdot \frac{1}{n} = \frac{1}{n^2} \sum_{i=0}^{n-1} i = \frac{1}{n^2} \cdot \frac{(n-1)n}{2} = \frac{n-1}{2n}$$
+
+Upper sum: 
+$$U(x, P_n) = \sum_{i=1}^{n} \frac{i}{n} \cdot \frac{1}{n} = \frac{1}{n^2} \sum_{i=1}^{n} i = \frac{1}{n^2} \cdot \frac{n(n+1)}{2} = \frac{n+1}{2n}$$
 
 So (n−1)/(2n) ≤ ∫₀¹ x ≤ (n+1)/(2n).
 
-As n → ∞, both bounds → 1/2. The integral is trapped at 1/2. ∎
+As n → ∞, both bounds → 1/2. Since f(x) = x is continuous, sup L = inf U = 1/2.
 
-**Example**: If x² is integrable on [0,1], then ∫₀¹ x² = 1/3.
+The integral is forced to be 1/2. ∎
 
-*Proof*: Similar calculation using Σi² = n(n+1)(2n+1)/6 yields bounds converging to 1/3. ∎
+**Example**: If f(x) = x² is integrable on [0,1], then ∫₀¹ x² = 1/3.
 
-### Looking Ahead
+*Proof*: Using uniform partition Pₙ and the identity Σᵢ² = n(n+1)(2n+1)/6:
 
-We've shown:
-- The axioms force integrals to lie between upper and lower sums
-- When these sums converge to a common value, the integral is determined
-- The natural definition: f is integrable when sup L = inf U
+$$U(x^2, P_n) = \frac{1}{n^3} \sum_{i=1}^{n} i^2 = \frac{1}{n^3} \cdot \frac{n(n+1)(2n+1)}{6} = \frac{(n+1)(2n+1)}{6n^2}$$
 
-Before constructing the integral, we use the axioms to *define* classical geometric quantities.
+As n → ∞, this → 2/6 = 1/3. Similarly for L. Since x² is continuous, the integral is forced to be 1/3. ∎
+
+### The Question
+
+We know *what* the integral must be for continuous functions: it must equal sup L = inf U.
+
+But does an integral satisfying the axioms actually *exist*?
+
+The forced value is unique — but we haven't shown that defining ∫f to be this value actually produces something satisfying the three axioms.
+
+We must verify this.
 
 ---
 
-## 7.2 Integration and Geometry
+## 8.2 The Darboux Integral
 
-The axioms let us define geometric quantities that occupied mathematicians for millennia. These are *definitions*—we declare what arc length, area, and volume *mean* in terms of any integral satisfying our axioms. Whether these quantities exist (for a given curve or solid) depends on whether the relevant functions are integrable.
+### The Definition
+
+Motivated by Section 8.1, we define:
+
+**Definition**: For a bounded function f on [a,b], the *lower integral* and *upper integral* are:
+
+$$\underline{\int_a^b} f = \sup_P L(f, P)$$
+$$\overline{\int_a^b} f = \inf_P U(f, P)$$
+
+**Definition**: A bounded function f is *Darboux integrable* on [a,b] if the lower and upper integrals are equal. In this case, the common value is the *integral*:
+
+$$\int_a^b f = \sup_P L(f, P) = \inf_P U(f, P)$$
+
+For continuous functions, we proved in 8.1 that sup L = inf U, so continuous functions are Darboux integrable.
+
+But we must still verify that this definition actually satisfies our three axioms.
+
+### Partitions and Refinements
+
+**Definition**: A partition Q is a *refinement* of P if P ⊂ Q (Q contains all points of P plus possibly more).
+
+**Notation**: Write P ⊂ Q to mean Q refines P.
+
+**Lemma (Refinements Improve Bounds)**: If P ⊂ Q, then:
+
+$$L(f, P) \leq L(f, Q) \leq U(f, Q) \leq U(f, P)$$
+
+*Proof*: Consider adding a single point c to P, creating partition P' = P ∪ {c}. Suppose c ∈ (xⱼ₋₁, xⱼ).
+
+The interval [xⱼ₋₁, xⱼ] is split into [xⱼ₋₁, c] and [c, xⱼ].
+
+For the lower sum: inf over [xⱼ₋₁, xⱼ] ≤ inf over any subinterval. So:
+
+$$m_j (x_j - x_{j-1}) \leq m_{j,\text{left}}(c - x_{j-1}) + m_{j,\text{right}}(x_j - c)$$
+
+Thus L(f, P) ≤ L(f, P').
+
+Similarly, U(f, P') ≤ U(f, P).
+
+For general refinements, add points one at a time. ∎
+
+**Corollary**: Every lower sum is ≤ every upper sum.
+
+*Proof*: Given partitions P and Q, let R = P ∪ Q be their common refinement. Then:
+
+$$L(f, P) \leq L(f, R) \leq U(f, R) \leq U(f, Q)$$
+
+∎
+
+**Corollary**: The lower integral ≤ the upper integral.
+
+### Verification of the Axioms
+
+We now verify that the Darboux integral satisfies our three axioms.
+
+**Axiom 1 (Rectangles)**: ∫[a,b] k = k(b−a). ✓
+
+*Proof*: For any partition, mᵢ = Mᵢ = k on each subinterval. So:
+
+$$L(k, P) = \sum_i k(x_i - x_{i-1}) = k(b-a)$$
+
+and similarly U(k, P) = k(b−a).
+
+Thus sup L = inf U = k(b−a), and ∫k = k(b−a). ∎
+
+**Axiom 2 (Monotonicity)**: f ≤ g ⟹ ∫f ≤ ∫g. ✓
+
+*Proof*: If f ≤ g on [a,b], then on each subinterval:
+- inf f ≤ inf g, so mᵢ(f) ≤ mᵢ(g)
+- sup f ≤ sup g, so Mᵢ(f) ≤ Mᵢ(g)
+
+Therefore L(f, P) ≤ L(g, P) and U(f, P) ≤ U(g, P) for all P.
+
+Taking sup over L: sup_P L(f, P) ≤ sup_P L(g, P).
+
+For integrable functions, ∫f = sup L(f) ≤ sup L(g) ≤ ∫g. ∎
+
+**Axiom 3 (Additivity)**: ∫[a,b] f = ∫[a,c] f + ∫[c,b] f. ✓
+
+*Proof*: For any partition P of [a,b] that contains c:
+
+$$L(f, P) = L(f, P|_{[a,c]}) + L(f, P|_{[c,b]})$$
+
+where P|_{[a,c]} is the restriction of P to [a,c].
+
+Taking sup over all such partitions (and noting that any partition can be refined to include c without decreasing L):
+
+$$\sup_P L(f, P) = \sup_{P_1} L(f, P_1) + \sup_{P_2} L(f, P_2)$$
+
+where P₁ ranges over partitions of [a,c] and P₂ over partitions of [c,b].
+
+Similarly for inf U. Since f is integrable on [a,b] iff it's integrable on [a,c] and [c,b]:
+
+$$\int_a^b f = \int_a^c f + \int_c^b f$$
+
+∎
+
+### The Integral Exists
+
+**Theorem**: For continuous f on [a,b], the Darboux integral exists and satisfies all three axioms.
+
+*Proof*: We showed in 8.1 that continuous f has sup L = inf U, so the Darboux integral is defined. We just verified it satisfies the axioms. ∎
+
+The forced value is the actual value. The integral exists.
+
+### Payoff: Other Integrable Functions
+
+The Darboux definition works for any bounded function with sup L = inf U.
+
+**Theorem**: Bounded functions with finitely many discontinuities are integrable.
+
+*Proof sketch*: Let f be bounded by M with discontinuities at c₁, ..., cₖ.
+
+Given ε > 0, enclose each cⱼ in an interval of total length < ε/(4M).
+
+On the remaining intervals, f is continuous, hence uniformly continuous. Choose partition fine enough that U − L < ε/2 on these intervals.
+
+Near discontinuities, the contribution to U − L is at most 2M · ε/(4M) = ε/2.
+
+Total: U(f, P) − L(f, P) < ε. ∎
+
+**Theorem (Exercise)**: Monotone functions on [a,b] are integrable.
+
+*Proof idea*: For monotone f, the oscillation Mᵢ − mᵢ on [xᵢ₋₁, xᵢ] equals |f(xᵢ) − f(xᵢ₋₁)|. With uniform partition of mesh (b−a)/n:
+
+$$U - L = \sum_i (M_i - m_i) \cdot \frac{b-a}{n} \leq \frac{b-a}{n} \cdot |f(b) - f(a)|$$
+
+which → 0 as n → ∞. ∎
+
+We don't belabor integrability criteria here — the Lebesgue integral (later chapter) gives a fuller picture.
+
+---
+
+## 8.3 Integration and Geometry
+
+With existence secured for continuous functions, we can rigorously define classical geometric quantities. These are *definitions* — we declare what arc length, area, and volume *mean* in terms of integration. Whether these quantities exist depends on whether the relevant functions are integrable (for continuous functions, they are).
 
 ### Arc Length
 
@@ -212,35 +361,71 @@ $$\sqrt{(\Delta x)^2 + (\Delta y)^2} \approx \sqrt{1 + (f'(x))^2} \, \Delta x$$
 
 $$L = \int_a^b \sqrt{1 + (f'(x))^2} \, dx$$
 
-provided this integral exists.
+Since √(1 + (f')²) is continuous when f' is, this integral exists.
+
+**Improper integrals**: If f' is unbounded (as for the semicircle near x = ±1), we define:
+
+$$\int_a^b g = \lim_{c \to a^+} \lim_{d \to b^-} \int_c^d g$$
+
+when this limit exists.
 
 **Example (Arc length of a circle)**: For the upper semicircle y = √(1−x²) from x = −1 to x = 1:
 
 $$y' = \frac{-x}{\sqrt{1-x^2}}, \qquad 1 + (y')^2 = \frac{1}{1-x^2}$$
 
-So arc length = ∫₋₁¹ 1/√(1−x²) dx. This is an improper integral (the integrand blows up at ±1), but if it converges, it gives the length of the semicircle—which we call π.
+So arc length = ∫₋₁¹ 1/√(1−x²) dx.
 
-We cannot yet *compute* this integral, but we have *defined* what π means: it is the arc length of a semicircle of radius 1.
+This is an improper integral (the integrand blows up at ±1), but if it converges, it gives the length of the semicircle.
 
-### Archimedes' Axiom on Convex Curves
+**Definition**: π is the arc length of the unit semicircle:
 
-Archimedes understood a fundamental fact about lengths of convex curves:
+$$\pi = \int_{-1}^{1} \frac{1}{\sqrt{1-x^2}} \, dx$$
 
-**Theorem (Archimedes)**: Let f and g be convex functions on [a,b] with f(a) = g(a) and f(b) = g(b). If f(x) ≤ g(x) for all x ∈ (a,b) (so f lies closer to the chord), then:
+We cannot yet *compute* this integral, but we have *defined* what π means geometrically.
+
+### Archimedes' Inequality for Convex Curves
+
+Archimedes understood a fundamental fact about lengths of convex curves, but he could not prove it — he took it as an axiom. We can prove it using the tools from Chapter 7.
+
+**Theorem (Archimedes' Inequality)**: Let f and g be convex functions on [a,b] with f(a) = g(a) and f(b) = g(b). If f(x) ≤ g(x) for all x ∈ (a,b) (so f lies closer to the chord), then the arc length of f is ≤ the arc length of g:
 
 $$\int_a^b \sqrt{1 + (f')^2} \, dx \leq \int_a^b \sqrt{1 + (g')^2} \, dx$$
 
 The curve closer to the chord is shorter.
 
-*Proof*: For convex functions with the same endpoints and f ≤ g, the slopes satisfy: f starts steeper and ends shallower than g (or vice versa), but the total variation of f' is less than that of g'. 
+*Proof*: This uses the convexity facts from the Chapter 7 guided exercises:
+- f convex ⟺ f' is increasing
+- If f ≤ g are convex with same endpoints, then... (technical argument involving the relationship between slopes of convex functions with same endpoints)
 
-More precisely: since both curves connect the same endpoints, they have the same average slope. But g bulges more, so |g'| must be larger on average to "get back" to the same endpoint.
-
-[Technical proof using convexity and the structure of derivatives...]
+[Full proof in guided exercises] ∎
 
 **Corollary**: A straight line segment is the shortest path between two points.
 
-*Proof*: The line has f'(x) = constant = (f(b)−f(a))/(b−a). Any other curve connecting the same points has √(1+(f')²) ≥ 1 with strict inequality somewhere, giving a larger integral. ∎
+*Proof*: The line is convex and lies below (or equals) any other convex curve with the same endpoints. By Archimedes' inequality, it has the shortest arc length.
+
+For the general case: any curve lies above some convex curve with the same endpoints (take the convex hull), so the line is shortest. ∎
+
+**Corollary**: For a convex curve, the arc length lies between the inscribed polygon length and the circumscribed polygon length.
+
+### The Two Definitions of π Agree
+
+We now have two definitions of π:
+- **Chapter 4**: π = lim_{n→∞} (perimeter of inscribed n-gon in unit circle)/2
+- **Chapter 8**: π = arc length of unit semicircle = ∫₋₁¹ 1/√(1−x²) dx
+
+**Theorem**: These definitions give the same value.
+
+*Proof*: The unit circle is a convex curve. By Archimedes' inequality (the corollary), its arc length lies between the perimeters of inscribed and circumscribed polygons.
+
+Let pₙ = perimeter of inscribed n-gon, Pₙ = perimeter of circumscribed n-gon.
+
+Then pₙ/2 ≤ (arc length of semicircle) ≤ Pₙ/2.
+
+From Chapter 4, both pₙ/2 → π and Pₙ/2 → π.
+
+By the squeeze theorem, arc length of semicircle = π. ∎
+
+This is deeply satisfying: the geometric construction (polygons) and the analytic definition (integral) agree.
 
 ### Area Between Curves
 
@@ -248,13 +433,13 @@ More precisely: since both curves connect the same endpoints, they have the same
 
 $$A = \int_a^b [f(x) - g(x)] \, dx$$
 
-provided this integral exists.
-
 **Example (Area of a disk)**: The disk x² + y² ≤ 1 lies between y = √(1−x²) and y = −√(1−x²). So:
 
 $$\text{Area} = \int_{-1}^{1} 2\sqrt{1-x^2} \, dx$$
 
-We cannot yet compute this, but we have defined what "area of a disk" means. We will later show this equals π—the same π as the arc length!
+We cannot yet compute this, but we have defined what "area of a disk" means.
+
+We will later show this equals π — the same π as the arc length! The ratio of circumference to diameter equals the ratio of area to r². This is not obvious from the definitions.
 
 ### Volume by Slicing (Cavalieri, Rigorous)
 
@@ -264,29 +449,35 @@ Cavalieri imagined solids as stacks of infinitely thin slices. We make this rigo
 
 $$V = \int_a^b A(x) \, dx$$
 
-This is exactly Cavalieri's principle, now as a definition.
-
 **Cavalieri's Principle (Rigorous)**: If two solids have equal cross-sectional areas A(x) = B(x) for all x ∈ [a,b], they have equal volumes.
 
-*Proof*: Immediate—both volumes equal ∫ₐᵇ A(x) dx. ∎
+*Proof*: Immediate — both volumes equal ∫ₐᵇ A(x) dx. ∎
 
-**Example (Volume of a pyramid)**: A pyramid with square base of side s and height h has cross-sectional area A(x) = (sx/h)² at height x. So:
+**Example (Volume of a pyramid)**: A pyramid with square base of side s and height h.
+
+At height x above the apex, the cross-section is a square of side sx/h (by similar triangles). So A(x) = (sx/h)² = s²x²/h².
 
 $$V = \int_0^h \frac{s^2 x^2}{h^2} \, dx = \frac{s^2}{h^2} \int_0^h x^2 \, dx$$
 
-If x² is integrable with ∫₀ʰ x² = h³/3, then V = s²h/3 = (1/3) · base · height.
+From 8.1, we know ∫₀ʰ x² dx = h³/3 (by scaling ∫₀¹ x² = 1/3). So:
 
-**Example (Volume of a cone)**: A cone with base radius r and height h has circular cross-sections of radius rx/h at height x, so A(x) = π(rx/h)². Thus:
+$$V = \frac{s^2}{h^2} \cdot \frac{h^3}{3} = \frac{s^2 h}{3} = \frac{1}{3} \cdot \text{base} \cdot \text{height}$$
+
+**Example (Volume of a cone)**: A cone with base radius r and height h has circular cross-sections of radius rx/h at height x, so A(x) = π(rx/h)².
 
 $$V = \int_0^h \pi \frac{r^2 x^2}{h^2} \, dx = \frac{\pi r^2}{h^2} \cdot \frac{h^3}{3} = \frac{1}{3}\pi r^2 h$$
 
 This is (1/3) · base area · height, matching the pyramid formula.
 
-**Example (Volume of a sphere)**: A sphere of radius R has circular cross-sections of radius √(R²−x²) at height x, so A(x) = π(R²−x²). Thus:
+**Example (Volume of a sphere)**: A sphere of radius R has circular cross-sections at height x of radius √(R²−x²), so A(x) = π(R²−x²).
 
-$$V = \int_{-R}^{R} \pi(R^2 - x^2) \, dx = \pi \left[ R^2 \cdot 2R - \frac{(2R)^3/4}{3} \right] = \frac{4}{3}\pi R^3$$
+$$V = \int_{-R}^{R} \pi(R^2 - x^2) \, dx = \pi \left[ R^2 \cdot 2R - \int_{-R}^{R} x^2 \, dx \right]$$
 
-(using ∫x² by the axiomatic calculation)
+Now ∫₋ᴿᴿ x² dx = 2∫₀ᴿ x² dx = 2 · R³/3 = 2R³/3. So:
+
+$$V = \pi \left[ 2R^3 - \frac{2R^3}{3} \right] = \pi \cdot \frac{4R^3}{3} = \frac{4}{3}\pi R^3$$
+
+The famous formula, derived from first principles!
 
 ### Volume of Revolution
 
@@ -294,137 +485,26 @@ $$V = \int_{-R}^{R} \pi(R^2 - x^2) \, dx = \pi \left[ R^2 \cdot 2R - \frac{(2R)^
 
 $$V = \int_a^b \pi [f(x)]^2 \, dx$$
 
-(the "disk method"—each cross-section is a disk of radius f(x))
+(the "disk method" — each cross-section is a disk of radius f(x))
 
-### What We've Done
+**Example**: Rotate y = x² from x = 0 to x = 1 around the x-axis.
 
-We have *defined* arc length, area, and volume in terms of integrals. These definitions make Archimedes and Cavalieri rigorous. The definitions work for *any* integral satisfying our axioms.
-
-But do integrable functions exist? Can we actually compute these quantities? We must construct an integral and verify it satisfies the axioms.
+$$V = \int_0^1 \pi (x^2)^2 \, dx = \pi \int_0^1 x^4 \, dx = \pi \cdot \frac{1}{5} = \frac{\pi}{5}$$
 
 ---
 
-## 7.3 The Darboux Integral
+## 8.4 Computing Integrals
 
-### Partitions
+### The Direct Method
 
-**Definition**: A *partition* of [a,b] is a finite set P = {x₀, x₁, ..., xₙ} with:
-
-$$a = x_0 < x_1 < x_2 < \cdots < x_n = b$$
-
-**Definition**: A partition Q is a *refinement* of P if P ⊂ Q (Q contains all points of P plus possibly more).
-
-**Notation**: Write P ⊂ Q to mean Q refines P.
-
-### Upper and Lower Sums
-
-**Definition**: For a bounded function f on [a,b] and partition P = {x₀, ..., xₙ}:
-
-$$m_i = \inf\{f(x) : x \in [x_{i-1}, x_i]\}$$
-$$M_i = \sup\{f(x) : x \in [x_{i-1}, x_i]\}$$
-
-$$L(f, P) = \sum_{i=1}^{n} m_i (x_i - x_{i-1}) \quad \text{(lower sum)}$$
-$$U(f, P) = \sum_{i=1}^{n} M_i (x_i - x_{i-1}) \quad \text{(upper sum)}$$
-
-**Lemma**: Refinements improve bounds. If P ⊂ Q, then:
-
-$$L(f, P) \leq L(f, Q) \leq U(f, Q) \leq U(f, P)$$
-
-*Proof*: Adding a point to a partition can only increase lower sums (the inf over a smaller interval is ≥ the inf over a larger interval) and decrease upper sums. ∎
-
-**Corollary**: Every lower sum is ≤ every upper sum.
-
-*Proof*: Given partitions P and Q, let R = P ∪ Q be their common refinement. Then:
-
-$$L(f, P) \leq L(f, R) \leq U(f, R) \leq U(f, Q)$$
-
-∎
-
-### The Darboux Integral
-
-**Definition**: The *lower integral* and *upper integral* of f are:
-
-$$\underline{\int_a^b} f = \sup_P L(f, P)$$
-$$\overline{\int_a^b} f = \inf_P U(f, P)$$
-
-By the corollary above, the lower integral ≤ the upper integral.
-
-**Definition**: A bounded function f is *Darboux integrable* on [a,b] if:
-
-$$\underline{\int_a^b} f = \overline{\int_a^b} f$$
-
-In this case, the common value is the *integral*, written ∫ₐᵇ f or ∫[a,b] f.
-
-This is exactly the definition predicted by our axiomatic analysis.
-
-### Verification of the Axioms
-
-We verify that the Darboux integral satisfies our three axioms.
-
-**Axiom 1 (Rectangles)**: ∫[a,b] k = k(b−a). ✓
-
-*Proof*: For any partition, mᵢ = Mᵢ = k, so L(k, P) = U(k, P) = k(b−a). ∎
-
-**Axiom 2 (Monotonicity)**: f ≤ g ⟹ ∫f ≤ ∫g. ✓
-
-*Proof*: If f ≤ g, then on each subinterval, inf f ≤ inf g and sup f ≤ sup g. So L(f, P) ≤ L(g, P) and U(f, P) ≤ U(g, P). Taking sup/inf over partitions preserves the inequality. ∎
-
-**Axiom 3 (Additivity)**: ∫[a,b] f = ∫[a,c] f + ∫[c,b] f. ✓
-
-*Proof*: For any partition P of [a,b] containing c, we have:
-
-$$L(f, P) = L(f, P|_{[a,c]}) + L(f, P|_{[c,b]})$$
-
-and similarly for upper sums. The result follows by taking sup/inf. ∎
-
-### Continuous Functions are Integrable
-
-**Theorem**: If f is continuous on [a,b], then f is Darboux integrable.
-
-*Proof*: We show U(f, P) − L(f, P) can be made arbitrarily small.
-
-Since f is continuous on [a,b] (compact), f is uniformly continuous: for any ε > 0, there exists δ > 0 such that |x − y| < δ implies |f(x) − f(y)| < ε/(b−a).
-
-Choose a partition P with mesh < δ (each subinterval has length < δ).
-
-On each subinterval [xᵢ₋₁, xᵢ], continuity implies f achieves its sup Mᵢ and inf mᵢ at some points. Since the subinterval has length < δ:
-
-$$M_i - m_i < \frac{\varepsilon}{b-a}$$
-
-Therefore:
-
-$$U(f, P) - L(f, P) = \sum_i (M_i - m_i)(x_i - x_{i-1}) < \frac{\varepsilon}{b-a} \sum_i (x_i - x_{i-1}) = \varepsilon$$
-
-Since ε was arbitrary, sup L = inf U, so f is integrable. ∎
-
-### The Geometric Quantities Exist
-
-**Corollary**: If f has continuous derivative on [a,b], then the arc length of y = f(x) exists (the integral converges).
-
-**Corollary**: Areas between continuous curves and volumes of solids with continuous cross-sections all exist.
-
-The definitions from Section 7.2 now have content: continuous functions give us actual, computable geometric quantities.
-
-### Piecewise Continuous Functions (Optional)
-
-**Corollary**: If f is bounded and continuous except at finitely many points, then f is integrable.
-
-*Proof sketch*: Near each discontinuity, the contribution to U − L is bounded by 2M · (width of interval around discontinuity). Make these intervals arbitrarily small. On the remaining intervals, f is continuous, so the contribution to U − L is small by the theorem above. ∎
-
----
-
-## 7.4 Computing Integrals
-
-### The Technique
-
-To compute ∫ₐᵇ f directly:
+To compute ∫ₐᵇ f directly from the definition:
 
 1. Choose a sequence of partitions Pₙ with mesh → 0
 2. Compute L(f, Pₙ) and U(f, Pₙ)
 3. Show both converge to the same limit
 4. That limit is ∫ₐᵇ f
 
-For well-behaved functions, uniform partitions Pₙ = {a, a + (b−a)/n, a + 2(b−a)/n, ..., b} suffice.
+For continuous functions, uniform partitions Pₙ = {a, a + (b−a)/n, a + 2(b−a)/n, ..., b} suffice.
 
 ### Example: ∫₀¹ xⁿ = 1/(n+1)
 
@@ -432,25 +512,31 @@ Using uniform partition Pₙ = {0, 1/n, 2/n, ..., 1}:
 
 $$U(x^n, P_n) = \sum_{i=1}^{n} \left(\frac{i}{n}\right)^n \cdot \frac{1}{n} = \frac{1}{n^{n+1}} \sum_{i=1}^{n} i^n$$
 
-The sum Σᵢⁿ iⁿ is a polynomial in n of degree n+1 with leading coefficient 1/(n+1). So:
+The sum Σᵢ₌₁ⁿ iⁿ is a polynomial in n of degree n+1 with leading coefficient 1/(n+1). (This follows from the theory of Bernoulli polynomials, or can be verified for small n.)
+
+So:
 
 $$U(x^n, P_n) \to \frac{1}{n+1}$$
 
 Similarly for L(xⁿ, Pₙ). Therefore ∫₀¹ xⁿ = 1/(n+1).
 
-*Note*: This confirms our axiomatic prediction from 7.1. The axioms forced this value; computation confirms it.
+*Note*: This confirms our axiomatic prediction from 8.1. The axioms forced this value; the computation verifies it.
 
 ### Example: ∫₀¹ eˣ = e − 1
 
-Using uniform partition Pₙ:
+Using uniform partition Pₙ = {0, 1/n, 2/n, ..., 1}:
 
-$$U(e^x, P_n) = \sum_{i=1}^{n} e^{i/n} \cdot \frac{1}{n} = \frac{1}{n} \cdot \frac{e^{1/n}(e - 1)}{e^{1/n} - 1}$$
+$$U(e^x, P_n) = \sum_{i=1}^{n} e^{i/n} \cdot \frac{1}{n} = \frac{1}{n} \sum_{i=1}^{n} e^{i/n}$$
 
-using the geometric series formula.
+This is a geometric series with first term e^{1/n} and ratio e^{1/n}:
 
-As n → ∞, e^{1/n} → 1 and (e^{1/n} − 1)/(1/n) → 1 (the derivative of eˣ at 0). So:
+$$U(e^x, P_n) = \frac{1}{n} \cdot e^{1/n} \cdot \frac{e - 1}{e^{1/n} - 1} = \frac{e^{1/n}(e - 1)}{n(e^{1/n} - 1)}$$
 
-$$U(e^x, P_n) \to e - 1$$
+As n → ∞: 
+- e^{1/n} → 1
+- n(e^{1/n} − 1) = (e^{1/n} − 1)/(1/n) → 1 (derivative of eˣ at 0)
+
+So U(eˣ, Pₙ) → (e − 1)/1 = e − 1.
 
 Similarly for the lower sum. Therefore ∫₀¹ eˣ = e − 1.
 
@@ -458,21 +544,27 @@ Similarly for the lower sum. Therefore ∫₀¹ eˣ = e − 1.
 
 Similar calculation using 2ˣ = eˣˡⁿ² yields:
 
-$$\int_0^1 2^x = \frac{2 - 1}{\ln 2} = \frac{1}{\ln 2}$$
+$$U(2^x, P_n) = \frac{2^{1/n}(2 - 1)}{n(2^{1/n} - 1)} \to \frac{1}{\ln 2}$$
+
+since n(2^{1/n} − 1) → ln 2.
+
+Therefore ∫₀¹ 2ˣ = 1/ln(2).
 
 ### The Exponential Observation
 
 Look at what we computed:
 
-$$\int_0^1 e^x = e^1 - e^0$$
+$$\int_0^1 e^x \, dx = e^1 - e^0 = e - 1$$
 
 The integral of eˣ from 0 to 1 equals eˣ evaluated at the endpoints!
 
-This is remarkable. For polynomials, we needed elaborate calculations. For the exponential, the integral seems to "know" about the function's values at the boundary.
+This is remarkable. For polynomials, we needed elaborate calculations with sums of powers. For the exponential, the integral seems to "know" about the function's values at the boundary.
 
-This hints at a deep connection. The exponential is its own derivative: (eˣ)' = eˣ. And somehow, integrating eˣ gives back eˣ (up to evaluation at endpoints).
+Why? The exponential is its own derivative: (eˣ)' = eˣ. And somehow, integrating eˣ gives back eˣ (up to evaluation at endpoints).
 
-Is there a general principle here? Chapter 8 will reveal the connection.
+More generally: if we could find F with F' = f, would ∫ₐᵇ f = F(b) − F(a)?
+
+This hints at a deep connection between integration and differentiation. Chapter 9 will reveal the Fundamental Theorem of Calculus.
 
 ---
 
@@ -481,32 +573,85 @@ Is there a general principle here? Chapter 8 will reveal the connection.
 | Section | Purpose |
 |---------|---------|
 | Prelude | Integration existed for 2000 years before calculus |
-| 7.1 Axiomatic | Axioms constrain values and predict the construction |
-| 7.2 Geometry | Define arc length, area, volume in terms of axioms |
-| 7.3 Darboux | The predicted construction works; geometric quantities exist |
-| 7.4 Computing | Direct computation is possible but laborious; exponential hints at FTC |
+| 8.1 Axiomatic | Axioms force the value for continuous functions |
+| 8.2 Darboux | Verify the forced value satisfies axioms → integral exists |
+| 8.3 Geometry | Define arc length, area, volume; prove π consistency |
+| 8.4 Computing | Direct computation possible but laborious; exponential hints at FTC |
 
 ## Key Theorems
 
-1. **Trapping Theorem** (7.1): Any integral satisfying the axioms lies between upper and lower sums
-2. **Archimedes' Axiom** (7.2): Among convex curves with same endpoints, the one closer to the chord is shorter
-3. **Continuous ⟹ Integrable** (7.3): Continuous functions on [a,b] are Darboux integrable
-4. **Axiom Verification** (7.3): The Darboux integral satisfies all three axioms
+1. **Trapping Theorem** (8.1): Any integral satisfying the axioms has L(f,P) ≤ ∫f ≤ U(f,P)
+2. **Continuous Functions Forced** (8.1): For continuous f, sup L = inf U, so the value is uniquely determined
+3. **Axiom Verification** (8.2): The Darboux integral satisfies all three axioms
+4. **Archimedes' Inequality** (8.3): Among convex curves with same endpoints, closer to chord ⟹ shorter
+5. **π Consistency** (8.3): Polygon limit definition = arc length integral definition
 
 ## Definitions Introduced
 
 - Arc length: ∫√(1+(f')²) dx
-- Area between curves: ∫[f−g] dx  
-- Volume by slicing: ∫A(x) dx (Cavalieri, rigorous)
+- π as arc length of semicircle
+- Area between curves: ∫(f−g) dx
+- Volume by slicing: ∫A(x) dx (Cavalieri rigorous)
 - Volume of revolution: ∫π[f(x)]² dx
+
+---
+
+## Exercises (Selected)
+
+### Section 8.1
+
+- Use the axioms to show: if x³ integrable on [0,1] then ∫₀¹ x³ = 1/4
+- Prove from axioms: if f integrable and c ∈ ℝ, then cf integrable with ∫cf = c∫f
+- Prove from axioms: if f, g integrable, then f + g integrable with ∫(f+g) = ∫f + ∫g
+- Show that for f(x) = x on [0,2], sup L = inf U = 2
+
+### Section 8.2
+
+- Prove: f integrable on [a,b] iff for all ε > 0, exists P with U(f,P) − L(f,P) < ε
+- Prove: f monotone on [a,b] ⟹ f integrable
+- Give an example of a bounded function with sup L < inf U (hint: Dirichlet function)
+- Prove: if f integrable on [a,b] and g = f except at finitely many points, then g integrable with ∫g = ∫f
+
+### Section 8.3
+
+- Compute arc length of y = x^{3/2} from x = 0 to x = 1
+- Use Cavalieri to show: a cylinder and a "leaning cylinder" (same base, same height, but slanted) have equal volume
+- Prove: volume of cone = (1/3) · base · height for any base shape (not just circular)
+- Compute the volume obtained by rotating y = √x from x = 0 to x = 1 around the x-axis
+
+**Guided Exercises: Archimedes' Inequality**
+
+This sequence proves Archimedes' inequality using convexity from Chapter 7.
+
+1. Recall from Ch 7: f convex on [a,b] ⟺ f' is increasing on (a,b)
+2. Prove: if f is convex on [a,b], the graph of f lies below the chord connecting (a, f(a)) to (b, f(b))
+3. Prove: if f is convex on [a,b], then for any x ∈ (a,b), the graph lies above the tangent line at x
+4. Let f, g be convex with f(a) = g(a), f(b) = g(b), and f ≤ g on (a,b). Prove that |f'| ≤ |g'| in an appropriate averaged sense. (Hint: both functions connect the same endpoints, so they have the same average slope...)
+5. Conclude: arc length of f ≤ arc length of g
+6. Conclude: the straight line is the shortest path between two points
+7. Conclude: for a convex curve, inscribed polygon ≤ arc length ≤ circumscribed polygon
+
+### Section 8.4
+
+- Compute ∫₀¹ x⁴ directly using Σi⁴ = n(n+1)(2n+1)(3n²+3n−1)/30
+- Compute ∫₀² eˣ directly
+- Compute ∫₁² 1/x directly using Riemann sums (the answer involves a limit that defines ln 2)
+- ★ Compute ∫₀¹ 1/(1+x²) using Riemann sums (relates to arctan; preview of Ch 9)
+
+---
 
 ## Dependencies
 
 **Requires from earlier chapters**:
-- Supremum and infimum
-- Continuity and uniform continuity
-- Compactness of [a,b]
+
+- Supremum and infimum (Ch 1)
+- Continuity and uniform continuity (Ch 6)
+- Compactness of [a,b] (Ch 6)
+- Convexity: f'' ≥ 0 ⟺ f convex, f convex ⟺ f' increasing (Ch 7 exercises)
+- π via polygon limits (Ch 4)
 
 **Sets up for later chapters**:
-- Chapter 8: FTC connects integration to differentiation; defines trig via arc length integrals
-- Chapter 9: Extending the integral beyond continuous functions
+
+- Ch 9 (FTC): Connects integration to differentiation; Power Series III (term-by-term integration)
+- Ch 9 (Elementary Functions): Defines log as ∫1/x, trig via arc length
+- Later chapter: Lebesgue integral extends integrability beyond Darboux

@@ -275,7 +275,7 @@
 
 \title{Reaching for Infinity}
 \author{Steve Trettel}
-\date{2025-12-19}
+\date{2025-12-21}
 \begin{document}
 \frontmatter
 \maketitle
@@ -294,10 +294,7 @@
 
 \markboth{Preface}{Preface}
 
-This is a Quarto book.
-
-To learn more about Quarto books visit
-\url{https://quarto.org/docs/books}.
+Analysis Text, Draft III.
 
 \part{The Real Numbers}
 
@@ -305,970 +302,3744 @@ To learn more about Quarto books visit
 
 \section{Sets and Functions}\label{sec-foundations-sets-functions}
 
-\textbf{Narrative} - Before discussing numbers, we need the language of
-sets and functions - This is vocabulary and notation---mostly review
-from intro to proofs - Functions are assignments, not formulas: ``1 if
-rational, 0 if irrational'' is a valid function -
-Injective/surjective/bijective capture ways functions ``match up'' sets
-- Inverses exist precisely when bijective - Foreshadowing: Cantor's
-argument (no surjection \(A \to \mathcal{P}(A)\)) connects to
-uncountability later
+\textbf{Narrative}
 
-\textbf{Definitions} - Set, element, membership (\(\in\), \(\notin\)) -
-Set-builder notation: \(\{x : P(x)\}\) - Standard sets: \(\NN\),
-\(\ZZ\), \(\QQ\) (convention: \(0 \notin \NN\)) - Subset:
-\(A \subseteq B\) - Set equality: \(A = B\) iff \(A \subseteq B\) and
-\(B \subseteq A\) - Union, intersection, difference - Cartesian product:
-\(A \times B\) - Function: \(f: A \to B\), domain, codomain, range -
-Injective: \(f(x_1) = f(x_2) \Rightarrow x_1 = x_2\) - Surjective: range
-equals codomain - Bijective: injective and surjective - Composition:
-\((g \circ f)(x) = g(f(x))\) - Inverse function: \(f^{-1}\)
+\begin{itemize}
+\tightlist
+\item
+  Before discussing numbers, we need the language of sets and functions
+\item
+  This is vocabulary and notation---mostly review from intro to proofs
+\item
+  Functions are assignments, not formulas: ``1 if rational, 0 if
+  irrational'' is a valid function
+\item
+  Injective/surjective/bijective capture ways functions ``match up''
+  sets
+\item
+  Inverses exist precisely when bijective
+\item
+  Foreshadowing: Cantor's argument (no surjection
+  \(A \to \mathcal{P}(A)\)) connects to uncountability later
+\end{itemize}
 
-\textbf{Results} - \(f\) has an inverse iff \(f\) is bijective
+\textbf{Definitions}
 
-\textbf{Exercises} 1. De Morgan: \((A \cap B)^c = A^c \cup B^c\) 2.
-\(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)\) 3.
-Composition is associative 4. \(f\) bijective \(\Rightarrow\) \(f^{-1}\)
-bijective and \((f^{-1})^{-1} = f\) 5. \(f, g\) bijective
-\(\Rightarrow\) \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\) 6. \(f\)
-bijective iff left and right inverse exists 7. \(g \circ f\)
-injective/surjective: what about \(f\) and \(g\)? 8. ★ No surjection
-\(A \to \mathcal{P}(A)\) (Cantor)
+\begin{itemize}
+\tightlist
+\item
+  Set, element, membership (\(\in\), \(\notin\))
+\item
+  Set-builder notation: \(\{x : P(x)\}\)
+\item
+  Standard sets: \(\NN\), \(\ZZ\), \(\QQ\) (convention:
+  \(0 \notin \NN\))
+\item
+  Subset: \(A \subseteq B\)
+\item
+  Set equality: \(A = B\) iff \(A \subseteq B\) and \(B \subseteq A\)
+\item
+  Union, intersection, difference
+\item
+  Cartesian product: \(A \times B\)
+\item
+  Function: \(f: A \to B\), domain, codomain, range
+\item
+  Injective: \(f(x_1) = f(x_2) \Rightarrow x_1 = x_2\)
+\item
+  Surjective: range equals codomain
+\item
+  Bijective: injective and surjective
+\item
+  Composition: \((g \circ f)(x) = g(f(x))\)
+\item
+  Inverse function: \(f^{-1}\)
+\end{itemize}
+
+\textbf{Results}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f\) has an inverse iff \(f\) is bijective
+\end{itemize}
+
+\textbf{Exercises}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  De Morgan: \((A \cap B)^c = A^c \cup B^c\)
+\item
+  \(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)\)
+\item
+  Composition is associative
+\item
+  \(f\) bijective \(\Rightarrow\) \(f^{-1}\) bijective and
+  \((f^{-1})^{-1} = f\)
+\item
+  \(f, g\) bijective \(\Rightarrow\)
+  \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\)
+\item
+  \(f\) bijective iff left and right inverse exists
+\item
+  \(g \circ f\) injective/surjective: what about \(f\) and \(g\)?
+\item
+  ★ No surjection \(A \to \mathcal{P}(A)\) (Cantor)
+\end{enumerate}
 
 \section{Ordered Fields}\label{sec-foundations-ordered-fields}
 
-\textbf{Narrative} - We axiomatize arithmetic abstractly: field axioms
-capture \(+\) and \(\times\) - \(\QQ\) is a field; \(\ZZ\) is not (no
-multiplicative inverses) - Consequences flow from axioms: uniqueness of
-inverses, \(0 \cdot a = 0\), \((-1)(-1) = 1\) - Add order via positivity
-axioms: trichotomy, closure under \(+\) and \(\times\) - Squares are
-nonnegative; \(1 > 0\); multiplying by negatives reverses inequalities -
-Absolute value measures distance: \(|a - b|\) is distance between \(a\)
-and \(b\) - Triangle inequality: fundamental tool for estimation -
-Intervals: notation for ``chunks'' of the number line - Warning:
-\(\infty\) and \(-\infty\) are notation, not numbers - Bernoulli's
-inequality: \((1+x)^n \geq 1 + nx\)---used later for bounding \(e\) -
-Roots notation introduced, but existence requires completeness (coming
-in 1.5)
+\textbf{Narrative}
 
-\textbf{Definitions} - Field: \(+\), \(\times\) with commutativity,
-associativity, identities, inverses, distributivity - Ordered field:
-field with positive elements \(P\) satisfying closure and trichotomy -
-Inequality: \(a < b\) means \(b - a \in P\) - Absolute value:
-\(|a| = a\) if \(a \geq 0\), \(-a\) if \(a < 0\) - Intervals: \((a,b)\),
-\([a,b]\), \([a,b)\), \((a,b]\) - Rays: \([a, \infty)\),
-\((a, \infty)\), \((-\infty, a]\), \((-\infty, a)\) - Roots notation:
-\(\sqrt[n]{a}\), rational powers \(a^{p/q}\)
+\begin{itemize}
+\tightlist
+\item
+  We axiomatize arithmetic abstractly: field axioms capture \(+\) and
+  \(\times\)
+\item
+  \(\QQ\) is a field; \(\ZZ\) is not (no multiplicative inverses)
+\item
+  Consequences flow from axioms: uniqueness of inverses,
+  \(0 \cdot a = 0\), \((-1)(-1) = 1\)
+\item
+  Add order via positivity axioms: trichotomy, closure under \(+\) and
+  \(\times\)
+\item
+  Squares are nonnegative; \(1 > 0\); multiplying by negatives reverses
+  inequalities
+\item
+  Absolute value measures distance: \(|a - b|\) is distance between
+  \(a\) and \(b\)
+\item
+  Triangle inequality: fundamental tool for estimation
+\item
+  Intervals: notation for ``chunks'' of the number line
+\item
+  Warning: \(\infty\) and \(-\infty\) are notation, not numbers
+\item
+  Bernoulli's inequality: \((1+x)^n \geq 1 + nx\)---used later for
+  bounding \(e\)
+\item
+  Roots notation introduced, but existence requires completeness (coming
+  in 1.5)
+\end{itemize}
 
-\textbf{Results} - Uniqueness of additive and multiplicative inverses -
-\(0 \cdot a = 0\) - \((-1) \cdot a = -a\) - \(a^2 \geq 0\), with
-equality iff \(a = 0\) - \(1 > 0\) - Transitivity of \(<\) -
-\(a < b \Rightarrow a + c < b + c\) - \(a < b\) and
-\(c > 0 \Rightarrow ac < bc\); \(c < 0\) reverses - Triangle inequality:
-\(|a + b| \leq |a| + |b|\) - Reverse triangle inequality:
-\(||a| - |b|| \leq |a - b|\) - Bernoulli: \((1 + x)^n \geq 1 + nx\) for
-\(x > -1\)
+\textbf{Definitions}
 
-\textbf{Remarks} - \((a - r, a + r) = \{x : |x - a| < r\}\) -
-\(\infty\), \(-\infty\) are notation only, not field elements
+\begin{itemize}
+\tightlist
+\item
+  Field: \(+\), \(\times\) with commutativity, associativity,
+  identities, inverses, distributivity
+\item
+  Ordered field: field with positive elements \(P\) satisfying closure
+  and trichotomy
+\item
+  Inequality: \(a < b\) means \(b - a \in P\)
+\item
+  Absolute value: \(|a| = a\) if \(a \geq 0\), \(-a\) if \(a < 0\)
+\item
+  Intervals: \((a,b)\), \([a,b]\), \([a,b)\), \((a,b]\)
+\item
+  Rays: \([a, \infty)\), \((a, \infty)\), \((-\infty, a]\),
+  \((-\infty, a)\)
+\item
+  Roots notation: \(\sqrt[n]{a}\), rational powers \(a^{p/q}\)
+\end{itemize}
 
-\textbf{Exercises} 1. Zero-product property:
-\(ab = 0 \Rightarrow a = 0\) or \(b = 0\) 2. Fraction addition formula
-3. Finite geometric sum 4. \(\CC\) cannot be ordered 5.
-\(a < b \Rightarrow a < \frac{a+b}{2} < b\) 6.
-\((a, b) \neq \varnothing\) when \(a < b\) 7. ★ Binary arithmetic 8. ★
-Uniqueness of base-\(b\) representations
+\textbf{Results}
+
+\begin{itemize}
+\tightlist
+\item
+  Uniqueness of additive and multiplicative inverses
+\item
+  \(0 \cdot a = 0\)
+\item
+  \((-1) \cdot a = -a\)
+\item
+  \(a^2 \geq 0\), with equality iff \(a = 0\)
+\item
+  \(1 > 0\)
+\item
+  Transitivity of \(<\)
+\item
+  \(a < b \Rightarrow a + c < b + c\)
+\item
+  \(a < b\) and \(c > 0 \Rightarrow ac < bc\); \(c < 0\) reverses
+\item
+  Triangle inequality: \(|a + b| \leq |a| + |b|\)
+\item
+  Reverse triangle inequality: \(||a| - |b|| \leq |a - b|\)
+\item
+  Bernoulli: \((1 + x)^n \geq 1 + nx\) for \(x > -1\)
+\end{itemize}
+
+\textbf{Remarks}
+
+\begin{itemize}
+\tightlist
+\item
+  \((a - r, a + r) = \{x : |x - a| < r\}\)
+\item
+  \(\infty\), \(-\infty\) are notation only, not field elements
+\end{itemize}
+
+\textbf{Exercises}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Zero-product property: \(ab = 0 \Rightarrow a = 0\) or \(b = 0\)
+\item
+  Fraction addition formula
+\item
+  Finite geometric sum
+\item
+  \(\CC\) cannot be ordered
+\item
+  \(a < b \Rightarrow a < \frac{a+b}{2} < b\)
+\item
+  \((a, b) \neq \varnothing\) when \(a < b\)
+\item
+  ★ Binary arithmetic
+\item
+  ★ Uniqueness of base-\(b\) representations
+\end{enumerate}
 
 \section{Incompleteness}\label{sec-foundations-incompleteness}
 
-\textbf{Narrative} - Greeks discover \(\sqrt{2}\) irrational: geometry
-demands a number \(\QQ\) doesn't have - First patch attempt: adjoin
-\(\sqrt{2}\) to get \(\QQ(\sqrt{2})\)---but now \(\sqrt{3}\) is missing
-- Adjoin more roots? Still miss \(\sqrt{5}\), \(\sqrt{7}\),
-\(\sqrt{2 + \sqrt{3}}\), \ldots{} - Go to infinity: constructible
-numbers (all nested square roots)---but miss \(\sqrt[3]{2}\) - Go to
-infinity again: algebraic numbers \(\AA\) (all polynomial roots)---but
-miss \(\pi\) - Hopelessness: every patch leaves holes, can't construct
-our way to completeness - The real crisis: gaps aren't just
-aesthetic---they break calculus - IVT, EVT, MVT all fail in \(\QQ\);
-derivatives lose connection to function behavior - Newton's method and
-bisection produce sequences with no limit in \(\QQ\) - New strategy
-needed: define \(\RR\) by properties (completeness), not construction
+\textbf{Narrative}
 
-\textbf{Definitions} -
-\(\QQ(\sqrt{2}) = \{a + b\sqrt{2} : a, b \in \QQ\}\) - Constructible
-numbers: iterated square roots from \(\QQ\) - Algebraic numbers \(\AA\):
-roots of polynomials with integer coefficients - Transcendental: not
-algebraic
+\begin{itemize}
+\tightlist
+\item
+  Greeks discover \(\sqrt{2}\) irrational: geometry demands a number
+  \(\QQ\) doesn't have
+\item
+  First patch attempt: adjoin \(\sqrt{2}\) to get
+  \(\QQ(\sqrt{2})\)---but now \(\sqrt{3}\) is missing
+\item
+  Adjoin more roots? Still miss \(\sqrt{5}\), \(\sqrt{7}\),
+  \(\sqrt{2 + \sqrt{3}}\), \ldots{}
+\item
+  Go to infinity: constructible numbers (all nested square roots)---but
+  miss \(\sqrt[3]{2}\)
+\item
+  Go to infinity again: algebraic numbers \(\AA\) (all polynomial
+  roots)---but miss \(\pi\)
+\item
+  Hopelessness: every patch leaves holes, can't construct our way to
+  completeness
+\item
+  The real crisis: gaps aren't just aesthetic---they break calculus
+\item
+  IVT, EVT, MVT all fail in \(\QQ\); derivatives lose connection to
+  function behavior
+\item
+  Newton's method and bisection produce sequences with no limit in
+  \(\QQ\)
+\item
+  New strategy needed: define \(\RR\) by properties (completeness), not
+  construction
+\end{itemize}
 
-\textbf{Results} - \(\sqrt{2}\) is irrational - \(\QQ(\sqrt{2})\) is a
-field, but \(\sqrt{3} \notin \QQ(\sqrt{2})\) - Doubling the cube
-impossible: \(\sqrt[3]{2}\) not constructible - \(\pi\) is
-transcendental (Lindemann 1882) - Algebraic closure: \(\AA\) closed
-under polynomial roots
+\textbf{Definitions}
 
-\textbf{Examples} - IVT fails in \(\QQ\): \(f(x) = x^2 - 2\) on
-\([1,2] \cap \QQ\) - EVT fails in \(\QQ\): \(f(x) = 1/(x^2 - 2)\)
-unbounded on \([1,2] \cap \QQ\) - MVT fails in \(\QQ\) (depends on EVT)
+\begin{itemize}
+\tightlist
+\item
+  \(\QQ(\sqrt{2}) = \{a + b\sqrt{2} : a, b \in \QQ\}\)
+\item
+  Constructible numbers: iterated square roots from \(\QQ\)
+\item
+  Algebraic numbers \(\AA\): roots of polynomials with integer
+  coefficients
+\item
+  Transcendental: not algebraic
+\end{itemize}
 
-\textbf{Remarks} - Constructibles satisfy polynomials of degree \(2^n\);
-\(\sqrt[3]{2}\) satisfies degree 3
+\textbf{Results}
 
-\textbf{Exercises} 1. \(\sqrt{6}\) irrational 2. \(\sqrt{p}\) irrational
-for \(p\) prime 3. Verify \(\QQ(\sqrt{2})\) is a field 4. ★
-\(\sqrt{3} \notin \QQ(\sqrt{2})\) 5. \(\sqrt{2} + \sqrt{3}\) irrational
-6. ★ \(\QQ(\sqrt{2}, \sqrt{3})\) is a field 7. Bisection algorithm:
-\(a_n^2 < 2 < b_n^2\) and \(b_n - a_n = 2^{1-n}\) 8. ★★ Liouville
-numbers: construct transcendentals before Lindemann
+\begin{itemize}
+\tightlist
+\item
+  \(\sqrt{2}\) is irrational
+\item
+  \(\QQ(\sqrt{2})\) is a field, but \(\sqrt{3} \notin \QQ(\sqrt{2})\)
+\item
+  Doubling the cube impossible: \(\sqrt[3]{2}\) not constructible
+\item
+  \(\pi\) is transcendental (Lindemann 1882)
+\item
+  Algebraic closure: \(\AA\) closed under polynomial roots
+\end{itemize}
+
+\textbf{Examples}
+
+\begin{itemize}
+\tightlist
+\item
+  IVT fails in \(\QQ\): \(f(x) = x^2 - 2\) on \([1,2] \cap \QQ\)
+\item
+  EVT fails in \(\QQ\): \(f(x) = 1/(x^2 - 2)\) unbounded on
+  \([1,2] \cap \QQ\)
+\item
+  MVT fails in \(\QQ\) (depends on EVT)
+\end{itemize}
+
+\textbf{Remarks}
+
+\begin{itemize}
+\tightlist
+\item
+  Constructibles satisfy polynomials of degree \(2^n\); \(\sqrt[3]{2}\)
+  satisfies degree 3
+\end{itemize}
+
+\textbf{Exercises}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sqrt{6}\) irrational
+\item
+  \(\sqrt{p}\) irrational for \(p\) prime
+\item
+  Verify \(\QQ(\sqrt{2})\) is a field
+\item
+  ★ \(\sqrt{3} \notin \QQ(\sqrt{2})\)
+\item
+  \(\sqrt{2} + \sqrt{3}\) irrational
+\item
+  ★ \(\QQ(\sqrt{2}, \sqrt{3})\) is a field
+\item
+  Bisection algorithm: \(a_n^2 < 2 < b_n^2\) and \(b_n - a_n = 2^{1-n}\)
+\item
+  ★★ Liouville numbers: construct transcendentals before Lindemann
+\end{enumerate}
 
 \section{Completeness}\label{sec-foundations-completeness}
 
-\textbf{Narrative} - Recall bisection for \(\sqrt{2}\): nested intervals
-\([1,2] \supset [1.4, 1.5] \supset [1.41, 1.42] \supset \cdots\) - In
-\(\QQ\), intersection is empty---the target doesn't exist - Left
-endpoints increase, right endpoints decrease---want ``max'' and ``min''
-but they don't exist - Need a way to name the target these endpoints
-approach - Supremum: the least upper bound---may or may not be in the
-set - Key example: \(\{x \in \QQ : x^2 < 2\}\) has no supremum in
-\(\QQ\)---this is how holes manifest - Completeness axiom: every
-nonempty set bounded above has a supremum -
-\(\varepsilon\)-characterization: the workhorse for supremum
-arguments---``get within \(\varepsilon\) of the sup'' - Working with
-sup: translation, scaling, subsets, unions - Nested Interval Property:
-completeness delivers what we wanted---nested closed intervals have
-nonempty intersection - This is what ancient mathematicians assumed when
-approximating \(\pi\) or \(\sqrt{2}\) - Next section: assume
-completeness as an axiom, define \(\RR\), explore what this buys us
+\textbf{Narrative}
 
-\textbf{Definitions} - Bounds: upper bound, lower bound, bounded
-above/below/bounded - Supremum: least upper bound - Infimum: greatest
-lower bound - Complete ordered field: every nonempty set bounded above
-has a supremum - Nested intervals: \(I_{n+1} \subseteq I_n\) for all
-\(n\)
+\begin{itemize}
+\tightlist
+\item
+  Recall bisection for \(\sqrt{2}\): nested intervals
+  \([1,2] \supset [1.4, 1.5] \supset [1.41, 1.42] \supset \cdots\)
+\item
+  In \(\QQ\), intersection is empty---the target doesn't exist
+\item
+  Left endpoints increase, right endpoints decrease---want ``max'' and
+  ``min'' but they don't exist
+\item
+  Need a way to name the target these endpoints approach
+\item
+  Supremum: the least upper bound---may or may not be in the set
+\item
+  Key example: \(\{x \in \QQ : x^2 < 2\}\) has no supremum in
+  \(\QQ\)---this is how holes manifest
+\item
+  Completeness axiom: every nonempty set bounded above has a supremum
+\item
+  \(\varepsilon\)-characterization: the workhorse for supremum
+  arguments---``get within \(\varepsilon\) of the sup''
+\item
+  Working with sup: translation, scaling, subsets, unions
+\item
+  Nested Interval Property: completeness delivers what we
+  wanted---nested closed intervals have nonempty intersection
+\item
+  This is what ancient mathematicians assumed when approximating \(\pi\)
+  or \(\sqrt{2}\)
+\item
+  Next section: assume completeness as an axiom, define \(\RR\), explore
+  what this buys us
+\end{itemize}
 
-\textbf{Results} - Uniqueness of sup and inf - \(\QQ\) is not complete -
-In a complete field, infima also exist -
-\(\varepsilon\)-characterization of sup: can get within \(\varepsilon\)
-of sup - \(\varepsilon\)-characterization of inf -
-\(\sup(A + c) = \sup A + c\) - \(\sup(cA) = c \cdot \sup A\) for
-\(c > 0\) - \(A \subseteq B \Rightarrow \sup A \leq \sup B\) -
-\(\sup(A \cup B) = \max\{\sup A, \sup B\}\) - Nested Interval Property:
-\(\bigcap [a_n, b_n] \neq \varnothing\) in complete fields
+\textbf{Definitions}
 
-\textbf{Examples} - \(\sup\{1 - 1/n\} = 1 \notin S\) -
-\(\sup[0,1] = 1 \in S\) - \((0,1)\): sup and inf not in set -
-\(\{x \in \QQ : x^2 < 2\}\) has no sup in \(\QQ\)
+\begin{itemize}
+\tightlist
+\item
+  Bounds: upper bound, lower bound, bounded above/below/bounded
+\item
+  Supremum: least upper bound
+\item
+  Infimum: greatest lower bound
+\item
+  Complete ordered field: every nonempty set bounded above has a
+  supremum
+\item
+  Nested intervals: \(I_{n+1} \subseteq I_n\) for all \(n\)
+\end{itemize}
 
-\textbf{Remarks} - Lengths \(\to 0\) implies intersection is single
-point - Nested intervals fails in \(\QQ\)
+\textbf{Results}
 
-\textbf{Exercises} 1. Uniqueness of inf 2.
-\(\varepsilon\)-characterization of inf 3.
-\(A \subseteq B \Rightarrow \sup A \leq \sup B\) 4.
-\(\sup(cA) = c \cdot \sup A\) 5. Sup/inf of unions 6. Find sup/inf:
-\([1,3]\), \([1,3)\), \(\{x \in \QQ : x^2 < 1\}\), etc. 7. Find sup/inf:
-\(\{(-1)^n/n\}\), \(\{\beta^n\}\), \(\{\gamma^n\}\) 8.
-\(\sup A < \sup B \Rightarrow\) some \(b \in B\) is upper bound for
-\(A\) 9. Open intervals with \(\sup A = \inf B\): can one point make an
-interval? 10. Nested open intervals with empty intersection 11. ★
-Lengths \(\to 0\) implies single point 12. ★ Sup-completeness
-\(\Leftrightarrow\) inf-completeness
+\begin{itemize}
+\tightlist
+\item
+  Uniqueness of sup and inf
+\item
+  \(\QQ\) is not complete
+\item
+  In a complete field, infima also exist
+\item
+  \(\varepsilon\)-characterization of sup: can get within
+  \(\varepsilon\) of sup
+\item
+  \(\varepsilon\)-characterization of inf
+\item
+  \(\sup(A + c) = \sup A + c\)
+\item
+  \(\sup(cA) = c \cdot \sup A\) for \(c > 0\)
+\item
+  \(A \subseteq B \Rightarrow \sup A \leq \sup B\)
+\item
+  \(\sup(A \cup B) = \max\{\sup A, \sup B\}\)
+\item
+  Nested Interval Property: \(\bigcap [a_n, b_n] \neq \varnothing\) in
+  complete fields
+\end{itemize}
+
+\textbf{Examples}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\sup\{1 - 1/n\} = 1 \notin S\)
+\item
+  \(\sup[0,1] = 1 \in S\)
+\item
+  \((0,1)\): sup and inf not in set
+\item
+  \(\{x \in \QQ : x^2 < 2\}\) has no sup in \(\QQ\)
+\end{itemize}
+
+\textbf{Remarks}
+
+\begin{itemize}
+\tightlist
+\item
+  Lengths \(\to 0\) implies intersection is single point
+\item
+  Nested intervals fails in \(\QQ\)
+\end{itemize}
+
+\textbf{Exercises}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Uniqueness of inf
+\item
+  \(\varepsilon\)-characterization of inf
+\item
+  \(A \subseteq B \Rightarrow \sup A \leq \sup B\)
+\item
+  \(\sup(cA) = c \cdot \sup A\)
+\item
+  Sup/inf of unions
+\item
+  Find sup/inf: \([1,3]\), \([1,3)\), \(\{x \in \QQ : x^2 < 1\}\), etc.
+\item
+  Find sup/inf: \(\{(-1)^n/n\}\), \(\{\beta^n\}\), \(\{\gamma^n\}\)
+\item
+  \(\sup A < \sup B \Rightarrow\) some \(b \in B\) is upper bound for
+  \(A\)
+\item
+  Open intervals with \(\sup A = \inf B\): can one point make an
+  interval?
+\item
+  Nested open intervals with empty intersection
+\item
+  ★ Lengths \(\to 0\) implies single point
+\item
+  ★ Sup-completeness \(\Leftrightarrow\) inf-completeness
+\end{enumerate}
 
 \section{The Real Numbers}\label{sec-foundations-reals}
 
-\textbf{Narrative} - The bold move: we \emph{declare} \(\RR\) to be a
-complete ordered field - Axiomatic method: specify properties, not
-construction---we say what reals \emph{do}, not what they \emph{are} -
-Existence and uniqueness theorem: these axioms describe exactly one
-thing (up to isomorphism) - First check: no monsters---no infinite or
-infinitesimal numbers - \(\NN\) unbounded: if bounded, \(\sup \NN\)
-would exist, but then \((\sup \NN) - 1\) not an upper bound,
-contradiction - Archimedean property: ``you can empty the ocean with a
-teaspoon''---enough copies of any positive number exceed any bound -
-Complete \(\Rightarrow\) Archimedean - Density: \(\QQ\) and irrationals
-both dense in \(\RR\)---we filled gaps, didn't add alien regions - The
-payoff: \(\sqrt{2}\) exists! Use completeness: \(\sup\{x : x^2 < 2\}\)
-works - With roots, we build rational exponents, then real exponents,
-then logarithms - Completeness lets us build all the functions we
-need---these are the ``new treasures'' of \(\RR\) - Surprise: \(\RR\) is
-uncountable (nested intervals proof) - \(\QQ\) countable, \(\RR\)
-uncountable \(\Rightarrow\) ``most'' reals are irrational - \(\AA\)
-countable \(\Rightarrow\) transcendentals exist, in fact ``most'' reals
-are transcendental - Computables countable, definables countable
-\(\Rightarrow\) ``most'' reals cannot even be described - Closing: we
-built \(\RR\) to fill holes in \(\QQ\); it turned out to be an
-uncountable ocean in which rationals, algebraics, and computables are
-countable dust
+\textbf{Narrative}
 
-\textbf{Definitions} - \(\RR\): a complete ordered field (axiomatic) -
-Archimedean field: for all positive \(a, b\), some \(n \in \NN\) has
-\(na > b\) - nth root: \(\sqrt[n]{a} = \sup\{x \geq 0 : x^n < a\}\) -
-Rational exponents: \(a^{p/q} = (\sqrt[q]{a})^p\) - Real exponents:
-\(a^x = \sup\{a^r : r \in \QQ, r < x\}\) for \(a > 1\) - Logarithm:
-\(\log_a(y) = \sup\{r \in \QQ : a^r < y\}\)
+\begin{itemize}
+\tightlist
+\item
+  The bold move: we \emph{declare} \(\RR\) to be a complete ordered
+  field
+\item
+  Axiomatic method: specify properties, not construction---we say what
+  reals \emph{do}, not what they \emph{are}
+\item
+  Existence and uniqueness theorem: these axioms describe exactly one
+  thing (up to isomorphism)
+\item
+  First check: no monsters---no infinite or infinitesimal numbers
+\item
+  \(\NN\) unbounded: if bounded, \(\sup \NN\) would exist, but then
+  \((\sup \NN) - 1\) not an upper bound, contradiction
+\item
+  Archimedean property: ``you can empty the ocean with a
+  teaspoon''---enough copies of any positive number exceed any bound
+\item
+  Complete \(\Rightarrow\) Archimedean
+\item
+  Density: \(\QQ\) and irrationals both dense in \(\RR\)---we filled
+  gaps, didn't add alien regions
+\item
+  The payoff: \(\sqrt{2}\) exists! Use completeness:
+  \(\sup\{x : x^2 < 2\}\) works
+\item
+  With roots, we build rational exponents, then real exponents, then
+  logarithms
+\item
+  Completeness lets us build all the functions we need---these are the
+  ``new treasures'' of \(\RR\)
+\item
+  Surprise: \(\RR\) is uncountable (nested intervals proof)
+\item
+  \(\QQ\) countable, \(\RR\) uncountable \(\Rightarrow\) ``most'' reals
+  are irrational
+\item
+  \(\AA\) countable \(\Rightarrow\) transcendentals exist, in fact
+  ``most'' reals are transcendental
+\item
+  Computables countable, definables countable \(\Rightarrow\) ``most''
+  reals cannot even be described
+\item
+  Closing: we built \(\RR\) to fill holes in \(\QQ\); it turned out to
+  be an uncountable ocean in which rationals, algebraics, and
+  computables are countable dust
+\end{itemize}
 
-\textbf{Results} - Existence and uniqueness of complete ordered field
-(stated without proof) - \(\NN\) is unbounded in \(\RR\) - No
-infinitesimals: for all \(\varepsilon > 0\), some \(n\) has
-\(1/n < \varepsilon\) - Complete fields are Archimedean - Density of
-\(\QQ\): between any two reals lies a rational - Density of irrationals:
-between any two reals lies an irrational - \(\sqrt{2}\) exists in
-\(\RR\) - nth roots exist: \((\sqrt[n]{a})^n = a\) - Functional
-equations: \(a^{x+y} = a^x a^y\), \(\log_a(xy) = \log_a x + \log_a y\) -
-\(\RR\) is uncountable (nested intervals proof) - Irrationals are
-uncountable
+\textbf{Definitions}
 
-\textbf{Remarks} - Conventions: \(\sup S = \infty\) (unbounded above),
-\(\inf S = -\infty\) (unbounded below) - \(\sup \varnothing = -\infty\),
-\(\inf \varnothing = \infty\) - \(\AA\) countable \(\Rightarrow\)
-transcendentals exist - Computables countable, definables countable:
-``most'' reals indescribable
+\begin{itemize}
+\tightlist
+\item
+  \(\RR\): a complete ordered field (axiomatic)
+\item
+  Archimedean field: for all positive \(a, b\), some \(n \in \NN\) has
+  \(na > b\)
+\item
+  nth root: \(\sqrt[n]{a} = \sup\{x \geq 0 : x^n < a\}\)
+\item
+  Rational exponents: \(a^{p/q} = (\sqrt[q]{a})^p\)
+\item
+  Real exponents: \(a^x = \sup\{a^r : r \in \QQ, r < x\}\) for \(a > 1\)
+\item
+  Logarithm: \(\log_a(y) = \sup\{r \in \QQ : a^r < y\}\)
+\end{itemize}
 
-\textbf{Exercises} 1. \(\QQ\) is Archimedean directly 2. \(\sqrt{3}\)
-exists 3. \(\sqrt{a}\) exists for \(a > 0\) 4. ★ nth roots exist 5.
-Rational exponents well-defined 6. \(a^{r+s} = a^r a^s\) for rational
-\(r, s\) 7. ★ \(a^{x+y} = a^x a^y\) for real \(x, y\) 8. ★★ Cantor's
-diagonal argument 9. ★★ Countability of \(\QQ\) 10. ★★ Countability of
-algebraic numbers \(\Rightarrow\) transcendentals exist
+\textbf{Results}
+
+\begin{itemize}
+\tightlist
+\item
+  Existence and uniqueness of complete ordered field (stated without
+  proof)
+\item
+  \(\NN\) is unbounded in \(\RR\)
+\item
+  No infinitesimals: for all \(\varepsilon > 0\), some \(n\) has
+  \(1/n < \varepsilon\)
+\item
+  Complete fields are Archimedean
+\item
+  Density of \(\QQ\): between any two reals lies a rational
+\item
+  Density of irrationals: between any two reals lies an irrational
+\item
+  \(\sqrt{2}\) exists in \(\RR\)
+\item
+  nth roots exist: \((\sqrt[n]{a})^n = a\)
+\item
+  Functional equations: \(a^{x+y} = a^x a^y\),
+  \(\log_a(xy) = \log_a x + \log_a y\)
+\item
+  \(\RR\) is uncountable (nested intervals proof)
+\item
+  Irrationals are uncountable
+\end{itemize}
+
+\textbf{Remarks}
+
+\begin{itemize}
+\tightlist
+\item
+  Conventions: \(\sup S = \infty\) (unbounded above),
+  \(\inf S = -\infty\) (unbounded below)
+\item
+  \(\sup \varnothing = -\infty\), \(\inf \varnothing = \infty\)
+\item
+  \(\AA\) countable \(\Rightarrow\) transcendentals exist
+\item
+  Computables countable, definables countable: ``most'' reals
+  indescribable
+\end{itemize}
+
+\textbf{Exercises}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\QQ\) is Archimedean directly
+\item
+  \(\sqrt{3}\) exists
+\item
+  \(\sqrt{a}\) exists for \(a > 0\)
+\item
+  ★ nth roots exist
+\item
+  Rational exponents well-defined
+\item
+  \(a^{r+s} = a^r a^s\) for rational \(r, s\)
+\item
+  ★ \(a^{x+y} = a^x a^y\) for real \(x, y\)
+\item
+  ★★ Cantor's diagonal argument
+\item
+  ★★ Countability of \(\QQ\)
+\item
+  ★★ Countability of algebraic numbers \(\Rightarrow\) transcendentals
+  exist
+\end{enumerate}
 
 \chapter{Limits}\label{limits}
 
+\section{Sequences}\label{sequences}
+
+\textbf{Tools for Reaching Real Numbers}
+
+\begin{itemize}
+\tightlist
+\item
+  Chapter 1: ℝ is uncountable, finite descriptions are countable
+\item
+  \textbf{Key insight}: Infinite processes bridge the gap
+\item
+  Sequences let us \emph{name} numbers we can't write down
+\item
+  Preview: we'll prove every real is the limit of a sequence of
+  rationals
+\end{itemize}
+
+\textbf{What Is a Sequence?}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: function ℕ → ℝ; a list a₁, a₂, a₃, \ldots{}
+\item
+  Two ways to specify: closed form vs recursive
+\end{itemize}
+
+\textbf{Many Objects Are Secretly Sequences}
+
+\begin{itemize}
+\tightlist
+\item
+  Series Σaₙ: the sequence of partial sums Sₙ = a₁ + a₂ + ⋯ + aₙ
+\item
+  Products Πaₙ: the sequence of partial products Pₙ = a₁ · a₂ · ⋯ · aₙ
+\item
+  Recursive processes: aₙ₊₁ = f(aₙ)
+\item
+  \textbf{Unifying principle}: Master sequences, master them all
+\end{itemize}
+
+\textbf{Historical Examples: Tools in Action}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Archimedes and the parabola}: Sₙ = T(1 + 1/4 + ⋯ + 1/4ⁿ) ---
+  tool for finding area
+\item
+  \emph{Babylonians and √2}: xₙ₊₁ = (xₙ + 2/xₙ)/2 --- tool for finding
+  √2
+\item
+  Both produce sequences; both ``approach'' something --- but what does
+  that mean?
+\end{itemize}
+
+\textbf{When Algebra Gives Closed Forms}
+
+\begin{itemize}
+\tightlist
+\item
+  Most sequences have no closed form for Sₙ or Pₙ
+\item
+  But some do --- and pure algebra (no limits!) gives the formula
+\end{itemize}
+
+\textbf{Geometric Partial Sums}
+
+\begin{itemize}
+\tightlist
+\item
+  Sₙ = 1 + r + r² + ⋯ + rⁿ
+\item
+  Trick: compute Sₙ - rSₙ = 1 - rⁿ⁺¹
+\item
+  Formula: Sₙ = (1 - rⁿ⁺¹)/(1 - r) for r ≠ 1
+\end{itemize}
+
+\textbf{Telescoping Series}
+
+\begin{itemize}
+\tightlist
+\item
+  Idea: terms cancel in pairs, leaving only endpoints
+\item
+  If aₖ = tₖ - tₖ₋₁, then Sₙ = Σₖ₌₁ⁿ aₖ = tₙ - t₀
+\item
+  Example: 1/(k(k+1)) = 1/k - 1/(k+1), so Σₖ₌₁ⁿ 1/(k(k+1)) = 1 - 1/(n+1)
+\end{itemize}
+
+\textbf{Telescoping Products}
+
+\begin{itemize}
+\tightlist
+\item
+  Same idea multiplicatively: terms cancel
+\item
+  If aₖ = tₖ/tₖ₋₁, then Pₙ = Πₖ aₖ = tₙ/t₀
+\item
+  Example: (1 - 1/k²) = (k-1)(k+1)/k² = {[}(k-1)/k{]} · {[}(k+1)/k{]}
+\item
+  Πₖ₌₂ⁿ (1 - 1/k²) = (1/2) · ((n+1)/n) = (n+1)/(2n)
+\end{itemize}
+
+\textbf{The Question}
+
+\begin{itemize}
+\tightlist
+\item
+  We have Sₙ = (1 - rⁿ⁺¹)/(1-r) and Sₙ = 1 - 1/(n+1) and Pₙ = (n+1)/(2n)
+\item
+  What happens as n → ∞? What does ``→'' mean?
+\item
+  This is \textbf{convergence} --- next section
+\end{itemize}
+
 \section{Convergence}\label{convergence}
 
-\textbf{Narrative} - Sequences formalize ``infinite processes''---what
-the Babylonians and Archimedes were really doing - Sequences are
-functions \(\NN \to \RR\) (or more generally \(I \to \RR\) for infinite
-\(I \subset \ZZ\)), but we think of them as ordered lists - Two ways to
-specify: closed formula vs recursive definition - The
-\(\varepsilon\)-\(N\) definition: ``eventually stay arbitrarily close''
-- Unpack as a game/challenge: adversary picks tolerance \(\varepsilon\),
-you must produce threshold \(N\) - Work examples from scratch---this is
-where students learn the craft of analysis - Uniqueness: limits are
-unique (triangle inequality / \(\varepsilon/2\) argument) - Convergence
-depends only on the tail---first finitely many terms are irrelevant -
-Boundedness: convergent \(\Rightarrow\) bounded, but converse is false -
-\textbf{Archimedes' sequences}: introduce inscribed/circumscribed
-polygon half-perimeters as a running example---a story that will unfold
-through Chapters 2 and 3
+\textbf{The Definition}
 
-\textbf{Definitions} - Sequence (function \(\NN \to \RR\), or
-\(I \to \RR\) for infinite index set \(I \subset \ZZ\)) - Convergence:
-\(\forall \varepsilon > 0\, \exists N\, \forall n > N\, |a_n - L| < \varepsilon\)
-- Limit notation: \(a_n \to L\), \(\lim_{n \to \infty} a_n = L\) -
-Convergent / divergent - Bounded sequence: \(\exists M > 0\) with
-\(|a_n| \leq M\) for all \(n\) - Tail of a sequence - Subsequence:
-\((a_{n_k})\) where \(n_1 < n_2 < n_3 < \cdots\) - Diverges to
-\(\infty\): \(\forall M > 0\, \exists N\, \forall n > N\, a_n > M\) -
-Diverges to \(-\infty\): similarly
+\begin{itemize}
+\tightlist
+\item
+  Motivation: ``approaches'' means ``eventually stays arbitrarily
+  close''
+\item
+  The ε-N game: adversary picks tolerance, you find threshold
+\item
+  Definition: aₙ → L if ∀ε \textgreater{} 0 ∃N: n \textgreater{} N ⟹
+  \textbar aₙ - L\textbar{} \textless{} ε
+\item
+  Convergent vs divergent
+\end{itemize}
 
-\textbf{Results} - Uniqueness of limits - Convergent sequences are
-bounded - Convergence depends only on the tail (shifted sequences have
-the same limit)
+\textbf{Examples Worked from Definition}
 
-\textbf{Examples (worked from definition)} - \(1/n \to 0\) (the
-fundamental example) - Constant sequence \(c \to c\) - \(n/(n+1) \to 1\)
-- \(a^n \to 0\) for \(|a| < 1\) (uses Bernoulli) - \(a^{1/n} \to 1\) for
-\(a > 0\) (uses Bernoulli) - \((-1)^n\) diverges (no limit exists) -
-\(n^2\) diverges to \(\infty\)
+\begin{itemize}
+\tightlist
+\item
+  1/n → 0 (the fundamental example; use Archimedean property)
+\item
+  Constant sequence c → c
+\item
+  n/(n+1) → 1
+\item
+  (-1)ⁿ diverges (direct argument: terms can't both be close to any L)
+\end{itemize}
 
-\textbf{Archimedes' Sequences (Running Example)} - For a circle of
-radius 1, define: - \(a_n\) = half-perimeter of inscribed regular
-\(n\)-gon - \(b_n\) = half-perimeter of circumscribed regular \(n\)-gon
-- Starting values (hexagon): \(a_6 = 3\),
-\(b_6 = 2\sqrt{3} \approx 3.464\) - Geometric fact:
-\(a_n < (\text{half-circumference}) < b_n\) - So \(3 < \pi < 3.465\)
-already from the hexagon! - The \textbf{doubling recurrence} (stated,
-derived in exercises or via trig): -
-\(b_{2n} = H(a_n, b_n) = \frac{2a_n b_n}{a_n + b_n}\) (harmonic mean) -
-\(a_{2n} = G(a_n, b_{2n}) = \sqrt{a_n \cdot b_{2n}}\) (geometric mean) -
-This gives a subsequence \(a_6, a_{12}, a_{24}, \ldots\) and
-\(b_6, b_{12}, b_{24}, \ldots\) - Questions: Do these converge? To the
-same limit? (Answers in 2.3 and 3.4)
+\textbf{Geometric Sequences}
 
-\textbf{Exercises} 1. Prove directly: \((n^2 + 1)/(n^2 + n) \to 1\) 2.
-Prove directly: \((2n - 2)/(5n + 1) \to 2/5\) 3. Prove: if \(a_n \to L\)
-and \(a_n \geq 0\) for all \(n\), then \(L \geq 0\) 4. Prove: if
-\(a_n \to L\), then \(|a_n| \to |L|\) 5. Find the flaw: ``Let
-\(L = 1 + 1 + 1 + \cdots\). Then \(L = 1 + L\), so \(0 = 1\).'' 6.
-Prove: \((-1)^n\) diverges (carefully negate the definition) 7. Prove:
-\(a^n\) diverges to \(\infty\) for \(a > 1\) 8. Give examples or explain
-impossibility: - Infinitely many terms equal zero, but doesn't converge
-to zero - Infinitely many terms equal zero, converges to nonzero -
-Sequence of irrationals converging to a rational - Convergent sequence
-where every term is an integer 9. Give examples: two divergent sequences
-whose sum converges; whose product converges 10. ★ Prove:
-\(n^{1/n} \to 1\) 11. ★ Interleaved sequences: if \(a_n \to L\) and
-\(b_n \to L\), then \(a_1, b_1, a_2, b_2, \ldots \to L\) 12. ★ If
-\(a_n \to 0\) and \(|b_n - L| < a_n\) for all \(n\), prove \(b_n \to L\)
+\begin{itemize}
+\tightlist
+\item
+  Lemma (Bernoulli's Inequality): (1+x)ⁿ ≥ 1 + nx for x ≥ -1
+\item
+  Theorem: rⁿ → 0 for \textbar r\textbar{} \textless{} 1
+\item
+  Theorem: rⁿ diverges for \textbar r\textbar{} \textgreater{} 1;
+  diverges to +∞ for r \textgreater{} 1
+\end{itemize}
 
-\textbf{Archimedes Exercises} 13. Verify \(a_6 = 3\) by computing the
-perimeter of a regular hexagon inscribed in a unit circle. 14. Verify
-\(b_6 = 2\sqrt{3}\) by computing the perimeter of a regular hexagon
-circumscribed about a unit circle. 15. Using the doubling recurrence,
-compute \(a_{12}, b_{12}, a_{24}, b_{24}\) (leave in exact form with
-square roots). 16. Make a table of numerical values for
-\(a_n, b_n, b_n - a_n\) for \(n = 6, 12, 24, 48, 96\). What bounds does
-this give for \(\pi\)? 17. (Guided) Derive the recurrence
-\(b_{2n} = H(a_n, b_n)\) using the half-angle identity
-\(\tan(\theta/2) = \frac{\sin\theta}{1 + \cos\theta}\) and the formulas
-\(a_n = n\sin(\pi/n)\), \(b_n = n\tan(\pi/n)\). 18. (Guided) Derive the
-recurrence \(a_{2n} = G(a_n, b_{2n})\) using appropriate trig
-identities.
+\textbf{Basic Properties}
+
+\begin{itemize}
+\tightlist
+\item
+  Uniqueness of limits
+\item
+  Convergent ⟹ bounded (converse false: (-1)ⁿ)
+\item
+  Tails determine convergence
+\end{itemize}
+
+\textbf{Divergence to Infinity}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: aₙ → +∞, aₙ → -∞
+\item
+  Example: n² → +∞
+\end{itemize}
 
 \section{Limit Laws}\label{limit-laws}
 
-\textbf{Narrative} - Goal: avoid using the \(\varepsilon\)-\(N\)
-definition directly wherever possible - How does convergence interact
-with the ordered field structure? - Limits and inequalities: bounds on
-sequences give bounds on limits - Warning: strict inequality not
-preserved (\(1/n < 1\) but \(\lim 1/n = 0 \not< 1\)) - Squeeze theorem:
-incredibly useful---bound a complicated sequence by simpler ones -
-Limits and algebra: limit laws let us compute limits from simpler pieces
-- Proof structure: present ``Sketch'' then ``Formal'' for
-products/quotients---students need to see the discovery process - Square
-root theorem: \(\lim \sqrt{s_n} = \sqrt{\lim s_n}\)---preview of
-continuity - Applications: rational functions, conjugate tricks,
-exponentials beat polynomials - Babylonian method via Pell equation:
-complete proof that \(p_n/q_n \to \sqrt{2}\) - Key lesson: limit laws
-tell us \emph{what} the limit is, but not \emph{that} it exists
+\textbf{Limits Respect Order}
 
-\textbf{Definitions} - (None new---this section is about theorems)
+\begin{itemize}
+\tightlist
+\item
+  Theorem: aₙ → L and aₙ ≥ 0 ⟹ L ≥ 0
+\item
+  Theorem: aₙ ≤ bₙ and both converge ⟹ limits respect ≤
+\item
+  Warning: strict inequality not preserved
+\item
+  Squeeze theorem
+\end{itemize}
 
-\textbf{Results} - Limits of nonnegative sequences are nonnegative -
-Bounds on sequences give bounds on limits:
-\(L \leq a_n \leq U \Rightarrow L \leq \lim a_n \leq U\) - Squeeze
-theorem - Limit laws: sum, difference, constant multiple, product,
-quotient - Square root: \(\lim \sqrt{s_n} = \sqrt{\lim s_n}\) for
-\(s_n \geq 0\) - \(\lim 1/n^p = 0\) for positive integer \(p\)
-(corollary of product law) - \textbf{Density of rationals}: between any
-two reals lies a rational (Archimedean property) - \textbf{Every real is
-a limit of rationals}: for any \(x\), find \(r_n \in \QQ\) with
-\(x - 1/n < r_n < x + 1/n\); squeeze gives \(r_n \to x\) -
-\textbf{Subsequences inherit limits}: if \(a_n \to L\), then every
-subsequence \(a_{n_k} \to L\) - \textbf{Even/odd recombination}: if even
-and odd subsequences both \(\to L\), then \(a_n \to L\)
+\textbf{Limits Respect Algebra}
 
-\textbf{Examples (worked)} - \(n/(n^2 + 1) \to 0\) via squeeze (compare
-to \(1/n\)) - \((3n^2 + 2n)/(n^2 - 1) \to 3\) (divide by highest power)
-- \(\sqrt{n+1} - \sqrt{n} \to 0\) (conjugate trick) -
-\(n^k / a^n \to 0\) for \(a > 1\) (exponentials beat polynomials---uses
-binomial theorem) - Babylonian/Pell: if \(p_n^2 = 2q_n^2 \pm 1\) and
-\(q_n \to \infty\), then \(p_n/q_n \to \sqrt{2}\) - Alternating harmonic
-partial sums: \(S_n = 1 - 1/2 + 1/3 - \cdots \pm 1/n\) converges - Even
-\(S_{2n}\): increasing, bounded above → MCT - Odd \(S_{2n+1}\):
-decreasing, bounded below → MCT - Gap
-\(S_{2n+1} - S_{2n} = 1/(2n+1) \to 0\) → same limit - Even/odd
-recombination → whole sequence converges - (Can't do this with limit
-laws alone!)
+\begin{itemize}
+\tightlist
+\item
+  Limit laws: sum, difference, product, quotient, square root
+\item
+  These follow from ordered field axioms
+\end{itemize}
 
-\textbf{Remarks} - Strict inequality not preserved by limits - Quotient
-law requires nonzero denominator \emph{and} nonzero limit - Cannot apply
-quotient law when numerator and denominator both \(\to \infty\) (Pell
-sequence!)
+\textbf{Applications: Finishing What We Started}
 
-\textbf{The √2 vs π Comparison (Running Theme)} \textbar{} Aspect
-\textbar{} \(\sqrt{2}\) \textbar{} \(\pi\) \textbar{}
-\textbar--------\textbar-----------\textbar-------\textbar{} \textbar{}
-Definition \textbar{} \(\sup\{r \in \QQ : r^2 < 2\}\) \textbar{}
-(Coming: intersection of polygon bounds) \textbar{} \textbar{}
-Approximating sequence \textbar{} Babylonian
-\(x_{n+1} = (x_n + 2/x_n)/2\) \textbar{} Archimedes \(a_n, b_n\)
-\textbar{} \textbar{} Recurrence type \textbar{} Single sequence
-\textbar{} Coupled sequences \textbar{} \textbar{} Key identity
-\textbar{} Pell: \(p_n^2 - 2q_n^2 = \pm 1\) \textbar{} HG means
-\textbar{} \textbar{} Nature \textbar{} Algebraic \textbar{} (Later:
-transcendental) \textbar{}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Geometric series}: Sₙ = (1 - rⁿ⁺¹)/(1-r) → 1/(1-r) using rⁿ →
+  0 and limit laws
+\item
+  \textbf{Archimedes resolved}: 1 + 1/4 + 1/16 + ⋯ = 1/(1 - 1/4) = 4/3
+\item
+  \textbf{Telescoping series}: Sₙ = 1 - 1/(n+1) → 1, so Σ1/(k(k+1)) = 1
+\item
+  \textbf{Telescoping product}: Pₙ = (n+1)/(2n) → 1/2, so Π(1 - 1/k²) =
+  1/2
+\item
+  Conjugate trick: √(n+1) - √n → 0
+\end{itemize}
 
-\textbf{Exercises} 1. Prove: if \(a_n \geq L\) for all \(n\) and \(a_n\)
-converges, then \(\lim a_n \geq L\) 2. (Error bounds) If
-\(|a_n - L| \leq \alpha_n\) and \(\alpha_n \to 0\), prove \(a_n \to L\)
-3. Prove \(\sqrt{s_n} \to 0\) when \(s_n \to 0\) (simpler than general
-case) 4. Write the formal proof of the product limit law from the sketch
-5. Write the formal proof of the reciprocal limit law from the sketch 6.
-Compute: \(\lim (1 + 2 + \cdots + n)/n^2\) 7. Compute:
-\(\lim (\sqrt{n^2 + n} - n)\) 8. Prove: \(\lim n^k / a^n = 0\) for
-\(a > 1\) and fixed \(k\) (use binomial theorem) 9. Use squeeze to show
-\((\sin n)/n \to 0\) (use \(|\sin x| \leq 1\)) 10. Generalize even/odd
-recombination: if \((a_n)\) decomposes into finitely many subsequences
-each converging to \(L\), then \(a_n \to L\) 11. (Zigzag reproof of
-\(\sqrt{2}\)) The Pell sequence \(p_n/q_n\) alternates above and below
-\(\sqrt{2}\). Show odd-indexed terms are increasing, even-indexed are
-decreasing, and use MCT + recombination to reprove convergence. 12. ★
-Generalize the zigzag technique: if \(p_n^2 = Nq_n^2 \pm 1\) with
-\(q_n \to \infty\), prove \(p_n/q_n \to \sqrt{N}\) 13. ★ (Infinity
-arithmetic) Prove: if \(s_n \to \infty\) and \(k > 0\), then
-\(ks_n \to \infty\) 14. ★ (Infinity arithmetic) Prove: if
-\(s_n \to \infty\) and \(t_n\) converges or \(t_n \to \infty\), then
-\(s_n + t_n \to \infty\) 15. ★ (Infinity arithmetic) Prove: if
-\(s_n \to \infty\) and \(t_n \to \infty\), then \(s_n t_n \to \infty\)
-16. ★ (Infinity arithmetic) Give examples where \(s_n, t_n \to \infty\)
-but \(s_n/t_n \to 0\), \(\to 2\), and \(\to \infty\) 17. ★ For every
-\(x \in \RR\), construct a sequence of irrationals \(y_n \to x\) 18.
-Prove: between any two reals lies an irrational (use density of
-rationals + \(\sqrt{2}\))
+\textbf{Density of Rationals}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: between any two reals lies a rational
+\item
+  Theorem: every real is the limit of a sequence of rationals
+\item
+  \textbf{Payoff}: Sequences really do reach all of ℝ!
+\end{itemize}
+
+\textbf{The Limits of Limit Laws}
+
+\begin{itemize}
+\tightlist
+\item
+  Limit laws tell us \emph{what} the limit is, not \emph{that} it exists
+\item
+  Babylonian example: \emph{if} xₙ → L, then L = √2 --- but doesn't
+  prove convergence
+\item
+  We need a new tool\ldots{}
+\end{itemize}
 
 \section{Monotone Convergence}\label{monotone-convergence}
 
-\textbf{Narrative} - Limit laws (2.2): new limits from old via field
-operations---but can't bootstrap from nothing! - Limit laws can't prove
-a sequence of rationals converges to an irrational - Example: in 2.2 we
-proved \((p_n/q_n)^2 \to 2\), then used \(\sqrt{\cdot}\) law---we never
-directly showed \(p_n/q_n \to \sqrt{2}\) - Now: MCT uses
-\emph{completeness} (not just field axioms) to guarantee convergence -
-The limit is the sup---completeness guarantees it exists! - The
-nonnegative series criterion: partial sums increasing, so MCT applies -
-First series examples: \(\sum 1/2^n\) converges (bounded), \(\sum 1/n\)
-diverges (unbounded) - Babylonian revisited: MCT makes the proof trivial
-(compare to Pell approach in 2.2) - The number \(e\): sandwich between
-increasing and decreasing sequences - \textbf{Archimedes revisited}: MCT
-shows both sequences converge---but to the same limit?
-
-\textbf{Definitions} - Increasing: \(a_n \leq a_{n+1}\) for all \(n\) -
-Strictly increasing: \(a_n < a_{n+1}\) for all \(n\) - Decreasing:
-\(a_n \geq a_{n+1}\) for all \(n\) - Monotone: increasing or decreasing
-- Infinite series: \(\sum_{n=1}^\infty a_n = \lim_{N \to \infty} S_N\)
-where \(S_N = \sum_{k=1}^N a_k\) - The number \(e\):
-\(e = \lim (1 + 1/n)^n\) - Arithmetic mean: \(A(a,b) = (a+b)/2\) -
-Geometric mean: \(G(a,b) = \sqrt{ab}\) - Harmonic mean:
-\(H(a,b) = 2ab/(a+b)\)
-
-\textbf{Results} - \textbf{Monotone Convergence Theorem}: monotone +
-bounded ⟹ convergent - Moreover: increasing bounded above ⟹ converges to
-sup; decreasing bounded below ⟹ converges to inf - \textbf{Nonnegative
-series criterion}: if \(a_n \geq 0\), then \(\sum a_n\) converges iff
-partial sums are bounded - \textbf{\((1+1/n)^n\) is increasing}
-(Bernoulli or AM-GM) - \textbf{\((1+1/n)^n\) is bounded above by 3}
-(binomial theorem) - \textbf{\((1+1/n)^{n+1}\) is decreasing} (exercise)
-- \textbf{Both sequences converge to the same limit \(e\)} -
-\textbf{Exponentials as limits}: if \(r_n \to x\) (rationals), then
-\(a^{r_n} \to a^x\) - \textbf{AM-GM-HM inequality}:
-\(H(a,b) \leq G(a,b) \leq A(a,b)\) with equality iff \(a = b\) -
-\textbf{Means lie between}: if \(a < b\), then
-\(a < H(a,b) < G(a,b) < A(a,b) < b\)
-
-\textbf{Archimedes Sequences: Convergence via MCT} - Recall:
-\(b_{2n} = H(a_n, b_n)\), \(a_{2n} = G(a_n, b_{2n})\) -
-\textbf{Theorem}: \((a_n)\) is increasing along the doubling subsequence
-- Proof:
-\(a_{2n} = \sqrt{a_n \cdot b_{2n}} > \sqrt{a_n \cdot a_n} = a_n\) since
-\(b_{2n} > a_n\) - \textbf{Theorem}: \((b_n)\) is decreasing along the
-doubling subsequence - Proof: \(b_{2n} = H(a_n, b_n) < b_n\) since
-harmonic mean \(<\) larger input - \textbf{Theorem}: \(a_n < b_n\) for
-all \(n\) (by induction, using means lie between) - \textbf{Corollary}:
-Both sequences converge by MCT - \((a_n)\) increasing, bounded above by
-\(b_6\) → converges to some \(L_a\) - \((b_n)\) decreasing, bounded
-below by \(a_6\) → converges to some \(L_b\) - \textbf{Area fact}:
-\(B_n = b_n\) exactly (circumscribed area = circumscribed half-perimeter
-for unit circle) - \textbf{Looking ahead}: We have \(L_a \leq L_b\). Are
-they equal? Yes! We prove this in Section 2.4 using a clever ratio
-technique.
-
-\textbf{Examples (worked)} - \(\sum 1/2^n\) converges: partial sums
-\(S_N = 2 - 1/2^N < 2\), bounded, apply MCT - \(\sum 1/n\) diverges:
-grouping argument shows partial sums unbounded - Babylonian sequence
-converges via MCT: - \(x_n \geq \sqrt{2}\) for \(n \geq 2\) (AM-GM) -
-\(x_n\) decreasing (since \(x_n^2 \geq 2\)) - MCT ⟹ converges; limit
-laws ⟹ limit is \(\sqrt{2}\) - Compare to Pell proof in 2.2: this is
-much simpler!
-
-\textbf{Remarks} - MCT uses completeness---fails in \(\QQ\) (the
-sequence \(1, 1.4, 1.41, \ldots\) approximating \(\sqrt{2}\)) -
-Historical: compound interest leads to \(e\) (Bernoulli,
-\textasciitilde1683) - Significance of \(e\) will become clear in
-Chapter 6 (natural exponential) - The nested interval characterization:
-\(\{e\} = \bigcap [(1+1/n)^n, (1+1/n)^{n+1}]\)
-
-\textbf{Exercises} 1. Prove MCT for the decreasing case 2. Prove
-\((1+1/n)^{n+1}\) is decreasing 3. Prove \((1+1/n)^n\) and
-\((1+1/n)^{n+1}\) have the same limit 4. Use the nested interval bounds
-to estimate \(e\) to two decimal places 5. Prove: if \(r_n \to 0\)
-(rationals), then \(a^{r_n} \to 1\) for any \(a > 0\) 6. Prove: if
-\(r_n, s_n \to x\) are both monotone rational sequences, then
-\(\lim a^{r_n} = \lim a^{s_n}\) 7. Recursive sequence: \(a_1 = 1\),
-\(a_{n+1} = \sqrt{2 + a_n}\). Prove bounded by 2, increasing, and find
-limit. 8. Prove: if \((a_n)\) is increasing and has a convergent
-subsequence, then \((a_n)\) converges 9. ★ Find the limit of
-\(a_1 = 2\), \(a_{n+1} = a_n/2 + 1/a_n\) (modify Babylonian for
-\(\sqrt{2}\)) 10. ★ Prove directly that \((1+1/n)^n < 3\) using
-\(k! \geq 2^{k-1}\)
-
-\textbf{AM-GM-HM Exercises} 11. Prove the AM-GM inequality:
-\(\sqrt{ab} \leq (a+b)/2\) for \(a, b > 0\) 12. Prove the GM-HM
-inequality: \(H(a,b) \leq G(a,b)\) 13. Prove: if \(a < b\), then
-\(a < H(a,b) < G(a,b) < A(a,b) < b\) 14. Prove:
-\(H(a,b) = 1/A(1/a, 1/b)\) (harmonic mean is reciprocal of arithmetic
-mean of reciprocals)
-
-\textbf{Archimedes Exercises} 15. Prove from the recurrence that
-\(a_n < b_{2n} < b_n\) for all \(n \geq 6\) 16. Prove from the
-recurrence that \(a_n < a_{2n} < b_{2n}\) for all \(n \geq 6\) 17.
-Verify the area fact: show that a circumscribed regular \(n\)-gon around
-a unit circle has area \(B_n = b_n\) 18. ★ Show that the inscribed area
-satisfies \(A_n = a_n \cos(\pi/n)\). What does this approach as
-\(n \to \infty\)?
-
-\section{Infinite Processes}\label{infinite-processes}
-
-\textbf{Narrative} - This section: techniques for COMPUTING infinite
-sums/products, and examples - Series are just recursive sequences:
-\(s_{n+1} = s_n + a_n\) - Distinguish terms \(a_n\) from partial sums
-\(S_n\)---crucial! - Telescoping: looks hard, secretly easy---everything
-cancels - Geometric series: the workhorse, closed form \(1/(1-r)\) -
-Infinite products: the multiplicative analog - Products reduce to series
-via log (mentioned---proof needs continuity from Ch 5) - Recursive
-sequences: the ``operation manual'' for finding limits - Golden ratio
-and Fibonacci: beautiful applications
-
-\textbf{Definitions} - Series: \(\sum a_n\) means \(\lim S_N\) where
-\(S_N = \sum_{k=1}^N a_k\) - Partial sums - Telescoping series:
-\(a_n = t_n - t_{n-1}\) - Geometric series: consecutive terms have
-common ratio \(r\) - Infinite product: \(\prod a_n = \lim P_N\) where
-\(P_N = \prod_{k=1}^N a_k\) - Telescoping product:
-\(a_n = t_n / t_{n-1}\)
-
-\textbf{Results} - Series addition:
-\(\sum(a_n + b_n) = \sum a_n + \sum b_n\) - Scalar multiple:
-\(\sum ca_n = c \sum a_n\) - Telescoping series:
-\(\sum_{k=1}^N (t_k - t_{k-1}) = t_N - t_0\) - Geometric partial sums:
-\(\sum_{k=0}^N r^k = (1 - r^{N+1})/(1-r)\) - \textbf{Geometric series
-theorem}: \(|r| < 1 \Rightarrow \sum r^n = 1/(1-r)\);
-\(|r| \geq 1 \Rightarrow\) diverges - \textbf{Alternating series test}:
-if \(a_n \searrow 0\) (monotone decreasing to 0), then
-\(\sum (-1)^n a_n\) converges - Proof: even partial sums increasing, odd
-decreasing, both bounded, MCT + recombination - \(\sum 1/n^2\) converges
-(bound by \(\sum 1/(n(n-1))\) which telescopes) - Fibonacci/Binet:
-\(F_n = (\phi^n - \psi^n)/\sqrt{5}\) - Fibonacci ratios:
-\(F_{n+1}/F_n \to \phi\)
-
-\textbf{Examples (worked)} - \(\sum 1/(n(n+1)) = 1\) (telescoping via
-partial fractions) - \(\sum 1/(n^2 + 3n)\) (telescoping with lag) -
-Archimedes' quadrature of parabola: area = \(4/3 \cdot T\) -
-\(\prod_{n=2}^\infty (1 - 1/n^2) = 1/2\) (telescoping product) -
-\(\sum (-1)^{n+1}/n\) converges (alternating series test---convergence
-shown in 2.2 via MCT) - \(\sqrt{1 + \sqrt{1 + \cdots}} = \phi\)
-(recursive sequence manual) - Briggs's method for computing
-\(\log_{10}(2)\)
-
-\textbf{Recursive Sequence Operation Manual} 1. Prove bounded (by
-induction) 2. Prove monotone (by induction) 3. Apply MCT → convergent 4.
-Use recursive definition + limit laws → equation for \(L\) 5. Solve
-equation → find \(L\)
-
-\textbf{Technique: Proving Two Sequences Have the Same Limit} - Suppose
-\(a_n \to L_a\) and \(b_n \to L_b\) (both converge by MCT) - If we can
-show \(a_n/b_n \to 1\), then \(L_a/L_b = 1\), so \(L_a = L_b\) - The
-ratio often satisfies its own nice recursion!
-
-\textbf{Archimedes' π: Completing the Story} - Recall from 2.3:
-\(a_n \to L_a\), \(b_n \to L_b\) (MCT), with \(L_a \leq L_b\) - Define
-\(r_n = a_n/b_n \in (0, 1)\) - \textbf{Lemma}: \(r_{2n} = g(r_n)\) where
-\(g(r) = \sqrt{(r+1)/2}\) - Proof:
-\[\frac{a_n}{b_{2n}} = \frac{a_n(a_n + b_n)}{2a_n b_n} = \frac{r_n + 1}{2}\]
-\[r_{2n} = \frac{a_{2n}}{b_{2n}} = \sqrt{\frac{a_n}{b_{2n}}} = \sqrt{\frac{r_n + 1}{2}}\]
-- \textbf{Apply the Operation Manual to \((r_n)\)}: 1. Bounded:
-\(r_n < 1\) (since \(a_n < b_n\)) ✓ 2. Monotone: \(r_{n+1} > r_n\) iff
-\((r_n+1)/2 > r_n^2\) iff \((2r_n+1)(r_n-1) < 0\) ✓ (since \(r_n < 1\))
-3. MCT → \(r_n \to L\) for some \(L \leq 1\) 4. Taking limits:
-\(L = \sqrt{(L+1)/2}\), so \(2L^2 = L + 1\), so \((2L+1)(L-1) = 0\) 5.
-\(L = 1\) (since \(L > 0\)) - \textbf{Conclusion}:
-\(r_n = a_n/b_n \to 1\), so \(L_a = L_b\)
-
-\textbf{Definition}: The number \(\pi\) is the common limit:
-\[\pi = \lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n\]
-
-\textbf{Corollaries}: - \(a_n < \pi < b_n\) for all \(n\) (rigorous
-error bounds from geometry!) - The circumference of a unit circle is
-\(2\pi\) - The area of a unit circle is \(\pi\) (since
-\(B_n = b_n \to \pi\)) - \textbf{Archimedes' Theorem}: Area
-\(= \frac{1}{2} \times\) Circumference \(\times\) Radius
-
-\textbf{The Complete √2 vs π Comparison}: \textbar{} Aspect \textbar{}
-\(\sqrt{2}\) \textbar{} \(\pi\) \textbar{}
-\textbar--------\textbar-----------\textbar-------\textbar{} \textbar{}
-Definition \textbar{} \(\sup\{r : r^2 < 2\}\) \textbar{}
-\(\lim a_n = \lim b_n\) (polygons) \textbar{} \textbar{} Approximating
-sequence \textbar{} Babylonian (single) \textbar{} Archimedes (coupled)
-\textbar{} \textbar{} MCT proof \textbar{} Monotone + bounded \textbar{}
-Ratio trick: \(a_n/b_n \to 1\) \textbar{} \textbar{} Error bounds
-\textbar{} From Pell: \(|p_n/q_n - \sqrt{2}| < 1/(2q_n^2)\) \textbar{}
-From geometry: \(a_n < \pi < b_n\) \textbar{} \textbar{} CF pattern
-\textbar{} \([1; \overline{2}]\) (periodic) \textbar{}
-\([3; 7, 15, 1, 292, \ldots]\) (none!) \textbar{} \textbar{} Nature
-\textbar{} Algebraic \textbar{} Transcendental \textbar{}
-
-\textbf{Remarks} - Convergence depends only on tail---can ignore first
-finitely many terms - Products reduce to series:
-\(\log(\prod a_n) = \sum \log(a_n)\) (needs continuity) - Historical:
-Viète's product, Wallis product, Euler's product for \(\sin\),
-\(\zeta(s)\) as prime product - Geometric series gives first ``power
-series'' \(f(x) = 1/(1-x)\)
-
-\textbf{Exercises} 1. Prove \(\sum ca_n = c \sum a_n\) 2. Prove
-\(\sum 1/(4n^2 - 1)\) telescopes; find sum 3. Prove geometric partial
-sum formula by induction 4. Prove geometric series diverges for
-\(|r| \geq 1\) 5. Compute \(\sum n/2^n\) (differentiate geometric series
-or telescoping trick) 6. Compute \(\sum 1/(n^2 + 3n + 2)\) 7. Prove
-\(\sum 1/n^s\) converges for \(s \geq 2\) 8. Find limit: \(a_1 = 1\),
-\(a_{n+1} = (a_n + 3)/(a_n + 1)\) 9. Find limit:
-\(\sqrt{2}^{\sqrt{2}^{\sqrt{2}^{\cdots}}}\) 10. Find limit:
-\(1/(1 + 1/(1 + 1/(1 + \cdots)))\) (continued fraction for \(\phi\)) 11.
-Prove Binet's formula by induction 12. Prove \(F_{n+1}/F_n \to \phi\)
-using Binet 13. (Koch fractal) Prove perimeter diverges, area converges
-14. (Archimedes parabola) Set up geometric series for area 15. ★ Prove
-\(\prod a_n\) converges iff \(\sum (a_n - 1)\) converges (for
-\(a_n > 0\) near 1) 16. ★ Find \(\prod_{n=2}^\infty (n^2-1)/n^2\)
-
-\textbf{Archimedes Exercises} 17. Verify the formula
-\(r_{2n} = \sqrt{(r_n + 1)/2}\) by computing \(r_6 = a_6/b_6\) and
-checking \(r_{12} = g(r_6)\) matches \(a_{12}/b_{12}\). 18. Show that
-\(g(r) = \sqrt{(r+1)/2}\) satisfies \(g(r) > r\) for all
-\(r \in (0, 1)\). Conclude \((r_n)\) is increasing. 19. Verify the
-algebraic steps: \((2L+1)(L-1) = 0\) gives \(L = 1\) or \(L = -1/2\)
-from \(2L^2 - L - 1 = 0\). 20. Using the bounds \(a_n < \pi < b_n\),
-compute Archimedes' bounds \(3\frac{10}{71} < \pi < 3\frac{1}{7}\) from
-\(n = 96\). 21. ★ Prove the gap estimate directly:
-\(b_{2n} - a_{2n} < \frac{1}{2}(b_n - a_n)\). (This gives an alternative
-proof that \(L_a = L_b\).) 22. ★ Viète's formula: Starting from the
-square (\(n = 4\)), derive
-\(\frac{2}{\pi} = \frac{\sqrt{2}}{2} \cdot \frac{\sqrt{2 + \sqrt{2}}}{2} \cdot \frac{\sqrt{2 + \sqrt{2 + \sqrt{2}}}}{2} \cdots\)
-
-\section{Representing Real Numbers}\label{representing-real-numbers}
-
-\textbf{Narrative Arc} - We proved every real is a limit of rationals
-(2.2)---but \emph{which} rationals? \emph{How} do we find them? - This
-section: systematic, algorithmic ways to represent any real as a limit -
-The naming problem: why infinite processes are \emph{necessary} -
-Decimals: familiar, algorithmic, almost unique - Continued fractions:
-less familiar, but in some ways more natural - Pell equations resolved:
-the \(\sqrt{2}\) story comes full circle
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{The Naming Problem}\label{the-naming-problem}
-
-\textbf{Opening Discussion} - Rationals have finite descriptions: pairs
-of integers \((p, q)\) - Integers have finite descriptions: strings of
-digits in base 10 - So rationals = finite strings of symbols → countable
-set - But reals are uncountable! - \textbf{Key insight}: finite strings
-from any finite alphabet are countable - Even countably many symbols
-with finite strings → still countable - \textbf{Conclusion}:
-representing reals \emph{requires} infinite processes---limits are not
-optional, they're \emph{necessary}
-
-\textbf{Density of Rationals} (recall from 2.2) - Between any two reals
-lies a rational - Every real is a limit of rationals - But this is
-non-constructive: ``some sequence exists'' doesn't tell us \emph{which
-one} - Goal: explicit algorithms that produce the approximating sequence
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{Decimal Expansions}\label{decimal-expansions}
-
-\textbf{Integers in Base 10} (quick review) -
-\(n = d_k \cdot 10^k + d_{k-1} \cdot 10^{k-1} + \cdots + d_1 \cdot 10 + d_0\)
-- Digits \(d_i \in \{0, 1, \ldots, 9\}\) - Unique if we forbid leading
-zeros - Remark: base 10 is arbitrary; everything works for any base
-\(b \geq 2\) (exercises)
-
-\textbf{Finite Decimals} - Extend to negative powers:
-\(0.d_1 d_2 \cdots d_n = \sum_{k=1}^n d_k / 10^k\) - These are rationals
-with denominator \(10^n\) - Not all rationals! \(1/3\) has no finite
-decimal in base 10 - Which rationals have finite decimals? Those whose
-denominator (in lowest terms) divides some \(10^n\) - This depends on
-the base---annoying! (In base 3, \(1/3 = 0.1\) is finite)
-
-\textbf{Infinite Decimals: Definition} - An infinite decimal
-\(0.d_1 d_2 d_3 \ldots\) represents the infinite series
-\[\sum_{n=1}^\infty \frac{d_n}{10^n}\] - For integers:
-\(N.d_1 d_2 d_3 \ldots = N + 0.d_1 d_2 d_3 \ldots\)
-
-\textbf{Goal 1: Every Decimal Converges} - Partial sums
-\(S_N = \sum_{k=1}^N d_k / 10^k\) - \(S_N\) is increasing (all
-\(d_k \geq 0\)) -
-\(S_N \leq 9/10 + 9/100 + \cdots = 9 \cdot (1/10)/(1 - 1/10) = 1\) - MCT
-→ every decimal represents some real in \([0, 1]\)
-
-\textbf{Goal 2: Every Real Has a Decimal (Existence)} - Greedy algorithm
-for \(x \in [0, 1)\): - \(d_1 = \lfloor 10x \rfloor\) -
-\(d_n = \lfloor 10^n x \rfloor - 10 \lfloor 10^{n-1} x \rfloor\) -
-Equivalently: \(d_n = \lfloor 10 \cdot \{10^{n-1} x\} \rfloor\) where
-\(\{y\}\) = fractional part - \textbf{Theorem}: The decimal
-\(0.d_1 d_2 d_3 \ldots\) converges to \(x\) - Proof: Show
-\(S_n \leq x < S_n + 1/10^n\), then squeeze
-
-\textbf{Goal 3: Uniqueness} - \textbf{Theorem}: Decimal representations
-are \emph{almost} unique - The only ambiguity:
-\(0.d_1 \cdots d_k 999\ldots = 0.d_1 \cdots (d_k + 1) 000\ldots\) -
-Example: \(0.999\ldots = 1.000\ldots\) - Proof of \(0.999\ldots = 1\):
-geometric series \(\sum 9/10^n = (9/10)/(1 - 1/10) = 1\) -
-\textbf{Convention}: Avoid trailing 9s → unique representation
-
-\textbf{Characterizing Rationals} - \textbf{Theorem}: \(x \in \QQ\) if
-and only if decimal expansion eventually repeats - Proof (⟸): Repeating
-block is geometric series, hence rational - Proof (⟹): Long division of
-\(p/q\) cycles through at most \(q\) remainders - \textbf{Corollary}:
-\(x\) is irrational iff decimal never repeats
-
-\textbf{Remarks on Irrational Decimals} - Non-repeating decimals are
-``most'' reals (uncountably many!) - Examples: -
-\(\sqrt{2} = 1.41421356\ldots\) (algebraic, irrational) - Liouville's
-number
-\(L = \sum_{n=1}^\infty 10^{-n!} = 0.1100010000000000000000001\ldots\)
-(transcendental!) - Most reals are not just irrational but
-\emph{uncomputable}---no algorithm can produce their digits
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{Continued Fractions}\label{continued-fractions}
-
-\textbf{Motivation: What Would Aliens Do?} - Decimals privilege powers
-of 10---arbitrary! - Is there a more ``natural'' representation? -
-Continued fractions: built from floor function and reciprocals---more
-intrinsic operations
-
-\textbf{Definition} - A continued fraction is:
-\[[a_0; a_1, a_2, a_3, \ldots] = a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{a_3 + \cdots}}}\]
-- Convention: \(a_0 \in \ZZ\), \(a_n \in \ZZ_{\geq 1}\) for \(n \geq 1\)
-- The \(a_n\) are called \emph{partial quotients}
-
-\textbf{Convergents} - The \(n\)th convergent is the rational
-\(p_n/q_n = [a_0; a_1, \ldots, a_n]\) - \textbf{Recurrence relations}: -
-\(p_{-1} = 1\), \(p_0 = a_0\), \(p_n = a_n p_{n-1} + p_{n-2}\) -
-\(q_{-1} = 0\), \(q_0 = 1\), \(q_n = a_n q_{n-1} + q_{n-2}\) - Proof:
-induction
-
-\textbf{Key Identity} - \textbf{Theorem}:
-\(p_n q_{n-1} - p_{n-1} q_n = (-1)^{n-1}\) - Proof: induction using
-recurrence - \textbf{Corollary}: \(\gcd(p_n, q_n) = 1\) (convergents are
-always in lowest terms) - \textbf{Corollary}:
-\(\displaystyle\frac{p_n}{q_n} - \frac{p_{n-1}}{q_{n-1}} = \frac{(-1)^{n-1}}{q_n q_{n-1}}\)
-
-\textbf{Convergence of Continued Fractions} - \textbf{Theorem}: Even
-convergents \(p_0/q_0, p_2/q_2, \ldots\) are increasing -
-\textbf{Theorem}: Odd convergents \(p_1/q_1, p_3/q_3, \ldots\) are
-decreasing - \textbf{Theorem}: Every even convergent \textless{} every
-odd convergent - Proof: Use the corollary above; track signs from
-\((-1)^{n-1}\) - \textbf{Theorem}: Every continued fraction converges -
-Proof: - Even convergents: increasing, bounded above by \(p_1/q_1\) →
-MCT → some \(L_+\) - Odd convergents: decreasing, bounded below by
-\(p_0/q_0\) → MCT → some \(L_-\) - Gap:
-\(|p_n/q_n - p_{n-1}/q_{n-1}| = 1/(q_n q_{n-1}) \to 0\) since
-\(q_n \to \infty\) - So \(L_+ = L_-\) - Even/odd recombination → whole
-sequence converges
-
-\textbf{Every Real Has a Continued Fraction (Existence)} - Greedy
-algorithm for \(x\): - \(a_0 = \lfloor x \rfloor\) - If
-\(x \notin \ZZ\): \(x_1 = 1/(x - a_0)\), \(a_1 = \lfloor x_1 \rfloor\) -
-Continue: \(x_{n+1} = 1/(x_n - a_n)\),
-\(a_{n+1} = \lfloor x_{n+1} \rfloor\) - Process terminates iff \(x\) is
-rational - \textbf{Theorem}: The convergents \(p_n/q_n \to x\)
-
-\textbf{Uniqueness} - \textbf{Theorem}: CF expansion is unique if we
-require: - \(a_n \geq 1\) for \(n \geq 1\) - For finite CFs, final term
-\(a_n > 1\) (otherwise
-\([a_0; \ldots, a_n] = [a_0; \ldots, a_{n-1} + 1]\))
-
-\textbf{Characterizing Rationals and Quadratics} - \textbf{Theorem}:
-\(x \in \QQ\) iff CF expansion is finite - \textbf{Theorem (Lagrange)}:
-\(x\) is a quadratic irrational iff CF expansion is eventually periodic
-- (Lagrange's theorem: guided exercise)
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{Best Approximation}\label{best-approximation}
-
-\textbf{Theorem}: Convergents give best rational approximations:
-\[\left| x - \frac{p_n}{q_n} \right| < \frac{1}{q_n q_{n+1}} < \frac{1}{q_n^2}\]
-
-\textbf{Theorem}: If \(|x - p/q| < |x - p_n/q_n|\) with \(q \leq q_n\),
-then \(p/q = p_k/q_k\) for some \(k < n\).
-
-In other words: among all rationals with denominator \(\leq q_n\), the
-convergent \(p_n/q_n\) is closest to \(x\).
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{\texorpdfstring{The Pell Connection: \(\sqrt{2}\)
-Revisited}{The Pell Connection: \textbackslash sqrt\{2\} Revisited}}\label{the-pell-connection-sqrt2-revisited}
-
-\textbf{Example}:
-\(\sqrt{2} = [1; 2, 2, 2, \ldots] = [1; \overline{2}]\)
-
-\emph{Proof}: - \(a_0 = \lfloor \sqrt{2} \rfloor = 1\) -
-\(x_1 = 1/(\sqrt{2} - 1) = (\sqrt{2} + 1)/((\sqrt{2})^2 - 1) = \sqrt{2} + 1\)
-- \(a_1 = \lfloor \sqrt{2} + 1 \rfloor = 2\) -
-\(x_2 = 1/(\sqrt{2} + 1 - 2) = 1/(\sqrt{2} - 1) = \sqrt{2} + 1 = x_1\) -
-Pattern repeats!
-
-\textbf{Convergents}: \(1/1, 3/2, 7/5, 17/12, 41/29, 99/70, \ldots\)
-
-\textbf{Theorem}: These are exactly the solutions to
-\(p^2 - 2q^2 = \pm 1\) (Pell equation)!
-
-\emph{Proof}: The key identity
-\(p_n q_{n-1} - p_{n-1} q_n = (-1)^{n-1}\) combined with the recurrence
-gives: \[p_n^2 - 2q_n^2 = (-1)^n\]
-
-\textbf{The Full Circle}: - Chapter 1: Defined \(\sqrt{2}\) as
-\(\sup\{r \in \QQ : r^2 < 2\}\) - Section 2.2: Babylonian sequence
-converges; Pell equation gives \(p_n/q_n \to \sqrt{2}\) - Section 2.3:
-MCT gives another proof of Babylonian convergence - Section 2.5:
-Continued fractions reveal \emph{why} Pell works---convergents of
-\(\sqrt{2}\)!
-
-\textbf{Example}:
-\(\phi = (1 + \sqrt{5})/2 = [1; 1, 1, 1, \ldots] = [1; \overline{1}]\) -
-Convergents are \(F_{n+1}/F_n\) (Fibonacci ratios!) - This explains why
-\(F_{n+1}/F_n \to \phi\) (Section 2.4)
-
-\textbf{Example}: \(e = [2; 1, 2, 1, 1, 4, 1, 1, 6, 1, 1, 8, \ldots]\) -
-Pattern: \([2; \overline{1, 2k, 1}]\) for \(k = 1, 2, 3, \ldots\) -
-Proof requires integration theory---see Chapter 7 (Integration
-Applications)
-
-Remark: Unlike ee e, whose continued fraction
-{[}2;1,2,1,1,4,1,1,6,\ldots{]}{[}2; 1, 2, 1, 1, 4, 1, 1, 6, \ldots{]}
-{[}2;1,2,1,1,4,1,1,6,\ldots{]} follows a beautiful pattern, the
-continued fraction of pi={[}3;7,15,1,292,1,1,\ldots{]} pi = {[}3; 7, 15,
-1, 292, 1, 1, \ldots{]} pi={[}3;7,15,1,292,1,1,\ldots{]} has no known
-pattern. This remains one of the mysteries surrounding pi pi --- despite
-being one of the most studied numbers in mathematics, its CF appears as
-random as a ``typical'' real number.
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\textbf{Definitions} - Decimal expansion - Repeating/eventually
-repeating decimal - Continued fraction \([a_0; a_1, a_2, \ldots]\) -
-Partial quotients - Convergents \(p_n/q_n\)
-
-\textbf{Results} - Every decimal converges to a real (MCT) - Every real
-has a decimal expansion (greedy algorithm) - Decimal uniqueness (up to
-trailing 9s) - Rationals ↔ eventually repeating decimals - Every CF
-converges (MCT + even/odd recombination) - Every real has a CF expansion
-- CF uniqueness (with conventions) - Rationals ↔ finite CFs - Quadratic
-irrationals ↔ eventually periodic CFs (Lagrange) - Best approximation
-property - Convergents of \(\sqrt{N}\) solve \(p^2 - Nq^2 = \pm 1\)
-
-\textbf{Examples (worked)} - \(0.999\ldots = 1\) (geometric series) -
-\(1/7 = 0.\overline{142857}\) (long division) -
-\(\sqrt{2} = [1; \overline{2}]\) with convergents
-\(1, 3/2, 7/5, 17/12, \ldots\) - \(\phi = [1; \overline{1}]\) with
-Fibonacci convergents - Computing first few convergents via recurrence
-
-\textbf{Exercises} 1. Find decimal expansion of \(1/7\), \(1/11\),
-\(1/13\) 2. Find which rationals have finite decimal expansions in base
-10 3. Prove
-\(0.\overline{d_1 d_2 \cdots d_k} = (d_1 d_2 \cdots d_k) / (10^k - 1)\)
-4. Prove \((b-1)\) repeating equals \(1\) in base \(b\) (generalize
-\(0.999\ldots = 1\)) 5. Find CF expansion of \(\sqrt{3}\), \(\sqrt{5}\),
-\(\sqrt{7}\) 6. Compute first 5 convergents of \(\sqrt{3}\) using
-recurrence 7. Verify \(p_n^2 - 3q_n^2 = \pm 1\) for convergents of
-\(\sqrt{3}\) 8. Prove: if CF is \([a_0; \overline{a_1}]\) (period 1),
-then \(x = (a_0 + \sqrt{a_0^2 + 4a_1})/2\) or similar 9. (Guided:
-Lagrange warmup) If \(x = [a; \overline{b}]\), find \(x\) as a quadratic
-irrational 10. (Guided: Lagrange warmup) If \(x = [\overline{a, b}]\)
-(period 2), set up the equation \(x\) satisfies 11. Prove the recurrence
-relations for \(p_n, q_n\) by induction 12. Prove
-\(p_n q_{n-1} - p_{n-1} q_n = (-1)^{n-1}\) by induction 13. Prove
-convergents are always in lowest terms 14. Prove \(q_n \geq F_n\)
-(Fibonacci), so \(q_n \to \infty\) 15. ★ (Lagrange's theorem) Prove: if
-CF of \(x\) is eventually periodic, then \(x\) is a quadratic irrational
-16. ★ (Lagrange's theorem, converse) Prove: if \(x\) is a quadratic
-irrational, its CF is eventually periodic 17. ★ Prove the best
-approximation theorem 18. ★ (Base \(\phi\)) Investigate representations
-in base \(\phi = (1+\sqrt{5})/2\). What digits are needed? Is there a
-uniqueness convention? How does this relate to Zeckendorf's
-representation? 19. ★ Prove that ``most'' reals are uncomputable
-(countability argument)
-
-\chapter{The Theory of Convergence}\label{the-theory-of-convergence}
-
-\section{Series Tests}\label{series-tests}
+\textbf{The Key Insight}
+
+\begin{itemize}
+\tightlist
+\item
+  Limit laws use ordered field axioms
+\item
+  To prove existence (not just compute), we need completeness
+\end{itemize}
+
+\textbf{Monotone Sequences}
+
+\begin{itemize}
+\tightlist
+\item
+  Definitions: increasing, decreasing, monotone
+\end{itemize}
+
+\textbf{The Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  MCT: monotone + bounded ⟹ convergent
+\item
+  Increasing bounded above → converges to sup
+\item
+  Decreasing bounded below → converges to inf
+\item
+  Proof uses completeness (ε-characterization of sup)
+\end{itemize}
+
+\textbf{The Babylonian Sequence}
+
+\begin{itemize}
+\tightlist
+\item
+  x₁ = 2, xₙ₊₁ = (xₙ + 2/xₙ)/2
+\item
+  Show: xₙ ≥ √2 for n ≥ 2 (AM-GM)
+\item
+  Show: (xₙ) decreasing (since xₙ² ≥ 2)
+\item
+  MCT ⟹ converges; limit laws ⟹ limit is √2
+\item
+  \textbf{Payoff}: Our tool reaches √2!
+\end{itemize}
+
+\textbf{The Number e}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: e = lim(1 + 1/n)ⁿ
+\item
+  Theorem: (1 + 1/n)ⁿ increasing, bounded above by 3
+\item
+  Theorem: (1 + 1/n)ⁿ⁺¹ decreasing, bounded below
+\item
+  Both converge to e; nested intervals locate e
+\end{itemize}
+
+\textbf{More MCT Examples}
+
+\begin{itemize}
+\tightlist
+\item
+  Nested radicals: √(2 + √(2 + ⋯)) = 2
+\item
+  Power tower: √2\textsuperscript{√2}⋯ = 2
+\end{itemize}
+
+\textbf{Series via MCT}
+
+\begin{itemize}
+\tightlist
+\item
+  Nonnegative series: converges iff partial sums bounded
+\item
+  Σ1/2ⁿ converges (partial sums \textless{} 2)
+\item
+  Σ1/n² converges (compare to telescoping Σ1/(k(k-1)))
+\end{itemize}
+
+\section{Decimals}\label{decimals}
+
+\textbf{The Naming Problem}
+
+\begin{itemize}
+\tightlist
+\item
+  Finite descriptions: countable
+\item
+  ℝ: uncountable
+\item
+  Conclusion: infinite processes \emph{necessary} to name reals
+\end{itemize}
+
+\textbf{Decimal Expansions}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: 0.d₁d₂d₃\ldots{} = Σdₙ/10ⁿ
+\item
+  Every decimal converges (MCT: partial sums increasing, bounded)
+\item
+  Every real has a decimal (greedy algorithm)
+\item
+  Uniqueness up to trailing 9s; 0.999\ldots{} = 1
+\end{itemize}
+
+\textbf{Characterizing Rationals}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: x ∈ ℚ ⟺ eventually periodic decimal
+\item
+  Irrationals: non-repeating decimals (√2, Liouville's number)
+\end{itemize}
+
+\textbf{Preview}
+
+\begin{itemize}
+\tightlist
+\item
+  Decimals privilege base 10 --- arbitrary
+\item
+  Continued fractions: another representation, developed in Chapter 4
+\item
+  We'll see: CFs give ``best'' rational approximations, explain Pell
+  equations
+\end{itemize}
+
+\chapter{General Sequences}\label{general-sequences}
 
 \section{Subsequences}\label{subsequences}
 
+\begin{itemize}
+\tightlist
+\item
+  Definition of subsequence (n₁ \textless{} n₂ \textless{} n₃
+  \textless{} \ldots)
+\item
+  Motivation: probing a sequence's behavior by examining parts
+\item
+  Theorem: subsequences of convergent sequences inherit the limit
+\item
+  Contrapositive: two subsequences with different limits ⟹ divergence
+\item
+  Cleaner proof that (-1)ⁿ diverges (subsequences → 1 and → -1)
+\item
+  Definition: subsequential limit (accumulation point)
+\end{itemize}
+
+\section{Bounded Sequences}\label{bounded-sequences}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: every bounded sequence has a convergent subsequence
+\item
+  Proof via bisection → nested intervals (completeness!)
+\item
+  Remark: fails in ℚ
+\item
+  Corollary: bounded + exactly one subsequential limit ⟹ convergent
+\item
+  Reframing: divergence of bounded sequences means \emph{multiple}
+  subsequential limits
+\item
+  Motivation: study the \emph{set} of all subsequential limits
+\end{itemize}
+
+\section{Limsup \& Liminf}\label{limsup-liminf}
+
+\begin{itemize}
+\tightlist
+\item
+  For bounded sequence, set of subsequential limits is nonempty (BW) and
+  bounded
+\item
+  Definition via subsequential limits: limsup = largest, liminf =
+  smallest
+\item
+  Alternative definition via tails: limsup = lim(sup of tail), liminf =
+  lim(inf of tail)
+\item
+  Prove these agree
+\item
+  Theorem: limsup is achieved (some subsequence converges to it)
+\item
+  Theorem: convergence ⟺ limsup = liminf
+\item
+  Examples: compute limsup/liminf for oscillating sequences
+\end{itemize}
+
 \section{The Cauchy Condition}\label{the-cauchy-condition}
 
-\section{Contraction Maps}\label{contraction-maps}
+\begin{itemize}
+\tightlist
+\item
+  Observation: limsup = liminf means ``tail oscillation'' → 0
+\item
+  Define tail oscillation ωₙ = sup(tail) - inf(tail)
+\item
+  ωₙ → 0 ⟺ convergence
+\item
+  Unpack: ωₙ \textless{} ε means all pairs j, k ≥ n satisfy \textbar aⱼ
+  - aₖ\textbar{} \textless{} ε
+\item
+  This \emph{is} the Cauchy condition --- derived naturally from
+  limsup/liminf!
+\item
+  Definition: Cauchy sequence
+\item
+  Theorem: convergent ⟺ Cauchy
+\item
+  Proof sketch (⟸): Cauchy ⟹ bounded ⟹ BW ⟹ convergent subsequence ⟹
+  whole sequence converges
+\item
+  Significance: intrinsic (examines only the sequence), metric (uses
+  distance, not order)
+\end{itemize}
 
 \section{The Many Faces of
 Completeness}\label{the-many-faces-of-completeness}
 
-\chapter{Infinite Processes}\label{infinite-processes-1}
+\begin{itemize}
+\tightlist
+\item
+  Completeness has appeared as:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    LUB (axiom)
+  \item
+    MCT
+  \item
+    Nested Intervals
+  \item
+    Bolzano-Weierstrass
+  \item
+    Cauchy completeness
+  \end{enumerate}
+\item
+  Theorem: for an ordered field, all five are equivalent
+\item
+  Sketch the equivalence cycle (or key implications)
+\item
+  Why it matters: Cauchy generalizes to metric spaces without order
+\item
+  Historical note: Cantor's construction of ℝ via Cauchy sequences of
+  rationals
+\end{itemize}
+
+\chapter{Infinite Processes}\label{infinite-processes}
+
+\section{Monotonicity}\label{monotonicity}
+
+\begin{itemize}
+\tightlist
+\item
+  Not all sequences are monotone, but some \emph{decompose} into
+  monotone pieces
+\item
+  \textbf{Lemma (Even-Odd)}: If even-indexed terms → L and odd-indexed
+  terms → L, then aₙ → L
+\item
+  Generalization to k subsequences (state, assign HW)
+\item
+  \textbf{Alternating Series Test}: bₙ ↘ 0 ⟹ Σ(−1)ⁿbₙ converges
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Even partial sums ↑, odd partial sums ↓, gap → 0
+  \end{itemize}
+\item
+  Example: alternating harmonic series
+\item
+  \textbf{√2 continued fraction}: √2 = {[}1; 2̄{]}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Even convergents ↑, odd convergents ↓, gap → 0
+  \item
+    Prove convergence; note the tail is {[}2; 2̄{]} which ``repeats'' ---
+    we'll exploit this in §4.3
+  \end{itemize}
+\item
+  \textbf{Wallis product}: zig-zag partial products
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Odd partial products ↓, even partial products ↑, gap → 0
+  \end{itemize}
+\end{itemize}
+
+\section{Comparison}\label{comparison}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Comparison Test}: 0 ≤ aₙ ≤ bₙ and Σbₙ converges ⟹ Σaₙ
+  converges
+\item
+  \textbf{Limit Comparison}: aₙ/bₙ → L ∈ (0, ∞) ⟹ same behavior
+\item
+  \textbf{Absolute convergence}: definition, implies convergence
+\item
+  \textbf{Ratio Test}: comparison with geometric series via ratios
+\item
+  \textbf{Root Test}: comparison with geometric series via n-th roots
+\item
+  \textbf{Root Test (strong form)}: limsup version
+\item
+  \textbf{Viète product}: factors → 1 geometrically fast,
+  Cauchy/comparison gives convergence
+\item
+  Remark: products with factors approaching 1 ``fast enough'' ---
+  connects to series via log (forward reference to Ch 6)
+\end{itemize}
+
+\section{Contraction Maps}\label{contraction-maps}
+
+\begin{itemize}
+\tightlist
+\item
+  Recursive sequences aₙ₊₁ = f(aₙ): when do they converge?
+\item
+  \textbf{Definition}: contraction with constant c ∈ (0,1)
+\item
+  \textbf{Theorem}: unique fixed point, all orbits converge, rate
+  \textbar aₙ − L\textbar{} ≤ cⁿ⁻¹\textbar a₁ − L\textbar{}
+\item
+  Proof: geometric comparison → Cauchy → completeness
+\item
+  Revisit Ch 2 examples with convergence rates: Babylonian/√2, nested
+  radicals
+\item
+  \textbf{√2 continued fraction revisited}: the tail {[}2; 2̄{]}
+  satisfies t = 2 + 1/t
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Iteration f(x) = 2 + 1/x is a contraction on {[}2, 3{]}
+  \item
+    Fixed point is 1 + √2; then √2 = t − 1, same convergence rate
+  \item
+    Periodic CF ↔ iteration --- preview of Lagrange
+  \end{itemize}
+\item
+  Remark: for those who know calculus, xₙ₊₁ = cos(xₙ) is another example
+\end{itemize}
+
+\section{Continued Fractions}\label{continued-fractions}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: {[}a₀; a₁, a₂, \ldots{]}
+\item
+  Convergents pₙ/qₙ and recurrence relations
+\item
+  Key identity: pₙqₙ₋₁ − pₙ₋₁qₙ = (−1)ⁿ⁻¹
+\item
+  \textbf{Convergence}: even convergents ↑, odd ↓, apply §4.1 technique
+\item
+  Every real has a CF; uniqueness
+\item
+  \textbf{Lagrange}: quadratic irrationals ↔ eventually periodic
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Connection to contraction maps: periodicity gives iteration
+  \end{itemize}
+\item
+  Best rational approximation property
+\item
+  \textbf{Pell connection}: convergents of √N solve p² − Nq² = ±1
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Full √2 story complete: CF {[}1; 2̄{]} explains Pell solutions and
+    Babylonian
+  \end{itemize}
+\item
+  \textbf{The golden ratio surprise}: φ = {[}1; 1̄{]}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    All 1s means slowest-growing denominators (Fibonacci!)
+  \item
+    Worst case for rational approximation: ``most irrational number''
+  \end{itemize}
+\end{itemize}
+
+\section{Archimedes and Pi}\label{archimedes-and-pi}
+
+\begin{itemize}
+\tightlist
+\item
+  Inscribed/circumscribed polygon half-perimeters aₙ, bₙ
+\item
+  Doubling recurrence: b₂ₙ = H(aₙ, bₙ), a₂ₙ = G(aₙ, b₂ₙ)
+\item
+  Each sequence monotone → MCT → converge separately
+\item
+  \textbf{Ratio trick}: rₙ = aₙ/bₙ → 1 (contraction or direct analysis)
+\item
+  \textbf{Definition}: π = lim aₙ = lim bₙ
+\item
+  Corollaries: circumference = 2π, area = π
+\item
+  \textbf{Viète derived}: connect polygon ratios to nested radical
+  product, show equals 2/π
+\item
+  Archimedes' numerical bounds
+\end{itemize}
 
 \chapter{Exchanging Limits}\label{exchanging-limits}
 
+\section{Rearrangement}\label{rearrangement}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: rearrangement via bijection π: ℕ → ℕ
+\item
+  \textbf{Theorem}: absolutely convergent series can be rearranged
+  freely (same sum)
+\item
+  \textbf{Theorem (Riemann)}: conditionally convergent series can be
+  rearranged to any value in ℝ ∪ \{±∞\}
+\item
+  Proof sketch: positive and negative parts both diverge; alternate to
+  hit target
+\item
+  Example: rearranging alternating harmonic to (3/2)ln(2)
+\item
+  Moral: absolute = robust, conditional = fragile
+\end{itemize}
+
 \section{Iterated Limits}\label{iterated-limits}
 
-\section{Double Sums and the Cauchy
-Product}\label{double-sums-and-the-cauchy-product}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: double sequence a\_\{mn\}
+\item
+  \textbf{Definition}: iterated limits lim\_m lim\_n a\_\{mn\} vs lim\_n
+  lim\_m a\_\{mn\}
+\item
+  Examples where they differ: m/(m+n), (m-n)/(m+n), mn/(m²+n²)
+\item
+  \textbf{Definition}: double limit lim\_\{m,n→∞\} a\_\{mn\}
+\item
+  \textbf{Theorem}: if double limit exists and both iterated limits
+  exist, they agree
+\item
+  Remark: converse false --- equal iterated limits don't guarantee
+  double limit exists
+\end{itemize}
+
+\section{Double Sums}\label{double-sums}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: double series Σ\_m Σ\_n a\_\{mn\}
+\item
+  Order can matter: example where Σ\_m Σ\_n ≠ Σ\_n Σ\_m
+\item
+  \textbf{Definition}: absolute convergence over the grid (Σ\_\{m,n\}
+  \textbar a\_\{mn\}\textbar{} \textless{} ∞)
+\item
+  \textbf{Theorem}: absolute convergence ⟹ can swap order, same sum
+\item
+  \textbf{More generally}: under absolute convergence, any ordering
+  works
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Rows, columns (iterated sums)
+  \item
+    Expanding squares
+  \item
+    Anti-diagonals
+  \end{itemize}
+\item
+  \textbf{Cauchy product}: Σaₙ times Σbₙ, summed along anti-diagonals (j
+  + k = n)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    cₙ = Σ\_\{k=0\}\^{}n aₖb\_\{n-k\}
+  \end{itemize}
+\item
+  \textbf{Theorem}: both series absolutely convergent ⟹ Cauchy product
+  converges absolutely to (Σaₙ)(Σbₙ)
+\item
+  \textbf{Theorem (Mertens)}: one absolutely convergent + one convergent
+  ⟹ Cauchy product converges to (Σaₙ)(Σbₙ)
+\item
+  \textbf{Application}: (1/(1-x))² = Σ(n+1)xⁿ via squaring geometric
+  series
+\item
+  \textbf{Application}: (Σxⁿ/n!)(Σyⁿ/n!) = Σ(x+y)ⁿ/n! via binomial
+  identity
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``This series has a remarkable property\ldots{} deserves a name''
+    (preview of Ch6)
+  \end{itemize}
+\end{itemize}
 
 \section{Limits and Sums}\label{limits-and-sums}
 
-\section{Rearrangements}\label{rearrangements}
+\begin{itemize}
+\tightlist
+\item
+  Different situation: lim\_n Σ\_k a\_k(n) vs Σ\_k lim\_n a\_k(n)
+\item
+  Example where they differ: a\_k(n) = 1/n for k ≤ n, else 0
+\item
+  \textbf{Theorem (Tannery)}: if \textbar a\_k(n)\textbar{} ≤ M\_k for
+  all n, and ΣM\_k \textless{} ∞, then limit and sum commute
+\item
+  Proof outline: split into head and tail, control each
+\item
+  \textbf{Big application}: (1 + x/n)ⁿ = Σxᵏ/k!
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Binomial expansion → for each k, the k-th term → xᵏ/k!
+  \item
+    Domination: \textbar term\textbar{} ≤ \textbar x\textbar ᵏ/k!, and
+    Σ\textbar x\textbar ᵏ/k! converges
+  \item
+    Tannery applies: can interchange
+  \end{itemize}
+\item
+  \textbf{Corollary}: e = Σ1/n! (connecting Ch2 limit definition to
+  series)
+\end{itemize}
 
 \part{Functions}
 
 \chapter{Continuity}\label{continuity}
 
-\section{Compactness \& Continuity}\label{compactness-continuity}
+\section{Capturing Continuity}\label{capturing-continuity}
 
-\section{Definition \& Properties}\label{definition-properties}
+\textbf{{[}NOTE: Need to decide which definition is primary{]}}
 
-\section{Limits \& Continuity}\label{limits-continuity}
+\textbf{Option A (Sequences first)}:
 
-\section{Completeness \& Continuity}\label{completeness-continuity}
+\begin{itemize}
+\tightlist
+\item
+  Motivation: which functions preserve convergence?
+\item
+  Sequential definition: f continuous at a iff (xₙ → a ⟹ f(xₙ) → f(a))
+\item
+  ε-δ definition as equivalent local formulation
+\item
+  Prove equivalence
+\end{itemize}
+
+\textbf{Option B (ε-δ first)}:
+
+\begin{itemize}
+\tightlist
+\item
+  Historical motivation: capturing ``no breaks''
+\item
+  ε-δ definition: ∀ε \textgreater{} 0 ∃δ \textgreater{} 0: \textbar x −
+  a\textbar{} \textless{} δ ⟹ \textbar f(x) − f(a)\textbar{} \textless{}
+  ε
+\item
+  Connection to ε-N game from Ch 2
+\item
+  Sequential characterization as equivalent (often easier for proofs)
+\item
+  Prove equivalence
+\end{itemize}
+
+\textbf{Then (either way):}
+
+\begin{itemize}
+\tightlist
+\item
+  Limits of functions: lim\_\{x→a\} f(x) (with 0 \textless{} \textbar x
+  − a\textbar)
+\item
+  Sequential characterization of function limits
+\item
+  One-sided limits
+\item
+  Continuity ⟺ lim\_\{x→a\} f(x) = f(a)
+\item
+  Types of discontinuities: removable, jump, essential
+\item
+  Examples: sin(x)/x at 0 (removable), sign(x) at 0 (jump), sin(1/x) at
+  0 (essential), Dirichlet (essential everywhere)
+\end{itemize}
+
+\section{Building Continuous
+Functions}\label{building-continuous-functions}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Algebra of continuous functions}: sums, differences, products,
+  quotients
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Proof via sequential characterization + limit laws from Ch 2
+  \end{itemize}
+\item
+  \textbf{Composition}: g continuous at a, f continuous at g(a) ⟹ f ∘ g
+  continuous at a
+\item
+  \textbf{Corollaries}: \textbar f\textbar, max(f,g), min(f,g)
+  continuous
+\item
+  \textbf{Basic examples}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Constants and f(x) = x are continuous
+  \item
+    Polynomials (induction on sums/products)
+  \item
+    Rational functions (where denominator ≠ 0)
+  \item
+    √x on \([0,\infty)\)
+  \end{itemize}
+\end{itemize}
+
+\section{Power Series}\label{power-series}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: power series Σaₙxⁿ
+\item
+  \textbf{Radius of convergence R}: recall ratio/root tests from Ch 4
+\item
+  \textbf{Theorem}: Power series are continuous on (−R, R)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Proof via Tannery (Ch 5)
+  \end{itemize}
+\item
+  \textbf{Theorem (Abel)}: If Σaₙ converges, then lim\_\{x→1⁻\} Σaₙxⁿ =
+  Σaₙ
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Power series is left-continuous at boundary when series converges
+    there
+  \end{itemize}
+\item
+  \textbf{Why Abel matters}: The xⁿ example
+
+  \begin{itemize}
+  \tightlist
+  \item
+    fₙ(x) = xⁿ converges pointwise on {[}0,1{]}
+  \item
+    Limit exists at endpoint x = 1 (it's 1)
+  \item
+    But limit function f is discontinuous at x = 1!
+  \item
+    Convergence at endpoint doesn't automatically give continuity
+  \item
+    Abel says power series are special: convergence of series ⟹
+    continuity
+  \end{itemize}
+\item
+  \textbf{Remark}: Full story of when limits of functions preserve
+  continuity in Function Spaces chapter
+\item
+  \textbf{Preview}: Power Series II in derivatives chapter (term-by-term
+  differentiation)
+\end{itemize}
+
+\section{Continuity on Closed
+Intervals}\label{continuity-on-closed-intervals}
+
+\textbf{The Intermediate Value Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Theorem (IVT)}: If f continuous on {[}a,b{]} and y between
+  f(a) and f(b), then f(c) = y for some c
+\item
+  Proof via completeness: c = sup\{x : f(x) \textless{} y\}
+\item
+  \textbf{Corollary}: Continuous image of interval is interval
+\item
+  \textbf{Applications}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    nth roots exist (f(x) = xⁿ)
+  \item
+    Fixed point theorem: f: {[}a,b{]} → {[}a,b{]} continuous ⟹ f(c) = c
+    for some c
+  \item
+    Every odd-degree polynomial has a real root
+  \end{itemize}
+\end{itemize}
+
+\textbf{Boundedness and the Extreme Value Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Theorem}: Continuous on {[}a,b{]} ⟹ bounded
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Proof via Bolzano-Weierstrass
+  \end{itemize}
+\item
+  \textbf{Theorem (EVT)}: Continuous on {[}a,b{]} ⟹ attains maximum and
+  minimum
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Proof via BW: xₙ with f(xₙ) → sup f; extract convergent subsequence
+  \end{itemize}
+\end{itemize}
+
+\textbf{Monotone Functions and Inverses}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: increasing, decreasing, strictly monotone
+\item
+  \textbf{Theorem}: Monotone on (a,b) ⟹ one-sided limits exist at every
+  point
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Proof via sup/inf
+  \end{itemize}
+\item
+  \textbf{Corollary}: Monotone functions have only jump discontinuities
+\item
+  \textbf{Theorem}: Strictly monotone ⟹ injective
+\item
+  \textbf{Theorem}: Strictly monotone + continuous on {[}a,b{]} ⟹
+  inverse is continuous
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Proof: f injective (strict monotone) + surjective onto range (IVT) ⟹
+    f⁻¹ exists; continuity via subsequential limits
+  \end{itemize}
+\item
+  \textbf{Payoff}: When we define log = exp⁻¹, arcsin = sin⁻¹, etc.,
+  continuity is automatic
+\end{itemize}
+
+\section{Uniform Continuity}\label{uniform-continuity}
+
+\textbf{The Problem}
+
+\begin{itemize}
+\tightlist
+\item
+  In ordinary continuity, δ depends on ε \emph{and} the point a
+\item
+  Can one δ work for all points simultaneously?
+\end{itemize}
+
+\textbf{Definition}
+
+\begin{itemize}
+\tightlist
+\item
+  f uniformly continuous on S if ∀ε \textgreater{} 0 ∃δ \textgreater{}
+  0: x, y ∈ S and \textbar x − y\textbar{} \textless{} δ ⟹ \textbar f(x)
+  − f(y)\textbar{} \textless{} ε
+\end{itemize}
+
+\textbf{Non-examples}
+
+\begin{itemize}
+\tightlist
+\item
+  f(x) = 1/x on (0,1): near 0, need smaller and smaller δ
+\item
+  f(x) = x² on ℝ: as x → ∞, function changes faster and faster
+\end{itemize}
+
+\textbf{Results}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Theorem}: Uniformly continuous ⟹ continuous (trivial)
+\item
+  \textbf{Theorem}: Continuous on {[}a,b{]} ⟹ uniformly continuous on
+  {[}a,b{]}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Proof via BW: if not, get sequences xₙ, yₙ with \textbar xₙ −
+    yₙ\textbar{} → 0 but \textbar f(xₙ) − f(yₙ)\textbar{} ≥ ε; extract
+    convergent subsequence, get contradiction
+  \end{itemize}
+\item
+  \textbf{Extension Theorem}: Uniformly continuous on (a,b) ⟹ extends to
+  continuous function on {[}a,b{]}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Proof: show lim\_\{x→a⁺\} f(x) exists via Cauchy criterion
+  \end{itemize}
+\item
+  \textbf{Corollary}: Uniformly continuous on bounded set ⟹ bounded
+\end{itemize}
 
 \chapter{Differentiation}\label{differentiation}
 
-\section{Definition \& Properties}\label{definition-properties-1}
+\section{Differentiation Rules}\label{differentiation-rules}
+
+\begin{itemize}
+\tightlist
+\item
+  f differentiable at a if lim\_\{h→0\} (f(a+h) - f(a))/h exists
+\item
+  Alternative form: lim\_\{x→a\} (f(x) - f(a))/(x - a)
+\item
+  Notation: f'(a), df/dx, Df(a)
+\end{itemize}
+
+\textbf{Differentiability Implies Continuity}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: f differentiable at a ⟹ f continuous at a
+\item
+  Warning: converse false! \textbar x\textbar{} at 0
+\end{itemize}
+
+\textbf{Basic Rules}
+
+\begin{itemize}
+\tightlist
+\item
+  Linearity: (f + g)' = f' + g', (cf)' = cf'
+\item
+  Product rule: (fg)' = f'g + fg'
+\item
+  Quotient rule: (f/g)' = (f'g - fg')/g²
+\item
+  Power rule: (xⁿ)' = nxⁿ⁻¹
+\end{itemize}
+
+\textbf{Chain Rule}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: (f ∘ g)`(a) = f'(g(a)) · g'(a)
+\item
+  Proof via auxiliary function φ (handles g(a+h) = g(a) case)
+\item
+  Leibniz notation: dy/dx = (dy/du)(du/dx)
+\end{itemize}
+
+\textbf{Inverse Function Derivative}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: (f⁻¹)`(f(a)) = 1/f'(a) when f'(a) ≠ 0
+\item
+  Leibniz notation: dx/dy = 1/(dy/dx)
+\item
+  Example: (√x)' = 1/(2√x)
+\end{itemize}
 
 \section{The Mean Value Theorem}\label{the-mean-value-theorem}
 
-\section{The Derivative as a
-Function}\label{the-derivative-as-a-function}
+\textbf{Fermat's Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: f has local extremum at c and f differentiable at c ⟹ f'(c) =
+  0
+\item
+  Proof: one-sided difference quotients have opposite signs
+\end{itemize}
+
+\textbf{Rolle's Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: f continuous on {[}a,b{]}, differentiable on (a,b), f(a) =
+  f(b) ⟹ f'(c) = 0 for some c ∈ (a,b)
+\item
+  Proof via EVT + Fermat
+\end{itemize}
+
+\textbf{The Mean Value Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: f continuous on {[}a,b{]}, differentiable on (a,b) ⟹ f(b) -
+  f(a) = f'(c)(b-a) for some c
+\item
+  Proof: apply Rolle to g(x) = f(x) - \href{x-a}{(f(b)-f(a))/(b-a)}
+\item
+  Geometric interpretation: some tangent parallel to secant
+\end{itemize}
+
+\textbf{Cauchy's Mean Value Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: (f(b) - f(a))g'(c) = (g(b) - g(a))f'(c) for some c
+\item
+  Proof: Rolle applied to appropriate combination
+\end{itemize}
+
+\textbf{Consequences: f' Controls f}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: f' = 0 on interval ⟹ f constant
+\item
+  Theorem: f' \textgreater{} 0 on interval ⟹ f strictly increasing
+\item
+  Corollary: f' ≥ 0 ⟺ f increasing; f' ≤ 0 ⟺ f decreasing
+\item
+  Remark: first/second derivative tests for extrema in exercises
+\end{itemize}
+
+\textbf{Darboux's Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: If f differentiable on {[}a,b{]} and k between f'(a) and
+  f'(b), then f'(c) = k for some c
+\item
+  Consequence: f' has IVP even if discontinuous
+\item
+  Consequence: f' cannot have jump discontinuities
+\end{itemize}
+
+\textbf{Lipschitz Functions}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: \textbar f(x) - f(y)\textbar{} ≤ K\textbar x - y\textbar{}
+  for all x, y
+\item
+  Theorem: \textbar f'\textbar{} ≤ K on interval ⟹ f is Lipschitz with
+  constant K
+\item
+  Corollary: Lipschitz ⟹ uniformly continuous
+\item
+  Connection: \textbar f'\textbar{} \textless{} 1 ⟹ contraction (links
+  to Ch 4 and Newton)
+\end{itemize}
+
+\textbf{L'Hôpital's Rule}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: f(a) = g(a) = 0, g' ≠ 0 near a, lim f'/g' = L ⟹ lim f/g = L
+\item
+  Proof via Cauchy MVT
+\item
+  Warning: must check lim f'/g' exists
+\item
+  Remark: ∞/∞ form and x → ∞ in exercises
+\end{itemize}
 
 \section{Power Series \& Taylors
 Theorem}\label{power-series-taylors-theorem}
 
-\section{Newton's Method}\label{newtons-method}
+\textbf{Higher Derivatives}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: f'\,`, f'\,'\,', \ldots, f⁽ⁿ⁾
+\item
+  Notation: f⁽⁰⁾ = f
+\end{itemize}
+
+\textbf{Taylor Polynomials}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: Pₙ(x) = Σₖ₌₀ⁿ f⁽ᵏ⁾(a)/k! (x-a)ᵏ
+\item
+  Unique polynomial of degree ≤ n matching f, f', \ldots, f⁽ⁿ⁾ at a
+\end{itemize}
+
+\textbf{Taylor's Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  Generalized Rolle: f, f', \ldots, f⁽ⁿ⁾ all vanish at a, and f(b) = 0 ⟹
+  f⁽ⁿ⁺¹⁾(c) = 0 for some c
+\item
+  Polynomial MVT: f and h share first n derivatives at a, and f(b) =
+  h(b) ⟹ f⁽ⁿ⁺¹⁾(c) = h⁽ⁿ⁺¹⁾(c)
+\item
+  Theorem (Lagrange remainder): f(x) = Pₙ(x) + f⁽ⁿ⁺¹⁾(c)/(n+1)! (x-a)ⁿ⁺¹
+\item
+  Error bound: \textbar f(x) - Pₙ(x)\textbar{} ≤ M/(n+1)!
+  \textbar x-a\textbar ⁿ⁺¹ where M bounds \textbar f⁽ⁿ⁺¹⁾\textbar{}
+\end{itemize}
+
+\textbf{Term-by-Term Differentiation}
+
+\begin{itemize}
+\tightlist
+\item
+  Lemma: Σaₙxⁿ and Σnaₙxⁿ⁻¹ have same radius of convergence
+\item
+  Theorem: f(x) = Σaₙxⁿ ⟹ f'(x) = Σnaₙxⁿ⁻¹ on (-R, R)
+\item
+  Proof via Tannery/dominated convergence
+\item
+  Corollary: Power series are infinitely differentiable
+\item
+  Corollary: aₙ = f⁽ⁿ⁾(0)/n! --- power series equal their Taylor series
+\end{itemize}
+
+\textbf{When Does the Taylor Series Converge to f?}
+
+\begin{itemize}
+\tightlist
+\item
+  Key question: Rₙ(x) → 0?
+\item
+  Power series: always yes (by construction)
+\item
+  General smooth functions: not necessarily!
+\item
+  Preview: smooth ≠ analytic (example requires exp, see 7.4)
+\end{itemize}
+
+\textbf{Warning: Takagi's Function}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: T(x) = Σ s(2ⁿx)/2ⁿ where s(x) = dist(x, nearest integer)
+\item
+  Theorem: T is continuous everywhere, differentiable nowhere
+\item
+  Proof sketch: uniform convergence gives continuity; careful difference
+  quotient analysis gives nowhere differentiable
+\item
+  \textbf{The lesson}: Power series (limits of polynomials) are
+  infinitely differentiable. But general limits of differentiable
+  functions can be nowhere differentiable.
+\item
+  Remark: Full story of when limits preserve differentiability in
+  Function Spaces chapter
+\end{itemize}
 
 \section{Exponentials}\label{exponentials}
+
+\textbf{The Functional Equation Constrains the Derivative}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: If aˣ differentiable, then (aˣ)' = cₐ · aˣ for some constant
+  cₐ
+\item
+  Which base gives cₐ = 1?
+\end{itemize}
+
+\textbf{Building exp from Calculus}
+
+\begin{itemize}
+\tightlist
+\item
+  We seek: exp' = exp and exp(0) = 1
+\item
+  Taylor says: must have exp(x) = Σxⁿ/n!
+\item
+  This series converges for all x (ratio test)
+\end{itemize}
+
+\textbf{Verifying exp Works}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: exp'(x) = exp(x) (term-by-term differentiation)
+\item
+  Theorem: exp(x+y) = exp(x)exp(y) (Cauchy product --- callback to Ch
+  5!)
+\item
+  So exp is an exponential for some base
+\end{itemize}
+
+\textbf{Identifying the Base}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: e = exp(1) = Σ1/n!
+\item
+  Theorem: exp(x) = eˣ
+\item
+  Theorem: e = lim(1 + 1/n)ⁿ (connects to Ch 2 definition and Ch 5
+  Tannery)
+\end{itemize}
+
+\textbf{Computing e}
+
+\begin{itemize}
+\tightlist
+\item
+  Error bound: 0 \textless{} e - Sₙ \textless{} 1/(n! · n)
+\item
+  Example: S₁₀ gives e ≈ 2.7182818 to 7 decimals
+\end{itemize}
+
+\textbf{e Is Irrational}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: e ∉ ℚ
+\item
+  Proof: q!·e = (integer) + (something in (0,1)), contradiction
+\end{itemize}
+
+\textbf{General Exponentials}
+
+\begin{itemize}
+\tightlist
+\item
+  Corollary: (aˣ)' = cₐ · aˣ where cₐ = lim(aʰ-1)/h
+\item
+  Remark: cₐ = ln(a), defined via integration in Ch 8
+\end{itemize}
+
+\textbf{Warning: Smooth ≠ Analytic}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: f(x) = e\^{}\{-1/x²\} for x ≠ 0, f(0) = 0
+\item
+  Theorem: f is smooth and f⁽ⁿ⁾(0) = 0 for all n
+\item
+  Consequence: Taylor series at 0 is identically 0, but f ≠ 0
+\item
+  \textbf{The lesson}: Smooth functions can fail to equal their Taylor
+  series. Power series are special --- they're analytic by construction.
+\end{itemize}
+
+\section{Newton's Method}\label{newtons-method}
+
+\textbf{The Algorithm}
+
+\begin{itemize}
+\tightlist
+\item
+  Problem: Find root of f(x) = 0
+\item
+  Newton iteration: xₙ₊₁ = xₙ - f(xₙ)/f'(xₙ)
+\item
+  Geometric interpretation: follow tangent line to x-axis
+\end{itemize}
+
+\textbf{Convergence via Contraction}
+
+\begin{itemize}
+\tightlist
+\item
+  Define g(x) = x - f(x)/f'(x); fixed point of g is root of f
+\item
+  Compute: g'(x) = f(x)f'\,`(x)/(f'(x))²
+\item
+  At simple root r: g'(r) = 0
+\item
+  Theorem: For x₀ near r, Newton converges
+\item
+  Proof: g'(r) = 0 ⟹ \textbar g'\textbar{} \textless{} 1 near r ⟹ g is
+  contraction
+\end{itemize}
+
+\textbf{Quadratic Convergence via Taylor}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: εₙ₊₁ ≈ {[}f'\,`(r)/(2f'(r)){]} εₙ²
+\item
+  Proof: Taylor expand f(xₙ) around r
+\item
+  Consequence: errors square --- digits roughly double each step
+\end{itemize}
+
+\textbf{Examples}
+
+\begin{itemize}
+\tightlist
+\item
+  √2: xₙ₊₁ = (xₙ + 2/xₙ)/2 --- the Babylonian method! (callback to Ch 2)
+\item
+  ∛5: xₙ₊₁ = (2xₙ + 5/xₙ²)/3
+\end{itemize}
+
+\textbf{Failure Modes}
+
+\begin{itemize}
+\tightlist
+\item
+  Multiple roots: g'(r) ≠ 0, only linear convergence
+\item
+  Bad starting points: may cycle, diverge, or find wrong root
+\item
+  f'(xₙ) = 0: division by zero
+\end{itemize}
+
+\textbf{Looking Ahead}
+
+\begin{itemize}
+\tightlist
+\item
+  Newton is fixed-point iteration: xₙ₊₁ = g(xₙ)
+\item
+  Picard iteration for ODEs: same idea in function space
+\item
+  Contraction mapping theorem (Ch 4) guarantees convergence in both
+  settings
+\end{itemize}
 
 \chapter{Integration}\label{integration}
 
 \section{Axioms}\label{axioms}
 
-\section{Geometry}\label{geometry}
+\begin{itemize}
+\tightlist
+\item
+  What properties should ∫{[}a,b{]} f have?
+\item
+  \textbf{Axiom 1 (Rectangles)}: ∫{[}a,b{]} k = k(b−a) for constant k
+\item
+  \textbf{Axiom 2 (Monotonicity)}: f ≤ g on {[}a,b{]} ⟹ ∫{[}a,b{]} f ≤
+  ∫{[}a,b{]} g
+\item
+  \textbf{Axiom 3 (Additivity)}: ∫{[}a,b{]} f = ∫{[}a,c{]} f +
+  ∫{[}c,b{]} f for c ∈ (a,b)
+\item
+  These say nothing about \emph{which} functions are integrable --- only
+  how the integral behaves
+\end{itemize}
+
+\textbf{Theorems from the Axioms}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Bounds theorem}: m ≤ f ≤ M ⟹ m(b−a) ≤ ∫f ≤ M(b−a)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Proof from monotonicity + rectangles
+  \end{itemize}
+\item
+  \textbf{Continuity of F}: F(x) = ∫ₐˣ f is continuous
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Proof from additivity + bounds
+  \end{itemize}
+\end{itemize}
+
+\textbf{Upper and Lower Sums}
+
+\begin{itemize}
+\tightlist
+\item
+  Partition P = \{a = x₀ \textless{} x₁ \textless{} \ldots{} \textless{}
+  xₙ = b\}
+\item
+  mᵢ = inf f on {[}xᵢ₋₁, xᵢ{]}, Mᵢ = sup f on {[}xᵢ₋₁, xᵢ{]}
+\item
+  Lower sum L(f,P) = Σ mᵢ(xᵢ − xᵢ₋₁)
+\item
+  Upper sum U(f,P) = Σ Mᵢ(xᵢ − xᵢ₋₁)
+\end{itemize}
+
+\textbf{The Trapping Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Theorem}: Any integral satisfying the axioms must satisfy
+  L(f,P) ≤ ∫f ≤ U(f,P) for all P
+\item
+  Proof: Apply axioms to each subinterval, sum
+\item
+  \textbf{Corollary}: sup\_P L(f,P) ≤ ∫f ≤ inf\_P U(f,P)
+\end{itemize}
+
+\textbf{When is the Value Forced?}
+
+\begin{itemize}
+\tightlist
+\item
+  If sup\_P L(f,P) = inf\_P U(f,P), there is only one possible value for
+  ∫f
+\item
+  The axioms completely determine the integral in this case
+\item
+  Key question: For which functions does sup L = inf U?
+\end{itemize}
+
+\textbf{Theorem: Continuous Functions Have Forced Values}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Theorem}: If f is continuous on {[}a,b{]}, then sup\_P L(f,P)
+  = inf\_P U(f,P)
+\item
+  Proof:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    f continuous on compact {[}a,b{]} ⟹ f uniformly continuous
+  \item
+    Given ε \textgreater{} 0, choose δ from uniform continuity
+  \item
+    Partition P with mesh \textless{} δ ⟹ Mᵢ − mᵢ \textless{} ε/(b−a) on
+    each subinterval
+  \item
+    So U(f,P) − L(f,P) \textless{} ε
+  \item
+    Since ε arbitrary, sup L = inf U
+  \end{itemize}
+\item
+  \textbf{Corollary}: If f is continuous and an integral satisfying the
+  axioms exists, then the axioms force its value uniquely
+\end{itemize}
+
+\textbf{Examples: Values Forced by the Axioms}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Example}: For f(x) = x on {[}0,1{]}, the integral must equal
+  1/2
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Uniform partition Pₙ: L(f,Pₙ) = (n−1)/(2n), U(f,Pₙ) = (n+1)/(2n)
+  \item
+    Both → 1/2, so sup L = inf U = 1/2
+  \end{itemize}
+\item
+  \textbf{Example}: For f(x) = x² on {[}0,1{]}, the integral must equal
+  1/3
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Calculation using Σi² = n(n+1)(2n+1)/6 shows sup L = inf U = 1/3
+  \end{itemize}
+\item
+  These values are \emph{forced by the axioms} for any integral that
+  exists
+\end{itemize}
+
+\textbf{The Question}
+
+\begin{itemize}
+\tightlist
+\item
+  We know \emph{what} the integral must be for continuous functions
+\item
+  But does an integral satisfying the axioms actually \emph{exist}?
+\item
+  We must verify that defining ∫f = sup L = inf U actually satisfies the
+  axioms
+\end{itemize}
 
 \section{The Darboux Construction}\label{the-darboux-construction}
 
+\subsection{The Definition}\label{the-definition}
+
+\begin{itemize}
+\tightlist
+\item
+  For continuous f on {[}a,b{]}, define: ∫ₐᵇ f = sup\_P L(f,P) = inf\_P
+  U(f,P)
+\item
+  We must verify this definition satisfies our three axioms
+\end{itemize}
+
+\textbf{Partitions and Refinements}
+
+\begin{itemize}
+\tightlist
+\item
+  Partition P of {[}a,b{]}: finite set \{x₀, \ldots, xₙ\} with a = x₀
+  \textless{} \ldots{} \textless{} xₙ = b
+\item
+  Refinement: Q refines P if P ⊂ Q
+\item
+  \textbf{Lemma}: Refinements improve bounds: P ⊂ Q ⟹ L(f,P) ≤ L(f,Q) ≤
+  U(f,Q) ≤ U(f,P)
+\item
+  \textbf{Corollary}: Every lower sum ≤ every upper sum (use common
+  refinement)
+\end{itemize}
+
+\textbf{Verification of Axiom 1 (Rectangles)}
+
+\begin{itemize}
+\tightlist
+\item
+  For constant k: mᵢ = Mᵢ = k for any partition
+\item
+  So L(k,P) = U(k,P) = k(b−a)
+\item
+  Therefore ∫k = k(b−a) ✓
+\end{itemize}
+
+\textbf{Verification of Axiom 2 (Monotonicity)}
+
+\begin{itemize}
+\tightlist
+\item
+  If f ≤ g on {[}a,b{]}, then on each subinterval: inf f ≤ inf g, sup f
+  ≤ sup g
+\item
+  So L(f,P) ≤ L(g,P) and U(f,P) ≤ U(g,P) for all P
+\item
+  Taking sup over L and inf over U preserves inequality
+\item
+  Therefore f ≤ g ⟹ ∫f ≤ ∫g ✓
+\end{itemize}
+
+\textbf{Verification of Axiom 3 (Additivity)}
+
+\begin{itemize}
+\tightlist
+\item
+  For partitions P of {[}a,c{]} and Q of {[}c,b{]}, P ∪ Q is a partition
+  of {[}a,b{]}
+\item
+  L(f, P∪Q) = L(f,P) + L(f,Q) and similarly for U
+\item
+  Taking sup/inf: ∫ₐᵇ f = ∫ₐᶜ f + ∫ᶜᵇ f ✓
+\end{itemize}
+
+\textbf{The Integral Exists}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Theorem}: For continuous f on {[}a,b{]}, the Darboux integral
+  exists and satisfies all three axioms
+\item
+  The forced value is the actual value
+\end{itemize}
+
+\textbf{Payoff: Other Integrable Functions}
+
+\textbf{(Probably mostly skip this!)}
+
+\begin{itemize}
+\tightlist
+\item
+  The definition ∫f = sup L = inf U makes sense whenever sup L = inf U
+\item
+  \textbf{Corollary}: Bounded functions with finitely many
+  discontinuities are integrable
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Near discontinuities: contribution to U − L bounded by 2M · (small
+    width)
+  \item
+    Away from discontinuities: uniform continuity controls U − L
+  \end{itemize}
+\item
+  \textbf{Exercise}: Monotone functions on {[}a,b{]} are integrable
+\item
+  We don't belabor integrability criteria here --- the Lebesgue integral
+  (later chapter) gives a fuller picture
+\end{itemize}
+
+\section{Geometry}\label{geometry}
+
+With existence secured for continuous functions, we can rigorously
+define classical geometric quantities.
+
+\textbf{Arc Length}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Motivation}: Approximate curve by segments; segment length ≈
+  √(1 + (f')²) Δx
+\item
+  \textbf{Definition}: Arc length of y = f(x) on {[}a,b{]} is ∫ₐᵇ √(1 +
+  (f')²) dx (when f' continuous)
+\item
+  \textbf{Example}: Upper semicircle y = √(1−x²) has arc length ∫₋₁¹
+  1/√(1−x²) dx
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Improper integral (blows up at ±1)
+  \item
+    If it converges, this \emph{defines} π as the semicircle's length
+  \end{itemize}
+\end{itemize}
+
+\textbf{Archimedes' Inequality for Convex Curves}
+
+\begin{itemize}
+\tightlist
+\item
+  Archimedes needed this as an \emph{axiom}; we can \emph{prove} it
+\item
+  \textbf{Theorem}: Among convex curves with same endpoints, the one
+  closer to the chord is shorter
+\item
+  Proof uses convexity facts from Ch 7 guided exercises:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    f convex ⟺ f' increasing
+  \item
+    f'\,' ≥ 0 ⟺ f convex
+  \end{itemize}
+\item
+  \textbf{Corollary}: Straight line is shortest path between two points
+\item
+  \textbf{Corollary}: Convex curve lies between inscribed and
+  circumscribed polygon lengths
+\end{itemize}
+
+\textbf{The Two Definitions of π Agree}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Ch 4 definition}: π = lim (perimeter of inscribed n-gon in
+  unit circle)/2
+\item
+  \textbf{Ch 8 definition}: π = arc length of unit semicircle = ∫₋₁¹
+  1/√(1−x²) dx
+\item
+  \textbf{Theorem}: These are equal
+\item
+  Proof: By Archimedes' inequality, semicircle arc length is trapped
+  between inscribed and circumscribed polygon perimeters, which both → π
+  (Ch 4)
+\end{itemize}
+
+\textbf{Area Between Curves}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: If f ≥ g on {[}a,b{]}, area between curves = ∫ₐᵇ
+  {[}f(x) − g(x){]} dx
+\item
+  \textbf{Example}: Area of unit disk = ∫₋₁¹ 2√(1−x²) dx
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This defines ``area of disk'' rigorously
+  \item
+    We will show this equals π (the same π!) after developing more tools
+  \end{itemize}
+\end{itemize}
+
+\textbf{Improper Integrals (Remark)}
+
+\begin{itemize}
+\tightlist
+\item
+  When integrand unbounded at endpoint: ∫ₐᵇ f = lim\_\{c→b⁻\} ∫ₐᶜ f
+\item
+  Converges if limit exists
+\item
+  Example: ∫₀¹ 1/√(1−t²) dt converges (compare to ∫ 1/√(1−t) near t = 1)
+\end{itemize}
+
+\textbf{Volume by Slicing (Cavalieri Rigorous)}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: Solid with cross-sectional area A(x) has volume
+  ∫ₐᵇ A(x) dx
+\item
+  \textbf{Cavalieri's Principle}: Equal cross-sections ⟹ equal volumes
+  (immediate)
+\item
+  \textbf{Example (Pyramid)}: V = ∫₀ʰ (sx/h)² dx = s²h/3 = (1/3) · base
+  · height
+\item
+  \textbf{Example (Cone)}: V = ∫₀ʰ π(rx/h)² dx = πr²h/3
+\item
+  \textbf{Example (Sphere)}: V = ∫₋ᴿᴿ π(R² − x²) dx = (4/3)πR³
+\end{itemize}
+
+\textbf{Volume of Revolution}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: Rotating y = f(x) around x-axis gives volume ∫ₐᵇ
+  π{[}f(x){]}² dx
+\item
+  Cross-sections are disks of radius f(x)
+\end{itemize}
+
 \section{Computing Integrals}\label{computing-integrals}
+
+\textbf{The Direct Method}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Choose partitions Pₙ with mesh → 0
+\item
+  Compute L(f, Pₙ) and U(f, Pₙ)
+\item
+  Show both converge to same limit
+\item
+  That limit is ∫f
+\end{enumerate}
+
+\textbf{Example: ∫₀¹ xⁿ = 1/(n+1)}
+
+\begin{itemize}
+\tightlist
+\item
+  Uniform partition Pₙ = \{0, 1/n, 2/n, \ldots, 1\}
+\item
+  U(xⁿ, Pₙ) = (1/n\^{}\{n+1\}) Σᵢⁿ iⁿ
+\item
+  Sum is polynomial of degree n+1 with leading coefficient 1/(n+1)
+\item
+  So U → 1/(n+1); similarly L → 1/(n+1)
+\item
+  Confirms the axiomatic prediction from 8.1
+\end{itemize}
+
+\textbf{Example: ∫₀¹ eˣ = e − 1}
+
+\begin{itemize}
+\tightlist
+\item
+  U(eˣ, Pₙ) = (1/n) · e\textsuperscript{\{1/n\}(e−1)/(e}\{1/n\}−1) via
+  geometric series
+\item
+  As n → ∞: e\^{}\{1/n\} → 1 and (e\^{}\{1/n\}−1)/(1/n) → 1
+\item
+  So U → e − 1; similarly L → e − 1
+\end{itemize}
+
+\textbf{Example: ∫₀¹ 2ˣ = 1/ln 2}
+
+\begin{itemize}
+\tightlist
+\item
+  Similar calculation yields (2−1)/ln 2 = 1/ln 2
+\end{itemize}
+
+\textbf{The Exponential Observation}
+
+\begin{itemize}
+\tightlist
+\item
+  We computed: ∫₀¹ eˣ = e¹ − e⁰
+\item
+  The integral of eˣ equals eˣ evaluated at endpoints!
+\item
+  For polynomials: elaborate Σiⁿ calculations
+\item
+  For exponential: the answer ``knows'' the boundary values
+\item
+  \textbf{The hint}: (eˣ)' = eˣ. Integrating eˣ gives back eˣ.
+\item
+  Is there a general principle connecting integration and
+  differentiation?
+\item
+  Chapter 9 reveals the Fundamental Theorem of Calculus
+\end{itemize}
 
 \chapter{Calculus}\label{calculus}
 
 \section{The Fundamental Theorem}\label{the-fundamental-theorem}
 
+\textbf{Signed Integrals}
+
+\begin{itemize}
+\tightlist
+\item
+  Convention: ∫ᵇₐ f = −∫ₐᵇ f for a \textless{} b
+\item
+  Makes FTC statements cleaner, allows variable endpoint to move either
+  direction
+\end{itemize}
+
+\textbf{MVT for Integrals (MAYBE MOVE TO 8.1?)}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: f continuous on {[}a,b{]} ⟹ ∃c ∈ (a,b) with ∫ₐᵇ f = f(c)(b−a)
+\item
+  Interpretation: integral = average value × length
+\end{itemize}
+
+\textbf{Continuity of F}: F(x) = ∫ₐˣ f is continuous - Proof from
+additivity + bounds
+
+\textbf{FTC I}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: f continuous, F(x) = ∫ₐˣ f(t) dt ⟹ F'(x) = f(x)
+\item
+  Interpretation: differentiation undoes integration
+\item
+  Corollary: Every continuous function has an antiderivative
+\end{itemize}
+
+\textbf{FTC II}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: F' = f on {[}a,b{]} ⟹ ∫ₐᵇ f = F(b) − F(a)
+\item
+  Notation: F(x)\textbar ₐᵇ = F(b) − F(a)
+\item
+  \textbf{Callback}: Explains Ch 8 observation that ∫₀¹ eˣ = e − 1 = e¹
+  − e⁰
+\end{itemize}
+
+\textbf{Linearity}
+
+\begin{itemize}
+\tightlist
+\item
+  Corollary: ∫(αf + βg) = α∫f + β∫g
+\item
+  Proof via FTC II from linearity of differentiation
+\end{itemize}
+
+\section{Antidifferentiation}\label{antidifferentiation}
+
+\textbf{Power Series III: Term-by-Term Integration}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: If f(x) = Σaₙxⁿ has radius R, then for \textbar x\textbar{}
+  \textless{} R:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ∫₀ˣ f(t) dt = Σ aₙxⁿ⁺¹/(n+1), same radius R
+  \end{itemize}
+\item
+  Completes the trilogy:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Power Series I (Ch 6): Continuity
+  \item
+    Power Series II (Ch 7): Term-by-term differentiation
+  \item
+    Power Series III (Ch 9): Term-by-term integration
+  \end{itemize}
+\end{itemize}
+
+\textbf{Integration by Substitution}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: ∫ₐᵇ f(g(x))g'(x) dx = ∫\_\{g(a)\}\^{}\{g(b)\} f(u) du
+\item
+  Chain rule in reverse
+\item
+  Example: ∫₀¹ x·eˣ² dx = ½(e − 1)
+\item
+  Example: ∫₀¹ x²√(1−x³) dx = 2/9
+\end{itemize}
+
+\textbf{Integration by Parts}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: ∫ₐᵇ f g' = fg\textbar ₐᵇ − ∫ₐᵇ f' g
+\item
+  Product rule in reverse
+\item
+  Example: ∫₀¹ x·eˣ dx = 1
+\item
+  Example: ∫₀\^{}\{π/2\} x cos(x) dx = π/2 − 1
+\end{itemize}
+
+\textbf{Taylor's Theorem with Integral Remainder}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: f(x) = Σₖ₌₀ⁿ f⁽ᵏ⁾(a)(x−a)ᵏ/k! + (1/n!)∫ₐˣ (x−t)ⁿ f⁽ⁿ⁺¹⁾(t) dt
+\item
+  Proof: Repeated integration by parts
+\item
+  Lagrange form follows by applying MVT for integrals to the remainder
+\end{itemize}
+
+\section{Differential Equations}\label{differential-equations}
+
+\begin{itemize}
+\tightlist
+\item
+  FTC says every continuous function has an antiderivative
+\item
+  This immediately solves certain differential equations
+\item
+  Three classes where existence follows from our tools
+\end{itemize}
+
+\textbf{Quadrature: y' = f(x)}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: y' = f(x) with y(a) = y₀ has unique solution y = y₀ + ∫ₐˣ
+  f(t) dt
+\item
+  Existence: FTC I
+\item
+  Uniqueness: If y₁, y₂ solutions, then (y₁ − y₂)' = 0, so constant
+\end{itemize}
+
+\textbf{Special Functions Defined by Quadrature}
+
+\begin{itemize}
+\tightlist
+\item
+  FTC guarantees existence even when no elementary antiderivative exists
+\item
+  \textbf{Error function}: erf(x) = (2/√π) ∫₀ˣ e\^{}\{−t²\} dt ---
+  probability
+\item
+  \textbf{Sine integral}: Si(x) = ∫₀ˣ (sin t)/t dt --- signal processing
+\item
+  \textbf{Fresnel integrals}: S(x), C(x) --- optics
+\item
+  \textbf{Logarithmic integral}: li(x) = ∫₂ˣ 1/(ln t) dt --- prime
+  number theorem
+\end{itemize}
+
+\textbf{First-Order Linear: y' + P(x)y = Q(x)}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: If P, Q continuous near a, unique solution exists
+\item
+  Method: Integrating factor μ(x) = e\^{}\{∫ₐˣ P(t) dt\}
+\item
+  Existence: All integrals exist by FTC
+\item
+  Example: y' + 2y = eˣ with y(0) = 1
+\end{itemize}
+
+\textbf{Separable: y' = f(x)g(y)}
+
+\begin{itemize}
+\tightlist
+\item
+  If g(y) ≠ 0, separate: dy/g(y) = f(x) dx
+\item
+  Integrate: G(y) = F(x) + C where G' = 1/g, F' = f
+\item
+  Key insight: G exists by FTC, G strictly monotone, so G invertible
+\item
+  We prove existence without computing G⁻¹ explicitly
+\item
+  Example: y' = xy gives y = Ae\^{}\{x²/2\}
+\item
+  Example: y' = y² with y(0) = 1 gives y = 1/(1−x) --- blows up at x =
+  1!
+\end{itemize}
+
+\textbf{Limits of Elementary Methods}
+
+\begin{itemize}
+\tightlist
+\item
+  y' = x + y² --- no algebraic trick works
+\item
+  Solution exists, but proof requires new tools:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Picard iteration, contraction mappings, completeness
+  \end{itemize}
+\item
+  This is Chapter 12
+\end{itemize}
+
 \section{Logarithms}\label{logarithms}
 
+\textbf{The Integral Definition}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: L(x) = ∫₁ˣ 1/t dt for x \textgreater{} 0
+\item
+  Goal: Prove L is a logarithm, identify which one
+\end{itemize}
+
+\textbf{L is a Logarithm}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: L(xy) = L(x) + L(y) for all x, y \textgreater{} 0
+\item
+  Proof: Substitution u = t/x in ∫ₓˣʸ 1/t dt gives ∫₁ʸ 1/u du = L(y)
+\item
+  Corollary: L = log\_b for some base b
+\end{itemize}
+
+\textbf{Which Logarithm?}
+
+\begin{itemize}
+\tightlist
+\item
+  L'(x) = 1/x by FTC I
+\item
+  Let E = L⁻¹. By inverse function theorem: E'(y) = E(y)
+\item
+  So E satisfies E' = E with E(0) = 1
+\item
+  From Ch 7: unique solution is eˣ
+\item
+  Therefore E = exp, so L = ln
+\end{itemize}
+
+\textbf{Basic Properties}
+
+\begin{itemize}
+\tightlist
+\item
+  ln(1) = 0
+\item
+  ln'(x) = 1/x
+\item
+  ln increasing (since 1/x \textgreater{} 0 for x \textgreater{} 0)
+\item
+  ln(x) → ∞ as x → ∞
+\item
+  ln(x) → −∞ as x → 0⁺
+\item
+  Corollary: (eˣ)' = eˣ (alternative proof)
+\item
+  Corollary: log\_a'(x) = 1/(x ln a)
+\end{itemize}
+
+\textbf{Growth of the Logarithm}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: For any α \textgreater{} 0, lim\_\{x→∞\} ln(x)/xᵅ = 0
+\item
+  Logarithms grow slower than any positive power
+\end{itemize}
+
+\textbf{Taylor Series for Logarithms}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: ln(1+x) = x − x²/2 + x³/3 − x⁴/4 + ⋯ for \textbar x\textbar{}
+  \textless{} 1
+\item
+  Proof: Integrate 1/(1+t) = 1 − t + t² − ⋯ using Power Series III
+\item
+  At x = 1 (Abel's theorem): ln(2) = 1 − 1/2 + 1/3 − 1/4 + ⋯
+\end{itemize}
+
+\textbf{Faster Computation}
+
+\begin{itemize}
+\tightlist
+\item
+  Problem: Series for ln(2) converges slowly (\textasciitilde1000 terms
+  for 3 decimals)
+\item
+  Better: ln((1+x)/(1−x)) = 2(x + x³/3 + x⁵/5 + ⋯)
+\item
+  For ln(2): use x = 1/3, terms decay like (1/3)\^{}\{2k+1\}
+\item
+  Few terms give many digits
+\end{itemize}
+
 \section{Trigonometry}\label{trigonometry}
+
+\textbf{Defining Arcsine}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: arcsin(y) = ∫₀ʸ 1/√(1−t²) dt for y ∈ {[}−1, 1{]}
+\item
+  This is arc length from (1,0) to (√(1−y²), y) on unit circle
+\end{itemize}
+
+\textbf{Defining π (ALREADY HAVE: JUST REVIEW)}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: π/2 = arcsin(1) = ∫₀¹ 1/√(1−t²) dt
+\item
+  Rigorous definition as quarter-circle arc length
+\end{itemize}
+
+\textbf{Defining Sine and Cosine}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: sin: {[}−π/2, π/2{]} → {[}−1, 1{]} is inverse of arcsin
+\item
+  Definition: cos(θ) = √(1 − sin²θ) with appropriate sign, or cos(θ) =
+  sin(π/2 − θ)
+\item
+  Immediate: sin²θ + cos²θ = 1
+\end{itemize}
+
+\textbf{Derivatives}
+
+\begin{itemize}
+\tightlist
+\item
+  arcsin'(y) = 1/√(1−y²) by FTC I
+\item
+  sin'(θ) = cos(θ) by inverse function theorem
+\item
+  cos'(θ) = −sin(θ) by differentiating sin² + cos² = 1
+\end{itemize}
+
+\textbf{The Differential Equation}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: sin and cos satisfy y'\,' = −y
+\item
+  Uniqueness lemma: y'\,' = −y with y(0) = y'(0) = 0 ⟹ y ≡ 0
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Proof: E(t) = y² + (y')² has E' = 0, so E constant; E(0) = 0
+  \end{itemize}
+\item
+  Corollary: Solutions to y'\,' = −y determined by initial conditions
+\end{itemize}
+
+\textbf{Addition Formulas}
+
+\begin{itemize}
+\tightlist
+\item
+  sin(α + β) = sin α cos β + cos α sin β
+\item
+  cos(α + β) = cos α cos β − sin α sin β
+\item
+  Proof: Both sides satisfy y'\,' = −y with same initial conditions
+\end{itemize}
+
+\textbf{Special Values and Periodicity}
+
+\begin{itemize}
+\tightlist
+\item
+  sin(0) = 0, cos(0) = 1 (definition)
+\item
+  sin(π/2) = 1, cos(π/2) = 0 (definition)
+\item
+  sin(π) = 0, cos(π) = −1 (addition formulas)
+\item
+  sin(2π) = 0, cos(2π) = 1
+\item
+  sin(π/4) = cos(π/4) = 1/√2
+\item
+  Theorem: sin, cos periodic with period 2π (uniqueness argument)
+\item
+  π is smallest positive zero of sin
+\end{itemize}
+
+\textbf{Taylor Series}
+
+\begin{itemize}
+\tightlist
+\item
+  sin(x) = x − x³/3! + x⁵/5! − ⋯ (all x)
+\item
+  cos(x) = 1 − x²/2! + x⁴/4! − ⋯ (all x)
+\end{itemize}
 
 \section{\texorpdfstring{Calculating
 \(\pi\)}{Calculating \textbackslash pi}}\label{calculating-pi}
 
-\section{Differential Equations}\label{differential-equations}
+\textbf{Two Constants for the Circle}
 
-\chapter{Completing the Integral}\label{completing-the-integral}
+\begin{itemize}
+\tightlist
+\item
+  Perimeter constant: circumference of unit circle = 2π
+\item
+  Area constant: area of unit disk = ∫₋₁¹ 2√(1−x²) dx
+\item
+  Are they the same π? (We know they are from archimedes complicated
+  argument but what about a calcuus based one?)
+\end{itemize}
 
-\section{Limits \& Integrability}\label{limits-integrability}
+\textbf{Archimedes' Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: Area of unit disk = π (the perimeter constant)
+\item
+  Proof: IBP relates ∫√(1−x²) dx to ∫ 1/√(1−x²) dx
+\item
+  Result: ∫₀¹ √(1−x²) dx = π/4
+\item
+  Completes π journey: geometric (Ch 4) → integral (Ch 8) → series
+  (here)
+\end{itemize}
+
+\textbf{Arctangent}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: arctan(x) = ∫₀ˣ 1/(1+t²) dt
+\item
+  Key properties:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    arctan'(x) = 1/(1+x²) --- rational function, no square roots!
+  \item
+    arctan(0) = 0
+  \item
+    arctan(x) → π/2 as x → ∞
+  \item
+    arctan(1) = π/4
+  \end{itemize}
+\end{itemize}
+
+\textbf{π as Integral of Rational Function}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: π/4 = ∫₀¹ 1/(1+t²) dt
+\item
+  Remarkable: π defined via circles equals integral of polynomials
+\end{itemize}
+
+\textbf{Taylor Series for Arctangent}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: arctan(x) = x − x³/3 + x⁵/5 − ⋯ for \textbar x\textbar{}
+  \textless{} 1
+\item
+  Proof: Integrate 1/(1+t²) = 1 − t² + t⁴ − ⋯ using Power Series III
+\end{itemize}
+
+\textbf{Gregory-Leibniz Series}
+
+\begin{itemize}
+\tightlist
+\item
+  π/4 = 1 − 1/3 + 1/5 − 1/7 + ⋯ (by Abel at x = 1)
+\item
+  Problem: \textasciitilde1000 terms for 2 decimals (boundary
+  convergence is slow)
+\end{itemize}
+
+\textbf{Better Formulas}
+
+\begin{itemize}
+\tightlist
+\item
+  Proposition: π/4 = arctan(1/2) + arctan(1/3)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Proof via tangent addition formula
+  \item
+    Terms decay like (1/2)\^{}\{2k+1\} + (1/3)\^{}\{2k+1\}
+  \end{itemize}
+\item
+  Machin (1706): π/4 = 4 arctan(1/5) − arctan(1/239)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    9 terms give 15 digits
+  \item
+    Machin computed 100 digits by hand
+  \end{itemize}
+\end{itemize}
+
+\chapter{Extending the Integral}\label{extending-the-integral}
+
+\section{Integrability}\label{integrability}
+
+\textbf{Beyond Continuous Functions}
+
+\begin{itemize}
+\tightlist
+\item
+  Our axiomatic integral was built for continuous functions
+\item
+  But the construction works more broadly
+\item
+  Upper and lower sums make sense for any bounded function
+\item
+  \textbf{Definition}: \(f\) is \emph{Darboux integrable} if upper
+  integral equals lower integral
+\item
+  What functions does this capture?
+\end{itemize}
+
+\textbf{The Class of Integrable Functions}
+
+\textbf{Many functions are integrable}: - Continuous functions (by
+construction) - Piecewise continuous functions (split at
+discontinuities) - Monotone functions (upper/lower sums telescope) - The
+ruler function (discontinuous on dense set, still integrable) - General
+principle: discontinuities must be ``small''
+
+\textbf{It's a vector space}: - If \(f, g\) integrable and
+\(\alpha, \beta \in \mathbb{R}\), then \(\alpha f + \beta g\) integrable
+- \(\int(\alpha f + \beta g) = \alpha \int f + \beta \int g\) -
+Linearity inherited from the construction - We can do algebra with
+integrable functions
+
+\textbf{The Boundary}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\chi_{\mathbb{Q}}\): discontinuous everywhere, not integrable
+\item
+  Upper integral \(= 1\), lower integral \(= 0\)
+\item
+  Not just pathological---it's the boundary of our class
+\end{itemize}
+
+\textbf{Power Series III Was Special}
+
+\begin{itemize}
+\tightlist
+\item
+  Callback to Chapter 9: term-by-term integration worked
+\item
+  \(\int \left( \sum a_n x^n \right) = \sum \frac{a_n x^{n+1}}{n+1}\)
+\item
+  Used for \(\ln(1+x)\), \(\arctan\), computing \(\pi\)
+\item
+  You might expect limits generally behave this well
+\end{itemize}
+
+\textbf{The Convergence Problem}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Failure Mode 1}: \(f_n = n \cdot \chi_{[0,1/n]} \to 0\) but
+  \(\int f_n = 1\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Limit integrable, integrals don't converge correctly
+  \end{itemize}
+\item
+  \textbf{Failure Mode 2}:
+  \(f_n = \chi_{\{q_1,\ldots,q_n\}} \nearrow \chi_{\mathbb{Q}}\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Each \(f_n\) integrable with \(\int f_n = 0\)
+  \item
+    Limit not integrable
+  \end{itemize}
+\end{itemize}
+
+\textbf{The class of Darboux integrable functions is not closed under
+limits.}
+
+\textbf{Why This Matters}
+
+\begin{itemize}
+\tightlist
+\item
+  Fourier series: need \(\int\) and \(\sum\) to interchange
+\item
+  Parameter integrals: need \(\int\) and \(\frac{d}{dt}\) to interchange
+\item
+  Power series were the exception; general limits fail
+\end{itemize}
+
+\textbf{The Key Observation}
+
+\begin{itemize}
+\tightlist
+\item
+  In Failure Mode 2: \(\int f_n = 0 \to 0\), obvious candidate is \(0\)
+\item
+  Problem isn't wrong answer---it's no answer when there's an obvious
+  candidate
+\item
+  Could we extend by \emph{defining} \(\int \chi_{\mathbb{Q}} = 0\)?
+\end{itemize}
+
+\textbf{What We Want}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Preserve linearity}: we have a vector space, want to keep it
+\item
+  \textbf{Add MCT}: increasing limits with bounded integrals should work
+\item
+  The remarkable fact: demanding both forces a unique extension
+\end{itemize}
 
 \section{The Daniell Extension}\label{the-daniell-extension}
 
+\textbf{The Plan}
+
+\begin{itemize}
+\tightlist
+\item
+  Two stages: first close under monotone limits, then close under
+  subtraction
+\item
+  Must verify the extension still satisfies integral properties
+\item
+  Must verify MCT survives the second extension
+\end{itemize}
+
+\textbf{Dini's Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  Lemma: If \(f_n \in C[a,b]\) and \(f_n \searrow 0\) pointwise, then
+  \(I(f_n) \to 0\)
+\item
+  Key technical tool bridging pointwise convergence to integral
+  convergence
+\item
+  Proof uses compactness of \([a,b]\)
+\end{itemize}
+
+\textbf{Upper Functions}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: \(f \in L^\uparrow\) if \(f_n \in C[a,b]\) with
+  \(f_n \nearrow f\) pointwise
+\item
+  Examples: continuous functions, \(\chi_{(a,b]}\)
+\item
+  Define \(I^+(f) = \lim I(f_n)\)
+\end{itemize}
+
+\textbf{Well-Definedness of \(I^+\)}
+
+\begin{itemize}
+\tightlist
+\item
+  Must show: different approximating sequences give same answer
+\item
+  Key Lemma: If \(f_n \nearrow f\) and \(g \in C[a,b]\) with
+  \(g \leq f\), then \(I(g) \leq \lim I(f_n)\)
+\item
+  Proof uses Dini's theorem on the gap
+  \(h_n = g - (f_n \wedge g) \searrow 0\)
+\item
+  Corollary: \(I^+\) well-defined
+\end{itemize}
+
+\textbf{Properties of \(I^+\)}
+
+\begin{itemize}
+\tightlist
+\item
+  Extension: agrees with \(I\) on \(C[a,b]\)
+\item
+  Monotonicity: \(f \leq g \Rightarrow I^+(f) \leq I^+(g)\)
+\item
+  Additive: \(I^+(f + g) = I^+(f) + I^+(g)\)
+\item
+  Positive homogeneity: \(c \geq 0 \Rightarrow I^+(cf) = c \, I^+(f)\)
+\item
+  MCT for \(L^\uparrow\): \(f_n \in L^\uparrow\), \(f_n \nearrow f\),
+  \(\sup I^+(f_n) < \infty \Rightarrow f \in L^\uparrow\) and
+  \(I^+(f_n) \to I^+(f)\)
+\end{itemize}
+
+\textbf{The Linearity Problem}
+
+\begin{itemize}
+\tightlist
+\item
+  \(L^\uparrow\) is a cone, not a vector space
+\item
+  Closed under addition and positive scalars
+\item
+  Not closed under subtraction: if \(f_n \nearrow f\), then
+  \(-f_n \searrow -f\) (wrong direction)
+\item
+  We need subtraction for basic analysis
+\end{itemize}
+
+\textbf{Integrable Functions}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: \(f \in L^1\) if \(f = g - h\) for some
+  \(g, h \in L^\uparrow\) with \(I^+(g), I^+(h) < \infty\)
+\item
+  Define \(I(f) = I^+(g) - I^+(h)\)
+\item
+  Must verify well-defined: if \(g_1 - h_1 = g_2 - h_2\), then
+  \(I^+(g_1) - I^+(h_1) = I^+(g_2) - I^+(h_2)\)
+\item
+  Proof: \(g_1 + h_2 = g_2 + h_1\), both in \(L^\uparrow\), apply
+  additivity
+\end{itemize}
+
+\textbf{Properties of \(I\) on \(L^1\)}
+
+\begin{itemize}
+\tightlist
+\item
+  \(L^1\) is a vector space
+\item
+  \(I\) is linear
+\item
+  Extension, monotonicity, interval additivity inherited
+\end{itemize}
+
+\textbf{MCT Survives}
+
+\begin{itemize}
+\tightlist
+\item
+  Key Lemma: If \(f \in L^1\) and \(f \geq 0\), then
+  \(f \in L^\uparrow\)
+\item
+  Theorem (MCT for \(L^1\)): \(f_n \in L^1\), \(f_n \nearrow f\),
+  \(\sup I(f_n) < \infty \Rightarrow f \in L^1\) and \(I(f_n) \to I(f)\)
+\item
+  Proof: WLOG \(f_n \geq 0\) (subtract \(f_1\)), apply key lemma, use
+  MCT for \(L^\uparrow\)
+\end{itemize}
+
+\textbf{What We've Built}
+
+\begin{itemize}
+\tightlist
+\item
+  An integral on \(L^1 \supset C[a,b]\)
+\item
+  Satisfies original properties plus linearity plus MCT
+\item
+  Next: harvest the consequences
+\end{itemize}
+
 \section{Convergence Theorems}\label{convergence-theorems}
+
+\textbf{Monotone Convergence Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem (MCT): \(f_n \in L^1\), \(f_n \nearrow f\),
+  \(\sup I(f_n) < \infty \Rightarrow f \in L^1\) and \(I(f_n) \to I(f)\)
+\item
+  Already proved in 10.2; state cleanly here as the first payoff
+\end{itemize}
+
+\textbf{Dominated Convergence Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem (DCT): \(f_n \in L^1\), \(f_n \to f\) pointwise,
+  \(|f_n| \leq g\) for some \(g \in L^1 \Rightarrow f \in L^1\) and
+  \(I(f_n) \to I(f)\)
+\item
+  The workhorse theorem---this is what you actually use
+\item
+  Proof via MCT applied to \(\inf\)/\(\sup\) sequences
+\end{itemize}
+
+\textbf{Revisiting the Failures}
+
+\begin{itemize}
+\tightlist
+\item
+  Spike functions \(f_n = n \cdot \chi_{[0,1/n]}\): no dominating
+  function (would need \(g(0) = \infty\))
+\item
+  DCT diagnoses exactly why interchange fails
+\item
+  Not a pathology---a precise answer
+\end{itemize}
+
+\textbf{Application: Differentiating Under the Integral}
+
+\begin{itemize}
+\tightlist
+\item
+  Setup: \(F(t) = \int_a^b f(x,t) \, dx\)
+\item
+  Theorem: If \(\frac{\partial f}{\partial t}\) exists and
+  \(\left| \frac{\partial f}{\partial t} \right| \leq g \in L^1\), then
+  \(F'(t) = \int_a^b \frac{\partial f}{\partial t} \, dx\)
+\item
+  Proof: Apply DCT to difference quotients
+\end{itemize}
+
+\subsection{Application: Integrating Series
+Term-by-Term}\label{application-integrating-series-term-by-term}
+
+\begin{itemize}
+\tightlist
+\item
+  Setup: \(\sum f_n\) where each \(f_n \in L^1\)
+\item
+  Theorem: If \(\sum \int |f_n| < \infty\), then
+  \(\int \sum f_n = \sum \int f_n\)
+\item
+  Proof: Partial sums dominated by \(\sum |f_n|\), apply DCT
+\end{itemize}
+
+\textbf{Completeness}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: If \(f_n \in L^1\) and
+  \(\sum \int |f_{n+1} - f_n| < \infty\), then \(f_n\) converges to some
+  \(f \in L^1\)
+\item
+  Equivalently: Cauchy sequences in the \(\int |\cdot|\) sense converge
+\item
+  False for Darboux integrable functions
+\item
+  ``Completing the Integral''---we've filled the holes
+\end{itemize}
+
+\textbf{Series Closure}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: If \(f_n \in L^1\) and \(\sum \int |f_n| < \infty\), then
+  \(\sum f_n \in L^1\)
+\item
+  False for Darboux: \(f_n = \chi_{\{q_n\}}\), each integrable, sum is
+  \(\chi_{\mathbb{Q}}\)
+\item
+  \(L^1\) closed under absolutely convergent series
+\end{itemize}
 
 \section{Measure Theory}\label{measure-theory}
 
+\textbf{Null Sets}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: \(E\) is null if for every \(\varepsilon > 0\), \(E\)
+  covered by countably many intervals of total length \(< \varepsilon\)
+\item
+  Equivalently: \(\chi_E \in L^1\) and \(I(\chi_E) = 0\)
+\item
+  Examples: finite sets, countable sets, Cantor set
+\end{itemize}
+
+\textbf{Properties of Null Sets}
+
+\begin{itemize}
+\tightlist
+\item
+  Subset of null is null
+\item
+  Countable union of null sets is null
+\item
+  Proof: cover \(n\)th set with intervals of total length
+  \(\varepsilon / 2^n\)
+\end{itemize}
+
+\textbf{Almost Everywhere}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: Property holds a.e. if it fails only on a null set
+\item
+  ``\(f = g\) a.e.'' means \(\{x : f(x) \neq g(x)\}\) is null
+\item
+  ``\(f_n \to f\) a.e.'' means \(\{x : f_n(x) \not\to f(x)\}\) is null
+\end{itemize}
+
+\textbf{The A.E. Modification Theorem}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: If \(f = g\) a.e. and \(f \in L^1\), then \(g \in L^1\) and
+  \(I(f) = I(g)\)
+\item
+  Striking: modify on infinitely many points, integral unchanged
+\item
+  False for Darboux: \(f = 0\), \(g = \chi_{\mathbb{Q}}\), differ on
+  null set, but \(\chi_{\mathbb{Q}}\) not Darboux integrable
+\end{itemize}
+
+\textbf{Measurable Sets}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: \(E\) is measurable if \(\chi_E \in L^1\)
+\item
+  Examples: intervals, open sets, closed sets, countable
+  unions/intersections
+\item
+  Non-measurable sets exist (requires axiom of choice)
+\end{itemize}
+
+\textbf{Lebesgue Measure}
+
+\begin{itemize}
+\tightlist
+\item
+  Definition: \(\mu(E) = I(\chi_E)\) for measurable \(E\)
+\item
+  Properties: \(\mu(E) \geq 0\), \(\mu(\varnothing) = 0\),
+  \(\mu([a,b]) = b - a\)
+\item
+  Countable additivity:
+  \(\mu\left( \bigsqcup E_n \right) = \sum \mu(E_n)\)
+\item
+  Proof via DCT
+\end{itemize}
+
+\textbf{The Integral-First Philosophy}
+
+\begin{itemize}
+\tightlist
+\item
+  Traditional: measure → measurable functions → integral
+\item
+  Our approach: integral → measure as byproduct
+\item
+  For analysis, the integral is primary; measure serves it
+\end{itemize}
+
 \section{Why Lebesgue?}\label{why-lebesgue}
+
+\textbf{Uniqueness}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: Any extension of \(I\) from \(C[a,b]\) satisfying linearity
+  and MCT must agree with ours
+\item
+  Proof sketch: MCT forces values on \(L^\uparrow\), linearity forces
+  values on \(L^1\)
+\item
+  There was no choice---MCT determined everything
+\end{itemize}
+
+\textbf{Maximality}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: \(L^1\) is the largest class where \(f\) integrable
+  \(\Rightarrow |f|\) integrable
+\item
+  ``Absolute integrability'' property
+\item
+  Extensions beyond (like HK) lose this
+\end{itemize}
+
+\textbf{Connection to Derivatives}
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem: \(f \in L^1\) iff \(f = F'\) a.e. for some absolutely
+  continuous \(F\)
+\item
+  FTC for Lebesgue: cleaner than Darboux version
+\item
+  Preview of absolute continuity
+\end{itemize}
+
+\textbf{Completeness Revisited}
+
+\begin{itemize}
+\tightlist
+\item
+  \(L^1\) with \(d(f,g) = \int |f - g|\) is complete
+\item
+  In fact: \(L^1\) is the completion of \(C[a,b]\) under this metric
+\item
+  Every element of \(L^1\) is a limit of continuous functions
+\item
+  We added exactly the missing limits---nothing more
+\end{itemize}
+
+\textbf{A General Machine}
+
+\begin{itemize}
+\tightlist
+\item
+  The construction used the length axiom \(\mu([c,d]) = d - c\) only as
+  input
+\item
+  Positivity, linearity, Daniell's condition did the work
+\item
+  Replace with \(\mu((c,d]) = g(d) - g(c)\) for increasing
+  right-continuous \(g\)
+\item
+  Same machine produces a new integral
+\item
+  In Chapter N: this captures all finite Borel measures on
+  \([a,b]\)---the Riesz representation theorem
+\end{itemize}
+
+\textbf{Beyond Lebesgue: The Henstock-Kurzweil Integral}
+
+\begin{itemize}
+\tightlist
+\item
+  Lebesgue isn't the only extension
+\item
+  HK: every derivative is integrable, full FTC
+\item
+  Example: \(F(x) = x^2 \sin(1/x^2)\), differentiable everywhere, \(F'\)
+  not Lebesgue integrable
+\item
+  Tradeoff: HK has better FTC, but no \(L^p\) theory
+\item
+  Different integrals answer different questions
+\end{itemize}
+
+\textbf{Closing Perspective}
+
+\begin{itemize}
+\tightlist
+\item
+  Darboux: simplest integral for area under curves
+\item
+  Lebesgue: largest integral with good limit behavior
+\item
+  HK: largest integral with full FTC
+\item
+  For functional analysis: Lebesgue is essential
+\end{itemize}
 
 \part{Function Space}
 

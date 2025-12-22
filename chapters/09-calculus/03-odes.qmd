@@ -1,0 +1,42 @@
+## Differential Equations
+
+- FTC says every continuous function has an antiderivative
+- This immediately solves certain differential equations
+- Three classes where existence follows from our tools
+
+**Quadrature: y' = f(x)**
+
+- Theorem: y' = f(x) with y(a) = y₀ has unique solution y = y₀ + ∫ₐˣ f(t) dt
+- Existence: FTC I
+- Uniqueness: If y₁, y₂ solutions, then (y₁ − y₂)' = 0, so constant
+
+**Special Functions Defined by Quadrature**
+
+- FTC guarantees existence even when no elementary antiderivative exists
+- **Error function**: erf(x) = (2/√π) ∫₀ˣ e^{−t²} dt — probability
+- **Sine integral**: Si(x) = ∫₀ˣ (sin t)/t dt — signal processing
+- **Fresnel integrals**: S(x), C(x) — optics
+- **Logarithmic integral**: li(x) = ∫₂ˣ 1/(ln t) dt — prime number theorem
+
+**First-Order Linear: y' + P(x)y = Q(x)**
+
+- Theorem: If P, Q continuous near a, unique solution exists
+- Method: Integrating factor μ(x) = e^{∫ₐˣ P(t) dt}
+- Existence: All integrals exist by FTC
+- Example: y' + 2y = eˣ with y(0) = 1
+
+**Separable: y' = f(x)g(y)**
+
+- If g(y) ≠ 0, separate: dy/g(y) = f(x) dx
+- Integrate: G(y) = F(x) + C where G' = 1/g, F' = f
+- Key insight: G exists by FTC, G strictly monotone, so G invertible
+- We prove existence without computing G⁻¹ explicitly
+- Example: y' = xy gives y = Ae^{x²/2}
+- Example: y' = y² with y(0) = 1 gives y = 1/(1−x) — blows up at x = 1!
+
+**Limits of Elementary Methods**
+
+- y' = x + y² — no algebraic trick works
+- Solution exists, but proof requires new tools:
+  - Picard iteration, contraction mappings, completeness
+- This is Chapter 12

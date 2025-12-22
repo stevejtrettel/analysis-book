@@ -1,1 +1,12 @@
 ## The Many Faces of Completeness
+
+- Completeness has appeared as:
+  1. LUB (axiom)
+  2. MCT
+  3. Nested Intervals
+  4. Bolzano-Weierstrass
+  5. Cauchy completeness
+- Theorem: for an ordered field, all five are equivalent
+- Sketch the equivalence cycle (or key implications)
+- Why it matters: Cauchy generalizes to metric spaces without order
+- Historical note: Cantor's construction of ℝ via Cauchy sequences of rationals

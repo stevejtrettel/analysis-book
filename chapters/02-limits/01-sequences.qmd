@@ -1,0 +1,57 @@
+## Sequences
+
+
+**Tools for Reaching Real Numbers**
+
+- Chapter 1: ℝ is uncountable, finite descriptions are countable
+- **Key insight**: Infinite processes bridge the gap
+- Sequences let us *name* numbers we can't write down
+- Preview: we'll prove every real is the limit of a sequence of rationals
+
+**What Is a Sequence?**
+
+- Definition: function ℕ → ℝ; a list a₁, a₂, a₃, ...
+- Two ways to specify: closed form vs recursive
+
+**Many Objects Are Secretly Sequences**
+
+- Series Σaₙ: the sequence of partial sums Sₙ = a₁ + a₂ + ⋯ + aₙ
+- Products Πaₙ: the sequence of partial products Pₙ = a₁ · a₂ · ⋯ · aₙ
+- Recursive processes: aₙ₊₁ = f(aₙ)
+- **Unifying principle**: Master sequences, master them all
+
+**Historical Examples: Tools in Action**
+
+- *Archimedes and the parabola*: Sₙ = T(1 + 1/4 + ⋯ + 1/4ⁿ) — tool for finding area
+- *Babylonians and √2*: xₙ₊₁ = (xₙ + 2/xₙ)/2 — tool for finding √2
+- Both produce sequences; both "approach" something — but what does that mean?
+
+**When Algebra Gives Closed Forms**
+
+- Most sequences have no closed form for Sₙ or Pₙ
+- But some do — and pure algebra (no limits!) gives the formula
+
+**Geometric Partial Sums**
+
+- Sₙ = 1 + r + r² + ⋯ + rⁿ
+- Trick: compute Sₙ - rSₙ = 1 - rⁿ⁺¹
+- Formula: Sₙ = (1 - rⁿ⁺¹)/(1 - r) for r ≠ 1
+
+**Telescoping Series**
+
+- Idea: terms cancel in pairs, leaving only endpoints
+- If aₖ = tₖ - tₖ₋₁, then Sₙ = Σₖ₌₁ⁿ aₖ = tₙ - t₀
+- Example: 1/(k(k+1)) = 1/k - 1/(k+1), so Σₖ₌₁ⁿ 1/(k(k+1)) = 1 - 1/(n+1)
+
+**Telescoping Products**
+
+- Same idea multiplicatively: terms cancel
+- If aₖ = tₖ/tₖ₋₁, then Pₙ = Πₖ aₖ = tₙ/t₀
+- Example: (1 - 1/k²) = (k-1)(k+1)/k² = [(k-1)/k] · [(k+1)/k]
+- Πₖ₌₂ⁿ (1 - 1/k²) = (1/2) · ((n+1)/n) = (n+1)/(2n)
+
+**The Question**
+
+- We have Sₙ = (1 - rⁿ⁺¹)/(1-r) and Sₙ = 1 - 1/(n+1) and Pₙ = (n+1)/(2n)
+- What happens as n → ∞? What does "→" mean?
+- This is **convergence** — next section

@@ -1,1 +1,63 @@
 ## Axioms
+
+
+
+- What properties should ∫[a,b] f have?
+- **Axiom 1 (Rectangles)**: ∫[a,b] k = k(b−a) for constant k
+- **Axiom 2 (Monotonicity)**: f ≤ g on [a,b] ⟹ ∫[a,b] f ≤ ∫[a,b] g
+- **Axiom 3 (Additivity)**: ∫[a,b] f = ∫[a,c] f + ∫[c,b] f for c ∈ (a,b)
+- These say nothing about *which* functions are integrable — only how the integral behaves
+
+**Theorems from the Axioms**
+
+- **Bounds theorem**: m ≤ f ≤ M ⟹ m(b−a) ≤ ∫f ≤ M(b−a)
+  - Proof from monotonicity + rectangles
+- **Continuity of F**: F(x) = ∫ₐˣ f is continuous
+  - Proof from additivity + bounds
+
+**Upper and Lower Sums**
+
+- Partition P = {a = x₀ < x₁ < ... < xₙ = b}
+- mᵢ = inf f on [xᵢ₋₁, xᵢ], Mᵢ = sup f on [xᵢ₋₁, xᵢ]
+- Lower sum L(f,P) = Σ mᵢ(xᵢ − xᵢ₋₁)
+- Upper sum U(f,P) = Σ Mᵢ(xᵢ − xᵢ₋₁)
+
+**The Trapping Theorem**
+
+- **Theorem**: Any integral satisfying the axioms must satisfy L(f,P) ≤ ∫f ≤ U(f,P) for all P
+- Proof: Apply axioms to each subinterval, sum
+- **Corollary**: sup_P L(f,P) ≤ ∫f ≤ inf_P U(f,P)
+
+**When is the Value Forced?**
+
+- If sup_P L(f,P) = inf_P U(f,P), there is only one possible value for ∫f
+- The axioms completely determine the integral in this case
+- Key question: For which functions does sup L = inf U?
+
+**Theorem: Continuous Functions Have Forced Values**
+
+- **Theorem**: If f is continuous on [a,b], then sup_P L(f,P) = inf_P U(f,P)
+- Proof:
+  - f continuous on compact [a,b] ⟹ f uniformly continuous
+  - Given ε > 0, choose δ from uniform continuity
+  - Partition P with mesh < δ ⟹ Mᵢ − mᵢ < ε/(b−a) on each subinterval
+  - So U(f,P) − L(f,P) < ε
+  - Since ε arbitrary, sup L = inf U
+- **Corollary**: If f is continuous and an integral satisfying the axioms exists, then the axioms force its value uniquely
+
+**Examples: Values Forced by the Axioms**
+
+- **Example**: For f(x) = x on [0,1], the integral must equal 1/2
+  - Uniform partition Pₙ: L(f,Pₙ) = (n−1)/(2n), U(f,Pₙ) = (n+1)/(2n)
+  - Both → 1/2, so sup L = inf U = 1/2
+- **Example**: For f(x) = x² on [0,1], the integral must equal 1/3
+  - Calculation using Σi² = n(n+1)(2n+1)/6 shows sup L = inf U = 1/3
+- These values are *forced by the axioms* for any integral that exists
+
+**The Question**
+
+- We know *what* the integral must be for continuous functions
+- But does an integral satisfying the axioms actually *exist*?
+- We must verify that defining ∫f = sup L = inf U actually satisfies the axioms
+
+

@@ -1,0 +1,12 @@
+## Contraction Maps
+
+- Recursive sequences aₙ₊₁ = f(aₙ): when do they converge?
+- **Definition**: contraction with constant c ∈ (0,1)
+- **Theorem**: unique fixed point, all orbits converge, rate |aₙ − L| ≤ cⁿ⁻¹|a₁ − L|
+- Proof: geometric comparison → Cauchy → completeness
+- Revisit Ch 2 examples with convergence rates: Babylonian/√2, nested radicals
+- **√2 continued fraction revisited**: the tail [2; 2̄] satisfies t = 2 + 1/t
+  - Iteration f(x) = 2 + 1/x is a contraction on [2, 3]
+  - Fixed point is 1 + √2; then √2 = t − 1, same convergence rate
+  - Periodic CF ↔ iteration — preview of Lagrange
+- Remark: for those who know calculus, xₙ₊₁ = cos(xₙ) is another example

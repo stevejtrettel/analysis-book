@@ -1,0 +1,28 @@
+## Capturing Continuity
+
+
+**[NOTE: Need to decide which definition is primary]**
+
+**Option A (Sequences first)**:
+
+- Motivation: which functions preserve convergence?
+- Sequential definition: f continuous at a iff (xₙ → a ⟹ f(xₙ) → f(a))
+- ε-δ definition as equivalent local formulation
+- Prove equivalence
+
+**Option B (ε-δ first)**:
+
+- Historical motivation: capturing "no breaks"
+- ε-δ definition: ∀ε > 0 ∃δ > 0: |x − a| < δ ⟹ |f(x) − f(a)| < ε
+- Connection to ε-N game from Ch 2
+- Sequential characterization as equivalent (often easier for proofs)
+- Prove equivalence
+
+**Then (either way):**
+
+- Limits of functions: lim_{x→a} f(x) (with 0 < |x − a|)
+- Sequential characterization of function limits
+- One-sided limits
+- Continuity ⟺ lim_{x→a} f(x) = f(a)
+- Types of discontinuities: removable, jump, essential
+- Examples: sin(x)/x at 0 (removable), sign(x) at 0 (jump), sin(1/x) at 0 (essential), Dirichlet (essential everywhere)

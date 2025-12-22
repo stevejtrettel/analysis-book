@@ -1,0 +1,10 @@
+## Comparison
+
+- **Comparison Test**: 0 ≤ aₙ ≤ bₙ and Σbₙ converges ⟹ Σaₙ converges
+- **Limit Comparison**: aₙ/bₙ → L ∈ (0, ∞) ⟹ same behavior
+- **Absolute convergence**: definition, implies convergence
+- **Ratio Test**: comparison with geometric series via ratios
+- **Root Test**: comparison with geometric series via n-th roots
+- **Root Test (strong form)**: limsup version
+- **Viète product**: factors → 1 geometrically fast, Cauchy/comparison gives convergence
+- Remark: products with factors approaching 1 "fast enough" — connects to series via log (forward reference to Ch 6)

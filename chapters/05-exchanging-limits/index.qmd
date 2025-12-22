@@ -2,10 +2,11 @@
 
 {{< include 00-history.qmd >}}
 
-{{< include 01-iterated-limits.qmd >}}
+{{< include 01-rearrangement.qmd >}}
 
-{{< include 02-double-sums.qmd >}}
+{{< include 02-iterated-limits.qmd >}}
 
-{{< include 03-limits-sums.qmd >}}
+{{< include 03-double-sums.qmd >}}
 
-{{< include 04-rearrangements.qmd >}}
+{{< include 04-limits-sums.qmd >}}
+

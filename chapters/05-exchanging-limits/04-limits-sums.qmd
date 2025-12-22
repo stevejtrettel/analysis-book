@@ -1,0 +1,11 @@
+## Limits and Sums
+
+- Different situation: lim_n Σ_k a_k(n) vs Σ_k lim_n a_k(n)
+- Example where they differ: a_k(n) = 1/n for k ≤ n, else 0
+- **Theorem (Tannery)**: if |a_k(n)| ≤ M_k for all n, and ΣM_k < ∞, then limit and sum commute
+- Proof outline: split into head and tail, control each
+- **Big application**: (1 + x/n)ⁿ = Σxᵏ/k!
+  - Binomial expansion → for each k, the k-th term → xᵏ/k!
+  - Domination: |term| ≤ |x|ᵏ/k!, and Σ|x|ᵏ/k! converges
+  - Tannery applies: can interchange
+- **Corollary**: e = Σ1/n! (connecting Ch2 limit definition to series)
