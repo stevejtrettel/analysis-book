@@ -1,0 +1,31 @@
+## Best Approximation
+
+
+**The Problem**
+- Given $f$ and closed subspace $V$, find $g \in V$ minimizing $\|f - g\|$
+- Does a minimizer exist? Is it unique? Can we compute it?
+
+**In $L^2$: The Beautiful Case**
+- **Theorem**: Unique best approximation exists; it's the orthogonal projection
+- **Characterization**: $g$ is best approximation $\Leftrightarrow$ $f - g \perp V$
+- **Proof**: Expand $\|f - g\|^2 = \|f - P_V f\|^2 + \|P_V f - g\|^2$; minimized when $g = P_V f$
+- **Explicit formula**: If $V = \text{span}\{\phi_1, \ldots, \phi_n\}$ orthonormal, then
+$$g = \sum_{k=1}^n \langle f, \phi_k \rangle \phi_k$$
+
+**Examples in $L^2$**
+- Best constant approximation: $g = \frac{1}{b-a}\int_a^b f$ (the average!)
+- Best linear approximation
+- Best approximation by $\text{span}\{1, \cos x, \sin x, \ldots, \cos nx, \sin nx\}$
+  - **This is the Fourier partial sum** — derived without saying "Fourier"
+
+**In Other Spaces: The Contrast**
+- **$L^p$ for $1 < p < \infty$, $p \neq 2$**: Exists, unique, but NO explicit formula
+- **$L^1$**: Exists, but may NOT be unique (unit ball has flat sides)
+- **$C[a,b]$ / sup norm**: Exists, may not be unique; Chebyshev theory (equioscillation)
+- **Example**: Best constant approximation to $f(x) = x$ on $[-1,1]$
+  - In $L^2$: unique answer (the average)
+  - In $L^1$: any constant in an interval works
+
+**The Message**
+- $L^2$ is special: inner product gives orthogonal projection
+- **Looking ahead**: Fourier coefficients ARE this projection onto trig functions (Ch 14)

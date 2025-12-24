@@ -1,0 +1,7 @@
+## Applications
+
+
+- **Brachistochrone:** fastest descent curve $\to$ cycloid
+- **Catenary:** hanging chain minimizes potential energy
+- **Geodesics:** shortest paths on surfaces
+- **Isoperimetric inequality:** (variational proof, or save for Ch 14?)

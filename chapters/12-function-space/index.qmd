@@ -1,1 +1,13 @@
 # Function Spaces
+
+{{< include 00-intro.qmd >}}
+
+{{< include 01-spaces.qmd >}}
+
+{{< include 02-convergence.qmd >}}
+
+{{< include 03-approximation.qmd >}}
+
+{{< include 04-regularization.qmd >}}
+
+{{< include 05-stone-weierstrass.qmd >}}

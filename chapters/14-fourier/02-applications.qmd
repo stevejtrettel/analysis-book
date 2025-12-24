@@ -1,0 +1,15 @@
+## Applications
+
+
+- **Basel problem:** apply Parseval to $f(x) = x$ on $[0, \pi]$
+- Compute $\|f\|_2^2 = \frac{\pi^3}{3}$
+- Compute $b_n = \frac{2(-1)^{n+1}}{n}$
+- Parseval gives $\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}$
+- **Isoperimetric inequality:** among curves of fixed length $L$, circle encloses maximum area
+- Parametrize closed curve by $(x(t), y(t))$
+- Express length and area via Fourier coefficients
+- Apply Parseval; equality iff circle
+- **Heat equation revisited:** with Fourier series in hand, we can solve it
+- Solution: $u(x,t) = \sum_{n=1}^\infty b_n \sin(nx) e^{-n^2 t}$
+- Coefficients $b_n e^{-n^2 t}$ decay rapidly for $t > 0$
+- Solution is smooth for $t > 0$, even if initial condition $f$ is rough

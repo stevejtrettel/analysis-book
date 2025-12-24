@@ -1,7 +1,7 @@
 ## The Darboux Construction
 
 
-### The Definition
+**The Definition**
 
 - For continuous f on [a,b], define: ∫ₐᵇ f = sup_P L(f,P) = inf_P U(f,P)
 - We must verify this definition satisfies our three axioms

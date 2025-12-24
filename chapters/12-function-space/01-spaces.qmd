@@ -1,0 +1,30 @@
+## The Spaces $C[a,b]$, $L^1$, $L^2$
+
+
+**$C[a,b]$: Continuous Functions**
+- Definition: continuous functions on $[a,b]$
+- Sup norm: $\|f\|_\infty = \sup_{x \in [a,b]} |f(x)|$
+- This is a norm: positive definite, homogeneous, triangle inequality
+
+**$L^1[a,b]$: Integrable Functions**
+- Definition: functions with $\int_a^b |f| < \infty$
+- Norm: $\|f\|_1 = \int_a^b |f|$
+- Technical point: identify functions equal almost everywhere
+
+**$L^2[a,b]$: Square-Integrable Functions**
+- Definition: functions with $\int_a^b |f|^2 < \infty$
+- Norm: $\|f\|_2 = \left(\int_a^b |f|^2\right)^{1/2}$
+- **Inner product**: $\langle f, g \rangle = \int_a^b f \bar{g}$
+- Cauchy-Schwarz: $|\langle f, g \rangle| \leq \|f\|_2 \|g\|_2$
+- The inner product is what makes $L^2$ special
+
+**Inclusions**
+- On bounded intervals: $C[a,b] \subset L^2[a,b] \subset L^1[a,b]$
+- $\|f\|_1 \leq \sqrt{b-a} \|f\|_2 \leq (b-a) \|f\|_\infty$
+
+**Guided Exercises**
+- $C^k[a,b]$: $k$ continuous derivatives; norm $\|f\|_{C^k} = \sum_{j=0}^k \|f^{(j)}\|_\infty$
+- General $L^p$: $\|f\|_p = \left(\int |f|^p\right)^{1/p}$; Hölder's inequality
+
+
+

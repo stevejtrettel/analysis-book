@@ -275,7 +275,7 @@
 
 \title{Reaching for Infinity}
 \author{Steve Trettel}
-\date{2025-12-21}
+\date{2025-12-24}
 \begin{document}
 \frontmatter
 \maketitle
@@ -294,7 +294,7 @@
 
 \markboth{Preface}{Preface}
 
-Analysis Text, Draft III.
+Analysis Text, Draft III, opening motivation.
 
 \part{The Real Numbers}
 
@@ -2612,7 +2612,7 @@ Theorem}\label{power-series-taylors-theorem}
 
 \section{The Darboux Construction}\label{the-darboux-construction}
 
-\subsection{The Definition}\label{the-definition}
+\textbf{The Definition}
 
 \begin{itemize}
 \tightlist
@@ -3796,8 +3796,7 @@ limits.}
   Proof: Apply DCT to difference quotients
 \end{itemize}
 
-\subsection{Application: Integrating Series
-Term-by-Term}\label{application-integrating-series-term-by-term}
+\textbf{Application: Integrating Series Term-by-Term}
 
 \begin{itemize}
 \tightlist
@@ -3809,6 +3808,38 @@ Term-by-Term}\label{application-integrating-series-term-by-term}
 \item
   Proof: Partial sums dominated by \(\sum |f_n|\), apply DCT
 \end{itemize}
+
+\textbf{The Fundamental Theorem of Calculus}
+
+\textbf{Part 1 extends nicely}: - Theorem: If \(f \in L^1\), then
+\(F(x) = \int_a^x f\) is differentiable a.e. with \(F'(x) = f(x)\) a.e.
+- We can integrate any \(L^1\) function and recover it by
+differentiation
+
+\textbf{Part 2 is subtle}: - Just having \(F'\) exist and be integrable
+isn't enough - Counterexample: The Cantor function (devil's staircase) -
+Continuous, increasing, \(F(0) = 0\), \(F(1) = 1\) - \(F'(x) = 0\) a.e.
+(flat on complement of Cantor set) - But
+\(\int_0^1 F' = 0 \neq 1 = F(1) - F(0)\) - The function ``gains height''
+on the Cantor set where it has no derivative
+
+\textbf{Absolute continuity}: - Definition: \(F\) is absolutely
+continuous if for every \(\varepsilon > 0\) there exists \(\delta > 0\)
+such that for any finite collection of disjoint intervals \((a_i, b_i)\)
+with \(\sum(b_i - a_i) < \delta\), we have
+\(\sum |F(b_i) - F(a_i)| < \varepsilon\) - Stronger than uniform
+continuity (handles multiple intervals simultaneously) - The Cantor
+function is uniformly continuous but not absolutely continuous
+
+\textbf{Part 2 for Lebesgue}: - Theorem: If \(F\) absolutely continuous,
+then \(F'\) exists a.e., \(F' \in L^1\), and
+\(\int_a^b F' = F(b) - F(a)\)
+
+\textbf{The beautiful characterization}: -
+\(L^1 = \{F' : F \text{ absolutely continuous}\}\) - Lebesgue integrable
+functions are exactly the a.e. derivatives of absolutely continuous
+functions - Parallels: Darboux integrable \(\leftrightarrow\)
+derivatives of Lipschitz functions
 
 \textbf{Completeness}
 
@@ -3935,6 +3966,9 @@ Term-by-Term}\label{application-integrating-series-term-by-term}
   For analysis, the integral is primary; measure serves it
 \end{itemize}
 
+\textbf{EXERCISES} EXTENDING THE AXIOMS TO MEET OTHER MEASURES:
+STIELTJES INTEGRATION ETC
+
 \section{Why Lebesgue?}\label{why-lebesgue}
 
 \textbf{Uniqueness}
@@ -4047,9 +4081,593 @@ Term-by-Term}\label{application-integrating-series-term-by-term}
 
 \chapter{Function Spaces}\label{function-spaces}
 
-\chapter{Fourier Analysis}\label{fourier-analysis}
+\begin{itemize}
+\tightlist
+\item
+  Chapter 1: We asked ``what is \(\mathbb{R}\)?'' Answer: complete
+  ordered field
+\item
+  Now: What are spaces of functions? What structure do they have?
+\item
+  Same questions: completeness, convergence, density, approximation
+\item
+  Three main examples: \(C[a,b]\), \(L^1\), \(L^2\) --- each complete,
+  each with its own character
+\item
+  \(L^2\) has extra structure (inner product) that makes it special
+\end{itemize}
 
-\chapter{Advanced Topics}\label{advanced-topics}
+\section{\texorpdfstring{The Spaces \(C[a,b]\), \(L^1\),
+\(L^2\)}{The Spaces C{[}a,b{]}, L\^{}1, L\^{}2}}\label{the-spaces-cab-l1-l2}
+
+\textbf{\(C[a,b]\): Continuous Functions} - Definition: continuous
+functions on \([a,b]\) - Sup norm:
+\(\|f\|_\infty = \sup_{x \in [a,b]} |f(x)|\) - This is a norm: positive
+definite, homogeneous, triangle inequality
+
+\textbf{\(L^1[a,b]\): Integrable Functions} - Definition: functions with
+\(\int_a^b |f| < \infty\) - Norm: \(\|f\|_1 = \int_a^b |f|\) - Technical
+point: identify functions equal almost everywhere
+
+\textbf{\(L^2[a,b]\): Square-Integrable Functions} - Definition:
+functions with \(\int_a^b |f|^2 < \infty\) - Norm:
+\(\|f\|_2 = \left(\int_a^b |f|^2\right)^{1/2}\) - \textbf{Inner
+product}: \(\langle f, g \rangle = \int_a^b f \bar{g}\) -
+Cauchy-Schwarz: \(|\langle f, g \rangle| \leq \|f\|_2 \|g\|_2\) - The
+inner product is what makes \(L^2\) special
+
+\textbf{Inclusions} - On bounded intervals:
+\(C[a,b] \subset L^2[a,b] \subset L^1[a,b]\) -
+\(\|f\|_1 \leq \sqrt{b-a} \|f\|_2 \leq (b-a) \|f\|_\infty\)
+
+\textbf{Guided Exercises} - \(C^k[a,b]\): \(k\) continuous derivatives;
+norm \(\|f\|_{C^k} = \sum_{j=0}^k \|f^{(j)}\|_\infty\) - General
+\(L^p\): \(\|f\|_p = \left(\int |f|^p\right)^{1/p}\); Hölder's
+inequality
+
+\section{Completeness \& Convergence}\label{completeness-convergence}
+
+\textbf{Completeness of \(C[a,b]\)} - Theorem: Cauchy sequence in sup
+norm \(\Rightarrow\) converges in sup norm - Proof: pointwise limit
+exists; uniform convergence \(\Rightarrow\) limit is continuous -
+\textbf{Message}: Uniform limit of continuous functions is continuous
+
+\textbf{Completeness of \(L^1\) and \(L^2\)} - Theorem (Riesz-Fischer):
+\(L^1\) and \(L^2\) are complete - Proof uses DCT (Ch 10) - Key step:
+Cauchy sequence has subsequence converging a.e.; DCT gives \(L^p\)
+convergence
+
+\textbf{Comparing Notions of Convergence} - Uniform convergence:
+\(\|f_n - f\|_\infty \to 0\) - \(L^p\) convergence:
+\(\|f_n - f\|_p \to 0\) - Pointwise convergence: \(f_n(x) \to f(x)\) for
+each \(x\) - \textbf{Examples where they differ}: - Pointwise but not
+uniform: \(f_n(x) = x^n\) on \([0,1]\) - \(L^2\) but not pointwise:
+sliding bumps - Pointwise but not \(L^1\): tall thin spikes
+
+\textbf{Interchanging Limits} - \textbf{With integration}: Uniform
+convergence \(\Rightarrow\) \(\int f_n \to \int f\) - \textbf{With
+integration}: \(L^1\) convergence \(\Rightarrow\)
+\(\int f_n \to \int f\) (immediate from norm) - \textbf{With
+differentiation}: Need uniform convergence of derivatives -
+\textbf{Callback to Ch 10}: DCT as the tool for \(L^p\)
+
+\section{Best Approximation}\label{best-approximation}
+
+\textbf{The Problem} - Given \(f\) and closed subspace \(V\), find
+\(g \in V\) minimizing \(\|f - g\|\) - Does a minimizer exist? Is it
+unique? Can we compute it?
+
+\textbf{In \(L^2\): The Beautiful Case} - \textbf{Theorem}: Unique best
+approximation exists; it's the orthogonal projection -
+\textbf{Characterization}: \(g\) is best approximation
+\(\Leftrightarrow\) \(f - g \perp V\) - \textbf{Proof}: Expand
+\(\|f - g\|^2 = \|f - P_V f\|^2 + \|P_V f - g\|^2\); minimized when
+\(g = P_V f\) - \textbf{Explicit formula}: If
+\(V = \text{span}\{\phi_1, \ldots, \phi_n\}\) orthonormal, then
+\[g = \sum_{k=1}^n \langle f, \phi_k \rangle \phi_k\]
+
+\textbf{Examples in \(L^2\)} - Best constant approximation:
+\(g = \frac{1}{b-a}\int_a^b f\) (the average!) - Best linear
+approximation - Best approximation by
+\(\text{span}\{1, \cos x, \sin x, \ldots, \cos nx, \sin nx\}\) -
+\textbf{This is the Fourier partial sum} --- derived without saying
+``Fourier''
+
+\textbf{In Other Spaces: The Contrast} - \textbf{\(L^p\) for
+\(1 < p < \infty\), \(p \neq 2\)}: Exists, unique, but NO explicit
+formula - \textbf{\(L^1\)}: Exists, but may NOT be unique (unit ball has
+flat sides) - \textbf{\(C[a,b]\) / sup norm}: Exists, may not be unique;
+Chebyshev theory (equioscillation) - \textbf{Example}: Best constant
+approximation to \(f(x) = x\) on \([-1,1]\) - In \(L^2\): unique answer
+(the average) - In \(L^1\): any constant in an interval works
+
+\textbf{The Message} - \(L^2\) is special: inner product gives
+orthogonal projection - \textbf{Looking ahead}: Fourier coefficients ARE
+this projection onto trig functions (Ch 14)
+
+\section{Regularization}\label{regularization}
+
+\textbf{The Technique} - To analyze rough functions: approximate by
+smooth, prove for smooth, take limits - \textbf{Tool}: Convolution with
+a mollifier
+
+\textbf{Convolution} - Definition: \((f * g)(x) = \int f(x-t)g(t)\, dt\)
+- Properties: commutative, associative, linear in each argument -
+\textbf{Young's inequality}: \(\|f * g\|_p \leq \|f\|_1 \|g\|_p\)
+
+\textbf{Smoothness Inheritance} - \textbf{Theorem}: If
+\(\phi \in C^\infty\) and \(f \in L^1\), then \(f * \phi \in C^\infty\)
+- Proof: Differentiate under the integral; derivatives fall on \(\phi\)
+- \textbf{Message}: Convolution with smooth function produces smooth
+function
+
+\textbf{Approximate Identities} - Definition: Family \(\phi_\epsilon\)
+with 1. \(\int \phi_\epsilon = 1\) 2. \(\phi_\epsilon \geq 0\) 3.
+\(\phi_\epsilon\) concentrates at 0 as \(\epsilon \to 0\) -
+\textbf{Examples}: Rescaled box functions, Gaussians
+\(\frac{1}{\sqrt{2\pi\epsilon}}e^{-x^2/2\epsilon}\)
+
+\textbf{The Approximation Theorem} - \textbf{Theorem}:
+\(f * \phi_\epsilon \to f\) as \(\epsilon \to 0\) - Uniformly for
+\(f \in C[a,b]\) - In \(L^p\) norm for \(f \in L^p\) - Proof:
+\(f * \phi_\epsilon - f = \int [f(x-t) - f(x)]\phi_\epsilon(t)\, dt\);
+use concentration of \(\phi_\epsilon\)
+
+\textbf{The Density Payoffs} - \textbf{Theorem}: \(C^\infty\) is dense
+in \(C[a,b]\) (sup norm) - \textbf{Theorem}: \(C_c^\infty\) is dense in
+\(L^p\) - Proof: Convolve with smooth mollifier; apply approximation
+theorem
+
+\textbf{Looking Ahead} - Fejér kernel is an approximate identity (Ch 14)
+- Heat kernel \(K_t\) is an approximate identity as \(t \to 0\) (Ch 15)
+
+\section{Stone Weierstrass}\label{stone-weierstrass}
+
+\textbf{The Question} - \(C^\infty\) is dense (12.4). Can even less
+suffice? - Are polynomials dense? Trig polynomials?
+
+\textbf{Weierstrass Approximation Theorem} - \textbf{Theorem}:
+Polynomials are dense in \(C[a,b]\) - Every continuous function is a
+uniform limit of polynomials - Remarkable: polynomials are so rigid
+(analytic!), yet they approximate everything
+
+\textbf{Proof via Bernstein Polynomials} -
+\(B_n(f)(x) = \sum_{k=0}^n f(k/n) \binom{n}{k} x^k (1-x)^{n-k}\) -
+Probabilistic interpretation: expected value of \(f\) at binomial random
+variable - Theorem: \(B_n(f) \to f\) uniformly for continuous \(f\) -
+Proof uses law of large numbers flavor: binomial concentrates at \(x\)
+
+\textbf{Stone-Weierstrass: The General Principle} - \textbf{Theorem}:
+Let \(X\) be compact, \(A \subset C(X)\) a subalgebra. If: 1. \(A\)
+separates points: for \(x \neq y\), some \(f \in A\) has
+\(f(x) \neq f(y)\) 2. \(A\) contains constants
+
+Then \(A\) is dense in \(C(X)\).
+
+\textbf{Corollaries} - \textbf{Polynomials dense in \(C[a,b]\)}: Check
+polynomials separate points (use \(f(x) = x\)), contain constants ✓ -
+\textbf{Trig polynomials dense in \(C(\mathbb{T})\)}: Check they
+separate points, contain constants ✓ - \textbf{Polynomials in \((x,y)\)
+dense in \(C([a,b] \times [c,d])\)}
+
+\textbf{The Narrative} - 12.4 showed: smooth functions approximate
+continuous - 12.5 shows: even polynomials suffice --- remarkable! -
+\textbf{Looking ahead}: Fourier gives EXPLICIT polynomial approximations
+with computable error (Ch 14)
+
+\chapter{Differential Equations}\label{differential-equations-1}
+
+This chapter develops the theory of ordinary differential equations,
+using the metric space and completeness results from Chapter 11. We
+prove existence and uniqueness via contraction mapping, study linear
+systems via matrix exponentials, and introduce calculus of variations.
+
+\section{Existence and Uniqueness}\label{existence-and-uniqueness}
+
+\begin{itemize}
+\tightlist
+\item
+  Recall from Ch 11: higher-order equations reduce to first-order
+  systems; systems are the general case
+\item
+  \textbf{The problem:} \(\mathbf{y}' = \mathbf{f}(t,\mathbf{y})\),
+  \(\mathbf{y}(t_0) = \mathbf{y}_0\)
+\item
+  \textbf{Reformulation as integral equation:}
+  \(\mathbf{y}(t) = \mathbf{y}_0 + \int_{t_0}^t \mathbf{f}(s, \mathbf{y}(s))\, ds\)
+\item
+  Define operator \(T\) on continuous functions (using
+  \(C([a,b], \mathbb{R}^n)\) from Ch 11)
+\item
+  \(\mathbf{f}\) Lipschitz in \(\mathbf{y}\) \(\Rightarrow\) \(T\) is
+  contraction (on small time interval)
+\item
+  \textbf{Picard-Lindelöf theorem} via Banach fixed point (Ch 11
+  payoff!)
+\item
+  \textbf{Picard iteration:}
+  \(\mathbf{y}_0, T\mathbf{y}_0, T^2\mathbf{y}_0, \ldots\) converges to
+  solution
+\end{itemize}
+
+\section{Continuous Dependence}\label{continuous-dependence}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Gronwall's inequality:} if
+  \(u(t) \leq \alpha + \int_0^t \beta u(s)\, ds\) then
+  \(u(t) \leq \alpha e^{\beta t}\)
+\item
+  \textbf{Theorem:} solutions depend continuously on initial conditions
+\item
+  \textbf{Theorem:} solutions depend continuously on parameters
+\item
+  \textbf{Brief:} stability of equilibria, connection to eigenvalues of
+  linearization
+\item
+  \textbf{Remark:} continuous dependence is short-time; chaos is
+  long-time divergence (not developed)
+\end{itemize}
+
+\section{Linear Systems}\label{linear-systems}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{The problem:} \(\mathbf{y}' = A\mathbf{y}\) for constant
+  matrix \(A\)
+\item
+  \textbf{Motivation:} higher-order linear equations give companion
+  matrix (revisit Ch 11 reduction)
+\item
+  \textbf{Matrix exponential:}
+  \(e^{A} = \sum_{k=0}^\infty \frac{A^k}{k!}\)
+\item
+  Convergence via matrix norm and completeness (Ch 11)
+\item
+  \textbf{Solution:} \(\mathbf{y}(t) = e^{At}\mathbf{y}_0\)
+\item
+  \textbf{Computing \(e^{At}\):} diagonalization when possible
+\item
+  \textbf{Complex eigenvalues} (using \(\mathbb{C}\) from Ch 11):
+  \(e^{(a+bi)t} = e^{at}(\cos(bt) + i\sin(bt))\)
+\item
+  \textbf{Example:} rotation matrix, eigenvalues \(\pm i\), oscillation
+\item
+  \textbf{Message:} complex numbers explain oscillation in real systems
+\end{itemize}
+
+\section{Calculus of Variations}\label{calculus-of-variations}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{The problem:} minimize \(\int_a^b L(x, y, y')\, dx\) over
+  paths \(y\) with fixed endpoints
+\item
+  \textbf{Euler-Lagrange equation:}
+  \(\frac{\partial L}{\partial y} - \frac{d}{dx}\frac{\partial L}{\partial y'} = 0\)
+\item
+  \textbf{Derivation:} via perturbation \(y + \epsilon \eta\),
+  differentiate, set to zero
+\item
+  E-L is a second-order ODE; by 13.1, solutions form a 2-parameter
+  family
+\item
+  Boundary conditions \(y(a) = A\), \(y(b) = B\) select from this family
+  --- a finite-dimensional problem
+\item
+  \textbf{Note:} this is a necessary condition; existence of minimizers
+  is subtle (beyond our scope)
+\end{itemize}
+
+\section{Applications}\label{applications}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Brachistochrone:} fastest descent curve \(\to\) cycloid
+\item
+  \textbf{Catenary:} hanging chain minimizes potential energy
+\item
+  \textbf{Geodesics:} shortest paths on surfaces
+\item
+  \textbf{Isoperimetric inequality:} (variational proof, or save for Ch
+  14?)
+\end{itemize}
+
+\chapter{Fourier Series}\label{fourier-series}
+
+This chapter develops the theory of Fourier series, building on the
+density of trigonometric polynomials (Stone-Weierstrass, Ch 12) and
+\(L^2\) theory (Ch 12). We derive the Fourier formula via least squares,
+prove Parseval's identity, and explore applications. The chapter
+culminates in understanding why Fourier series are special: complex
+exponentials diagonalize all constant-coefficient differential
+operators.
+
+\begin{itemize}
+\tightlist
+\item
+  \(u_t = u_{xx}\), boundary conditions \(u(0,t) = u(\pi, t) = 0\),
+  initial condition \(u(x,0) = f(x)\)
+\item
+  \textbf{Separation of variables:} try \(u(x,t) = X(x)T(t)\)
+\item
+  Get \(X'' = -\lambda X\) with \(X(0) = X(\pi) = 0\)
+\item
+  Solutions: \(X_n(x) = \sin(nx)\) with eigenvalues \(\lambda_n = n^2\)
+\item
+  General solution:
+  \(u(x,t) = \sum_{n=1}^\infty b_n \sin(nx) e^{-n^2 t}\)
+\item
+  \textbf{The question:} given \(f\), can we write
+  \(f(x) = \sum_{n=1}^\infty b_n \sin(nx)\)? How do we find \(b_n\)?
+\end{itemize}
+
+\section{Sine and Cosine Series}\label{sine-and-cosine-series}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Starting point:} Stone-Weierstrass (Ch 12) tells us
+  trigonometric polynomials are dense in \(C(\mathbb{T})\), hence in
+  \(L^2\)
+\item
+  We know SOME trig polynomial gets arbitrarily close to \(f\); we want
+  the BEST one
+\item
+  \textbf{Orthogonality of sines:} direct computation shows
+  \(\int_0^\pi \sin(mx)\sin(nx)\, dx = \frac{\pi}{2}\delta_{mn}\)
+\item
+  \textbf{Best \(L^2\) approximation:} among all
+  \(\sum_{n=1}^N a_n \sin(nx)\), which minimizes
+  \(\|f - \sum a_n \sin(nx)\|_2^2\)?
+\item
+  Orthogonality implies: best approximation is orthogonal projection
+\item
+  \textbf{Formula forced:}
+  \(b_n = \frac{2}{\pi}\int_0^\pi f(x)\sin(nx)\, dx\)
+\item
+  \textbf{Bessel's inequality:}
+  \(\sum_{n=1}^\infty |b_n|^2 \leq \frac{2}{\pi}\|f\|_2^2\)
+\item
+  \textbf{Proof:} expand \(\|f - S_N\|^2 \geq 0\), rearrange
+\item
+  \textbf{\(L^2\) convergence:} density says some trig polynomials
+  converge to \(f\); Fourier partial sums are the BEST trig polynomials
+  of each degree; so Fourier partial sums converge
+\item
+  \textbf{Parseval's identity:}
+  \(\sum_{n=1}^\infty |b_n|^2 = \frac{2}{\pi}\|f\|_2^2\) (Bessel becomes
+  equality)
+\item
+  \textbf{The full circle:} on \([-\pi, \pi]\) periodic, need
+  \(\{1, \cos(nx), \sin(nx)\}\)
+\item
+  Same theory applies; guided exercises develop this case
+\end{itemize}
+
+\section{Applications}\label{applications-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Basel problem:} apply Parseval to \(f(x) = x\) on \([0, \pi]\)
+\item
+  Compute \(\|f\|_2^2 = \frac{\pi^3}{3}\)
+\item
+  Compute \(b_n = \frac{2(-1)^{n+1}}{n}\)
+\item
+  Parseval gives \(\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}\)
+\item
+  \textbf{Isoperimetric inequality:} among curves of fixed length \(L\),
+  circle encloses maximum area
+\item
+  Parametrize closed curve by \((x(t), y(t))\)
+\item
+  Express length and area via Fourier coefficients
+\item
+  Apply Parseval; equality iff circle
+\item
+  \textbf{Heat equation revisited:} with Fourier series in hand, we can
+  solve it
+\item
+  Solution: \(u(x,t) = \sum_{n=1}^\infty b_n \sin(nx) e^{-n^2 t}\)
+\item
+  Coefficients \(b_n e^{-n^2 t}\) decay rapidly for \(t > 0\)
+\item
+  Solution is smooth for \(t > 0\), even if initial condition \(f\) is
+  rough
+\end{itemize}
+
+\section{Eigenfunction Expansions}\label{eigenfunction-expansions}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Step back:} what did we really do?
+\item
+  Sines \(\sin(nx)\) are eigenfunctions of \(-\frac{d^2}{dx^2}\) with
+  Dirichlet boundary conditions
+\item
+  \(-\frac{d^2}{dx^2}\sin(nx) = n^2 \sin(nx)\)
+\item
+  \textbf{Why orthogonality?} The operator \(-\frac{d^2}{dx^2}\) is
+  self-adjoint (integration by parts)
+\item
+  Eigenfunctions of self-adjoint operators with distinct eigenvalues are
+  orthogonal
+\item
+  This is why least squares worked!
+\item
+  \textbf{General principle:} for self-adjoint operator \(L\), expand in
+  eigenfunctions of \(L\)
+\item
+  \textbf{Sturm-Liouville problems:}
+  \(-\frac{d}{dx}\left(p(x)\frac{du}{dx}\right) + q(x)u = \lambda u\)
+  with boundary conditions
+\item
+  Under suitable conditions: discrete eigenvalues, orthogonal
+  eigenfunctions, completeness
+\item
+  Different operators give different orthogonal bases
+\item
+  \textbf{Examples} (stated, not developed):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Legendre polynomials: eigenfunctions on \([-1,1]\) for
+    \(-\frac{d}{dx}((1-x^2)\frac{d}{dx})\)
+  \item
+    Hermite functions: eigenfunctions on \(\mathbb{R}\) for
+    \(-\frac{d^2}{dx^2} + x^2\) (harmonic oscillator)
+  \item
+    Bessel functions: eigenfunctions for problems with radial symmetry
+  \end{itemize}
+\item
+  \textbf{Message:} eigenfunction expansion is a powerful general
+  technique, not special to sines
+\end{itemize}
+
+\section{Diagonalizing the
+Derivative}\label{diagonalizing-the-derivative}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Question:} we diagonalized \(-\frac{d^2}{dx^2}\); what about
+  \(\frac{d}{dx}\) itself?
+\item
+  \textbf{Over \(\mathbb{R}\):} seek periodic \(f\) with
+  \(\frac{d}{dx}f = \lambda f\)
+\item
+  Solutions are \(f = Ce^{\lambda x}\)
+\item
+  But \(e^{\lambda x}\) is periodic only if \(\lambda = 0\)
+\item
+  \textbf{Over \(\mathbb{R}\), no periodic eigenfunctions except
+  constants!}
+\item
+  \textbf{Upgrade to \(\mathbb{C}\):} allow \(\lambda = in\) for
+  \(n \in \mathbb{Z}\)
+\item
+  Now \(e^{inx}\) is periodic with period \(2\pi\) ✓
+\item
+  Check: \(\frac{d}{dx}e^{inx} = in \cdot e^{inx}\) ✓
+\item
+  \textbf{Euler's formula:} \(e^{inx} = \cos(nx) + i\sin(nx)\)
+\item
+  The sines and cosines we started with!
+\item
+  \textbf{Complex Fourier series:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Orthonormality:
+    \(\langle e^{imx}, e^{inx} \rangle = \int_{-\pi}^{\pi} e^{imx}\overline{e^{inx}}\, dx = 2\pi \delta_{mn}\)
+  \item
+    Simpler than sine-cosine version (one formula, uniform
+    normalization)
+  \item
+    Coefficients:
+    \(c_n = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(x) e^{-inx}\, dx\)
+  \item
+    Parseval:
+    \(\sum_{n \in \mathbb{Z}} |c_n|^2 = \frac{1}{2\pi}\|f\|_2^2\)
+  \item
+    Connection: \(c_n\) and \(c_{-n}\) encode \(a_n\) and \(b_n\) from
+    sine-cosine series
+  \end{itemize}
+\item
+  \textbf{Why Fourier is special:} complex exponentials diagonalize not
+  just \(\frac{d}{dx}\), but ALL of \(\mathbb{C}[\frac{d}{dx}]\)
+\item
+  For any polynomial \(P\):
+  \(P\left(\frac{d}{dx}\right)e^{inx} = P(in) \cdot e^{inx}\)
+\item
+  \textbf{Message:} Fourier isn't just one eigenfunction expansion among
+  many --- it's the universal one for constant-coefficient differential
+  operators
+\item
+  \textbf{Looking ahead:} on \(\mathbb{R}\), eigenfunctions
+  \(e^{i\xi x}\) for continuous \(\xi\); but
+  \(e^{i\xi x} \notin L^2(\mathbb{R})\) --- leads to distributions (Ch
+  15)
+\end{itemize}
+
+\section{Pointwise Convergence}\label{pointwise-convergence}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{The question:} we have \(L^2\) convergence; what about
+  pointwise?
+\item
+  \(L^2\) convergence does NOT imply pointwise convergence in general
+\item
+  \textbf{Approximate identities:} a family \(\phi_N\) with
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    \(\frac{1}{2\pi}\int_{-\pi}^{\pi} \phi_N = 1\)
+  \item
+    \(\phi_N \geq 0\)
+  \item
+    \(\phi_N\) concentrates at \(0\) as \(N \to \infty\)
+  \end{enumerate}
+\item
+  \textbf{General theorem:} if \(\phi_N\) is an approximate identity,
+  then \(f * \phi_N \to f\) uniformly for continuous \(f\)
+\item
+  \textbf{The Fejér kernel:}
+  \(F_N(x) = \frac{1}{N+1}\left(\frac{\sin((N+1)x/2)}{\sin(x/2)}\right)^2\)
+\item
+  Clean with complex exponentials:
+  \(F_N(x) = \sum_{|n| \leq N}\left(1 - \frac{|n|}{N+1}\right)e^{inx}\)
+\item
+  Check: \(F_N \geq 0\) (it's a square), integral is 1, concentrates at
+  0
+\item
+  \textbf{Fejér's theorem:} the Cesàro means
+  \(\sigma_N f = f * F_N = \frac{S_0 f + S_1 f + \cdots + S_N f}{N+1}\)
+  converge uniformly to \(f\) for continuous \(f\)
+\item
+  \textbf{Corollary:} Weierstrass approximation theorem (trig
+  polynomials dense in \(C(\mathbb{T})\))
+\item
+  \textbf{Why not Fourier partial sums directly?} The Dirichlet kernel
+  \(D_N\) is NOT nonnegative
+\item
+  \(\int |D_N| \to \infty\) --- not an approximate identity
+\item
+  \textbf{Pathology:} there exist continuous functions whose Fourier
+  series diverge at a point
+\item
+  Cesàro averaging ``smooths out'' the divergence
+\item
+  \textbf{Looking ahead:} approximate identities return in Chapter 15
+\item
+  Heat kernel \(K_t \to \delta\) as \(t \to 0\)
+\item
+  Approximating \(\delta\) by smooth functions
+\end{itemize}
+
+\chapter{Beyond Functions}\label{beyond-functions}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Coda}\label{coda}
+\addcontentsline{toc}{chapter}{Coda}
+
+\markboth{Coda}{Coda}
+
+Analysis Text, Draft III.
 
 
 \backmatter

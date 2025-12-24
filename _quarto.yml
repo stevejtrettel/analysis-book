@@ -30,10 +30,13 @@ book:
       chapters:
         - chapters/11-metrics/index.qmd
         - chapters/12-function-space/index.qmd
-        - chapters/13-fourier/index.qmd
-        - chapters/14-topics/index.qmd
+        - chapters/13-odes/index.qmd
+        - chapters/14-fourier/index.qmd
+        - chapters/15-distributions/index.qmd
 
-        
+    - coda.qmd
+
+
 format:
   stevejtrettel/course-notes-html:
     include-before-body: 

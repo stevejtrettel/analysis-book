@@ -1,0 +1,38 @@
+## Regularization
+
+
+**The Technique**
+- To analyze rough functions: approximate by smooth, prove for smooth, take limits
+- **Tool**: Convolution with a mollifier
+
+**Convolution**
+- Definition: $(f * g)(x) = \int f(x-t)g(t)\, dt$
+- Properties: commutative, associative, linear in each argument
+- **Young's inequality**: $\|f * g\|_p \leq \|f\|_1 \|g\|_p$
+
+**Smoothness Inheritance**
+- **Theorem**: If $\phi \in C^\infty$ and $f \in L^1$, then $f * \phi \in C^\infty$
+- Proof: Differentiate under the integral; derivatives fall on $\phi$
+- **Message**: Convolution with smooth function produces smooth function
+
+**Approximate Identities**
+- Definition: Family $\phi_\epsilon$ with
+  1. $\int \phi_\epsilon = 1$
+  2. $\phi_\epsilon \geq 0$
+  3. $\phi_\epsilon$ concentrates at 0 as $\epsilon \to 0$
+- **Examples**: Rescaled box functions, Gaussians $\frac{1}{\sqrt{2\pi\epsilon}}e^{-x^2/2\epsilon}$
+
+**The Approximation Theorem**
+- **Theorem**: $f * \phi_\epsilon \to f$ as $\epsilon \to 0$
+  - Uniformly for $f \in C[a,b]$
+  - In $L^p$ norm for $f \in L^p$
+- Proof: $f * \phi_\epsilon - f = \int [f(x-t) - f(x)]\phi_\epsilon(t)\, dt$; use concentration of $\phi_\epsilon$
+
+**The Density Payoffs**
+- **Theorem**: $C^\infty$ is dense in $C[a,b]$ (sup norm)
+- **Theorem**: $C_c^\infty$ is dense in $L^p$
+- Proof: Convolve with smooth mollifier; apply approximation theorem
+
+**Looking Ahead**
+- Fejér kernel is an approximate identity (Ch 14)
+- Heat kernel $K_t$ is an approximate identity as $t \to 0$ (Ch 15)

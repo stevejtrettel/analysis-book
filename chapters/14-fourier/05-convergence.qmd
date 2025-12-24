@@ -1,0 +1,24 @@
+## Pointwise Convergence
+
+
+- **The question:** we have $L^2$ convergence; what about pointwise?
+- $L^2$ convergence does NOT imply pointwise convergence in general
+- **Approximate identities:** a family $\phi_N$ with
+  1. $\frac{1}{2\pi}\int_{-\pi}^{\pi} \phi_N = 1$
+  2. $\phi_N \geq 0$
+  3. $\phi_N$ concentrates at $0$ as $N \to \infty$
+- **General theorem:** if $\phi_N$ is an approximate identity, then $f * \phi_N \to f$ uniformly for continuous $f$
+- **The Fejér kernel:** $F_N(x) = \frac{1}{N+1}\left(\frac{\sin((N+1)x/2)}{\sin(x/2)}\right)^2$
+- Clean with complex exponentials: $F_N(x) = \sum_{|n| \leq N}\left(1 - \frac{|n|}{N+1}\right)e^{inx}$
+- Check: $F_N \geq 0$ (it's a square), integral is 1, concentrates at 0
+- **Fejér's theorem:** the Cesàro means $\sigma_N f = f * F_N = \frac{S_0 f + S_1 f + \cdots + S_N f}{N+1}$ converge uniformly to $f$ for continuous $f$
+- **Corollary:** Weierstrass approximation theorem (trig polynomials dense in $C(\mathbb{T})$)
+- **Why not Fourier partial sums directly?** The Dirichlet kernel $D_N$ is NOT nonnegative
+- $\int |D_N| \to \infty$ — not an approximate identity
+- **Pathology:** there exist continuous functions whose Fourier series diverge at a point
+- Cesàro averaging "smooths out" the divergence
+- **Looking ahead:** approximate identities return in Chapter 15
+- Heat kernel $K_t \to \delta$ as $t \to 0$
+- Approximating $\delta$ by smooth functions
+
+

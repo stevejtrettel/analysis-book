@@ -42,3 +42,7 @@
 - Traditional: measure → measurable functions → integral
 - Our approach: integral → measure as byproduct
 - For analysis, the integral is primary; measure serves it
+
+
+**EXERCISES**
+EXTENDING THE AXIOMS TO MEET OTHER MEASURES: STIELTJES INTEGRATION ETC

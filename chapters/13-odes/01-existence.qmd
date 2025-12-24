@@ -1,0 +1,10 @@
+## Existence and Uniqueness
+
+
+- Recall from Ch 11: higher-order equations reduce to first-order systems; systems are the general case
+- **The problem:** $\mathbf{y}' = \mathbf{f}(t,\mathbf{y})$, $\mathbf{y}(t_0) = \mathbf{y}_0$
+- **Reformulation as integral equation:** $\mathbf{y}(t) = \mathbf{y}_0 + \int_{t_0}^t \mathbf{f}(s, \mathbf{y}(s))\, ds$
+- Define operator $T$ on continuous functions (using $C([a,b], \mathbb{R}^n)$ from Ch 11)
+- $\mathbf{f}$ Lipschitz in $\mathbf{y}$ $\Rightarrow$ $T$ is contraction (on small time interval)
+- **Picard-Lindelöf theorem** via Banach fixed point (Ch 11 payoff!)
+- **Picard iteration:** $\mathbf{y}_0, T\mathbf{y}_0, T^2\mathbf{y}_0, \ldots$ converges to solution

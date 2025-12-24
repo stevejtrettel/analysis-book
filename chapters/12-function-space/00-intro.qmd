@@ -1,0 +1,6 @@
+
+- Chapter 1: We asked "what is $\mathbb{R}$?" Answer: complete ordered field
+- Now: What are spaces of functions? What structure do they have?
+- Same questions: completeness, convergence, density, approximation
+- Three main examples: $C[a,b]$, $L^1$, $L^2$ — each complete, each with its own character
+- $L^2$ has extra structure (inner product) that makes it special

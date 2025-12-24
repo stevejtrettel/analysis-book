@@ -1,0 +1,27 @@
+## Completeness & Convergence
+
+
+**Completeness of $C[a,b]$**
+- Theorem: Cauchy sequence in sup norm $\Rightarrow$ converges in sup norm
+- Proof: pointwise limit exists; uniform convergence $\Rightarrow$ limit is continuous
+- **Message**: Uniform limit of continuous functions is continuous
+
+**Completeness of $L^1$ and $L^2$**
+- Theorem (Riesz-Fischer): $L^1$ and $L^2$ are complete
+- Proof uses DCT (Ch 10)
+- Key step: Cauchy sequence has subsequence converging a.e.; DCT gives $L^p$ convergence
+
+**Comparing Notions of Convergence**
+- Uniform convergence: $\|f_n - f\|_\infty \to 0$
+- $L^p$ convergence: $\|f_n - f\|_p \to 0$
+- Pointwise convergence: $f_n(x) \to f(x)$ for each $x$
+- **Examples where they differ**:
+  - Pointwise but not uniform: $f_n(x) = x^n$ on $[0,1]$
+  - $L^2$ but not pointwise: sliding bumps
+  - Pointwise but not $L^1$: tall thin spikes
+
+**Interchanging Limits**
+- **With integration**: Uniform convergence $\Rightarrow$ $\int f_n \to \int f$
+- **With integration**: $L^1$ convergence $\Rightarrow$ $\int f_n \to \int f$ (immediate from norm)
+- **With differentiation**: Need uniform convergence of derivatives
+- **Callback to Ch 10**: DCT as the tool for $L^p$

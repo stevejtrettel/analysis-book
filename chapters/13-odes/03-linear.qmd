@@ -1,0 +1,12 @@
+## Linear Systems
+
+
+- **The problem:** $\mathbf{y}' = A\mathbf{y}$ for constant matrix $A$
+- **Motivation:** higher-order linear equations give companion matrix (revisit Ch 11 reduction)
+- **Matrix exponential:** $e^{A} = \sum_{k=0}^\infty \frac{A^k}{k!}$
+- Convergence via matrix norm and completeness (Ch 11)
+- **Solution:** $\mathbf{y}(t) = e^{At}\mathbf{y}_0$
+- **Computing $e^{At}$:** diagonalization when possible
+- **Complex eigenvalues** (using $\mathbb{C}$ from Ch 11): $e^{(a+bi)t} = e^{at}(\cos(bt) + i\sin(bt))$
+- **Example:** rotation matrix, eigenvalues $\pm i$, oscillation
+- **Message:** complex numbers explain oscillation in real systems
