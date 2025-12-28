@@ -1,0 +1,29 @@
+# Chapter 1: Foundations
+
+### Narrative
+
+This chapter builds the number system on which all of analysis rests. We begin with the rational numbers ℚ, which satisfy the familiar rules of algebra and order. But ℚ has holes—gaps that break the fundamental theorems of calculus. The Intermediate Value Theorem fails. The Extreme Value Theorem fails. Sequences that "should" converge have no limit.
+
+Attempts to patch these holes one-by-one fail: every fix reveals new gaps. The solution is a bold axiomatic leap: define ℝ as a *complete* ordered field. Completeness—the property that every nonempty set bounded above has a supremum—fills all holes at once.
+
+The chapter closes with a surprise. The real numbers we've created form an uncountable set—vastly larger than the countable rationals or algebraics. We built ℝ to fill holes in ℚ, and it turned out to be an ocean where the nameable numbers are mere dust.
+
+### Requires
+
+Nothing—this is the foundation.
+
+### Sections
+
+1. **§1.1 Sets and Functions** — Language and notation: sets, functions, countability
+2. **§1.2 Ordered Fields** — Field axioms, order axioms, absolute value, intervals, Bernoulli
+3. **§1.3 The Incompleteness of ℚ** — √2 is irrational, patching fails, calculus breaks
+4. **§1.4 Completeness** — Bounds, supremum, the completeness axiom, nested intervals
+5. **§1.5 The Real Numbers** — Archimedean property, density, roots exist, exponents, uncountability
+
+### Historical Prelude
+
+The chapter opens with an unnumbered historical introduction (content TBD).
+
+### Explorations
+
+TBD

@@ -1,19 +1,21 @@
 ## Axioms
 
-
-
 - What properties should ∫[a,b] f have?
 - **Axiom 1 (Rectangles)**: ∫[a,b] k = k(b−a) for constant k
 - **Axiom 2 (Monotonicity)**: f ≤ g on [a,b] ⟹ ∫[a,b] f ≤ ∫[a,b] g
 - **Axiom 3 (Additivity)**: ∫[a,b] f = ∫[a,c] f + ∫[c,b] f for c ∈ (a,b)
 - These say nothing about *which* functions are integrable — only how the integral behaves
 
+
+
+
+
+
 **Theorems from the Axioms**
 
 - **Bounds theorem**: m ≤ f ≤ M ⟹ m(b−a) ≤ ∫f ≤ M(b−a)
   - Proof from monotonicity + rectangles
-- **Continuity of F**: F(x) = ∫ₐˣ f is continuous
-  - Proof from additivity + bounds
+
 
 **Upper and Lower Sums**
 

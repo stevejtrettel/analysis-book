@@ -10,7 +10,7 @@ book:
   chapters:
     - index.qmd
     
-    - part: "The Real Numbers"
+    - part: "Numbers"
       chapters:
         - chapters/01-foundations/index.qmd
         - chapters/02-limits/index.qmd
@@ -30,8 +30,8 @@ book:
       chapters:
         - chapters/11-metrics/index.qmd
         - chapters/12-function-space/index.qmd
-        - chapters/13-odes/index.qmd
-        - chapters/14-fourier/index.qmd
+        - chapters/13-fourier/index.qmd
+        - chapters/14-diffeq/index.qmd
         - chapters/15-distributions/index.qmd
 
     - coda.qmd

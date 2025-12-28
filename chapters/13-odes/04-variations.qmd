@@ -1,9 +1,0 @@
-## Calculus of Variations
-
-
-- **The problem:** minimize $\int_a^b L(x, y, y')\, dx$ over paths $y$ with fixed endpoints
-- **Euler-Lagrange equation:** $\frac{\partial L}{\partial y} - \frac{d}{dx}\frac{\partial L}{\partial y'} = 0$
-- **Derivation:** via perturbation $y + \epsilon \eta$, differentiate, set to zero
-- E-L is a second-order ODE; by 13.1, solutions form a 2-parameter family
-- Boundary conditions $y(a) = A$, $y(b) = B$ select from this family — a finite-dimensional problem
-- **Note:** this is a necessary condition; existence of minimizers is subtle (beyond our scope)

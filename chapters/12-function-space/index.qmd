@@ -6,8 +6,8 @@
 
 {{< include 02-convergence.qmd >}}
 
-{{< include 03-approximation.qmd >}}
+{{< include 03-optimization.qmd >}}
 
 {{< include 04-regularization.qmd >}}
 
-{{< include 05-stone-weierstrass.qmd >}}
+{{< include 05-density-theorems.qmd >}}

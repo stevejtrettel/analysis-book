@@ -1,2 +1,0 @@
-
-This chapter develops the theory of ordinary differential equations, using the metric space and completeness results from Chapter 11. We prove existence and uniqueness via contraction mapping, study linear systems via matrix exponentials, and introduce calculus of variations.

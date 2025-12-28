@@ -1,0 +1,77 @@
+## Fundamental Solutions and PDEs
+
+
+**The strategy**
+- Want to solve $Lu = f$ for differential operator $L$
+- Idea: find $G$ with $LG = \delta$ (fundamental solution)
+- Then $u = G * f$ solves $Lu = f$
+- Why? $L(G * f) = (LG) * f = \delta * f = f$
+
+**Finding fundamental solutions via Fourier**
+- $LG = \delta$ where $L = P(\frac{d}{dx})$
+- Take Fourier: $P(i\xi)\hat{G}(\xi) = 1$
+- Solve: $\hat{G}(\xi) = \frac{1}{P(i\xi)}$
+- Invert to find $G$
+- Poles of $\frac{1}{P(i\xi)}$ require care (principal value, etc.)
+
+**Heat equation on $\mathbb{R}$**
+
+*Setup:*
+- $u_t = u_{xx}$ for $x \in \mathbb{R}$, $t > 0$
+- Initial condition: $u(x, 0) = f(x)$
+
+*Fourier method:*
+- Take Fourier transform in $x$: $\hat{u}_t = (i\xi)^2 \hat{u} = -\xi^2 \hat{u}$
+- This is an ODE in $t$!
+- Solution: $\hat{u}(\xi, t) = \hat{f}(\xi) e^{-\xi^2 t}$
+- By convolution theorem: $\hat{u} = \hat{f} \cdot \hat{K}_t$ where $\hat{K}_t(\xi) = e^{-\xi^2 t}$
+- Therefore: $u = f * K_t$
+
+*The heat kernel:*
+- $\hat{K}_t(\xi) = e^{-\xi^2 t}$
+- Invert: $K_t(x) = \frac{1}{\sqrt{4\pi t}} e^{-x^2/4t}$
+- This is the fundamental solution
+
+*Heat kernel as delta limit:*
+- As $t \to 0$: $\hat{K}_t(\xi) = e^{-\xi^2 t} \to 1 = \hat{\delta}(\xi)$
+- Therefore: $K_t \to \delta$ in $\mathcal{S}'$
+- Direct proof: $K_t$ is approximate identity (Ch 12), so $\langle K_t, \phi \rangle \to \phi(0)$
+- Initial condition: $u(x,0) = (K_0 * f)(x) = (\delta * f)(x) = f(x)$ ✓
+
+*Smoothing property:*
+- $K_t \in C^\infty$ for $t > 0$
+- $u = K_t * f$ is $C^\infty$ for $t > 0$, even if $f$ is rough
+- Heat flow smooths instantly
+
+**Wave equation on $\mathbb{R}$**
+
+*Setup:*
+- $u_{tt} = c^2 u_{xx}$ for $x \in \mathbb{R}$, $t > 0$
+- Initial conditions: $u(x,0) = f(x)$, $u_t(x,0) = g(x)$
+
+*Fourier method:*
+- Take Fourier in $x$: $\hat{u}_{tt} = -c^2\xi^2 \hat{u}$
+- ODE: $\hat{u}_{tt} + c^2\xi^2 \hat{u} = 0$
+- General solution: $\hat{u} = A(\xi)\cos(c\xi t) + B(\xi)\sin(c\xi t)$
+- Initial conditions: $A = \hat{f}$, $c\xi B = \hat{g}$
+
+*D'Alembert's formula:*
+- Invert to get: $u(x,t) = \frac{1}{2}(f(x+ct) + f(x-ct)) + \frac{1}{2c}\int_{x-ct}^{x+ct} g(y)\, dy$
+- Two waves traveling in opposite directions
+
+*Fundamental solution:*
+- Response to $\delta$ initial position, zero initial velocity:
+- $W_t(x) = \frac{1}{2}(\delta(x-ct) + \delta(x+ct))$
+- Two delta functions propagating outward at speed $c$
+- Distributions essential to even write this!
+
+*Finite vs infinite speed:*
+- Heat: $K_t(x) > 0$ for all $x$, all $t > 0$ — infinite propagation speed
+- Wave: $W_t$ supported on $\{x : |x| = ct\}$ — finite propagation speed $c$
+- Information travels at most at speed $c$ for wave equation
+
+**General constant-coefficient operators**
+- $P(\partial_t, \partial_x) u = f$
+- Fourier transforms to algebraic/ODE: $P(\partial_t, i\xi)\hat{u} = \hat{f}$
+- Solve in Fourier space, invert
+- This is the general method

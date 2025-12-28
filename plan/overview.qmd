@@ -1845,7 +1845,7 @@ We first explore what our axiomatic integral already handles, discovering it's a
 - Our axiomatic integral was built for continuous functions
 - But the construction works more broadly
 - Upper and lower sums make sense for any bounded function
-- **Definition**: f is *Darboux integrable* if upper integral = lower integral
+- **Definition**: $f$ is *Darboux integrable* if upper integral equals lower integral
 - What functions does this capture?
 
 ### The Class of Integrable Functions
@@ -1858,51 +1858,51 @@ We first explore what our axiomatic integral already handles, discovering it's a
 - General principle: discontinuities must be "small"
 
 **It's a vector space**:
-- If f, g integrable and α, β ∈ ℝ, then αf + βg integrable
-- ∫(αf + βg) = α∫f + β∫g
+- If $f, g$ integrable and $\alpha, \beta \in \mathbb{R}$, then $\alpha f + \beta g$ integrable
+- $\int(\alpha f + \beta g) = \alpha \int f + \beta \int g$
 - Linearity inherited from the construction
 - We can do algebra with integrable functions
 
 ### The Boundary
 
-- χ_Q: discontinuous everywhere, not integrable
-- Upper integral = 1, lower integral = 0
+- $\chi_{\mathbb{Q}}$: discontinuous everywhere, not integrable
+- Upper integral $= 1$, lower integral $= 0$
 - Not just pathological—it's the boundary of our class
 
 ### Power Series III Was Special
 
 - Callback to Chapter 9: term-by-term integration worked
-- ∫(Σaₙxⁿ) = Σaₙxⁿ⁺¹/(n+1)
-- Used for ln(1+x), arctan, computing π
+- $\int \left( \sum a_n x^n \right) = \sum \frac{a_n x^{n+1}}{n+1}$
+- Used for $\ln(1+x)$, $\arctan$, computing $\pi$
 - You might expect limits generally behave this well
 
 ### The Convergence Problem
 
-- **Failure Mode 1**: fₙ = n·χ_{[0,1/n]} → 0 but ∫fₙ = 1
+- **Failure Mode 1**: $f_n = n \cdot \chi_{[0,1/n]} \to 0$ but $\int f_n = 1$
   - Limit integrable, integrals don't converge correctly
-- **Failure Mode 2**: fₙ = χ_{q₁,...,qₙ} ↗ χ_Q
-  - Each fₙ integrable with ∫fₙ = 0
+- **Failure Mode 2**: $f_n = \chi_{\{q_1,\ldots,q_n\}} \nearrow \chi_{\mathbb{Q}}$
+  - Each $f_n$ integrable with $\int f_n = 0$
   - Limit not integrable
 
 **The class of Darboux integrable functions is not closed under limits.**
 
 ### Why This Matters
 
-- Fourier series: need ∫ and Σ to interchange
-- Parameter integrals: need ∫ and d/dt to interchange
+- Fourier series: need $\int$ and $\sum$ to interchange
+- Parameter integrals: need $\int$ and $\frac{d}{dt}$ to interchange
 - Power series were the exception; general limits fail
 
 ### A Sanity Check
 
-- gₙ = tent functions ↗ χ_{(0,1)}
-- ∫gₙ → 1 = ∫χ_{(0,1)}
+- $g_n$ = tent functions $\nearrow \chi_{(0,1)}$
+- $\int g_n \to 1 = \int \chi_{(0,1)}$
 - Limit interchange works here ✓
 
 ### The Key Observation
 
-- In Failure Mode 2: ∫fₙ = 0 → 0, obvious candidate is 0
+- In Failure Mode 2: $\int f_n = 0 \to 0$, obvious candidate is $0$
 - Problem isn't wrong answer—it's no answer when there's an obvious candidate
-- Could we extend by *defining* ∫χ_Q = 0?
+- Could we extend by *defining* $\int \chi_{\mathbb{Q}} = 0$?
 
 ### What We Want
 
@@ -1922,60 +1922,60 @@ We first explore what our axiomatic integral already handles, discovering it's a
 
 ### Dini's Theorem
 
-- Lemma: If fₙ ∈ C[a,b] and fₙ ↘ 0 pointwise, then I(fₙ) → 0
+- Lemma: If $f_n \in C[a,b]$ and $f_n \searrow 0$ pointwise, then $I(f_n) \to 0$
 - Key technical tool bridging pointwise convergence to integral convergence
-- Proof uses compactness of [a,b]
+- Proof uses compactness of $[a,b]$
 
 ### Upper Functions
 
-- Definition: f ∈ L↑ if fₙ ∈ C[a,b] with fₙ ↗ f pointwise
-- Examples: continuous functions, χ_{(a,b]}
-- Define I⁺(f) = lim I(fₙ)
+- Definition: $f \in L^\uparrow$ if $f_n \in C[a,b]$ with $f_n \nearrow f$ pointwise
+- Examples: continuous functions, $\chi_{(a,b]}$
+- Define $I^+(f) = \lim I(f_n)$
 
-### Well-Definedness of I⁺
+### Well-Definedness of $I^+$
 
 - Must show: different approximating sequences give same answer
-- Key Lemma: If fₙ ↗ f and g ∈ C[a,b] with g ≤ f, then I(g) ≤ lim I(fₙ)
-- Proof uses Dini's theorem on the gap hₙ = g − (fₙ ∧ g) ↘ 0
-- Corollary: I⁺ well-defined
+- Key Lemma: If $f_n \nearrow f$ and $g \in C[a,b]$ with $g \leq f$, then $I(g) \leq \lim I(f_n)$
+- Proof uses Dini's theorem on the gap $h_n = g - (f_n \wedge g) \searrow 0$
+- Corollary: $I^+$ well-defined
 
-### Properties of I⁺
+### Properties of $I^+$
 
-- Extension: agrees with I on C[a,b]
-- Monotonicity: f ≤ g ⟹ I⁺(f) ≤ I⁺(g)
-- Additive: I⁺(f + g) = I⁺(f) + I⁺(g)
-- Positive homogeneity: c ≥ 0 ⟹ I⁺(cf) = cI⁺(f)
-- MCT for L↑: fₙ ∈ L↑, fₙ ↗ f, sup I⁺(fₙ) < ∞ ⟹ f ∈ L↑ and I⁺(fₙ) → I⁺(f)
+- Extension: agrees with $I$ on $C[a,b]$
+- Monotonicity: $f \leq g \Rightarrow I^+(f) \leq I^+(g)$
+- Additive: $I^+(f + g) = I^+(f) + I^+(g)$
+- Positive homogeneity: $c \geq 0 \Rightarrow I^+(cf) = c \, I^+(f)$
+- MCT for $L^\uparrow$: $f_n \in L^\uparrow$, $f_n \nearrow f$, $\sup I^+(f_n) < \infty \Rightarrow f \in L^\uparrow$ and $I^+(f_n) \to I^+(f)$
 
 ### The Linearity Problem
 
-- L↑ is a cone, not a vector space
+- $L^\uparrow$ is a cone, not a vector space
 - Closed under addition and positive scalars
-- Not closed under subtraction: if fₙ ↗ f, then −fₙ ↘ −f (wrong direction)
+- Not closed under subtraction: if $f_n \nearrow f$, then $-f_n \searrow -f$ (wrong direction)
 - We need subtraction for basic analysis
 
 ### Integrable Functions
 
-- Definition: f ∈ L¹ if f = g − h for some g, h ∈ L↑ with I⁺(g), I⁺(h) < ∞
-- Define I(f) = I⁺(g) − I⁺(h)
-- Must verify well-defined: if g₁ − h₁ = g₂ − h₂, then I⁺(g₁) − I⁺(h₁) = I⁺(g₂) − I⁺(h₂)
-- Proof: g₁ + h₂ = g₂ + h₁, both in L↑, apply additivity
+- Definition: $f \in L^1$ if $f = g - h$ for some $g, h \in L^\uparrow$ with $I^+(g), I^+(h) < \infty$
+- Define $I(f) = I^+(g) - I^+(h)$
+- Must verify well-defined: if $g_1 - h_1 = g_2 - h_2$, then $I^+(g_1) - I^+(h_1) = I^+(g_2) - I^+(h_2)$
+- Proof: $g_1 + h_2 = g_2 + h_1$, both in $L^\uparrow$, apply additivity
 
-### Properties of I on L¹
+### Properties of $I$ on $L^1$
 
-- L¹ is a vector space
-- I is linear
+- $L^1$ is a vector space
+- $I$ is linear
 - Extension, monotonicity, interval additivity inherited
 
 ### MCT Survives
 
-- Key Lemma: If f ∈ L¹ and f ≥ 0, then f ∈ L↑
-- Theorem (MCT for L¹): fₙ ∈ L¹, fₙ ↗ f, sup I(fₙ) < ∞ ⟹ f ∈ L¹ and I(fₙ) → I(f)
-- Proof: WLOG fₙ ≥ 0 (subtract f₁), apply key lemma, use MCT for L↑
+- Key Lemma: If $f \in L^1$ and $f \geq 0$, then $f \in L^\uparrow$
+- Theorem (MCT for $L^1$): $f_n \in L^1$, $f_n \nearrow f$, $\sup I(f_n) < \infty \Rightarrow f \in L^1$ and $I(f_n) \to I(f)$
+- Proof: WLOG $f_n \geq 0$ (subtract $f_1$), apply key lemma, use MCT for $L^\uparrow$
 
 ### What We've Built
 
-- An integral on L¹ ⊃ C[a,b]
+- An integral on $L^1 \supset C[a,b]$
 - Satisfies original properties plus linearity plus MCT
 - Next: harvest the consequences
 
@@ -1985,45 +1985,45 @@ We first explore what our axiomatic integral already handles, discovering it's a
 
 ### Monotone Convergence Theorem
 
-- Theorem (MCT): fₙ ∈ L¹, fₙ ↗ f, sup I(fₙ) < ∞ ⟹ f ∈ L¹ and I(fₙ) → I(f)
+- Theorem (MCT): $f_n \in L^1$, $f_n \nearrow f$, $\sup I(f_n) < \infty \Rightarrow f \in L^1$ and $I(f_n) \to I(f)$
 - Already proved in 10.2; state cleanly here as the first payoff
 
 ### Dominated Convergence Theorem
 
-- Theorem (DCT): fₙ ∈ L¹, fₙ → f pointwise, |fₙ| ≤ g for some g ∈ L¹ ⟹ f ∈ L¹ and I(fₙ) → I(f)
+- Theorem (DCT): $f_n \in L^1$, $f_n \to f$ pointwise, $|f_n| \leq g$ for some $g \in L^1 \Rightarrow f \in L^1$ and $I(f_n) \to I(f)$
 - The workhorse theorem—this is what you actually use
-- Proof via MCT applied to inf/sup sequences
+- Proof via MCT applied to $\inf$/$\sup$ sequences
 
 ### Revisiting the Failures
 
-- Spike functions fₙ = n·χ_{[0,1/n]}: no dominating function (would need g(0) = ∞)
+- Spike functions $f_n = n \cdot \chi_{[0,1/n]}$: no dominating function (would need $g(0) = \infty$)
 - DCT diagnoses exactly why interchange fails
 - Not a pathology—a precise answer
 
 ### Application: Differentiating Under the Integral
 
-- Setup: F(t) = ∫ₐᵇ f(x,t) dx
-- Theorem: If ∂f/∂t exists and |∂f/∂t| ≤ g ∈ L¹, then F'(t) = ∫ₐᵇ (∂f/∂t) dx
+- Setup: $F(t) = \int_a^b f(x,t) \, dx$
+- Theorem: If $\frac{\partial f}{\partial t}$ exists and $\left| \frac{\partial f}{\partial t} \right| \leq g \in L^1$, then $F'(t) = \int_a^b \frac{\partial f}{\partial t} \, dx$
 - Proof: Apply DCT to difference quotients
 
 ### Application: Integrating Series Term-by-Term
 
-- Setup: Σfₙ where each fₙ ∈ L¹
-- Theorem: If Σ∫|fₙ| < ∞, then ∫Σfₙ = Σ∫fₙ
-- Proof: Partial sums dominated by Σ|fₙ|, apply DCT
+- Setup: $\sum f_n$ where each $f_n \in L^1$
+- Theorem: If $\sum \int |f_n| < \infty$, then $\int \sum f_n = \sum \int f_n$
+- Proof: Partial sums dominated by $\sum |f_n|$, apply DCT
 
 ### Completeness
 
-- Theorem: If fₙ ∈ L¹ and Σ∫|fₙ₊₁ − fₙ| < ∞, then fₙ converges to some f ∈ L¹
-- Equivalently: Cauchy sequences in the ∫|·| sense converge
+- Theorem: If $f_n \in L^1$ and $\sum \int |f_{n+1} - f_n| < \infty$, then $f_n$ converges to some $f \in L^1$
+- Equivalently: Cauchy sequences in the $\int |\cdot|$ sense converge
 - False for Darboux integrable functions
 - "Completing the Integral"—we've filled the holes
 
 ### Series Closure
 
-- Theorem: If fₙ ∈ L¹ and Σ∫|fₙ| < ∞, then Σfₙ ∈ L¹
-- False for Darboux: fₙ = χ_{qₙ}, each integrable, sum is χ_Q
-- L¹ closed under absolutely convergent series
+- Theorem: If $f_n \in L^1$ and $\sum \int |f_n| < \infty$, then $\sum f_n \in L^1$
+- False for Darboux: $f_n = \chi_{\{q_n\}}$, each integrable, sum is $\chi_{\mathbb{Q}}$
+- $L^1$ closed under absolutely convergent series
 
 ---
 
@@ -2031,39 +2031,39 @@ We first explore what our axiomatic integral already handles, discovering it's a
 
 ### Null Sets
 
-- Definition: E is null if for every ε > 0, E covered by countably many intervals of total length < ε
-- Equivalently: χ_E ∈ L¹ and I(χ_E) = 0
+- Definition: $E$ is null if for every $\varepsilon > 0$, $E$ covered by countably many intervals of total length $< \varepsilon$
+- Equivalently: $\chi_E \in L^1$ and $I(\chi_E) = 0$
 - Examples: finite sets, countable sets, Cantor set
 
 ### Properties of Null Sets
 
 - Subset of null is null
 - Countable union of null sets is null
-- Proof: cover nth set with intervals of total length ε/2ⁿ
+- Proof: cover $n$th set with intervals of total length $\varepsilon / 2^n$
 
 ### Almost Everywhere
 
 - Definition: Property holds a.e. if it fails only on a null set
-- "f = g a.e." means {x : f(x) ≠ g(x)} is null
-- "fₙ → f a.e." means {x : fₙ(x) ↛ f(x)} is null
+- "$f = g$ a.e." means $\{x : f(x) \neq g(x)\}$ is null
+- "$f_n \to f$ a.e." means $\{x : f_n(x) \not\to f(x)\}$ is null
 
 ### The A.E. Modification Theorem
 
-- Theorem: If f = g a.e. and f ∈ L¹, then g ∈ L¹ and I(f) = I(g)
+- Theorem: If $f = g$ a.e. and $f \in L^1$, then $g \in L^1$ and $I(f) = I(g)$
 - Striking: modify on infinitely many points, integral unchanged
-- False for Darboux: f = 0, g = χ_Q, differ on null set, but χ_Q not Darboux integrable
+- False for Darboux: $f = 0$, $g = \chi_{\mathbb{Q}}$, differ on null set, but $\chi_{\mathbb{Q}}$ not Darboux integrable
 
 ### Measurable Sets
 
-- Definition: E is measurable if χ_E ∈ L¹
+- Definition: $E$ is measurable if $\chi_E \in L^1$
 - Examples: intervals, open sets, closed sets, countable unions/intersections
 - Non-measurable sets exist (requires axiom of choice)
 
 ### Lebesgue Measure
 
-- Definition: μ(E) = I(χ_E) for measurable E
-- Properties: μ(E) ≥ 0, μ(∅) = 0, μ([a,b]) = b − a
-- Countable additivity: μ(⊔Eₙ) = Σμ(Eₙ)
+- Definition: $\mu(E) = I(\chi_E)$ for measurable $E$
+- Properties: $\mu(E) \geq 0$, $\mu(\varnothing) = 0$, $\mu([a,b]) = b - a$
+- Countable additivity: $\mu\left( \bigsqcup E_n \right) = \sum \mu(E_n)$
 - Proof via DCT
 
 ### The Integral-First Philosophy
@@ -2078,43 +2078,43 @@ We first explore what our axiomatic integral already handles, discovering it's a
 
 ### Uniqueness
 
-- Theorem: Any extension of I from C[a,b] satisfying linearity and MCT must agree with ours
-- Proof sketch: MCT forces values on L↑, linearity forces values on L¹
+- Theorem: Any extension of $I$ from $C[a,b]$ satisfying linearity and MCT must agree with ours
+- Proof sketch: MCT forces values on $L^\uparrow$, linearity forces values on $L^1$
 - There was no choice—MCT determined everything
 
 ### Maximality
 
-- Theorem: L¹ is the largest class where f integrable ⟹ |f| integrable
+- Theorem: $L^1$ is the largest class where $f$ integrable $\Rightarrow |f|$ integrable
 - "Absolute integrability" property
 - Extensions beyond (like HK) lose this
 
 ### Connection to Derivatives
 
-- Theorem: f ∈ L¹ iff f = F' a.e. for some absolutely continuous F
+- Theorem: $f \in L^1$ iff $f = F'$ a.e. for some absolutely continuous $F$
 - FTC for Lebesgue: cleaner than Darboux version
 - Preview of absolute continuity
 
 ### Completeness Revisited
 
-- L¹ with d(f,g) = ∫|f − g| is complete
-- In fact: L¹ is the completion of C[a,b] under this metric
-- Every element of L¹ is a limit of continuous functions
+- $L^1$ with $d(f,g) = \int |f - g|$ is complete
+- In fact: $L^1$ is the completion of $C[a,b]$ under this metric
+- Every element of $L^1$ is a limit of continuous functions
 - We added exactly the missing limits—nothing more
 
 ### A General Machine
 
-- The construction used the length axiom μ([c,d]) = d − c only as input
+- The construction used the length axiom $\mu([c,d]) = d - c$ only as input
 - Positivity, linearity, Daniell's condition did the work
-- Replace with μ((c,d]) = g(d) − g(c) for increasing right-continuous g
+- Replace with $\mu((c,d]) = g(d) - g(c)$ for increasing right-continuous $g$
 - Same machine produces a new integral
-- In Chapter N: this captures all finite Borel measures on [a,b]—the Riesz representation theorem
+- In Chapter N: this captures all finite Borel measures on $[a,b]$—the Riesz representation theorem
 
 ### Beyond Lebesgue: The Henstock-Kurzweil Integral
 
 - Lebesgue isn't the only extension
 - HK: every derivative is integrable, full FTC
-- Example: F(x) = x² sin(1/x²), differentiable everywhere, F' not Lebesgue integrable
-- Tradeoff: HK has better FTC, but no Lᵖ theory
+- Example: $F(x) = x^2 \sin(1/x^2)$, differentiable everywhere, $F'$ not Lebesgue integrable
+- Tradeoff: HK has better FTC, but no $L^p$ theory
 - Different integrals answer different questions
 
 ### Closing Perspective
@@ -2131,7 +2131,7 @@ We first explore what our axiomatic integral already handles, discovering it's a
 | Section | Purpose |
 |---------|---------|
 | 10.1 | Exploration and limitation: what Darboux can do, why limits fail |
-| 10.2 | Construction: L↑ for MCT, L¹ for linearity |
+| 10.2 | Construction: $L^\uparrow$ for MCT, $L^1$ for linearity |
 | 10.3 | Payoff: DCT, applications, completeness, series closure |
 | 10.4 | Vocabulary: null sets, a.e., measure |
 | 10.5 | Perspective: uniqueness, maximality, generalization, alternatives |
@@ -2140,9 +2140,9 @@ We first explore what our axiomatic integral already handles, discovering it's a
 
 1. **MCT**: Monotone limits with bounded integrals converge
 2. **DCT**: Dominated pointwise limits converge
-3. **Completeness**: L¹ is complete
-4. **Series closure**: Absolutely convergent series stay in L¹
-5. **A.E. modification**: Changing f on null set preserves integrability and integral
+3. **Completeness**: $L^1$ is complete
+4. **Series closure**: Absolutely convergent series stay in $L^1$
+5. **A.E. modification**: Changing $f$ on null set preserves integrability and integral
 6. **Uniqueness**: MCT + linearity forces the Lebesgue integral
 
 ---
@@ -2150,13 +2150,13 @@ We first explore what our axiomatic integral already handles, discovering it's a
 ## Dependencies
 
 **Requires from earlier chapters**:
-- Continuous functions on [a,b] (Ch 6)
+- Continuous functions on $[a,b]$ (Ch 6)
 - Integration of continuous functions, Darboux construction (Ch 8)
 - Power Series III, term-by-term integration (Ch 9)
 - Series and convergence (Ch 4–5)
 
 **Sets up for later chapters**:
-- Metric spaces: L¹ as key completeness example
-- Function spaces: Lᵖ spaces
+- Metric spaces: $L^1$ as key completeness example
+- Function spaces: $L^p$ spaces
 - Fourier analysis: DCT for series manipulation
 - Measure theory: Riesz representation, general measures

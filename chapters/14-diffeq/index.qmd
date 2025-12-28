@@ -1,0 +1,11 @@
+# Differential Equations
+
+{{< include 00-intro.qmd >}}
+
+{{< include 01-existence.qmd >}}
+
+{{< include 02-linear.qmd >}}
+
+{{< include 03-eigenfunction.qmd >}}
+
+{{< include 04-numerical.qmd >}}

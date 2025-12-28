@@ -1,7 +1,0 @@
-## Continuous Dependence 
-
-- **Gronwall's inequality:** if $u(t) \leq \alpha + \int_0^t \beta u(s)\, ds$ then $u(t) \leq \alpha e^{\beta t}$
-- **Theorem:** solutions depend continuously on initial conditions
-- **Theorem:** solutions depend continuously on parameters
-- **Brief:** stability of equilibria, connection to eigenvalues of linearization
-- **Remark:** continuous dependence is short-time; chaos is long-time divergence (not developed)

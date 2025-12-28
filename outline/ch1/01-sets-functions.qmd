@@ -1,0 +1,64 @@
+## §1.1 Sets and Functions
+
+### Narrative
+
+This section establishes the language we use throughout the book. Students should know this material from a proofs course; we collect it here for reference. The section is intentionally brief — definitions and notation, minimal scaffolding.
+
+### Content
+
+**Sets**
+- Definition: set, element
+- Notation: x ∈ A, x ∉ A
+- Set-builder notation: {x : P(x)}
+- Standard sets: ℕ = {1, 2, 3, ...}, ℤ = {..., −1, 0, 1, ...}, ℚ = {p/q : p, q ∈ ℤ, q ≠ 0}
+- Subsets: A ⊆ B
+- Equality: A = B means A ⊆ B and B ⊆ A
+
+**Set Operations**
+- Union: A ∪ B
+- Intersection: A ∩ B
+- Difference: A \ B
+- Cartesian product: A × B
+- Power set: 𝒫(A) = {S : S ⊆ A}
+
+**Functions**
+- Definition: f: A → B assigns to each element of A exactly one element of B
+- Domain, codomain, range (image)
+- Remark: functions are assignments, not formulas
+- Notation: f: A → B, x ↦ f(x)
+
+**Types of Functions**
+- Injective (one-to-one): f(x₁) = f(x₂) ⟹ x₁ = x₂
+- Surjective (onto): every y ∈ B is hit
+- Bijective: both injective and surjective
+
+**Operations on Functions**
+- Composition: g ∘ f
+- Inverse: f⁻¹ when f is bijective
+- Theorem: f has an inverse iff f is bijective
+
+**Cardinality**
+- Definition: A and B have the same cardinality if there exists a bijection A → B
+- Definition: A is countable if A is finite or has the same cardinality as ℕ
+- Definition: A is uncountable if A is not countable
+- Theorem (Cantor): There is no surjection A → 𝒫(A)
+- Remark: This is the source of multiple sizes of infinity
+
+### Guided Exercises
+
+None for this section.
+
+### Exercises
+
+- Prove (A ∪ B) \ C = (A \ C) ∪ (B \ C)
+- Prove A \ (B ∪ C) = (A \ B) ∩ (A \ C)
+- Show f: A → B is bijective iff there exists g: B → A with g ∘ f = id_A and f ∘ g = id_B
+- Prove Cantor's theorem: there is no surjection A → 𝒫(A)
+- Show ℕ × ℕ is countable
+- Show ℚ is countable
+
+### Dependencies
+
+**Requires**: Nothing — this is foundational language.
+
+**Used in**: Throughout. Specific callbacks will be added as we outline later sections.
