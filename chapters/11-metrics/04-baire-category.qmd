@@ -1,4 +1,4 @@
-## Baire Category
+## $\bigstar$ Baire Category
 
 
 **Theme:** A genuinely new theorem that we couldn't even state before. Completeness implies "largeness."

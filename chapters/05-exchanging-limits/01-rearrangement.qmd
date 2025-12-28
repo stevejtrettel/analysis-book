@@ -1,4 +1,4 @@
-## Rearrangement
+## $\bigstar$ Rearrangement
 
 - **Definition**: rearrangement via bijection π: ℕ → ℕ
 - **Theorem**: absolutely convergent series can be rearranged freely (same sum)

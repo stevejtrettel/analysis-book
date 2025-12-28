@@ -1,0 +1,49 @@
+# Limits
+
+### Narrative
+
+Chapter 1 revealed $\RR$ is uncountable — vastly more numbers than finite descriptions can name. The rationals, algebraics, even computable numbers are countable dust in an uncountable ocean.
+
+How do we access the rest? Sequences are our tools. A sequence of rationals can converge to an irrational. A sequence of known values can pin down an unknown. Every real number — even the unnameable ones — is the limit of a sequence of rationals.
+
+This chapter develops the theory of sequences as tools for exploring $\RR$.
+
+The arc:
+> Sequences as tools → What is convergence? → Limit laws from ordered field axioms → MCT from completeness → Every real can be reached
+
+### The Babylonian Thread: Reaching $\sqrt{2}$
+
+The Babylonian sequence $x_1 = 2$, $x_{n+1} = (x_n + 2/x_n)/2$ serves as a running example through the chapter:
+
+- **§2.1**: Introduced with historical context (clay tablet ~1800 BCE); compute first few terms; motivates "what does convergence mean?"
+- **§2.1 Exercise**: Pell structure — show $x_n = p_n/q_n$ where $p_n^2 - 2q_n^2 = (-1)^n \cdot 2$
+- **§2.3**: First convergence proof using Pell structure + square root law: $x_n^2 \to 2$ implies $x_n \to \sqrt{2}$
+- **§2.4**: Alternative proof via MCT — shows the power of monotone convergence when no closed form exists
+
+This thread demonstrates: ancient mathematicians had the right algorithm; we now have the tools to prove it works.
+
+### Requires
+
+- §1.2: Ordered field axioms, triangle inequality, Bernoulli's inequality
+- §1.4: Completeness ($\varepsilon$-characterization of sup)
+- §1.5: Archimedean property, density of $\QQ$
+
+### Sections
+
+1. **§2.1 Sequences and Series** — Sequences as tools; series and products as sequences; algebraic closed forms (geometric, telescoping)
+2. **§2.2 Convergence** — The $\varepsilon$-$N$ definition; examples from definition; geometric sequences; basic properties
+3. **§2.3 Limit Theorems** — Limits respect order and algebra; applications; density revisited; limits of limit laws
+4. **§2.4 Monotone Convergence** — MCT from completeness; Babylonian $\to \sqrt{2}$; the number $e$; series via MCT
+5. **§2.5 Representing Real Numbers** — Decimals; every real has a decimal; characterizing rationals *(Terminal)*
+
+### Historical Prelude
+
+The chapter opens with an unnumbered historical introduction covering:
+- Newton/Leibniz: what *is* a limit? "Ghosts of departed quantities"
+- The crisis: calculus works but foundations are incoherent
+- Cauchy/Weierstrass: $\varepsilon$-$N$ definition replaces philosophy with calculation
+- The message: limits are necessary — infinite processes let finite creatures name infinite objects
+
+### Explorations
+
+TBD

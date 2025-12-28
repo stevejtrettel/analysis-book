@@ -1,0 +1,104 @@
+## Ordered Fields
+
+### Narrative
+
+This section establishes the algebraic and order structure we need. A field gives us arithmetic; an ordered field gives us inequalities. We state the axioms, derive familiar algebraic facts from them, and develop the tools (absolute value, intervals, Bernoulli, binomial) that will be used throughout the book.
+
+### Content
+
+**Fields**
+- Definition: a field is a set $F$ with operations $+$ and $\cdot$ satisfying:
+  - Addition: closure, associativity, commutativity, identity $0$, inverses $-a$
+  - Multiplication: closure, associativity, commutativity, identity $1 \neq 0$, inverses $a^{-1}$ for $a \neq 0$
+  - Distributivity: $a \cdot (b + c) = a \cdot b + a \cdot c$
+- Example: $\QQ$ is a field
+- Non-example: $\ZZ$ is not a field ($2$ has no multiplicative inverse)
+- Building notation: $2 = 1 + 1$, $3 = 2 + 1$, etc.
+- Theorem: $0 \cdot a = 0$ (prove in text)
+- Theorem: $(-1) \cdot a = -a$ (prove in text)
+- Remark: all the algebra you learned in school follows from these axioms
+- ✎ Inline: Prove $(-a)(-b) = ab$
+- ✎ Inline: Prove $(a + b)(a - b) = a^2 - b^2$
+- ✎ Inline: Prove $2 + 2 = 4$ from the axioms
+
+**Ordered Fields**
+- Definition: an ordered field is a field $F$ with a subset $P \subseteq F$ (positive elements) satisfying:
+  - (O1) $a, b \in P \Rightarrow a + b \in P$
+  - (O2) $a, b \in P \Rightarrow a \cdot b \in P$
+  - (O3) Trichotomy: exactly one of $a \in P$, $a = 0$, $-a \in P$ holds
+- Definition: $a < b$ means $b - a \in P$; also $a > b$, $a \leq b$, $a \geq b$
+- Example: $\QQ$ is an ordered field
+- Theorem: $a^2 \geq 0$ for all $a$, with equality iff $a = 0$ (prove in text)
+- Corollary: $1 > 0$ (prove in text)
+- ✎ Inline: Prove $a < b \Rightarrow a + c < b + c$
+- ✎ Inline: Prove $a < b$ and $c > 0 \Rightarrow ac < bc$
+- ✎ Inline: Prove $a < b$ and $c < 0 \Rightarrow ac > bc$
+- ✎ Inline: Prove transitivity of $<$
+
+**Absolute Value and Intervals**
+- Definition: $|a| = a$ if $a \geq 0$, $|a| = -a$ if $a < 0$
+- Properties: $|a| \geq 0$; $|a| = 0$ iff $a = 0$; $|ab| = |a||b|$
+- Theorem (Triangle Inequality): $|a + b| \leq |a| + |b|$ (prove in text)
+- Corollary (Reverse Triangle Inequality): $||a| - |b|| \leq |a - b|$
+- Geometric interpretation: $|a - b|$ is the distance between $a$ and $b$
+- Notation: $\infty$ and $-\infty$ are symbols (not numbers) used for unbounded intervals
+- Bounded intervals: $(a, b)$, $[a, b]$, $[a, b)$, $(a, b]$
+- Unbounded intervals: $[a, \infty)$, $(a, \infty)$, $(-\infty, b]$, $(-\infty, b)$, $(-\infty, \infty)$
+
+**Algebraic Tools**
+- Definition: for $a \in F$ and $n \in \NN$, define $a^n = a \cdot a \cdots a$ ($n$ times); $a^0 = 1$; $a^{-n} = 1/a^n$ for $a \neq 0$
+- Properties: $a^{m+n} = a^m a^n$, $(a^m)^n = a^{mn}$, $(ab)^n = a^n b^n$
+- Notation: $\sqrt[n]{a}$ denotes a number $b$ with $b^n = a$ (when such $b$ exists)
+- Example: $\sqrt{4} = 2$, $\sqrt[3]{8} = 2$
+- Remark: existence of $\sqrt[n]{a}$ for general $a$ requires completeness (§1.5)
+- Theorem (Bernoulli's Inequality): For $x \geq -1$ and $n \in \NN$, $(1 + x)^n \geq 1 + nx$ (prove by induction)
+- ✎ Inline: Verify the induction step of Bernoulli's inequality
+- Theorem (Binomial Theorem): $(a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k$ where $\binom{n}{k} = \frac{n!}{k!(n-k)!}$
+- Remark: proof by induction using Pascal's identity $\binom{n}{k} + \binom{n}{k-1} = \binom{n+1}{k}$
+- Theorem (AM-GM, two variables): If $a, b \geq 0$ and $\sqrt{a}, \sqrt{b}$ exist, then $\frac{a+b}{2} \geq \sqrt{ab}$, with equality iff $a = b$ (proof as exercise)
+- Remark: AM-GM generalizes to $n$ variables; full generality available after §1.5
+
+### Guided Exercises
+
+**Base-$b$ Representation of Integers**
+
+For $b \geq 2$ an integer, we can represent any positive integer $n$ in base $b$.
+
+(a) Show that for any $n \in \NN$, there exist unique digits $d_0, d_1, \ldots, d_k$ with $0 \leq d_i < b$, $d_k \neq 0$, such that $n = \sum_{i=0}^{k} d_i b^i$.
+
+(b) Describe the greedy algorithm: repeatedly divide by $b$ and record remainders.
+
+(c) Convert $42$ to base $2$, base $3$, and base $16$.
+
+(d) In base $b$, what is the representation of $b^m - 1$? (This generalizes $999\ldots9$ in base $10$.)
+
+### Exercises
+
+*Fields*
+- Prove uniqueness of additive inverse: if $a + b = 0$ and $a + c = 0$, then $b = c$
+- Prove uniqueness of multiplicative inverse
+- Prove: if $ab = 0$ then $a = 0$ or $b = 0$
+
+*Ordered Fields*
+- Prove: $0 < a < b \Rightarrow a^2 < b^2$
+- Prove: $0 < a < b \Rightarrow 0 < 1/b < 1/a$
+
+*Absolute Value*
+- Prove the reverse triangle inequality: $||a| - |b|| \leq |a - b|$
+- Prove $|a - b| \leq |a - c| + |c - b|$
+
+*Algebraic Tools*
+- Prove Bernoulli's inequality by induction
+- Show $(1 + x)^n \geq 1 + nx + \frac{n(n-1)}{2}x^2$ for $x \geq 0$ (strengthened Bernoulli)
+- Prove the binomial theorem by induction
+- Prove Pascal's identity: $\binom{n}{k} + \binom{n}{k-1} = \binom{n+1}{k}$
+- Prove $n! \geq 2^{n-1}$ for $n \geq 1$
+- Prove $\binom{n}{k} \leq n^k / k!$
+- (AM-GM, two variables) If $a, b \geq 0$ and $\sqrt{a}, \sqrt{b}$ exist, prove $\frac{a+b}{2} \geq \sqrt{ab}$, with equality iff $a = b$
+- ★ (AM-GM, $n$ variables) If $a_1, \ldots, a_n \geq 0$ and the relevant roots exist, prove $\frac{a_1 + \cdots + a_n}{n} \geq \sqrt[n]{a_1 \cdots a_n}$, with equality iff all $a_i$ are equal
+
+### Dependencies
+
+**Requires**: §1.1 (set notation, functions, induction)
+
+**Used in**: §1.3 (ordered field structure for $\QQ$), §1.4 (inequalities in completeness arguments), §1.5 (Archimedean property), §2.4 (AM-GM, binomial for $e$)

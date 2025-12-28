@@ -1,4 +1,4 @@
-## Differential Equations
+## $\bigstar$ Differential Equations
 
 - FTC says every continuous function has an antiderivative
 - This immediately solves certain differential equations

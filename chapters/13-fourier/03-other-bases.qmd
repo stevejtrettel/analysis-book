@@ -1,4 +1,4 @@
-## Other Bases
+## $\bigstar$ Other Bases
 
 
 **Revisiting the Orthonormal Polynomials**

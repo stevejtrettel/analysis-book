@@ -1,4 +1,4 @@
-## Completing Spaces
+## $\bigstar$ Completing Spaces
 
 
 **Theme:** We can BUILD complete spaces. This finally delivers on the promise from Chapter 1.

@@ -1,4 +1,4 @@
-## §1.1 Sets and Functions
+## Sets and Functions
 
 ### Narrative
 
@@ -8,41 +8,46 @@ This section establishes the language we use throughout the book. Students shoul
 
 **Sets**
 - Definition: set, element
-- Notation: x ∈ A, x ∉ A
-- Set-builder notation: {x : P(x)}
-- Standard sets: ℕ = {1, 2, 3, ...}, ℤ = {..., −1, 0, 1, ...}, ℚ = {p/q : p, q ∈ ℤ, q ≠ 0}
-- Subsets: A ⊆ B
-- Equality: A = B means A ⊆ B and B ⊆ A
+- Notation: $x \in A$, $x \notin A$
+- Set-builder notation: $\{x : P(x)\}$
+- Standard sets: $\NN = \{1, 2, 3, \ldots\}$, $\ZZ = \{\ldots, -1, 0, 1, \ldots\}$, $\QQ = \{p/q : p, q \in \ZZ, q \neq 0\}$
+- Subsets: $A \subseteq B$
+- Equality: $A = B$ means $A \subseteq B$ and $B \subseteq A$
 
 **Set Operations**
-- Union: A ∪ B
-- Intersection: A ∩ B
-- Difference: A \ B
-- Cartesian product: A × B
-- Power set: 𝒫(A) = {S : S ⊆ A}
+- Union: $A \cup B$
+- Intersection: $A \cap B$
+- Difference: $A \setminus B$
+- Cartesian product: $A \times B$
+- Power set: $\mathcal{P}(A) = \{S : S \subseteq A\}$
 
 **Functions**
-- Definition: f: A → B assigns to each element of A exactly one element of B
+- Definition: $f: A \to B$ assigns to each element of $A$ exactly one element of $B$
 - Domain, codomain, range (image)
 - Remark: functions are assignments, not formulas
-- Notation: f: A → B, x ↦ f(x)
+- Notation: $f: A \to B$, $x \mapsto f(x)$
 
 **Types of Functions**
-- Injective (one-to-one): f(x₁) = f(x₂) ⟹ x₁ = x₂
-- Surjective (onto): every y ∈ B is hit
+- Injective (one-to-one): $f(x_1) = f(x_2) \Rightarrow x_1 = x_2$
+- Surjective (onto): every $y \in B$ is hit
 - Bijective: both injective and surjective
 
 **Operations on Functions**
-- Composition: g ∘ f
-- Inverse: f⁻¹ when f is bijective
-- Theorem: f has an inverse iff f is bijective
+- Composition: $g \circ f$
+- Inverse: $f^{-1}$ when $f$ is bijective
+- Theorem: $f$ has an inverse iff $f$ is bijective
 
 **Cardinality**
-- Definition: A and B have the same cardinality if there exists a bijection A → B
-- Definition: A is countable if A is finite or has the same cardinality as ℕ
-- Definition: A is uncountable if A is not countable
-- Theorem (Cantor): There is no surjection A → 𝒫(A)
+- Definition: $A$ and $B$ have the same cardinality if there exists a bijection $A \to B$
+- Definition: $A$ is countable if $A$ is finite or has the same cardinality as $\NN$
+- Definition: $A$ is uncountable if $A$ is not countable
+- Theorem (Cantor): There is no surjection $A \to \mathcal{P}(A)$
 - Remark: This is the source of multiple sizes of infinity
+
+**Countability Tools**
+- Theorem: $\NN \times \NN$ is countable
+- Theorem: A finite product of countable sets is countable
+- Theorem: A countable union of countable sets is countable
 
 ### Guided Exercises
 
@@ -50,15 +55,17 @@ None for this section.
 
 ### Exercises
 
-- Prove (A ∪ B) \ C = (A \ C) ∪ (B \ C)
-- Prove A \ (B ∪ C) = (A \ B) ∩ (A \ C)
-- Show f: A → B is bijective iff there exists g: B → A with g ∘ f = id_A and f ∘ g = id_B
-- Prove Cantor's theorem: there is no surjection A → 𝒫(A)
-- Show ℕ × ℕ is countable
-- Show ℚ is countable
+- Prove $(A \cup B) \setminus C = (A \setminus C) \cup (B \setminus C)$
+- Prove $A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$
+- Show $f: A \to B$ is bijective iff there exists $g: B \to A$ with $g \circ f = \text{id}_A$ and $f \circ g = \text{id}_B$
+- Prove Cantor's theorem: there is no surjection $A \to \mathcal{P}(A)$
+- Show $\NN \times \NN$ is countable
+- Show $\QQ$ is countable
+- Show a finite product of countable sets is countable
+- Show a countable union of countable sets is countable
 
 ### Dependencies
 
 **Requires**: Nothing — this is foundational language.
 
-**Used in**: Throughout. Specific callbacks will be added as we outline later sections.
+**Used in**: §1.5 (countability of $\AA$, uncountability arguments)

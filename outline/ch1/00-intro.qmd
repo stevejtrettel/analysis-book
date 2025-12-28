@@ -1,0 +1,42 @@
+### Chapter 1 Historical Introduction: The Long Quest for the Continuum
+
+**The first crisis: √2**
+- Pythagoreans (~500 BCE): discovered the diagonal of a unit square is incommensurable with the side
+- Proof that √2 is irrational — no ratio of integers gives the diagonal
+- Crisis: their philosophy held "all is number" (meaning ratios of integers)
+- The response: separate number from magnitude; geometry proceeds without arithmetic foundation
+
+**The Greek resolution (or avoidance)**
+- Eudoxus (~370 BCE): theory of proportion for magnitudes, avoiding irrational "numbers"
+- Euclid's Elements: ratios of magnitudes, not numbers
+- "Continuous magnitude" used but never defined
+- Arithmetic and geometry remain separate for two millennia
+
+**Reunification without foundations**
+- Descartes (~1637): coordinate geometry reunites number and space
+- But what *are* the numbers on the number line?
+- Newton, Leibniz (~1680s): calculus uses "infinitely small" quantities, limits, continuity
+- It works — but what is "the continuum" they're computing with?
+- 18th century: calculus develops rapidly, foundations remain vague
+
+**The 19th century reckoning**
+- Cauchy, Weierstrass: rigorize limits and continuity (the subject of Chapter 2)
+- But limits of *what*? Need the real numbers themselves to be rigorous
+- Dedekind (1872): defines reals via "cuts" — partitions of ℚ
+- Cantor (1872): defines reals via Cauchy sequences of rationals
+- Finally: rigorous constructions of ℝ from ℚ
+- Surprise: Cantor discovers ℝ is uncountable — a new kind of infinity
+
+**Our approach**
+- We inherit their work but take the axiomatic path
+- Define ℝ by its properties: a complete ordered field
+- Completeness is the ONE property ℚ lacks
+- We don't construct ℝ; we characterize it and use it
+- Existence and uniqueness: there is essentially one complete ordered field
+
+**What we'll see in this chapter**
+- §1.1–1.2: The language and algebraic structure we need
+- §1.3: Why ℚ isn't enough — gaps that break calculus
+- §1.4: The completeness property — the key axiom
+- §1.5: ℝ exists, is unique, and is uncountable
+- The payoff: √2 finally exists; the 2500-year-old crisis is resolved

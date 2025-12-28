@@ -1,4 +1,4 @@
-## The Many Faces of Completeness
+## $\bigstar$ The Many Faces of Completeness
 
 - Completeness has appeared as:
   1. LUB (axiom)

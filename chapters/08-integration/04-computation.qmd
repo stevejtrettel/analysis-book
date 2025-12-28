@@ -1,4 +1,4 @@
-## Computing Integrals
+## $\bigstar$ Computing Integrals
 
 **The Direct Method**
 

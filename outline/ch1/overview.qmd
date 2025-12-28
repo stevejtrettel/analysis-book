@@ -14,15 +14,22 @@ Nothing—this is the foundation.
 
 ### Sections
 
-1. **§1.1 Sets and Functions** — Language and notation: sets, functions, countability
-2. **§1.2 Ordered Fields** — Field axioms, order axioms, absolute value, intervals, Bernoulli
-3. **§1.3 The Incompleteness of ℚ** — √2 is irrational, patching fails, calculus breaks
-4. **§1.4 Completeness** — Bounds, supremum, the completeness axiom, nested intervals
-5. **§1.5 The Real Numbers** — Archimedean property, density, roots exist, exponents, uncountability
+1. **§1.1 Sets and Functions** — Logic, sets, functions, cardinality, induction (reference material)
+2. **§1.2 Ordered Fields** — Fields, ordered fields, absolute value and intervals, algebraic tools (Bernoulli, binomial, AM-GM)
+3. **§1.3 The Incompleteness of ℚ** — √2 irrational, patching fails (constructibles, algebraics), calculus breaks (IVT, EVT, bisection)
+4. **§1.4 Completeness** — Bounds and supremum, ε-characterization, working with suprema, nested interval property
+5. **§1.5 The Real Numbers** — Archimedean property, density, roots exist, uncountability; exponents/logs as guided exercise
 
 ### Historical Prelude
 
-The chapter opens with an unnumbered historical introduction (content TBD).
+The chapter opens with an unnumbered historical introduction: "The Long Quest for the Continuum"
+
+- The first crisis: √2 and the Pythagorean discovery of incommensurability (~500 BCE)
+- The Greek resolution: Eudoxus's theory of proportion, separating number from magnitude
+- Reunification without foundations: Descartes, Newton/Leibniz, calculus works but what is the continuum?
+- The 19th century reckoning: Dedekind cuts, Cantor's construction, finally rigorous
+- Our approach: axiomatic — define ℝ by completeness, don't construct it
+- The payoff: √2 finally exists; the 2500-year crisis resolved
 
 ### Explorations
 
