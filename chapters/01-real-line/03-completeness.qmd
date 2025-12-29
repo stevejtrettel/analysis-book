@@ -1,0 +1,18 @@
+## Completeness
+
+Opening Motivation
+
+
+### Bounds and the Supremum
+
+
+### The $\varepsilon$-Characterization
+
+### Working with Suprema
+
+### The Nested Interval Property
+
+### $\bigstar$ The Babylonian Square Root
+
+
+### Exercises

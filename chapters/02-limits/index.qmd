@@ -11,3 +11,5 @@
 {{< include 04-mct.qmd >}}
 
 {{< include 05-decimals.qmd >}}
+
+{{< include 06-parabola.qmd >}}

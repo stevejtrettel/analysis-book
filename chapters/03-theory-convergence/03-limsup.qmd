@@ -1,9 +1,0 @@
-## Limsup & Liminf
-
-- For bounded sequence, set of subsequential limits is nonempty (BW) and bounded
-- Definition via subsequential limits: limsup = largest, liminf = smallest
-- Alternative definition via tails: limsup = lim(sup of tail), liminf = lim(inf of tail)
-- Prove these agree
-- Theorem: limsup is achieved (some subsequence converges to it)
-- Theorem: convergence ⟺ limsup = liminf
-- Examples: compute limsup/liminf for oscillating sequences

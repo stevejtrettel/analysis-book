@@ -1,0 +1,35 @@
+## Foundations
+
+What haopens if my section starts with some text
+
+
+
+### Logic and Sets
+
+And then so does my subsection
+
+
+
+### Functions and Cardinality
+
+And the one after that
+
+
+
+
+### Fields
+
+
+### Orders
+
+
+### Absolute Value and Intervals
+
+
+### Algebraic Tools
+
+
+### $\bigstar$ Base-b representation of Integers
+
+
+### Exercises

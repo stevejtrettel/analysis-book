@@ -51,7 +51,7 @@ $$0.d_1 d_2 \cdots d_k 999\ldots = 0.d_1 d_2 \cdots (d_k + 1) 000\ldots$$
 - Corollary: $x$ is irrational iff its decimal never becomes periodic
 - Examples: $\sqrt{2} = 1.41421356\ldots$ (non-repeating), $\pi = 3.14159265\ldots$ (non-repeating)
 
-**The Big Picture**
+**The Big Picture (conclusion to above section)**
 - Rationals: countable, eventually periodic decimals
 - Algebraic irrationals (like $\sqrt{2}$): countable, non-repeating
 - Transcendentals: uncountable, "most" reals

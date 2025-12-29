@@ -1,5 +1,4 @@
-# Infinite Processes
-
+# Proving Convergence
 
 {{< include 00-history.qmd >}}
 

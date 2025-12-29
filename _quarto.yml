@@ -12,10 +12,10 @@ book:
     
     - part: "Numbers"
       chapters:
-        - chapters/01-foundations/index.qmd
+        - chapters/01-real-line/index.qmd
         - chapters/02-limits/index.qmd
-        - chapters/03-theory-convergence/index.qmd
-        - chapters/04-infinite-processes/index.qmd
+        - chapters/03-sequences/index.qmd
+        - chapters/04-convergence/index.qmd
         - chapters/05-exchanging-limits/index.qmd
         
     - part: "Functions"

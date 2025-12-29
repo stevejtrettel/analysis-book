@@ -20,7 +20,7 @@ contributes:
       fontfamily: libertinus
       fontsize: 10pt
       toc: true
-      toc-depth: 3
+      toc-depth: 2
       number-depth: 1
       include-in-header:
         - preamble.tex

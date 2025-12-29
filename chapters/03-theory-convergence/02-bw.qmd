@@ -1,8 +1,0 @@
-## Bounded Sequences
-
-- Theorem: every bounded sequence has a convergent subsequence
-- Proof via bisection → nested intervals (completeness!)
-- Remark: fails in ℚ
-- Corollary: bounded + exactly one subsequential limit ⟹ convergent
-- Reframing: divergence of bounded sequences means *multiple* subsequential limits
-- Motivation: study the *set* of all subsequential limits

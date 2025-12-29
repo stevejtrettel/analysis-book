@@ -1,34 +1,23 @@
 ## Limit Laws
 
+### Limits Respect Order
 
-**Limits Respect Order**
 
-- Theorem: aₙ → L and aₙ ≥ 0 ⟹ L ≥ 0
-- Theorem: aₙ ≤ bₙ and both converge ⟹ limits respect ≤
-- Warning: strict inequality not preserved
-- Squeeze theorem
 
-**Limits Respect Algebra**
+### Limits Respect Algebra
 
-- Limit laws: sum, difference, product, quotient, square root
-- These follow from ordered field axioms
 
-**Applications: Finishing What We Started**
 
-- **Geometric series**: Sₙ = (1 - rⁿ⁺¹)/(1-r) → 1/(1-r) using rⁿ → 0 and limit laws
-- **Archimedes resolved**: 1 + 1/4 + 1/16 + ⋯ = 1/(1 - 1/4) = 4/3
-- **Telescoping series**: Sₙ = 1 - 1/(n+1) → 1, so Σ1/(k(k+1)) = 1
-- **Telescoping product**: Pₙ = (n+1)/(2n) → 1/2, so Π(1 - 1/k²) = 1/2
-- Conjugate trick: √(n+1) - √n → 0
+### Applications
 
-**Density of Rationals**
 
-- Theorem: between any two reals lies a rational
-- Theorem: every real is the limit of a sequence of rationals
-- **Payoff**: Sequences really do reach all of ℝ!
+### Density and Approximation
 
-**The Limits of Limit Laws**
 
-- Limit laws tell us *what* the limit is, not *that* it exists
-- Babylonian example: *if* xₙ → L, then L = √2 — but doesn't prove convergence
-- We need a new tool...
+### The Limits of Limit Laws
+
+
+### $\bigstar$ The Koch Snowflake
+
+
+### Exercises

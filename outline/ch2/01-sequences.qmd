@@ -12,7 +12,6 @@
 
 ### Content
 
-**Tools for Reaching Real Numbers**
 - Chapter 1 showed $\RR$ uncountable, finite descriptions countable
 - Infinite processes bridge the gap
 - Sequences let us *name* numbers we can't write down finitely

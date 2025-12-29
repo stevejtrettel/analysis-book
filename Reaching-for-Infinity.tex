@@ -136,7 +136,7 @@
 \tikzset{no body/.style={/tikz/dash pattern=on 0 off 1mm}}% Larger chapter and section titles
 \setkomafont{chapter}{\Huge\bfseries}
 \setkomafont{section}{\huge\bfseries}
-\setkomafont{subsection}{\large\bfseries}
+\setkomafont{subsection}{\Large\bfseries}
 
 % ============================================
 % SPACING CONFIGURATION
@@ -275,14 +275,14 @@
 
 \title{Reaching for Infinity}
 \author{Steve Trettel}
-\date{2025-12-28}
+\date{2025-12-29}
 \begin{document}
 \frontmatter
 \maketitle
 
 \renewcommand*\contentsname{Table of contents}
 {
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 \tableofcontents
 }
 
@@ -298,1306 +298,237 @@ Analysis Text, Draft III, opening motivation.
 
 \part{Numbers}
 
-\chapter{Foundations}\label{foundations}
+\chapter{The Real Line}\label{the-real-line}
 
-\section{Sets and Functions}\label{sec-foundations-sets-functions}
+Introductory historical/motivational overview
 
-\textbf{Narrative}
+\section{Foundations}\label{foundations}
 
-\begin{itemize}
-\tightlist
-\item
-  Before discussing numbers, we need the language of sets and functions
-\item
-  This is vocabulary and notation---mostly review from intro to proofs
-\item
-  Functions are assignments, not formulas: ``1 if rational, 0 if
-  irrational'' is a valid function
-\item
-  Injective/surjective/bijective capture ways functions ``match up''
-  sets
-\item
-  Inverses exist precisely when bijective
-\item
-  Foreshadowing: Cantor's argument (no surjection
-  \(A \to \mathcal{P}(A)\)) connects to uncountability later
-\end{itemize}
+What haopens if my section starts with some text
 
-\textbf{Definitions}
+\subsection{Logic and Sets}\label{logic-and-sets}
 
-\begin{itemize}
-\tightlist
-\item
-  Set, element, membership (\(\in\), \(\notin\))
-\item
-  Set-builder notation: \(\{x : P(x)\}\)
-\item
-  Standard sets: \(\NN\), \(\ZZ\), \(\QQ\) (convention:
-  \(0 \notin \NN\))
-\item
-  Subset: \(A \subseteq B\)
-\item
-  Set equality: \(A = B\) iff \(A \subseteq B\) and \(B \subseteq A\)
-\item
-  Union, intersection, difference
-\item
-  Cartesian product: \(A \times B\)
-\item
-  Function: \(f: A \to B\), domain, codomain, range
-\item
-  Injective: \(f(x_1) = f(x_2) \Rightarrow x_1 = x_2\)
-\item
-  Surjective: range equals codomain
-\item
-  Bijective: injective and surjective
-\item
-  Composition: \((g \circ f)(x) = g(f(x))\)
-\item
-  Inverse function: \(f^{-1}\)
-\end{itemize}
+And then so does my subsection
 
-\textbf{Results}
+\subsection{Functions and Cardinality}\label{functions-and-cardinality}
 
-\begin{itemize}
-\tightlist
-\item
-  \(f\) has an inverse iff \(f\) is bijective
-\end{itemize}
+And the one after that
 
-\textbf{Exercises}
+\subsection{Fields}\label{fields}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  De Morgan: \((A \cap B)^c = A^c \cup B^c\)
-\item
-  \(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)\)
-\item
-  Composition is associative
-\item
-  \(f\) bijective \(\Rightarrow\) \(f^{-1}\) bijective and
-  \((f^{-1})^{-1} = f\)
-\item
-  \(f, g\) bijective \(\Rightarrow\)
-  \((g \circ f)^{-1} = f^{-1} \circ g^{-1}\)
-\item
-  \(f\) bijective iff left and right inverse exists
-\item
-  \(g \circ f\) injective/surjective: what about \(f\) and \(g\)?
-\item
-  ★ No surjection \(A \to \mathcal{P}(A)\) (Cantor)
-\end{enumerate}
+\subsection{Orders}\label{orders}
 
-\section{Ordered Fields}\label{sec-foundations-ordered-fields}
+\subsection{Absolute Value and
+Intervals}\label{absolute-value-and-intervals}
 
-\textbf{Narrative}
+\subsection{Algebraic Tools}\label{algebraic-tools}
 
-\begin{itemize}
-\tightlist
-\item
-  We axiomatize arithmetic abstractly: field axioms capture \(+\) and
-  \(\times\)
-\item
-  \(\QQ\) is a field; \(\ZZ\) is not (no multiplicative inverses)
-\item
-  Consequences flow from axioms: uniqueness of inverses,
-  \(0 \cdot a = 0\), \((-1)(-1) = 1\)
-\item
-  Add order via positivity axioms: trichotomy, closure under \(+\) and
-  \(\times\)
-\item
-  Squares are nonnegative; \(1 > 0\); multiplying by negatives reverses
-  inequalities
-\item
-  Absolute value measures distance: \(|a - b|\) is distance between
-  \(a\) and \(b\)
-\item
-  Triangle inequality: fundamental tool for estimation
-\item
-  Intervals: notation for ``chunks'' of the number line
-\item
-  Warning: \(\infty\) and \(-\infty\) are notation, not numbers
-\item
-  Bernoulli's inequality: \((1+x)^n \geq 1 + nx\)---used later for
-  bounding \(e\)
-\item
-  Roots notation introduced, but existence requires completeness (coming
-  in 1.5)
-\end{itemize}
+\subsection{\texorpdfstring{\(\bigstar\) Base-b representation of
+Integers}{\textbackslash bigstar Base-b representation of Integers}}\label{bigstar-base-b-representation-of-integers}
 
-\textbf{Definitions}
+\subsection{Exercises}\label{exercises}
 
-\begin{itemize}
-\tightlist
-\item
-  Field: \(+\), \(\times\) with commutativity, associativity,
-  identities, inverses, distributivity
-\item
-  Ordered field: field with positive elements \(P\) satisfying closure
-  and trichotomy
-\item
-  Inequality: \(a < b\) means \(b - a \in P\)
-\item
-  Absolute value: \(|a| = a\) if \(a \geq 0\), \(-a\) if \(a < 0\)
-\item
-  Intervals: \((a,b)\), \([a,b]\), \([a,b)\), \((a,b]\)
-\item
-  Rays: \([a, \infty)\), \((a, \infty)\), \((-\infty, a]\),
-  \((-\infty, a)\)
-\item
-  Roots notation: \(\sqrt[n]{a}\), rational powers \(a^{p/q}\)
-\end{itemize}
+\section{Incompleteness}\label{incompleteness}
 
-\textbf{Results}
+\subsection{\texorpdfstring{The First Crisis:
+\(\sqrt{2}\)}{The First Crisis: \textbackslash sqrt\{2\}}}\label{the-first-crisis-sqrt2}
 
-\begin{itemize}
-\tightlist
-\item
-  Uniqueness of additive and multiplicative inverses
-\item
-  \(0 \cdot a = 0\)
-\item
-  \((-1) \cdot a = -a\)
-\item
-  \(a^2 \geq 0\), with equality iff \(a = 0\)
-\item
-  \(1 > 0\)
-\item
-  Transitivity of \(<\)
-\item
-  \(a < b \Rightarrow a + c < b + c\)
-\item
-  \(a < b\) and \(c > 0 \Rightarrow ac < bc\); \(c < 0\) reverses
-\item
-  Triangle inequality: \(|a + b| \leq |a| + |b|\)
-\item
-  Reverse triangle inequality: \(||a| - |b|| \leq |a - b|\)
-\item
-  Bernoulli: \((1 + x)^n \geq 1 + nx\) for \(x > -1\)
-\end{itemize}
+\subsection{\texorpdfstring{Attempts to Patch
+\(\QQ\)}{Attempts to Patch \textbackslash QQ}}\label{attempts-to-patch-qq}
 
-\textbf{Remarks}
+\subsection{The Measurement Problem}\label{the-measurement-problem}
 
-\begin{itemize}
-\tightlist
-\item
-  \((a - r, a + r) = \{x : |x - a| < r\}\)
-\item
-  \(\infty\), \(-\infty\) are notation only, not field elements
-\end{itemize}
+\subsection{Calculus Slips through The
+Cracks}\label{calculus-slips-through-the-cracks}
 
-\textbf{Exercises}
+\subsection{Exercises}\label{exercises-1}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Zero-product property: \(ab = 0 \Rightarrow a = 0\) or \(b = 0\)
-\item
-  Fraction addition formula
-\item
-  Finite geometric sum
-\item
-  \(\CC\) cannot be ordered
-\item
-  \(a < b \Rightarrow a < \frac{a+b}{2} < b\)
-\item
-  \((a, b) \neq \varnothing\) when \(a < b\)
-\item
-  ★ Binary arithmetic
-\item
-  ★ Uniqueness of base-\(b\) representations
-\end{enumerate}
+\section{Completeness}\label{completeness}
 
-\section{Incompleteness}\label{sec-foundations-incompleteness}
+Opening Motivation
 
-\textbf{Narrative}
+\subsection{Bounds and the Supremum}\label{bounds-and-the-supremum}
 
-\begin{itemize}
-\tightlist
-\item
-  Greeks discover \(\sqrt{2}\) irrational: geometry demands a number
-  \(\QQ\) doesn't have
-\item
-  First patch attempt: adjoin \(\sqrt{2}\) to get
-  \(\QQ(\sqrt{2})\)---but now \(\sqrt{3}\) is missing
-\item
-  Adjoin more roots? Still miss \(\sqrt{5}\), \(\sqrt{7}\),
-  \(\sqrt{2 + \sqrt{3}}\), \ldots{}
-\item
-  Go to infinity: constructible numbers (all nested square roots)---but
-  miss \(\sqrt[3]{2}\)
-\item
-  Go to infinity again: algebraic numbers \(\AA\) (all polynomial
-  roots)---but miss \(\pi\)
-\item
-  Hopelessness: every patch leaves holes, can't construct our way to
-  completeness
-\item
-  The real crisis: gaps aren't just aesthetic---they break calculus
-\item
-  IVT, EVT, MVT all fail in \(\QQ\); derivatives lose connection to
-  function behavior
-\item
-  Newton's method and bisection produce sequences with no limit in
-  \(\QQ\)
-\item
-  New strategy needed: define \(\RR\) by properties (completeness), not
-  construction
-\end{itemize}
+\subsection{\texorpdfstring{The
+\(\varepsilon\)-Characterization}{The \textbackslash varepsilon-Characterization}}\label{the-varepsilon-characterization}
 
-\textbf{Definitions}
+\subsection{Working with Suprema}\label{working-with-suprema}
 
-\begin{itemize}
-\tightlist
-\item
-  \(\QQ(\sqrt{2}) = \{a + b\sqrt{2} : a, b \in \QQ\}\)
-\item
-  Constructible numbers: iterated square roots from \(\QQ\)
-\item
-  Algebraic numbers \(\AA\): roots of polynomials with integer
-  coefficients
-\item
-  Transcendental: not algebraic
-\end{itemize}
+\subsection{The Nested Interval
+Property}\label{the-nested-interval-property}
 
-\textbf{Results}
+\subsection{\texorpdfstring{\(\bigstar\) The Babylonian Square
+Root}{\textbackslash bigstar The Babylonian Square Root}}\label{bigstar-the-babylonian-square-root}
 
-\begin{itemize}
-\tightlist
-\item
-  \(\sqrt{2}\) is irrational
-\item
-  \(\QQ(\sqrt{2})\) is a field, but \(\sqrt{3} \notin \QQ(\sqrt{2})\)
-\item
-  Doubling the cube impossible: \(\sqrt[3]{2}\) not constructible
-\item
-  \(\pi\) is transcendental (Lindemann 1882)
-\item
-  Algebraic closure: \(\AA\) closed under polynomial roots
-\end{itemize}
+\subsection{Exercises}\label{exercises-2}
 
-\textbf{Examples}
+\section{The Real Numbers}\label{the-real-numbers}
 
-\begin{itemize}
-\tightlist
-\item
-  IVT fails in \(\QQ\): \(f(x) = x^2 - 2\) on \([1,2] \cap \QQ\)
-\item
-  EVT fails in \(\QQ\): \(f(x) = 1/(x^2 - 2)\) unbounded on
-  \([1,2] \cap \QQ\)
-\item
-  MVT fails in \(\QQ\) (depends on EVT)
-\end{itemize}
+\subsection{\texorpdfstring{The Definition of
+\(\RR\)}{The Definition of \textbackslash RR}}\label{the-definition-of-rr}
 
-\textbf{Remarks}
+\subsection{No Monsters (The Archimedean
+Property)}\label{no-monsters-the-archimedean-property}
 
-\begin{itemize}
-\tightlist
-\item
-  Constructibles satisfy polynomials of degree \(2^n\); \(\sqrt[3]{2}\)
-  satisfies degree 3
-\end{itemize}
+\subsection{Density}\label{density}
 
-\textbf{Exercises}
+\subsection{Roots}\label{roots}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \(\sqrt{6}\) irrational
-\item
-  \(\sqrt{p}\) irrational for \(p\) prime
-\item
-  Verify \(\QQ(\sqrt{2})\) is a field
-\item
-  ★ \(\sqrt{3} \notin \QQ(\sqrt{2})\)
-\item
-  \(\sqrt{2} + \sqrt{3}\) irrational
-\item
-  ★ \(\QQ(\sqrt{2}, \sqrt{3})\) is a field
-\item
-  Bisection algorithm: \(a_n^2 < 2 < b_n^2\) and \(b_n - a_n = 2^{1-n}\)
-\item
-  ★★ Liouville numbers: construct transcendentals before Lindemann
-\end{enumerate}
+\subsection{Infinite Riches
+(Uncountability)}\label{infinite-riches-uncountability}
 
-\section{Completeness}\label{sec-foundations-completeness}
+\subsection{\texorpdfstring{\(\bigstar\) Exponents and
+Logarithms}{\textbackslash bigstar Exponents and Logarithms}}\label{bigstar-exponents-and-logarithms}
 
-\textbf{Narrative}
+\subsection{Exercises}\label{exercises-3}
 
-\begin{itemize}
-\tightlist
-\item
-  Recall bisection for \(\sqrt{2}\): nested intervals
-  \([1,2] \supset [1.4, 1.5] \supset [1.41, 1.42] \supset \cdots\)
-\item
-  In \(\QQ\), intersection is empty---the target doesn't exist
-\item
-  Left endpoints increase, right endpoints decrease---want ``max'' and
-  ``min'' but they don't exist
-\item
-  Need a way to name the target these endpoints approach
-\item
-  Supremum: the least upper bound---may or may not be in the set
-\item
-  Key example: \(\{x \in \QQ : x^2 < 2\}\) has no supremum in
-  \(\QQ\)---this is how holes manifest
-\item
-  Completeness axiom: every nonempty set bounded above has a supremum
-\item
-  \(\varepsilon\)-characterization: the workhorse for supremum
-  arguments---``get within \(\varepsilon\) of the sup''
-\item
-  Working with sup: translation, scaling, subsets, unions
-\item
-  Nested Interval Property: completeness delivers what we
-  wanted---nested closed intervals have nonempty intersection
-\item
-  This is what ancient mathematicians assumed when approximating \(\pi\)
-  or \(\sqrt{2}\)
-\item
-  Next section: assume completeness as an axiom, define \(\RR\), explore
-  what this buys us
-\end{itemize}
+\section{Measuring the World}\label{measuring-the-world}
 
-\textbf{Definitions}
+\subsection{The Plane}\label{the-plane}
 
-\begin{itemize}
-\tightlist
-\item
-  Bounds: upper bound, lower bound, bounded above/below/bounded
-\item
-  Supremum: least upper bound
-\item
-  Infimum: greatest lower bound
-\item
-  Complete ordered field: every nonempty set bounded above has a
-  supremum
-\item
-  Nested intervals: \(I_{n+1} \subseteq I_n\) for all \(n\)
-\end{itemize}
+\subsection{Measuring Sets}\label{measuring-sets}
 
-\textbf{Results}
+\subsection{Measuring Curves}\label{measuring-curves}
 
-\begin{itemize}
-\tightlist
-\item
-  Uniqueness of sup and inf
-\item
-  \(\QQ\) is not complete
-\item
-  In a complete field, infima also exist
-\item
-  \(\varepsilon\)-characterization of sup: can get within
-  \(\varepsilon\) of sup
-\item
-  \(\varepsilon\)-characterization of inf
-\item
-  \(\sup(A + c) = \sup A + c\)
-\item
-  \(\sup(cA) = c \cdot \sup A\) for \(c > 0\)
-\item
-  \(A \subseteq B \Rightarrow \sup A \leq \sup B\)
-\item
-  \(\sup(A \cup B) = \max\{\sup A, \sup B\}\)
-\item
-  Nested Interval Property: \(\bigcap [a_n, b_n] \neq \varnothing\) in
-  complete fields
-\end{itemize}
+\subsection{Measuring Regions}\label{measuring-regions}
 
-\textbf{Examples}
+\subsection{Trigonometry}\label{trigonometry}
 
-\begin{itemize}
-\tightlist
-\item
-  \(\sup\{1 - 1/n\} = 1 \notin S\)
-\item
-  \(\sup[0,1] = 1 \in S\)
-\item
-  \((0,1)\): sup and inf not in set
-\item
-  \(\{x \in \QQ : x^2 < 2\}\) has no sup in \(\QQ\)
-\end{itemize}
+\subsection{\texorpdfstring{\(\bigstar\) Trigonometric
+Identities}{\textbackslash bigstar Trigonometric Identities}}\label{bigstar-trigonometric-identities}
 
-\textbf{Remarks}
-
-\begin{itemize}
-\tightlist
-\item
-  Lengths \(\to 0\) implies intersection is single point
-\item
-  Nested intervals fails in \(\QQ\)
-\end{itemize}
-
-\textbf{Exercises}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Uniqueness of inf
-\item
-  \(\varepsilon\)-characterization of inf
-\item
-  \(A \subseteq B \Rightarrow \sup A \leq \sup B\)
-\item
-  \(\sup(cA) = c \cdot \sup A\)
-\item
-  Sup/inf of unions
-\item
-  Find sup/inf: \([1,3]\), \([1,3)\), \(\{x \in \QQ : x^2 < 1\}\), etc.
-\item
-  Find sup/inf: \(\{(-1)^n/n\}\), \(\{\beta^n\}\), \(\{\gamma^n\}\)
-\item
-  \(\sup A < \sup B \Rightarrow\) some \(b \in B\) is upper bound for
-  \(A\)
-\item
-  Open intervals with \(\sup A = \inf B\): can one point make an
-  interval?
-\item
-  Nested open intervals with empty intersection
-\item
-  ★ Lengths \(\to 0\) implies single point
-\item
-  ★ Sup-completeness \(\Leftrightarrow\) inf-completeness
-\end{enumerate}
-
-\section{The Real Numbers}\label{sec-foundations-reals}
-
-\textbf{Narrative}
-
-\begin{itemize}
-\tightlist
-\item
-  The bold move: we \emph{declare} \(\RR\) to be a complete ordered
-  field
-\item
-  Axiomatic method: specify properties, not construction---we say what
-  reals \emph{do}, not what they \emph{are}
-\item
-  Existence and uniqueness theorem: these axioms describe exactly one
-  thing (up to isomorphism)
-\item
-  First check: no monsters---no infinite or infinitesimal numbers
-\item
-  \(\NN\) unbounded: if bounded, \(\sup \NN\) would exist, but then
-  \((\sup \NN) - 1\) not an upper bound, contradiction
-\item
-  Archimedean property: ``you can empty the ocean with a
-  teaspoon''---enough copies of any positive number exceed any bound
-\item
-  Complete \(\Rightarrow\) Archimedean
-\item
-  Density: \(\QQ\) and irrationals both dense in \(\RR\)---we filled
-  gaps, didn't add alien regions
-\item
-  The payoff: \(\sqrt{2}\) exists! Use completeness:
-  \(\sup\{x : x^2 < 2\}\) works
-\item
-  With roots, we build rational exponents, then real exponents, then
-  logarithms
-\item
-  Completeness lets us build all the functions we need---these are the
-  ``new treasures'' of \(\RR\)
-\item
-  Surprise: \(\RR\) is uncountable (nested intervals proof)
-\item
-  \(\QQ\) countable, \(\RR\) uncountable \(\Rightarrow\) ``most'' reals
-  are irrational
-\item
-  \(\AA\) countable \(\Rightarrow\) transcendentals exist, in fact
-  ``most'' reals are transcendental
-\item
-  Computables countable, definables countable \(\Rightarrow\) ``most''
-  reals cannot even be described
-\item
-  Closing: we built \(\RR\) to fill holes in \(\QQ\); it turned out to
-  be an uncountable ocean in which rationals, algebraics, and
-  computables are countable dust
-\end{itemize}
-
-\textbf{Definitions}
-
-\begin{itemize}
-\tightlist
-\item
-  \(\RR\): a complete ordered field (axiomatic)
-\item
-  Archimedean field: for all positive \(a, b\), some \(n \in \NN\) has
-  \(na > b\)
-\item
-  nth root: \(\sqrt[n]{a} = \sup\{x \geq 0 : x^n < a\}\)
-\item
-  Rational exponents: \(a^{p/q} = (\sqrt[q]{a})^p\)
-\item
-  Real exponents: \(a^x = \sup\{a^r : r \in \QQ, r < x\}\) for \(a > 1\)
-\item
-  Logarithm: \(\log_a(y) = \sup\{r \in \QQ : a^r < y\}\)
-\end{itemize}
-
-\textbf{Results}
-
-\begin{itemize}
-\tightlist
-\item
-  Existence and uniqueness of complete ordered field (stated without
-  proof)
-\item
-  \(\NN\) is unbounded in \(\RR\)
-\item
-  No infinitesimals: for all \(\varepsilon > 0\), some \(n\) has
-  \(1/n < \varepsilon\)
-\item
-  Complete fields are Archimedean
-\item
-  Density of \(\QQ\): between any two reals lies a rational
-\item
-  Density of irrationals: between any two reals lies an irrational
-\item
-  \(\sqrt{2}\) exists in \(\RR\)
-\item
-  nth roots exist: \((\sqrt[n]{a})^n = a\)
-\item
-  Functional equations: \(a^{x+y} = a^x a^y\),
-  \(\log_a(xy) = \log_a x + \log_a y\)
-\item
-  \(\RR\) is uncountable (nested intervals proof)
-\item
-  Irrationals are uncountable
-\end{itemize}
-
-\textbf{Remarks}
-
-\begin{itemize}
-\tightlist
-\item
-  Conventions: \(\sup S = \infty\) (unbounded above),
-  \(\inf S = -\infty\) (unbounded below)
-\item
-  \(\sup \varnothing = -\infty\), \(\inf \varnothing = \infty\)
-\item
-  \(\AA\) countable \(\Rightarrow\) transcendentals exist
-\item
-  Computables countable, definables countable: ``most'' reals
-  indescribable
-\end{itemize}
-
-\textbf{Exercises}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \(\QQ\) is Archimedean directly
-\item
-  \(\sqrt{3}\) exists
-\item
-  \(\sqrt{a}\) exists for \(a > 0\)
-\item
-  ★ nth roots exist
-\item
-  Rational exponents well-defined
-\item
-  \(a^{r+s} = a^r a^s\) for rational \(r, s\)
-\item
-  ★ \(a^{x+y} = a^x a^y\) for real \(x, y\)
-\item
-  ★★ Cantor's diagonal argument
-\item
-  ★★ Countability of \(\QQ\)
-\item
-  ★★ Countability of algebraic numbers \(\Rightarrow\) transcendentals
-  exist
-\end{enumerate}
+\subsection{Exercises}\label{exercises-4}
 
 \chapter{Limits}\label{limits}
 
 \section{Sequences}\label{sequences}
 
-\textbf{Tools for Reaching Real Numbers}
+\subsection{Sequences in History}\label{sequences-in-history}
 
-\begin{itemize}
-\tightlist
-\item
-  Chapter 1: ℝ is uncountable, finite descriptions are countable
-\item
-  \textbf{Key insight}: Infinite processes bridge the gap
-\item
-  Sequences let us \emph{name} numbers we can't write down
-\item
-  Preview: we'll prove every real is the limit of a sequence of
-  rationals
-\end{itemize}
+\subsection{The Definition}\label{the-definition}
 
-\textbf{What Is a Sequence?}
+\subsection{Series and Products as
+Sequences}\label{series-and-products-as-sequences}
 
-\begin{itemize}
-\tightlist
-\item
-  Definition: function ℕ → ℝ; a list a₁, a₂, a₃, \ldots{}
-\item
-  Two ways to specify: closed form vs recursive
-\end{itemize}
+\subsection{Reaching Infinity}\label{reaching-infinity}
 
-\textbf{Many Objects Are Secretly Sequences}
-
-\begin{itemize}
-\tightlist
-\item
-  Series Σaₙ: the sequence of partial sums Sₙ = a₁ + a₂ + ⋯ + aₙ
-\item
-  Products Πaₙ: the sequence of partial products Pₙ = a₁ · a₂ · ⋯ · aₙ
-\item
-  Recursive processes: aₙ₊₁ = f(aₙ)
-\item
-  \textbf{Unifying principle}: Master sequences, master them all
-\end{itemize}
-
-\textbf{Historical Examples: Tools in Action}
-
-\begin{itemize}
-\tightlist
-\item
-  \emph{Archimedes and the parabola}: Sₙ = T(1 + 1/4 + ⋯ + 1/4ⁿ) ---
-  tool for finding area
-\item
-  \emph{Babylonians and √2}: xₙ₊₁ = (xₙ + 2/xₙ)/2 --- tool for finding
-  √2
-\item
-  Both produce sequences; both ``approach'' something --- but what does
-  that mean?
-\end{itemize}
-
-\textbf{When Algebra Gives Closed Forms}
-
-\begin{itemize}
-\tightlist
-\item
-  Most sequences have no closed form for Sₙ or Pₙ
-\item
-  But some do --- and pure algebra (no limits!) gives the formula
-\end{itemize}
-
-\textbf{Geometric Partial Sums}
-
-\begin{itemize}
-\tightlist
-\item
-  Sₙ = 1 + r + r² + ⋯ + rⁿ
-\item
-  Trick: compute Sₙ - rSₙ = 1 - rⁿ⁺¹
-\item
-  Formula: Sₙ = (1 - rⁿ⁺¹)/(1 - r) for r ≠ 1
-\end{itemize}
-
-\textbf{Telescoping Series}
-
-\begin{itemize}
-\tightlist
-\item
-  Idea: terms cancel in pairs, leaving only endpoints
-\item
-  If aₖ = tₖ - tₖ₋₁, then Sₙ = Σₖ₌₁ⁿ aₖ = tₙ - t₀
-\item
-  Example: 1/(k(k+1)) = 1/k - 1/(k+1), so Σₖ₌₁ⁿ 1/(k(k+1)) = 1 - 1/(n+1)
-\end{itemize}
-
-\textbf{Telescoping Products}
-
-\begin{itemize}
-\tightlist
-\item
-  Same idea multiplicatively: terms cancel
-\item
-  If aₖ = tₖ/tₖ₋₁, then Pₙ = Πₖ aₖ = tₙ/t₀
-\item
-  Example: (1 - 1/k²) = (k-1)(k+1)/k² = {[}(k-1)/k{]} · {[}(k+1)/k{]}
-\item
-  Πₖ₌₂ⁿ (1 - 1/k²) = (1/2) · ((n+1)/n) = (n+1)/(2n)
-\end{itemize}
-
-\textbf{The Question}
-
-\begin{itemize}
-\tightlist
-\item
-  We have Sₙ = (1 - rⁿ⁺¹)/(1-r) and Sₙ = 1 - 1/(n+1) and Pₙ = (n+1)/(2n)
-\item
-  What happens as n → ∞? What does ``→'' mean?
-\item
-  This is \textbf{convergence} --- next section
-\end{itemize}
+\subsection{Exercises}\label{exercises-5}
 
 \section{Convergence}\label{convergence}
 
-\textbf{The Definition}
+\subsection{The Definition}\label{the-definition-1}
 
-\begin{itemize}
-\tightlist
-\item
-  Motivation: ``approaches'' means ``eventually stays arbitrarily
-  close''
-\item
-  The ε-N game: adversary picks tolerance, you find threshold
-\item
-  Definition: aₙ → L if ∀ε \textgreater{} 0 ∃N: n \textgreater{} N ⟹
-  \textbar aₙ - L\textbar{} \textless{} ε
-\item
-  Convergent vs divergent
-\end{itemize}
+\subsection{Funamental Examples}\label{funamental-examples}
 
-\textbf{Examples Worked from Definition}
+\subsection{Basic Properties}\label{basic-properties}
 
-\begin{itemize}
-\tightlist
-\item
-  1/n → 0 (the fundamental example; use Archimedean property)
-\item
-  Constant sequence c → c
-\item
-  n/(n+1) → 1
-\item
-  (-1)ⁿ diverges (direct argument: terms can't both be close to any L)
-\end{itemize}
+\subsection{\texorpdfstring{Divergence to
+\(\infty\)}{Divergence to \textbackslash infty}}\label{divergence-to-infty}
 
-\textbf{Geometric Sequences}
-
-\begin{itemize}
-\tightlist
-\item
-  Lemma (Bernoulli's Inequality): (1+x)ⁿ ≥ 1 + nx for x ≥ -1
-\item
-  Theorem: rⁿ → 0 for \textbar r\textbar{} \textless{} 1
-\item
-  Theorem: rⁿ diverges for \textbar r\textbar{} \textgreater{} 1;
-  diverges to +∞ for r \textgreater{} 1
-\end{itemize}
-
-\textbf{Basic Properties}
-
-\begin{itemize}
-\tightlist
-\item
-  Uniqueness of limits
-\item
-  Convergent ⟹ bounded (converse false: (-1)ⁿ)
-\item
-  Tails determine convergence
-\end{itemize}
-
-\textbf{Divergence to Infinity}
-
-\begin{itemize}
-\tightlist
-\item
-  Definition: aₙ → +∞, aₙ → -∞
-\item
-  Example: n² → +∞
-\end{itemize}
+\subsection{Exercises}\label{exercises-6}
 
 \section{Limit Laws}\label{limit-laws}
 
-\textbf{Limits Respect Order}
+\subsection{Limits Respect Order}\label{limits-respect-order}
 
-\begin{itemize}
-\tightlist
-\item
-  Theorem: aₙ → L and aₙ ≥ 0 ⟹ L ≥ 0
-\item
-  Theorem: aₙ ≤ bₙ and both converge ⟹ limits respect ≤
-\item
-  Warning: strict inequality not preserved
-\item
-  Squeeze theorem
-\end{itemize}
+\subsection{Limits Respect Algebra}\label{limits-respect-algebra}
 
-\textbf{Limits Respect Algebra}
+\subsection{Applications}\label{applications}
 
-\begin{itemize}
-\tightlist
-\item
-  Limit laws: sum, difference, product, quotient, square root
-\item
-  These follow from ordered field axioms
-\end{itemize}
+\subsection{Density and Approximation}\label{density-and-approximation}
 
-\textbf{Applications: Finishing What We Started}
+\subsection{The Limits of Limit Laws}\label{the-limits-of-limit-laws}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Geometric series}: Sₙ = (1 - rⁿ⁺¹)/(1-r) → 1/(1-r) using rⁿ →
-  0 and limit laws
-\item
-  \textbf{Archimedes resolved}: 1 + 1/4 + 1/16 + ⋯ = 1/(1 - 1/4) = 4/3
-\item
-  \textbf{Telescoping series}: Sₙ = 1 - 1/(n+1) → 1, so Σ1/(k(k+1)) = 1
-\item
-  \textbf{Telescoping product}: Pₙ = (n+1)/(2n) → 1/2, so Π(1 - 1/k²) =
-  1/2
-\item
-  Conjugate trick: √(n+1) - √n → 0
-\end{itemize}
+\subsection{\texorpdfstring{\(\bigstar\) The Koch
+Snowflake}{\textbackslash bigstar The Koch Snowflake}}\label{bigstar-the-koch-snowflake}
 
-\textbf{Density of Rationals}
-
-\begin{itemize}
-\tightlist
-\item
-  Theorem: between any two reals lies a rational
-\item
-  Theorem: every real is the limit of a sequence of rationals
-\item
-  \textbf{Payoff}: Sequences really do reach all of ℝ!
-\end{itemize}
-
-\textbf{The Limits of Limit Laws}
-
-\begin{itemize}
-\tightlist
-\item
-  Limit laws tell us \emph{what} the limit is, not \emph{that} it exists
-\item
-  Babylonian example: \emph{if} xₙ → L, then L = √2 --- but doesn't
-  prove convergence
-\item
-  We need a new tool\ldots{}
-\end{itemize}
+\subsection{Exercises}\label{exercises-7}
 
 \section{Monotone Convergence}\label{monotone-convergence}
 
-\textbf{The Key Insight}
+\subsection{The Key Insight}\label{the-key-insight}
+
+\subsection{The Monotone Convergence
+Theorem}\label{the-monotone-convergence-theorem}
+
+\subsection{Applications}\label{applications-1}
 
 \begin{itemize}
 \tightlist
 \item
-  Limit laws use ordered field axioms
+  A nested root?
 \item
-  To prove existence (not just compute), we need completeness
+  Babylonian Sequence, again!
 \end{itemize}
 
-\textbf{Monotone Sequences}
+\subsection{\texorpdfstring{\(\bigstar\) The Number
+\(e\)}{\textbackslash bigstar The Number e}}\label{bigstar-the-number-e}
 
-\begin{itemize}
-\tightlist
-\item
-  Definitions: increasing, decreasing, monotone
-\end{itemize}
-
-\textbf{The Theorem}
-
-\begin{itemize}
-\tightlist
-\item
-  MCT: monotone + bounded ⟹ convergent
-\item
-  Increasing bounded above → converges to sup
-\item
-  Decreasing bounded below → converges to inf
-\item
-  Proof uses completeness (ε-characterization of sup)
-\end{itemize}
-
-\textbf{The Babylonian Sequence}
-
-\begin{itemize}
-\tightlist
-\item
-  x₁ = 2, xₙ₊₁ = (xₙ + 2/xₙ)/2
-\item
-  Show: xₙ ≥ √2 for n ≥ 2 (AM-GM)
-\item
-  Show: (xₙ) decreasing (since xₙ² ≥ 2)
-\item
-  MCT ⟹ converges; limit laws ⟹ limit is √2
-\item
-  \textbf{Payoff}: Our tool reaches √2!
-\end{itemize}
-
-\textbf{The Number e}
-
-\begin{itemize}
-\tightlist
-\item
-  Definition: e = lim(1 + 1/n)ⁿ
-\item
-  Theorem: (1 + 1/n)ⁿ increasing, bounded above by 3
-\item
-  Theorem: (1 + 1/n)ⁿ⁺¹ decreasing, bounded below
-\item
-  Both converge to e; nested intervals locate e
-\end{itemize}
-
-\textbf{More MCT Examples}
-
-\begin{itemize}
-\tightlist
-\item
-  Nested radicals: √(2 + √(2 + ⋯)) = 2
-\item
-  Power tower: √2\textsuperscript{√2}⋯ = 2
-\end{itemize}
-
-\textbf{Series via MCT}
-
-\begin{itemize}
-\tightlist
-\item
-  Nonnegative series: converges iff partial sums bounded
-\item
-  Σ1/2ⁿ converges (partial sums \textless{} 2)
-\item
-  Σ1/n² converges (compare to telescoping Σ1/(k(k-1)))
-\end{itemize}
+\subsection{Exercises}\label{exercises-8}
 
 \section{\texorpdfstring{\(\bigstar\)
 Decimals}{\textbackslash bigstar Decimals}}\label{bigstar-decimals}
 
-\textbf{The Naming Problem}
+\subsection{The Naming Problem}\label{the-naming-problem}
 
-\begin{itemize}
-\tightlist
-\item
-  Finite descriptions: countable
-\item
-  ℝ: uncountable
-\item
-  Conclusion: infinite processes \emph{necessary} to name reals
-\end{itemize}
+\subsection{Decimal Expansions}\label{decimal-expansions}
 
-\textbf{Decimal Expansions}
+\subsection{Uniqueness}\label{uniqueness}
 
-\begin{itemize}
-\tightlist
-\item
-  Definition: 0.d₁d₂d₃\ldots{} = Σdₙ/10ⁿ
-\item
-  Every decimal converges (MCT: partial sums increasing, bounded)
-\item
-  Every real has a decimal (greedy algorithm)
-\item
-  Uniqueness up to trailing 9s; 0.999\ldots{} = 1
-\end{itemize}
+\subsection{Characterizing Rationals}\label{characterizing-rationals}
 
-\textbf{Characterizing Rationals}
+\subsection{\texorpdfstring{\(\bigstar\) Other
+Bases}{\textbackslash bigstar Other Bases}}\label{bigstar-other-bases}
 
-\begin{itemize}
-\tightlist
-\item
-  Theorem: x ∈ ℚ ⟺ eventually periodic decimal
-\item
-  Irrationals: non-repeating decimals (√2, Liouville's number)
-\end{itemize}
+\subsection{\texorpdfstring{\(\bigstar\) Constructing a
+Transcendental}{\textbackslash bigstar Constructing a Transcendental}}\label{bigstar-constructing-a-transcendental}
 
-\textbf{Preview}
+\subsection{Exercises}\label{exercises-9}
 
-\begin{itemize}
-\tightlist
-\item
-  Decimals privilege base 10 --- arbitrary
-\item
-  Continued fractions: another representation, developed in Chapter 4
-\item
-  We'll see: CFs give ``best'' rational approximations, explain Pell
-  equations
-\end{itemize}
+\section{\texorpdfstring{\(\bigstar\) Quadrature of the
+Parabola}{\textbackslash bigstar Quadrature of the Parabola}}\label{bigstar-quadrature-of-the-parabola}
 
-\chapter{General Sequences}\label{general-sequences}
+\subsection{The Setup}\label{the-setup}
+
+\subsection{Geometric Facts}\label{geometric-facts}
+
+\subsection{Inner Approximation}\label{inner-approximation}
+
+\subsection{Outer Approximation}\label{outer-approximation}
+
+\subsection{Putting it Together}\label{putting-it-together}
+
+\subsection{\texorpdfstring{\(\bigstar\) The Geometry of
+Parabolas}{\textbackslash bigstar The Geometry of Parabolas}}\label{bigstar-the-geometry-of-parabolas}
+
+\subsection{\texorpdfstring{\(\bigstar\) Exhaustion by
+Rectangles}{\textbackslash bigstar Exhaustion by Rectangles}}\label{bigstar-exhaustion-by-rectangles}
+
+\subsection{Exercises}\label{exercises-10}
+
+\chapter{Studying Sequences}\label{studying-sequences}
 
 \section{Subsequences}\label{subsequences}
 
-\begin{itemize}
-\tightlist
-\item
-  Definition of subsequence (n₁ \textless{} n₂ \textless{} n₃
-  \textless{} \ldots)
-\item
-  Motivation: probing a sequence's behavior by examining parts
-\item
-  Theorem: subsequences of convergent sequences inherit the limit
-\item
-  Contrapositive: two subsequences with different limits ⟹ divergence
-\item
-  Cleaner proof that (-1)ⁿ diverges (subsequences → 1 and → -1)
-\item
-  Definition: subsequential limit (accumulation point)
-\end{itemize}
-
-\section{Bounded Sequences}\label{bounded-sequences}
-
-\begin{itemize}
-\tightlist
-\item
-  Theorem: every bounded sequence has a convergent subsequence
-\item
-  Proof via bisection → nested intervals (completeness!)
-\item
-  Remark: fails in ℚ
-\item
-  Corollary: bounded + exactly one subsequential limit ⟹ convergent
-\item
-  Reframing: divergence of bounded sequences means \emph{multiple}
-  subsequential limits
-\item
-  Motivation: study the \emph{set} of all subsequential limits
-\end{itemize}
-
-\section{Limsup \& Liminf}\label{limsup-liminf}
-
-\begin{itemize}
-\tightlist
-\item
-  For bounded sequence, set of subsequential limits is nonempty (BW) and
-  bounded
-\item
-  Definition via subsequential limits: limsup = largest, liminf =
-  smallest
-\item
-  Alternative definition via tails: limsup = lim(sup of tail), liminf =
-  lim(inf of tail)
-\item
-  Prove these agree
-\item
-  Theorem: limsup is achieved (some subsequence converges to it)
-\item
-  Theorem: convergence ⟺ limsup = liminf
-\item
-  Examples: compute limsup/liminf for oscillating sequences
-\end{itemize}
+\section{Subsequential Limits}\label{subsequential-limits}
 
 \section{The Cauchy Condition}\label{the-cauchy-condition}
-
-\begin{itemize}
-\tightlist
-\item
-  Observation: limsup = liminf means ``tail oscillation'' → 0
-\item
-  Define tail oscillation ωₙ = sup(tail) - inf(tail)
-\item
-  ωₙ → 0 ⟺ convergence
-\item
-  Unpack: ωₙ \textless{} ε means all pairs j, k ≥ n satisfy \textbar aⱼ
-  - aₖ\textbar{} \textless{} ε
-\item
-  This \emph{is} the Cauchy condition --- derived naturally from
-  limsup/liminf!
-\item
-  Definition: Cauchy sequence
-\item
-  Theorem: convergent ⟺ Cauchy
-\item
-  Proof sketch (⟸): Cauchy ⟹ bounded ⟹ BW ⟹ convergent subsequence ⟹
-  whole sequence converges
-\item
-  Significance: intrinsic (examines only the sequence), metric (uses
-  distance, not order)
-\end{itemize}
 
 \section{\texorpdfstring{\(\bigstar\) The Many Faces of
 Completeness}{\textbackslash bigstar The Many Faces of Completeness}}\label{bigstar-the-many-faces-of-completeness}
 
-\begin{itemize}
-\tightlist
-\item
-  Completeness has appeared as:
+\chapter{Proving Convergence}\label{proving-convergence}
 
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \tightlist
-  \item
-    LUB (axiom)
-  \item
-    MCT
-  \item
-    Nested Intervals
-  \item
-    Bolzano-Weierstrass
-  \item
-    Cauchy completeness
-  \end{enumerate}
-\item
-  Theorem: for an ordered field, all five are equivalent
-\item
-  Sketch the equivalence cycle (or key implications)
-\item
-  Why it matters: Cauchy generalizes to metric spaces without order
-\item
-  Historical note: Cantor's construction of ℝ via Cauchy sequences of
-  rationals
-\end{itemize}
-
-\chapter{Infinite Processes}\label{infinite-processes}
-
-\section{Monotonicity}\label{monotonicity}
-
-\begin{itemize}
-\tightlist
-\item
-  Not all sequences are monotone, but some \emph{decompose} into
-  monotone pieces
-\item
-  \textbf{Lemma (Even-Odd)}: If even-indexed terms → L and odd-indexed
-  terms → L, then aₙ → L
-\item
-  Generalization to k subsequences (state, assign HW)
-\item
-  \textbf{Alternating Series Test}: bₙ ↘ 0 ⟹ Σ(−1)ⁿbₙ converges
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Even partial sums ↑, odd partial sums ↓, gap → 0
-  \end{itemize}
-\item
-  Example: alternating harmonic series
-\item
-  \textbf{√2 continued fraction}: √2 = {[}1; 2̄{]}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Even convergents ↑, odd convergents ↓, gap → 0
-  \item
-    Prove convergence; note the tail is {[}2; 2̄{]} which ``repeats'' ---
-    we'll exploit this in §4.3
-  \end{itemize}
-\item
-  \textbf{Wallis product}: zig-zag partial products
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Odd partial products ↓, even partial products ↑, gap → 0
-  \end{itemize}
-\end{itemize}
+\section{Finding Monotonicity}\label{finding-monotonicity}
 
 \section{Comparison}\label{comparison}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Comparison Test}: 0 ≤ aₙ ≤ bₙ and Σbₙ converges ⟹ Σaₙ
-  converges
-\item
-  \textbf{Limit Comparison}: aₙ/bₙ → L ∈ (0, ∞) ⟹ same behavior
-\item
-  \textbf{Absolute convergence}: definition, implies convergence
-\item
-  \textbf{Ratio Test}: comparison with geometric series via ratios
-\item
-  \textbf{Root Test}: comparison with geometric series via n-th roots
-\item
-  \textbf{Root Test (strong form)}: limsup version
-\item
-  \textbf{Viète product}: factors → 1 geometrically fast,
-  Cauchy/comparison gives convergence
-\item
-  Remark: products with factors approaching 1 ``fast enough'' ---
-  connects to series via log (forward reference to Ch 6)
-\end{itemize}
-
 \section{Contraction Maps}\label{contraction-maps}
 
-\begin{itemize}
-\tightlist
-\item
-  Recursive sequences aₙ₊₁ = f(aₙ): when do they converge?
-\item
-  \textbf{Definition}: contraction with constant c ∈ (0,1)
-\item
-  \textbf{Theorem}: unique fixed point, all orbits converge, rate
-  \textbar aₙ − L\textbar{} ≤ cⁿ⁻¹\textbar a₁ − L\textbar{}
-\item
-  Proof: geometric comparison → Cauchy → completeness
-\item
-  Revisit Ch 2 examples with convergence rates: Babylonian/√2, nested
-  radicals
-\item
-  \textbf{√2 continued fraction revisited}: the tail {[}2; 2̄{]}
-  satisfies t = 2 + 1/t
+\section{\texorpdfstring{\(\bigstar\) Continued
+Fractions}{\textbackslash bigstar Continued Fractions}}\label{bigstar-continued-fractions}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Iteration f(x) = 2 + 1/x is a contraction on {[}2, 3{]}
-  \item
-    Fixed point is 1 + √2; then √2 = t − 1, same convergence rate
-  \item
-    Periodic CF ↔ iteration --- preview of Lagrange
-  \end{itemize}
-\item
-  Remark: for those who know calculus, xₙ₊₁ = cos(xₙ) is another example
-\end{itemize}
-
-\section{Continued Fractions}\label{continued-fractions}
-
-\begin{itemize}
-\tightlist
-\item
-  Definition: {[}a₀; a₁, a₂, \ldots{]}
-\item
-  Convergents pₙ/qₙ and recurrence relations
-\item
-  Key identity: pₙqₙ₋₁ − pₙ₋₁qₙ = (−1)ⁿ⁻¹
-\item
-  \textbf{Convergence}: even convergents ↑, odd ↓, apply §4.1 technique
-\item
-  Every real has a CF; uniqueness
-\item
-  \textbf{Lagrange}: quadratic irrationals ↔ eventually periodic
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Connection to contraction maps: periodicity gives iteration
-  \end{itemize}
-\item
-  Best rational approximation property
-\item
-  \textbf{Pell connection}: convergents of √N solve p² − Nq² = ±1
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Full √2 story complete: CF {[}1; 2̄{]} explains Pell solutions and
-    Babylonian
-  \end{itemize}
-\item
-  \textbf{The golden ratio surprise}: φ = {[}1; 1̄{]}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    All 1s means slowest-growing denominators (Fibonacci!)
-  \item
-    Worst case for rational approximation: ``most irrational number''
-  \end{itemize}
-\end{itemize}
-
-\section{Archimedes and Pi}\label{archimedes-and-pi}
-
-\begin{itemize}
-\tightlist
-\item
-  Inscribed/circumscribed polygon half-perimeters aₙ, bₙ
-\item
-  Doubling recurrence: b₂ₙ = H(aₙ, bₙ), a₂ₙ = G(aₙ, b₂ₙ)
-\item
-  Each sequence monotone → MCT → converge separately
-\item
-  \textbf{Ratio trick}: rₙ = aₙ/bₙ → 1 (contraction or direct analysis)
-\item
-  \textbf{Definition}: π = lim aₙ = lim bₙ
-\item
-  Corollaries: circumference = 2π, area = π
-\item
-  \textbf{Viète derived}: connect polygon ratios to nested radical
-  product, show equals 2/π
-\item
-  Archimedes' numerical bounds
-\end{itemize}
+\section{Measurement of the Circle}\label{measurement-of-the-circle}
 
 \chapter{Exchanging Limits}\label{exchanging-limits}
 
@@ -3248,7 +2179,7 @@ Equations}{\textbackslash bigstar Differential Equations}}\label{bigstar-differe
   Few terms give many digits
 \end{itemize}
 
-\section{Trigonometry}\label{trigonometry}
+\section{Trigonometry}\label{trigonometry-1}
 
 \textbf{Defining Arcsine}
 
@@ -5571,7 +4502,7 @@ diagonalize the derivative.
 \end{itemize}
 
 \section{\texorpdfstring{\(\bigstar\) Other
-Bases}{\textbackslash bigstar Other Bases}}\label{bigstar-other-bases}
+Bases}{\textbackslash bigstar Other Bases}}\label{bigstar-other-bases-1}
 
 \textbf{Revisiting the Orthonormal Polynomials}
 
@@ -7605,16 +6536,35 @@ transforms to the constant function!} - Infinitely concentrated in space
 \section{Fundamental Solutions and
 PDEs}\label{fundamental-solutions-and-pdes}
 
-\textbf{The strategy} - Want to solve \(Lu = f\) for differential
-operator \(L\) - Idea: find \(G\) with \(LG = \delta\) (fundamental
-solution) - Then \(u = G * f\) solves \(Lu = f\) - Why?
-\(L(G * f) = (LG) * f = \delta * f = f\)
+\textbf{The strategy}
 
-\textbf{Finding fundamental solutions via Fourier} - \(LG = \delta\)
-where \(L = P(\frac{d}{dx})\) - Take Fourier:
-\(P(i\xi)\hat{G}(\xi) = 1\) - Solve:
-\(\hat{G}(\xi) = \frac{1}{P(i\xi)}\) - Invert to find \(G\) - Poles of
-\(\frac{1}{P(i\xi)}\) require care (principal value, etc.)
+\begin{itemize}
+\tightlist
+\item
+  Want to solve \(Lu = f\) for differential operator \(L\)
+\item
+  Idea: find \(G\) with \(LG = \delta\) (fundamental solution)
+\item
+  Then \(u = G * f\) solves \(Lu = f\)
+\item
+  Why? \(L(G * f) = (LG) * f = \delta * f = f\)
+\end{itemize}
+
+\textbf{Finding fundamental solutions via Fourier}
+
+\begin{itemize}
+\tightlist
+\item
+  \(LG = \delta\) where \(L = P(\frac{d}{dx})\)
+\item
+  Take Fourier: \(P(i\xi)\hat{G}(\xi) = 1\)
+\item
+  Solve: \(\hat{G}(\xi) = \frac{1}{P(i\xi)}\)
+\item
+  Invert to find \(G\)
+\item
+  Poles of \(\frac{1}{P(i\xi)}\) require care (principal value, etc.)
+\end{itemize}
 
 \textbf{Heat equation on \(\mathbb{R}\)}
 
@@ -7668,12 +6618,22 @@ all \(t > 0\) --- infinite propagation speed - Wave: \(W_t\) supported
 on \(\{x : |x| = ct\}\) --- finite propagation speed \(c\) - Information
 travels at most at speed \(c\) for wave equation
 
-\textbf{General constant-coefficient operators} -
-\(P(\partial_t, \partial_x) u = f\) - Fourier transforms to
-algebraic/ODE: \(P(\partial_t, i\xi)\hat{u} = \hat{f}\) - Solve in
-Fourier space, invert - This is the general method
+\textbf{General constant-coefficient operators}
 
-\section{Applications}\label{applications}
+\begin{itemize}
+\tightlist
+\item
+  \(P(\partial_t, \partial_x) u = f\)
+\item
+  Fourier transforms to algebraic/ODE:
+  \(P(\partial_t, i\xi)\hat{u} = \hat{f}\)
+\item
+  Solve in Fourier space, invert
+\item
+  This is the general method
+\end{itemize}
+
+\section{Applications}\label{applications-2}
 
 \textbf{Application 1: The Sampling Theorem}
 

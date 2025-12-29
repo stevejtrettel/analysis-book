@@ -1,45 +1,18 @@
 ## Monotone Convergence
 
 
+### The Key Insight
 
-**The Key Insight**
 
-- Limit laws use ordered field axioms
-- To prove existence (not just compute), we need completeness
+### The Monotone Convergence Theorem
 
-**Monotone Sequences**
+### Applications
 
-- Definitions: increasing, decreasing, monotone
+- A nested root?
+- Babylonian Sequence, again!
 
-**The Theorem**
 
-- MCT: monotone + bounded ⟹ convergent
-- Increasing bounded above → converges to sup
-- Decreasing bounded below → converges to inf
-- Proof uses completeness (ε-characterization of sup)
+### $\bigstar$ The Number $e$
 
-**The Babylonian Sequence**
 
-- x₁ = 2, xₙ₊₁ = (xₙ + 2/xₙ)/2
-- Show: xₙ ≥ √2 for n ≥ 2 (AM-GM)
-- Show: (xₙ) decreasing (since xₙ² ≥ 2)
-- MCT ⟹ converges; limit laws ⟹ limit is √2
-- **Payoff**: Our tool reaches √2!
-
-**The Number e**
-
-- Definition: e = lim(1 + 1/n)ⁿ
-- Theorem: (1 + 1/n)ⁿ increasing, bounded above by 3
-- Theorem: (1 + 1/n)ⁿ⁺¹ decreasing, bounded below
-- Both converge to e; nested intervals locate e
-
-**More MCT Examples**
-
-- Nested radicals: √(2 + √(2 + ⋯)) = 2
-- Power tower: √2^√2^⋯ = 2
-
-**Series via MCT**
-
-- Nonnegative series: converges iff partial sums bounded
-- Σ1/2ⁿ converges (partial sums < 2)
-- Σ1/n² converges (compare to telescoping Σ1/(k(k-1)))
+### Exercises
