@@ -89,7 +89,12 @@ Let $a_n = (1 + 1/n)^n$ and $b_n = (1 + 1/n)^{n+1}$.
   - For $n \geq 2$: $\frac{1}{n^2} < \frac{1}{n(n-1)} = \frac{1}{n-1} - \frac{1}{n}$ (telescoping!)
   - So $S_n < 1 + \sum_{k=2}^{n}\left(\frac{1}{k-1} - \frac{1}{k}\right) = 1 + (1 - 1/n) < 2$
   - Bounded, so converges
-- Remark: we proved convergence *without computing the limit*. The sum is $\pi^2/6$, but proving this requires Fourier analysis!
+- Example: The harmonic series $\sum 1/n$ diverges (prove in text)
+  - Partial sums $H_n = 1 + 1/2 + 1/3 + \cdots + 1/n$ are unbounded
+  - Proof: $H_{2n} - H_n = \frac{1}{n+1} + \frac{1}{n+2} + \cdots + \frac{1}{2n} > n \cdot \frac{1}{2n} = \frac{1}{2}$
+  - So $H_{2^k} > k/2$, which is unbounded
+  - Remark: this is the "boundary case" — $\sum 1/n^p$ converges for $p > 1$, diverges for $p \leq 1$
+- Remark: we proved convergence/divergence *without computing limits*. The sum $\sum 1/n^2 = \pi^2/6$, but proving this requires Fourier analysis!
 
 ### Exercises
 

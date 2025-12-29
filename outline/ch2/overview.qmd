@@ -1,4 +1,4 @@
-# Limits
+# Chapter 2: Limits
 
 ### Narrative
 
@@ -9,7 +9,7 @@ How do we access the rest? Sequences are our tools. A sequence of rationals can 
 This chapter develops the theory of sequences as tools for exploring $\RR$.
 
 The arc:
-> Sequences as tools → What is convergence? → Limit laws from ordered field axioms → MCT from completeness → Every real can be reached
+> Sequences as tools → What is convergence? → Limit laws from ordered field axioms → MCT from completeness → Every real can be reached → Ancient problems solved
 
 ### The Babylonian Thread: Reaching $\sqrt{2}$
 
@@ -24,9 +24,10 @@ This thread demonstrates: ancient mathematicians had the right algorithm; we now
 
 ### Requires
 
-- §1.2: Ordered field axioms, triangle inequality, Bernoulli's inequality
-- §1.4: Completeness ($\varepsilon$-characterization of sup)
-- §1.5: Archimedean property, density of $\QQ$
+- §1.1: Ordered field axioms, triangle inequality, Bernoulli's inequality
+- §1.3: Completeness ($\varepsilon$-characterization of sup)
+- §1.4: Archimedean property, density of $\QQ$
+- §1.5: Definition of area via inner/outer approximations (for §2.6)
 
 ### Sections
 
@@ -35,6 +36,7 @@ This thread demonstrates: ancient mathematicians had the right algorithm; we now
 3. **§2.3 Limit Theorems** — Limits respect order and algebra; applications; density revisited; limits of limit laws
 4. **§2.4 Monotone Convergence** — MCT from completeness; Babylonian $\to \sqrt{2}$; the number $e$; series via MCT
 5. **§2.5 Representing Real Numbers** — Decimals; every real has a decimal; characterizing rationals *(Terminal)*
+6. **§2.6 Quadrature of the Parabola** — Archimedes' area calculation; geometric series; inner/outer bounds; connects Ch1 and Ch2 *(Terminal)*
 
 ### Historical Prelude
 

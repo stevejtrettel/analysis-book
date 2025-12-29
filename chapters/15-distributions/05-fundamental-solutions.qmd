@@ -2,12 +2,14 @@
 
 
 **The strategy**
+
 - Want to solve $Lu = f$ for differential operator $L$
 - Idea: find $G$ with $LG = \delta$ (fundamental solution)
 - Then $u = G * f$ solves $Lu = f$
 - Why? $L(G * f) = (LG) * f = \delta * f = f$
 
 **Finding fundamental solutions via Fourier**
+
 - $LG = \delta$ where $L = P(\frac{d}{dx})$
 - Take Fourier: $P(i\xi)\hat{G}(\xi) = 1$
 - Solve: $\hat{G}(\xi) = \frac{1}{P(i\xi)}$
@@ -71,6 +73,7 @@
 - Information travels at most at speed $c$ for wave equation
 
 **General constant-coefficient operators**
+
 - $P(\partial_t, \partial_x) u = f$
 - Fourier transforms to algebraic/ODE: $P(\partial_t, i\xi)\hat{u} = \hat{f}$
 - Solve in Fourier space, invert

@@ -1,0 +1,123 @@
+## Quadrature of the Parabola
+
+### Narrative
+
+- Archimedes (~250 BCE) found the area of a parabolic segment
+- We prove it rigorously using §1.5 (area via inner/outer approximations) and geometric series
+- The geometric facts are taken for granted in the main text; proofs are guided exercises
+- This connects Chapter 1 (rigorous definition of area) with Chapter 2 (geometric series)
+
+### Content
+
+*(Opening — unnumbered)*
+- The parabolic segment: region bounded by parabola $y = x^2$ and a chord
+- One of Archimedes' greatest achievements: finding this area
+- He used the "method of exhaustion" — we'll use our rigorous framework from §1.5 plus geometric series
+
+**The Setup**
+- Consider $y = x^2$ with chord from $(a, a^2)$ to $(b, b^2)$
+- The inscribed triangle: third vertex at $x = (a+b)/2$, the point on the parabola above the midpoint
+- Let $T$ = area of this inscribed triangle
+- Goal: show the parabolic segment has area $\frac{4T}{3}$
+
+**Geometric Facts**
+- We need three facts (proofs as guided exercise):
+- Fact 1 (Inscribed triangle area): Using $m = (a+b)/2$, $h = (b-a)/2$, the inscribed triangle has area $h^3$
+- Fact 2 (Circumscribed parallelogram): The parallelogram circumscribing the segment (sides parallel to chord and tangent at vertex) has area $2h^3 = 2T$
+- Fact 3 (Child triangles): The two child triangles (inscribed in the two remaining segments) have combined area $T/4$
+
+**Inner Approximations**
+- Stage 0: One inscribed triangle, area $T$
+- Stage 1: Add 2 child triangles, total area $T + T/4$
+- Stage 2: Add 4 grandchild triangles, total area $T + T/4 + T/16$
+- Stage $n$: Total inscribed area $= T(1 + 1/4 + 1/16 + \cdots + 1/4^n) = T \cdot \frac{1 - (1/4)^{n+1}}{1 - 1/4}$
+- The inscribed regions are polygons contained in the parabolic segment
+- By §1.5: inner area $= \sup\{\text{inscribed polygon areas}\} \geq T \cdot \frac{1 - (1/4)^{n+1}}{1 - 1/4}$ for all $n$
+- As $n \to \infty$: inner area $\geq T \cdot \frac{1}{1 - 1/4} = \frac{4T}{3}$
+
+**Outer Approximations**
+- At stage $n$: replace the last batch of triangles with their circumscribed parallelograms
+- Each parallelogram has area twice its inscribed triangle
+- Outer figure at stage $n$ = inner figure at stage $n$ + (extra area from parallelograms instead of triangles)
+- Extra area = sum of last batch of triangles = $T/4^n$
+- So: outer area at stage $n$ = inner area at stage $n$ + $T/4^n$
+- These outer figures contain the parabolic segment
+- By §1.5: outer area $= \inf\{\text{circumscribed polygon areas}\} \leq T \cdot \frac{1 - (1/4)^{n+1}}{1 - 1/4} + T/4^n$ for all $n$
+- As $n \to \infty$: outer area $\leq \frac{4T}{3}$
+
+**Conclusion**
+- Inner area $\geq \frac{4T}{3}$ and outer area $\leq \frac{4T}{3}$
+- Since inner area $\leq$ outer area always, we have inner area $=$ outer area $= \frac{4T}{3}$
+- By §1.5 definition: the parabolic segment has area, and it equals $\frac{4T}{3}$
+- Theorem (Archimedes): The area of a parabolic segment is $\frac{4}{3}$ times the area of its inscribed triangle
+
+**Historical Remark**
+- Archimedes proved this using the method of exhaustion — essentially our inner/outer argument
+- He also had a mechanical method using levers and centers of gravity
+- Our proof makes rigorous what Archimedes knew intuitively: the inner and outer bounds converge
+
+### Guided Exercise
+
+**The Geometric Facts**
+
+We establish the three geometric facts needed for the quadrature.
+
+*Setup:* Consider the parabola $y = x^2$ with chord from $(a, a^2)$ to $(b, b^2)$. Let $m = (a+b)/2$ and $h = (b-a)/2$, so the endpoints are $(m-h, (m-h)^2)$ and $(m+h, (m+h)^2)$.
+
+(a) The inscribed triangle has vertices at $(m-h, (m-h)^2)$, $(m+h, (m+h)^2)$, and $(m, m^2)$. Using the formula
+$$\text{Area} = \frac{1}{2}|x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2)|$$
+show that the area equals $h^3$.
+
+(b) The circumscribed parallelogram has two sides along the lines through the chord endpoints parallel to the tangent at $(m, m^2)$, and two sides along lines parallel to the chord. Show its area is $2h^3$.
+
+(c) The right child segment has chord from $(m, m^2)$ to $(m+h, (m+h)^2)$. Its midpoint x-coordinate is $m + h/2$, so its half-width is $h' = h/2$. By part (a), its inscribed triangle has area $(h')^3 = h^3/8$.
+
+(d) Similarly, the left child triangle has area $h^3/8$. Conclude: the two child triangles have combined area $h^3/4 = T/4$.
+
+(e) Explain why, at each stage, the new batch of triangles has total area $1/4$ of the previous batch.
+
+### Exercises
+
+*Geometric facts*
+- Verify part (a) of the guided exercise by direct computation
+- ★ Prove part (b) without using calculus (hint: use similar triangles or direct coordinate calculation)
+
+*The series*
+- Verify $1 + 1/4 + 1/16 + \cdots = 4/3$ using the geometric series formula
+- At stage $n$, how many triangles have been inscribed? What is the total area?
+
+*Variations*
+- For the parabola $y = cx^2$ (any $c > 0$), show the quadrature result still holds: area = $\frac{4}{3}T$
+- ★ Set up the quadrature for $y = x^2$ on $[0, 1]$ and compute the area directly. Verify it equals $\frac{4}{3}T$ where $T$ is the inscribed triangle area.
+
+*Historical*
+- Archimedes' original inscribed triangle for $y = x^2$ on $[-1, 1]$ has vertices at $(-1, 1)$, $(1, 1)$, $(0, 0)$. Compute its area and hence the area of the parabolic segment.
+
+*The rectangle method (preview of integration)*
+
+These exercises develop the "modern" approach to area: approximating with rectangles rather than triangles. This method generalizes to arbitrary curves and becomes the definition of the integral (Chapter 8).
+
+- Divide $[0, a]$ into $k$ equal subintervals of width $a/k$. The *lower sum* uses rectangles with heights from the left endpoints: $L_k = \sum_{j=0}^{k-1} \left(\frac{ja}{k}\right)^2 \cdot \frac{a}{k}$. The *upper sum* uses right endpoints: $U_k = \sum_{j=1}^{k} \left(\frac{ja}{k}\right)^2 \cdot \frac{a}{k}$. Draw a picture showing $L_k \leq \text{area} \leq U_k$.
+
+- Show that $L_k = \frac{a^3}{k^3} \sum_{j=0}^{k-1} j^2$ and $U_k = \frac{a^3}{k^3} \sum_{j=1}^{k} j^2$.
+
+- Using the formula $\sum_{j=1}^{k} j^2 = \frac{k(k+1)(2k+1)}{6}$ from §1.1, show that:
+$$U_k = \frac{a^3}{k^3} \cdot \frac{k(k+1)(2k+1)}{6} = \frac{a^3(k+1)(2k+1)}{6k^2}$$
+
+- Compute $\lim_{k \to \infty} U_k$ using limit laws. (Hint: divide numerator and denominator by $k^2$.)
+
+- Similarly compute $\lim_{k \to \infty} L_k$ and verify both limits equal $\frac{a^3}{3}$.
+
+- Conclude: the area under $y = x^2$ from $0$ to $a$ equals $\frac{a^3}{3}$.
+
+- Verify this matches Archimedes: for the segment from $(0,0)$ to $(a, a^2)$, the inscribed triangle has area $\frac{a^3}{4}$ (check this!), so Archimedes predicts area $= \frac{4}{3} \cdot \frac{a^3}{4} = \frac{a^3}{3}$. ✓
+
+- ★ Extend to $y = x^3$: using $\sum_{j=1}^{k} j^3 = \left(\frac{k(k+1)}{2}\right)^2$, show the area under $y = x^3$ from $0$ to $a$ equals $\frac{a^4}{4}$.
+
+### Dependencies
+
+**Requires**: §1.5 (area via inner/outer approximations), §2.1 (geometric series)
+
+**Used in**: Historical payoff; connects Chapters 1 and 2
+
+*(Terminal section — may be deferred or omitted)*

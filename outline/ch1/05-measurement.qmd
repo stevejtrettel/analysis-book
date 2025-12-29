@@ -1,0 +1,156 @@
+## Measuring the World
+
+### Narrative
+
+- We've built $\mathbb{R}$ with completeness — now what can we do with it?
+- The Greeks measured straight lines easily, but curves and regions were hard
+- With sup/inf we can rigorously define: lengths of curves, areas of regions, even angle
+- This chapter's payoff: making curved geometry rigorous
+
+### Content
+
+*(Opening — unnumbered)*
+- Completeness lets us define measurements the Greeks struggled with
+- Distance, length, area — all via sup/inf
+- We define trigonometry as a consequence of arc length
+
+**The Plane**
+- Definition: $\mathbb{R}^2 = \{(x, y) : x, y \in \mathbb{R}\}$ (ordered pairs)
+- Definition: $\mathbb{R}^n = \{(x_1, \ldots, x_n) : x_i \in \mathbb{R}\}$ (n-tuples)
+- The distance formula: $d(p, q) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for $p = (x_1, y_1)$, $q = (x_2, y_2)$
+- Remark: The Greeks proved this as a theorem (Pythagoras). We take it as *definition* of distance in $\mathbb{R}^2$
+- In $\mathbb{R}^n$: $d(p, q) = \sqrt{\sum_{i=1}^{n}(q_i - p_i)^2}$
+- ✎ Inline: Verify $d(p, q) = d(q, p)$ and $d(p, p) = 0$
+
+**Measuring Sets**
+- Definition: The *diameter* of a set $S \subseteq \mathbb{R}^2$ is $\text{diam}(S) = \sup\{d(p, q) : p, q \in S\}$
+- Exists (possibly $= +\infty$) by completeness
+- Definition: A set is *bounded* iff $\text{diam}(S) < \infty$
+- Definition: *Distance from a point to a set*: $d(p, S) = \inf\{d(p, q) : q \in S\}$
+- Exists by completeness (infimum of nonempty set bounded below by 0)
+- Definition: *Distance between sets*: $d(S, T) = \inf\{d(p, q) : p \in S, q \in T\}$
+- Example: $d(p, S) = 0$ does not imply $p \in S$ (consider $S = (0, 1)$, $p = 0$)
+- ✎ Inline: Find the diameter of the unit disk $\{(x,y) : x^2 + y^2 \leq 1\}$
+
+**Measuring Curves**
+- Informally: a "curve" is a path in the plane
+- We don't yet have tools to make "curve" precise (need continuity, Chapter 5)
+- But we can define *length* for well-behaved curves
+- Setup: Given points $P_0, P_1, \ldots, P_n$ along a curve in order, the *inscribed polygonal length* is $\sum_{i=1}^{n} d(P_{i-1}, P_i)$
+- Definition: A curve is *rectifiable* if the supremum of inscribed polygonal lengths (over all finite inscribed polygons) is finite
+- Definition: The *length* of a rectifiable curve is this supremum
+- Exists by completeness
+- Remark: Not all curves are rectifiable — we'll see examples in Chapter 10
+- Example: A line segment from $p$ to $q$ has length $d(p, q)$
+- ✎ Inline: Why is the length of a segment equal to $d(p, q)$? (The segment itself is an inscribed polygon!)
+
+**Measuring Regions**
+- How to define area of a region $R \subseteq \mathbb{R}^2$?
+- *Inner approximation*: inscribed polygons whose area we can compute
+- *Outer approximation*: circumscribed polygons
+- Definition: $A_{\text{inner}}(R) = \sup\{\text{area}(P) : P \subseteq R, P \text{ polygon}\}$
+- Definition: $A_{\text{outer}}(R) = \inf\{\text{area}(P) : R \subseteq P, P \text{ polygon}\}$
+- Always $A_{\text{inner}}(R) \leq A_{\text{outer}}(R)$
+- Definition: $R$ has *area* if $A_{\text{inner}}(R) = A_{\text{outer}}(R)$; the common value is $\text{area}(R)$
+- Remark: Not every region has area — this leads to measure theory (much later)
+- Remark: The Koch snowflake has finite area but infinite perimeter (Chapter 10)
+- ✎ Inline: Does a line segment have area?
+
+**Trigonometry**
+- The unit circle: $\{(x, y) : x^2 + y^2 = 1\}$
+- For $\theta \geq 0$: there exists a unique point $P(\theta)$ on the unit circle such that the arc length from $(1, 0)$ to $P(\theta)$ (counterclockwise) equals $\theta$
+- Existence: completeness! Arc length is sup of inscribed polygons; for any $\theta$ we can find the point where this sup equals $\theta$
+- Definition: $\cos\theta$ = x-coordinate of $P(\theta)$; $\sin\theta$ = y-coordinate of $P(\theta)$
+- For $\theta < 0$: measure clockwise; equivalently $P(-\theta)$ is reflection of $P(\theta)$ across x-axis
+- Immediate consequences:
+  - $\cos^2\theta + \sin^2\theta = 1$ (point is on unit circle)
+  - $-1 \leq \cos\theta \leq 1$, $-1 \leq \sin\theta \leq 1$
+  - $\cos 0 = 1$, $\sin 0 = 0$
+  - $\cos(-\theta) = \cos\theta$, $\sin(-\theta) = -\sin\theta$ (reflection symmetry)
+- Key principle: *equal arcs have equal chords* — arcs of the same length subtend chords of the same length
+- ⚠️ FLAG: This principle needs justification. For now, state it as evident from the symmetry of the circle.
+- From this principle: the angle addition formulas (see guided exercise)
+- Remark: We have the algebraic laws of trigonometry, but we cannot yet compute $\cos(1)$ or $\sin(2)$
+- Remark: To find specific values, we need to approximate — this leads to Chapter 4 (Archimedes' method)
+
+### Guided Exercise
+
+**The Metric Origins of Trigonometry**
+
+We derive the angle addition formulas from the distance formula and the principle that equal arcs have equal chords.
+
+*Part I: Symmetry*
+
+(a) Explain why $P(-\theta)$ is the reflection of $P(\theta)$ across the x-axis.
+
+(b) Conclude: $\cos(-\theta) = \cos\theta$ and $\sin(-\theta) = -\sin\theta$.
+
+(c) Verify $\cos 0 = 1$, $\sin 0 = 0$ directly from the definition.
+
+*Part II: The Chord-Arc Principle*
+
+Consider four points on the unit circle defined by arc length from $(1, 0)$:
+- $A = P(\alpha + \beta)$
+- $B = P(0) = (1, 0)$
+- $C = P(\alpha)$
+- $D = P(-\beta)$
+
+(d) What is the arc length from $B$ to $A$? From $D$ to $C$?
+
+(e) Using the principle "equal arcs have equal chords," explain why $d(A, B) = d(C, D)$.
+
+*Part III: The Cosine Addition Formula*
+
+(f) Write $A$, $B$, $C$, $D$ in coordinates using sin and cos.
+
+(g) Compute $d(A, B)^2$ using the distance formula.
+
+(h) Compute $d(C, D)^2$ using the distance formula.
+
+(i) Set $d(A, B)^2 = d(C, D)^2$, expand, and use $\sin^2 + \cos^2 = 1$ to simplify.
+
+(j) Derive: $\cos(\alpha + \beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta$.
+
+*Part IV: The Sine Addition Formula*
+
+(k) Using a similar chord argument or the classic "stacked triangles" construction, derive: $\sin(\alpha + \beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta$.
+
+*Part V: Double and Half Angle*
+
+(l) Set $\beta = \alpha$ in the cosine formula to derive $\cos(2\theta) = 2\cos^2\theta - 1$.
+
+(m) Derive $\sin(2\theta) = 2\sin\theta\cos\theta$.
+
+(n) Solve the double angle formula for $\cos(\theta/2)$ in terms of $\cos\theta$.
+
+(o) Explain how the half-angle formula will connect to Archimedes' polygon doubling method (§4.5).
+
+### Exercises
+
+*The plane*
+- Prove the triangle inequality: $d(p, r) \leq d(p, q) + d(q, r)$
+- Prove $d(p, q) \geq 0$ with equality iff $p = q$
+
+*Measuring sets*
+- Find the diameter of the square $[0, 1] \times [0, 1]$
+- Find $d(p, S)$ where $p = (0, 0)$ and $S = \{(x, y) : x^2 + y^2 = 1\}$ (unit circle)
+- Give an example where $d(S, T) = 0$ but $S \cap T = \emptyset$
+
+*Measuring curves*
+- Prove: the perimeter of a rectangle with sides $a$ and $b$ is $2a + 2b$
+- Show that a circle is rectifiable (hint: inscribed n-gons have perimeters bounded above)
+
+*Measuring regions*
+- Prove: a rectangle has area equal to base times height
+- Show $A_{\text{inner}} \leq A_{\text{outer}}$ for any region
+
+*Trigonometry*
+- Verify: $\cos(\alpha - \beta) = \cos\alpha\cos\beta + \sin\alpha\sin\beta$
+- Derive $\sin(2\theta) = 2\sin\theta\cos\theta$ from the sine addition formula
+- Derive $\cos^2\theta = (1 + \cos(2\theta))/2$
+
+### Dependencies
+
+**Requires**: §1.3 (completeness, sup/inf)
+
+**Used in**: §4.5 (Archimedes' $\pi$, polygon doubling), Chapter 10 (computing trig values)

@@ -376,9 +376,12 @@ We abstract the key ideas from Parts I and II. What made analysis on $\mathbb{R}
 ---
 
 
-## Chapter 12: Function Spaces
 
-### Overview
+
+
+# Chapter 12: Function Spaces
+
+## Overview
 
 We've done analysis on $\mathbb{R}$. Now we do analysis on spaces of functions ‚Äî same questions, new setting. What are the spaces? When do limits exist? What operations do we have? What's dense? This is "analysis level 2."
 
@@ -394,7 +397,7 @@ We've done analysis on $\mathbb{R}$. Now we do analysis on spaces of functions ‚
 
 ---
 
-### Introduction/Motivation (Unnumbered)
+## Introduction/Motivation (Unnumbered)
 
 - Chapter 1: We asked "what is $\mathbb{R}$?" Answer: complete ordered field
 - Now: What are spaces of functions? What structure do they have?
@@ -404,7 +407,7 @@ We've done analysis on $\mathbb{R}$. Now we do analysis on spaces of functions ‚
 
 ---
 
-### 12.1 The Spaces
+## 12.1 The Spaces
 
 **$C[a,b]$: Continuous Functions**
 - Definition: continuous functions on $[a,b]$
@@ -441,7 +444,7 @@ We've done analysis on $\mathbb{R}$. Now we do analysis on spaces of functions ‚
 
 ---
 
-### 12.2 Completeness and Convergence
+## 12.2 Completeness and Convergence
 
 **Completeness of $C[a,b]$**
 - Theorem: Cauchy sequence in sup norm $\Rightarrow$ converges in sup norm
@@ -474,7 +477,7 @@ We've done analysis on $\mathbb{R}$. Now we do analysis on spaces of functions ‚
 
 ---
 
-### 12.3 Optimization
+## 12.3 Optimization
 
 **The Problem**
 - In calculus: find $x$ minimizing $f(x)$
@@ -524,7 +527,7 @@ $$\frac{\partial L}{\partial y} - \frac{d}{dx}\frac{\partial L}{\partial y'} = 0
 
 ---
 
-### 12.4 Regularization
+## 12.4 Regularization
 
 **The Technique**
 - To analyze rough functions: approximate by smooth, prove for smooth, take limits
@@ -564,7 +567,7 @@ $$\frac{\partial L}{\partial y} - \frac{d}{dx}\frac{\partial L}{\partial y'} = 0
 
 ---
 
-### 12.5 Density Theorems
+## 12.5 Density Theorems
 
 **The Question**
 - $C^\infty$ is dense (12.4). Can even less suffice?
@@ -599,7 +602,7 @@ $$\frac{\partial L}{\partial y} - \frac{d}{dx}\frac{\partial L}{\partial y'} = 0
 
 ---
 
-### Arzel√†-Ascoli (Guided Exercises)
+## Arzel√†-Ascoli (Guided Exercises)
 
 - **Equicontinuity**: one $\delta$ works for all functions in the family
 - **Theorem**: bounded + equicontinuous $\Rightarrow$ has uniformly convergent subsequence
@@ -621,7 +624,6 @@ $$\frac{\partial L}{\partial y} - \frac{d}{dx}\frac{\partial L}{\partial y'} = 0
 - Ch 15: Convolution of distributions; heat kernel as approximate identity
 
 ---
-
 
 
 

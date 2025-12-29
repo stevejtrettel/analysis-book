@@ -1,4 +1,4 @@
-## Continued Fractions
+## $\bigstar$ Continued Fractions
 
 - Definition: [a₀; a₁, a₂, ...]
 - Convergents pₙ/qₙ and recurrence relations

@@ -1,0 +1,118 @@
+## Geometry
+
+### Narrative
+
+- Integration meets the geometric definitions from §1.5
+- We prove: the integral *computes* what the supremum *defines*
+- Arc length: §1.5 definition = ∫√(1+(f')²)
+- Area: §1.5 definition = ∫f
+- Having validated the integral against geometric intuition, we use it to *define* volume
+- Archimedes' inequality: he needed it as an axiom, we can prove it
+
+### Content
+
+**Arc Length**
+- Recall §1.5: arc length = sup of inscribed polygon lengths
+- For a partition P, the inscribed polygon has length $\sum \sqrt{(\Delta x_i)^2 + (\Delta f_i)^2}$
+- By MVT: $\Delta f_i = f'(c_i) \Delta x_i$ for some $c_i$
+- So polygon length $= \sum \sqrt{1 + (f'(c_i))^2} \cdot \Delta x_i$ — a Riemann sum!
+- This is trapped between $L(\sqrt{1+(f')^2}, P)$ and $U(\sqrt{1+(f')^2}, P)$
+- Theorem: If $f'$ is continuous on $[a,b]$, then arc length $= \int_a^b \sqrt{1 + (f'(x))^2} \, dx$
+- Proof: Polygon lengths are Riemann sums trapped between L and U; continuity forces sup L = inf U; polygon lengths converge to this common value
+- Remark: This confirms that π (defined in §4.5 via polygon perimeters) equals the arc length of the unit semicircle
+- Example: Compute arc length of $y = x^{3/2}$ on $[0, 1]$
+- ✎ Inline: Set up the arc length integral for $y = x^2$ on $[0, 1]$
+
+**Area**
+- Recall §1.5: area exists when inner (inscribed) and outer (circumscribed) polygon areas agree
+- Lower sums use inscribed rectangles; upper sums use circumscribed rectangles
+- Rectangles are polygons, so: $L(f, P) \leq \text{inner area} \leq \text{outer area} \leq U(f, P)$
+- Theorem: If $f \geq 0$ is continuous on $[a,b]$, the region under the curve has area $= \int_a^b f(x) \, dx$
+- Proof: sup L ≤ inner ≤ outer ≤ inf U; continuity gives sup L = inf U; all four are equal
+- Area between curves: if $f \geq g$ on $[a,b]$, area $= \int_a^b [f(x) - g(x)] \, dx$
+- Example: Area of unit disk $= \int_{-1}^{1} 2\sqrt{1-x^2} \, dx = \pi$ (same constant!)
+- ✎ Inline: Set up the integral for area between $y = x$ and $y = x^2$ on $[0,1]$
+
+**Archimedes' Inequality**
+- Archimedes needed this as an axiom for his method; we can prove it
+- Theorem: Among convex curves with the same endpoints, the one closer to the chord is shorter
+- Proof uses: $f$ convex ⟺ $f''  \geq 0$ ⟺ $f'$ increasing (from Chapter 7)
+- Corollary: The straight line is the shortest path between two points
+- Corollary: A convex curve's length is trapped between inscribed and circumscribed polygon lengths
+- Remark: This validates Archimedes' method — his axiom is now a theorem
+
+**Volume**
+- The integral agrees with geometric intuition for length and area
+- For volume, polygonal approximations become unwieldy (polyhedra in 3D)
+- We take the integral as our *definition* of volume
+- Definition (Volume by slicing): A solid with cross-sectional area $A(x)$ at position $x$ has volume $\int_a^b A(x) \, dx$
+- Theorem (Cavalieri's Principle): Solids with equal cross-sectional areas at every height have equal volumes
+- Proof: immediate from the definition — same integrand gives same integral
+- Example (Pyramid): Base $s \times s$, height $h$. Cross-section at height $x$: square of side $sx/h$. Volume $= \int_0^h (sx/h)^2 \, dx = \frac{s^2 h}{3} = \frac{1}{3} \cdot \text{base} \cdot \text{height}$
+- Example (Cone): Radius $r$, height $h$. Cross-section at height $x$: disk of radius $rx/h$. Volume $= \int_0^h \pi(rx/h)^2 \, dx = \frac{\pi r^2 h}{3}$
+- Example (Sphere): Radius $R$. Cross-section at height $x$: disk of radius $\sqrt{R^2 - x^2}$. Volume $= \int_{-R}^{R} \pi(R^2 - x^2) \, dx = \frac{4}{3}\pi R^3$
+
+**Surface Area of Revolution**
+- Rotate $y = f(x)$ around the $x$-axis
+- Approximate by rotating line segments — gives frustums of cones
+- Definition: Surface area $= \int_a^b 2\pi f(x) \sqrt{1 + (f'(x))^2} \, dx$
+- Remark: Combines arc length integrand with circumference $2\pi f(x)$
+- Example: Surface area of sphere — rotate $y = \sqrt{R^2 - x^2}$ around $x$-axis
+- ✎ Inline: Set up (but do not evaluate) the surface area integral for rotating $y = x^2$ on $[0, 1]$
+
+### Guided Exercise
+
+**Volumes in Higher Dimensions**
+
+*Setup:*
+- Define n-ball: $B^n(R) = \{x \in \mathbb{R}^n : |x| \leq R\}$
+- Let $V_n(R)$ = n-dimensional volume of $B^n(R)$
+
+(a) Verify base cases: $V_1(R) = 2R$ (length of interval $[-R, R]$) and $V_2(R) = \pi R^2$ (area of disk).
+
+(b) Explain why slicing $B^n(R)$ perpendicular to the $x_1$-axis at height $t \in [-R, R]$ gives an $(n-1)$-ball of radius $\sqrt{R^2 - t^2}$.
+
+(c) Write the slicing formula: $V_n(R) = \int_{-R}^{R} V_{n-1}(\sqrt{R^2 - t^2}) \, dt$
+
+(d) Define $C_n = V_n(1)$. Substitute $t = Ru$ in the integral from (c) to show that $V_n(R) = C_n R^n$.
+
+(e) Substitute $V_{n-1}(r) = C_{n-1} r^{n-1}$ into (c) and use the substitution from (d) to derive:
+$$C_n = C_{n-1} \int_{-1}^{1} (1 - u^2)^{(n-1)/2} \, du$$
+
+(f) Define $\omega_n = \int_{-1}^{1} (1 - u^2)^{(n-1)/2} \, du$, so $C_n = \omega_n \cdot C_{n-1}$.
+
+(g) Verify: $\omega_2 = \int_{-1}^{1} \sqrt{1-u^2} \, du = \frac{\pi}{2}$ (area of unit semicircle). Check this gives $C_2 = \omega_2 \cdot C_1 = \frac{\pi}{2} \cdot 2 = \pi$. ✓
+
+(h) Compute $\omega_3 = \int_{-1}^{1} (1-u^2) \, du$ directly and verify $C_3 = \frac{4\pi}{3}$.
+
+*In Chapter 10, we evaluate $\omega_n$ for general $n$ and derive formulas for $C_n$.*
+
+### Exercises
+
+*Arc length*
+- Set up the arc length integral for $y = x^2$ on $[0, 1]$
+- Prove: a curve with continuous $f'$ has finite arc length (is rectifiable)
+
+*Area*
+- Set up the integral for area between $y = x$ and $y = x^2$ on $[0,1]$
+- Set up the integral for area enclosed by the ellipse $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$
+
+*Volume*
+- Set up the slicing integral for a pyramid with square base $s \times s$ and height $h$
+- Set up the slicing integral for a cone with radius $r$ and height $h$
+- Set up the slicing integral for a sphere of radius $R$
+- A solid has base the unit disk and cross-sections perpendicular to the $x$-axis are squares. Set up the volume integral.
+- ★ Use Cavalieri's principle (without computing integrals) to show a hemisphere has the same volume as a cylinder minus a cone
+
+*Surface area*
+- Set up the surface area integral for a sphere of radius $R$
+- Set up the surface area integral for the cone formed by rotating $y = x$ on $[0, h]$
+
+*Higher dimensions*
+- Set up (but do not evaluate) $\omega_4 = \int_{-1}^{1} (1-u^2)^{3/2} \, du$
+
+### Dependencies
+
+**Requires**: §1.5 (arc length and area definitions), §4.5 (definition of π), §7 (convexity), §8.1-8.2 (integration)
+
+**Used in**: Chapter 10 (π computations, higher-dimensional volumes)
