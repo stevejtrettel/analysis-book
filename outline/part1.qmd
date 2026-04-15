@@ -1,0 +1,143 @@
+## Part I Introduction: Taming Infinity
+
+### We need infinite processes (and always have)
+
+- The diagonal of a unit square has length $\sqrt{2}$, but $\sqrt{2}$ is irrational — no fraction represents it exactly
+- The circumference of a circle involves $\pi$, which is not only irrational but transcendental — no polynomial equation with integer coefficients has $\pi$ as a root
+- These aren't exotic curiosities; they're the most basic measurements in geometry
+- The only access we have to these numbers is through *processes that converge to them*: sequences of rational approximations that get closer and closer to a target we can't write down in finite terms
+- The Babylonians (~1800 BCE) computed $\sqrt{2}$ by iterating $x_{n+1} = \frac{1}{2}(x_n + 2/x_n)$, producing the approximations $1, \frac{3}{2}, \frac{17}{12}, \frac{577}{408}, \ldots$ — each one rational, each one closer to $\sqrt{2}$ than the last
+- Archimedes (~250 BCE) trapped $\pi$ between the perimeters of inscribed and circumscribed regular polygons: a 96-gon gave him $3\frac{10}{71} < \pi < 3\frac{1}{7}$
+- In both cases the *method* is an infinite process — a sequence of improving approximations — and the *target* is a number that can only be defined as the thing these approximations converge to
+- Fast-forward two millennia: Newton and Leibniz build calculus entirely on infinite processes. The derivative is a limit of difference quotients. The integral is a limit of sums. Power series represent functions as infinite sums of polynomials. By the 18th century, infinite processes aren't a niche tool for approximating $\pi$ — they are the language of mathematics itself
+
+
+### Infinite processes are dangerous
+
+- In the hands of a master like Euler, formal manipulation of infinite series produces extraordinary truths
+- Consider the *Basel problem* (1735): find the exact value of $1 + \frac{1}{4} + \frac{1}{9} + \frac{1}{16} + \cdots$
+- Euler's approach: the function $\sin(x)/x$ vanishes at $x = \pm\pi, \pm 2\pi, \pm 3\pi, \ldots$ — so treat it like a polynomial with these roots and factor it:
+$$\frac{\sin x}{x} = \left(1 - \frac{x^2}{\pi^2}\right)\left(1 - \frac{x^2}{4\pi^2}\right)\left(1 - \frac{x^2}{9\pi^2}\right)\cdots$$
+- Expand the right side and compare the coefficient of $x^2$ with the known series $\sin(x)/x = 1 - x^2/6 + \cdots$
+- This gives $\frac{1}{\pi^2} + \frac{1}{4\pi^2} + \frac{1}{9\pi^2} + \cdots = \frac{1}{6}$, hence $\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}$
+- The answer is correct. The reasoning — treating a power series as a polynomial with infinitely many roots — has no logical foundation whatsoever. Euler knew this; he spent years trying to find a rigorous proof. But at the time, the formal algebra was all anyone had
+- The trouble is that the *same* style of formal reasoning also produces nonsense
+- The geometric series gives $\frac{1}{1-x} = 1 + x + x^2 + x^3 + \cdots$
+- Substitute $x = -1$: we get $\frac{1}{2} = 1 - 1 + 1 - 1 + \cdots$, already dubious
+- Substitute $x = 2$: we get $-1 = 1 + 2 + 4 + 8 + \cdots$, plainly absurd
+- The formal algebra doesn't know which substitutions are legitimate; it treats them all the same. Something beyond algebra is needed to separate the valid from the invalid
+
+#### The rearrangement shock
+
+- Here is a more subtle danger — one that shows infinite sums don't even obey the most basic rules of arithmetic
+- The *alternating harmonic series* converges:
+$$1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \frac{1}{5} - \frac{1}{6} + \cdots = \ln 2 \approx 0.693$$
+- For a finite sum, the order of the terms doesn't matter: addition is commutative
+- Now rearrange the same series — take two positive terms, then one negative, repeating:
+$$\left(1 + \frac{1}{3}\right) - \frac{1}{2} + \left(\frac{1}{5} + \frac{1}{7}\right) - \frac{1}{4} + \left(\frac{1}{9} + \frac{1}{11}\right) - \frac{1}{6} + \cdots$$
+- Every term of the original series appears exactly once. But the partial sums of this rearranged series converge to $\frac{3}{2}\ln 2 \approx 1.039$, not $\ln 2$
+- Same terms, different order, different sum — impossible for finite addition, routine for infinite series
+- It gets worse: Riemann proved that a *conditionally convergent* series (one that converges, but not absolutely) can be rearranged to converge to *any real number whatsoever*, or to diverge to $+\infty$ or $-\infty$
+- The commutative law of addition, which we take for granted, simply *fails* for infinite sums in general
+
+#### Limits don't always commute
+
+- Beyond rearrangement, there is the problem of *interchanging* infinite processes
+- Cauchy (~1821) claimed to prove: if a sequence of continuous functions $f_1, f_2, f_3, \ldots$ converges at every point, the limit function is also continuous
+- The theorem is false. Take a sequence of smooth bump functions that converge pointwise to a step function — each $f_n$ is continuous, their pointwise limit is not
+- Cauchy's error was not carelessness; it was a failure to distinguish between *pointwise convergence* (for each fixed $x$, the sequence $f_n(x)$ converges) and *uniform convergence* (the convergence happens at the same rate for all $x$ simultaneously)
+- The distinction is subtle, invisible to informal reasoning, and crucial — it's exactly the kind of thing a rigorous theory of convergence must make precise
+
+#### The lesson
+
+- Infinite processes don't obey the rules of finite arithmetic
+- Rearrangement can change the sum; limits don't always commute with other operations; properties of approximations don't automatically pass to the limit
+- We need a *theory* that tells us precisely when these operations are safe and when they aren't
+- Building that theory is the project of Part I
+
+
+### The foundations weren't there
+
+- In the early 19th century, mathematicians began trying to *prove* the basic theorems of calculus from first principles
+- They discovered they couldn't — not because the theorems were wrong, but because the number system hadn't been specified precisely enough
+- The pattern repeated across decades: someone would identify a property the real line "obviously" has, try to prove it, and find a gap that no amount of cleverness could fill
+
+#### Bolzano and the Intermediate Value Theorem (1817)
+
+- If a continuous function satisfies $f(a) < 0$ and $f(b) > 0$, there must be some $c$ between $a$ and $b$ where $f(c) = 0$
+- Geometrically obvious: a continuous curve that starts below the axis and ends above it must cross somewhere
+- Bolzano recognized — remarkably, for his time — that "geometrically obvious" is not a proof
+- His argument essentially constructs a supremum: the least upper bound of the set $\{x \in [a,b] : f(x) < 0\}$
+- But he can't justify that this supremum *exists* — that step requires a property of the number system he doesn't have as an axiom
+
+#### Cauchy and the convergence criterion (~1821)
+
+- Cauchy formulates a beautiful idea: a sequence should converge if its terms get arbitrarily close to each other
+- Formally: for every tolerance $\varepsilon > 0$, there is a stage $N$ such that $|a_m - a_n| < \varepsilon$ for all $m, n > N$
+- This captures the *idea* of convergence without reference to the limit value — you can test whether a sequence converges without knowing *what* it converges to
+- But the criterion doesn't work over the rational numbers: the Babylonian sequence $\frac{3}{2}, \frac{17}{12}, \frac{577}{408}, \ldots$ for $\sqrt{2}$ satisfies Cauchy's criterion perfectly — the terms get closer and closer together — yet converges to nothing in $\QQ$. The sequence is reaching for a number that doesn't exist in the system
+- The criterion is correct in $\RR$, where completeness fills the holes; it fails in $\QQ$, where the holes are exactly the problem
+
+#### The Archimedean property
+
+- Since antiquity, mathematicians had used a more basic property: given any two positive quantities, some multiple of the smaller exceeds the larger
+- This rules out infinitely large and infinitely small elements, and it's what makes Archimedes' polygon method work — the inscribed and circumscribed perimeters actually close in on their target, rather than hovering infinitely far away
+- Archimedes used this explicitly; Newton and Leibniz needed it implicitly whenever they argued that a sequence of approximations could be made "as close as desired"
+- The property is clearly *necessary* for the number line to behave as we expect
+- But it is not *sufficient*: the rational numbers are Archimedean, and they are full of holes
+- The Archimedean property says the number line has no *infinitely wide* gaps, but it says nothing about the *infinitely thin* gaps — the missing irrationals, the missing limits of Cauchy sequences
+
+#### Nested intervals
+
+- If you have a sequence of closed intervals $[a_1, b_1] \supseteq [a_2, b_2] \supseteq [a_3, b_3] \supseteq \cdots$ with lengths shrinking to zero, their intersection should be a single point — the unique number that all the intervals close in on
+- This is the implicit logic behind *every* approximation scheme: the Babylonian algorithm traps $\sqrt{2}$ in nested intervals; Archimedes traps $\pi$; the bisection method for the IVT traps the root
+- Yet in $\QQ$, nested intervals can have *empty intersection* — the point they close in on might be irrational, so it simply isn't there
+
+#### A common pattern
+
+- The Archimedean property, Cauchy's criterion, Bolzano's supremum argument, nested intervals — each identifies something the real line should satisfy
+- Each fails over the rational numbers
+- And the remarkable fact, which only became clear later: *these are all manifestations of the same missing property*
+
+
+### The resolution, and a surprise
+
+#### Completeness
+
+- In 1872, Dedekind and Cantor independently gave rigorous constructions of the real numbers from the rationals — Dedekind via "cuts" (partitions of $\QQ$), Cantor via equivalence classes of Cauchy sequences
+- The constructions look different, but they produce the same object: a *complete ordered field*
+- We take the axiomatic route: rather than building $\RR$ from scratch, we *characterize* it by its properties
+- $\RR$ is an ordered field (it has addition, multiplication, and an order, all compatible) — this much $\QQ$ already satisfies
+- The one additional axiom: *every nonempty set of real numbers that is bounded above has a least upper bound (supremum)*
+- This single property — *completeness* — is the one thing $\QQ$ lacks
+- It is an axiom that goes beyond arithmetic and algebra; it is a statement about the *topological* structure of the number line, asserting that it has no holes
+
+#### Five faces of one property
+
+- With completeness in hand, everything works
+- $\sqrt{2}$ exists: it is the supremum of $\{x > 0 : x^2 < 2\}$
+- $\pi$ exists: it is the common limit of Archimedes' inscribed and circumscribed polygon perimeters
+- The Intermediate Value Theorem holds; Bolzano's argument goes through
+- The Monotone Convergence Theorem holds: a bounded increasing sequence converges to its supremum
+- The nested interval property holds: completeness provides the point that the intervals close in on
+- Every bounded sequence has a convergent subsequence (Bolzano-Weierstrass)
+- Cauchy's convergence criterion works: every Cauchy sequence converges
+- And the deepest revelation: *all five of these properties are logically equivalent.* Completeness, monotone convergence, nested intervals, Bolzano-Weierstrass, and the Cauchy criterion are different faces of the same axiom. Assume any one of them, and the other four follow. This is what Archimedes, Bolzano, and Cauchy were each grasping at from different directions: a single structural property of the continuum
+
+#### The uncountability of the continuum
+
+- Having constructed $\RR$, Cantor made an unexpected discovery: the real numbers are *uncountable*
+- The rationals, the algebraic numbers, even the computable numbers are all *countable* — they can be listed as $a_1, a_2, a_3, \ldots$
+- But $\RR$ cannot be listed this way; any attempted list necessarily misses real numbers
+- We built $\RR$ to fill the holes in $\QQ$ — missing roots, missing limits — but we got far more than we asked for: an uncountably infinite collection, vastly larger than any number system humans had ever explicitly constructed
+- Most real numbers cannot be named, described, or computed by any finite procedure
+- Infinite processes are not just a convenience for reaching numbers like $\sqrt{2}$ or $\pi$ — they are the *only possible language* for the continuum. Even writing down every infinite series, every continued fraction, every algorithm we could ever devise, we could only name countably many real numbers. The rest exist by the completeness axiom and nothing else
+
+
+### What's ahead
+
+- Chapter 1 builds the stage: the real number system, characterized by the completeness axiom, and the geometry it unlocks — lengths, areas, and angles defined rigorously for the first time
+- Chapter 2 develops the fundamental tool: the *limit*. Every real number is the limit of a sequence of rationals, so limits are the bridge between the countable world of explicit computation and the uncountable continuum. The chapter builds from the $\varepsilon$-$N$ definition through the limit laws and the Monotone Convergence Theorem to decimal representations and Archimedes' quadrature of the parabola
+- Chapter 3 asks what completeness *forces*: even chaotic bounded sequences must contain convergent subsequences (Bolzano-Weierstrass), and the five properties we identified above — least upper bounds, monotone convergence, nested intervals, Bolzano-Weierstrass, the Cauchy criterion — are proved equivalent. Five faces, one axiom
+- Chapter 4 puts these tools to work on the infinite processes that motivated the whole enterprise: alternating series, comparison tests, contraction mappings, continued fractions, and the rigorous computation of $\pi$ via Archimedes' polygon method — finally completing the argument he started twenty-two centuries earlier
+- Chapter 5 returns to the dangers we saw above and gives precise answers. Absolute convergence is the condition that makes rearrangement safe; domination is the condition that makes limit–sum interchange safe. The Cauchy product of series is developed, the exponential function gets its functional equation, and dominated convergence tells us exactly when an infinite sum commutes with a limit. By the end, we know *when* infinite processes behave like finite ones, and *when* they don't

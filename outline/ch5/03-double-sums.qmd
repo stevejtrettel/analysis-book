@@ -1,0 +1,181 @@
+## §5.3 Double Sums
+
+### Narrative
+
+- Double series: summing over a grid of terms
+- Two ways to sum: rows first or columns first (iterated sums)
+- These can differ! Just like iterated limits.
+- Absolute convergence saves us: when $\sum_{m,n} |a_{mn}| < \infty$, any summation path works
+- Rows, columns, anti-diagonals, expanding squares — all give the same answer
+- The Cauchy product: multiplying series by summing along anti-diagonals
+- Absolute convergence makes products work; Mertens weakens the hypothesis
+- Applications: squaring the geometric series, a remarkable identity for a mysterious series
+
+### Content
+
+**Double Series**
+- Definition: A *double series* is a formal sum $\sum_{m=1}^{\infty} \sum_{n=1}^{\infty} a_{mn}$ where $(a_{mn})$ is a double sequence
+- Two natural interpretations (iterated sums):
+  - Sum rows first: $\sum_{m=1}^{\infty} \left( \sum_{n=1}^{\infty} a_{mn} \right)$
+  - Sum columns first: $\sum_{n=1}^{\infty} \left( \sum_{m=1}^{\infty} a_{mn} \right)$
+- These are iterated sums, analogous to iterated limits from §5.2
+- Question: Do they always agree?
+
+**When Order Matters**
+- Example: Define $a_{mn}$ by:
+$$a_{mn} = \begin{cases} 1 & \text{if } n = m \\ -1 & \text{if } n = m + 1 \\ 0 & \text{otherwise} \end{cases}$$
+- Visualize as a grid:
+  - Row 1: $1, -1, 0, 0, 0, \ldots$
+  - Row 2: $0, 1, -1, 0, 0, \ldots$
+  - Row 3: $0, 0, 1, -1, 0, \ldots$
+  - (1's on diagonal, $-1$'s just above)
+- Sum by rows: each row sums to $1 + (-1) = 0$, so $\sum_m \sum_n a_{mn} = 0$
+- Sum by columns:
+  - Column 1: only $a_{11} = 1$, so sum is $1$
+  - Column $n \geq 2$: $a_{n-1,n} = -1$ and $a_{nn} = 1$, so sum is $0$
+  - Therefore $\sum_n \sum_m a_{mn} = 1 + 0 + 0 + \cdots = 1$
+- The iterated sums differ: $0 \neq 1$
+- Moral: order of summation matters for double series, just as for rearrangements (§5.1)
+- ✎ Inline: Construct a double sequence where row sums give $2$ and column sums give $-2$
+
+**When Order Doesn't Matter**
+- Definition: A double series $\sum_{m,n} a_{mn}$ *converges absolutely* if:
+$$\sum_{m=1}^{\infty} \sum_{n=1}^{\infty} |a_{mn}| < \infty$$
+- Equivalently: the partial sums $\sum_{m=1}^{M} \sum_{n=1}^{N} |a_{mn}|$ are bounded as $M, N \to \infty$
+- Theorem: If $\sum_{m,n} |a_{mn}| < \infty$, then:
+  1. Both iterated sums converge absolutely and are equal
+  2. In fact, *any* ordering of the terms gives the same sum
+- Proof (in text):
+  - Let $S_{MN} = \sum_{m=1}^{M} \sum_{n=1}^{N} a_{mn}$ (partial sums over rectangles)
+  - *Step 1*: $(S_{MN})$ is Cauchy in the double-index sense
+    - Given $\varepsilon > 0$, by absolute convergence choose $M_0, N_0$ such that 
+    $$\sum_{m > M_0 \text{ or } n > N_0} |a_{mn}| < \varepsilon$$
+    - For $M, M' > M_0$ and $N, N' > N_0$: $|S_{MN} - S_{M'N'}| < 2\varepsilon$
+  - *Step 2*: The double limit $S = \lim_{M,N \to \infty} S_{MN}$ exists
+  - *Step 3*: Iterated sums equal $S$
+    - For each fixed $m$, $\sum_n |a_{mn}| \leq \sum_{m,n} |a_{mn}| < \infty$, so row sums converge absolutely
+    - Let $R_m = \sum_{n=1}^{\infty} a_{mn}$ (the $m$-th row sum)
+    - By §5.2 theorem: since double limit exists and $\lim_{N \to \infty} S_{MN} = \sum_{m=1}^{M} R_m$ exists for each $M$, we have $\sum_{m=1}^{\infty} R_m = S$
+    - Symmetric argument for columns
+  - *Step 4*: Any ordering works
+    - Same argument as §5.1: absolute convergence allows rearrangement
+    - Any bijection $\sigma: \mathbb{N} \to \mathbb{N} \times \mathbb{N}$ gives $\sum_{k=1}^{\infty} a_{\sigma(k)} = S$
+- Corollary: Under absolute convergence, we can sum by:
+  - Rows: $\sum_m (\sum_n a_{mn})$
+  - Columns: $\sum_n (\sum_m a_{mn})$
+  - Expanding squares: $\lim_{N \to \infty} \sum_{m,n \leq N} a_{mn}$
+  - Anti-diagonals: group by $m + n = k$
+  - Any bijection $\mathbb{N} \to \mathbb{N} \times \mathbb{N}$
+- Example: $\sum_{m,n \geq 1} \frac{1}{m^2 n^2}$ converges absolutely
+  - $\sum_{m,n} \frac{1}{m^2 n^2} = \left(\sum_m \frac{1}{m^2}\right)\left(\sum_n \frac{1}{n^2}\right) = \left(\frac{\pi^2}{6}\right)^2$
+  - (We'll prove $\sum 1/n^2 = \pi^2/6$ via Fourier series in Chapter 13; for now this shows the method)
+- ✎ Inline: Verify that $\sum_{m,n \geq 1} \frac{1}{2^{m+n}}$ converges absolutely and compute its sum two ways
+
+**Multiplying Series**
+- Setup: Given two series $\sum_{j=0}^{\infty} a_j$ and $\sum_{k=0}^{\infty} b_k$, what is their "product"?
+- Natural idea: form the grid $a_j b_k$ and sum it somehow
+- If we sum along anti-diagonals (where $j + k$ is constant), we get:
+- Definition: The *Cauchy product* of $\sum_{j=0}^{\infty} a_j$ and $\sum_{k=0}^{\infty} b_k$ is $\sum_{n=0}^{\infty} c_n$ where:
+$$c_n = \sum_{k=0}^{n} a_k b_{n-k} = a_0 b_n + a_1 b_{n-1} + \cdots + a_n b_0$$
+- Interpretation: $c_n$ collects all terms $a_j b_k$ with $j + k = n$ (the $n$-th anti-diagonal)
+- Connection to polynomials: if $p(x) = \sum a_j x^j$ and $q(x) = \sum b_k x^k$, then $p(x)q(x) = \sum c_n x^n$
+- Theorem: If $\sum a_j$ and $\sum b_k$ both converge absolutely, then their Cauchy product converges absolutely to $(\sum a_j)(\sum b_k)$
+- Proof (in text):
+  - The double series $\sum_{j,k} a_j b_k$ converges absolutely: 
+  $$\sum_{j,k} |a_j b_k| = \left(\sum_j |a_j|\right)\left(\sum_k |b_k|\right) < \infty$$
+  - By the theorem above, any ordering gives the same sum
+  - Sum by rows: $\sum_j a_j \left(\sum_k b_k\right) = \left(\sum_j a_j\right)\left(\sum_k b_k\right)$
+  - Sum by anti-diagonals: $\sum_{n=0}^{\infty} c_n$ (the Cauchy product)
+  - Therefore $\sum c_n = (\sum a_j)(\sum b_k)$
+  - Absolute convergence of $\sum c_n$: 
+  $$\sum_{n=0}^{\infty} |c_n| \leq \sum_{n=0}^{\infty} \sum_{k=0}^{n} |a_k||b_{n-k}| = \sum_{j,k} |a_j b_k| < \infty$$
+- Theorem (Mertens): If $\sum a_j$ converges absolutely to $A$ and $\sum b_k$ converges (possibly conditionally) to $B$, then the Cauchy product converges to $AB$
+- Proof (in text):
+  - Let $A_n = \sum_{j=0}^{n} a_j$, $B_n = \sum_{k=0}^{n} b_k$, $C_n = \sum_{m=0}^{n} c_m$
+  - Let $\beta_n = B_n - B$ (so $\beta_n \to 0$)
+  - Compute: 
+  $$C_n = \sum_{m=0}^{n} \sum_{k=0}^{m} a_k b_{m-k} = \sum_{k=0}^{n} a_k \sum_{m=k}^{n} b_{m-k} = \sum_{k=0}^{n} a_k B_{n-k}$$
+  - Rewrite: $C_n = \sum_{k=0}^{n} a_k (B + \beta_{n-k}) = A_n B + \sum_{k=0}^{n} a_k \beta_{n-k}$
+  - Need to show $\sum_{k=0}^{n} a_k \beta_{n-k} \to 0$
+  - Let $\alpha = \sum |a_j| < \infty$ and $M = \sup_n |\beta_n|$
+  - Given $\varepsilon > 0$, choose $N$ such that $|\beta_m| < \varepsilon$ for $m > N$
+  - Split: $\sum_{k=0}^{n} a_k \beta_{n-k} = \sum_{k=0}^{n-N-1} a_k \beta_{n-k} + \sum_{k=n-N}^{n} a_k \beta_{n-k}$
+  - First sum: $|\sum_{k=0}^{n-N-1} a_k \beta_{n-k}| \leq \varepsilon \sum_{k=0}^{n-N-1} |a_k| \leq \varepsilon \alpha$
+  - Second sum: $|\sum_{k=n-N}^{n} a_k \beta_{n-k}| \leq M \sum_{k=n-N}^{n} |a_k| \to 0$ as $n \to \infty$ (tail of convergent series)
+  - Therefore $\sum_{k=0}^{n} a_k \beta_{n-k} \to 0$, so $C_n \to AB$
+- Remark: Without absolute convergence of at least one factor, the Cauchy product can diverge (see exercises)
+
+*Application: Squaring the Geometric Series*
+- For $|x| < 1$: $\sum_{n=0}^{\infty} x^n = \frac{1}{1-x}$ converges absolutely
+- Squaring via Cauchy product: take $a_n = b_n = x^n$
+- $c_n = \sum_{k=0}^{n} x^k \cdot x^{n-k} = \sum_{k=0}^{n} x^n = (n+1)x^n$
+- By the theorem: 
+$$\frac{1}{(1-x)^2} = \sum_{n=0}^{\infty} (n+1)x^n$$
+- ✎ Inline: Verify at $x = 1/2$: the series gives $\sum (n+1)/2^n = ?$ and $(1 - 1/2)^{-2} = 4$
+
+*Application: A Remarkable Identity*
+- Define $E(x) = \sum_{n=0}^{\infty} \frac{x^n}{n!}$ for $x \in \mathbb{R}$
+- This converges absolutely for all $x$ (ratio test: $|x^{n+1}/(n+1)!| / |x^n/n!| = |x|/(n+1) \to 0$)
+- Claim: $E(x) \cdot E(y) = E(x + y)$ for all $x, y \in \mathbb{R}$
+- Proof: Both series converge absolutely, so we can use the Cauchy product
+  - $c_n = \sum_{k=0}^{n} \frac{x^k}{k!} \cdot \frac{y^{n-k}}{(n-k)!} = \frac{1}{n!} \sum_{k=0}^{n} \frac{n!}{k!(n-k)!} x^k y^{n-k} = \frac{1}{n!} \sum_{k=0}^{n} \binom{n}{k} x^k y^{n-k}$
+  - By the binomial theorem: $c_n = \frac{(x+y)^n}{n!}$
+  - Therefore $E(x) E(y) = \sum c_n = E(x+y)$
+- Remark: This series has a remarkable property — it turns addition into multiplication!
+- Remark: Setting $y = 0$: $E(x) E(0) = E(x)$, so $E(0) = 1$
+- Remark: Setting $y = -x$: $E(x) E(-x) = E(0) = 1$, so $E(-x) = 1/E(x)$
+- What *is* this function? In §5.4 we'll show $E(x) = \lim_{n \to \infty} (1 + x/n)^n$, connecting it to Chapter 2's definition of $e$. In Chapter 6 we'll call it the exponential function and develop its properties systematically.
+
+### Guided Exercise
+
+**A Conditionally Convergent Double Series**
+
+Consider the double series $\sum_{m,n \geq 1} \frac{(-1)^{m+n}}{m+n}$.
+
+(a) Show that for each fixed $m$, the series $\sum_{n=1}^{\infty} \frac{(-1)^{m+n}}{m+n}$ converges (conditionally) by the alternating series test.
+
+(b) Show that the double series does NOT converge absolutely. (Hint: compare $\sum_{m,n} \frac{1}{m+n}$ to something you know diverges.)
+
+(c) Compute the row sums: for fixed $m$, what is $R_m = \sum_{n=1}^{\infty} \frac{(-1)^{m+n}}{m+n}$? (Hint: this is a tail of the alternating harmonic series, with a sign.)
+
+(d) Does $\sum_{m=1}^{\infty} R_m$ converge? If so, what is its value?
+
+(e) Now compute the column sums $C_n = \sum_{m=1}^{\infty} \frac{(-1)^{m+n}}{m+n}$ and $\sum_{n=1}^{\infty} C_n$.
+
+(f) Do the row-sum and column-sum approaches give the same answer? What does this tell you?
+
+### Exercises
+
+*When order matters*
+- Construct a double sequence where $\sum_m \sum_n a_{mn} = 0$ and $\sum_n \sum_m a_{mn} = 2$
+- Construct a double sequence where one iterated sum converges and the other diverges
+- For the example in the text ($1$'s on diagonal, $-1$'s above), what happens if you sum along anti-diagonals?
+
+*Absolute convergence*
+- Prove: $\sum_{m,n \geq 1} \frac{1}{(m+n)^3}$ converges absolutely
+- Prove: $\sum_{m,n \geq 1} \frac{1}{m^2 + n^2}$ diverges (hint: count terms with $m^2 + n^2 \leq R^2$)
+- Compute $\sum_{m,n \geq 1} \frac{1}{2^m 3^n}$ by summing rows, then verify by summing columns
+
+*Cauchy products*
+- Compute the Cauchy product of $\sum_{n=0}^{\infty} x^n$ with $\sum_{n=0}^{\infty} (-1)^n x^n$. What function does this represent?
+- Compute the Cauchy product of $\sum_{n=0}^{\infty} x^n/n!$ with itself. Verify it equals $\sum_{n=0}^{\infty} (2x)^n/n!$.
+- Use Cauchy products to find a power series for $1/(1-x)^3$. What are the coefficients?
+
+*Mertens and its limits*
+- Verify $(\sum x^n)^2 = \sum (n+1)x^n$ by differentiating $1/(1-x)$
+- ★ Prove Mertens' theorem
+- ★ Give an example where both $\sum a_n$ and $\sum b_n$ converge conditionally but the Cauchy product diverges. (Hint: try $a_n = b_n = (-1)^n/\sqrt{n+1}$.)
+- Let $S = \sum_{n=1}^{\infty} (-1)^{n+1}/n$ (the alternating harmonic series). Take $a_n = (-1)^{n+1}/n$ (converges conditionally to $S$) and $b_n = 1/2^n$ (converges absolutely to $2$). Verify that Mertens applies and conclude that the Cauchy product converges to $2S$.
+- Compute the Cauchy product of $\sum_{n=0}^{\infty} (-1)^n/2^n$ with $\sum_{n=0}^{\infty} (-1)^n/3^n$. Both converge absolutely; find explicit formulas for the coefficients $c_n$ and verify the product equals $(2/3)(3/4) = 1/2$.
+
+*The series $E(x)$*
+- Prove $E(x) > 0$ for all $x \in \mathbb{R}$. (Hint: $E(x) = E(x/2)^2$.)
+- Prove $E(1) = \sum_{n=0}^{\infty} 1/n!$ lies between $2$ and $3$.
+- Prove $E(n) = E(1)^n$ for all $n \in \mathbb{N}$.
+- ★ Prove $E(r) = E(1)^r$ for all $r \in \mathbb{Q}$. (Hint: first show $E(1/q)^q = E(1)$.)
+
+### Dependencies
+
+**Requires**: §5.1 (rearrangements), §5.2 (iterated limits, double limits), §4.2 (absolute convergence, ratio test)
+
+**Used in**: §5.4 (dominated convergence), §6.3 (power series, Cauchy product)

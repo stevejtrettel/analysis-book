@@ -1,0 +1,42 @@
+### Chapter 6 Introduction: Which Functions Are Well-Behaved?
+
+**The problem**
+- The Part II introduction opened the zoo: once "function" means *any* rule assigning values, most functions are monsters
+- But we have a specific theorem we want to be true
+- If $f(a) < 0$ and $f(b) > 0$, there should be some $c$ between $a$ and $b$ with $f(c) = 0$
+- For Euler's functions (polynomials, trig, exponentials) this is obviously true
+- For general functions it's obviously *false*: a step function jumps from $-1$ to $1$ without ever being zero
+- So the IVT holds for some class of functions but not all — which class?
+
+**Cauchy and Bolzano try to answer**
+- Bolzano (1817): first to insist on a purely analytic proof of IVT, no geometric appeals
+- He had the right strategy — essentially the least upper bound argument — but couldn't finish; the foundations of $\RR$ weren't ready
+- Cauchy (1821): defined continuity as "an infinitely small change in $x$ produces an infinitely small change in $f(x)$"
+- The right intuition — the step function fails because a tiny change at $x = 0$ produces a jump of $2$
+- Cauchy attempted IVT via bisection, but implicitly assumed completeness without stating it
+- Both had the right instincts; neither had the right tools
+
+**Weierstrass makes it precise**
+- Weierstrass (1860s): the $\varepsilon$-$\delta$ definition
+- For every $\varepsilon > 0$ there exists $\delta > 0$ such that $|x - a| < \delta$ implies $|f(x) - f(a)| < \varepsilon$
+- The same quantifier game as $\varepsilon$-$N$ for sequences, now played locally at a point
+- Combined with completeness from Chapter 1, this gives everything needed for IVT — and much more
+
+**The good news**
+- The class of continuous functions turns out to be a well-behaved world
+- Sums, products, quotients, compositions of continuous functions are continuous
+- Polynomials, power series, exponentials — all the functions we know — are continuous
+- The definition doesn't just identify the right class for IVT; it identifies a class closed under the operations we care about
+
+**But also surprises**
+- Cauchy (1821) claimed the limit of continuous functions is continuous — this is false ($f_n(x) = x^n$ on $[0,1]$)
+- Weierstrass (1872) constructed a function continuous everywhere but differentiable nowhere — infinitely jagged at every scale
+- Hermite: "I turn away with fright and horror from this lamentable plague of functions which have no derivatives"
+- Continuity is subtler and richer than it first appears
+
+**What's ahead**
+- §6.1: The $\varepsilon$-$\delta$ definition, the connection to sequences, how continuity fails
+- §6.2: Building continuous functions — the good news made rigorous
+- §6.3: Power series — our most powerful source of continuous functions
+- §6.4: The payoff — IVT, EVT, continuous inverses: what Bolzano couldn't prove, we now can
+- §6.5: Uniform continuity — a stronger property for when pointwise control isn't enough

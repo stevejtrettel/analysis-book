@@ -1,8 +1,11 @@
-## $\bigstar$ Rearrangement
+## Rearrangement
 
-- **Definition**: rearrangement via bijection π: ℕ → ℕ
-- **Theorem**: absolutely convergent series can be rearranged freely (same sum)
-- **Theorem (Riemann)**: conditionally convergent series can be rearranged to any value in ℝ ∪ {±∞}
-- Proof sketch: positive and negative parts both diverge; alternate to hit target
-- Example: rearranging alternating harmonic to (3/2)ln(2)
-- Moral: absolute = robust, conditional = fragile
+### Rearrangements
+
+### Absolute Convergence is Robust
+
+### Conditional Convergence is Fragile
+
+### GE: Rearranging the Alternating Harmonic Series
+
+### Exercises

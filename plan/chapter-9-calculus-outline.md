@@ -55,13 +55,25 @@ The Fundamental Theorem is the central result of this book. It explains why we d
 
 This section presents the theorem itself and its immediate meaning. The techniques for finding antiderivatives follow in Section 9.2.
 
-### Signed Integrals
+### From Sets to Bounds
 
-**Notation**: For a < b, we have defined ∫ₐᵇ f. We extend this by:
+In Chapter 8, we defined ∫_{[a,b]} f — the integral of f over an interval. This is a geometric object: the integral over a set.
 
+Now we introduce directed notation. Define:
+
+$$\int_a^b f = \int_{[a,b]} f \quad \text{for } a < b$$
 $$\int_b^a f = -\int_a^b f$$
+$$\int_a^a f = 0$$
 
-This convention makes FTC statements cleaner and allows the variable endpoint to move in either direction. With this convention, additivity ∫ₐᶜ f = ∫ₐᵇ f + ∫ᵇᶜ f holds regardless of the order of a, b, c.
+With this convention, additivity ∫ₐᶜ f = ∫ₐᵇ f + ∫ᵇᶜ f holds regardless of the order of a, b, c.
+
+### Continuity of the Integral Function
+
+**Theorem**: If f is integrable on [a,b] with m ≤ f ≤ M, then F(x) = ∫_a^x f is continuous.
+
+*Proof*: Using the bounds theorem from §8.1 and additivity: for h > 0, F(x+h) − F(x) = ∫_x^{x+h} f, which satisfies m·h ≤ F(x+h) − F(x) ≤ M·h. As h → 0, both bounds → 0. Similarly for h < 0.
+
+*Note*: This was an exercise in §8.1. We prove it here as a theorem because it is the key lemma for FTC I.
 
 ### Mean Value Theorem for Integrals
 

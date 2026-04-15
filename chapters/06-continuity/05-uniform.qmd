@@ -1,25 +1,11 @@
-## $\bigstar$ Uniform Continuity
+## Uniform Continuity
 
+### The Definition
 
-**The Problem**
+### Closed Intervals
 
-- In ordinary continuity, δ depends on ε *and* the point a
-- Can one δ work for all points simultaneously?
+### Continuous Extensions
 
-**Definition**
+### GE: Uniform Continuity and Sequences
 
-- f uniformly continuous on S if ∀ε > 0 ∃δ > 0: x, y ∈ S and |x − y| < δ ⟹ |f(x) − f(y)| < ε
-
-**Non-examples**
-
-- f(x) = 1/x on (0,1): near 0, need smaller and smaller δ
-- f(x) = x² on ℝ: as x → ∞, function changes faster and faster
-
-**Results**
-
-- **Theorem**: Uniformly continuous ⟹ continuous (trivial)
-- **Theorem**: Continuous on [a,b] ⟹ uniformly continuous on [a,b]
-  - Proof via BW: if not, get sequences xₙ, yₙ with |xₙ − yₙ| → 0 but |f(xₙ) − f(yₙ)| ≥ ε; extract convergent subsequence, get contradiction
-- **Extension Theorem**: Uniformly continuous on (a,b) ⟹ extends to continuous function on [a,b]
-  - Proof: show lim_{x→a⁺} f(x) exists via Cauchy criterion
-- **Corollary**: Uniformly continuous on bounded set ⟹ bounded
+### Exercises

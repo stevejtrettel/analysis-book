@@ -1,0 +1,79 @@
+## §7.4 Exponentials
+
+### Narrative
+
+- We have aˣ from ch1 (defined via supremum) and know it's continuous — but is it differentiable?
+- Proving differentiability at 0 is the key: the functional equation does the rest
+- Every exponential has a proportionality constant; we define the natural exponential as the one where this constant is 1
+- This gives us exp' = exp, which determines the Taylor series — and we recognize it as E(x) from ch5
+- Defining e = exp(1) gives the *right* definition of e; we then recover e = lim(1+1/n)ⁿ and e = Σ1/n! as theorems
+- Computing e and proving its irrationality close the section
+
+### Content
+
+**Differentiability of Exponentials**
+- Theorem: aˣ is differentiable at 0 (prove in text)
+- Theorem: If aˣ is differentiable at 0, then aˣ is differentiable everywhere, and (aˣ)' = aˣ · a'(0) (prove in text: functional equation)
+- Remark: every exponential is determined by its derivative factor a'(0)
+
+**The Natural Exponential**
+- Definition: the *natural exponential* exp is the exponential function with exp'(0) = 1, i.e. exp' = exp
+- exp(x) = aˣ for some base a; define e = exp(1), so exp(x) = eˣ
+- Remark: this is the proper definition of e — the base whose exponential is its own derivative
+
+**The Taylor Series for exp**
+- exp' = exp and exp(0) = 1 determine all derivatives: exp⁽ⁿ⁾(0) = 1 for all n
+- Taylor polynomials: Pₙ(x) = Σₖ₌₀ⁿ xᵏ/k!
+- Remark: the series Σ xⁿ/n! converges for all x (ratio test: |aₙ₊₁/aₙ| = |x|/(n+1) → 0)
+- Theorem: exp(x) = Σ xⁿ/n! for all x (prove in text: Lagrange remainder → 0, since |exp⁽ⁿ⁺¹⁾(c)| = exp(c) is bounded on any fixed interval)
+- Remark: this is the series E(x) from ch5! The functional equation exp(x+y) = exp(x)exp(y) was already proved there via Cauchy product
+- ✎ Inline: verify the Lagrange remainder estimate in detail for a specific x
+
+**The Number e**
+- e = exp(1) = Σ 1/n!
+- Theorem: e = lim(1 + 1/n)ⁿ (callback to ch2; proved via ch5's dominated convergence result that (1+x/n)ⁿ → E(x))
+- Error bound: 0 < e - Sₙ < 1/(n! · n) (prove in text)
+- Example: S₁₀ gives e ≈ 2.7182818 to 7 decimal places
+- Theorem: e is irrational (prove in text: multiply through by q!, get integer + something in (0,1))
+- Remark: aˣ = exp(kx) where k = a'(0), so all exponentials are compositions with exp
+
+### Guided Exercise
+
+**The Continued Fraction for e**
+
+*(Fulfilling the promise from §4.4)*
+
+*(Details to be worked out — the key idea is using the series for e to derive the regular continued fraction [2; 1, 2, 1, 1, 4, 1, 1, 6, ...])*
+
+**Smooth ≠ Analytic**
+
+Let f(x) = e^{-1/x²} for x ≠ 0, f(0) = 0.
+
+(a) Show f is continuous at 0.
+
+(b) Show f'(0) = 0 from the definition. (Hint: e^{-1/h²}/h → 0 as h → 0.)
+
+(c) Show f is smooth on ℝ \ {0} (standard rules).
+
+(d) Show by induction that f⁽ⁿ⁾(0) = 0 for all n. (Strategy: show each derivative at nonzero x has the form p(1/x) · e^{-1/x²} for some polynomial p, and these all → 0 as x → 0.)
+
+(e) Conclude: the Taylor series of f at 0 is identically 0, but f ≠ 0. So f is smooth but not analytic.
+
+(f) Reflect: power series are always equal to their Taylor series (§7.3 corollary). This example shows general smooth functions need not be. What makes power series special?
+
+### Exercises
+
+- Prove $\exp(x) \geq 1 + x$ for all $x$
+- Prove $e < 3$ using partial sums
+- Show $e^x / x^n \to \infty$ as $x \to \infty$ (exponential beats any polynomial)
+- Compute $e$ to 10 decimal places; how many terms of the series are needed?
+
+### Note
+
+The proof that aˣ is differentiable at 0 could potentially move to §7.1 if this section feels overloaded.
+
+### Dependencies
+
+**Requires**: §4.4 (continued fractions — for guided exercise), §5.3 (Cauchy product — for recognizing functional equation), §5.4 (dominated convergence — for (1+x/n)ⁿ → E(x)), §7.1 (derivative definition, chain rule), §7.3 (term-by-term differentiation, Taylor's theorem with Lagrange remainder)
+
+**Used in**: §7.5 (exp used in Newton's method convergence analysis)

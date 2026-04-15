@@ -1,0 +1,166 @@
+## §6.1 Continuity
+
+### Narrative
+
+- Which functions respect closeness? The step function doesn't — a tiny change at $x = 0$ produces a jump of 2
+- The $\varepsilon$-$\delta$ definition: control the output by controlling the input
+- Same game as $\varepsilon$-$N$ from Chapter 2, but now local — played at a point
+- A first example from the definition, showing the estimation technique
+- The bridge theorem: continuous iff sequences are preserved ($x_n \to a \Rightarrow f(x_n) \to f(a)$)
+- This connects the new definition to five chapters of existing tools
+- Limits of functions: a variant where we don't care about the value at $a$ itself
+- Continuity = the limit equals the value
+- One-sided limits: capturing directional behavior near a point
+
+### Content
+
+**The Definition**
+- Motivation: which functions respect closeness? If $x$ is close to $a$, is $f(x)$ close to $f(a)$?
+- The step function $\text{sgn}(x) = -1$ for $x < 0$, $1$ for $x \geq 0$: inputs $-0.001$ and $0.001$ are close, but outputs are $-1$ and $1$ — not close
+- What property rules this out?
+- The $\varepsilon$-$\delta$ game: adversary picks an output tolerance $\varepsilon > 0$; you respond with an input tolerance $\delta > 0$; you win if $|x - a| < \delta$ guarantees $|f(x) - f(a)| < \varepsilon$; $f$ is continuous at $a$ iff you have a winning strategy for every $\varepsilon$
+- Parallel with $\varepsilon$-$N$: in Chapter 2, the adversary challenged output precision and you responded with "go far enough in the sequence." Now the adversary challenges output precision and you respond with "stay close enough to the point."
+- Definition: $f$ is *continuous at $a$* if
+$$\forall \varepsilon > 0 \; \exists \delta > 0 \; \forall x: |x - a| < \delta \Rightarrow |f(x) - f(a)| < \varepsilon$$
+- Definition: $f$ is *continuous on a set $S$* if it is continuous at every point of $S$
+- Remark: $\delta$ may depend on both $\varepsilon$ *and* the point $a$ — this dependence becomes important in §6.5
+
+*A first example: the estimation technique*
+- Example: $f(x) = 3x + 1$ is continuous at every $a$
+  - $|f(x) - f(a)| = |3x + 1 - 3a - 1| = 3|x - a|$
+  - Choose $\delta = \varepsilon/3$; then $|x - a| < \delta \Rightarrow |f(x) - f(a)| = 3|x - a| < 3\delta = \varepsilon$
+- Example: $f(x) = x^2$ is continuous at every $a$ (prove in text)
+  - $|x^2 - a^2| = |x - a| \cdot |x + a|$
+  - Need to control $|x + a|$: if $|x - a| < 1$, then $|x| < |a| + 1$, so $|x + a| < 2|a| + 1$
+  - Choose $\delta = \min(1, \varepsilon/(2|a|+1))$
+  - Then $|f(x) - f(a)| < (2|a|+1) \cdot \delta \leq \varepsilon$
+  - Remark: the $\min(1, \ldots)$ trick — restrict to a neighborhood first, then estimate
+- Remark: this is the same estimation game as §2.2, just in a new setting
+- ✎ Inline: Prove $f(x) = 1/x$ is continuous at $a = 2$ from the $\varepsilon$-$\delta$ definition
+
+*The step function is not continuous*
+- $\text{sgn}(x)$ at $a = 0$: take $\varepsilon = 1$. For any $\delta > 0$, there exist $x = -\delta/2$ and $x = \delta/2$ with $|x - 0| < \delta$ but $|f(x) - f(0)| = 2 > \varepsilon$
+- The adversary wins with $\varepsilon = 1$ — no $\delta$ works
+- Remark: to prove discontinuity, we only need one $\varepsilon$ for which no $\delta$ works
+
+**The Sequential Characterization**
+- Theorem: $f$ is continuous at $a$ if and only if: for every sequence $(x_n)$ with $x_n \to a$, we have $f(x_n) \to f(a)$
+- This is the bridge between the new definition and five chapters of existing tools
+- Proof ($\Rightarrow$): Suppose $f$ continuous at $a$ and $x_n \to a$. Given $\varepsilon > 0$, get $\delta > 0$ from continuity. Since $x_n \to a$, there exists $N$ with $|x_n - a| < \delta$ for $n > N$. Then $|f(x_n) - f(a)| < \varepsilon$ for $n > N$. So $f(x_n) \to f(a)$.
+- Proof ($\Leftarrow$, contrapositive): Suppose $f$ is NOT continuous at $a$. Then there exists $\varepsilon_0 > 0$ such that for every $\delta > 0$, some $x$ has $|x - a| < \delta$ but $|f(x) - f(a)| \geq \varepsilon_0$. Take $\delta = 1/n$: get $x_n$ with $|x_n - a| < 1/n$ but $|f(x_n) - f(a)| \geq \varepsilon_0$. Then $x_n \to a$ but $f(x_n) \not\to f(a)$.
+- Remark: the reverse direction *constructs* a bad sequence from the failure of $\varepsilon$-$\delta$. This is a powerful technique.
+- Remark: from now on, we use whichever characterization is more convenient. The sequential version is often easier for proofs (invoke limit laws from Chapter 2); the $\varepsilon$-$\delta$ version is often better for understanding what's happening locally.
+
+*Dirichlet's function is discontinuous everywhere*
+- Define $D(x) = 1$ if $x \in \QQ$, $D(x) = 0$ if $x \notin \QQ$
+- Claim: $D$ is discontinuous at every $a \in \RR$
+- Proof via sequential characterization:
+  - If $a \in \QQ$: by density of irrationals, find $x_n \notin \QQ$ with $x_n \to a$. Then $D(x_n) = 0 \not\to 1 = D(a)$.
+  - If $a \notin \QQ$: by density of rationals, find $x_n \in \QQ$ with $x_n \to a$. Then $D(x_n) = 1 \not\to 0 = D(a)$.
+- Remark: density of $\QQ$ and of $\RR \setminus \QQ$ (from §1.5) does the work; the sequential characterization makes it clean
+
+**Limits of Functions**
+- Sometimes a function "wants" to have a value at a point even though it doesn't — or has the wrong one
+- Example: $f(x) = \sin(x)/x$ is not defined at $x = 0$, but for $x$ near $0$, $f(x)$ is near $1$
+- Example: define $g(x) = x^2$ for $x \neq 0$ and $g(0) = 17$. The value at $0$ is "wrong" — the function "should be" $0$ there
+- We want to capture "what $f(x)$ approaches as $x \to a$, ignoring what happens at $a$ itself"
+- Definition: $\lim_{x \to a} f(x) = L$ if
+$$\forall \varepsilon > 0 \; \exists \delta > 0 \; \forall x: 0 < |x - a| < \delta \Rightarrow |f(x) - L| < \varepsilon$$
+- The only difference from continuity: the condition $0 < |x - a|$ excludes the point $a$ itself
+- $f$ doesn't even need to be defined at $a$ for $\lim_{x \to a} f(x)$ to exist
+- Theorem (Sequential characterization): $\lim_{x \to a} f(x) = L$ iff for every sequence $(x_n)$ with $x_n \to a$ and $x_n \neq a$, we have $f(x_n) \to L$
+- Key observation: $f$ is continuous at $a$ if and only if $\lim_{x \to a} f(x) = f(a)$
+  - Continuity = the function equals its limit
+- ✎ Inline: Prove that $\lim_{x \to 0} x \sin(1/x) = 0$
+
+**One-Sided Limits**
+- Definition: $\lim_{x \to a^+} f(x) = L$ if the limit condition holds with $0 < x - a < \delta$ (approaching from the right)
+- Definition: $\lim_{x \to a^-} f(x) = L$ similarly (approaching from the left)
+- Theorem: $\lim_{x \to a} f(x) = L$ iff $\lim_{x \to a^+} f(x) = L$ and $\lim_{x \to a^-} f(x) = L$
+- Example: $\text{sgn}(x)$ at $0$: $\lim_{x \to 0^+} = 1$, $\lim_{x \to 0^-} = -1$; since these disagree, $\lim_{x \to 0} \text{sgn}(x)$ does not exist
+
+### Guided Exercises
+
+**A. Classifying Discontinuities**
+
+We've seen that a function can fail to be continuous in different ways. In this exercise, you'll organize the possibilities into a taxonomy.
+
+(a) Consider the following discontinuous functions at the indicated point. Compute $\lim_{x \to a^-} f(x)$ and $\lim_{x \to a^+} f(x)$ for each (if they exist):
+
+  - $f(x) = \sin(x)/x$ at $a = 0$ (set $f(0) = 17$)
+  - $\text{sgn}(x)$ at $a = 0$
+  - $\lfloor x \rfloor$ (the floor function) at $a = 1$
+  - $\sin(1/x)$ at $a = 0$ (set $f(0) = 0$)
+  - Dirichlet's function $D(x)$ at $a = 0$
+
+(b) Sort these into three groups based on what goes wrong. In the mildest case, both one-sided limits exist and agree — the function just has the "wrong" value. In the middle case, both one-sided limits exist but disagree. In the worst case, at least one one-sided limit fails to exist. Propose names for the three types.
+
+(c) For each type, explain: can the discontinuity be "fixed" by redefining $f(a)$? If so, what should the new value be? If not, why not?
+
+(d) We say $f$ has a *removable discontinuity* at $a$ if $\lim_{x \to a} f(x)$ exists but $\neq f(a)$ (or $f$ is undefined); a *jump discontinuity* if both one-sided limits exist but differ; and an *essential discontinuity* if at least one one-sided limit fails to exist. Verify that your grouping matches these definitions.
+
+(e) The *jump* at $a$ is defined as $\lim_{x \to a^+} f(x) - \lim_{x \to a^-} f(x)$. Compute the jump of $\text{sgn}$ at $0$ and of $\lfloor x \rfloor$ at $1$.
+
+(f) Classify the discontinuity of $f(x) = x \cdot D(x)$ at $x = 0$. (This is a trick question — think carefully.)
+
+**B. The Ruler Function (Thomae's function)**
+
+Define $R: [0,1] \to \RR$ by:
+$$R(x) = \begin{cases} 1/q & \text{if } x = p/q \text{ in lowest terms, } q \geq 1 \\ 0 & \text{if } x \notin \QQ \end{cases}$$
+(with $R(0) = 1$). This function is $1/2$ at $1/2$; $1/3$ at $1/3$ and $2/3$; $1/4$ at $1/4$ and $3/4$; and so on. It looks like an upside-down ruler — hence the name.
+
+*Part I: Discontinuous at rationals*
+
+(a) Let $a = p/q \in \QQ$ with $q \geq 1$. Find a sequence of irrationals $x_n \to a$.
+
+(b) Show $R(x_n) = 0 \not\to 1/q = R(a)$, so $R$ is discontinuous at $a$.
+
+(c) Using the taxonomy from Guided Exercise A, classify the discontinuity at $a$.
+
+*Part II: Continuous at irrationals*
+
+(d) Let $a \notin \QQ$ and let $\varepsilon > 0$. Explain why there are only finitely many rationals $p/q$ in $[0,1]$ with $q < 1/\varepsilon$.
+
+(e) Conclude that there exists $\delta > 0$ such that every rational $p/q$ in $(a - \delta, a + \delta)$ has $q \geq 1/\varepsilon$.
+
+(f) Show: for $|x - a| < \delta$, we have $|R(x) - R(a)| = |R(x)| \leq \varepsilon$ (whether $x$ is rational or irrational).
+
+(g) Conclude $R$ is continuous at every irrational.
+
+*Part III: Reflection*
+
+(h) The ruler function is continuous at every irrational and discontinuous at every rational. So continuity can be a *pointwise* property — a function can be continuous at some points and discontinuous at others.
+
+(i) Can a function be continuous at every rational and discontinuous at every irrational? (We'll revisit this question in later chapters.)
+
+### Exercises
+
+*From the $\varepsilon$-$\delta$ definition*
+- Prove $f(x) = 3x + 1$ is continuous at $a = 2$
+- Prove $f(x) = x^3$ is continuous at $a = 1$
+- Prove $f(x) = 1/x$ is continuous at any $a > 0$
+- Prove $f(x) = \sqrt{x}$ is continuous at any $a > 0$. What happens at $a = 0$?
+
+*Using the sequential characterization*
+- Prove: if $f$ is continuous at $a$ and $f(a) > 0$, then there exists $\delta > 0$ such that $f(x) > 0$ for all $x$ with $|x - a| < \delta$ (sign preservation)
+- Prove: if $f$ is continuous at $a$ and $f(a) \neq 0$, then $1/f$ is continuous at $a$
+- Show Dirichlet's function is discontinuous at every point (done in text, but prove it independently)
+- ★ Define $f(x) = x$ for $x \in \QQ$, $f(x) = 0$ for $x \notin \QQ$. At which points is $f$ continuous?
+
+*Limits of functions*
+- Prove $\lim_{x \to 1} \frac{x^2 - 1}{x - 1} = 2$
+- Prove $\lim_{x \to 0} x \sin(1/x) = 0$
+- Prove $\lim_{x \to 0} \sin(1/x)$ does not exist
+- Prove: if $\lim_{x \to a} f(x) = L$ and $\lim_{x \to a} f(x) = M$, then $L = M$ (uniqueness)
+- Prove: $\lim_{x \to a} f(x) = L$ iff $\lim_{x \to a^+} f(x) = L$ and $\lim_{x \to a^-} f(x) = L$
+
+*Theoretical*
+- Prove: $f$ continuous at $a$ iff for every $\varepsilon > 0$, the set $\{x : |f(x) - f(a)| < \varepsilon\}$ contains an interval around $a$
+- Prove: if $f$ and $g$ are both continuous at $a$, then $\max(f, g)$ is continuous at $a$ (hint: use $\max(s, t) = (s + t + |s - t|)/2$; but you'll need §6.2 for the full proof)
+- If $f$ and $g$ are continuous and $f = g$ on a dense set, prove $f = g$ everywhere
+
+### Dependencies
+
+**Requires**: §1.5 (density of $\QQ$ and irrationals), §2.2 ($\varepsilon$-$N$ definition of convergence), §2.3 (limit laws)
+
+**Used in**: §6.2 (algebra of continuous functions uses sequential characterization + limit laws), §6.3 (power series continuity), §6.4 (IVT, EVT), §6.5 (uniform continuity refines the $\varepsilon$-$\delta$ definition), Ch 7 ($\lim_{x \to a}$ is the basis for the derivative)

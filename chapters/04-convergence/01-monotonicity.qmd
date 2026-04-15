@@ -1,1 +1,11 @@
 ## Finding Monotonicity
+
+The general strategy
+
+### Alternating Series
+
+### Example: Continued Fraction for $\sqrt{2}$
+
+### Example: The Wallis Product
+
+### Exercises

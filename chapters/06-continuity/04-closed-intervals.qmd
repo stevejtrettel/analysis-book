@@ -1,30 +1,11 @@
-## Continuity on Closed Intervals
+## Global Properties
 
+### The Intermediate Value Theorem
 
-**The Intermediate Value Theorem**
+### Boundedness and Extreme Values
 
-- **Theorem (IVT)**: If f continuous on [a,b] and y between f(a) and f(b), then f(c) = y for some c
-- Proof via completeness: c = sup{x : f(x) < y}
-- **Corollary**: Continuous image of interval is interval
-- **Applications**:
-  - nth roots exist (f(x) = xⁿ)
-  - Fixed point theorem: f: [a,b] → [a,b] continuous ⟹ f(c) = c for some c
-  - Every odd-degree polynomial has a real root
+### Monotone Functions and Inverses
 
-**Boundedness and the Extreme Value Theorem**
+### GE: The Bisection Method
 
-- **Theorem**: Continuous on [a,b] ⟹ bounded
-  - Proof via Bolzano-Weierstrass
-- **Theorem (EVT)**: Continuous on [a,b] ⟹ attains maximum and minimum
-  - Proof via BW: xₙ with f(xₙ) → sup f; extract convergent subsequence
-
-**Monotone Functions and Inverses**
-
-- **Definition**: increasing, decreasing, strictly monotone
-- **Theorem**: Monotone on (a,b) ⟹ one-sided limits exist at every point
-  - Proof via sup/inf
-- **Corollary**: Monotone functions have only jump discontinuities
-- **Theorem**: Strictly monotone ⟹ injective
-- **Theorem**: Strictly monotone + continuous on [a,b] ⟹ inverse is continuous
-  - Proof: f injective (strict monotone) + surjective onto range (IVT) ⟹ f⁻¹ exists; continuity via subsequential limits
-- **Payoff**: When we define log = exp⁻¹, arcsin = sin⁻¹, etc., continuity is automatic
+### Exercises

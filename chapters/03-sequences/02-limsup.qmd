@@ -1,1 +1,10 @@
 ## Subsequential Limits
+
+
+### Limsup and Liminf
+
+### The Tail Characterization
+
+### Convergence Criteria
+
+### Exercises

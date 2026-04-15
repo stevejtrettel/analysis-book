@@ -77,13 +77,31 @@
 
 ### Guided Exercise
 
-None for this section.
+**Paths to Infinity**
+
+The double sequence $a_{mn} = \frac{mn}{m^2 + n^2}$ appeared in the text as an example where both iterated limits exist and agree, yet the double limit fails to exist. This exercise explores what goes wrong — and how rich the pathological behavior is.
+
+(a) Verify both iterated limits: compute $\lim_{m \to \infty} \lim_{n \to \infty} a_{mn}$ and $\lim_{n \to \infty} \lim_{m \to \infty} a_{mn}$. (Both should equal $0$.)
+
+(b) Compute $\lim_{n \to \infty} a_{nn}$ (the diagonal). What value do you get?
+
+(c) Compute $\lim_{n \to \infty} a_{2n, n}$ (the path $m = 2n$). What value do you get?
+
+(d) More generally, compute $\lim_{n \to \infty} a_{cn, n}$ for an arbitrary constant $c > 0$. Express the answer as a function of $c$. What is the maximum value, and where is it achieved?
+
+(e) Compute $\lim_{n \to \infty} a_{n^2, n}$ (the path $m = n^2$). Does this give the same answer as any of the above?
+
+(f) Conclude: the double limit $\lim_{m,n \to \infty} a_{mn}$ does not exist. How many distinct "limit values" can be achieved by different paths to infinity?
+
+(g) **Contrast**: Now consider $b_{mn} = \frac{1}{m+n}$. Prove that $\lim_{m,n \to \infty} b_{mn} = 0$. Verify that every path $m = f(n)$ with $f(n) \to \infty$ gives the same limit. Why does the theorem from the text guarantee this?
 
 ### Exercises
 
 *Computing iterated limits*
+- Compute both iterated limits for $a_{mn} = \frac{n}{m + n}$
 - Compute both iterated limits for $a_{mn} = \frac{m^2}{m^2 + n}$
 - Compute both iterated limits for $a_{mn} = \frac{m + n}{m^2 + n^2}$
+- Compute both iterated limits for $a_{mn} = \frac{(-1)^{m+n} mn}{m^2 + n^2}$
 - Compute both iterated limits for $a_{mn} = \frac{(-1)^m n}{m + n}$
 
 *Iterated limits and diagonal*
@@ -97,6 +115,8 @@ None for this section.
 - Does $\lim_{m,n \to \infty} \frac{m}{n}$ exist? Prove or disprove.
 
 *Theoretical*
+- Prove: if $a_{mn} \to L$ as $m + n \to \infty$, then the double limit exists and equals $L$
+- Give an example where $\lim_m \lim_n a_{mn}$ exists but $\lim_n \lim_m a_{mn}$ does not
 - Prove: if $\lim_{m,n \to \infty} a_{mn} = L$ and $\lim_{m,n \to \infty} b_{mn} = M$, then $\lim_{m,n \to \infty} (a_{mn} + b_{mn}) = L + M$
 - Prove: if $a_{mn} \leq b_{mn}$ for all $m, n$, and both double limits exist, then $\lim_{m,n} a_{mn} \leq \lim_{m,n} b_{mn}$
 - Give an example where $\lim_{m \to \infty} \lim_{n \to \infty} a_{mn}$ exists but $\lim_{n \to \infty} a_{mn}$ does not exist for some $m$.
@@ -104,6 +124,6 @@ None for this section.
 
 ### Dependencies
 
-**Requires**: §2.2 (definition of limits)
+**Requires**: §2.2 (definition of limits), §2.4 ($e = \lim(1+1/n)^n$, geometric sequences)
 
 **Used in**: §5.3 (double sums)

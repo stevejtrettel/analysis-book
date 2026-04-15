@@ -1,0 +1,55 @@
+## The Darboux Integral
+
+### Narrative
+
+- §8.1 showed the axioms can force the value of an integral — we define integrability to mean exactly this
+- A function is integrable if and only if its value is forced: sup L = inf U
+- This is the minimal integral: we declare a function integrable precisely when the axioms leave no choice
+- We then verify this definition actually satisfies the three axioms — so the integral exists
+- Payoff: continuous functions are integrable (already proved), and so are some discontinuous ones
+
+### Content
+
+**The Minimal Integral**
+- Idea: §8.1 ended with a question — does an integral satisfying the axioms exist? We build one.
+- Strategy: declare a function integrable when the axioms force its value, and define the integral to be that forced value
+- Definition: lower integral = sup_P L(f, P), upper integral = inf_P U(f, P)
+- Definition: f is *integrable* on [a,b] if the lower and upper integrals are equal. The common value is ∫_{[a,b]} f.
+- Remark: for continuous functions, §8.1 already showed sup L = inf U — so continuous functions are integrable under this definition
+- Remark: this is the Darboux integral
+
+**Refinements**
+- Definition: a partition Q *refines* P if P ⊆ Q
+- Lemma (Refinements Improve Bounds): if P ⊆ Q, then L(f, P) ≤ L(f, Q) ≤ U(f, Q) ≤ U(f, P)
+- Proof: add one point at a time; splitting a subinterval can only improve inf/sup estimates
+- Corollary: every lower sum ≤ every upper sum (take common refinement P ∪ Q)
+- Corollary: lower integral ≤ upper integral
+
+**Verification of the Axioms**
+- Theorem: the Darboux integral satisfies all three axioms
+- Verify (I1) Rectangles: for constant c, every partition gives L = U = c(b−a)
+- Verify (I2) Monotonicity: f ≤ g ⟹ inf/sup on each subinterval respects this ⟹ L(f,P) ≤ L(g,P), so sup L(f) ≤ sup L(g)
+- Verify (I3) Additivity: partitions of [a,b] containing c split into partitions of [a,c] and [c,b]; sup over product = sum of sups
+- Remark: the integral exists — the forced value actually defines an integral satisfying the axioms
+
+**Beyond Continuous Functions**
+- The Darboux definition applies to any bounded function with sup L = inf U
+- Theorem: bounded functions with finitely many discontinuities are integrable
+- Proof sketch: enclose discontinuities in intervals of small total length; on the rest, uniform continuity controls U − L
+- Theorem (exercise): monotone functions on [a,b] are integrable
+- Remark: we don't belabor integrability criteria here — a fuller picture comes with the Lebesgue integral
+- ✎ Inline: explain why the Dirichlet function (1 on rationals, 0 on irrationals) is not integrable
+
+### Guided Exercises
+
+None for this section.
+
+### Exercises
+
+TBD
+
+### Dependencies
+
+**Requires**: §8.1 (axioms, trapping theorem, continuous functions forced)
+
+**Used in**: §8.3 (geometric applications), §8.4 (computing integrals), §9.1 (FTC)

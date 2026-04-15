@@ -71,27 +71,31 @@ The alternating harmonic series $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} = 1 - 
 
 By Riemann's theorem, we can rearrange it to converge to any value. In this exercise, we find explicit rearrangements converging to specific targets.
 
+Let $S = \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots$ (which converges by the alternating series test).
+
 *Part I: Two positives, one negative*
 
 Consider the rearrangement: $1 + \frac{1}{3} - \frac{1}{2} + \frac{1}{5} + \frac{1}{7} - \frac{1}{4} + \frac{1}{9} + \frac{1}{11} - \frac{1}{6} + \cdots$
 
 (a) Describe the pattern: the $k$-th block consists of which terms?
 
-(b) Write the partial sum through $N$ complete blocks.
+(b) Write the partial sum $T_N$ through $N$ complete blocks. Express it in terms of partial sums of the harmonic series $H_n = \sum_{j=1}^{n} 1/j$.
 
-(c) [Details to be filled in] Show this rearrangement converges to $\frac{3}{2}\ln 2$.
+(c) Let $S_n$ denote the partial sums of the original series, and recall $S_{2M} = H_{2M} - H_M$. Show that $T_N = S_{4N} + \frac{1}{2}S_{2N}$. (Hint: express both the odd reciprocals and even reciprocals in terms of harmonic numbers $H_n = \sum_{j=1}^{n} 1/j$.)
+
+(d) Conclude that $T_N \to S + \frac{1}{2}S = \frac{3}{2}S$. The rearrangement has a different sum!
 
 *Part II: One positive, two negatives*
 
 Consider the rearrangement: $1 - \frac{1}{2} - \frac{1}{4} + \frac{1}{3} - \frac{1}{6} - \frac{1}{8} + \frac{1}{5} - \frac{1}{10} - \frac{1}{12} + \cdots$
 
-(d) Describe the pattern for this rearrangement.
+(e) Describe the pattern for this rearrangement.
 
-(e) [Details to be filled in] Show this rearrangement converges to $\frac{1}{2}\ln 2$.
+(f) Show that after $N$ complete blocks, $T_N = \frac{1}{2}S_{2N}$. Conclude the rearrangement converges to $\frac{1}{2}S$.
 
-*Part III: Another target*
+*Part III: Reflection*
 
-(f) [Third rearrangement pattern and target to be determined]
+(g) Taking more positive terms relative to negative terms increased the sum from $S$ to $\frac{3}{2}S$; taking more negatives decreased it to $\frac{1}{2}S$. The Riemann rearrangement theorem guarantees *every* real number is achievable. But finding explicit formulas for general $p$-positive-$q$-negative rearrangements requires tools (logarithms) we haven't developed yet — we'll return to this in Chapter 9.
 
 ### Exercises
 
@@ -106,12 +110,15 @@ Consider the rearrangement: $1 - \frac{1}{2} - \frac{1}{4} + \frac{1}{3} - \frac
 - Describe a rearrangement of $\sum_{n=1}^{\infty} (-1)^{n+1}/\sqrt{n}$ that converges to $0$.
 
 *Theoretical*
+- Prove: if $\sum a_n$ converges absolutely, then $\sum a_n^2$ converges
+- Describe how to rearrange $\sum (-1)^n/\sqrt{n}$ to converge to $100$
 - Suppose $\pi: \mathbb{N} \to \mathbb{N}$ is a bijection with $|\pi(n) - n| \leq K$ for some constant $K$ and all $n$. Prove that if $\sum a_n$ converges (not necessarily absolutely), then $\sum a_{\pi(n)}$ converges to the same sum.
 - Suppose $\sum a_n$ converges and every rearrangement of $\sum a_n$ converges to the same value. Prove that $\sum a_n$ converges absolutely.
+- ★ Prove the Riemann rearrangement theorem in detail
 - ★ Prove: if $\sum a_n$ converges conditionally, there exists a rearrangement whose sequence of partial sums is unbounded above and unbounded below (i.e., diverges by oscillation).
 
 ### Dependencies
 
-**Requires**: §2.1 (series), §3.? (Cauchy criterion), §4.? (absolute vs conditional convergence, alternating series)
+**Requires**: §2.4 (series), §3.3 (Cauchy criterion), §4.1 (alternating series test), §4.2 (absolute vs conditional convergence)
 
 **Used in**: §5.3 (double sums, reordering)

@@ -1,39 +1,15 @@
 ## Newton's Method
 
+### The Algorithm
 
-**The Algorithm**
+### Convergence via Contraction
 
-- Problem: Find root of f(x) = 0
-- Newton iteration: xₙ₊₁ = xₙ - f(xₙ)/f'(xₙ)
-- Geometric interpretation: follow tangent line to x-axis
+### Quadratic Convergence via Taylor
 
-**Convergence via Contraction**
+### Examples
 
-- Define g(x) = x - f(x)/f'(x); fixed point of g is root of f
-- Compute: g'(x) = f(x)f''(x)/(f'(x))²
-- At simple root r: g'(r) = 0
-- Theorem: For x₀ near r, Newton converges
-- Proof: g'(r) = 0 ⟹ |g'| < 1 near r ⟹ g is contraction
+### Failure Modes
 
-**Quadratic Convergence via Taylor**
+### GE: Division by Multiplication
 
-- Theorem: εₙ₊₁ ≈ [f''(r)/(2f'(r))] εₙ²
-- Proof: Taylor expand f(xₙ) around r
-- Consequence: errors square — digits roughly double each step
-
-**Examples**
-
-- √2: xₙ₊₁ = (xₙ + 2/xₙ)/2 — the Babylonian method! (callback to Ch 2)
-- ∛5: xₙ₊₁ = (2xₙ + 5/xₙ²)/3
-
-**Failure Modes**
-
-- Multiple roots: g'(r) ≠ 0, only linear convergence
-- Bad starting points: may cycle, diverge, or find wrong root
-- f'(xₙ) = 0: division by zero
-
-**Looking Ahead**
-
-- Newton is fixed-point iteration: xₙ₊₁ = g(xₙ)
-- Picard iteration for ODEs: same idea in function space
-- Contraction mapping theorem (Ch 4) guarantees convergence in both settings
+### Exercises

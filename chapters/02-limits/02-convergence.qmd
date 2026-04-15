@@ -1,13 +1,10 @@
 ## Convergence
 
-
 ### The Definition
-
 
 ### Funamental Examples
 
 ### Basic Properties
-
 
 ### Divergence to $\infty$
 

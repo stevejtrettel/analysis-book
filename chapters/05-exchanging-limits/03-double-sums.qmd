@@ -1,17 +1,13 @@
 ## Double Sums
 
-- **Definition**: double series Σ_m Σ_n a_{mn}
-- Order can matter: example where Σ_m Σ_n ≠ Σ_n Σ_m
-- **Definition**: absolute convergence over the grid (Σ_{m,n} |a_{mn}| < ∞)
-- **Theorem**: absolute convergence ⟹ can swap order, same sum
-- **More generally**: under absolute convergence, any ordering works
-  - Rows, columns (iterated sums)
-  - Expanding squares
-  - Anti-diagonals
-- **Cauchy product**: Σaₙ times Σbₙ, summed along anti-diagonals (j + k = n)
-  - cₙ = Σ_{k=0}^n aₖb_{n-k}
-- **Theorem**: both series absolutely convergent ⟹ Cauchy product converges absolutely to (Σaₙ)(Σbₙ)
-- **Theorem (Mertens)**: one absolutely convergent + one convergent ⟹ Cauchy product converges to (Σaₙ)(Σbₙ)
-- **Application**: (1/(1-x))² = Σ(n+1)xⁿ via squaring geometric series
-- **Application**: (Σxⁿ/n!)(Σyⁿ/n!) = Σ(x+y)ⁿ/n! via binomial identity
-  - "This series has a remarkable property... deserves a name" (preview of Ch6)
+### Double Series
+
+### When Order Matters
+
+### When Order Doesn't Matter
+
+### Multiplying Series
+
+### GE: A Conditionally Convergent Double Series
+
+### Exercises

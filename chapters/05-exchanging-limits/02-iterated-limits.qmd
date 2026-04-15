@@ -1,8 +1,11 @@
 ## Iterated Limits
 
-- **Definition**: double sequence a_{mn}
-- **Definition**: iterated limits lim_m lim_n a_{mn} vs lim_n lim_m a_{mn}
-- Examples where they differ: m/(m+n), (m-n)/(m+n), mn/(m²+n²)
-- **Definition**: double limit lim_{m,n→∞} a_{mn}
-- **Theorem**: if double limit exists and both iterated limits exist, they agree
-- Remark: converse false — equal iterated limits don't guarantee double limit exists
+### Double Sequences
+
+### Iterated Limits
+
+### The Double Limit
+
+### GE: Paths to Infinity
+
+### Exercises

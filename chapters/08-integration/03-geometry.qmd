@@ -1,59 +1,17 @@
 ## Geometry
 
-With existence secured for continuous functions, we can rigorously define classical geometric quantities.
+### Arc Length
 
+### Area
 
+### Archimedes' Inequality
 
-**Arc Length**
+### Volume
 
-- **Motivation**: Approximate curve by segments; segment length ≈ √(1 + (f')²) Δx
-- **Definition**: Arc length of y = f(x) on [a,b] is ∫ₐᵇ √(1 + (f')²) dx (when f' continuous)
-- **Example**: Upper semicircle y = √(1−x²) has arc length ∫₋₁¹ 1/√(1−x²) dx
-  - Improper integral (blows up at ±1)
-  - If it converges, this *defines* π as the semicircle's length
+### Surface Area of Revolution
 
-**Archimedes' Inequality for Convex Curves**
+### GE: Archimedes' Inequality
 
-- Archimedes needed this as an *axiom*; we can *prove* it
-- **Theorem**: Among convex curves with same endpoints, the one closer to the chord is shorter
-- Proof uses convexity facts from Ch 7 guided exercises:
-  - f convex ⟺ f' increasing
-  - f'' ≥ 0 ⟺ f convex
-- **Corollary**: Straight line is shortest path between two points
-- **Corollary**: Convex curve lies between inscribed and circumscribed polygon lengths
+### GE: Volumes in Higher Dimensions
 
-**The Two Definitions of π Agree**
-
-- **Ch 4 definition**: π = lim (perimeter of inscribed n-gon in unit circle)/2
-- **Ch 8 definition**: π = arc length of unit semicircle = ∫₋₁¹ 1/√(1−x²) dx
-- **Theorem**: These are equal
-- Proof: By Archimedes' inequality, semicircle arc length is trapped between inscribed and circumscribed polygon perimeters, which both → π (Ch 4)
-
-**Area Between Curves**
-
-- **Definition**: If f ≥ g on [a,b], area between curves = ∫ₐᵇ [f(x) − g(x)] dx
-- **Example**: Area of unit disk = ∫₋₁¹ 2√(1−x²) dx
-  - This defines "area of disk" rigorously
-  - We will show this equals π (the same π!) after developing more tools
-
-**Improper Integrals (Remark)**
-
-- When integrand unbounded at endpoint: ∫ₐᵇ f = lim_{c→b⁻} ∫ₐᶜ f
-- Converges if limit exists
-- Example: ∫₀¹ 1/√(1−t²) dt converges (compare to ∫ 1/√(1−t) near t = 1)
-
-
-**Volume by Slicing (Cavalieri Rigorous)**
-
-- **Definition**: Solid with cross-sectional area A(x) has volume ∫ₐᵇ A(x) dx
-- **Cavalieri's Principle**: Equal cross-sections ⟹ equal volumes (immediate)
-- **Example (Pyramid)**: V = ∫₀ʰ (sx/h)² dx = s²h/3 = (1/3) · base · height
-- **Example (Cone)**: V = ∫₀ʰ π(rx/h)² dx = πr²h/3
-- **Example (Sphere)**: V = ∫₋ᴿᴿ π(R² − x²) dx = (4/3)πR³
-
-**Volume of Revolution**
-
-- **Definition**: Rotating y = f(x) around x-axis gives volume ∫ₐᵇ π[f(x)]² dx
-- Cross-sections are disks of radius f(x)
-
-
+### Exercises

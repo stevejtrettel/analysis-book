@@ -1,1 +1,11 @@
 ## Contraction Maps
+
+Def of contraction maps
+
+### The Contraction Mapping Theorem
+
+### Convergence Rates
+
+### The Golden Ratio
+
+### Exercises

@@ -1,47 +1,15 @@
 ## Exponentials
 
+### Differentiability of Exponentials
 
-**The Functional Equation Constrains the Derivative**
+### The Natural Exponential
 
-- Theorem: If aˣ differentiable, then (aˣ)' = cₐ · aˣ for some constant cₐ
-- Which base gives cₐ = 1?
+### The Taylor Series for exp
 
-**Building exp from Calculus**
+### The Number e
 
-- We seek: exp' = exp and exp(0) = 1
-- Taylor says: must have exp(x) = Σxⁿ/n!
-- This series converges for all x (ratio test)
+### GE: The Continued Fraction for e
 
-**Verifying exp Works**
+### GE: Smooth ≠ Analytic
 
-- Theorem: exp'(x) = exp(x) (term-by-term differentiation)
-- Theorem: exp(x+y) = exp(x)exp(y) (Cauchy product — callback to Ch 5!)
-- So exp is an exponential for some base
-
-**Identifying the Base**
-
-- Definition: e = exp(1) = Σ1/n!
-- Theorem: exp(x) = eˣ
-- Theorem: e = lim(1 + 1/n)ⁿ (connects to Ch 2 definition and Ch 5 Tannery)
-
-**Computing e**
-
-- Error bound: 0 < e - Sₙ < 1/(n! · n)
-- Example: S₁₀ gives e ≈ 2.7182818 to 7 decimals
-
-**e Is Irrational**
-
-- Theorem: e ∉ ℚ
-- Proof: q!·e = (integer) + (something in (0,1)), contradiction
-
-**General Exponentials**
-
-- Corollary: (aˣ)' = cₐ · aˣ where cₐ = lim(aʰ-1)/h
-- Remark: cₐ = ln(a), defined via integration in Ch 8
-
-**Warning: Smooth ≠ Analytic**
-
-- Definition: f(x) = e^{-1/x²} for x ≠ 0, f(0) = 0
-- Theorem: f is smooth and f⁽ⁿ⁾(0) = 0 for all n
-- Consequence: Taylor series at 0 is identically 0, but f ≠ 0
-- **The lesson**: Smooth functions can fail to equal their Taylor series. Power series are special — they're analytic by construction.
+### Exercises

@@ -1,0 +1,39 @@
+### Chapter 7 Historical Introduction: The Invention of Calculus
+
+**Ancient tangent lines**
+- Apollonius (~200 BCE): tangent lines to conic sections, purely geometric constructions
+- Archimedes: tangents to spirals — arguably the first derivative calculation
+- But no general method; each curve required its own argument
+- The question "what is the tangent line?" remained geometric, not algebraic
+
+**Fermat's method of adequality (1630s)**
+- Fermat: to find the maximum of f, set f(x+e) "adequal" to f(x), simplify, divide by e, set e = 0
+- Mysteriously correct: produces f'(x) = 0 at extrema
+- Also found tangent lines to curves by the same method
+- The reasoning was unclear — what does it mean to divide by e and then set e = 0?
+- Descartes had a competing method via normal lines and algebraic geometry
+
+**Newton and Leibniz (1680s)**
+- Newton: quantities in motion, "fluxions" as rates of change
+- Leibniz: infinitesimal differences dy and dx, the derivative as their ratio
+- Both developed the rules — product, quotient, chain — and the connection to integration
+- Calculus worked brilliantly, but what *are* these infinitely small quantities?
+
+**The critique**
+- Berkeley (1734): "ghosts of departed quantities" — the foundations are logically incoherent
+- Working mathematicians didn't stop — calculus was too powerful
+- Euler, the Bernoullis: 18th century calculus develops rapidly on shaky ground
+- Correct results obtained by incorrect (or at least unjustified) reasoning
+
+**Rigorization**
+- Cauchy (~1820s): first serious attempt to define limits and continuity
+- Weierstrass (~1860s): the ε-δ definition makes everything precise
+- The derivative is a limit — no infinitesimals needed
+- Surprise: Weierstrass (1872) constructs a function continuous everywhere but differentiable nowhere
+- Continuity and differentiability are far apart — differentiability is a much stronger condition
+
+**Our approach**
+- We define the derivative via Weierstrass's framework
+- The rules are mechanical; the power comes from the Mean Value Theorem
+- Taylor's theorem: the derivatives of a function reconstruct it as a power series
+- The exponential: built entirely from calculus, the crown jewel of the chapter
