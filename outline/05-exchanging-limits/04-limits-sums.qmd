@@ -12,7 +12,7 @@
 
 ### Content
 
-**The Danger**
+### The Danger
 - Question: When can we interchange a limit and an infinite sum?
 $$\lim_{n \to \infty} \sum_{k=0}^{\infty} a_k(n) \stackrel{?}{=} \sum_{k=0}^{\infty} \lim_{n \to \infty} a_k(n)$$
 - Example: Let $a_k(n) = 1/n$ if $k \leq n$, and $0$ otherwise
@@ -24,7 +24,7 @@ $$\lim_{n \to \infty} \sum_{k=0}^{\infty} a_k(n) \stackrel{?}{=} \sum_{k=0}^{\in
 - What went wrong? The terms $a_k(n) = 1/n$ are small (each $\to 0$), but there are many of them ($n+1$ terms), and $(n+1) \cdot (1/n) \to 1$ doesn't vanish
 - The number of nonzero terms grows with $n$ — no uniform control
 
-**Dominated Convergence**
+### Dominated Convergence
 - Theorem (Dominated Convergence for Series): Suppose:
   1. For each $k$, the limit $L_k = \lim_{n \to \infty} a_k(n)$ exists
   2. There exist $M_k \geq 0$ with $|a_k(n)| \leq M_k$ for all $n$
@@ -53,7 +53,7 @@ $$\lim_{n \to \infty} \sum_{k=0}^{\infty} a_k(n) \stackrel{?}{=} \sum_{k=0}^{\in
   - Then $\sum M_k \geq \sum 1/k = \infty$ — condition 3 fails
 - ✎ Inline: Verify that if $|a_k(n)| \leq M_k$ for all $n$, then $|L_k| \leq M_k$
 
-**The Big Application**
+### The Big Application
 - Theorem: For all $x \in \mathbb{R}$:
 $$\lim_{n \to \infty} \left(1 + \frac{x}{n}\right)^n = \sum_{k=0}^{\infty} \frac{x^k}{k!}$$
 - Proof (in text):
@@ -86,7 +86,7 @@ $$e = \lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n = \sum_{k=0}^{\infty} \
 
 ### Guided Exercise
 
-**Variations on the Exponential Limit**
+### Variations on the Exponential Limit
 
 The dominated convergence theorem is robust — small perturbations don't affect the limit.
 

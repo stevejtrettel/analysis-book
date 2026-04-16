@@ -12,17 +12,17 @@
 
 ### Content
 
-**Differentiability of Exponentials**
+### Differentiability of Exponentials
 - Theorem: aˣ is differentiable at 0 (prove in text)
 - Theorem: If aˣ is differentiable at 0, then aˣ is differentiable everywhere, and (aˣ)' = aˣ · a'(0) (prove in text: functional equation)
 - Remark: every exponential is determined by its derivative factor a'(0)
 
-**The Natural Exponential**
+### The Natural Exponential
 - Definition: the *natural exponential* exp is the exponential function with exp'(0) = 1, i.e. exp' = exp
 - exp(x) = aˣ for some base a; define e = exp(1), so exp(x) = eˣ
 - Remark: this is the proper definition of e — the base whose exponential is its own derivative
 
-**The Taylor Series for exp**
+### The Taylor Series for exp
 - exp' = exp and exp(0) = 1 determine all derivatives: exp⁽ⁿ⁾(0) = 1 for all n
 - Taylor polynomials: Pₙ(x) = Σₖ₌₀ⁿ xᵏ/k!
 - Remark: the series Σ xⁿ/n! converges for all x (ratio test: |aₙ₊₁/aₙ| = |x|/(n+1) → 0)
@@ -30,14 +30,14 @@
 - Remark: this is the series E(x) from ch5! The functional equation exp(x+y) = exp(x)exp(y) was already proved there via Cauchy product
 - ✎ Inline: verify the Lagrange remainder estimate in detail for a specific x
 
-**The Number e**
+### The Number e
 - e = exp(1) = Σ 1/n!
 - Theorem: e = lim(1 + 1/n)ⁿ (callback to ch2; proved via ch5's dominated convergence result that (1+x/n)ⁿ → E(x))
 - Error bound: 0 < e - Sₙ < 1/(n! · n) (prove in text)
 - Example: S₁₀ gives e ≈ 2.7182818 to 7 decimal places
 - Theorem: e is irrational (prove in text: multiply through by q!, get integer + something in (0,1))
 
-**The Natural Logarithm**
+### The Natural Logarithm
 - Definition: log = exp⁻¹ (the inverse function of exp)
 - exp is strictly increasing and continuous, so by §6.4 the inverse exists and is continuous
 - log: (0, ∞) → ℝ, with log(eˣ) = x and e^{log y} = y
@@ -54,13 +54,13 @@
 
 ### Guided Exercises
 
-**The Continued Fraction for e**
+### The Continued Fraction for e
 
 *(Fulfilling the promise from §4.4)*
 
 *(Details to be worked out — the key idea is using the series for e to derive the regular continued fraction [2; 1, 2, 1, 1, 4, 1, 1, 6, ...])*
 
-**Smooth ≠ Analytic**
+### Smooth ≠ Analytic
 
 Let f(x) = e^{-1/x²} for x ≠ 0, f(0) = 0.
 

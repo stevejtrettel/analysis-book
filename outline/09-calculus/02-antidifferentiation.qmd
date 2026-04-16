@@ -10,7 +10,7 @@
 
 ### Content
 
-**Term-by-Term Integration**
+### Term-by-Term Integration
 - Corollary (Linearity): ∫ₐᵇ (αf + βg) = α ∫ₐᵇ f + β ∫ₐᵇ g
 - Proof: If F' = f and G' = g, then (αF + βG)' = αf + βg. Apply FTC II.
 - Theorem (Power Series III): If f(x) = Σ aₙxⁿ has radius of convergence R, then for |x| < R:
@@ -20,7 +20,7 @@
 - Remark: The Power Series Trilogy — I: continuous (§6.3), II: differentiable term-by-term (§7.3), III: integrable term-by-term (§9.2). Power series behave perfectly under all basic operations of calculus.
 - ✎ Inline: integrate the geometric series 1/(1−x) = Σxⁿ term-by-term to obtain −log(1−x) = Σ xⁿ⁺¹/(n+1)
 
-**Integration by Substitution**
+### Integration by Substitution
 - Theorem: If g is differentiable with continuous derivative and f is continuous, then ∫ₐᵇ f(g(x)) g'(x) dx = ∫_{g(a)}^{g(b)} f(u) du
 - Proof: Let F be an antiderivative of f (exists by FTC I). By the chain rule, (F ∘ g)' = (f ∘ g) · g'. Apply FTC II to both sides.
 - Remark: substitution is the chain rule in reverse
@@ -29,7 +29,7 @@
 - Example: ∫₁ᵉ log(t)/t dt. Let u = log(t), du = dt/t. Then ∫₁ᵉ log(t)/t dt = ∫₀¹ u du = 1/2.
 - ✎ Inline: compute ∫₀¹ x/(1+x²)² dx by substitution
 
-**Integration by Parts**
+### Integration by Parts
 - Theorem: ∫ₐᵇ f · g' = fg|ₐᵇ − ∫ₐᵇ f' · g
 - Proof: By the product rule, (fg)' = f'g + fg'. Rearrange: fg' = (fg)' − f'g. Integrate both sides and apply FTC II.
 - Remark: integration by parts is the product rule in reverse
@@ -37,7 +37,7 @@
 - Example: ∫₀¹ x² · eˣ dx. Apply IBP twice: let f = x², g' = eˣ first, then f = 2x, g' = eˣ. Result: e − 2.
 - ✎ Inline: derive a reduction formula for ∫ xⁿ eˣ dx
 
-**Taylor's Theorem with Integral Remainder**
+### Taylor's Theorem with Integral Remainder
 - Theorem: If f has n+1 continuous derivatives on an interval containing a, then:
   f(x) = Σₖ₌₀ⁿ f⁽ᵏ⁾(a)(x−a)ᵏ/k! + (1/n!) ∫ₐˣ (x−t)ⁿ f⁽ⁿ⁺¹⁾(t) dt
 - Proof: Start from FTC II: f(x) = f(a) + ∫ₐˣ f'(t) dt. Apply IBP with u = f'(t), dv = dt written as d(t−x), to get f(a) + f'(a)(x−a) + ∫ₐˣ (x−t) f''(t) dt. Continue inductively.
@@ -45,7 +45,7 @@
 - Remark: the integral form is often more useful for estimates since it avoids the unknown c
 - ✎ Inline: write out the integral remainder for eˣ at a = 0 and verify it matches the Lagrange remainder
 
-**The Integral Formula for log**
+### The Integral Formula for log
 - Theorem: log(x) = ∫₁ˣ 1/t dt for all x > 0
 - Proof: We know log'(x) = 1/x (§7.4) and log(1) = 0. By FTC II, ∫₁ˣ 1/t dt = log(t)|₁ˣ = log(x) − log(1) = log(x).
 - Remark: this gives a concrete computational formula for log — previously we could only evaluate it via the Taylor series (§7.4 exercises). Now we also have an integral representation.
@@ -55,7 +55,7 @@
 
 ### Guided Exercises
 
-**Integration Discovers the Logarithm**
+### Integration Discovers the Logarithm
 
 Forget everything you know about log. Start from scratch with integration alone.
 

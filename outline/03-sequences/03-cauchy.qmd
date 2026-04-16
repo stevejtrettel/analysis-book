@@ -24,7 +24,7 @@
 - Key insight: this condition involves only the sequence itself — no limit appears!
 - We can test whether a sequence "deserves to converge" without knowing where it converges to
 
-**The Cauchy Condition**
+### The Cauchy Condition
 - Definition: $(a_n)$ is a Cauchy sequence if for every $\varepsilon > 0$, there exists $N$ such that for all $m, n \geq N$, $|a_m - a_n| < \varepsilon$
 - Remark: "terms eventually stay close to each other"
 - Remark: this is exactly the condition $\omega_n \to 0$ unpacked
@@ -34,7 +34,7 @@
   - Partial sums $s_n = \sum_{k=1}^n 1/2^k$ are Cauchy (preview of series convergence)
 - ✎ Inline: Verify directly that $a_n = n/(n+1)$ is Cauchy
 
-**Cauchy Implies Convergent**
+### Cauchy Implies Convergent
 - Theorem: In $\RR$, a sequence converges if and only if it is Cauchy (prove in text)
 - Proof (⟹): If $a_n \to L$, then for $\varepsilon/2$, get $N$ so $|a_n - L| < \varepsilon/2$ for $n \geq N$. Then for $m, n \geq N$: $|a_m - a_n| \leq |a_m - L| + |L - a_n| < \varepsilon$
 - Proof (⟸): This is the substantial direction.
@@ -45,7 +45,7 @@
 - ✎ Inline: Why does the proof of (⟸) fail in $\QQ$? Which step uses completeness?
 - Remark: the proof uses BW (hence nested intervals, hence completeness); Cauchy criterion fails in $\QQ$
 
-**Significance**
+### Significance
 - The Cauchy criterion is *intrinsic*: it tests convergence using only the sequence, not the limit
 - Practical: useful when we don't know what the limit should be
 - Theoretical: the condition is *metric* — it uses only $|a_m - a_n|$, not the order structure of $\RR$

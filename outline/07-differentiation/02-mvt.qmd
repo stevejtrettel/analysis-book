@@ -14,14 +14,14 @@
 - The Mean Value Theorem says yes: somewhere on the interval, the instantaneous rate of change equals the average rate of change
 - Historical note: Rolle (1691) proved his theorem for polynomials; the general MVT is attributed to Cauchy (1823) and Bonnet; Darboux (1875) discovered the surprising intermediate value property of derivatives
 
-**A First Step**
+### A First Step
 - Theorem (Fermat): If $f$ has a local extremum at $c$ and $f$ is differentiable at $c$, then $f'(c) = 0$ (prove in text: one-sided difference quotients have opposite signs, both must equal $f'(c)$)
 - Remark: converse is false — $f(x) = x^3$ has $f'(0) = 0$ but no extremum at $0$
 - ✎ Inline: Why does the proof require a *local* extremum, not just $f'(c) = 0$?
 - Theorem (Rolle): $f$ continuous on $[a,b]$, differentiable on $(a,b)$, $f(a) = f(b)$ $\Longrightarrow$ $\exists c \in (a,b)$ with $f'(c) = 0$ (prove in text: if $f$ constant, any $c$ works; otherwise EVT gives max or min in interior, then apply Fermat)
 - ✎ Inline: Where does the proof use each hypothesis — continuity on $[a,b]$, differentiability on $(a,b)$, $f(a) = f(b)$?
 
-**The Mean Value Theorem**
+### The Mean Value Theorem
 - Theorem (MVT): $f$ continuous on $[a,b]$, differentiable on $(a,b)$ $\Longrightarrow$ $\exists c \in (a,b)$ with $f'(c) = \frac{f(b) - f(a)}{b - a}$ (prove in text: apply Rolle to $g(x) = f(x) - \frac{f(b)-f(a)}{b-a}(x - a)$)
 - Geometric interpretation: some tangent line is parallel to the secant through $(a, f(a))$ and $(b, f(b))$
 - ✎ Inline: Verify the MVT for $f(x) = x^3$ on $[0, 2]$: find $c$ explicitly
@@ -29,7 +29,7 @@
 - Remark: reduces to MVT when $g(x) = x$
 - Remark: the motivation for this generalization is L'Hôpital's rule below
 
-**Consequences of the MVT**
+### Consequences of the MVT
 - Theorem: $f$ differentiable on $(a,b)$ with $f' = 0$ $\Longrightarrow$ $f$ constant (prove in text: for any $x, y$, MVT gives $f(x) - f(y) = f'(c)(x-y) = 0$)
 - Corollary: if $f' = g'$ on an interval, then $f = g + C$ for some constant $C$
 - Theorem: $f' > 0$ on $(a,b)$ $\Longrightarrow$ $f$ strictly increasing (prove in text via MVT)
@@ -41,14 +41,14 @@
 - Remark: if $|f'| < 1$ on an interval, then $f$ is a contraction (callback to §4.3; used in §7.5)
 - ✎ Inline: Show $\sin$ is Lipschitz with constant 1 (students may use $|\cos x| \leq 1$ from calculus; rigorous treatment in §7.3)
 
-**L'Hôpital's Rule**
+### L'Hôpital's Rule
 - Theorem (0/0 form): If $f(a) = g(a) = 0$, $g'(x) \neq 0$ near $a$, and $\lim_{x \to a} f'(x)/g'(x) = L$, then $\lim_{x \to a} f(x)/g(x) = L$ (prove in text via Cauchy MVT)
 - Warning: the hypothesis is that $\lim f'/g'$ exists; L'Hôpital does not apply otherwise
 - Warning: L'Hôpital can cycle — applying it to $x/\sqrt{x^2+1}$ gives $1/\sqrt{1 + 1/x^2} \cdot \ldots$ which is no simpler
 
 ### Guided Exercise
 
-**Darboux's Theorem and Discontinuous Derivatives**
+### Darboux's Theorem and Discontinuous Derivatives
 
 Derivatives are a peculiar class of functions: they always satisfy the intermediate value property, even when they are discontinuous. This is Darboux's theorem (1875).
 

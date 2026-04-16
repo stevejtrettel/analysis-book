@@ -13,7 +13,7 @@
 
 ### Content
 
-**Double Series**
+### Double Series
 - Definition: A *double series* is a formal sum $\sum_{m=1}^{\infty} \sum_{n=1}^{\infty} a_{mn}$ where $(a_{mn})$ is a double sequence
 - Two natural interpretations (iterated sums):
   - Sum rows first: $\sum_{m=1}^{\infty} \left( \sum_{n=1}^{\infty} a_{mn} \right)$
@@ -21,7 +21,7 @@
 - These are iterated sums, analogous to iterated limits from §5.2
 - Question: Do they always agree?
 
-**When Order Matters**
+### When Order Matters
 - Example: Define $a_{mn}$ by:
 $$a_{mn} = \begin{cases} 1 & \text{if } n = m \\ -1 & \text{if } n = m + 1 \\ 0 & \text{otherwise} \end{cases}$$
 - Visualize as a grid:
@@ -38,7 +38,7 @@ $$a_{mn} = \begin{cases} 1 & \text{if } n = m \\ -1 & \text{if } n = m + 1 \\ 0 
 - Moral: order of summation matters for double series, just as for rearrangements (§5.1)
 - ✎ Inline: Construct a double sequence where row sums give $2$ and column sums give $-2$
 
-**When Order Doesn't Matter**
+### When Order Doesn't Matter
 - Definition: A double series $\sum_{m,n} a_{mn}$ *converges absolutely* if:
 $$\sum_{m=1}^{\infty} \sum_{n=1}^{\infty} |a_{mn}| < \infty$$
 - Equivalently: the partial sums $\sum_{m=1}^{M} \sum_{n=1}^{N} |a_{mn}|$ are bounded as $M, N \to \infty$
@@ -71,7 +71,7 @@ $$\sum_{m=1}^{\infty} \sum_{n=1}^{\infty} |a_{mn}| < \infty$$
   - (We'll prove $\sum 1/n^2 = \pi^2/6$ via Fourier series in Chapter 13; for now this shows the method)
 - ✎ Inline: Verify that $\sum_{m,n \geq 1} \frac{1}{2^{m+n}}$ converges absolutely and compute its sum two ways
 
-**Multiplying Series**
+### Multiplying Series
 - Setup: Given two series $\sum_{j=0}^{\infty} a_j$ and $\sum_{k=0}^{\infty} b_k$, what is their "product"?
 - Natural idea: form the grid $a_j b_k$ and sum it somehow
 - If we sum along anti-diagonals (where $j + k$ is constant), we get:
@@ -128,7 +128,7 @@ $$\frac{1}{(1-x)^2} = \sum_{n=0}^{\infty} (n+1)x^n$$
 
 ### Guided Exercise
 
-**A Conditionally Convergent Double Series**
+### A Conditionally Convergent Double Series
 
 Consider the double series $\sum_{m,n \geq 1} \frac{(-1)^{m+n}}{m+n}$.
 

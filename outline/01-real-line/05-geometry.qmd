@@ -14,7 +14,7 @@
 - Distance, length, area — all via sup/inf
 - We define trigonometry as a consequence of arc length
 
-**The Plane**
+### The Plane
 - Definition: $\mathbb{R}^2 = \{(x, y) : x, y \in \mathbb{R}\}$ (ordered pairs)
 - Definition: $\mathbb{R}^n = \{(x_1, \ldots, x_n) : x_i \in \mathbb{R}\}$ (n-tuples)
 - The distance formula: $d(p, q) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for $p = (x_1, y_1)$, $q = (x_2, y_2)$
@@ -22,7 +22,7 @@
 - In $\mathbb{R}^n$: $d(p, q) = \sqrt{\sum_{i=1}^{n}(q_i - p_i)^2}$
 - ✎ Inline: Verify $d(p, q) = d(q, p)$ and $d(p, p) = 0$
 
-**Measuring Sets**
+### Measuring Sets
 - Definition: The *diameter* of a set $S \subseteq \mathbb{R}^2$ is $\text{diam}(S) = \sup\{d(p, q) : p, q \in S\}$
 - Exists (possibly $= +\infty$) by completeness
 - Definition: A set is *bounded* iff $\text{diam}(S) < \infty$
@@ -32,7 +32,7 @@
 - Example: $d(p, S) = 0$ does not imply $p \in S$ (consider $S = (0, 1)$, $p = 0$)
 - ✎ Inline: Find the diameter of the unit disk $\{(x,y) : x^2 + y^2 \leq 1\}$
 
-**Measuring Curves**
+### Measuring Curves
 - Informally: a "curve" is a path in the plane
 - We don't yet have tools to make "curve" precise (need continuity, Chapter 5)
 - But we can define *length* for well-behaved curves
@@ -44,7 +44,7 @@
 - Example: A line segment from $p$ to $q$ has length $d(p, q)$
 - ✎ Inline: Why is the length of a segment equal to $d(p, q)$? (The segment itself is an inscribed polygon!)
 
-**Measuring Regions**
+### Measuring Regions
 - How to define area of a region $R \subseteq \mathbb{R}^2$?
 - *Inner approximation*: inscribed polygons whose area we can compute
 - *Outer approximation*: circumscribed polygons
@@ -56,7 +56,7 @@
 - Remark: The Koch snowflake has finite area but infinite perimeter (Chapter 10)
 - ✎ Inline: Does a line segment have area?
 
-**Trigonometry**
+### Trigonometry
 - The unit circle: $\{(x, y) : x^2 + y^2 = 1\}$
 - For $\theta \geq 0$: there exists a unique point $P(\theta)$ on the unit circle such that the arc length from $(1, 0)$ to $P(\theta)$ (counterclockwise) equals $\theta$
 - Existence: completeness! Arc length is sup of inscribed polygons; for any $\theta$ we can find the point where this sup equals $\theta$
@@ -75,7 +75,7 @@
 
 ### Guided Exercise
 
-**The Metric Origins of Trigonometry**
+### The Metric Origins of Trigonometry
 
 We derive the angle addition formulas from the distance formula and the principle that equal arcs have equal chords.
 

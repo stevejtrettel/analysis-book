@@ -40,7 +40,7 @@ What we want: the *smallest number that's ≥ all elements of the set*.
 
 This is the **supremum**.
 
-**Bounds and Supremum**
+### Bounds and Supremum
 - Definition: $M$ is an *upper bound* for $S$ if $x \leq M$ for all $x \in S$
 - Definition: $S$ is *bounded above* if it has an upper bound; *bounded below*, *bounded* similarly
 - Definition: $M = \sup S$ (supremum, or least upper bound) if:
@@ -62,7 +62,7 @@ This is the **supremum**.
 - Theorem: In a complete ordered field, infima also exist
 - Proof: $\inf S = -\sup(-S)$ where $-S = \{-x : x \in S\}$
 
-**The ε-Characterization**
+### The ε-Characterization
 - Theorem: $M = \sup S$ if and only if:
   - (1) $M$ is an upper bound for $S$, and
   - (2) For all $\varepsilon > 0$, there exists $x \in S$ with $x > M - \varepsilon$
@@ -72,7 +72,7 @@ This is the **supremum**.
 - ✎ Inline: Verify $\sup\{1 - 1/n : n \in \NN\} = 1$ using the ε-characterization
 - Theorem: ε-characterization of inf (analogous)
 
-**Working with Suprema**
+### Working with Suprema
 - Theorem: $\sup(S + c) = \sup S + c$ where $S + c = \{x + c : x \in S\}$
 - Theorem: $\sup(cS) = c \cdot \sup S$ for $c > 0$
 - ✎ Inline: Prove $\sup(cS) = c \cdot \sup S$ for $c > 0$
@@ -80,7 +80,7 @@ This is the **supremum**.
 - Theorem: $\sup(A \cup B) = \max\{\sup A, \sup B\}$
 - Analogous results for inf
 
-**The Nested Interval Property**
+### The Nested Interval Property
 - The ancients used a powerful technique: trap the target between upper and lower bounds, then squeeze
 - Babylonians: rectangle sides approaching √2 from above and below
 - Archimedes: inscribed polygon < circumference < circumscribed polygon
@@ -94,14 +94,14 @@ This is the **supremum**.
 - Remark: Open intervals can have empty intersection even when nested (example: $(0, 1/n)$)
 - Remark: In $\QQ$, nested closed intervals can have empty intersection — completeness fails
 
-**Looking Ahead**
+### Looking Ahead
 - With completeness, we can finally make rigorous definitions
 - §1.4: √n exists for all n; decimal expansions make sense; ℝ is uncountable
 - §1.5: Lengths of curves, areas of regions, angles — all defined via suprema, now guaranteed to exist
 
 ### Guided Exercise
 
-**The Babylonian Square Root**
+### The Babylonian Square Root
 
 The Babylonians (~1800 BCE) discovered an algorithm for approximating $\sqrt{2}$. Starting with a $2 \times 1$ rectangle (area 2), repeatedly replace it with a more "square-like" rectangle of the same area: the new width is the average of the old width and height.
 

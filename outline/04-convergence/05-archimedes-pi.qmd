@@ -15,7 +15,7 @@
 - This gives rigorous definition and computable approximations
 - Historical: Archimedes (96-gon), Liu Hui (263 CE, 3072-gon), Zu Chongzhi (5th c., got 355/113), al-Kashi (1424, 16 digits)
 
-**Archimedes' Method**
+### Archimedes' Method
 - Setup: unit circle (radius 1)
 - $a_n$ = half-perimeter of regular inscribed n-gon
 - $b_n$ = half-perimeter of regular circumscribed n-gon
@@ -31,14 +31,14 @@
 - First is harmonic mean $H(a_n, b_n)$; second is geometric mean $G(a_n, b_{2n})$
 - Derivation via trigonometry in guided exercise; Archimedes used pure geometry
 
-**Approximating π**
+### Approximating π
 - Computation requires approximating square roots
 - Archimedes used: $\frac{265}{153} < \sqrt{3} < \frac{1351}{780}$
 - After 4 doublings (96-gon), Archimedes obtained:
 $$3\frac{10}{71} < \pi < 3\frac{1}{7}$$
 - That is: $3.1408... < \pi < 3.1429...$
 
-**Convergence**
+### Convergence
 - Theorem: Along the doubling sequence: $(a_n)$ increasing, $(b_n)$ decreasing, $a_n < b_n$
 - Proof: For $a < b$: $a < H(a,b) < b$
   - $b_{2n} = H(a_n, b_n) < b_n$ ✓
@@ -49,7 +49,7 @@ $$3\frac{10}{71} < \pi < 3\frac{1}{7}$$
 - Limit equation: $L = \sqrt{(L+1)/2}$ gives $L = 1$
 - Conclusion: $L_a = L_b$
 
-**The Definition of π**
+### The Definition of π
 - Definition: $\pi := \lim a_n = \lim b_n$
 - Corollary: $a_n < \pi < b_n$ — rigorous bounds
 - Corollary: Circumference of radius $r$ circle is $2\pi r$
@@ -61,7 +61,7 @@ $$3\frac{10}{71} < \pi < 3\frac{1}{7}$$
 - Theorem (Archimedes): Area = $\frac{1}{2} \times \text{circumference} \times \text{radius} = \pi r^2$
 - Same constant $\pi$ for perimeter and area!
 
-**Viète's Formula**
+### Viète's Formula
 - From §4.2: Viète product converges; now find value
 - Start from square: $a_4 = 2\sqrt{2}$
 - Telescope: $\pi = a_4 \cdot \prod_{j=0}^{\infty} \frac{a_{4 \cdot 2^{j+1}}}{a_{4 \cdot 2^j}}$
@@ -69,7 +69,7 @@ $$3\frac{10}{71} < \pi < 3\frac{1}{7}$$
 
 ### Guided Exercise
 
-**Deriving the Doubling Recurrence**
+### Deriving the Doubling Recurrence
 
 Let $\theta_n$ be the central half-angle of the regular n-gon.
 

@@ -11,7 +11,7 @@
 
 ### Content
 
-**Arc Length**
+### Arc Length
 - Recall §1.5: arc length = sup of inscribed polygon lengths
 - For a partition P, the inscribed polygon has length $\sum \sqrt{(\Delta x_i)^2 + (\Delta f_i)^2}$
 - By MVT: $\Delta f_i = f'(c_i) \Delta x_i$ for some $c_i$
@@ -23,7 +23,7 @@
 - Example: Compute arc length of $y = x^{3/2}$ on $[0, 1]$
 - ✎ Inline: Set up the arc length integral for $y = x^2$ on $[0, 1]$
 
-**Area**
+### Area
 - Recall §1.5: area exists when inner (inscribed) and outer (circumscribed) polygon areas agree
 - Lower sums use inscribed rectangles; upper sums use circumscribed rectangles
 - Rectangles are polygons, so: $L(f, P) \leq \text{inner area} \leq \text{outer area} \leq U(f, P)$
@@ -33,7 +33,7 @@
 - Example: Area of unit disk $= \int_{[-1,1]} 2\sqrt{1-x^2} \, dx = \pi$ (same constant!)
 - ✎ Inline: Set up the integral for area between $y = x$ and $y = x^2$ on $[0,1]$
 
-**Archimedes' Inequality**
+### Archimedes' Inequality
 - Archimedes needed this as an axiom for his method; we can prove it
 - Theorem: Among convex curves with the same endpoints, the one closer to the chord is shorter
 - Proof: see guided exercise below (uses convexity from Chapter 7; details TBD)
@@ -42,7 +42,7 @@
 - Corollary: The two definitions of π agree (polygon limits from §4.5 = arc length integral)
 - Remark: This validates Archimedes' method — his axiom is now a theorem
 
-**Volume**
+### Volume
 - The integral agrees with geometric intuition for length and area
 - For volume, polygonal approximations become unwieldy (polyhedra in 3D)
 - We take the integral as our *definition* of volume
@@ -53,7 +53,7 @@
 - Example (Cone): Radius $r$, height $h$. Cross-section at height $x$: disk of radius $rx/h$. Volume $= \int_{[0,h]} \pi(rx/h)^2 \, dx = \frac{\pi r^2 h}{3}$
 - Example (Sphere): Radius $R$. Cross-section at height $x$: disk of radius $\sqrt{R^2 - x^2}$. Volume $= \int_{[-R,R]} \pi(R^2 - x^2) \, dx = \frac{4}{3}\pi R^3$
 
-**Surface Area of Revolution**
+### Surface Area of Revolution
 - Rotate $y = f(x)$ around the $x$-axis
 - Approximate by rotating line segments — gives frustums of cones
 - Definition: Surface area $= \int_{[a,b]} 2\pi f(x) \sqrt{1 + (f'(x))^2} \, dx$
@@ -63,7 +63,7 @@
 
 ### Guided Exercises
 
-**Archimedes' Inequality**
+### Archimedes' Inequality
 
 *Setup:* Let f and g be convex functions on [a,b] with f(a) = g(a), f(b) = g(b), and f ≤ g on (a,b).
 
@@ -76,7 +76,7 @@
 (b) A convex curve's length is trapped between inscribed and circumscribed polygon lengths
 (c) The two definitions of π agree (polygon limits from §4.5 = arc length integral)
 
-**Volumes in Higher Dimensions**
+### Volumes in Higher Dimensions
 
 *Setup:*
 - Define n-ball: $B^n(R) = \{x \in \mathbb{R}^n : |x| \leq R\}$

@@ -10,7 +10,7 @@
 
 ### Content
 
-**The Minimal Integral**
+### The Minimal Integral
 - Idea: §8.1 ended with a question — does an integral satisfying the axioms exist? We build one.
 - Strategy: declare a function integrable when the axioms force its value, and define the integral to be that forced value
 - Definition: lower integral = sup_P L(f, P), upper integral = inf_P U(f, P)
@@ -18,21 +18,21 @@
 - Remark: for continuous functions, §8.1 already showed sup L = inf U — so continuous functions are integrable under this definition
 - Remark: this is the Darboux integral
 
-**Refinements**
+### Refinements
 - Definition: a partition Q *refines* P if P ⊆ Q
 - Lemma (Refinements Improve Bounds): if P ⊆ Q, then L(f, P) ≤ L(f, Q) ≤ U(f, Q) ≤ U(f, P)
 - Proof: add one point at a time; splitting a subinterval can only improve inf/sup estimates
 - Corollary: every lower sum ≤ every upper sum (take common refinement P ∪ Q)
 - Corollary: lower integral ≤ upper integral
 
-**Verification of the Axioms**
+### Verification of the Axioms
 - Theorem: the Darboux integral satisfies all three axioms
 - Verify (I1) Rectangles: for constant c, every partition gives L = U = c(b−a)
 - Verify (I2) Monotonicity: f ≤ g ⟹ inf/sup on each subinterval respects this ⟹ L(f,P) ≤ L(g,P), so sup L(f) ≤ sup L(g)
 - Verify (I3) Additivity: partitions of [a,b] containing c split into partitions of [a,c] and [c,b]; sup over product = sum of sups
 - Remark: the integral exists — the forced value actually defines an integral satisfying the axioms
 
-**Beyond Continuous Functions**
+### Beyond Continuous Functions
 - The Darboux definition applies to any bounded function with sup L = inf U
 - Theorem: bounded functions with finitely many discontinuities are integrable
 - Proof sketch: enclose discontinuities in intervals of small total length; on the rest, uniform continuity controls U − L

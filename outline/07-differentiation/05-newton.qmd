@@ -9,26 +9,26 @@
 
 ### Content
 
-**The Algorithm**
+### The Algorithm
 - Problem: find a root of f(x) = 0
 - Newton iteration: x_{n+1} = x_n - f(x_n)/f'(x_n)
 - Geometric interpretation: follow the tangent line at (x_n, f(x_n)) to the x-axis
 
-**Convergence via Contraction**
+### Convergence via Contraction
 - Define g(x) = x - f(x)/f'(x); fixed points of g are roots of f
 - Compute: g'(x) = f(x)f''(x)/(f'(x))²
 - At a simple root r: g'(r) = 0
 - Theorem: for x₀ sufficiently close to r, Newton's method converges (prove in text: g'(r) = 0 implies |g'| < 1 near r, so g is a contraction; callback to §4.3)
 
-**Quadratic Convergence via Taylor**
+### Quadratic Convergence via Taylor
 - Theorem: ε_{n+1} ≈ [f''(r)/(2f'(r))] εₙ² (prove in text: Taylor expand f(xₙ) around r)
 - Consequence: errors square at each step — the number of correct digits roughly doubles each iteration
 
-**Examples**
+### Examples
 - √2: x_{n+1} = (xₙ + 2/xₙ)/2 — the Babylonian method! (callback to ch2)
 - ∛5: x_{n+1} = (2xₙ + 5/xₙ²)/3
 
-**Failure Modes**
+### Failure Modes
 - Multiple roots: g'(r) ≠ 0, convergence only linear
 - Bad starting points: iteration may cycle, diverge, or find the wrong root
 - f'(xₙ) = 0: division by zero
@@ -37,7 +37,7 @@
 
 ### Guided Exercise
 
-**Division by Multiplication**
+### Division by Multiplication
 
 Apply Newton's method to f(x) = 1/x - a (for fixed a > 0).
 

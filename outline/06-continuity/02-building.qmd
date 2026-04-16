@@ -12,26 +12,26 @@
 
 ### Content
 
-**The Sequential Shortcut**
+### The Sequential Shortcut
 - Observation: proving continuity from ε-δ requires estimation (as we saw for $x^2$ in §6.1)
 - The sequential characterization offers an alternative: to show $f$ is continuous at $a$, show that $x_n \to a \Rightarrow f(x_n) \to f(a)$
 - If we already know facts about *sequence* limits (Chapter 2), we can use them for *function* continuity
 - This is the payoff of the bridge theorem
 
-**Algebra of Continuous Functions**
+### Algebra of Continuous Functions
 - Theorem: if $f$ and $g$ are continuous at $a$, then so are $f + g$, $f - g$, $f \cdot g$, and (if $g(a) \neq 0$) $f/g$
 - Proof (for sum): Let $x_n \to a$. Since $f$ continuous at $a$, $f(x_n) \to f(a)$. Since $g$ continuous at $a$, $g(x_n) \to g(a)$. By the sum law for sequences (§2.3), $(f+g)(x_n) = f(x_n) + g(x_n) \to f(a) + g(a) = (f+g)(a)$. Done.
 - Remark: the proofs for difference, product, and quotient are identical — just invoke the corresponding sequence law from §2.3
 - ✎ Inline: Write the proof for the product case
 - Remark: compare this with what a direct ε-δ proof of "sum of continuous functions is continuous" would look like. The sequential approach is dramatically cleaner.
 
-**Composition**
+### Composition
 - Theorem: if $g$ is continuous at $a$ and $f$ is continuous at $g(a)$, then $f \circ g$ is continuous at $a$
 - Proof: Let $x_n \to a$. Since $g$ is continuous at $a$, $g(x_n) \to g(a)$. Since $f$ is continuous at $g(a)$ and $g(x_n) \to g(a)$, we have $f(g(x_n)) \to f(g(a))$. So $f \circ g$ is continuous at $a$.
 - Remark: the sequential proof is almost embarrassingly simple. The ε-δ proof requires chaining two ε-δ arguments (exercise).
 - ✎ Inline: Write a direct ε-δ proof that $f \circ g$ is continuous at $a$ (given $\varepsilon$, get $\delta_1$ for $f$ at $g(a)$, then get $\delta_2$ for $g$ at $a$ with tolerance $\delta_1$; take $\delta = \delta_2$)
 
-**Corollaries**
+### Corollaries
 - Proposition: if $f$ is continuous at $a$, then $|f|$ is continuous at $a$
   - Proof: $|f| = h \circ f$ where $h(t) = |t|$; $h$ is continuous (exercise or prove: $||x| - |a|| \leq |x - a|$)
 - Proposition: if $f$ and $g$ are continuous at $a$, then so are $\max(f, g)$ and $\min(f, g)$
@@ -39,7 +39,7 @@
   - Similarly $\min(f, g) = \frac{(f + g) - |f - g|}{2}$
 - Remark: the max/min identities are worth remembering — they reduce order operations to algebraic ones
 
-**Building from the Ground Up**
+### Building from the Ground Up
 - Example: $f(x) = c$ (constant) is continuous everywhere
   - $|f(x) - f(a)| = |c - c| = 0 < \varepsilon$ for any $\delta$
 - Example: $f(x) = x$ (identity) is continuous everywhere
@@ -57,7 +57,7 @@
 
 ### Guided Exercise
 
-**Piecewise Functions and Continuity**
+### Piecewise Functions and Continuity
 
 Continuous functions on overlapping or adjacent domains can be "glued" to build new continuous functions. This exercise explores when and how.
 

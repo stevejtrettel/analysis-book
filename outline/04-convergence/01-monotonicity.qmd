@@ -19,7 +19,7 @@
   4. If the limits agree, invoke §3.1 (union theorem): the full sequence converges
 - This chapter applies this technique to various "infinite processes"
 
-**Alternating Series**
+### Alternating Series
 - Definition: an alternating series has the form $\sum_{n=1}^{\infty} (-1)^{n+1} b_n$ or $\sum_{n=1}^{\infty} (-1)^n b_n$ with $b_n > 0$
 - Theorem (Alternating Series Test): If $(b_n)$ is decreasing and $b_n \to 0$, then $\sum (-1)^{n+1} b_n$ converges
 - Proof (in text):
@@ -41,7 +41,7 @@
   - We'll prove this later when we develop inverse trigonometric functions
   - For now: AST applies since $1/(2n+1)$ is decreasing and $\to 0$
 
-**Continued Fraction for √2**
+### Continued Fraction for √2
 - Goal: express $\sqrt{2}$ as a "continued fraction" and prove convergence
 - Start with the identity: $\sqrt{2} = 1 + (\sqrt{2} - 1)$
 - Rewrite: $\sqrt{2} - 1 = \frac{1}{\sqrt{2} + 1}$, so $\sqrt{2} = 1 + \frac{1}{1 + \sqrt{2}}$
@@ -65,7 +65,7 @@ $$\sqrt{2} = 1 + \cfrac{1}{2 + \cfrac{1}{2 + \cfrac{1}{2 + \cdots}}}$$
 - Remark: this is our first continued fraction — §4.4 develops the full theory
 - Remark: the convergents $p_n/q_n = 1/1, 3/2, 7/5, 17/12, \ldots$ satisfy $p_n^2 - 2q_n^2 = \pm 1$ — the Pell equation from §2.1!
 
-**The Wallis Product**
+### The Wallis Product
 - The Wallis product:
 $$W = \frac{2}{1} \cdot \frac{2}{3} \cdot \frac{4}{3} \cdot \frac{4}{5} \cdot \frac{6}{5} \cdot \frac{6}{7} \cdots = \prod_{n=1}^{\infty} \frac{4n^2}{4n^2 - 1}$$
 - Claim: $W = \pi/2$ (proved in §4.5; here we prove convergence)
@@ -89,7 +89,7 @@ $$W = \frac{2}{1} \cdot \frac{2}{3} \cdot \frac{4}{3} \cdot \frac{4}{5} \cdot \f
 
 ### Guided Exercises
 
-**Convergence of the √2 Continued Fraction**
+### Convergence of the √2 Continued Fraction
 
 Let $c_n$ denote the $n$th convergent of $[1; \bar{2}]$, so $c_1 = 1$, $c_2 = 3/2$, $c_3 = 7/5$, $c_4 = 17/12$, etc.
 

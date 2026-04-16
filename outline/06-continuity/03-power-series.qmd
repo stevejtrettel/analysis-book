@@ -13,7 +13,7 @@
 
 ### Content
 
-**Series as Functions**
+### Series as Functions
 - We already know $\sum_{n=0}^{\infty} x^n = \frac{1}{1-x}$ for $|x| < 1$
 - New perspective: the left side *defines a function*. Plug in $x$, compute partial sums $S_N(x) = 1 + x + x^2 + \cdots + x^N$, take the limit.
 - The partial sums are polynomials — finite, tame objects we understand from §6.2
@@ -23,7 +23,7 @@
 - We've seen another example: the exponential series $E(x) = \sum x^n/n!$ from §5.3, which converges for all $x$
 - Question: for a general power series, for which $x$ does it converge?
 
-**Convergence**
+### Convergence
 - Theorem (Cauchy-Hadamard): For $\sum a_n x^n$, define $R = 1 / \limsup_{n \to \infty} |a_n|^{1/n}$ (with $R = \infty$ if the limsup is $0$, and $R = 0$ if the limsup is $\infty$). Then:
   - $\sum a_n x^n$ converges absolutely for $|x| < R$
   - $\sum a_n x^n$ diverges for $|x| > R$
@@ -38,7 +38,7 @@
   - $\sum x^n/n$: $R = 1$. Diverges at $x = 1$ (harmonic), converges at $x = -1$ (alternating harmonic).
   - $\sum x^n/n^2$: $R = 1$. Converges at both $x = 1$ and $x = -1$.
 
-**Continuity**
+### Continuity
 - On $(-R, R)$, the power series defines a function $f(x) = \sum a_n x^n$
 - Each partial sum $S_N(x) = \sum_{n=0}^{N} a_n x^n$ is a polynomial, hence continuous by §6.2
 - So $f$ is a pointwise limit of continuous functions. Is $f$ continuous?
@@ -59,7 +59,7 @@
 - Corollary: $\exp(x) = \sum x^n/n!$ is continuous on $\RR$
 - ✎ Inline: Verify the three hypotheses of dominated convergence explicitly for $\exp$ at a point $c$
 
-**Boundary Behavior**
+### Boundary Behavior
 - The dominated convergence argument handles the interior. What about the boundary $x = \pm R$?
 - Example: $f_n(x) = x^n$ on $[0, 1]$
   - Each $f_n$ is continuous
@@ -85,7 +85,7 @@ $$\lim_{x \to 1^-} \sum_{n=0}^{\infty} a_n x^n = S$$
 
 ### Guided Exercise
 
-**Verifying Dominated Convergence for the Exponential Series**
+### Verifying Dominated Convergence for the Exponential Series
 
 We proved that power series are continuous on their interior using dominated convergence. In this exercise, you verify every hypothesis explicitly for $\exp(x) = \sum_{n=0}^{\infty} x^n / n!$.
 

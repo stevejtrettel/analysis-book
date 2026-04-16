@@ -10,7 +10,7 @@
 
 ### Content
 
-**Quadrature**
+### Quadrature
 - The simplest ODE: y' = f(x), y(a) = y₀
 - Theorem: If f is continuous, then y(x) = y₀ + ∫ₐˣ f(t) dt is the unique solution
 - Existence: FTC I gives y' = f
@@ -22,7 +22,7 @@
 - The logarithmic integral: li(x) = ∫₂ˣ 1/(log t) dt — gives the best simple approximation to the prime counting function (the Prime Number Theorem says π(x) ~ li(x))
 - ✎ Inline: verify erf'(x) = (2/√π) e⁻ˣ² and erf(0) = 0 directly from the definition
 
-**First-Order Linear Equations**
+### First-Order Linear Equations
 - The equation: y' + P(x)y = Q(x), y(a) = y₀, with P and Q continuous
 - Theorem: The unique solution is y(x) = (1/μ(x))(y₀ + ∫ₐˣ μ(t) Q(t) dt) where μ(x) = e^{∫ₐˣ P(t) dt} is the integrating factor
 - Proof idea: multiply the equation by μ(x). Since μ' = Pμ, the left side becomes (μy)' = μQ. Integrate both sides using FTC.
@@ -31,7 +31,7 @@
 - Example: y' + 2y = eˣ with y(0) = 1. Integrating factor μ = e²ˣ. Then (e²ˣ y)' = e³ˣ. Integrate: e²ˣ y = e³ˣ/3 + C. From y(0) = 1: C = 2/3. Solution: y = (1/3)eˣ + (2/3)e⁻²ˣ.
 - ✎ Inline: solve y' − y/x = x² with y(1) = 0 for x > 0
 
-**Separable Equations**
+### Separable Equations
 - The equation: y' = f(x)g(y), with g(y₀) ≠ 0
 - If g(y) ≠ 0, formally separate: dy/g(y) = f(x) dx
 - Integrate: G(y) = F(x) + C where G' = 1/g, F' = f
@@ -48,7 +48,7 @@
 - Example: y' = y² with y(0) = 1. Separate: dy/y² = dx. Integrate: −1/y = x + C. Solution: y = 1/(1−x). This blows up at x = 1 — the solution exists only on (−∞, 1). Even when our existence theorem applies, the solution may not exist globally.
 - ✎ Inline: solve y' = y(1−y) with y(0) = 1/2 (the logistic equation)
 
-**The Limits of Elementary Methods**
+### The Limits of Elementary Methods
 - Consider y' = x + y² — we cannot separate variables, there is no integrating factor, no algebraic trick works
 - Does a solution even exist? Yes — but proving it requires fundamentally new tools:
   - Picard iteration: construct approximating functions that converge to a solution

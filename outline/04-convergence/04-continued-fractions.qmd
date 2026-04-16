@@ -14,7 +14,7 @@
 - CFs like $\sqrt{2} = [1; \overline{2}]$ are base-independent
 - This section: every real has unique CF, every CF converges, CFs reveal structure decimals hide
 
-**Continued Fraction Notation**
+### Continued Fraction Notation
 - Definition: $[a_0; a_1, a_2, \ldots] = a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{a_3 + \cdots}}}$ with $a_0 \in \ZZ$, $a_1, a_2, \ldots \in \NN$
 - The $a_i$ are *partial quotients*; finite CFs $[a_0; a_1, \ldots, a_n]$ are rationals
 - *Convergents*: truncations $c_n = [a_0; a_1, \ldots, a_n]$, written $c_n = p_n/q_n$ in lowest terms
@@ -31,7 +31,7 @@
 - Theorem (Key Identity): $p_n q_{n-1} - p_{n-1} q_n = (-1)^{n-1}$ (prove by induction)
 - Corollary: $\gcd(p_n, q_n) = 1$; also $\frac{p_n}{q_n} - \frac{p_{n-1}}{q_{n-1}} = \frac{(-1)^{n-1}}{q_n q_{n-1}}$
 
-**Every Continued Fraction Converges**
+### Every Continued Fraction Converges
 - Theorem: Every infinite CF converges to a real number
 - Proof: From corollary, $c_n - c_{n-1} = (-1)^{n-1}/(q_n q_{n-1})$ alternates in sign
   - Even convergents increasing, odd decreasing (check via the identity)
@@ -41,14 +41,14 @@
 - Remark: This generalizes the $\sqrt{2}$ argument from §4.1
 - ✎ Inline: Prove $q_n \geq F_n$ by induction
 
-**Every Real Number Has a Continued Fraction**
+### Every Real Number Has a Continued Fraction
 - Greedy algorithm: $a_0 = \lfloor x \rfloor$; if $x \neq a_0$, set $x_1 = 1/(x - a_0)$, $a_1 = \lfloor x_1 \rfloor$; repeat
 - Terminates iff $x \in \QQ$; convergents converge to $x$; representation unique (convention: don't end in 1)
 - Example: $17/7$: $a_0 = 2$, $x_1 = 7/3$, $a_1 = 2$, $x_2 = 3$, stop. So $17/7 = [2; 2, 3]$
 - ✎ Inline: Verify $[2; 2, 3] = 2 + 1/(2 + 1/3) = 17/7$
 - Remark: Rationals have finite CFs — base-independent!
 
-**Quadratic Irrationals**
+### Quadratic Irrationals
 - Definition: irrational root of $ax^2 + bx + c = 0$ with $a, b, c \in \ZZ$
 - Theorem (Lagrange): eventually periodic CF ↔ quadratic irrational
 - Eventually periodic: $[a_0; a_1, \ldots, a_k, \overline{b_1, \ldots, b_m}]$; purely periodic: $[\overline{a_1, \ldots, a_m}]$
@@ -58,13 +58,13 @@
 - Theorem (Pell): for non-square $N$, convergents of $\sqrt{N}$ satisfy $p_n^2 - Nq_n^2 = (-1)^{n+1}$ at complete periods
 - The $\sqrt{2}$ story complete: Ch1 (sup), Ch2 (Babylonian, Pell), §4.1 (CF convergence), §4.3 (contraction), here (CF = $[1; \overline{2}]$, convergents = Pell solutions)
 
-**Beyond Quadratics**
+### Beyond Quadratics
 - Cubics: NO known patterns ($\sqrt[3]{2} = [1; 3, 1, 5, 1, 1, 4, ...]$ — appears random)
 - $e = [2; 1, 2, 1, 1, 4, 1, 1, 6, 1, 1, 8, \ldots]$ — beautiful pattern $[2; \overline{1, 2k, 1}]$; proof in Ch5
 - $\pi = [3; 7, 15, 1, 292, ...]$ — no pattern; large 292 explains why $355/113$ is exceptional
 - Remark: CFs reveal structure decimals hide — $\sqrt{2}$ periodic, $e$ patterned, $\pi$ structureless
 
-**Approximation and the Golden Ratio**
+### Approximation and the Golden Ratio
 - Theorem: $|x - p_n/q_n| < 1/(q_n q_{n+1}) < 1/q_n^2$
 - Theorem: convergents are best approximations among fractions with denominator $\leq q_n$
 - From recurrence $q_n = a_n q_{n-1} + q_{n-2}$: larger partial quotients ⟹ faster growth ⟹ better approximations sooner
@@ -75,7 +75,7 @@
 
 ### Guided Exercise
 
-**The Continued Fraction for $\sqrt{3}$**
+### The Continued Fraction for $\sqrt{3}$
 
 (a) $a_0 = \lfloor \sqrt{3} \rfloor = 1$. Show $x_1 = 1/(\sqrt{3} - 1) = (\sqrt{3} + 1)/2$ by rationalizing.
 

@@ -13,7 +13,7 @@
 
 ### Content
 
-**The Definition**
+### The Definition
 - Motivation: "approaches" means "eventually stays arbitrarily close"
 - The ε-N game: adversary picks any tolerance $\varepsilon > 0$, you respond with threshold $N$; you win if all terms past $N$ are within $\varepsilon$ of $L$; converges iff you have a winning strategy for every $\varepsilon$
 - Definition: $(a_n)$ converges to $L$, written $a_n \to L$ or $\lim a_n = L$, if
@@ -27,7 +27,7 @@ $$\forall \varepsilon > 0 \; \exists N \in \NN \; \forall n > N: |a_n - L| < \va
 - Choose $N > \frac{1}{2\varepsilon}$; for $n > N$: expression $< \frac{1}{2n} < \varepsilon$
 - Remark: this works, but it's tedious — let's identify fundamental sequences we can combine
 
-**Fundamental Examples**
+### Fundamental Examples
 - $1/n \to 0$: the building block (prove in text, uses Archimedean property)
 - Constant sequence $c \to c$: trivial but worth stating
 - $r^n \to 0$ for $|r| < 1$: important result (prove in text using Bernoulli from §1.2)
@@ -40,14 +40,15 @@ $$\forall \varepsilon > 0 \; \exists N \in \NN \; \forall n > N: |a_n - L| < \va
   - Case $r \geq 1$: write $r^{1/n} = 1 + h_n$; then $r = (1+h_n)^n \geq 1 + nh_n$ (Bernoulli), so $h_n \leq (r-1)/n \to 0$
   - Case $0 < r < 1$: need $1 - r^{1/n} < \varepsilon$, i.e., $r > (1-\varepsilon)^n$; since $(1-\varepsilon)^n \to 0$, this holds for large $n$
 
-**Basic Properties**
+### Basic Properties
 - Theorem (Uniqueness): if $a_n \to L$ and $a_n \to M$, then $L = M$ (proof as exercise)
 - Definition: $(a_n)$ is bounded if $\exists M > 0$ with $|a_n| \leq M$ for all $n$
 - Theorem: convergent sequences are bounded (prove in text — bound the tail, bound the beginning)
 - Remark: converse is false — $(-1)^n$ is bounded but divergent
-- Theorem (Tails): changing finitely many terms doesn't affect convergence or the limit
+- Theorem (Tails): if $(a_n)$ and $(b_n)$ agree for all $n > N_0$, they converge or diverge together, and if they converge their limits are equal
+- **Tail**: two sequences have the same tail if they agree past some finite point; the above says convergence depends only on the tail
 
-**Divergence to Infinity**
+### Divergence to Infinity
 - Definition: $a_n \to +\infty$ if $\forall M > 0 \; \exists N: n > N \Rightarrow a_n > M$
 - Definition: $a_n \to -\infty$ similarly
 - Example: $n^2 \to +\infty$ (prove in text)
@@ -65,6 +66,7 @@ None for this section.
 - Prove: if $a_n \to L$, then $|a_n| \to |L|$
 - Prove: tails determine convergence (if $(a_n)$ and $(b_n)$ agree for $n > N_0$, they either both converge to the same limit or both diverge)
 - Show $n \to +\infty$
+- Prove $(-1)^n$ diverges (negate the $\varepsilon$-$N$ definition)
 - Show $(-1)^n n$ diverges (but not to $\pm\infty$)
 - ★ Find a sequence that is unbounded but does not diverge to $+\infty$ or $-\infty$
 

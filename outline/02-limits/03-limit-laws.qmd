@@ -12,13 +12,13 @@
 
 ### Content
 
-**Limits Respect Order**
+### Limits Respect Order
 - Theorem: if $a_n \to L$ and $a_n \geq 0$ for all $n$, then $L \geq 0$ (prove in text)
 - Corollary: if $a_n \to L$, $b_n \to M$, and $a_n \leq b_n$ for all $n$, then $L \leq M$
 - Warning: strict inequality is NOT preserved — $1/n > 0$ for all $n$, but $\lim 1/n = 0$
 - Theorem (Squeeze): if $a_n \leq b_n \leq c_n$ and $a_n \to L$ and $c_n \to L$, then $b_n \to L$ (prove in text)
 
-**Limits Respect Algebra**
+### Limits Respect Algebra
 - ✎ Inline: Prove directly that $ca_n \to cL$ when $a_n \to L$
 - Remark: this also follows from the product law below
 - Theorem (Sum): if $a_n \to L$ and $b_n \to M$, then $a_n + b_n \to L + M$ (prove in text — triangle inequality, $\varepsilon/2$)
@@ -27,7 +27,7 @@
 - Theorem (Quotient): if $a_n \to L$ and $b_n \to M$ with $M \neq 0$ and $b_n \neq 0$, then $a_n/b_n \to L/M$ (exercise — hint: first prove $1/b_n \to 1/M$)
 - Theorem (Square Root): if $a_n \to L$ with $a_n \geq 0$ and $L \geq 0$, then $\sqrt{a_n} \to \sqrt{L}$ (prove in text — conjugate trick)
 
-**Applications: Finishing What We Started**
+### Applications: Finishing What We Started
 - Discussion: using limit laws, work inward to outward — we can't assume the full limit exists, but prove subparts converge, then use limit laws to conclude more until we get the whole thing
 - ✎ Inline: Compute $\lim \frac{3n^2 + n}{2n^2 + 5}$ using limit laws (divide by $n^2$, apply laws)
 
@@ -36,10 +36,6 @@
 - From §2.2: $r^n \to 0$ for $|r| < 1$
 - By limit laws: $S_n \to \frac{1-0}{1-r} = \frac{1}{1-r}$
 - Theorem: for $|r| < 1$: $\sum_{n=0}^{\infty} r^n = \frac{1}{1-r}$
-
-*Archimedes resolved*
-- The area under the parabola: $T(1 + 1/4 + 1/16 + \cdots) = T \cdot \frac{1}{1-1/4} = \frac{4T}{3}$
-- Our tools have reached Archimedes' answer!
 
 *Telescoping series*
 - From §2.1: $S_n = 1 - \frac{1}{n+1}$
@@ -63,14 +59,14 @@
 - **Payoff**: The Babylonian sequence converges to $\sqrt{2}$ — no MCT needed!
 - Remark: In §2.4 we'll give an alternative proof using monotonicity and completeness
 
-**Density and Approximation**
+### Density and Approximation
 - Recall from §1.5: between any two reals lies a rational (density of $\QQ$)
 - Theorem: every real is the limit of a sequence of rationals
   - Proof: given $x \in \RR$, use density to find $r_n \in \QQ$ with $|r_n - x| < 1/n$; by squeeze, $r_n \to x$
 - **Payoff**: sequences of rationals reach all of $\RR$!
 - Remark: more generally, any dense subset can describe all reals as limits
 
-**The Limits of Limit Laws**
+### The Limits of Limit Laws
 - Key observation: limit laws tell us *what* the limit is, not *that* it exists
 - Example: Babylonian sequence $x_1 = 2$, $x_{n+1} = (x_n + 2/x_n)/2$
   - *If* $x_n \to L$, then by limit laws: $L = \frac{L + 2/L}{2}$, so $L^2 = 2$, so $L = \sqrt{2}$
@@ -79,7 +75,7 @@
 
 ### Guided Exercise
 
-**The Koch Snowflake: Finite Area, Infinite Perimeter**
+### The Koch Snowflake: Finite Area, Infinite Perimeter
 
 The Koch snowflake is a fractal curve constructed by repeatedly adding "tents" to each edge of an equilateral triangle.
 

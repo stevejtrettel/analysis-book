@@ -16,13 +16,13 @@
 
 ### Content
 
-**The First Crisis: $\sqrt{2}$**
+### The First Crisis: $\sqrt{2}$
 - Theorem: $\sqrt{2}$ is irrational (prove in text)
 - The problem: geometry demands $\sqrt{2}$ exist (diagonal of unit square), but $\QQ$ doesn't have it
 - The Babylonian sequence $a_1 = 1$, $a_{n+1} = \frac{1}{2}(a_n + 2/a_n)$ gives better and better approximations
 - But approximations to *what*? In $\QQ$, there's no number being approximated
 
-**Attempts to Patch $\QQ$**
+### Attempts to Patch $\QQ$
 - Definition: $\QQ(\sqrt{2}) = \{a + b\sqrt{2} : a, b \in \QQ\}$
 - $\QQ(\sqrt{2})$ is an ordered field, but $\sqrt{3} \notin \QQ(\sqrt{2})$
 - Definition: Constructible numbers — iterated square roots from $\QQ$
@@ -33,7 +33,7 @@
 - Remark: Constructibles satisfy polynomials of degree $2^n$; $\sqrt[3]{2}$ satisfies degree 3
 - The pattern: each fix reveals new holes — can't construct our way out
 
-**The Measurement Problem**
+### The Measurement Problem
 - The ancient challenge: what is the length of a curve? the area of a region?
 - Natural idea: approximate with inscribed polygons, take "the limit"
 - Length of curve = sup of inscribed polygonal lengths
@@ -47,7 +47,7 @@
 - Archimedes could trap $\pi$ between $3\frac{10}{71}$ and $3\frac{1}{7}$ — but what *is* $\pi$?
 - Remark: once we have completeness (§1.3), these definitions become meaningful (§1.5)
 
-**Gaps Break Calculus**
+### Gaps Break Calculus
 - Even if we ignore definitional problems, the theorems of calculus fail in $\QQ$
 - IVT fails: $f(x) = x^2 - 2$ on $[1,2] \cap \QQ$ has $f(1) < 0 < f(2)$ but no root
 - EVT fails: $f(x) = 1/(x^2 - 2)$ is continuous on $[1,2] \cap \QQ$ but unbounded

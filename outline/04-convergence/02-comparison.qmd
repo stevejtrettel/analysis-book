@@ -12,7 +12,7 @@
 
 ### Content
 
-**Comparison Tests**
+### Comparison Tests
 - Theorem (Comparison Test): If $0 \leq a_n \leq b_n$ for all $n$ and $\sum b_n$ converges, then $\sum a_n$ converges
 - Proof: partial sums of $\sum a_n$ are increasing and bounded above by $\sum b_n$; apply MCT
 - Contrapositive: if $\sum a_n$ diverges, so does $\sum b_n$
@@ -23,7 +23,7 @@
 - Example: $\sum n/(n^3 + 1)$ converges (compare to $\sum 1/n^2$: ratio $\to 1$)
 - [NOTE: Would like more interesting/historically important examples here]
 
-**Absolute Convergence**
+### Absolute Convergence
 - Definition: $\sum a_n$ converges absolutely if $\sum |a_n|$ converges
 - Definition: $\sum a_n$ converges conditionally if it converges but not absolutely
 - Theorem: Absolute convergence implies convergence (prove in text)
@@ -33,7 +33,7 @@
 - Remark: absolute convergence is "stronger" — the series converges regardless of signs
 - Remark: conditionally convergent series can be rearranged to sum to any value (Riemann rearrangement theorem — stated, not proved)
 
-**Comparison with Geometric Series**
+### Comparison with Geometric Series
 - Key fact: geometric series $\sum r^n$ converges iff $|r| < 1$
 - Idea: if terms of a series are eventually bounded by $Cr^n$, comparison with geometric series gives convergence
 - Theorem (Root Test): Let $\alpha = \limsup |a_n|^{1/n}$.
@@ -52,7 +52,7 @@
 - ✎ Inline: Use the root test on $\sum n^{10}/2^n$
 - Remark: the ratio test (see guided exercise) is often easier to apply in practice
 
-**Comparison for Products**
+### Comparison for Products
 - Infinite products: when does $\prod_{n=1}^{\infty} a_n$ converge?
 - Write $a_n = 1 + u_n$ where $u_n = a_n - 1$
 - If factors approach 1 "fast enough," the product converges
@@ -87,7 +87,7 @@
 
 ### Guided Exercises
 
-**The Ratio Test**
+### The Ratio Test
 
 (a) Suppose $|a_{n+1}/a_n| \leq r < 1$ for all $n \geq N$. Prove that $|a_n| \leq |a_N| \cdot r^{n-N}$ for $n \geq N$.
 

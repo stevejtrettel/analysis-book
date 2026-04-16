@@ -14,18 +14,18 @@
 %         afterskip  = space below title
 % --------------------------------------------
 \RedeclareSectionCommand[
-  beforeskip=0.75\baselineskip,
-  afterskip=0.1\baselineskip
+  beforeskip=1.5\baselineskip,
+  afterskip=0.5\baselineskip
 ]{section}
 
 \RedeclareSectionCommand[
-  beforeskip=0.5\baselineskip,
-  afterskip=0.05\baselineskip
+  beforeskip=1.0\baselineskip,
+  afterskip=0.3\baselineskip
 ]{subsection}
 
 \RedeclareSectionCommand[
-  beforeskip=0.4\baselineskip,
-  afterskip=0.05\baselineskip
+  beforeskip=0.75\baselineskip,
+  afterskip=0.2\baselineskip
 ]{subsubsection}
 
 % --------------------------------------------
@@ -33,8 +33,8 @@
 % Negative vspace compensates for amsthm's 
 % built-in spacing around theorem blocks
 % --------------------------------------------
-\newcommand{\thmbeforeskip}{-0.5\baselineskip}
-\newcommand{\thmafterskip}{-0.4\baselineskip}
+\newcommand{\thmbeforeskip}{-0.15\baselineskip}
+\newcommand{\thmafterskip}{-0.15\baselineskip}
 
 \BeforeBeginEnvironment{theorem}{\vspace{\thmbeforeskip}}
 \AfterEndEnvironment{theorem}{\vspace{\thmafterskip}}

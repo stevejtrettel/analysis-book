@@ -14,19 +14,19 @@
 - One of Archimedes' greatest achievements: finding this area
 - He used the "method of exhaustion" — we'll use our rigorous framework from §1.5 plus geometric series
 
-**The Setup**
+### The Setup
 - Consider $y = x^2$ with chord from $(a, a^2)$ to $(b, b^2)$
 - The inscribed triangle: third vertex at $x = (a+b)/2$, the point on the parabola above the midpoint
 - Let $T$ = area of this inscribed triangle
 - Goal: show the parabolic segment has area $\frac{4T}{3}$
 
-**Geometric Facts**
+### Geometric Facts
 - We need three facts (proofs as guided exercise):
 - Fact 1 (Inscribed triangle area): Using $m = (a+b)/2$, $h = (b-a)/2$, the inscribed triangle has area $h^3$
 - Fact 2 (Circumscribed parallelogram): The parallelogram circumscribing the segment (sides parallel to chord and tangent at vertex) has area $2h^3 = 2T$
 - Fact 3 (Child triangles): The two child triangles (inscribed in the two remaining segments) have combined area $T/4$
 
-**Inner Approximations**
+### Inner Approximations
 - Stage 0: One inscribed triangle, area $T$
 - Stage 1: Add 2 child triangles, total area $T + T/4$
 - Stage 2: Add 4 grandchild triangles, total area $T + T/4 + T/16$
@@ -35,7 +35,7 @@
 - By §1.5: inner area $= \sup\{\text{inscribed polygon areas}\} \geq T \cdot \frac{1 - (1/4)^{n+1}}{1 - 1/4}$ for all $n$
 - As $n \to \infty$: inner area $\geq T \cdot \frac{1}{1 - 1/4} = \frac{4T}{3}$
 
-**Outer Approximations**
+### Outer Approximations
 - At stage $n$: replace the last batch of triangles with their circumscribed parallelograms
 - Each parallelogram has area twice its inscribed triangle
 - Outer figure at stage $n$ = inner figure at stage $n$ + (extra area from parallelograms instead of triangles)
@@ -45,20 +45,20 @@
 - By §1.5: outer area $= \inf\{\text{circumscribed polygon areas}\} \leq T \cdot \frac{1 - (1/4)^{n+1}}{1 - 1/4} + T/4^n$ for all $n$
 - As $n \to \infty$: outer area $\leq \frac{4T}{3}$
 
-**Conclusion**
+### Conclusion
 - Inner area $\geq \frac{4T}{3}$ and outer area $\leq \frac{4T}{3}$
 - Since inner area $\leq$ outer area always, we have inner area $=$ outer area $= \frac{4T}{3}$
 - By §1.5 definition: the parabolic segment has area, and it equals $\frac{4T}{3}$
 - Theorem (Archimedes): The area of a parabolic segment is $\frac{4}{3}$ times the area of its inscribed triangle
 
-**Historical Remark**
+### Historical Remark
 - Archimedes proved this using the method of exhaustion — essentially our inner/outer argument
 - He also had a mechanical method using levers and centers of gravity
 - Our proof makes rigorous what Archimedes knew intuitively: the inner and outer bounds converge
 
 ### Guided Exercise
 
-**The Geometric Facts**
+### The Geometric Facts
 
 We establish the three geometric facts needed for the quadrature.
 

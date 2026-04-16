@@ -10,14 +10,14 @@
 
 ### Content
 
-**Rearrangements**
+### Rearrangements
 - For finite sums, commutativity says order doesn't matter: $a_1 + a_2 + a_3 = a_3 + a_1 + a_2$
 - What about infinite sums?
 - Definition: A *rearrangement* of a series $\sum_{n=1}^{\infty} a_n$ is a series $\sum_{n=1}^{\infty} a_{\pi(n)}$ where $\pi: \mathbb{N} \to \mathbb{N}$ is a bijection
 - Same terms, different order
 - Question: Does rearranging change the sum?
 
-**Absolute Convergence is Robust**
+### Absolute Convergence is Robust
 - Theorem: If $\sum a_n$ converges absolutely to $S$, then every rearrangement $\sum a_{\pi(n)}$ converges absolutely to $S$
 - Proof:
   - Let $T_N = \sum_{n=1}^{N} a_{\pi(n)}$ be the partial sums of the rearrangement
@@ -32,7 +32,7 @@
 - Absolute convergence of the rearrangement: same argument applied to $\sum |a_{\pi(n)}|$
 - Interpretation: for absolutely convergent series, the sum depends only on the terms, not their order
 
-**Conditional Convergence is Fragile**
+### Conditional Convergence is Fragile
 - For conditionally convergent series, the situation is completely different
 - Lemma: If $\sum a_n$ converges conditionally, then $\sum a_n^+ = +\infty$ and $\sum a_n^- = -\infty$
   - Here $a_n^+ = \max(a_n, 0)$ and $a_n^- = \min(a_n, 0)$
@@ -65,7 +65,7 @@
 
 ### Guided Exercise
 
-**Rearranging the Alternating Harmonic Series**
+### Rearranging the Alternating Harmonic Series
 
 The alternating harmonic series $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots$ converges conditionally.
 

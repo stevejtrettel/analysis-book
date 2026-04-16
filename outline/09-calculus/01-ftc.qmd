@@ -10,7 +10,7 @@
 
 ### Content
 
-**The Integral Function**
+### The Integral Function
 - In ch8 we defined ∫_{[a,b]} f for a < b — the integral over a set
 - Fix a basepoint a and let x vary: for x ≥ a, define F(x) = ∫_{[a,x]} f
 - To let x move freely (including before a), introduce signed notation:
@@ -22,7 +22,7 @@
 - Proof: reduces to the ch8 additivity axiom when a < b < c; the other cases follow from the sign convention
 - ✎ Inline: verify additivity when c < a < b
 
-**Properties of the Integral Function**
+### Properties of the Integral Function
 - Theorem (Continuity): If f is integrable with m ≤ f ≤ M, then F(x) = ∫ₐˣ f is continuous
 - Proof: F(x+h) − F(x) = ∫ₓˣ⁺ʰ f. By the bounds theorem (§8.1), m·h ≤ F(x+h) − F(x) ≤ M·h. As h → 0, both bounds → 0, so F(x+h) → F(x).
 - Theorem (MVT for Integrals): If f is continuous on [a,b], then there exists c ∈ (a,b) with ∫ₐᵇ f = f(c)(b−a)
@@ -30,14 +30,14 @@
 - Remark: the *average value* of f on [a,b] is (1/(b−a)) ∫ₐᵇ f, and f always equals its average somewhere
 - ✎ Inline: find c explicitly for f(x) = x² on [0,1]
 
-**The Fundamental Theorem, Part I**
+### The Fundamental Theorem, Part I
 - Theorem (FTC I): If f is continuous on an interval containing a, then F(x) = ∫ₐˣ f is differentiable and F'(x) = f(x)
 - Proof: F'(x) = lim_{h→0} (1/h)(F(x+h) − F(x)) = lim_{h→0} (1/h) ∫ₓˣ⁺ʰ f. By MVT for integrals, ∫ₓˣ⁺ʰ f = f(c)·h for some c between x and x+h. As h → 0, c → x, and continuity of f gives f(c) → f(x). So F'(x) = f(x).
 - Corollary: every continuous function has an antiderivative
 - Remark: this is an existence theorem — we assert F exists without finding a formula
 - ✎ Inline: what is F'(x) when F(x) = ∫₀ˣ eᵗ² dt? (cannot find F explicitly, but FTC I answers immediately)
 
-**The Fundamental Theorem, Part II**
+### The Fundamental Theorem, Part II
 - Theorem (FTC II): If f is continuous on [a,b] and F is any antiderivative of f (meaning F' = f), then ∫ₐᵇ f = F(b) − F(a)
 - Proof: Let G(x) = ∫ₐˣ f. By FTC I, G' = f = F'. So (G − F)' = 0, hence G − F is constant by MVT (§7.2). Evaluating at x = a: G(a) − F(a) = 0 − F(a) = −F(a), so G(x) = F(x) − F(a) for all x. At x = b: ∫ₐᵇ f = G(b) = F(b) − F(a).
 - Notation: F(x)|ₐᵇ = F(b) − F(a), read "F evaluated from a to b"

@@ -17,7 +17,7 @@
 - Sequences let us *name* numbers we can't write down finitely
 - Preview: every real is limit of a sequence of rationals (proved in §2.3)
 
-**Historical Examples: Sequences in Action**
+### Historical Examples: Sequences in Action
 - *Archimedes and the parabola*: area under parabola via inscribed triangles
   - Total area: $T + T/4 + T/16 + \cdots$
   - Partial sums $S_n = T(1 + 1/4 + \cdots + 1/4^n)$ — Archimedes claimed $S = 4T/3$
@@ -29,13 +29,13 @@
 - Both produce lists of numbers that seem to approach a value
 - What do these examples have in common?
 
-**What Is a Sequence?**
+### What Is a Sequence?
 - Definition: a sequence is a function $a: \NN \to \RR$; write $a_n$ for $a(n)$
 - Notation: $(a_n)$ or $(a_1, a_2, a_3, \ldots)$
 - Two ways to specify: closed form (e.g., $a_n = 1/n$) vs recursive (e.g., $a_{n+1} = f(a_n)$)
 - The Babylonian example is recursive; Archimedes' partial sums have a closed form (we'll find it)
 
-**Series and Products as Sequences**
+### Series and Products as Sequences
 - A series $\sum a_n$ is really the sequence of partial sums $S_n = a_1 + \cdots + a_n$
 - A product $\prod a_n$ is really the sequence of partial products $P_n = a_1 \cdots a_n$
 - To understand a series or product, find a closed form for $S_n$ or $P_n$
@@ -56,7 +56,7 @@
 - ✎ Inline: Verify the partial fractions $\frac{1}{k(k+1)} = \frac{1}{k} - \frac{1}{k+1}$
 - ✎ Inline: Verify that $\prod_{k=1}^{n}(1 + 1/k) = n + 1$
 
-**The Question**
+### The Question
 - We have closed forms: $S_n = \frac{1 - r^{n+1}}{1-r}$, $S_n = 1 - \frac{1}{n+1}$, $P_n = \frac{n+1}{2n}$
 - We have the Babylonian sequence: $1.5, 1.4167, 1.41422, \ldots$
 - What happens as $n \to \infty$? What does "$\to$" mean?

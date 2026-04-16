@@ -10,7 +10,7 @@
 
 ### Content
 
-**Defining the Trigonometric Functions**
+### Defining the Trigonometric Functions
 - Recall: on the unit circle, arcsin(y) should give the angle (= arc length) whose sine is y
 - Definition: arcsin(y) = ∫₀ʸ 1/√(1−t²) dt for y ∈ (−1, 1)
 - This is an improper integral at y = ±1 (§8.1); it converges (compare 1/√(1−t²) to 1/√(1−t) near t = 1)
@@ -26,7 +26,7 @@
   - cos'(θ) = −sin(θ) (differentiate sin² + cos² = 1, or use cos = sin(π/2 − θ) and chain rule)
 - ✎ Inline: verify cos'(θ) = −sin(θ) both ways
 
-**The Differential Equation**
+### The Differential Equation
 - Theorem: sin and cos both satisfy y'' = −y. Proof: sin'' = (cos)' = −sin, cos'' = (−sin)' = −cos.
 - Lemma (Uniqueness): if y'' = −y on an interval with y(0) = y'(0) = 0, then y ≡ 0.
 - Proof: define E(t) = y(t)² + y'(t)² (the "energy"). Then E'(t) = 2yy' + 2y'y'' = 2yy' + 2y'(−y) = 0. So E is constant. E(0) = 0, so E(t) = 0 for all t, hence y(t) = 0 for all t.
@@ -47,7 +47,7 @@
 - Theorem: 2π is the smallest period (equivalently, π is the smallest positive zero of sin)
 - ✎ Inline: derive sin(π/6) = 1/2 from sin(π/2) = 1 and the addition/half-angle formulas
 
-**Taylor Series**
+### Taylor Series
 - sin and cos are infinitely differentiable: they satisfy y'' = −y, so all derivatives are ±sin or ±cos
 - The derivative cycle: sin → cos → −sin → −cos → sin gives the Taylor coefficients at 0
 - Theorem: sin(x) = x − x³/3! + x⁵/5! − ⋯ = Σ (−1)ⁿ x²ⁿ⁺¹/(2n+1)! for all x
@@ -57,7 +57,7 @@
 - Remark: these are the series S(x) and C(x) from ch5, if introduced there. The functional equations (Cauchy product) now have a geometric interpretation as the addition formulas for sin and cos.
 - ✎ Inline: verify the Taylor series for cos by differentiating the Taylor series for sin term-by-term (Power Series II)
 
-**Archimedes' Theorem**
+### Archimedes' Theorem
 - In §8.3, Archimedes' inequality (proved geometrically) showed the perimeter and area constants of the circle are the same π
 - Here we give a modern, purely computational proof using trig substitution
 - Theorem: ∫₀¹ √(1−x²) dx = π/4 (so the area of the unit disk is π)
@@ -67,7 +67,7 @@
 
 ### Guided Exercises
 
-**The Weierstrass Product for Sine**
+### The Weierstrass Product for Sine
 
 *Goal:* Prove that sin(πx)/(πx) = ∏ₙ₌₁^∞ (1 − x²/n²)
 

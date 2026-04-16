@@ -10,18 +10,18 @@
 
 ### Content
 
-**Differentiating Power Series**
+### Differentiating Power Series
 - Lemma: $\sum a_n x^n$ and $\sum n a_n x^{n-1}$ have the same radius of convergence
 - Theorem: If $f(x) = \sum a_n x^n$ on $(-R, R)$, then $f'(x) = \sum n a_n x^{n-1}$ on $(-R, R)$ (prove in text via Tannery/dominated convergence from §5.4)
 - Corollary: power series are infinitely differentiable on $(-R, R)$
 - Corollary: $a_n = f^{(n)}(0)/n!$ — the coefficients encode the derivatives
 
-**Taylor Polynomials**
+### Taylor Polynomials
 - Definition: For $f$ with $n$ derivatives at $a$, the $n$th Taylor polynomial is $P_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x - a)^k$
 - Theorem: $P_n$ is the unique polynomial of degree $\leq n$ matching $f, f', \ldots, f^{(n)}$ at $a$
 - The question: for a general function, does $P_n \to f$ as $n \to \infty$?
 
-**Taylor's Theorem**
+### Taylor's Theorem
 - Theorem (Generalized Rolle): If $f, f', \ldots, f^{(n)}$ all vanish at $a$ and $f(b) = 0$, then $f^{(n+1)}(c) = 0$ for some $c$ between $a$ and $b$ (prove in text: induction on $n$ using Rolle's theorem)
 - Theorem (Polynomial MVT): If $f$ and $h$ share their first $n$ derivatives at $a$ and $f(b) = h(b)$, then $f^{(n+1)}(c) = h^{(n+1)}(c)$ for some $c$ between $a$ and $b$ (prove in text: apply generalized Rolle to $f - h$)
 - Theorem (Lagrange Remainder): $f(x) = P_n(x) + \frac{f^{(n+1)}(c)}{(n+1)!}(x - a)^{n+1}$ for some $c$ between $a$ and $x$ (prove in text: apply polynomial MVT with $h = P_n$)
@@ -31,7 +31,7 @@
 
 ### Guided Exercise
 
-**Takagi's Function: Continuous Everywhere, Differentiable Nowhere**
+### Takagi's Function: Continuous Everywhere, Differentiable Nowhere
 
 Let $s(x) = \mathrm{dist}(x, \ZZ)$ (distance to nearest integer) and define $T(x) = \sum_{n=0}^{\infty} \frac{s(2^n x)}{2^n}$.
 

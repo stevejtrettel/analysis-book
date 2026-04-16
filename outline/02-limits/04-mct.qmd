@@ -12,14 +12,14 @@
 
 ### Content
 
-**The Key Insight**
+### The Key Insight
 - Limit laws use ordered field axioms to derive new limits from known limits
 - But they can't conjure convergence from nothing
 - Example: we showed *if* Babylonian converges, *then* limit is $\sqrt{2}$ — but didn't prove convergence
 - To prove a sequence of rationals converges to an irrational, we need completeness
 - The Monotone Convergence Theorem uses completeness to guarantee existence
 
-**The Monotone Convergence Theorem**
+### The Monotone Convergence Theorem
 - Definition: $(a_n)$ is increasing if $a_n \leq a_{n+1}$ for all $n$
 - Definition: $(a_n)$ is strictly increasing if $a_n < a_{n+1}$ for all $n$
 - Definition: $(a_n)$ is decreasing if $a_n \geq a_{n+1}$ for all $n$
@@ -31,7 +31,7 @@
 - ✎ Inline: Prove the decreasing case
 - Remark: MCT fails in $\QQ$ — the sequence $1, 1.4, 1.41, 1.414, \ldots$ is increasing and bounded in $\QQ$ but has no rational limit. This is where completeness enters the theory of limits.
 
-**The Babylonian Sequence**
+### The Babylonian Sequence
 - Recall from §2.1: $x_1 = 2$, $x_{n+1} = (x_n + 2/x_n)/2$
 - We proved convergence in §2.3 using the Pell structure and square root law
 - Here's an alternative proof using MCT — this approach generalizes to sequences without closed forms
@@ -46,13 +46,13 @@
 - **Lesson**: MCT proves convergence for recursive sequences even when no closed form exists
 - Historical note: known to Babylonians ~1800 BCE; converges remarkably fast (roughly doubles correct digits each iteration)
 
-**The Number $e$**
+### The Number $e$
 - Definition: $e = \lim_{n \to \infty}(1 + 1/n)^n$, provided this limit exists
 - This subsection is a guided exercise proving $e$ exists and establishing its basic properties
 
 ### Guided Exercises
 
-**The Number $e$**
+### The Number $e$
 
 Let $a_n = (1 + 1/n)^n$ and $b_n = (1 + 1/n)^{n+1}$.
 
@@ -72,7 +72,7 @@ Let $a_n = (1 + 1/n)^n$ and $b_n = (1 + 1/n)^{n+1}$.
 
 (h) The intervals $[a_n, b_n]$ are nested and contain $e$. Since $b_n - a_n = a_n/n \to 0$, these intervals pin down $e$ uniquely.
 
-**More MCT Examples**
+### More MCT Examples
 - One example worked in text: nested radicals
   - Let $a_1 = 1$, $a_{n+1} = \sqrt{2 + a_n}$
   - Bounded above by 2: if $a_n \leq 2$, then $a_{n+1} = \sqrt{2 + a_n} \leq \sqrt{4} = 2$ (induction)

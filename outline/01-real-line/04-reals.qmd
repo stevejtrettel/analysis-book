@@ -20,25 +20,25 @@
 
 ### Content
 
-**The Definition of $\RR$**
+### The Definition of $\RR$
 - Definition: $\RR$ is a complete ordered field
 - Axiomatic method: we say what reals *do*, not what they *are*
 - Theorem (stated): A complete ordered field exists and is unique up to isomorphism
 - Remark: constructions (Dedekind cuts, Cauchy sequences) prove existence; we focus on using completeness
 
-**No Monsters (Archimedean Property)**
+### No Monsters (Archimedean Property)
 - Theorem: For any $x \in \RR$, there exists $n \in \NN$ with $n > x$ (prove in text)
 - Proof idea: if $\NN$ were bounded above, $\sup \NN$ would exist; derive contradiction
 - Corollary: For any $\varepsilon > 0$, there exists $n \in \NN$ with $1/n < \varepsilon$
 - Interpretation: no infinitely large or infinitely small reals; every real lives between two integers
 
-**Density**
+### Density
 - Theorem: Between any two reals lies a rational (prove in text)
 - Proof uses Archimedean property to find suitable denominator
 - Theorem: Between any two reals lies an irrational (quick corollary using $\sqrt{2}$)
 - Interpretation: rationals are everywhere dense — we've filled gaps, not added alien regions
 
-**Roots Exist**
+### Roots Exist
 - Theorem: $\sqrt{2}$ exists in $\RR$ (prove in text — THIS IS THE PAYOFF)
 - Let $S = \{x \in \RR : x > 0, x^2 < 2\}$
 - ✎ Inline: Verify $1 \in S$ and $2$ is an upper bound for $S$
@@ -48,7 +48,7 @@
 - Theorem: $(\sqrt[n]{a})^n = a$ (exercise)
 - Remark: AM-GM (§1.2 exercise) now holds unconditionally in $\RR$: for $a, b \geq 0$, $\frac{a+b}{2} \geq \sqrt{ab}$
 
-**Infinite Riches (Uncountability)**
+### Infinite Riches (Uncountability)
 - Theorem: $\RR$ is uncountable (prove in text — nested intervals argument)
 - Proof: given any list $x_1, x_2, \ldots$, construct nested intervals avoiding each $x_n$; intersection contains a real not on the list
 - Corollary: The irrationals are uncountable (if irrationals were countable, $\RR = \QQ \cup (\RR \setminus \QQ)$ would be countable)
@@ -60,7 +60,7 @@
 
 ### Guided Exercises
 
-**Exponents and Logarithms**
+### Exponents and Logarithms
 
 We extend exponentiation from integer exponents to rational exponents to real exponents, using completeness.
 

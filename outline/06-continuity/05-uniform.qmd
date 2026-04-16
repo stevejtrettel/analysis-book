@@ -11,7 +11,7 @@
 
 ### Content
 
-**The Definition**
+### The Definition
 - In §6.1, the definition of continuity at $a$ says: for every $\varepsilon > 0$, there exists $\delta > 0$ such that $|x - a| < \delta \Rightarrow |f(x) - f(a)| < \varepsilon$
 - The $\delta$ can depend on both $\varepsilon$ and the point $a$
 - Example: $f(x) = x^2$ at $a$. We showed $\delta = \min(1, \varepsilon/(2|a|+1))$ works. As $|a|$ grows, $\delta$ shrinks — the function changes faster far from the origin.
@@ -34,7 +34,7 @@ $$\forall \varepsilon > 0 \; \exists \delta > 0 \; \forall x, y \in S: |x - y| <
   - $|\sqrt{x} - \sqrt{y}| = \frac{|x - y|}{\sqrt{x} + \sqrt{y}} \leq \frac{|x - y|}{\max(\sqrt{x}, \sqrt{y})}$... but actually the easier estimate: $|\sqrt{x} - \sqrt{y}| \leq \sqrt{|x - y|}$ (exercise). Take $\delta = \varepsilon^2$.
 - Remark: Lipschitz functions are uniformly continuous. If $|f(x) - f(y)| \leq L|x - y|$ for some constant $L$, take $\delta = \varepsilon / L$. But uniform continuity is strictly weaker — $\sqrt{x}$ is uniformly continuous but not Lipschitz (exercise).
 
-**Closed Intervals**
+### Closed Intervals
 - The non-examples both involved domains that were open or unbounded. Is this a coincidence?
 - Theorem: If $f$ is continuous on $[a,b]$, then $f$ is uniformly continuous on $[a,b]$.
 - This is a major theorem — continuity, a pointwise condition, automatically upgrades to the uniform condition on closed bounded intervals.
@@ -49,7 +49,7 @@ $$\forall \varepsilon > 0 \; \exists \delta > 0 \; \forall x, y \in S: |x - y| <
 - Remark: this theorem will be important for integration (Chapter 8) — the proof that continuous functions are Riemann integrable relies on uniform continuity
 - ✎ Inline: Where exactly does the proof fail if the domain is $(0, 1)$ instead of $[0, 1]$? (Answer: the subsequential limit $c$ might be $0$, which is not in the domain, so we can't invoke continuity at $c$.)
 
-**Continuous Extensions**
+### Continuous Extensions
 - Situation: $f$ is continuous on $(a, b)$ — can we extend it to $[a, b]$?
 - Not always: $f(x) = \sin(1/x)$ on $(0, 1)$ has no limit as $x \to 0^+$, so there's no way to define $f(0)$ to make it continuous
 - Not always: $f(x) = 1/x$ on $(0, 1)$ is unbounded, so certainly can't extend continuously
@@ -69,7 +69,7 @@ $$\forall \varepsilon > 0 \; \exists \delta > 0 \; \forall x, y \in S: |x - y| <
 
 ### Guided Exercise
 
-**Uniform Continuity and Sequences**
+### Uniform Continuity and Sequences
 
 This exercise develops a sequential characterization of uniform continuity, paralleling the sequential characterization of continuity from §6.1.
 

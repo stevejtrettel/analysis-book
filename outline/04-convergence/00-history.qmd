@@ -1,25 +1,23 @@
-## Chapter 4 Introduction: Techniques for Convergence
-
-### The Message
+**The Message**
 
 - We have the theory (MCT, Cauchy, completeness) — now how do you *use* it?
 - Showing a specific series converges or an iteration reaches its target requires craft
 - This chapter develops that craft, illustrated by historically important examples
 
-### The Techniques
+**The Techniques**
 
 - *Finding hidden monotonicity*: oscillating sequences may decompose into monotone pieces converging to the same limit
 - *Comparison*: bound your unknown process by one you understand (e.g., geometric series)
 - *Contraction*: functions that squeeze points together force iteration to a fixed point, with explicit rates
 
-### The Examples
+**The Examples**
 
 - Alternating series (Leibniz): values are $\ln 2$ and $\pi/4$
 - Continued fractions (Lagrange): complete the $\sqrt{2}$ story, reveal $\phi$ as "most irrational"
 - Products (Wallis, Viète): factors approaching 1, comparison gives convergence
 - Archimedes' $\pi$: inscribed/circumscribed polygons squeeze the circle
 
-### The Takeaway
+**The Takeaway**
 
 - The examples are beautiful in themselves
 - But the techniques matter more — workhorses of analysis, appearing throughout the course

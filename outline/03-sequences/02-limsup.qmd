@@ -14,7 +14,7 @@
 
 ### Content
 
-**Subsequential Limits**
+### Subsequential Limits
 - Definition: $L$ is a subsequential limit of $(a_n)$ if some subsequence converges to $L$
 - Alternative terminology: $L$ is a limit point or accumulation point of the sequence
 - Examples:
@@ -29,7 +29,7 @@
 - Reframing: divergence of bounded sequences means *multiple* subsequential limits
 - ✎ Inline: Find all subsequential limits of $a_n = \sin(n\pi/2)$
 
-**Limsup and Liminf**
+### Limsup and Liminf
 - For bounded sequences, the set of subsequential limits is nonempty and bounded — so it has a sup and inf
 - Definition: $\limsup a_n$ = sup of the set of subsequential limits
 - Definition: $\liminf a_n$ = inf of the set of subsequential limits
@@ -48,7 +48,7 @@
   - $a_n = (-1)^n n$: limsup = $+\infty$, liminf = $-\infty$
 - ✎ Inline: Find limsup and liminf for $a_n = (1 + (-1)^n)/2$
 
-**The Tail Characterization**
+### The Tail Characterization
 - Definition: the $n$th tail of $(a_k)$ is the sequence $(a_n, a_{n+1}, a_{n+2}, \ldots)$
 - For bounded $(a_n)$, define $\overline{s}_n = \sup\{a_k : k \geq n\}$ and $\underline{s}_n = \inf\{a_k : k \geq n\}$
 - Key observation: $\overline{s}_n$ is decreasing (sup over smaller set), $\underline{s}_n$ is increasing
@@ -70,7 +70,7 @@
 - Analogous results for liminf (exercises)
 - ✎ Inline: For $a_n = (-1)^n(1 - 1/n)$, compute $\overline{s}_n$ and $\underline{s}_n$ explicitly
 
-**Convergence Criterion**
+### Convergence Criterion
 - Theorem: $a_n \to L$ if and only if $\limsup a_n = \liminf a_n = L$ (prove in text)
 - Proof (⟹): if $a_n \to L$, then $L$ is the only subsequential limit, so limsup = liminf = $L$
 - Proof (⟸): if limsup = liminf = $L$, then $\overline{s}_n \to L$ and $\underline{s}_n \to L$; since $\underline{s}_n \leq a_n \leq \overline{s}_n$, squeeze gives $a_n \to L$

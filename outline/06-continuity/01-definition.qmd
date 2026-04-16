@@ -14,7 +14,7 @@
 
 ### Content
 
-**The Definition**
+### The Definition
 - Motivation: which functions respect closeness? If $x$ is close to $a$, is $f(x)$ close to $f(a)$?
 - The step function $\text{sgn}(x) = -1$ for $x < 0$, $1$ for $x \geq 0$: inputs $-0.001$ and $0.001$ are close, but outputs are $-1$ and $1$ — not close
 - What property rules this out?
@@ -43,7 +43,7 @@ $$\forall \varepsilon > 0 \; \exists \delta > 0 \; \forall x: |x - a| < \delta \
 - The adversary wins with $\varepsilon = 1$ — no $\delta$ works
 - Remark: to prove discontinuity, we only need one $\varepsilon$ for which no $\delta$ works
 
-**The Sequential Characterization**
+### The Sequential Characterization
 - Theorem: $f$ is continuous at $a$ if and only if: for every sequence $(x_n)$ with $x_n \to a$, we have $f(x_n) \to f(a)$
 - This is the bridge between the new definition and five chapters of existing tools
 - Proof ($\Rightarrow$): Suppose $f$ continuous at $a$ and $x_n \to a$. Given $\varepsilon > 0$, get $\delta > 0$ from continuity. Since $x_n \to a$, there exists $N$ with $|x_n - a| < \delta$ for $n > N$. Then $|f(x_n) - f(a)| < \varepsilon$ for $n > N$. So $f(x_n) \to f(a)$.
@@ -59,7 +59,7 @@ $$\forall \varepsilon > 0 \; \exists \delta > 0 \; \forall x: |x - a| < \delta \
   - If $a \notin \QQ$: by density of rationals, find $x_n \in \QQ$ with $x_n \to a$. Then $D(x_n) = 1 \not\to 0 = D(a)$.
 - Remark: density of $\QQ$ and of $\RR \setminus \QQ$ (from §1.5) does the work; the sequential characterization makes it clean
 
-**Limits of Functions**
+### Limits of Functions
 - Sometimes a function "wants" to have a value at a point even though it doesn't — or has the wrong one
 - Example: $f(x) = \sin(x)/x$ is not defined at $x = 0$, but for $x$ near $0$, $f(x)$ is near $1$
 - Example: define $g(x) = x^2$ for $x \neq 0$ and $g(0) = 17$. The value at $0$ is "wrong" — the function "should be" $0$ there
@@ -73,7 +73,7 @@ $$\forall \varepsilon > 0 \; \exists \delta > 0 \; \forall x: 0 < |x - a| < \del
   - Continuity = the function equals its limit
 - ✎ Inline: Prove that $\lim_{x \to 0} x \sin(1/x) = 0$
 
-**One-Sided Limits**
+### One-Sided Limits
 - Definition: $\lim_{x \to a^+} f(x) = L$ if the limit condition holds with $0 < x - a < \delta$ (approaching from the right)
 - Definition: $\lim_{x \to a^-} f(x) = L$ similarly (approaching from the left)
 - Theorem: $\lim_{x \to a} f(x) = L$ iff $\lim_{x \to a^+} f(x) = L$ and $\lim_{x \to a^-} f(x) = L$
@@ -81,7 +81,7 @@ $$\forall \varepsilon > 0 \; \exists \delta > 0 \; \forall x: 0 < |x - a| < \del
 
 ### Guided Exercises
 
-**A. Classifying Discontinuities**
+### A. Classifying Discontinuities
 
 We've seen that a function can fail to be continuous in different ways. In this exercise, you'll organize the possibilities into a taxonomy.
 
@@ -103,7 +103,7 @@ We've seen that a function can fail to be continuous in different ways. In this 
 
 (f) Classify the discontinuity of $f(x) = x \cdot D(x)$ at $x = 0$. (This is a trick question — think carefully.)
 
-**B. The Ruler Function (Thomae's function)**
+### B. The Ruler Function (Thomae's function)
 
 Define $R: [0,1] \to \RR$ by:
 $$R(x) = \begin{cases} 1/q & \text{if } x = p/q \text{ in lowest terms, } q \geq 1 \\ 0 & \text{if } x \notin \QQ \end{cases}$$

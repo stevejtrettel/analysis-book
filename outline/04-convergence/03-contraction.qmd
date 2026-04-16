@@ -21,7 +21,7 @@
 - Key observation: both functions "squeeze" points closer together
 - If $f$ shrinks distances by a factor $c < 1$, iterates must converge
 
-**Contraction Mappings**
+### Contraction Mappings
 - Definition: Let $I = [a, b]$ be a closed interval. A function $f: I \to I$ is a *contraction* (on $I$) if there exists $c \in (0, 1)$ such that for all $x, y \in I$:
 $$|f(x) - f(y)| \leq c|x - y|$$
 - The constant $c$ is called the *contraction constant*
@@ -30,7 +30,7 @@ $$|f(x) - f(y)| \leq c|x - y|$$
 - Example: $f(x) = x^2$ on $[0, 1/2]$ is a contraction (check: $|x^2 - y^2| = |x+y||x-y| \leq 1 \cdot |x-y|$... actually need $|x+y| < 1$, so on $[0, 1/2]$ we get $c = 1$, not a contraction. On $[0, 1/3]$: $|x+y| \leq 2/3$, so $c = 2/3$ works.)
 - ✎ Inline: Verify $f(x) = x/3 + 1$ is a contraction on $[1, 2]$ and find $c$
 
-**Fixed Point Theorem**
+### Fixed Point Theorem
 - Definition: $L$ is a *fixed point* of $f$ if $f(L) = L$
 - Theorem (Contraction Mapping Theorem): Let $f: [a,b] \to [a,b]$ be a contraction with constant $c < 1$. Then:
   1. $f$ has exactly one fixed point $L \in [a, b]$
@@ -58,7 +58,7 @@ $$|f(x) - f(y)| \leq c|x - y|$$
 - Remark: the proof uses completeness (Cauchy sequences converge) — this fails in $\QQ$
 - ✎ Inline: Where exactly does the proof fail if $c = 1$?
 
-**Convergence Rates**
+### Convergence Rates
 - The proof gives an explicit error bound
 - Theorem: With notation as above, $|a_n - L| \leq \frac{c^{n-1}}{1-c}|a_2 - a_1|$
 - Proof: $|a_n - L| = \lim_{m \to \infty} |a_n - a_m| \leq \frac{c^{n-1}}{1-c}|a_2 - a_1|$
@@ -78,7 +78,7 @@ $$|f(x) - f(y)| \leq c|x - y|$$
   - But actually Babylonian converges much faster — it has "quadratic" convergence (error squares each step), which our linear contraction bound doesn't capture
 - Remark: some iterations converge faster than the contraction bound suggests; the bound is a worst-case guarantee
 
-**The Golden Ratio**
+### The Golden Ratio
 - Consider the iteration $x_{n+1} = 1 + 1/x_n$
 - Fixed point equation: $x = 1 + 1/x$, i.e., $x^2 - x - 1 = 0$
 - Solutions: $x = (1 \pm \sqrt{5})/2$
@@ -98,7 +98,7 @@ $$|f(x) - f(y)| \leq c|x - y|$$
 
 ### Guided Exercises
 
-**Newton's Method for Cube Roots**
+### Newton's Method for Cube Roots
 
 The iteration $x_{n+1} = \frac{1}{3}\left(2x_n + \frac{A}{x_n^2}\right)$ converges to $\sqrt[3]{A}$.
 

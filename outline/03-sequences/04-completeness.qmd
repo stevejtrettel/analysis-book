@@ -11,7 +11,7 @@
 
 ### Content
 
-**The Five Characterizations**
+### The Five Characterizations
 - We've encountered completeness in five forms:
   1. **LUB (Least Upper Bound)**: Every nonempty set bounded above has a supremum (§1.4 — our axiom)
   2. **MCT (Monotone Convergence)**: Every monotone bounded sequence converges (§2.4)
@@ -21,7 +21,7 @@
 - Theorem: For an ordered field, these five properties are equivalent
 - Remark: $\QQ$ satisfies none of them; $\RR$ satisfies all of them
 
-**The Equivalence Cycle**
+### The Equivalence Cycle
 - We prove the equivalences by tracing a cycle: LUB ⟹ MCT ⟹ NI ⟹ BW ⟹ Cauchy ⟹ LUB
 - Most implications we've already proved; we recall them and complete the cycle
 
@@ -59,7 +59,7 @@
   - $L$ is the least upper bound: any $M < L$ satisfies $M < a_n$ for large $n$, and $a_n \in S$, so $M$ is not an upper bound
 - ✎ Inline: Where does this construction fail in $\QQ$?
 
-**Significance**
+### Significance
 - The five characterizations are logically equivalent — any one implies all others
 - Completeness is a single deep property wearing different masks
 - Different faces are useful in different contexts:

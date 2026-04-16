@@ -10,7 +10,7 @@
 
 ### Content
 
-**The Axioms**
+### The Axioms
 - Motivation: what properties should an integral have? We don't ask what it *is* — we ask how it must *behave*
 - Definition: An *integral* on [a,b] is an assignment ∫_{[a,b]} f ∈ ℝ for certain bounded functions f, satisfying:
   - (I1) Rectangles: ∫_{[a,b]} c = c(b−a) for any constant c
@@ -22,7 +22,7 @@
 - ✎ Inline: If f is integrable on [0,1] with 2 ≤ f ≤ 5, what bounds can you give on ∫_{[0,1]} f?
 - Definition (Improper integrals): If f is integrable on [a,c] for every c ∈ (a,b), define ∫_{[a,b)} f = lim_{c→b⁻} ∫_{[a,c]} f when the limit exists. Similarly ∫_{(a,b]} f = lim_{c→a⁺} ∫_{[c,b]} f. For unbounded domains: ∫_{[a,∞)} f = lim_{b→∞} ∫_{[a,b]} f.
 
-**The Trapping Theorem**
+### The Trapping Theorem
 - Idea: the bounds theorem uses one rectangle — what if we use many?
 - Definition: A *partition* of [a,b] is a finite set P = {x₀, x₁, ..., xₙ} with a = x₀ < x₁ < ⋯ < xₙ = b
 - Definition: For a bounded function f on [a,b] and a partition P, define mᵢ = inf f on [xᵢ₋₁, xᵢ], Mᵢ = sup f on [xᵢ₋₁, xᵢ], and:
@@ -35,7 +35,7 @@
 - Observation: if sup_P L(f, P) = inf_P U(f, P), then there is exactly one value the integral can take — the value is forced
 - ✎ Inline: Compute L(f, P) and U(f, P) for f(x) = x on [0,1] with the partition P = {0, 1/2, 1}
 
-**Integrating Continuous Functions**
+### Integrating Continuous Functions
 - Question: for which functions does sup L = inf U?
 - Theorem: If f is continuous on [a,b], then sup_P L(f, P) = inf_P U(f, P). Consequently, any integral satisfying the axioms assigns the same value to f.
 - Proof: f continuous on [a,b] (compact) ⟹ uniformly continuous. Given ε > 0, choose δ so |x − y| < δ ⟹ |f(x) − f(y)| < ε/(b−a). Take any partition with subintervals of length < δ. On each subinterval, Mᵢ − mᵢ < ε/(b−a). Then U − L = Σ(Mᵢ − mᵢ)(xᵢ − xᵢ₋₁) < ε. Since ε arbitrary, sup L = inf U.

@@ -10,7 +10,7 @@
 
 ### Content
 
-**Double Sequences**
+### Double Sequences
 - Definition: A *double sequence* is a function $a: \mathbb{N} \times \mathbb{N} \to \mathbb{R}$, written $a_{mn}$ or $(a_{mn})_{m,n=1}^{\infty}$
 - Think of it as an infinite matrix of real numbers
 - Examples:
@@ -19,7 +19,7 @@
   - $a_{mn} = \frac{mn}{m^2 + n^2}$
   - $a_{mn} = (1 + 1/m)^n$
 
-**Iterated Limits**
+### Iterated Limits
 - For a double sequence, we can take limits in two different orders
 - Definition: The *iterated limit* $\lim_{m \to \infty} \lim_{n \to \infty} a_{mn}$ means: first take $\lim_{n \to \infty} a_{mn}$ (for each fixed $m$), then take $\lim_{m \to \infty}$ of the result
 - Similarly for $\lim_{n \to \infty} \lim_{m \to \infty} a_{mn}$
@@ -50,7 +50,7 @@
 
 - Remark: When iterated limits differ, there is no hope for a "double limit" to exist
 
-**The Double Limit**
+### The Double Limit
 - Definition: We say $\lim_{m,n \to \infty} a_{mn} = L$ if: for every $\varepsilon > 0$, there exists $N$ such that $m, n > N \Rightarrow |a_{mn} - L| < \varepsilon$
 - This is stronger than iterated limits: both indices must be large simultaneously
 - Theorem: If $\lim_{m,n \to \infty} a_{mn} = L$ exists, and both iterated limits exist, then:
@@ -77,7 +77,7 @@
 
 ### Guided Exercise
 
-**Paths to Infinity**
+### Paths to Infinity
 
 The double sequence $a_{mn} = \frac{mn}{m^2 + n^2}$ appeared in the text as an example where both iterated limits exist and agree, yet the double limit fails to exist. This exercise explores what goes wrong — and how rich the pathological behavior is.
 

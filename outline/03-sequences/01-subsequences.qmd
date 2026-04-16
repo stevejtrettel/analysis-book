@@ -12,7 +12,7 @@
 
 ### Content
 
-**Subsequences**
+### Subsequences
 - Motivation: $(-1)^n$ is bounded but doesn't converge — it oscillates between regions
 - Idea: examine parts of a sequence by selecting terms along an increasing index sequence
 - Definition: a subsequence of $(a_n)$ is a sequence $(a_{n_k})$ where $n_1 < n_2 < n_3 < \cdots$
@@ -26,7 +26,7 @@
 - Lemma: if $(n_k)$ is strictly increasing in $\NN$, then $n_k \geq k$ for all $k$ (quick induction)
 - ✎ Inline: For $a_n = (-1)^n$, write out the first few terms of the even-indexed and odd-indexed subsequences
 
-**Subsequences and Convergence**
+### Subsequences and Convergence
 - Theorem: If $a_n \to L$, then every subsequence $(a_{n_k}) \to L$ (prove in text)
 - Proof idea: given $\varepsilon$, get $N$ for original sequence; since $n_k \geq k$, we have $n_k > N$ for $k > N$
 - Theorem: If $(a_n)$ is the union of finitely many subsequences, each converging to $L$, then $a_n \to L$ (prove in text)
@@ -36,7 +36,7 @@
 - ✎ Inline: Prove $a_n = \sin(n\pi/2)$ diverges by finding subsequences with different limits
 - Remark: this is cleaner than the direct $\varepsilon$-$N$ proof from §2.2
 
-**Bolzano-Weierstrass**
+### Bolzano-Weierstrass
 - Question: for a bounded sequence, can we always find *some* convergent subsequence?
 - Theorem (Bolzano-Weierstrass): Every bounded sequence has a convergent subsequence
 - Proof via bisection (prove in text):

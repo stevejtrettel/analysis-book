@@ -6,7 +6,7 @@ This section establishes the language and rules for the course. Students should 
 
 ### Content
 
-**Logic and Sets**
+### Logic and Sets
 - Notation: $\forall$ (for all), $\exists$ (there exists), $\Rightarrow$ (implies), $\Leftrightarrow$ (iff), $\neg$ (not)
 - Negation: $\neg(\forall x: P(x))$ is $\exists x: \neg P(x)$; $\neg(\exists x: P(x))$ is $\forall x: \neg P(x)$
 - Remark: comfort with quantifiers is essential for $\varepsilon$-$N$ arguments
@@ -20,7 +20,7 @@ This section establishes the language and rules for the course. Students should 
 - Well-ordering: every nonempty subset of $\NN$ has a least element
 - Remark: induction, strong induction, and well-ordering are equivalent
 
-**Functions and Cardinality**
+### Functions and Cardinality
 - Definition: $f: A \to B$ assigns to each $a \in A$ exactly one $f(a) \in B$
 - Remark: functions are assignments, not formulas
 - Injective: $f(x_1) = f(x_2) \Rightarrow x_1 = x_2$
@@ -34,7 +34,7 @@ This section establishes the language and rules for the course. Students should 
 - Theorem: finite product of countable sets is countable
 - Theorem: countable union of countable sets is countable
 
-**Fields**
+### Fields
 - Definition: a field $(F, +, \cdot)$ satisfies:
   - $(F, +)$: associative, commutative, identity $0$, inverses $-a$
   - $(F \setminus \{0\}, \cdot)$: associative, commutative, identity $1$, inverses $a^{-1}$
@@ -48,7 +48,7 @@ This section establishes the language and rules for the course. Students should 
 - ✎ Inline: Prove $(-a)(-b) = ab$
 - ✎ Inline: Prove $2 + 2 = 4$ from the axioms
 
-**Order**
+### Order
 - Definition: a total order $<$ on a set $S$ satisfies:
   - Transitivity: $a < b$ and $b < c \Rightarrow a < c$
   - Trichotomy: exactly one of $a < b$, $a = b$, $a > b$ holds
@@ -63,7 +63,7 @@ This section establishes the language and rules for the course. Students should 
 - ✎ Inline: Prove $a < b$ and $c < 0 \Rightarrow ac > bc$
 - Remark (positivity): equivalently, define ordered field via a set $P$ of positive elements satisfying $a, b \in P \Rightarrow a + b, ab \in P$ and trichotomy ($a \in P$, $a = 0$, or $-a \in P$). Then $a < b \Leftrightarrow b - a \in P$.
 
-**Absolute Value and Intervals**
+### Absolute Value and Intervals
 - Definition: $|a| = a$ if $a \geq 0$, $|a| = -a$ if $a < 0$
 - Properties: $|a| \geq 0$; $|a| = 0$ iff $a = 0$; $|ab| = |a||b|$
 - Theorem (Triangle Inequality): $|a + b| \leq |a| + |b|$
@@ -72,7 +72,7 @@ This section establishes the language and rules for the course. Students should 
 - Intervals: $(a, b)$, $[a, b]$, $[a, b)$, $(a, b]$; unbounded: $[a, \infty)$, $(-\infty, b]$, etc.
 - Notation: $\infty$, $-\infty$ are symbols, not numbers
 
-**Algebraic Tools**
+### Algebraic Tools
 - Powers: $a^n = a \cdot a \cdots a$ ($n$ times); $a^0 = 1$; $a^{-n} = 1/a^n$
 - Laws: $a^{m+n} = a^m a^n$, $(a^m)^n = a^{mn}$, $(ab)^n = a^n b^n$
 - Notation: $\sqrt[n]{a}$ denotes $b$ with $b^n = a$ (when such $b$ exists)
@@ -87,7 +87,7 @@ This section establishes the language and rules for the course. Students should 
 
 ### Guided Exercise
 
-**Base-$b$ Representation of Integers**
+### Base-$b$ Representation of Integers
 
 (a) Show: for any $n \in \NN$ and $b \geq 2$, there exist unique digits $d_0, \ldots, d_k$ with $0 \leq d_i < b$, $d_k \neq 0$, such that $n = \sum_{i=0}^{k} d_i b^i$.
 

@@ -12,7 +12,7 @@
 
 ### Content
 
-**The Intermediate Value Theorem**
+### The Intermediate Value Theorem
 - Motivating question: if $f$ is continuous on $[a,b]$ with $f(a) < 0$ and $f(b) > 0$, must $f$ have a zero somewhere in between?
 - For polynomials this feels obvious — the graph can't "jump" over the axis
 - But we've seen that general functions CAN jump (step functions, Dirichlet). The hypothesis doing the work is continuity.
@@ -38,7 +38,7 @@
   - By IVT, $p$ takes the value $0$
 - ✎ Inline: Use IVT to prove $x^3 + x = 1$ has exactly one solution in $(0, 1)$ (existence via IVT; uniqueness because $x^3 + x$ is strictly increasing)
 
-**Boundedness and Extreme Values**
+### Boundedness and Extreme Values
 - Can a continuous function on $[a,b]$ be unbounded? On an open interval it can: $f(x) = 1/x$ on $(0,1)$
 - But on a *closed bounded* interval, continuity forces boundedness
 - Theorem (Boundedness): If $f$ is continuous on $[a,b]$, then $f$ is bounded on $[a,b]$
@@ -58,7 +58,7 @@
   - EVT gives $m$ and $M$ are attained; IVT fills in everything between.
   - This is the unification: the continuous image of a closed bounded interval is a closed bounded interval.
 
-**Monotone Functions and Inverses**
+### Monotone Functions and Inverses
 - Setup: we want to define functions like $\log$, $\arcsin$, $\arctan$ as inverses of continuous functions in Chapter 9. When is the inverse continuous?
 - Definition: $f$ is *increasing* on $S$ if $x < y \Rightarrow f(x) \leq f(y)$; *strictly increasing* if $x < y \Rightarrow f(x) < f(y)$. Similarly for decreasing. *Strictly monotone* means strictly increasing or strictly decreasing.
 - Proposition: Strictly monotone $\Rightarrow$ injective (one-to-one)
@@ -79,7 +79,7 @@
 
 ### Guided Exercise
 
-**The Bisection Method**
+### The Bisection Method
 
 The IVT proof shows a zero exists but doesn't tell us how to find it. The bisection method is an algorithm that does.
 
