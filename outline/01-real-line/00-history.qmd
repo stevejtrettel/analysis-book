@@ -1,4 +1,4 @@
-### Chapter 1 Historical Introduction: The Long Quest for the Continuum
+## Chapter 1 Historical Introduction: The Long Quest for the Continuum
 
 **The first crisis: √2**
 - Pythagoreans (~500 BCE): discovered the diagonal of a unit square is incommensurable with the side

@@ -1,4 +1,4 @@
-### Chapter 7 Historical Introduction: The Invention of Calculus
+## Chapter 7 Historical Introduction: The Invention of Calculus
 
 **Ancient tangent lines**
 - Apollonius (~200 BCE): tangent lines to conic sections, purely geometric constructions

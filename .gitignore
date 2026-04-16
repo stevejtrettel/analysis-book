@@ -3,10 +3,14 @@
 /_book/
 /.quarto/
 *_files/
+/site_libs/
 
 # Rendered outputs
 *.pdf
 *.epub
+
+# Intermediate LaTeX
+Reaching-for-Infinity.tex
 
 # LaTeX auxiliary files
 *.aux

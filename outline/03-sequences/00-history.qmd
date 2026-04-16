@@ -1,4 +1,4 @@
-### Chapter 3 Introduction: What Completeness Forces
+## Chapter 3 Introduction: What Completeness Forces
 
 **The question**
 - Chapter 2 gave us the Monotone Convergence Theorem: monotone + bounded ⟹ convergent

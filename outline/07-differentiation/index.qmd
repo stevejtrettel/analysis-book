@@ -1,0 +1,14 @@
+# Differentiation
+
+{{< include 00-history.qmd >}}
+
+{{< include 01-rules.qmd >}}
+
+{{< include 02-mvt.qmd >}}
+
+{{< include 03-power-series.qmd >}}
+
+{{< include 04-exp.qmd >}}
+
+{{< include 05-newton.qmd >}}
+

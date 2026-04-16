@@ -1,3 +1,4 @@
+## Chapter 2 Historical Introduction: The Road to Rigor
 
 **Limits before the definition**
 - Mathematicians across cultures computed limits long before anyone defined them

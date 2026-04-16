@@ -1,4 +1,4 @@
-### Chapter 6 Introduction: Which Functions Are Well-Behaved?
+## Chapter 6 Introduction: Which Functions Are Well-Behaved?
 
 **The problem**
 - The Part II introduction opened the zoo: once "function" means *any* rule assigning values, most functions are monsters

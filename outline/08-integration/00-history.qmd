@@ -1,4 +1,4 @@
-### Chapter 8 Historical Introduction: Integration Before Calculus
+## Chapter 8 Historical Introduction: Integration Before Calculus
 
 **The method of exhaustion**
 - What is the area under a curve? The length of a curved line? These questions are ancient

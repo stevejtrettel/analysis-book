@@ -1,4 +1,4 @@
-### Chapter 5 Introduction: When Order Matters
+## Chapter 5 Introduction: When Order Matters
 
 **The question**
 - Finite sums commute: $a + b + c = c + a + b$ regardless of order

@@ -10,20 +10,20 @@ book:
   chapters:
     - index.qmd
     
-    - part: "Numbers"
+    - part: outline/part1.qmd
       chapters:
-        - chapters/01-real-line/index.qmd
-        - chapters/02-limits/index.qmd
-        - chapters/03-sequences/index.qmd
-        - chapters/04-convergence/index.qmd
-        - chapters/05-exchanging-limits/index.qmd
-        
-    - part: "Functions"
+        - outline/01-real-line/index.qmd
+        - outline/02-limits/index.qmd
+        - outline/03-sequences/index.qmd
+        - outline/04-convergence/index.qmd
+        - outline/05-exchanging-limits/index.qmd
+
+    - part: outline/part2.qmd
       chapters:
-        - chapters/06-continuity/index.qmd
-        - chapters/07-differentiation/index.qmd
-        - chapters/08-integration/index.qmd
-        - chapters/09-calculus/index.qmd
+        - outline/06-continuity/index.qmd
+        - outline/07-differentiation/index.qmd
+        - outline/08-integration/index.qmd
+        - outline/09-calculus/index.qmd
         - chapters/10-extending-integral/index.qmd
 
     - part: "Function Space"

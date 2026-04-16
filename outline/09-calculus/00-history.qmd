@@ -1,4 +1,4 @@
-### Chapter 9 Historical Introduction: The Fundamental Theorem
+## Chapter 9 Historical Introduction: The Fundamental Theorem
 
 **The missing link**
 - By the 1650s, mathematicians could differentiate (Fermat's tangent lines, Chapter 7) and integrate (Cavalieri's areas, Fermat's power sums, Chapter 8) — but these were separate subjects
