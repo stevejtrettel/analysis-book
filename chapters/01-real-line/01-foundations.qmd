@@ -6,11 +6,15 @@ What haopens if my section starts with some text
 
 ### Logic and Sets
 
+text
+
 And then so does my subsection
 
 
 
 ### Functions and Cardinality
+
+text
 
 And the one after that
 
@@ -19,17 +23,24 @@ And the one after that
 
 ### Fields
 
+text
 
 ### Orders
 
+text
 
 ### Absolute Value and Intervals
 
+text
 
 ### Algebraic Tools
 
+text
 
 ### $\bigstar$ Base-b representation of Integers
 
+text
 
 ### Exercises
+
+text

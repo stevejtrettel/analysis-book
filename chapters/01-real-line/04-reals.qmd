@@ -1,16 +1,31 @@
 ## The Real Numbers
 
+text
+
 ### The Definition of $\RR$
+
+text
 
 ### No Monsters (The Archimedean Property)
 
+text
+
 ### Density
+
+text
 
 ### Roots
 
+text
+
 ### Infinite Riches (Uncountability)
+
+text
 
 ### $\bigstar$ Exponents and Logarithms
 
+text
 
 ### Exercises
+
+text

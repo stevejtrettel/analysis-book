@@ -1,18 +1,26 @@
 ## Monotone Convergence
 
+text
 
 ### The Key Insight
 
+text
 
 ### The Monotone Convergence Theorem
 
+text
+
 ### Applications
+
+text
 
 - A nested root?
 - Babylonian Sequence, again!
 
-
 ### $\bigstar$ The Number $e$
 
+text
 
 ### Exercises
+
+text

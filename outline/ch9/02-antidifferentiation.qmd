@@ -1,0 +1,107 @@
+## §9.2 Antidifferentiation
+
+### Narrative
+
+- FTC II turns integration into a search for antiderivatives — but how do we find them?
+- Each technique reverses a differentiation rule: linearity reverses linearity, substitution reverses the chain rule, parts reverses the product rule
+- For power series, term-by-term integration completes a trilogy running through ch6–ch7–ch9
+- Taylor's integral remainder connects back to ch7 and demystifies the Lagrange form
+- The section closes with a payoff: the integral formula for log, giving a concrete formula for a function we previously only knew abstractly
+
+### Content
+
+**Term-by-Term Integration**
+- Corollary (Linearity): ∫ₐᵇ (αf + βg) = α ∫ₐᵇ f + β ∫ₐᵇ g
+- Proof: If F' = f and G' = g, then (αF + βG)' = αf + βg. Apply FTC II.
+- Theorem (Power Series III): If f(x) = Σ aₙxⁿ has radius of convergence R, then for |x| < R:
+  ∫₀ˣ f(t) dt = Σ aₙxⁿ⁺¹/(n+1)
+  and this series also has radius R.
+- Proof: Define G(x) = Σ aₙxⁿ⁺¹/(n+1). Same radius of convergence (ratio test). By Power Series II (§7.3), G'(x) = Σ aₙxⁿ = f(x). By FTC II, ∫₀ˣ f = G(x) − G(0) = G(x).
+- Remark: The Power Series Trilogy — I: continuous (§6.3), II: differentiable term-by-term (§7.3), III: integrable term-by-term (§9.2). Power series behave perfectly under all basic operations of calculus.
+- ✎ Inline: integrate the geometric series 1/(1−x) = Σxⁿ term-by-term to obtain −log(1−x) = Σ xⁿ⁺¹/(n+1)
+
+**Integration by Substitution**
+- Theorem: If g is differentiable with continuous derivative and f is continuous, then ∫ₐᵇ f(g(x)) g'(x) dx = ∫_{g(a)}^{g(b)} f(u) du
+- Proof: Let F be an antiderivative of f (exists by FTC I). By the chain rule, (F ∘ g)' = (f ∘ g) · g'. Apply FTC II to both sides.
+- Remark: substitution is the chain rule in reverse
+- Example: ∫₀¹ x · eˣ² dx. Let u = x², du = 2x dx. Then ∫₀¹ x · eˣ² dx = ½ ∫₀¹ eᵘ du = ½(e − 1).
+- Example: ∫₀¹ x²√(1 − x³) dx. Let u = 1 − x³, du = −3x² dx. Then ∫₀¹ x²√(1−x³) dx = −⅓ ∫₁⁰ √u du = ⅓ ∫₀¹ u^{1/2} du = ⅓ · ⅔ = 2/9.
+- Example: ∫₁ᵉ log(t)/t dt. Let u = log(t), du = dt/t. Then ∫₁ᵉ log(t)/t dt = ∫₀¹ u du = 1/2.
+- ✎ Inline: compute ∫₀¹ x/(1+x²)² dx by substitution
+
+**Integration by Parts**
+- Theorem: ∫ₐᵇ f · g' = fg|ₐᵇ − ∫ₐᵇ f' · g
+- Proof: By the product rule, (fg)' = f'g + fg'. Rearrange: fg' = (fg)' − f'g. Integrate both sides and apply FTC II.
+- Remark: integration by parts is the product rule in reverse
+- Example: ∫₀¹ x · eˣ dx. Let f(x) = x, g'(x) = eˣ, so f'(x) = 1, g(x) = eˣ. Then ∫₀¹ x eˣ dx = xeˣ|₀¹ − ∫₀¹ eˣ dx = e − (e − 1) = 1.
+- Example: ∫₀¹ x² · eˣ dx. Apply IBP twice: let f = x², g' = eˣ first, then f = 2x, g' = eˣ. Result: e − 2.
+- ✎ Inline: derive a reduction formula for ∫ xⁿ eˣ dx
+
+**Taylor's Theorem with Integral Remainder**
+- Theorem: If f has n+1 continuous derivatives on an interval containing a, then:
+  f(x) = Σₖ₌₀ⁿ f⁽ᵏ⁾(a)(x−a)ᵏ/k! + (1/n!) ∫ₐˣ (x−t)ⁿ f⁽ⁿ⁺¹⁾(t) dt
+- Proof: Start from FTC II: f(x) = f(a) + ∫ₐˣ f'(t) dt. Apply IBP with u = f'(t), dv = dt written as d(t−x), to get f(a) + f'(a)(x−a) + ∫ₐˣ (x−t) f''(t) dt. Continue inductively.
+- Connection to Lagrange form: applying MVT for integrals to the integral remainder gives (1/n!) ∫ₐˣ (x−t)ⁿ f⁽ⁿ⁺¹⁾(t) dt = f⁽ⁿ⁺¹⁾(c)/(n+1)! · (x−a)ⁿ⁺¹ for some c between a and x. This is the Lagrange remainder from §7.3 — the mystery point c is demystified.
+- Remark: the integral form is often more useful for estimates since it avoids the unknown c
+- ✎ Inline: write out the integral remainder for eˣ at a = 0 and verify it matches the Lagrange remainder
+
+**The Integral Formula for log**
+- Theorem: log(x) = ∫₁ˣ 1/t dt for all x > 0
+- Proof: We know log'(x) = 1/x (§7.4) and log(1) = 0. By FTC II, ∫₁ˣ 1/t dt = log(t)|₁ˣ = log(x) − log(1) = log(x).
+- Remark: this gives a concrete computational formula for log — previously we could only evaluate it via the Taylor series (§7.4 exercises). Now we also have an integral representation.
+- Example: ∫₁ᵉ 1/t dt = log(e) = 1
+- Example: ∫₁ᵉ log(x) dx. IBP with f = log(x), g' = 1: result is 1.
+- ✎ Inline: compute ∫ log(x) dx by parts (find the antiderivative)
+
+### Guided Exercises
+
+**Integration Discovers the Logarithm**
+
+Forget everything you know about log. Start from scratch with integration alone.
+
+(a) Define L(x) = ∫₁ˣ 1/t dt for x > 0. Explain why L is well-defined for all x > 0 (including x < 1).
+
+(b) Compute L'(x) directly from FTC I. Conclude L is strictly increasing.
+
+(c) Prove L(xy) = L(x) + L(y) for all x, y > 0. (Hint: write L(xy) = ∫₁ˣ 1/t dt + ∫ₓˣʸ 1/t dt, then substitute u = t/x in the second integral.)
+
+(d) Prove L(1) = 0 and L(1/x) = −L(x).
+
+(e) Prove L(xⁿ) = nL(x) for n ∈ ℤ.
+
+(f) A function satisfying f(xy) = f(x) + f(y), f continuous and nonconstant, is called a *logarithm*. You have just proved L is a logarithm, using nothing but FTC and substitution.
+
+(g) Identify L: its inverse E = L⁻¹ satisfies E'(y) = E(y) (by the inverse function derivative and L'(x) = 1/x). From §7.4, the unique such function with E(0) = 1 is exp. Since L(1) = 0, we have E(0) = 1. Therefore L = log.
+
+(h) Reflect: two completely independent paths — one through differentiation (§7.4), one through integration (here) — construct the same function. The Fundamental Theorem guarantees they must agree.
+
+### Exercises
+
+*Substitution*
+- Compute ∫₀¹ x³ eˣ⁴ dx
+- Compute ∫₀¹ x(1 + x²)⁵ dx
+- Compute ∫₀¹ x² / (1 + x³)² dx
+- Compute ∫₁ᵉ² 1/(t√(log t)) dt
+
+*Integration by parts*
+- Compute ∫₀¹ x³ eˣ dx
+- Prove the reduction formula: ∫₀¹ xⁿ eˣ dx = e − n ∫₀¹ xⁿ⁻¹ eˣ dx
+- Use the reduction formula to evaluate ∫₀¹ x⁴ eˣ dx
+
+*Taylor remainder*
+- Use the integral remainder to bound |eˣ − Σₖ₌₀ⁿ xᵏ/k!| on [0, 1]
+- Use the integral remainder to prove eˣ = Σ xⁿ/n! for all x (reprove via integral form)
+
+*Logarithm*
+- Compute ∫₁ᵉ² 1/t dt
+- Compute ∫₁ᵉ (log x)² dx using IBP
+- Prove Σ 1/n diverges by comparing to ∫₁ⁿ 1/t dt = log(n) (integral test preview)
+- AM-GM from Jensen: derive the AM-GM inequality by applying Jensen's inequality (§7.2 exercises) to f(x) = −log(x)
+
+*After §9.4*: additional substitution and IBP exercises involving trig functions appear in §9.4 exercises.
+
+### Dependencies
+
+**Requires**: §7.1 (chain rule, product rule), §7.3 (Power Series II, Taylor's theorem with Lagrange remainder), §7.4 (log and its derivative), §9.1 (FTC I and II)
+
+**Used in**: §9.3 (ODE solutions via integration), §9.4 (trig via integrals), §9.5 (π computations)

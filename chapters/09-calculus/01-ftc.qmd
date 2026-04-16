@@ -1,34 +1,23 @@
 ## The Fundamental Theorem
 
+text
 
-**Signed Integrals**
+### The Integral Function
 
-- Convention: ∫ᵇₐ f = −∫ₐᵇ f for a < b
-- Makes FTC statements cleaner, allows variable endpoint to move either direction
+text
 
-**MVT for Integrals (MAYBE MOVE TO 8.1?)**
+### Properties of the Integral Function
 
-- Theorem: f continuous on [a,b] ⟹ ∃c ∈ (a,b) with ∫ₐᵇ f = f(c)(b−a)
-- Interpretation: integral = average value × length
+text
 
-**Continuity of F**: F(x) = ∫ₐˣ f is continuous
-  - Proof from additivity + bounds
+### The Fundamental Theorem, Part I
 
+text
 
+### The Fundamental Theorem, Part II
 
-**FTC I**
+text
 
-- Theorem: f continuous, F(x) = ∫ₐˣ f(t) dt ⟹ F'(x) = f(x)
-- Interpretation: differentiation undoes integration
-- Corollary: Every continuous function has an antiderivative
+### Exercises
 
-**FTC II**
-
-- Theorem: F' = f on [a,b] ⟹ ∫ₐᵇ f = F(b) − F(a)
-- Notation: F(x)|ₐᵇ = F(b) − F(a)
-- **Callback**: Explains Ch 8 observation that ∫₀¹ eˣ = e − 1 = e¹ − e⁰
-
-**Linearity**
-
-- Corollary: ∫(αf + βg) = α∫f + β∫g
-- Proof via FTC II from linearity of differentiation
+text

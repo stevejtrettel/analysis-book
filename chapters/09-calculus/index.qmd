@@ -8,8 +8,6 @@
 
 {{< include 03-odes.qmd >}}
 
-{{< include 04-log.qmd >}}
+{{< include 04-trig.qmd >}}
 
-{{< include 05-trig.qmd >}}
-
-{{< include 06-pi.qmd >}}
+{{< include 05-pi.qmd >}}

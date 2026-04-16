@@ -1,17 +1,31 @@
 ## Geometry Reborn
 
+text
 
 ### The Plane
 
+text
 
 ### Measuring Sets
 
+text
+
 ### Measuring Curves
+
+text
 
 ### Measuring Regions
 
+text
+
 ### Trigonometry
+
+text
 
 ### $\bigstar$ Trigonometric Identities
 
+text
+
 ### Exercises
+
+text

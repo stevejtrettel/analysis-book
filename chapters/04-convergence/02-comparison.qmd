@@ -1,11 +1,23 @@
 ## Comparison
 
+text
+
 ### Comparison Tests
+
+text
 
 ### Absolute Convergence
 
+text
+
 ### Comparison with Geometric Series
+
+text
 
 ### Comparison for Products
 
+text
+
 ### Exercises
+
+text

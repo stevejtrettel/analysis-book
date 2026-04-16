@@ -1,23 +1,31 @@
 ## Limit Laws
 
+text
+
 ### Limits Respect Order
 
-
+text
 
 ### Limits Respect Algebra
 
-
+text
 
 ### Applications
 
+text
 
 ### Density and Approximation
 
+text
 
 ### The Limits of Limit Laws
 
+text
 
 ### $\bigstar$ The Koch Snowflake
 
+text
 
 ### Exercises
+
+text

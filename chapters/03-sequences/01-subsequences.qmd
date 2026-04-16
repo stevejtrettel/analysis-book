@@ -1,8 +1,15 @@
 ## Subsequences
 
+text
 
 ### Convergence
 
+text
+
 ### Bolzano Weierstrass
 
+text
+
 ### Exercises
+
+text

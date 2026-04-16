@@ -5,14 +5,24 @@ Opening Motivation
 
 ### Bounds and the Supremum
 
+text
 
 ### The $\varepsilon$-Characterization
 
+text
+
 ### Working with Suprema
+
+text
 
 ### The Nested Interval Property
 
+text
+
 ### $\bigstar$ The Babylonian Square Root
 
+text
 
 ### Exercises
+
+text

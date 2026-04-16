@@ -1,10 +1,20 @@
 ## The Cauchy Condition
 
+text
+
 ### The Condition
+
+text
 
 ### Cauchy Implies Convergence
 
+text
+
 ### Significance
 
+text
+
 ### Exercises
+
+text
 

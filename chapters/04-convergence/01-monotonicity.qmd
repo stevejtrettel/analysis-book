@@ -4,8 +4,16 @@ The general strategy
 
 ### Alternating Series
 
+text
+
 ### Example: Continued Fraction for $\sqrt{2}$
+
+text
 
 ### Example: The Wallis Product
 
+text
+
 ### Exercises
+
+text

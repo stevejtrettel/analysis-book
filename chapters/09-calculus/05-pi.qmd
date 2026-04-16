@@ -1,0 +1,35 @@
+## Calculating π
+
+text
+
+### Newton's Method
+
+text
+
+### Inverse Trigonometric Functions
+
+text
+
+### The Gregory-Leibniz Series
+
+text
+
+### Machin-type Formulas
+
+text
+
+### The Wallis Product
+
+text
+
+### Euler's Formula
+
+text
+
+### GE: Stirling's Approximation
+
+text
+
+### Exercises
+
+text

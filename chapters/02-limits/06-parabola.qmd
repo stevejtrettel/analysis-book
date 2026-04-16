@@ -1,18 +1,35 @@
 ## $\bigstar$ Quadrature of the Parabola
 
+text
 
 ### The Setup
 
+text
+
 ### Geometric Facts
+
+text
 
 ### Inner Approximation
 
+text
+
 ### Outer Approximation
+
+text
 
 ### Putting it Together
 
+text
+
 ### $\bigstar$ The Geometry of Parabolas
+
+text
 
 ### $\bigstar$ Exhaustion by Rectangles
 
+text
+
 ### Exercises
+
+text

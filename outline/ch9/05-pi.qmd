@@ -1,0 +1,141 @@
+## §9.5 Calculating π *(Terminal)*
+
+### Narrative
+
+- Each subsection presents a different strategy for computing π, progressing in sophistication
+- Newton's method: fast convergence, but computationally circular (needs trig values to find π)
+- Inverse trig functions: π as an output rather than a zero — arcsin has irrational summands, arctan has rational ones
+- Gregory-Leibniz: power series for arctan, beautiful but slow
+- Machin-type formulas: arctan identities that accelerate convergence — the dominant method for 250 years
+- Wallis product: π from an infinite product, completely different from series
+- Historical thread woven throughout: Archimedes' polygons (§4.5/§8.3), Madhava/Gregory/Leibniz, Wallis, Machin, Euler, and remarks on what lies beyond (Ramanujan, Chudnovsky, AGM)
+
+### Content
+
+**Newton's Method**
+- We know cos(π/2) = 0, so π/2 is a root of cosine
+- Newton's method (§7.5): xₙ₊₁ = xₙ − cos(xₙ)/sin(xₙ), starting near π/2
+- Converges quadratically — digits double each iteration
+- Work through a few iterations explicitly (using Taylor polynomial approximations for sin and cos)
+- Problem: each step requires evaluating cos and sin at xₙ, which means computing Taylor series to high precision
+- Computationally expensive per step, and somewhat circular — we need trig values to find π
+- This motivates a different strategy: find a function that *outputs* π as a value, not one that has π as a zero
+- Historical remark: Newton himself computed π to 15 digits (1665), though using a different method (integrating a circular arc, not his own Newton's method)
+
+**Inverse Trigonometric Functions**
+- New strategy: we want f(something simple) = π
+- We already have: arcsin(1) = π/2 and arccos(0) = π/2
+- As integrals: π/2 = ∫₀¹ 1/√(1−t²) dt
+- Approximate via Riemann sums: Sₙ = (1/n) Σₖ₌₀ⁿ⁻¹ 1/√(1−(k/n)²)
+- Problem: each summand involves a square root — irrational, needs its own approximation
+- Worse: the integrand blows up at t = 1 (improper integral), so convergence of Riemann sums is slow
+- Can we do better? Arctangent: arctan(1) = π/4, and 1/(1+t²) is a *rational* function
+- Definition: arctan(x) = ∫₀ˣ 1/(1+t²) dt
+- Properties: arctan'(x) = 1/(1+x²) by FTC I, arctan(0) = 0, arctan is odd, arctan(x) → π/2 as x → ∞
+- Theorem: arctan(1) = π/4 (proof via substitution t = tan(u), or as inverse of tan on (−π/2, π/2))
+- So π/4 = ∫₀¹ 1/(1+t²) dt — a proper integral of a rational function
+- Riemann sums: Sₙ = (1/n) Σₖ₌₀ⁿ⁻¹ 1/(1+(k/n)²) — purely rational!
+- Compute explicit approximations: write out S₄, S₁₀, compare 4Sₙ to π
+- Convergence is O(1/n) — still slow, but each step is now elementary arithmetic
+- Historical remark: the connection between arctan and π was known to James Gregory (1670s) and independently to Madhava of Sangamagrama (~1400)
+
+**The Gregory-Leibniz Series**
+- The integrand 1/(1+t²) has a power series: 1/(1+t²) = 1 − t² + t⁴ − ⋯ for |t| < 1 (geometric series with r = −t²)
+- Integrate term-by-term (Power Series III): arctan(x) = x − x³/3 + x⁵/5 − ⋯ for |x| < 1
+- The series also has radius of convergence 1 (ratio test)
+- Abel's theorem (§6.3) extends to the boundary: the series converges at x = 1 (alternating series with terms → 0)
+- Theorem (Gregory-Leibniz): π/4 = 1 − 1/3 + 1/5 − 1/7 + ⋯
+- One of the most beautiful formulas in mathematics: π emerges from simple arithmetic of odd numbers
+- But terribly slow: alternating series error bound gives |π/4 − Sₙ| < 1/(2n+1), need ~500 terms for 2 decimal places
+- Compute partial sums explicitly and see the slow convergence
+- Historical remark: Madhava (~1400) discovered both the series and correction terms to accelerate it. Leibniz rediscovered the series in 1674.
+
+**Machin-type Formulas**
+- Gregory-Leibniz is slow because x = 1 is the boundary of the radius of convergence
+- Key idea: express π/4 using arctan of *small* arguments, where the series converges fast
+- Proposition: π/4 = arctan(1/2) + arctan(1/3)
+- Proof: tangent addition formula
+- The series for arctan(1/2) has terms decaying like (1/2)²ᵏ⁺¹, arctan(1/3) like (1/3)²ᵏ⁺¹ — much faster than 1/(2k+1)
+- Machin's formula (1706): π/4 = 4 arctan(1/5) − arctan(1/239)
+- Terms decay like (1/5)²ᵏ⁺¹ and (1/239)²ᵏ⁺¹ — extremely fast
+- Example: 9 terms give 15 digits
+- Machin computed 100 digits by hand
+- Historical remark: Machin-type formulas dominated π computation for 250 years. William Shanks used a variant to compute 707 digits by hand (1873), though the last ~180 were wrong (error discovered in 1944 by Ferguson using a desk calculator).
+- ✎ Inline: verify Machin's formula using tangent addition
+
+**The Wallis Product**
+- A completely different approach: π from an infinite product, not a series
+- Start from the reduction formula (§9.4 exercises): ∫₀^{π/2} sinⁿ(x) dx = ((n−1)/n) ∫₀^{π/2} sinⁿ⁻²(x) dx
+- Compute Iₙ = ∫₀^{π/2} sinⁿ(x) dx for even and odd n separately
+- I₂ₙ = (π/2) · (2n)!/(2²ⁿ(n!)²), I₂ₙ₊₁ = 2²ⁿ(n!)²/(2n+1)!
+- Since sinⁿ⁺¹ ≤ sinⁿ on [0, π/2]: I₂ₙ₊₁ ≤ I₂ₙ ≤ I₂ₙ₋₁
+- The ratio I₂ₙ₋₁/I₂ₙ₊₁ → 1, so I₂ₙ/I₂ₙ₊₁ → 1
+- Take the ratio and rearrange:
+- Theorem (Wallis, 1655): π/2 = ∏ₙ₌₁^∞ (2n)²/((2n−1)(2n+1)) = (2·2)/(1·3) · (4·4)/(3·5) · (6·6)/(5·7) · ⋯
+- Alternative derivation: if the Weierstrass product for sine is available (§9.4 guided exercise), set x = 1/2 in sin(πx)/(πx) = ∏(1 − x²/n²) and rearrange
+- Compute partial products for n = 1, 2, 3, 4, ... and observe convergence to π/2
+- Remark: converges slowly (like Gregory-Leibniz), but remarkable that π emerges from integer arithmetic alone
+- Historical remark: Wallis derived this in 1655 by a brilliant interpolation argument, before calculus was formalized. Our proof via integration is anachronistic but rigorous.
+- ✎ Inline: compute partial products for n = 1, 2, 3, 4 and compare to π/2
+
+**Euler's Formula** *(Placeholder)*
+- Theorem: Σ 1/n² = π²/6 (the Basel problem, solved by Euler in 1735)
+- Note: proof TBD. Can be derived from the Weierstrass product (§9.4 guided exercise) by expanding and matching x² coefficients, or proved independently via Fourier analysis (Chapter __). If an elementary proof is found that fits our technology, it goes here.
+- Historical remark: the problem was posed by Pietro Mengoli in 1650 and made famous by the Bernoulli family. Euler's solution, at age 28, made him famous across Europe.
+
+### Guided Exercises
+
+**Stirling's Approximation**
+
+*Goal:* Prove n! ~ √(2πn)(n/e)ⁿ
+
+**Part I: The unknown constant**
+
+(a) Compute ∫₁ⁿ log(t) dt = n log n − n + 1 using IBP (§9.2).
+
+(b) Since log(n!) = Σₖ₌₁ⁿ log(k), compare the sum to the integral. Show Σₖ₌₁ⁿ log(k) ≥ ∫₁ⁿ log(t) dt (since log is increasing, log(k) ≥ ∫ₖ₋₁ᵏ log(t) dt).
+
+(c) Get an upper bound using concavity of log: log(k) ≤ ∫ₖ₋₁/₂^{k+1/2} log(t) dt (midpoint rule overshoots for concave functions).
+
+(d) Define dₙ = log(n!) − (n + 1/2)log(n) + n. Show (dₙ) is monotone and bounded.
+
+(e) Conclude: dₙ → some constant γ, so n! ~ eᵞ · √n · (n/e)ⁿ. Call C = eᵞ — we know C > 0 but not its value.
+
+**Part II: Wallis identifies C**
+
+(f) Rewrite the Wallis product in factorial form: π/2 = lim (2ⁿn!)⁴ / ((2n)!² · (2n+1)).
+
+(g) Substitute n! ~ C√n(n/e)ⁿ and (2n)! ~ C√(2n)(2n/e)²ⁿ into the expression from (f).
+
+(h) Show everything cancels except C: the limit equals π/2 only if C² = 2π, so C = √(2π).
+
+(i) Conclude: n! ~ √(2πn)(n/e)ⁿ.
+
+### Exercises
+
+*Newton's method*
+- Carry out 4 iterations of Newton's method on cos(x) = 0, starting from x₀ = 1. Use Taylor polynomials of degree 10 for sin and cos to evaluate each step. How many digits of π/2 do you get?
+- ★ Implement the Newton's method computation (with Taylor polynomial evaluation) and compute π to 15 digits. How many iterations are needed? How does this compare to the number of Machin series terms needed for the same accuracy?
+
+*Riemann sums*
+- Compute 4·S₁₀ and 4·S₁₀₀ for the Riemann sum Sₙ = (1/n) Σₖ₌₀ⁿ⁻¹ 1/(1+(k/n)²). How many digits of π are correct?
+- The trapezoidal rule gives better approximations than left Riemann sums. Compute the trapezoidal approximation with n = 10 for ∫₀¹ 1/(1+t²) dt and compare.
+
+*Arctangent series*
+- Verify: arctan(1/2) + arctan(1/3) = π/4 using the tangent addition formula
+- Compute π using arctan(1/2) + arctan(1/3) with 5 terms of each series. How many digits are correct?
+- Verify Machin's formula: 4 arctan(1/5) − arctan(1/239) = π/4
+- ★ Compute π to 20 digits using Machin's formula. How many terms of each series are needed?
+
+*Wallis product*
+- Prove the Wallis product directly from the reduction formula without using the Weierstrass product
+- Compute the partial products P₁, P₂, ..., P₁₀ and compare to π/2. What is the error at P₁₀?
+
+*Beyond our tools*
+- Ramanujan's series (1914): 1/π = (√8/9801) Σₙ₌₀^∞ (4n)!(1103+26390n)/((n!)⁴ · 396⁴ⁿ). Each term gives ~8 new digits. Compute the first 2 terms and verify you get ~16 digits of 1/π. (No proof — the proof requires modular forms.)
+
+### Dependencies
+
+**Requires**: §7.5 (Newton's method), §8.3 (arc length, π from geometry), §9.1 (FTC), §9.2 (Power Series III, substitution, IBP), §9.4 (sin, cos, tan, arctan, reduction formula, Weierstrass product if available)
+
+**Used in**: None (terminal section)

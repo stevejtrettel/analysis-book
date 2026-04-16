@@ -1,22 +1,31 @@
 ## $\bigstar$ Decimals
 
+text
 
 ### The Naming Problem
 
+text
 
 ### Decimal Expansions
 
+text
 
 ### Uniqueness
 
+text
 
 ### Characterizing Rationals
 
+text
 
 ### $\bigstar$ Other Bases
 
+text
 
 ### $\bigstar$ Constructing a Transcendental
 
+text
 
 ### Exercises
+
+text

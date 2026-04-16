@@ -1,0 +1,36 @@
+
+**Limits before the definition**
+- Mathematicians across cultures computed limits long before anyone defined them
+- Babylonians (~1800 BCE): iterative algorithm for $\sqrt{2}$, accurate to six decimals
+- Greeks: Eudoxus' method of exhaustion (~370 BCE); Archimedes' parabola area, π approximations via 96-gons (~250 BCE)
+- China: Liu Hui (263 CE) and Zu Chongzhi (~480 CE) pushed π to seven decimal places
+- Islamic world: Al-Kashi (~1420) reached sixteen decimal places for π
+- India: Madhava and the Kerala school (~1400 CE) discovered infinite series for π, arctan, sine, cosine — Taylor series 250 years before Taylor
+
+**What they had in common**
+- All understood: infinite processes can pin down finite answers
+- All could make errors arbitrarily small
+- All knew their methods worked
+
+**What they lacked**
+- No general *definition* of limit
+- Each convergence proof was bespoke, tailored to specific problem
+- Archimedes' parabola argument doesn't help with the circle
+- Babylonian √2 algorithm requires its own verification
+- Every new limit demanded fresh ingenuity
+
+**The resolution**
+- Cauchy and Weierstrass (19th century): replace "approaching" with precise quantification
+- The ε-N definition: sequence converges to $L$ if, for any tolerance, terms eventually stay within that tolerance
+
+**The payoff: general theorems**
+- Rigorous definition enables *general theorems*: limit laws, MCT, squeeze
+- Theorems proved once, applied everywhere
+- No new argument for each limit — combine general tools
+- Computational power, not just philosophical clarity
+
+**What we'll do**
+- Limit laws resolve Archimedes' parabola in one line
+- Prove Babylonian algorithm converges to $\sqrt{2}$ — two different methods
+- Show every real is limit of rationals — bridge between countable and uncountable
+- The ancients were right; now we can prove it

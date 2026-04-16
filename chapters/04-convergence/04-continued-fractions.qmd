@@ -1,13 +1,27 @@
 ## $\bigstar$ Continued Fractions
 
+text
+
 ### Notation
+
+text
 
 ### Every Continued Fration Converges
 
+text
+
 ### Every Real has a Continued Fraction
+
+text
 
 ### Patterns
 
+text
+
 ### Approximation and the Golden Ratio
 
+text
+
 ### Exercises
+
+text

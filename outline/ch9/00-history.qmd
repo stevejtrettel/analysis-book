@@ -1,0 +1,26 @@
+### Chapter 9 Historical Introduction: The Fundamental Theorem
+
+**The missing link**
+- By the 1650s, mathematicians could differentiate (Fermat's tangent lines, Chapter 7) and integrate (Cavalieri's areas, Fermat's power sums, Chapter 8) — but these were separate subjects
+- Each problem required its own trick: a clever algebraic manipulation for a tangent, a geometric partition for an area
+- Nobody suspected the two were related
+
+**Barrow's near miss**
+- Isaac Barrow (1660s), Newton's teacher at Cambridge, proved a geometric theorem: if you take the area under a curve and draw the tangent to the area function, you recover the original curve
+- This *is* the Fundamental Theorem — but stated geometrically, buried in a book of optics, and Barrow didn't see its computational power
+- He resigned his professorship in favor of his 27-year-old student, who did
+
+**Newton and Leibniz**
+- Newton (1660s, published much later): discovered that finding areas reduces to "reversing" differentiation
+- Leibniz (1670s): arrived at the same insight independently, with better notation — his ∫ and d/dx made the inverse relationship visible on the page
+- The consequence was immediate and explosive: every derivative formula in Chapter 7 became an integration formula. The hard computations of Chapter 8 — pages of Riemann sum estimates — collapsed to one-line calculations
+- The priority dispute between Newton and Leibniz consumed decades and split European mathematics, but the theorem itself was never in doubt
+
+**What FTC unlocks**
+- Existence of antiderivatives: every continuous function has one, guaranteed — even when no formula can be written down. Functions like the error function (probability), the sine integral (signal processing), and the logarithmic integral (prime numbers) are *defined* this way
+- Differential equations: FTC turns existence questions into integration problems. Wide classes of ODEs that model physical phenomena can be solved explicitly, and where explicit solutions fail, FTC still guarantees solutions exist
+- Rigorous trigonometry: the integral ∫₀ʸ 1/√(1−t²) dt gives arc length a precise definition, and inverting it constructs sin and cos from scratch — two millennia of geometric trigonometry, rebuilt from calculus
+- New tools for computing π: Archimedes needed a 96-sided polygon for two decimal places. With FTC and power series, Machin computed 100 digits by hand in 1706; the Gregory-Leibniz series reveals π as a sum of simple fractions; the Wallis product builds it from integers alone
+
+**Our approach**
+- We prove FTC, develop its computational consequences, then push into the territory it opens up: differential equations, trigonometry, and the computation of π

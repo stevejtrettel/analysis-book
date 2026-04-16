@@ -1,12 +1,23 @@
 ## Sequences
 
+text
+
 ### Sequences in History
+
+text
 
 ### The Definition
 
+text
+
 ### Series and Products as Sequences
+
+text
 
 ### Reaching Infinity
 
+text
 
 ### Exercises
+
+text

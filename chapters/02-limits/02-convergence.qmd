@@ -1,11 +1,23 @@
 ## Convergence
 
+text
+
 ### The Definition
+
+text
 
 ### Funamental Examples
 
+text
+
 ### Basic Properties
+
+text
 
 ### Divergence to $\infty$
 
+text
+
 ### Exercises
+
+text

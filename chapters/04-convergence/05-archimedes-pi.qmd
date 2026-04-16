@@ -1,13 +1,27 @@
 ## Measurement of the Circle
 
+text
+
 ### Archimedes' Method
+
+text
 
 ### Computing Approximations
 
+text
+
 ### Convergence
+
+text
 
 ### Defining $\pi$
 
+text
+
 ### Viete's Formula
 
+text
+
 ### Exercises
+
+text

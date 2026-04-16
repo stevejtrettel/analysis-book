@@ -1,0 +1,60 @@
+## The Axiomatic Integral
+
+### Narrative
+
+- We don't construct the integral — we ask what properties it must have
+- Three axioms (rectangles, monotonicity, additivity) are extraordinarily constraining
+- The trapping theorem: any integral satisfying the axioms is squeezed between upper and lower sums
+- For continuous functions, uniform continuity forces the squeeze shut — the value is uniquely determined, independent of any theory of integration
+- But existence remains open: does an integral satisfying the three axioms actually exist? (→ §8.2)
+
+### Content
+
+**The Axioms**
+- Motivation: what properties should an integral have? We don't ask what it *is* — we ask how it must *behave*
+- Definition: An *integral* on [a,b] is an assignment ∫_{[a,b]} f ∈ ℝ for certain bounded functions f, satisfying:
+  - (I1) Rectangles: ∫_{[a,b]} c = c(b−a) for any constant c
+  - (I2) Monotonicity: f ≤ g on [a,b] ⟹ ∫_{[a,b]} f ≤ ∫_{[a,b]} g
+  - (I3) Additivity: ∫_{[a,b]} f = ∫_{[a,c]} f + ∫_{[c,b]} f for any c ∈ (a,b)
+- Theorem (Bounds): If m ≤ f ≤ M on [a,b] and f is integrable, then m(b−a) ≤ ∫_{[a,b]} f ≤ M(b−a)
+- Proof: Apply monotonicity to m ≤ f ≤ M, then the rectangle axiom to ∫m and ∫M
+- Remark: the integral of any bounded integrable function is finite — this follows from the axioms alone
+- ✎ Inline: If f is integrable on [0,1] with 2 ≤ f ≤ 5, what bounds can you give on ∫_{[0,1]} f?
+- Definition (Improper integrals): If f is integrable on [a,c] for every c ∈ (a,b), define ∫_{[a,b)} f = lim_{c→b⁻} ∫_{[a,c]} f when the limit exists. Similarly ∫_{(a,b]} f = lim_{c→a⁺} ∫_{[c,b]} f. For unbounded domains: ∫_{[a,∞)} f = lim_{b→∞} ∫_{[a,b]} f.
+
+**The Trapping Theorem**
+- Idea: the bounds theorem uses one rectangle — what if we use many?
+- Definition: A *partition* of [a,b] is a finite set P = {x₀, x₁, ..., xₙ} with a = x₀ < x₁ < ⋯ < xₙ = b
+- Definition: For a bounded function f on [a,b] and a partition P, define mᵢ = inf f on [xᵢ₋₁, xᵢ], Mᵢ = sup f on [xᵢ₋₁, xᵢ], and:
+  - L(f, P) = Σ mᵢ(xᵢ − xᵢ₋₁) (lower sum)
+  - U(f, P) = Σ Mᵢ(xᵢ − xᵢ₋₁) (upper sum)
+- Theorem (Trapping): If f is integrable, then L(f, P) ≤ ∫_{[a,b]} f ≤ U(f, P) for every partition P
+- Proof: Apply the bounds theorem on each subinterval [xᵢ₋₁, xᵢ], then sum using additivity
+- Remark: the bounds theorem is the special case P = {a, b}
+- Corollary: sup_P L(f, P) ≤ ∫_{[a,b]} f ≤ inf_P U(f, P)
+- Observation: if sup_P L(f, P) = inf_P U(f, P), then there is exactly one value the integral can take — the value is forced
+- ✎ Inline: Compute L(f, P) and U(f, P) for f(x) = x on [0,1] with the partition P = {0, 1/2, 1}
+
+**Integrating Continuous Functions**
+- Question: for which functions does sup L = inf U?
+- Theorem: If f is continuous on [a,b], then sup_P L(f, P) = inf_P U(f, P). Consequently, any integral satisfying the axioms assigns the same value to f.
+- Proof: f continuous on [a,b] (compact) ⟹ uniformly continuous. Given ε > 0, choose δ so |x − y| < δ ⟹ |f(x) − f(y)| < ε/(b−a). Take any partition with subintervals of length < δ. On each subinterval, Mᵢ − mᵢ < ε/(b−a). Then U − L = Σ(Mᵢ − mᵢ)(xᵢ − xᵢ₋₁) < ε. Since ε arbitrary, sup L = inf U.
+- Example: ∫_{[0,1]} x = 1/2. Uniform partition Pₙ gives L = (n−1)/(2n), U = (n+1)/(2n), both → 1/2.
+- Example: ∫_{[0,1]} x² = 1/3. Uniform partition Pₙ and Σi² = n(n+1)(2n+1)/6 gives U → 1/3. Similarly L.
+- Remark: the axioms *force* these values — we haven't constructed anything, just deduced what must be true
+- The question: we know what the integral must be for continuous functions. But does an integral satisfying the three axioms actually *exist*? → §8.2
+- ✎ Inline: Use the uniform partition to show that if x³ is integrable on [0,1], then ∫_{[0,1]} x³ = 1/4
+
+### Guided Exercises
+
+None for this section.
+
+### Exercises
+
+TBD
+
+### Dependencies
+
+**Requires**: §1.3 (supremum and infimum), §6.4 (uniform continuity), §6.5 (compactness of [a,b])
+
+**Used in**: §8.2 (Darboux integral verifies existence), §8.3 (geometric applications), §9.1 (FTC)

@@ -4,8 +4,16 @@ Def of contraction maps
 
 ### The Contraction Mapping Theorem
 
+text
+
 ### Convergence Rates
+
+text
 
 ### The Golden Ratio
 
+text
+
 ### Exercises
+
+text
