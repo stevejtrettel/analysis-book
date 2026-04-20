@@ -33,6 +33,16 @@
   - §6.4 additions beyond the plan: "image of [a,b] is [m,M]" unifying IVT+EVT; nth roots get full treatment (IVT for existence + inverse theorem for continuity); countability of monotone discontinuity set as exercise
   - Boundary zoo (all four convergence/divergence combinations at ±R) as exercise in §6.3
 
+### 2026-04-19
+- Ch 3 scaffolding complete across all four sections, replicating the Ch 1/Ch 2 style (bold review vocab + `::: {#xxx-label}` blocks with short statement sketches, "(Exercise)" suffix for student-proof results, `$\bigstar$` prefix for terminal/optional sections).
+- Workflow: walked subsection-by-subsection through each section, proposing environment types (thm/prp/lem/cor) with reasoning, letting Steve adjudicate.
+- **§3.1 Subsequences**: 1 def (`def-subsequence`), 1 lem (`lem-indices-grow`, Exercise), 2 props (`prp-subseq-inherits`, `prp-union-subseq`), 1 cor (`cor-divergence-test`), 1 thm (`thm-bolzano-weierstrass`).
+- **§3.2 Subsequential Limits**: Opening subsection has no `###` header — it's the section intro by design. Blocks: `def-subsequential-limit`, `prp-bounded-subseq-limits` (Exercise), `prp-unique-subseq-limit`, `def-limsup`, `def-liminf` (split, not combined, matching Ch 1's sup/inf split), `prp-liminf-leq-limsup` (Exercise), `prp-tail-sup-monotone` (Exercise), `prp-limsup-tail` (named "Tail Characterization of Limsup"), `prp-limsup-achieved` (named "Limsup is Achieved" — a separate prop, not a corollary, since the subsequence construction is independent work), `thm-convergence-via-limsup` (renamed from generic "Convergence Criterion" to avoid collision with Cauchy Criterion in §3.3).
+- **§3.3 The Cauchy Criterion** (section retitled from placeholder's "Cauchy Condition" — the *criterion* is the equivalence, *condition* is the property): Intro prose mentions $\omega_n = \overline{s}_n - \underline{s}_n$ (tail oscillation) as the bridge from §3.2 to Cauchy. Blocks: `def-cauchy`, `lem-cauchy-bounded` (Exercise), `thm-cauchy-criterion`. Significance subsection uses the Ch 1/Ch 2 bold-vocab style with `def-cauchy-complete` (phrased for an ordered field, to be generalized in Ch 11).
+- **§3.4 The Many Faces of Completeness** (terminal, starred): 1 theorem block `thm-completeness-equivalence` ("Characterizations of Completeness"), preceded by bold + one-line restatement of each of the five forms. The theorem statement uses the short names (LUB, MCT, Nested Intervals, BW, Cauchy completeness). The cycle proof (4 previously-shown directions cited + the new Cauchy ⟹ LUB direction) lives inside the theorem's proof rather than as separate blocks.
+- Style decision: "Significance" subsections are either left empty or marked `All prose` — no forced scaffolding when the content is purely discursive synthesis. Bold is reserved for vocabulary, not for encoding prose intent.
+- Remaining gaps (not Ch 3-specific): all `00-history.qmd` files empty across every chapter; Ch 3 `index.qmd` not yet reviewed.
+
 ### 2026-04-14 (session 2)
 - Global review of Ch 5 outline: identified and fixed 9 issues
   - §5.1 dependency placeholders resolved (§3.3, §4.1, §4.2)

@@ -1,15 +1,30 @@
 ## $\bigstar$ The Many Faces of Completeness
 
-text
+All prose
 
 ### The Five Characterizations
 
-text
+**LUB**: every nonempty set bounded above has a supremum
+
+**MCT**: every monotone bounded sequence converges
+
+**Nested Intervals**: nested closed intervals have nonempty intersection
+
+**Bolzano-Weierstrass**: every bounded sequence has a convergent subsequence
+
+**Cauchy Completeness**: every Cauchy sequence converges
+
+::: {#thm-completeness-equivalence}
+## Characterizations of Completeness
+For an ordered field, the following are equivalent: LUB, MCT, Nested Intervals, Bolzano-Weierstrass, and Cauchy completeness.
+:::
 
 ### The Cycle of Equivalence
 
-text
+All prose
 
 ### Significance
 
-text
+All prose
+
+### Exercises
