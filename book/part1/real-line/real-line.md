@@ -1,7 +1,7 @@
 # The Real Line {#ch-real-line}
 
 Stub chapter proving the build pipeline; real content gets rebuilt from
-`chapters/01-real-line/` and `outline/01-real-line/`.
+`plan/ch01-real-line/` (see `plan/MAP.md`).
 
 ## Incompleteness of the Rationals {#sec-incompleteness}
 

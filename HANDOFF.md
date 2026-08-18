@@ -38,12 +38,17 @@ Book:
   order) + chapters as directive markdown. Currently one stub chapter
   (`part1/real-line/`) proving the pipeline; everything else is still to
   be written.
-- `chapters/`, `outline/`, `plan/` — preserved Quarto-era material:
-  chapter skeletons with theorem blocks, detailed outlines, and the
-  master plan (`plan/overview.qmd` and `plan/narrative/` — the √2, π, e
-  threads). This is *source material*, rebuilt into `book/` chapter by
-  chapter as writing proceeds — never converted mechanically, and not
-  itself compiled.
+- `plan/` — ALL preserved Quarto-era source material, sorted 2026-08-18
+  into per-chapter bundles (`chNN-<slug>/` with `outline/`, `skeleton/`,
+  `plan.md`), part intros, `part3-plan.md`, `narrative/`, `results/`,
+  and `archive/`. **`plan/MAP.md` is the index**: per-chapter authority
+  verdicts, the punch list of known staleness, and old→new path
+  translation. This is *source material*, rebuilt into `book/` chapter
+  by chapter as writing proceeds — never converted mechanically, and
+  not itself compiled.
+- `design/conventions.md` — theorem-block conventions (environment
+  taxonomy, label naming, notation), carried over from the old draft
+  and updated to the new directive syntax.
 - `latex/macros.tex` — the shared macro file (print and web read the
   same file); holds `\RR`, `\QQ`, `\ep`, etc.
 - `claude-notes.md` — the Quarto-era session log. Its *content*
@@ -75,9 +80,9 @@ candidate for this book's first real figure).
 - Migration complete and verified 2026-08-18: Quarto removed, system
   in, stub chapter builds end to end (site + PDF + aux check).
 - Next substantive work: rebuild Chapter 1 in `book/` from
-  `chapters/01-real-line/` + `outline/01-real-line/`, which will also
-  surface what this book needs from the system that the ODE book
-  didn't.
+  `plan/ch01-real-line/` (outline = content truth, skeleton = block
+  structure), which will also surface what this book needs from the
+  system that the ODE book didn't.
 - Open, deliberately: hero figure, per-part art, Netlify link, and how
   the historical preludes (every `00-history.qmd` is empty) fit the new
   chapter structure.
