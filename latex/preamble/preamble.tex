@@ -1,0 +1,242 @@
+% ============================================================================
+% The book's print design. Hand-authored; everything derived from the
+% environment registry (theorem declarations, cref names) is generated into
+% main.tex by the compiler and does NOT live here.
+%
+% Engine: XeLaTeX + memoir (decided). Type: EB Garamond text with
+% Garamond-Math — print math is genuinely Garamond — Plex Sans as the sans,
+% JetBrains Mono for code, mirroring the site.
+%
+% Two switches, set before \input of this file or edited here:
+%   \BookTrim     "letter" (wide-margin course notes, current) | "sixbynine"
+%   \PlexHeads    define it for Plex Sans headings (site-matched);
+%                 undefined = EB Garamond headings (classic, the default)
+% ============================================================================
+
+\providecommand*\BookTrim{letter}
+\def\PlexHeads{}   % site-matched sans headings (author's call, 2026-08-18); comment out for all-Garamond
+
+% ---- fonts -----------------------------------------------------------------
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{unicode-math}
+
+\setmainfont{EBGaramond-Regular.otf}[
+  BoldFont = EBGaramond-Bold.otf,
+  ItalicFont = EBGaramond-Italic.otf,
+  BoldItalicFont = EBGaramond-BoldItalic.otf,
+]
+\setmathfont{Garamond-Math.otf}
+\setsansfont{IBMPlexSans-Regular.otf}[
+  BoldFont = IBMPlexSans-SemiBold.otf,
+  ItalicFont = IBMPlexSans-Italic.otf,
+]
+\setmonofont{JetBrainsMono-Regular.otf}[Scale=MatchLowercase]
+
+\newfontfamily\garamondsemibold{EBGaramond-SemiBold.otf}
+\newfontfamily\plexsemibold{IBMPlexSans-SemiBold.otf}
+\newfontfamily\plexmedium{IBMPlexSans-Medium.otf}
+
+\usepackage{microtype} % protrusion under xetex; quiet quality
+
+\linespread{1.08}
+
+% ---- the heading face switch ----------------------------------------------
+% \headfont: the face for chapter/section titles, theorem heads, captions.
+% \kickerfont: small tracked-caps labels ("CHAPTER 1", running heads).
+
+\ifdefined\PlexHeads
+  % Plex has no small caps: kickers are tracked full caps (content must be
+  % uppercase — use \MakeUppercase where marks supply mixed case).
+  \newcommand\headfont{\plexsemibold}
+  \newcommand\kickerfont{\plexmedium\addfontfeatures{LetterSpace=14}}
+\else
+  \newcommand\headfont{\garamondsemibold}
+  \newcommand\kickerfont{\garamondsemibold\addfontfeatures{LetterSpace=14}\scshape}
+\fi
+
+\usepackage{xcolor}
+\definecolor{inkfaint}{gray}{0.45} % kickers, numbers, notes — the only "color" in print
+
+% ---- page geometry ---------------------------------------------------------
+
+\def\trimletter{letter}
+\ifx\BookTrim\trimletter
+  % Letter stock, symmetric wide margins (course notes read on screen and
+  % print at home — binding asymmetry would look odd on both).
+  \setstocksize{11in}{8.5in}
+  \settrimmedsize{11in}{8.5in}{*}
+  % ~66 characters per line of Garamond at 12pt; classical vertical
+  % weighting (more margin below the block than above, so text sits at the
+  % visual center rather than the geometric one).
+  \settypeblocksize{8.5in}{5.3in}{*}
+  \setlrmargins{*}{*}{1}
+  \setulmargins{*}{*}{1.4}
+\else
+  % 6x9 book block (the long-term trim), centered on its own stock.
+  \setstocksize{9in}{6in}
+  \settrimmedsize{9in}{6in}{*}
+  \settypeblocksize{7.1in}{4.35in}{*}
+  \setlrmargins{*}{*}{1}
+  \setulmargins{*}{*}{1}
+\fi
+\checkandfixthelayout
+
+% memoir numbers only to sections by default; the numbering contract with
+% the web (see design/crossref.md) goes to subsections. The aux check
+% caught exactly this divergence when memoir arrived.
+\maxsecnumdepth{subsection}
+\setsecnumdepth{subsection}
+\settocdepth{subsection}
+
+% ---- chapter & section heads ----------------------------------------------
+% Mirrors the site's pattern: small tracked kicker ("CHAPTER 1"), then the
+% title, large. Section numbers sit in the faint ink, titles in black.
+
+\makechapterstyle{book}{%
+  \setlength{\beforechapskip}{4.2\baselineskip}
+  \setlength{\midchapskip}{1.2\baselineskip}
+  \setlength{\afterchapskip}{2.6\baselineskip}
+  \renewcommand*{\chapnamefont}{\kickerfont\small\color{inkfaint}}
+  \renewcommand*{\chapnumfont}{\kickerfont\small\color{inkfaint}}
+  \renewcommand*{\printchaptername}{\chapnamefont\MakeUppercase{\chaptername}}
+  % kicker's tracking/faint ink must not leak into the title
+  \renewcommand*{\chaptitlefont}{\normalfont\normalcolor\headfont\fontsize{27}{32}\selectfont}
+  \renewcommand*{\printchapternum}{\chapnumfont\thechapter}
+}
+\chapterstyle{book}
+
+% Part pages: the cover's language — kicker, large title, generous emptiness.
+\renewcommand*{\partnamefont}{\kickerfont\small\color{inkfaint}}
+\renewcommand*{\partnumfont}{\kickerfont\small\color{inkfaint}}
+\renewcommand*{\printpartname}{\partnamefont\MakeUppercase{\partname}}
+\renewcommand*{\parttitlefont}{\normalfont\normalcolor\headfont\fontsize{27}{32}\selectfont}
+\renewcommand*{\beforepartskip}{\null\vskip 2.2in}
+\renewcommand*{\midpartskip}{\par\vskip 1.2\baselineskip}
+
+% Each part may carry opener art: the emitter issues \BookPartFig{<still>}
+% just before \part, and the part page draws it below the title. The art is
+% an ordinary figure (same toolkit, same capture) named in book.yml.
+\newcommand*\BookPartFigFile{}
+\newcommand*\BookPartFig[1]{\gdef\BookPartFigFile{#1}}
+\renewcommand*{\afterpartskip}{%
+  \ifx\BookPartFigFile\empty\else
+    \par\vskip 1.6in
+    \centerline{\includegraphics[width=0.85\textwidth]{\BookPartFigFile}}%
+    \gdef\BookPartFigFile{}%
+  \fi
+  \vfil}
+
+\setsecheadstyle{\headfont\Large}
+\setsubsecheadstyle{\headfont\large}
+\setsecnumformat{{\color{inkfaint}\csname the#1\endcsname}\quad}
+\setbeforesecskip{-2.2\baselineskip}
+\setaftersecskip{0.9\baselineskip}
+\setbeforesubsecskip{-1.6\baselineskip}
+\setaftersubsecskip{0.7\baselineskip}
+
+% ---- running heads & folios ------------------------------------------------
+
+\makepagestyle{bookpages}
+\makeevenhead{bookpages}{{\plexmedium\small\thepage}}{\kickerfont\footnotesize\color{inkfaint}\MakeUppercase{\leftmark}}{}
+\makeoddhead{bookpages}{}{\kickerfont\footnotesize\color{inkfaint}\MakeUppercase{\rightmark}}{{\plexmedium\small\thepage}}
+\makepsmarks{bookpages}{%
+  \createmark{chapter}{left}{nonumber}{}{}
+  \createmark{section}{right}{shownumber}{}{.\ }
+}
+\pagestyle{bookpages}
+% Chapter-opening pages keep only the folio.
+\makeevenfoot{plain}{}{{\plexmedium\small\thepage}}{}
+\makeoddfoot{plain}{}{{\plexmedium\small\thepage}}{}
+
+% ---- rhythm & paragraph quality ---------------------------------------------
+
+\clubpenalty=10000 \widowpenalty=10000 % no widows or orphans, ever
+\midsloppy % memoir: trade a hair of spacing for far fewer overfull lines
+
+% Display-math skips proportional to the leading (patched into \normalsize,
+% which owns these lengths).
+\makeatletter
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{0.75\baselineskip plus 2pt minus 2pt}%
+  \setlength\belowdisplayskip{0.75\baselineskip plus 2pt minus 2pt}%
+  \setlength\abovedisplayshortskip{0.4\baselineskip plus 2pt}%
+  \setlength\belowdisplayshortskip{0.5\baselineskip plus 2pt}%
+}
+\makeatother
+
+% ---- table of contents -------------------------------------------------------
+% Chapters in the heading face, no dot leaders anywhere; parts as kickers.
+
+\renewcommand{\cftpartfont}{\kickerfont\small\color{inkfaint}}
+\renewcommand{\cftpartpagefont}{\plexmedium\small}
+\renewcommand{\cftchapterfont}{\headfont}
+\renewcommand{\cftchapterpagefont}{\plexmedium}
+\renewcommand{\cftchapterleader}{\hfill}
+\renewcommand{\cftsectionfont}{\normalfont}
+\renewcommand{\cftsectionpagefont}{\normalfont}
+\renewcommand{\cftsectionleader}{\hfill}
+\renewcommand{\cftsubsectionleader}{\hfill}
+\setlength{\cftbeforechapterskip}{0.9\baselineskip}
+
+% ---- theorem styles ---------------------------------------------------------
+% Upright bodies everywhere (ratified with the web); run-in head in the
+% heading face; optional note (the amsthm bracket) in faint upright.
+% No bars, no color beyond the faint ink: the header word does the work.
+
+\newcommand\thmheadfont{\headfont\normalsize}
+\newtheoremstyle{bookplain}%
+  {0.9\baselineskip}{0.9\baselineskip}%
+  {\upshape}{0pt}%
+  {\thmheadfont}{.}{0.6em}%
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ {\normalfont\color{inkfaint}(#3)}}}
+\newtheoremstyle{bookdefinition}%
+  {0.9\baselineskip}{0.9\baselineskip}%
+  {\upshape}{0pt}%
+  {\thmheadfont}{.}{0.6em}%
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ {\normalfont\color{inkfaint}(#3)}}}
+\newtheoremstyle{bookremark}%
+  {0.9\baselineskip}{0.9\baselineskip}%
+  {\upshape}{0pt}%
+  {\thmheadfont}{.}{0.6em}%
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ {\normalfont\color{inkfaint}(#3)}}}
+
+\renewcommand\qedsymbol{\rule[0.02em]{0.45em}{0.45em}} % filled tombstone, font-proof
+
+% ---- figures & captions -----------------------------------------------------
+
+\usepackage{graphicx}
+\captionnamefont{\headfont\footnotesize}
+\captiontitlefont{\small\color{black!70}}
+\captiondelim{\hspace{0.6em}}
+\setlength{\belowcaptionskip}{0.3\baselineskip}
+
+% ---- title page -------------------------------------------------------------
+% Echoes the ratified web cover: kicker, large Garamond title, tracked-caps
+% author, then the phase portrait.
+
+\newcommand\BookTitlePage{%
+  \begin{titlingpage}
+    \centering
+    \vspace*{1.6in}
+    {\kickerfont\small\color{inkfaint}COURSE NOTES\par}
+    \vspace{1.4\baselineskip}
+    % Plex on purpose: in print, where serif title pages are the expected
+    % default, the sans is the bold face — the mirror of the web cover's
+    % Garamond-against-sans-chrome. (The author noticed the inversion.)
+    {\headfont\fontsize{34}{40}\selectfont \BookTitle\par}
+    \vspace{1.1\baselineskip}
+    {\kickerfont\small \BookAuthor\par}
+    \vspace{0.9in}
+    \includegraphics[width=\textwidth]{figures/hero-pendulum.pdf}
+    \vspace{0.9in}
+    {\color{inkfaint}\parbox{4.1in}{\centering\BookBlurb}\par}
+    \vfill
+  \end{titlingpage}
+}
+
+% ---- cross-referencing (loaded last, as they must be) ----------------------
+
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink]{cleveref}

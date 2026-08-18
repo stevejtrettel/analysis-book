@@ -1,16 +1,10 @@
+node_modules/
+latex/build/
+dist/
+.cache/
 
-# Quarto generated
-/_book/
-/.quarto/
-*_files/
-/site_libs/
-
-# Rendered outputs
-*.pdf
-*.epub
-
-# Intermediate LaTeX
-Reaching-for-Infinity.tex
+# Local Netlify folder
+.netlify
 
 # LaTeX auxiliary files
 *.aux
@@ -28,17 +22,9 @@ Reaching-for-Infinity.tex
 *.lof
 *.lot
 
-# OS files
+# OS / editor files
 .DS_Store
 Thumbs.db
-
-# Editor files
 *.swp
 *~
 .vscode/
-.Rproj.user/
-.Rhistory
-
-**/*.quarto_ipynb
-
-/.luarc.json
