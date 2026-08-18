@@ -50,6 +50,10 @@ export async function initMath(root) {
     tex: { packages: { "[+]": ["ams"] } },
     chtml: { adaptiveCSS: false, fontURL: FONT_URL },
   });
+  // The whole font, up front: the sync tex2chtml path can't await the
+  // dynamic font pieces (\mathbb, script, fraktur, ...), and adaptiveCSS is
+  // already off because caching demands render-order independence.
+  await MathJax.startup.document.outputJax.font.loadDynamicFiles();
   if (macros.trim()) MathJax.tex2mml(macros); // registers \newcommand definitions
 }
 

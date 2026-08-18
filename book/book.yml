@@ -1,0 +1,23 @@
+title: Reaching for Infinity
+author: Steve Trettel
+blurb: >-
+  A first course in real analysis, told as the story of infinite
+  processes: why we need them, how they fail, and the ideas —
+  completeness, convergence, uniformity — that make them safe to use.
+
+# Structure follows the Quarto-era plan (see outline/ and chapters/ for the
+# skeletons being rebuilt here): Numbers (chs 1-5), Functions (chs 6-10),
+# Function Space (chs 11-15). Chapters are added to the list as they are
+# rebuilt in the new system; only the stub below exists so far.
+
+parts:
+  - title: "Numbers"
+    chapters:
+      - part1/real-line/real-line.md
+
+  # - title: "Functions"
+  #   chapters: continuity, differentiation, integration, calculus,
+  #             extending-integral
+
+  # - title: "Function Space"
+  #   chapters: metrics, function-space, fourier, diffeq, distributions

@@ -45,7 +45,9 @@ export function emitMain(book, chapters) {
 \\def\\BookTitle{${escapeText(book.title)}}
 \\def\\BookAuthor{${escapeText(book.author)}}
 \\def\\BookBlurb{${escapeText(book.blurb ?? "")}}
+\\def\\BookHeroFig{${book.figure ? `\\includegraphics[width=\\textwidth]{figures/${book.figure}.pdf}` : ""}}
 \\input{../preamble/preamble}
+\\input{../macros}% THE shared macro file — math.js feeds the same file to MathJax
 
 % Reference words pinned to match the website's (cleveref abbreviates
 % "figure" to "fig." by default; the two outputs must read identically).

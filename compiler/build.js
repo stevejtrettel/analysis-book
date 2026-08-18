@@ -76,7 +76,7 @@ export async function build({ pdf = true } = {}) {
         directiveIds.add(n.attributes.id);
     });
   const partFigureIds = book.parts.map((p) => p.figure).filter(Boolean);
-  const figures = await captureFigures(ROOT, ["hero-pendulum", ...partFigureIds, ...directiveIds]); // hero + part art: wired by layout.js / main.tex
+  const figures = await captureFigures(ROOT, [book.figure, ...partFigureIds, ...directiveIds].filter(Boolean)); // hero (book.yml figure:) + part art: wired by layout.js / main.tex
 
   // --- emit: site ----------------------------------------------------------
 

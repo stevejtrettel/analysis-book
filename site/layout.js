@@ -109,9 +109,13 @@ ${pageTools()}
   <h1 class="hero-title">${esc(book.title)}</h1>
   <div class="hero-author">${esc(book.author)}</div>
 
-  <div class="hero-fig">
-    ${figureEmbed("hero-pendulum", figures.get("hero-pendulum"))}
-  </div>
+${
+    book.figure
+      ? `  <div class="hero-fig">
+    ${figureEmbed(book.figure, figures.get(book.figure))}
+  </div>`
+      : ""
+  }
 
   <p class="hero-blurb">${esc(book.blurb ?? "")}</p>
 
