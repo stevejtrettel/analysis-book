@@ -2,7 +2,14 @@
 
 Status: **decided 2026-08-18** (companion to `axiomatic-functions.md`;
 under the axiomatic-method theme of `thesis.md`). Steve's ruling: we
-axiomatize. Architecture:
+axiomatize. **Placement update (second session, Ch 1 split confirmed —
+see `part1-chapters.md`): this design now straddles the new Ch 1/Ch 2
+boundary.** Pre-axiom (Ch 1): the axioms, polygon area as known + the
+homework series, the trapping inequality — and the demonstration that
+the traps close on nothing in ℚ. Post-axiom (Ch 2): the sup/inf
+definitions denote, the forcing theorem (it needs sup-existence), and
+the confirmation obligations. "§1.5" below reads as this Ch 1/Ch 2
+pair. Architecture:
 
 > In the main text, polygon area is treated as **known** (school
 > geometry), with the remark that it can in fact be derived from the
@@ -140,8 +147,10 @@ proof of that.
 
 ## Still open
 
-- Whether §1.5 states the forcing theorems, or states axioms +
-  definitions only and lets §4.5 deliver forcing at first use.
+- ~~Whether §1.5 states the forcing theorems~~ — largely resolved by
+  the boundary rule (trapping in Ch 1, forcing in Ch 2's measurement
+  closure); remaining detail is only how much forcing-language Ch 2
+  states vs defers to the workshop's §4.5 first use.
 - Whether the (L4) debt is named on the page in Ch 1 like the P(θ) debt
   now is (the trig ruling suggests yes, but it's undecided).
 - Exact scoping language for polygonal-cut dissections in (A2).

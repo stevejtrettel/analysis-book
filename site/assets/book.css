@@ -303,7 +303,14 @@ figcaption .figno { font-family: var(--font-heading); font-weight: 600; font-siz
   font-family: var(--font-heading); font-size: 0.95rem; font-weight: 500;
   letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary);
 }
-.hero-fig { margin: 3rem auto 2.6rem; }
+/* The cover has to fit on one screen: title block and figure together.
+   The figure is sized by its container's width, so the viewport budget has
+   to be spent as a width cap — hence the ratio, which layout.js sets from
+   the captured figure's own dimensions. */
+.hero-fig {
+  margin: 1.7rem auto 2.4rem;
+  max-width: min(100%, calc((100svh - 18rem) * var(--hero-ratio, 4 / 3)));
+}
 .hero-fig svg { width: 100%; height: auto; display: block; }
 .hero-blurb {
   max-width: 34rem; margin: 0 auto 2.4rem;

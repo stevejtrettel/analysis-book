@@ -10,50 +10,101 @@ intact, reallocated).
 
 ## The decided shape
 
-Part I is now **six chapters** (numbering below shifts accordingly;
+Part I is now **six numbered chapters plus an unnumbered notation
+opener** (numbering below shifts accordingly;
 "Ch 2 setup / Ch 3 workshop / Ch 4 theory / Ch 5 arithmetic" elsewhere
 in plan/new/ docs should be read as chapters 3–6).
 
-- **Ch 1 — practice without terminology** (split decided 2026-08-18).
+- **Unnumbered opener — notation only** (decided 2026-08-18, second
+  session; Steve chose this over an appendix). Logic, quantifiers,
+  sets, functions (injective/surjective/bijective as *vocabulary*),
+  induction. Abbreviated — readable in one sitting; the book's first
+  numbered page is mathematics. Cardinality *theory* is NOT here — it
+  moves to Ch 2's twist section (see below).
+- **Ch 1 — practice without terminology** (split proposed in the
+  morning session; **stress-tested and confirmed in the second
+  session, in the reallocated form below** — the thin version, old
+  §1.1+§1.2 alone, was rejected as a weak opening chapter).
   *Doctrine: existence is definability — not having terminology means
-  the thing does not exist in our mathematics.* The world of fields and
-  order (the arithmetic everyone believed was complete), the working
-  tools, and the accumulating discoveries that practice handles
-  quantities the language cannot denote: the diagonal, areas, roots.
-  The patching attempts = extending vocabulary one word at a time; each
-  fails. Ends with a diagnosis, not a wound: our mathematics is smaller
-  than our practice.
+  the thing does not exist in our mathematics.*
+  **Boundary rule: the completeness axiom IS the chapter boundary.**
+  Ch 1 never spends sup-existence; Ch 2 spends it in every section.
+  Ch 1 *does* define least upper bound and exhibits sets in ℚ that
+  lack one — the word exists, the referent doesn't; the diagnosis
+  needs the word to state what's missing.
+  Contents: the world of fields and order + the inequality toolbox
+  (the arithmetic everyone believed was complete); the diagonal and
+  the failed patches (vocabulary extended one word at a time, each
+  patch fails); **measurement pulled pre-axiom** (ruled "excellent and
+  correct"): the (A1)–(A4)/(L1)–(L4) axioms, polygon area as known +
+  the homework derivation series, the trapping inequality — and the
+  traps close on *nothing* (design consequence 5: a crisis of
+  practice, not philosophy); the Babylonian iteration as pure
+  inequality work (decreasing, bounded, error below any tolerance —
+  all field/order-provable; the one unposable question is what it
+  approaches). Section test: every section ends with something
+  *nameless*. Ends with a diagnosis, not a wound: our mathematics is
+  smaller than our practice.
 - **Ch 2 — the axiom creates the terminology.** Completeness makes an
   entire vocabulary well-defined at a stroke: sup-expressions denote.
   A sequence of christenings: √2, roots, aˣ and log (algebraic track),
   length, area, trig values (geometric track — the axiomatic-
-  measurement design lands here). The axiomatic method as plot: saying
-  what numbers *should be* is the act that brings them into existence.
-  Twist ending: uncountability — the language created more than it can
-  ever individually name.
-- Open within the split: where the pure language material (sets,
-  functions, Cantor) lives — inside Ch 1, or as a Chapter 0/appendix so
-  the book opens at the practice. Fields/order are NOT extractable
-  (they are the "world before" and half of ℝ's interface).
-- **Ch 2 — the setup.** What convergence means + the basic machine:
-  process zoo, ε-N, limit laws, MCT as the *one existence tool*
-  (Babylonian, e, nonneg series), terminal: decimals, parabola.
-  Exit state: you can compute when algebra cooperates; you can certify
-  when monotone; everything downstream is driven by that limitation.
-- **Ch 3 — the workshop.** *Thesis: certification is creation.* Lots of
+  measurement design *closes* here; the forcing theorem needs
+  sup-existence, so it lands on this side of the boundary). The
+  axiomatic method as plot: saying what numbers *should be* is the act
+  that brings them into existence. Section test: every section is a
+  christening. Twist ending: uncountability — and the twist section
+  carries the cardinality theory (same-size via bijection, ℚ
+  countable, ℝ uncountable, algebraics countable ⟹ transcendentals
+  exist — Cantor's proof as the punchline). Kept lean by design
+  (Steve's condition: must not bloat Ch 2): general countability
+  machinery (ℕ×ℕ, countable unions, Cantor's power-set theorem) goes
+  to exercises. Ending pivot (required): the doctrine reframes from
+  "each number needs a name" to "the *system* needs a definition" —
+  so uncountability deepens the doctrine instead of refuting it.
+- Fields/order are NOT extractable to the opener (they are the "world
+  before" and half of ℝ's interface). Pacing note: the split does not
+  delay completeness materially — same pages, new labels (Steve).
+- **Ch 2 — the setup: known endpoints** (MCT removed — decided
+  2026-08-18, second session). What convergence means + computing
+  toward *known* targets: process zoo, ε-N, limit laws, density
+  (every real — even Ch 2's unnameable ones — is reached by
+  rationals), terminals: decimals and parabola, **both verified to
+  survive without MCT**. Parabola needs only the §1.5 sandwich +
+  geometric series (checked: MCT appears nowhere in the April file).
+  Decimals' single MCT use ("every decimal converges") is replaced by
+  the new Ch 2 sup-christening: x = sup of truncations exists there,
+  and |x − Sₙ| ≤ 10⁻ⁿ by direct estimate — known-endpoint
+  convergence. (Same fix gives the Liouville number its existence.)
+  Exit state = cliffhanger: you can verify convergence only toward a
+  limit you can already name; e, nested radicals, Σ1/n² are out of
+  reach. **The rhyme**: this chapter ends in a limitation as Ch 1
+  ended in a diagnosis, and the next chapter opens with the answer —
+  Part I performs deferral-and-reckoning twice, once for numbers,
+  once for processes.
+- **Ch 3 — the workshop.** *Thesis: certification is creation.* Now
+  **introduces MCT** — the chapter owns its engine. Lots of
   interesting examples; each section a technique revealing hidden
   monotone structure; every section ends with a number that now exists.
-  1. Splitting: subsequence defined (promoted — see rule below),
+  1. MCT + direct certifications (visible monotone structure): MCT
+     from the ε-characterization of sup; Babylonian re-proved without
+     the Pell closed form — the lesson: this generalizes when no name
+     is available; e (guided exercise); nested radicals, first visit
+     (revisited for *rate* in the contraction section — deliberate
+     progress-marker, per the double-visit rule); nonneg series
+     criterion, Σ1/n², harmonic divergence.
+  2. Splitting: subsequence defined (promoted — see rule below),
      inheritance, gluing theorem, divergence via two subsequential
      limits; alternating series with two-sided error bound; √2 CF
      convergents; Wallis converges.
-  2. Comparison: tests; absolute convergence via positive parts; ratio
+  3. Comparison: tests; absolute convergence via positive parts; ratio
      and root in BOUND form (no auxiliary limits); infinite products
      via the two Bernoulli-style product inequalities.
-  3. Telescoping → contraction: difference-series principle; rates;
-     golden ratio, nested radicals, Newton, periodic CF tails.
-  4. ★ Continued fractions, general theory.
-  5. Measurement of the Circle (the Aug §4.5, climax, moves intact —
+  4. Telescoping → contraction: difference-series principle; rates;
+     golden ratio, nested radicals (second visit: rate), Newton,
+     periodic CF tails.
+  5. ★ Continued fractions, general theory.
+  6. Measurement of the Circle (the Aug §4.5, climax, moves intact —
      verified machinery-free).
 - **Ch 4 — the theory with no handles.** *Thesis: the assumption-free
   calculus — what can be said about a sequence you know nothing about.
@@ -86,8 +137,9 @@ in plan/new/ docs should be read as chapters 3–6).
 
 - **Promotion rule** (Steve, 2026-08-18): a concept may be promoted to
   where the current mathematics naturally invites it; its *theory*
-  stays where it belongs. (Subsequences: object in §3.1, theory in
-  Ch 4 — parallel to isolated values in Ch 1 vs functions in Part II.)
+  stays where it belongs. (Subsequences: object in the workshop's
+  splitting section, theory in the theory chapter — parallel to
+  isolated values in Ch 1 vs functions in Part II.)
 - **Invent-then-name**: the workshop invents techniques under concrete
   pressure (positive parts, difference-series, two-sided trapping);
   later chapters name and generalize them (a± in Ch 5's rearrangement,
@@ -110,10 +162,11 @@ in plan/new/ docs should be read as chapters 3–6).
    more worked set-piece? (Its biggest clients — EVT-style extractions
    — are Part II's.)
 5. Chapter titles: to Steve's voice; theses above are the test.
-6. ~~Ch 1 split~~ — resolved: split into practice-without-terminology /
-   the-axiom-creates-the-terminology (see top). Still open inside it:
-   the language-material placement (Ch 0/appendix vs in-chapter) and
-   the section split of each half.
+6. ~~Ch 1 split~~ — resolved (second session): split confirmed in the
+   reallocated form; language material → unnumbered notation opener;
+   cardinality theory → Ch 2 twist section; measurement wish
+   pre-axiom. Still open: the section split of each half (next
+   discussion).
 7. Crossref fallout of the reshuffle (Part I now six chapters; the old
    §4.5 lands as the workshop's final section; "§3.1 union theorem"
    citations, etc.) — bookkeeping at outline-rewrite time.

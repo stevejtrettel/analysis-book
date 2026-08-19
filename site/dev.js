@@ -9,7 +9,7 @@
  * macros.tex respawn the child first, so stale modules can't exist.
  */
 
-import { watch, readFileSync, existsSync, statSync } from "node:fs";
+import { watch, readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { createServer } from "node:http";
 import { fork } from "node:child_process";
 import path from "node:path";
@@ -119,6 +119,10 @@ createServer((req, res) => {
 
   // Generated standalone dev harness: /dev/<figure-id> mounts any figure
   // alone on a blank themed page — no per-figure boilerplate files.
+  if (url.pathname === "/dev" || url.pathname === "/dev/") {
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    return res.end(figureIndexPage() + CLIENT);
+  }
   if (url.pathname.startsWith("/dev/")) {
     const id = url.pathname.slice(5).replace(/\/$/, "");
     let fig = null;
@@ -153,6 +157,51 @@ createServer((req, res) => {
     process.exit(1);
   })
   .listen(PORT, () => console.log(`serving dist/ at http://localhost:${PORT}`));
+
+/** Every figure under figures/, discovered the same way the resolver does:
+ *  by file presence. Underscore-prefixed entries are machinery, not figures. */
+function figureIds() {
+  const dir = path.join(ROOT, "figures");
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir, { withFileTypes: true })
+    .filter((e) => !e.name.startsWith("_"))
+    .map((e) => (e.isDirectory() ? (existsSync(path.join(dir, e.name, "index.js")) ? e.name : null)
+                                 : e.name.endsWith(".js") ? e.name.slice(0, -3) : null))
+    .filter(Boolean)
+    .sort();
+}
+
+function figureIndexPage() {
+  const ids = figureIds();
+  return `<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>figures — dev harness</title>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/book.css">
+<style>
+  main { max-width: 52rem; margin: 3rem auto; padding: 0 1.5rem;
+    font-family: var(--font-heading); }
+  h1 { font-size: 1rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 1.4rem; }
+  ul { list-style: none; }
+  li { margin: 0.5rem 0; }
+  a { color: var(--accent); }
+  p.empty { color: var(--text-tertiary); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Figures</h1>
+  ${ids.length
+      ? `<ul>${ids.map((id) => `<li><a href="/dev/${id}">${id}</a></li>`).join("")}</ul>`
+      : `<p class="empty">nothing under figures/ yet</p>`}
+</main>
+</body>
+</html>`;
+}
 
 function harnessPage(id, fig) {
   return `<!DOCTYPE html>

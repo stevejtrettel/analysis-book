@@ -111,7 +111,7 @@ ${pageTools()}
 
 ${
     book.figure
-      ? `  <div class="hero-fig">
+      ? `  <div class="hero-fig" style="--hero-ratio: ${figures.get(book.figure).width} / ${figures.get(book.figure).height}">
     ${figureEmbed(book.figure, figures.get(book.figure))}
   </div>`
       : ""

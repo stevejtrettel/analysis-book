@@ -26,7 +26,7 @@ import path from "node:path";
 
 import { resolveFigure } from "../compiler/figure-resolve.js";
 
-const HARNESS_VERSION = 2; // v2: stills are an ordered sequence (still-1.pdf, …)
+const HARNESS_VERSION = 3; // v3: transitions suppressed (dark posters were caught mid-fade)
 const READY_TIMEOUT = 8000;
 
 /** ids → Map id → {width, height, dir} with dir holding poster-light.png,
@@ -220,6 +220,13 @@ const HARNESS_PAGE = `<!doctype html>
 <meta charset="utf-8">
 <script type="importmap">{"imports": {"toolkit/": "/figures/_toolkit/"}}</script>
 <link rel="stylesheet" href="/assets/book.css">
+<style>
+/* Capture is not allowed to depend on wall-clock timing. book.css fades the
+   page background over 250ms, and the dark poster is taken two frames after
+   the theme flip — without this the poster carries a colour that is halfway
+   between the two themes and belongs to neither. */
+*, *::before, *::after { transition: none !important; animation: none !important; }
+</style>
 </head>
 <body>
 <div id="stage" style="width: max-content"></div>
