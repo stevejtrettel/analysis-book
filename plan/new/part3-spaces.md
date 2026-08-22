@@ -1,14 +1,14 @@
 # Part III — Spaces: Working Architecture
 
-Status: capture of the 2026-08-21 narrative discussion. The part-level
-story, the border with Parts II and IV, the distributional climax, and the
-division between the basis and observer chapters are working decisions.
-The seven-chapter shape is the working ruling, with two live compressions
-to test after finding the minimal route through the mathematics: the two
-integral chapters may collapse, and the Riesz/weak-observer chapter may
-collapse into distributions. Section lists below are detailed planning
-sketches, not approved outlines. Chapter names are content labels, NOT
-title candidates.
+Status: 2026-08-21 architecture revised by the 2026-08-22 lean-core ruling
+in `decision-lean-second-half.md`. Arzelà–Ascoli and its chapter, weak
+subsequential compactness, and the heavier compactness route are no longer
+core. The new space budget asks students to inhabit only continuous-function
+spaces, the $L^1/L^2$ family, and distribution spaces if possible. The exact
+observer-to-distributions joint remains open, so final chapter numbering is
+deliberately postponed. Section
+lists below are planning sketches, not approved outlines. Chapter names are
+content labels, NOT title candidates.
 
 Old sources consulted and superseded at shape level:
 
@@ -37,7 +37,7 @@ The broad architecture of the book is now:
 |---|---|---|
 | I — Numbers | numbers and processes producing them | What number does an infinite process reach? |
 | II — Functions | one input-output table at a time | What structure makes a function workable? |
-| III — Spaces | collections whose points are functions or generalized functions | What does closeness mean, and which limits exist? |
+| III — Spaces | collections whose points are functions or generalized functions | Which completion contains the needed limits, and which dense simple class keeps it accessible? |
 | IV — Solutions | equations and transformations acting on those spaces | Which space and coordinates make this problem solvable? |
 
 The one-sentence border is:
@@ -50,6 +50,45 @@ sequence of forced enlargements. A familiar operation fails; the reader
 asks what kind of closeness or object would preserve the information that
 matters; a new space answers; and the chapter spends that answer before it
 ends.
+
+### The completion-and-density refrain
+
+The guiding slogan is:
+
+> **Complete worlds remain accessible when simple objects are dense.**
+
+This is the return of a story the students already know. The real line is a
+complete world, but rational numbers and even finite decimals remain enough
+to approach every one of its points. Part III repeats that move with
+functions: begin with objects one can calculate with, choose a notion of
+closeness suited to the problem, complete the space, and then retain access
+to the enlarged world through a dense calculable core.
+
+The recurring proof pattern is:
+
+1. identify the small class on which a construction is explicit;
+2. state the distance or mode of convergence in which it is dense;
+3. identify the missing limits supplied by completion;
+4. prove that the desired operation is stable in that distance;
+5. extend the operation uniquely from the dense class to the complete
+   world.
+
+Both qualifications matter. Density is always density in a specified
+topology, and density alone does not extend an unstable operation. The
+failure of differentiation to extend continuously from polynomials or
+smooth functions in the sup norm is therefore as important as the positive
+extension theorems. It forces either a derivative-sensitive distance or a
+new notion of object, eventually distributions.
+
+Each chapter should keep a short conceptual ledger: the simple class, the
+chosen closeness, the complete world, and the operations that survive the
+passage. Candidate instances include finite decimals or rationals inside
+the reals, continuous or smooth functions inside an $L$-space,
+trigonometric polynomials inside the periodic $L^2$ world, zero-boundary
+$C^1$ functions inside the energy completion, and smooth periodic
+functions inside periodic distributions. This list records the repeated
+pattern; it does not yet settle the order or chapter placement of every
+density theorem.
 
 ### The no-machinery-on-credit rule
 
@@ -85,9 +124,10 @@ Part III opens several named doors rather than inventing a new agenda:
 4. **Approximation.** Part II can construct and manipulate special infinite
    representations, but has no general account of best approximation,
    density, or the choice of coordinates for a task.
-5. **Compactness beyond the line.** Bolzano–Weierstrass was decisive for
-   real sequences. It is unknown what remains true when the points are
-   themselves functions.
+5. **Escape beyond the line.** A bounded orthonormal or oscillating
+   sequence shows that functions can escape strong convergence. This
+   diagnostic example remains, but the core no longer develops a separate
+   compactness theory to repair the failure.
 
 The long differentiation thread is therefore:
 
@@ -107,12 +147,12 @@ The present audit finds no major missing prerequisite.
 | Earlier ingredient | Current home | Part III client | Verdict |
 |---|---|---|---|
 | Completeness of $\mathbb R$; monotone and Cauchy convergence | Part I, especially Chs 2 and 5 | Metric completeness; Daniell construction; completeness proofs | Secure. |
-| Subsequences and Bolzano–Weierstrass on $\mathbb R$ | Part I, Chs 4–5 | Arzelà–Ascoli; diagonal extractions; contrast with function-space escape | Secure. Part III can teach the new diagonal argument itself. |
+| Subsequences and Bolzano–Weierstrass on $\mathbb R$ | Part I, Chs 4–5 | Contrast with function-space escape | Secure. No function-space compactness theorem is now required. |
 | Absolute convergence, domination and exchange of numerical limits | Part I, Ch 6 | Series in Banach spaces; MCT/DCT analogy; basis expansions | Secure. |
-| Countability and density of $\mathbb Q$ | Part I | Countable dense grids in Arzelà–Ascoli and separability examples | Secure. No general topology is needed early. |
+| Countability and density of $\mathbb Q$ | Part I | Separability and approximation examples, if retained | Secure. No general topology is needed early. |
 | Algebra and composition of continuous functions | Part II, Continuity | Completeness of $C[a,b]$; test functions and approximation | Secure. |
 | Continuity of $|f|$, $\min(f,g)$ and $\max(f,g)$ | Part II, Continuity exercises | Daniell lattice manipulations and elementary metric estimates | Protect as a proved exercise or reprove locally; no new section needed. |
-| Uniform continuity and Heine–Cantor | Part II, Continuity | Dini's lemma; integral estimates; Arzelà–Ascoli motivation | Secure. General uniform convergence still belongs to Part III. |
+| Uniform continuity and Heine–Cantor | Part II, Continuity | Dini's lemma and integral estimates | Secure. General uniform convergence still belongs to Part III. |
 | Derivative rules, MVT and finite Taylor control | Part II, Differentiation | Examples of unstable differentiation; approximation estimates | Secure. |
 | A positive linear integral on $C[a,b]$, with trapping and bounds | Part II, Integration | Starting functional for Daniell; integral metrics; $L^1$ estimates | Secure in substance. Ensure the final chapter states the order and absolute bounds explicitly. |
 | Substitution and integration by parts | Part II, The Calculus | Convolution changes of variables; orthogonality; distributional derivatives | Secure. |
@@ -137,10 +177,10 @@ Part III should introduce for itself:
 
 - metrics and norms on collections of functions;
 - uniform convergence as a general mode of function convergence;
-- quotient spaces, a.e. equality, measure and $L^1/L^2$;
-- equicontinuity and Arzelà–Ascoli;
+- quotient spaces, a.e. equality, measure and the $L^1/L^2$ family;
 - inner-product geometry and infinite bases;
-- continuous linear functionals, weak convergence and Riesz;
+- continuous linear functionals and Riesz, with the minimum weak language
+  needed for the route to distributions still to be decided;
 - test-function spaces and distributions;
 - complex Fourier notation if it has not previously been needed.
 
@@ -148,37 +188,35 @@ Likewise, matrix exponentials and operator-generated motion need not be
 smuggled into Parts I–II as prerequisites. Solutions can introduce them
 when $x'=Ax$ supplies the motivation.
 
-## Recommended shape: seven chapters
+## Revised working shape
 
-With Parts I and II occupying Chapters 1–13, these would be Chapters 14–20.
+The old seven-chapter shape is superseded. The table records five provisional
+mathematical movements, not a final chapter count; numbering waits on the
+decision about whether the observer bridge is a section or a chapter.
 
 | Ch. | Working identity | One- or two-sentence narrative | Principal climax |
 |---|---|---|---|
-| 14 | **Functions Become Points** | A sequence of functions cannot be understood by watching one input at a time. We choose distances on whole functions, recover the grammar of convergence and completeness, and discover that different distances create genuinely different worlds. | $C[a,b]$ is complete in the sup distance but incomplete in the integral distance. |
+| 14 | **Functions Become Points** | A sequence of functions cannot be understood by watching one input at a time. We choose distances on whole functions, recover the grammar of convergence and completeness, and discover that different distances create genuinely different worlds. | $C[a,b]$ is complete in the sup distance but incomplete in the integral distance; the analogy with $\mathbb Q\subset\mathbb R$ becomes the recurring model. |
 | 15 | **The Integral Under Limits** | The old integral is not closed under the limits analysis naturally produces. Starting from the integral already earned in Part II, the Daniell construction enlarges its domain precisely enough to make monotone limits and then dominated limits legitimate. | MCT and DCT turn formerly dangerous interchanges into theorems. |
-| 16 | **The World the Integral Creates** | Extending the integral changes what counts as zero, distance and even equality. Almost-everywhere identification, measure and the complete $L^p$ spaces reveal that we have not merely integrated more functions; we have completed a new mathematical world. | $L^1$ as the completion of continuous functions in integral distance; $L^2$ opens geometric structure. |
-| 17 | **How Functions Escape** | Bounded real sequences cannot escape without leaving a convergent subsequence, but bounded functions can flee through ever-faster oscillation. Equicontinuity identifies the missing control, and Arzelà–Ascoli restores a Bolzano–Weierstrass theorem for functions. | Boundedness plus equicontinuity forces a uniformly convergent subsequence. |
-| 18 | **Choosing the Right Coordinates** | A basis is not merely a way to name a function: it is a choice that makes a particular operation into arithmetic. Projection and orthogonality explain best approximation, while polynomial, sampling, Fourier and local bases show that there is no best coordinate system independent of the task. | Legendre geometry produces Gaussian quadrature; an $L^2$ basis turns approximation error into omitted coefficient energy. |
-| 19 | **What Every Observer Sees** | Coordinates describe a point from within; continuous linear functionals describe it through every stable external measurement. Weak convergence preserves all such observations and recovers a form of compactness even when norm convergence fails. | Every bounded sequence in a separable Hilbert space has a weakly convergent subsequence. |
-| 20 | **Beyond Functions** | Concentrating functions can converge under every smooth test without converging to any function. We accept the limiting measurements as new objects—distributions—and reach a final space in which every object is differentiable and differentiation commutes with limits. | $T_n\to T$ implies $T_n'\to T'$; periodic jumps acquire delta terms. |
+| 16 | **The World the Integral Creates** | Extending the integral changes what counts as zero, distance and even equality. Almost-everywhere identification and completion produce the $L^1/L^2$ world, while density of simple functions keeps that world calculable. | $L^1$ completes integral distance; $L^2$ adds Hilbert geometry without abandoning its dense elementary core. |
+| 18 | **Choosing the Right Coordinates** | A basis is a dense coordinate system, not merely a way to name a function: finite combinations are calculable and completeness says they approximate the whole space. Projection and orthogonality turn approximation and equations into scalar arithmetic. | Fourier completeness makes finite trigonometric calculations control all of $L^2(\mathbb T)$. |
+| 19–20 joint open | **Observers to Beyond Functions** | Stable numerical measurements motivate Riesz only to the extent it serves the chosen $L$-world; concentrating functions then force smooth tests and distributions. No weak compactness theorem intervenes. | Distributional differentiation is continuous; periodic jumps acquire delta terms. |
 
-The part has three movements:
+The part has three larger movements:
 
 1. **Closeness creates worlds** (Chs 14–16): metric grammar, then the
    integral's forced extension and the complete spaces it creates.
-2. **Infinite dimensions require choices** (Chs 17–18): functions escape
-   finite-dimensional intuition, and useful coordinates must be chosen for
-   a purpose.
-3. **Observation enlarges existence** (Chs 19–20): stable measurements give
-   weak limits, then generalized objects beyond functions.
+2. **Infinite dimensions require coordinates:** a short escape example
+   breaks finite-dimensional intuition, then useful coordinates are chosen
+   for a purpose. No separate compactness chapter is built.
+3. **Observation enlarges existence:** stable measurements lead as directly
+   as possible to generalized objects beyond functions.
 
-Seven chapters are the working shape because both potentially adjacent
-pairs presently have distinct climaxes. Chapter 15 changes the
-**operation**, while Chapter 16 discovers the **space** created by that
-change. Chapter 19 restores convergence among functions through stable
-observers, while Chapter 20 accepts observer-limits that lie beyond
-functions. Either distinction may sustain two chapters—or may collapse
-cleanly once the minimal theorem route is known.
+Chapters 15 and 16 retain distinct provisional climaxes: one changes the
+operation and the other discovers the space created by that change. The
+observer/distribution boundary remains deliberately unsettled. See
+`decision-lean-second-half.md` for the discarded seven-chapter route and
+the conditions under which it might return.
 
 ---
 
@@ -384,9 +422,10 @@ which world completion creates.
 
 The original incomplete Cauchy sequence now has somewhere to arrive.
 Moreover rough functions can be approximated by smooth ones in the
-distance appropriate to integration. But completeness is not compactness:
-even a bounded procession of perfectly smooth functions may have no
-strongly convergent subsequence. That failure drives Chapter 17.
+distance appropriate to integration. A bounded orthonormal or rapidly
+oscillating sequence can then show, briefly, that infinite-dimensional
+boundedness does not force strong subsequential convergence. The core does
+not build a separate compactness chapter around that warning.
 
 ### Borders
 
@@ -398,70 +437,17 @@ strongly convergent subsequence. That failure drives Chapter 17.
 
 ---
 
-## Chapter 17 — How Functions Escape
+## Removed core chapter — How Functions Escape
 
-### Narrative
+The former Chapter 17 developed equicontinuity and Arzelà–Ascoli, with
+possible later clients in Peano existence and compact integral operators.
+Those clients and the theorem have been removed under the lean-core ruling.
 
-On the real line, boundedness gave the Bolzano–Weierstrass subsequence that
-powered compactness arguments throughout Parts I and II. In a space of
-functions, boundedness controls height but not complexity: a sequence can
-escape through ever-finer oscillation.
-
-The chapter's task is diagnostic and restorative. Equicontinuity names the
-missing control, and Arzelà–Ascoli becomes Bolzano–Weierstrass rebuilt for
-functions.
-
-### Proposed movement
-
-1. **The finite-dimensional promise.** Recall only the result actually
-   needed for contrast: every bounded real sequence has a convergent
-   subsequence. Examples in $\mathbb C$ or $\mathbb R^n$ may be mentioned,
-   but a general finite-dimensional norm-equivalence/Heine–Borel
-   development is not required.
-2. **Bounded functions escape.** Use a uniformly bounded oscillating
-   sequence in $C(\mathbb T)$ or $C[a,b]$ whose members remain separated in
-   sup distance. The failure should be visible before “infinite
-   dimensional” is offered as the diagnosis.
-3. **Control motion as well as height.** Motivate equicontinuity as one
-   tolerance rule shared by the entire family. Establish the finite-grid
-   approximation that converts equicontinuity into finite information.
-4. **Arzelà–Ascoli.** Prove the sequential form by diagonal extraction on
-   a countable dense set followed by equicontinuity. State the clean
-   criterion for relative compactness in $C[a,b]$.
-5. **Spend the theorem.** Possible immediate applications include compact
-   families of Lipschitz functions, compactness of an integral operator
-   with continuous kernel, or existence of an optimal function inside an
-   explicitly compact admissible family. Choose at least one; the theorem
-   must do work before the chapter ends.
-6. **Optional Baire coda.** Completeness also has a qualitative payoff:
-   the monsters from Part II are not merely possible. A starred Baire
-   section can show that nowhere-differentiable behavior is generic in
-   $C[a,b]$, or can be reserved for the observer chapter's optional
-   Uniform Boundedness route.
-
-### Main payload
-
-- Sequential compactness in metric spaces only as needed.
-- Failure of closed-and-bounded compactness in function spaces.
-- Equicontinuity and Arzelà–Ascoli.
-- A clean distinction among completeness, boundedness and compactness.
-- Baire category optional, not a prerequisite for the core story.
-
-### Immediate payoff and exit
-
-Arzelà–Ascoli explains exactly how a family must be controlled to regain
-strong convergence. But compactness is only one response to escape. A
-second is to stop demanding agreement in every detail and instead ask for
-the coordinates that matter to a given task.
-
-### Borders
-
-- Compact operators and the compact self-adjoint spectral theorem are not
-  automatic core material. They belong in Solutions if an equation or
-  eigenfunction problem demands them.
-- Peano existence, the direct method and other solution theorems may use
-  Arzelà–Ascoli later; they should not be front-loaded here merely as
-  motivation.
+Retain only the visible diagnostic somewhere near the transition to
+coordinates: a bounded sequence of functions can remain pairwise separated
+in norm. An orthonormal or rapidly oscillating sequence supplies the point
+without opening a new theory. The former chapter and its possible return are
+recorded in `decision-lean-second-half.md`.
 
 ---
 
@@ -553,7 +539,7 @@ tending to zero while their norms remain one. What, exactly, is converging?
 
 ---
 
-## Chapter 19 — What Every Observer Sees
+## Observer bridge — exact chapter status open
 
 ### Narrative
 
@@ -562,10 +548,10 @@ This chapter turns outward: what numerical measurements can be made
 stably on a space, and what does it mean for every such observer to agree
 that a sequence has arrived?
 
-This is not a dry “measurements and convergence” chapter. It begins with a
-paradox—every fixed coordinate of $e_n$ tends to zero although
-$\|e_n\|=1$—and ends by restoring a form of Bolzano–Weierstrass that strong
-convergence lost.
+The old version began with the coordinate paradox and ended with weak
+Hilbert Bolzano–Weierstrass. The latter theorem has been removed. The open
+question is whether the remaining observer material forms a short chapter,
+a section, or the opening movement of distributions.
 
 ### Proposed movement
 
@@ -579,22 +565,18 @@ convergence lost.
    well-defined on the a.e.-equivalence classes in $L^1$ or $L^2$;
    integration against a fixed $g$ is continuous in the appropriate
    $L^p$ setting.
-3. **The dual space.** Collect continuous linear functionals as $X^*$,
-   with the operator norm only as much as needed. This is the first of the
-   three accessible functional-analysis additions adopted for the part:
-   duality, Riesz representation and weak convergence.
+3. **Continuous observers.** Collect continuous linear functionals only to
+   the extent the chosen $L$-world and the transition to test functions
+   require. Avoid a catalogue of dual spaces.
 4. **Riesz representation in Hilbert space.** Prove that every continuous
    linear functional on a Hilbert space is $F(x)=\langle x,g\rangle$ for a
    unique $g$. Thus all stable observers in $L^2$ are correlations with
    another $L^2$ function.
-5. **Weak convergence.** Define $x_n\rightharpoonup x$ by convergence under
-   every continuous linear functional. Compare strong and weak
-   convergence; use oscillating Fourier modes as the principal example.
-6. **Weak Bolzano–Weierstrass.** For a bounded sequence in a separable
-   Hilbert space, diagonalize across basis coordinates, use Bessel/Fatou
-   to show the limiting coordinates define a point, and conclude that a
-   subsequence converges weakly.
-7. **Concentration defeats the present observers.** Narrow unit-mass
+5. **Optional short weak bridge.** If the term earns its keep, define weak
+   convergence and compare it with norm convergence using an orthonormal
+   sequence. Introduce no weak compactness theorem and no general weak
+   topology.
+6. **Concentration defeats the present observers.** Narrow unit-mass
    bumps may not converge in the current function norm, yet
    $\int \rho_n\varphi$ approaches $\varphi(0)$ for every smooth probe.
    The measurements converge, but Riesz in $L^2$ cannot supply an $L^2$
@@ -606,35 +588,29 @@ convergence lost.
 - Continuous linear functionals and dual spaces.
 - Concrete norm-dependence of evaluation and integration functionals.
 - Hilbert-space Riesz representation.
-- Weak convergence and strong-versus-weak examples.
-- Weak sequential compactness for bounded sequences in separable Hilbert
-  spaces, proved with basis coordinates rather than a general Banach-space
-  theorem.
+- At most the minimum weak-convergence definition and example that make the
+  distributional transition clearer.
+- No weak subsequential compactness theorem.
 
 ### Immediate payoff and exit
 
-Weak convergence recovers subsequences from bounded sequences such as
-orthonormal families and explains how oscillations disappear to every
-fixed observer. Concentration then shows the boundary: all the smooth
-measurements agree on a limit, but the limit is not a function in any
-space yet built. Chapter 20 accepts the measurement record itself as the
-new object.
+Stable observations explain how oscillations or concentration can disappear
+under fixed probes even when norm convergence fails. Concentration supplies
+the essential boundary: all smooth measurements agree on a limit, but the
+limit is not a function in any space yet built. The distribution chapter
+accepts the measurement record itself as the new object.
 
 ### Optional larger climax
 
-If Baire was proved in Chapter 17 and the load allows it, the Uniform
-Boundedness Principle can be a starred payoff. Applied to Fourier partial
-sum functionals, the growth of the Dirichlet kernels implies the existence
-of a continuous function whose Fourier partial sums diverge. This is a
-powerful theorem, but it competes with weak compactness and should not be
-required merely to make the chapter feel important.
+Uniform Boundedness and the Fourier-divergence application no longer belong
+to this core route. They remain source material for a later functional-
+analysis course.
 
 ### Borders
 
 - No general Hahn–Banach machinery is required for the core.
 - No full identification of duals of every $L^p$ space.
-- Weak compactness is proved in the separable Hilbert setting actually
-  needed, not announced at maximal Banach-space generality.
+- No weak compactness theorem or general weak topology.
 
 ---
 
@@ -833,11 +809,11 @@ Spaces may establish bounded linear maps and the completeness estimates
 needed later. It should not tell the motion story before motion supplies
 the reason.
 
-## The live compression options
+## The remaining shape options
 
-Seven chapters remain the working plan. There are two live ways to reach
-six, and they should be judged by the actual minimal theorem roster rather
-than by chapter-count symmetry.
+The old seven-chapter plan has already lost the Arzelà–Ascoli chapter and
+the weak-compactness climax. The remaining questions concern the integral
+pair and the shortest observer-to-distributions route.
 
 ### Option A — merge the integral pair
 
@@ -846,10 +822,8 @@ a separate narrative movement, merge Chapters 15 and 16:
 
 1. Functions Become Points
 2. Completing the Integral and Its World
-3. How Functions Escape
-4. Choosing the Right Coordinates
-5. What Every Observer Sees
-6. Beyond Functions
+3. Choosing the Right Coordinates
+4. Observers and Beyond Functions
 
 The combined chapter would need to move rapidly from Daniell extension
 through MCT/DCT to a.e. equality, $L^1$ completeness and the $L^2$ door.
@@ -857,32 +831,23 @@ Its risk is that one
 chapter must carry both a technically serious construction and the
 conceptual revelation of the space it creates.
 
-### Option B — merge observers into distributions
+### Observer-to-distributions joint
 
 If the functional-analysis route can remain lean, Chapters 19 and 20 form
 a naturally escalating single story:
 
-> stable measurements → Riesz represents Hilbert observers by functions →
-> weak convergence → concentration produces a limiting observer not
-> represented by an $L^2$ function → smooth tests and distributions →
+> stable measurements → Riesz represents observers in the chosen Hilbert
+> world, if $L^2$ is selected → concentration produces a limiting observer
+> not represented by a function → smooth tests and distributions →
 > differentiation commutes with limits.
 
-This may be the more narratively seamless merge. Its risk is mathematical
-load: dual spaces, Riesz representation, weak convergence, weak
-subsequential compactness, the smooth test space, delta and distributional
-differentiation can easily become two chapters' worth of ideas. The main
-diagnostic is weak Bolzano–Weierstrass. If it remains a substantial core
-climax, the chapters probably stay separate; if it is shortened, moved or
-made optional, Riesz can become the pivot inside a strong combined finale.
+The risk is now much smaller because weak compactness has been removed. The
+remaining audit is whether even the general definition of weak convergence
+helps the story more than it delays the passage to smooth tests.
 
-If both Option A and Option B survive their audits, Part III could contract
-to five chapters without merging unrelated stories. Do not instead merge
-the basis and observer chapters: their narratives are cleanly different.
-Coordinates describe a point internally and are chosen for a task;
-functionals observe a point externally and determine a mode of convergence.
-Do not merge the escape chapter into the metric opening either; the
-finite/infinite-dimensional surprise needs time to become an event rather
-than a cautionary paragraph.
+Coordinates and observers remain mathematically distinct, but that does not
+force separate chapters. The final count will follow the minimal section
+routes rather than preserve the old symmetry.
 
 ## Dependency spine
 
@@ -895,24 +860,19 @@ $$
 &\text{metrics and completeness}\\
 &\quad\downarrow\\
 &\text{Daniell extension} \to \text{MCT/DCT} \to L^1,L^2\\
-&\quad\downarrow\qquad\qquad\quad\downarrow\\
-&\text{Arzelà--Ascoli}\qquad\text{Hilbert projection and bases}\\
-&\hspace{118pt}\downarrow\\
-&\hspace{58pt}\text{duality, Riesz and weak convergence}\\
-&\hspace{118pt}\downarrow\\
-&\hspace{82pt}\text{periodic distributions}.
+&\hspace{155pt}\downarrow\\
+&\hspace{80pt}\text{Hilbert projection and bases, if }L^2\text{ is selected}\\
+&\hspace{155pt}\downarrow\\
+&\hspace{58pt}\text{the minimum stable-observer language}\\
+&\hspace{155pt}\downarrow\\
+&\hspace{105pt}\text{periodic distributions}.
 \end{aligned}
 $$
 
 Specific audits:
 
-- Arzelà–Ascoli needs metric completeness and Part II's uniform
-  continuity ideas, not the full $L^p$ chapter. Its placement after the
-  integral world is narrative rather than forced by every dependency.
 - Hilbert geometry needs $L^2$ and completeness.
 - Riesz representation needs the Hilbert projection theorem.
-- Weak sequential compactness in separable Hilbert space needs an
-  orthonormal basis and Bessel/Parseval machinery.
 - Periodic distributions need the observer idea and smooth test functions;
   they do not require the theorem that every distribution has a Fourier
   series.
@@ -925,7 +885,6 @@ Specific audits:
 - Metric/function spaces, now motivated together by functions becoming
   points.
 - Daniell, MCT/DCT and $L^p$, promoted to the opening movement of Spaces.
-- Arzelà–Ascoli as the repair of Bolzano–Weierstrass.
 - Density, mollification and approximate identities, attached to the
   integral world and later delta motivation.
 - Inner products, projection, orthogonal bases and Parseval, reframed by
@@ -944,10 +903,11 @@ Specific audits:
 - Banach fixed point as Picard–Lindelöf and genuine ODE theory.
 - Matrix exponentials, linear systems and transformation-generated motion.
 - Gronwall, continuous dependence and numerical methods.
-- Calculus of variations and the direct method.
+- Classical calculus of variations, without a new energy space or general
+  existence method under the three-world budget.
 - Heat/wave equations, Sturm–Liouville and eigenfunction solution methods.
-- Compact operators and spectral theory, if the selected problems justify
-  the machinery.
+- Explicit eigenfunction examples; the general compact spectral theorem is
+  Looking Forward only.
 - Fourier transform, tempered distributions and fundamental solutions.
 - Sampling, uncertainty, Poisson summation, central-limit and Borwein
   applications.
@@ -961,51 +921,45 @@ Specific audits:
 - Fredholm theory without a sustained integral-equation story;
 - Sturm–Liouville as an unsupported promise;
 - multiple distribution spaces introduced in advance of their uses.
+- Arzelà–Ascoli, Peano existence, weak Hilbert compactness and the direct
+  method; their coherent alternative route is preserved in
+  `decision-lean-second-half.md`.
 
 ## Recorded chapter-count and scope ruling
 
-- **Keep seven chapters for now**, as the clearest form in which to audit
-  the story and dependencies.
-- **Retain two live compressions:** collapse the integral pair if the
-  eventual $L^1/L^2$ treatment is too small to sustain Chapter 16; collapse
-  Riesz/weak observers into distributions if their minimal route forms one
-  manageable escalating chapter.
-- **Author's initial inclination:** the observer/Riesz-to-distributions
-  route probably does collapse in the final book, following the escalation
-  recorded in Option B. Keep the chapters separate during planning so each
-  movement's narrative and theorem load can be evaluated rather than hidden
-  inside a prematurely compressed outline.
-- **Minimal $L^p$ principle:** include only what this introductory book
-  needs. $L^1$ supplies the completed integral world and $L^2$ supplies the
-  later geometry; no theorem earns core status merely because it belongs
-  to the standard $L^p$ syllabus.
+- The seven-chapter shape is superseded; do not renumber until the final
+  observer-to-distributions route is known.
+- The integral pair may remain two chapters if operation and completed world
+  each sustain a genuine climax.
+- The observer route should be as direct as possible and contains no weak
+  compactness theorem.
+- Students should inhabit continuous-function spaces, the $L^1/L^2$ family,
+  and distribution spaces if possible. $L^1$ and $L^2$ should feel like two
+  choices of integrability condition inside one construction.
 
 ## Open decisions for the next walk
 
-1. **What is the minimal $L^1/L^2$ theorem roster?** Audit every proposed
-   inequality and general $L^p$ statement against a named client; this
-   audit will also decide whether the two integral chapters remain two.
-2. **What is the minimal observer-to-distributions route?** In particular,
-   decide whether weak Bolzano–Weierstrass is core, optional, or movable;
-   that decision will largely determine whether Chapters 19 and 20 remain
-   separate.
+1. **What is the minimal $L^1/L^2$ roster?** Make the two spaces feel like
+   instances of one construction and audit every general $L^p$ inequality
+   against a named client.
+2. **What is the minimal observer-to-distributions route?** Decide among no
+   general weak-convergence definition, a short definition-and-example
+   bridge, or a combined observer/distribution chapter. Weak
+   Bolzano–Weierstrass is no longer an option in the core.
 3. **Where does regularization live?** Current recommendation: at the end
    of the $L^p$ world, with smooth density as the immediate payoff and
    delta as the long return.
 4. **How is trigonometric completeness proved?** Fejér gives a concrete
    approximate-identity return; another density proof may reduce load.
-5. **Is Baire core, starred, or postponed?** It has a strong monsters
-   payoff but is not needed for the seven-chapter spine.
-6. **Does Chapter 19 stop at weak Hilbert compactness?** Uniform Boundedness
-   plus Fourier divergence is an excellent optional climax but may crowd
-   the clean bridge to distributions.
-7. **First distribution space.** Current recommendation: periodic
+5. **Is Baire postponed beyond this book?** It has a strong monsters payoff
+   but no client in the lean spine.
+6. **First distribution space.** Current recommendation: periodic
    distributions on $\mathbb T$. Reconsider $\mathcal D'(\mathbb R)$ only
    if $H'=\delta$ is judged more important than the circle's technical and
    narrative economy.
-8. **Exact Part IV opening.** “Transformations generate motion” is the
+7. **Exact Part IV opening.** “Transformations generate motion” is the
    leading candidate, but belongs to the separate Solutions plan.
-9. **Titles.** Every chapter label in this document is explanatory
+8. **Titles.** Every chapter label in this document is explanatory
    shorthand, not proposed book prose.
 
 ## Part-level success test

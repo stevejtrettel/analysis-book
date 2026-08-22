@@ -1,587 +1,893 @@
-# Part IV — Solutions: Source Harvest and Provisional Landscape
+# Part IV — Solutions: Working Architecture
 
-Status: first harvest after settling the general Part III **Spaces** plan,
-2026-08-21. This document identifies promising stories and applications
-from the old Part III material. It is deliberately less settled than
-`part3-spaces.md`: five or six chapters are plausible, and no complete
-chapter list is yet a ruling.
+Status: working agreement from the 2026-08-21 narrative discussion, revised
+by the 2026-08-22 lean-core ruling in `decision-lean-second-half.md`. Part IV
+currently has five mathematical movements, though final chapter numbers wait
+on the compressed Part III shape. Peano, the direct method, weak compactness
+and the proof of the compact self-adjoint spectral theorem are no longer
+core. The last two movements jointly contain Fourier transform, sampling,
+tempered distributions and fundamental solutions and may still divide when
+the proofs are drafted.
 
-Primary old sources read for this pass:
+Eigenfunction expansion now proceeds through systems whose pieces can be
+written down: the complete Fourier case followed by either Legendre as an
+extended project or the quantum harmonic oscillator as a developed second
+example. The general theorem belongs only in Looking Forward.
 
-- `../2025-plans/overview-part3.md`, especially the old differential
-  equations and distributions chapters;
-- `../2025-plans/part3-ideas/part_iii_outline.md`;
-- `../2025-plans/part3-ideas/part-iii-functional-analysis-outline-v1.md`;
-- `../2025-chapters/12-function-space/03-optimization.md`;
-- `../2025-chapters/13-fourier/`;
-- `../2025-chapters/14-diffeq/`;
-- `../2025-chapters/15-distributions/`;
-- `../../claude-notes.md` and `../MAP.md` for the previous audit warnings.
+Working chapter names below are mathematical content labels, not title
+candidates.
 
-## Why Part IV exists
+Sources consulted:
 
-Part III asks what objects and limits exist. Part IV asks what those worlds
-allow us to solve.
+- ../2025-plans/overview-part3.md
+- ../2025-plans/part3-ideas/part_iii_outline.md
+- ../2025-plans/part3-ideas/part-iii-functional-analysis-outline-v1.md
+- ../2025-chapters/12-function-space/03-optimization.md
+- ../2025-chapters/12-function-space/04-regularization.md
+- ../2025-chapters/13-fourier/
+- ../2025-chapters/14-diffeq/
+- ../2025-chapters/15-distributions/
+- ../../claude-notes.md
+- ../MAP.md
 
-The governing principle remains problem-first:
+---
 
-> **A problem should demand a solution method; the method should reveal the
-> space, coordinates or generalized objects that make the solution
-> possible.**
+## The job of Part IV
 
-The part should not read as “applications of the machinery from Part III.”
-Each chapter begins with a problem that matters independently—motion,
-equilibrium, vibration, diffusion, reconstruction—and discovers that the
-abstract language already built is exactly what the problem needs.
+Parts I–III move from numbers, to functions, to spaces of functions and
+generalized functions. Part IV asks what equations those spaces allow us to
+solve.
 
-Five recurring verbs organize the landscape:
+Its principal methods are:
 
-1. **iterate** to produce a fixed point;
-2. **minimize** to select an equilibrium;
-3. **diagonalize** to separate coupled modes;
-4. **transform** to turn differentiation and convolution into arithmetic;
-5. **reconstruct** a whole object from partial information.
+1. iteration;
+2. minimization;
+3. eigenfunction expansion;
+4. Fourier transformation;
+5. convolution with a fundamental solution.
 
-“Exponentiate” belongs with the first and “regularize” may become a sixth
-verb if inverse problems earn enough space.
+These are not five items in a survey. Each enters because a concrete problem
+cannot be solved by the methods available before it.
 
-## What the old material gets right
+The standard for inclusion is:
 
-Several old strands are already excellent and should survive:
+- What exact theorem will students prove?
+- Which earlier results does the proof use?
+- What new problem becomes solvable afterward?
+- Is that payoff worth the definitions and technical work?
+- Does the result return later, or is it an isolated monument?
 
-- Picard iteration makes completeness solve a concrete existence problem.
-- Matrix exponentials explain growth, shear, rotation and coupled motion.
-- Gronwall turns existence theory into stability and validates numerical
-  approximation.
-- Euler and backward Euler show that analysis explains both convergence
-  and computational stability.
-- The explanation of complex exponentials is unusually strong: sine and
-  cosine mix under differentiation, while $e^{inx}$ diagonalizes it.
-- The heat/wave contrast—smoothing versus energy conservation, infinite
-  versus finite propagation—is a genuine scientific payoff.
-- Distributions are motivated by limits that should exist and by equations
-  with point sources.
-- Fourier transform applications connect to signals, probability, physics
-  and pure mathematics.
-- The sampling theorem, uncertainty principle and Borwein integrals are
-  memorable enough to anchor substantial closing movements.
+Part IV is written for advanced undergraduates or beginning master's
+students. A proof may be difficult, but its hypotheses and purpose must
+remain visible. The part should prefer one complete theorem with several
+uses to a catalogue of theories.
 
-## What must change from the old organization
+The final application in the book need not be presented as the pinnacle of
+analysis. A good ending solves a serious problem completely, then makes
+visible the questions the present theory still cannot answer.
 
-1. **The heat equation appears three times.** It should have one primary
-   solution story. A bounded-domain/discrete-spectrum version and a
-   whole-line/continuous-spectrum return can coexist only if the comparison
-   itself is the point; neither should re-teach the same calculation.
-2. **Sturm–Liouville was asserted without a proof engine.** If retained as
-   more than a preview, it needs a compact self-adjoint spectral theorem,
-   most cleanly applied to a Green operator.
-3. **The distributions chapter was overloaded.** Basic periodic
-   distributions and continuous differentiation now end Part III. Part IV
-   may introduce periodic Fourier expansions, Schwartz/tempered
-   distributions and fundamental solutions only when a problem demands
-   each enlargement.
-4. **Calculus of variations had necessary conditions but no existence
-   story.** Part III's weak convergence and Riesz theorem make a genuine
-   direct-method/weak-solution chapter possible.
-5. **The final applications were a catalogue.** Sampling, the CLT,
-   uncertainty and Borwein should either receive distinct narrative jobs
-   or be distributed among the chapters whose theorems power them.
-6. **Several old proof sketches need audit.** In particular, pointwise
-   convergence of Fourier transforms does not by itself prove pointwise or
-   $L^1$ convergence of densities in the CLT. Sampling via a Dirac comb is
-   evocative but should be replaced or supported by a clean Hilbert-space
-   proof.
+---
 
-## A provisional six-movement landscape
+## What Part III hands forward
 
-These are working identities, not adopted titles or a settled order.
+Part III is expected to provide:
 
-| Movement | Problem that opens it | What students see happen | Where it connects |
+- complete metric and normed spaces;
+- the contraction principle, at least in a form that can be recalled;
+- the integral, dominated and monotone convergence, and the required
+  \(L^1\) and \(L^2\) spaces;
+- Hilbert-space geometry, projection, orthonormal systems and Parseval;
+- completeness of the trigonometric system in \(L^2(\mathbb T)\);
+- only the stable-observer or weak-convergence language retained by the
+  final observer-to-distributions audit;
+- Hilbert-space Riesz representation;
+- periodic distributions and continuous distributional differentiation.
+
+Part IV introduces only when a problem demands them:
+
+- matrix exponentials;
+- one derivative-sensitive Hilbert space for a variational problem;
+- one explicit non-Fourier eigenfunction system, if retained;
+- the Fourier transform on \(\mathbb R\);
+- Schwartz functions and tempered distributions;
+- bandlimited spaces and sinc coordinates;
+- fundamental solutions.
+
+One technical dependency is not yet assigned. A rigorous Fourier-transform
+development needs enough Fubini–Tonelli theory for absolutely integrable
+functions on product spaces. This can be supplied near the end of the
+integral construction in Part III or proved locally when convolution and
+Fourier inversion demand it. It does not require backfilling Parts I–II.
+
+---
+
+## Working five-chapter shape
+
+With Part III ending at Chapter 20, the working shape is:
+
+| Ch. | Mathematical identity | Short narrative | Main result or experience |
 |---|---|---|---|
-| 1. **How a local rule produces a whole motion** | How can an instantaneous rule determine an entire trajectory? | Repeated tiny transformations produce matrix exponentials; iteration produces nonlinear solutions; error estimates prove numerical trajectories reliable. | Coupled oscillators, dynamical systems and scientific computation. |
-| 2. **How least energy selects a solution** | How can an equilibrium exist when no formula finds it? | A minimizing sequence approaches an actual least-energy state, and the condition defining that state becomes a differential equation. | Mechanics, geometry, optics, boundary-value problems and smoothing noisy data. |
-| 3. **Why complicated systems have natural modes** | Why do strings, molecules and collections of data break into a small number of characteristic patterns? | A symmetric compact transformation has mutually perpendicular modes, and every input decomposes into them. | Vibrating strings, integral equations, optimal low-dimensional summaries of data, deblurring and quantum mechanics. |
-| 4. **How periodic equations become arithmetic** | How do we solve a differential equation on a circle or bounded interval? | Writing a periodic function as frequencies turns differentiation into multiplication of coefficients, so the equation separates into independent numerical equations. | Heat, waves, resonance, conservation and the distribution of number sequences around a circle. |
-| 5. **How to solve equations on the whole line** | What replaces the numbered frequencies of a periodic function when the domain has no boundary? | A continuous range of frequencies turns derivatives and convolutions into multiplication and produces explicit responses to point sources. | Diffusion, wave propagation, filters, probability and number theory. |
-| 6. **How samples determine a continuous signal** | How much of a continuous signal must be stored or observed? | If no frequencies above a fixed limit occur, equally spaced samples are its coordinates and shifted sinc curves reconstruct it exactly; aliasing and uncertainty show the limits. | Digital signals, communications, compression and statistical data reduction. |
+| 21 | **Ordinary Differential Equations** | An instantaneous law becomes a trajectory by exponentiation or iteration. Completeness proves that the nonlinear iteration arrives, while Grönwall controls how errors propagate. | Matrix exponentials; Picard–Lindelöf; continuous dependence. |
+| 22 | **Variational Problems** | Some solutions are not generated forward in time but selected by minimizing length, time or energy. Necessary equations are only half the problem; analysis must also explain why a minimizing function exists. | Euler–Lagrange plus one honest existence theorem; isoperimetric inequality as a major classical payoff. |
+| 23 | **Eigenfunction Expansion** | Fourier modes solve a uniform problem completely. A second explicit system then shows that the method is not peculiar to trigonometric functions before Looking Forward states the general theorem. | Complete Fourier solution; Legendre project or quantum harmonic oscillator. |
+| 24 | **Fourier Transform** | On the whole line the discrete eigenvalues of a compact boundary problem give way to continuously indexed frequencies. Fourier inversion and Plancherel make that continuous decomposition rigorous. | Fourier inversion, Plancherel, the Gaussian, Poisson summation, and exact sampling as a substantial application. |
+| 25 | **Generalized and Fundamental Solutions** | Transforming an equation may require division by a singular multiplier, and point forcing is not a function. Tempered distributions and fundamental solutions allow \(LG=\delta\), after which convolution solves \(Lu=f\). | Fundamental solutions; heat kernel; distributional initial data; smoothing and propagation. |
 
-This landscape reaches genuinely central applications of functional
-analysis rather than using the subject merely as generalized calculus:
-Banach's fixed-point theorem, weak Hilbert methods, the compact spectral
-theorem, Plancherel, and exact reconstruction all receive real clients.
-
----
-
-## Movement 1 — How a Local Rule Produces a Whole Motion
-
-### Narrative
-
-Calculus gives a local law such as $x'=Ax$ or $y'=f(t,y)$; it does not by
-itself give the trajectory. Begin with the cases where repeated tiny
-transformations visibly generate motion, then discover that a nonlinear
-trajectory is a fixed point in a complete space.
-
-### Material worth developing
-
-- Scalar $x'=ax$ and the exponential as accumulated local growth.
-- Coupled system $x'=Ax$ and
-  $e^{tA}=\sum_{n\ge0}t^nA^n/n!$.
-- Microstep interpretation $(I+tA/n)^n\to e^{tA}$.
-- Diagonalizable matrices; real growth/decay, shear from nilpotence, and
-  rotation from imaginary eigenvalues.
-- $e^{it}$ and the planar rotation matrix as the same exponential story.
-- Semigroup/group law: evolution for time $s+t$ is evolution for $s$
-  followed by evolution for $t$.
-- Nonlinear ODEs rewritten as integral fixed-point equations.
-- Picard–Lindelöf, with the contraction estimate visible.
-- Gronwall: uniqueness, continuous dependence and amplification of errors.
-- Euler's method, including a rigorous global error estimate.
-- Forward versus backward Euler on a stiff decay equation; analysis
-  distinguishes a convergent idea from a stable computation.
-
-### Possible scientific examples
-
-- harmonic oscillator and damped oscillator;
-- two coupled masses or a small network of coupled linear compartments;
-- a simple population/epidemic model for the nonlinear fixed-point story;
-- stiffness as a genuine computational phenomenon, not a numerical-methods
-  catalogue.
-
-### Climax candidates
-
-- Picard iteration simultaneously proves existence and computes the
-  solution.
-- Backward Euler uses a new contraction at every time step and remains
-  stable where forward Euler predicts explosive oscillation.
-
-The chapter should end with the infinite-dimensional obstruction:
-differentiation is not a bounded operator on the familiar function norms,
-so $e^{tD}$ cannot simply be copied from matrices without choosing a new
-framework. Later chapters discover the frameworks through concrete PDEs.
+This is a five-chapter planning structure, not a promise that Chapters 24
+and 25 will remain only two chapters. If Fourier inversion, Plancherel,
+sampling, tempered distributions and fundamental solutions cannot be given
+adequate room, this final pair may become three chapters. The plan should
+expand rather than compress proofs into a survey.
 
 ---
 
-## Movement 2 — How Least Energy Selects a Solution
+## Chapter 21 — Ordinary Differential Equations
 
-### Narrative
+### Mathematical story
 
-Some laws are not imposed point by point; they select the state of least
-length, time or energy. Classical variation derives the equation a
-minimizer must obey, but functional analysis answers the prior question:
-**why should a minimizing function exist at all?**
+Calculus states a local law such as
+
+\[
+x'(t)=Ax(t)
+\qquad\text{or}\qquad
+y'(t)=f(t,y(t)).
+\]
+
+The chapter asks how such a law determines an entire trajectory. The linear
+case turns a transformation into motion through the exponential. The
+nonlinear case turns the equation into a fixed-point problem on a complete
+space of functions.
+
+This is the proper motivation for the arithmetic of transformations and for
+matrix exponentials. They should not be introduced earlier as formal power
+series without a problem to solve.
+
+### Core route
+
+1. **Linear scalar evolution.** Revisit \(x'=ax\) and interpret the
+   exponential as accumulated local change.
+2. **Matrix evolution.** Define
+   \[
+   e^{tA}=\sum_{k=0}^{\infty}\frac{t^kA^k}{k!}
+   \]
+   in the finite-dimensional matrix algebra and prove convergence,
+   differentiability and the group law.
+3. **Modes of a matrix.** Diagonalizable matrices give independent
+   exponential modes. Nilpotence gives polynomial factors; imaginary
+   eigenvalues give rotations and oscillations. Full Jordan theory is not
+   required unless it earns its space.
+4. **Variation of constants.** Solve
+   \[
+   x'=Ax+g(t)
+   \]
+   and expose the first convolution-like formula.
+5. **Nonlinear equations.** Rewrite an initial-value problem as
+   \[
+   y(t)=y_0+\int_{t_0}^{t}f(s,y(s))\,ds.
+   \]
+6. **Picard–Lindelöf.** Apply the contraction principle on a closed ball in
+   \(C(I)\), with the interval and invariance estimates stated correctly.
+7. **Grönwall.** Prove uniqueness, continuous dependence on initial data
+   and parameters, and quantitative error propagation.
+
+### Possible computational ending
+
+Euler's method is a natural use of the same estimates:
+
+- local truncation error;
+- discrete Grönwall;
+- a rigorous global \(O(h)\) error bound;
+- explicit versus backward Euler on a stiff decay equation.
+
+This material should remain only if it strengthens the chapter's central
+claim that analysis controls approximation, rather than opening a short
+survey of numerical analysis.
+
+### Scope ruling: no Peano route
+
+Peano existence and its Euler-polygon/Arzelà–Ascoli proof are removed from
+the core. The chapter uses one existence engine: contraction under a
+Lipschitz condition, followed by Grönwall. A Looking Forward note may explain
+that continuity alone still gives existence by a different compactness
+method, but it should introduce no machinery required later.
+
+### Examples worth choosing among
+
+- harmonic and damped oscillators;
+- a two-component coupled system;
+- finite-time blowup for \(y'=y^2\);
+- a continuous non-Lipschitz equation with nonunique solutions;
+- one stiff scalar equation.
+
+The chapter should not become a catalogue of dynamical systems.
+
+---
+
+## Chapter 22 — Variational Problems
+
+### Mathematical story
+
+A differential equation may describe motion, but many equilibrium laws are
+better understood by saying that a function minimizes an integral. The
+classical first variation finds a necessary differential equation. The
+infinite-dimensional question is prior: why should the minimizing function
+exist?
 
 ### Classical entry
 
-- Functionals $J[y]=\int L(x,y,y')$ and variations $y+\varepsilon\eta$.
-- Euler–Lagrange equation from integration by parts.
-- Choose a small number of memorable clients: shortest path, catenary,
-  brachistochrone, geodesics or Fermat/Snell. Do not build a catalogue.
-- Noether's symmetry-to-conservation principle is an attractive starred
-  result if it can be proved in the one-dimensional setting without
-  changing the chapter's center.
+- functionals
+  \[
+  J[y]=\int_a^b L(x,y,y')\,dx;
+  \]
+- admissible variations;
+- the fundamental lemma;
+- the Euler–Lagrange equation;
+- constrained variation in one carefully chosen problem.
 
-### Functional-analytic payoff
+One or two classical examples should be developed, not a list. Candidates
+include the catenary, brachistochrone, Fermat–Snell, and geodesics. The
+choice should depend on proof length and on what later sections reuse.
 
-A simple one-dimensional Dirichlet problem offers a rigorous route:
+### The existence problem
 
-$$
--u''=f,\qquad u(0)=u(1)=0.
-$$
+The chapter should go beyond necessary conditions. A minimal honest route
+is one quadratic energy such as
 
-- Introduce the one derivative-sensitive Hilbert space the problem needs,
-  rather than surveying Sobolev spaces in advance.
-- Minimize
-  $J(u)=\frac12\int|u'|^2-\int fu$.
-- Poincaré's inequality makes $\int u'v'$ an effective inner product and
-  makes $v\mapsto\int fv$ continuous.
-- Riesz gives a unique $u$ satisfying the weak equation
-  $\int u'v'=\int fv$ for every test $v$.
-- The Riesz representative is exactly the unique minimizer.
-- In one dimension, recover enough regularity to reconnect the weak and
-  classical solutions.
+\[
+J(u)=\frac12\int_0^1 |u'|^2-\int_0^1 fu,
+\qquad u(0)=u(1)=0.
+\]
 
-This is a major payoff for the final chapters of Spaces: weak observers
-and Riesz do not merely describe convergence; they produce a solution.
+The required mathematics is:
 
-### Cross-disciplinary clients
+- begin with zero-boundary $C^1$ functions and complete them in
+  $\|u'\|_2$;
+- identify the resulting Hilbert space through $u\mapsto u'$ with
+  $\{g\in L^2(0,1):\int_0^1g=0\}$, so it remains visibly an $L^2$-type
+  construction rather than the start of a Sobolev scale;
+- prove Poincaré's inequality;
+- prove existence and uniqueness of the minimizer by Riesz in the energy
+  inner product and the identity
+  $J(v)=J(u)+\frac12\|v-u\|_V^2$;
+- identify the minimizer through
+  \[
+  \int_0^1 u'v'=\int_0^1 fv;
+  \]
+- recover a classical solution in one dimension under suitable
+  hypotheses on \(f\).
 
-- **Pure mathematics/geometry:** a Fourier proof of the isoperimetric
-  inequality can close the ancient circle-measurement strand, provided the
-  constant-speed and area-formula details are made honest.
-- **Physics:** equilibrium of an elastic string or membrane energy in one
-  dimension.
-- **Statistics/inverse problems:** Tikhonov or smoothing regularization
-  balances fitting data against roughness. A finite-dimensional or
-  one-dimensional version may provide a modern second client without
-  requiring a statistics course.
+This is not an occasion for a general Sobolev-space survey, weak compactness,
+lower semicontinuity or a general direct-method theorem. Both Riesz and the
+direct method would require the same energy space; Riesz is chosen because
+it adds no second existence machine.
 
-### Load warning
+### Classical climax: the isoperimetric inequality
 
-The direct method, Euler–Lagrange examples and isoperimetric theorem can
-each carry a chapter. The minimal route should select one existence theorem
-and one or two classical payoffs; it should not promise all of variational
-calculus.
+For a closed plane curve of length \(L\) enclosing area \(A\), prove
 
----
+\[
+4\pi A\leq L^2,
+\]
 
-## Movement 3 — Why Complicated Systems Have Natural Modes
+with equality only for a circle.
 
-### Narrative
+A clean route uses constant-speed parametrization, the area formula,
+Cauchy–Schwarz and the Fourier/Wirtinger inequality. This connects the
+variational problem to the Fourier geometry already built in Spaces and
+delivers a major theorem of classical geometry.
 
-Part III asked which basis makes a chosen task easy. Here the problem
-itself selects the basis: the natural coordinates are the modes that an
-operator merely scales.
+### Open choices
 
-### A rigorous spectral route
-
-1. Begin with an integral operator
-   $(Tf)(x)=\int K(x,y)f(y)\,dy$ with continuous symmetric kernel.
-2. Use Arzelà–Ascoli or the $L^2$ analogue to prove compactness.
-3. Self-adjointness makes eigenvalues real and distinct eigenspaces
-   orthogonal.
-4. Prove the compact self-adjoint spectral theorem by maximizing the
-   quadratic form on the unit sphere, extracting a convergent image, and
-   iterating on orthogonal complements.
-5. Obtain
-   $Tf=\sum\lambda_n\langle f,e_n\rangle e_n$.
-6. If useful, prove the self-adjoint Fredholm alternative as the
-   corresponding solvability condition.
-
-### Why this repairs the old Sturm–Liouville gap
-
-For a boundary-value operator such as $-u''$ with Dirichlet conditions,
-construct its Green operator $G$. The operator $G$ is compact,
-self-adjoint and positive. Eigenvectors of $G$ are eigenfunctions of the
-differential operator, with reciprocal eigenvalues. The compact spectral
-theorem now supplies the eigenbasis instead of declaring it by analogy.
-
-This supports:
-
-- vibrating strings and standing modes;
-- heat flow on a bounded interval;
-- variable-density strings/Sturm–Liouville as far as the proof budget
-  genuinely reaches;
-- integral equations and resonance;
-- a preview of quantum energy eigenstates, with an honest warning that
-  general unbounded spectral theory lies beyond the book.
-
-### A particularly valuable statistics application
-
-**PCA/Karhunen–Loève** is a natural second client of the same theorem.
-
-- For a finite collection of signals $x_1,\ldots,x_N$ in a Hilbert space,
-  define the covariance operator
-  $Cf=N^{-1}\sum_j\langle f,x_j\rangle x_j$.
-- It is finite-rank, positive and self-adjoint.
-- Its leading eigenvector captures the greatest possible average squared
-  projection; the first $k$ eigenvectors give the best $k$-dimensional
-  mean-square reconstruction.
-- For a continuous covariance kernel, the compact spectral theorem gives
-  the infinite-dimensional Karhunen–Loève expansion.
-
-This makes direct contact with statistics, data reduction and compression
-without introducing probability at full scale. The finite-ensemble theorem
-can be proved completely; the random-process version may be a GE or
-outlook.
-
-### Inverse problems and regularization
-
-Compact operators also explain why reconstructing a cause from a blurred
-effect is unstable: eigenvalues/singular values approach zero, so inversion
-amplifies small measurement errors. Truncating small modes or adding a
-Tikhonov penalty regularizes the problem. This is important modern
-functional analysis with clients in imaging, statistics and scientific
-measurement, but may be too much if PCA already supplies the chapter's
-second payoff.
+- which classical Euler–Lagrange example earns full treatment;
+- whether a one-dimensional Noether theorem adds enough to justify its
+  technical load;
+- whether regularization of noisy data is a short modern application or
+  belongs later with inverse problems.
 
 ---
 
-## Movement 4 — How Periodic Equations Become Arithmetic
+## Chapter 23 — Eigenfunction Expansion
 
-### Narrative
+### The governing narrative
 
-Part III learned Fourier coordinates geometrically and ended with periodic
-distributions. Now a periodic differential equation reveals why those were
-the right objects: in the complex exponential basis, differentiation is
-multiplication by $in$, so an equation becomes arithmetic on coefficients.
+This chapter begins with a success whose hard work was completed in Spaces.
+The Fourier basis is already known to be complete. Applying it to a uniform
+string turns a partial differential equation into independent ordinary
+differential equations, so the solution appears almost immediately.
 
-### Proposed core
+The chapter then changes the physical or mathematical problem. Variable
+density, tension or potential destroys the explicit Fourier modes. The
+question becomes:
 
-- Fourier coefficients of periodic distributions.
-- Characterization by polynomial growth and the theorem that every
-  periodic distribution equals its Fourier series distributionally.
-- $D$ acts by $(in)$ and $P(D)$ by $P(in)$.
-- Solve $P(D)u=f$ coefficient by coefficient.
-- Resonance and compatibility conditions: a zero of $P(in)$ identifies
-  both nonuniqueness and an obstruction to solvability.
-- Revisit $T'=S$ on the circle: the missing constant mode is now visible
-  in the coefficient arithmetic.
-- Periodic Green functions and point forcing, if they remain elementary.
+> Can analysis prove that a complete system of modes still exists when we
+> cannot write those modes down?
 
-### Evolution as independent modes
+On the middle route, the compact self-adjoint spectral theorem answers yes.
+The theorem is motivated by the failed explicit method and is spent on the
+same problem before the chapter ends.
 
-Use one bounded-domain or periodic evolution problem as the principal
-scientific client:
+### Opening Fourier success
 
-- Heat: each coefficient decays by $e^{-n^2t}$; high frequencies disappear
-  faster, producing instantaneous smoothing and loss of information.
-- Wave: each coefficient oscillates; energy moves among position and
-  velocity but is conserved.
+Use the known trigonometric basis to solve one uniform problem completely.
+The wave equation is the leading candidate because it motivates strings and
+leaves the heat kernel available for the final chapter:
 
-Both are valuable, but one should carry the proof and the other serve as a
-contrast or exercise. The old plan's full repetition of both in several
-places should not survive.
+\[
+u_{tt}=c^2u_{xx}
+\]
 
-### Pure-mathematics side paths
+with fixed or periodic boundary conditions.
 
-- **Weyl equidistribution:** Fourier's criterion reduces distribution of
-  $n\alpha\pmod1$ to a geometric sum. This is a striking, accessible bridge
-  from function bases to number theory.
-- **Isoperimetric inequality:** may live here instead of Movement 2 if the
-  Fourier coefficient proof, rather than variational formulation, is the
-  chosen climax.
+The chapter should prove the required convergence and energy statements,
+not merely write a formal separated series. Heat may appear briefly as the
+contrasting rule in which high modes decay instead of oscillate.
+
+A short periodic-distribution section may also:
+
+- prove that periodic distributions correspond to Fourier coefficients of
+  polynomial growth;
+- conclude that every periodic distribution has a Fourier series
+  converging distributionally;
+- solve \(P(D)u=f\) by
+  \[
+  P(in)\widehat u(n)=\widehat f(n);
+  \]
+- identify resonance and compatibility from the zeros of \(P(in)\).
+
+This is not a separate Fourier-series chapter. It is an immediate payoff
+from the basis and distribution chapters in Spaces.
+
+### The variable problem
+
+A regular model is
+
+\[
+-(pu')'+qu=\lambda wu
+\]
+
+on a compact interval with separated self-adjoint boundary conditions and
+with \(p,w>0\). The natural Hilbert space is \(L^2(w\,dx)\).
+
+The scope should remain regular. Singular endpoints, general oscillation
+theory, Prüfer transformations, and the full classical Sturm–Liouville
+theory are not part of the working plan. Legendre, Hermite, Laguerre and
+Bessel systems should not be claimed as automatic consequences of this
+regular compact-interval theorem.
+
+### Middle route: one compact spectral theorem
+
+The accessible theorem is:
+
+> A compact self-adjoint operator on a Hilbert space has real nonzero
+> eigenvalues of finite multiplicity, with no nonzero accumulation point,
+> and its eigenvectors span the closure of its range orthogonally to its
+> kernel.
+
+The proof can use the Part III machinery directly:
+
+1. maximize a quadratic form on the unit sphere;
+2. take a weakly convergent maximizing subsequence;
+3. use compactness to obtain strong convergence of its image;
+4. prove that the maximizer is an eigenvector;
+5. repeat on orthogonal complements;
+6. prove that the eigenvalues tend to zero and that no part of the range is
+   missed.
+
+It may be pedagogically cleaner to prove the positive case first, since the
+main Green and covariance operators are positive.
+
+### Application through a Green operator
+
+Choose a positive invertible realization of one regular boundary operator,
+or shift it by a positive constant so that its inverse exists. Construct
+that inverse as
+
+\[
+(Gf)(x)=\int_a^b G(x,y)f(y)\,dy.
+\]
+
+Prove that the kernel is continuous and symmetric, that \(G\) is compact
+and self-adjoint, and that its eigenfunctions are the eigenfunctions of the
+differential operator with reciprocal eigenvalues. Return to the motivating
+evolution problem and expand the initial data in these modes.
+
+This is the climax: the Fourier method has been recovered without an
+explicit Fourier basis.
+
+### Applications that may justify the difficult theorem
+
+These are a menu, not one chapter's contents.
+
+1. **Fredholm alternative.** For \(f-\alpha Kf=g\), the eigenfunction
+   expansion gives the exact compatibility condition at resonance.
+2. **Inverse instability.** If \(Ke_n=\lambda_ne_n\) with
+   \(\lambda_n\to0\), inversion divides noisy coefficients by
+   \(\lambda_n\). Compact smoothing therefore produces an unstable inverse.
+3. **Time-frequency concentration.** After the Fourier transform is
+   available, the compact sinc-kernel operator constructs optimally
+   concentrated bandlimited functions. This is the strongest possible
+   later return to the theorem.
+4. **Covariance operators.** A continuous positive covariance kernel gives
+   a compact positive operator and a Karhunen–Loève expansion. This is
+   genuinely infinite-dimensional, whereas finite-sample PCA alone is only
+   finite-dimensional linear algebra. Include it only if the required
+   probability is treated honestly.
+
+The theorem should be retained if it has at least two serious uses, most
+likely the variable boundary problem and either inverse instability or
+time-frequency concentration. If it has only one client, the short route
+may be better.
+
+### Classical computation: a periodic Green function
+
+Solve
+
+\[
+(-D^2+a^2)G=\delta_0
+\]
+
+on the circle. Fourier expansion gives
+
+\[
+G(x)=\frac1{2\pi}
+\sum_{n\in\mathbb Z}\frac{e^{inx}}{n^2+a^2},
+\]
+
+while solving the ODE away from the source and imposing the derivative jump
+gives
+
+\[
+G(x)=
+\frac{\cosh(a(\pi-|x|))}
+     {2a\sinh(\pi a)}
+\qquad (-\pi\leq x\leq\pi).
+\]
+
+At \(x=0\),
+
+\[
+\boxed{
+\sum_{n\in\mathbb Z}\frac1{n^2+a^2}
+=\frac{\pi}{a}\coth(\pi a)
+}.
+\]
+
+Removing the \(n=0\) term and letting \(a\to0\) recovers the Basel sum. The
+point is not to solve Basel yet again for its own sake. A problem with a
+delta source produces a stronger parameterized identity and lets the book
+look back at an old result from a genuinely new level.
+
+### Short route
+
+If compact spectral theory is cut, retain the precise Fourier solution and
+the periodic Green-function calculation, then merge this material into the
+opening of the Fourier-transform chapter or another neighboring chapter.
+It should not be inflated into a separate periodic Fourier chapter.
 
 ---
 
-## Movement 5 — How to Solve Equations on the Whole Line
+## Chapter 24 — Fourier Transform
 
-### Narrative
+### Mathematical story
 
-On a bounded or periodic domain, frequencies are discrete. On the whole
-line, translation has a continuum of generalized eigenfunctions
-$e^{i\xi x}$, none of which lies in $L^2(\mathbb R)$. The problem itself
-therefore demands a new test space and a continuous spectral expansion.
+The preceding chapter concerns operators on a compact interval or circle.
+Their relevant spectra are discrete, and solutions are countable
+eigenfunction sums. On \(\mathbb R\), the formal eigenfunctions
 
-### Proposed core
+\[
+e^{i\xi x}
+\]
 
-- Fourier transform first on a concrete safe class, then on Schwartz
-  space.
-- Translation, modulation, dilation and differentiation identities.
-- Convolution theorem.
-- Fourier inversion and Plancherel, with hypotheses stated honestly.
-- Tempered distributions introduced because Schwartz space is preserved
-  by Fourier transform.
-- $\widehat\delta=1$, $\widehat1=2\pi\delta$, and
-  $\widehat{e^{iax}}=2\pi\delta_a$.
-- Delta as an impulse: for a translation-invariant linear system, its
-  response to a general input is convolution with its response to delta
-  (proved in an appropriately restricted setting rather than asserted at
-  maximal generality). Fourier transform turns the filter into
-  multiplication by its frequency response.
-- Differential operators become multiplication by their symbols.
-- Fundamental solutions: solve $LG=\delta$, then $u=G*f$.
+are continuously indexed and do not belong to \(L^2(\mathbb R)\). The
+compact spectral theorem no longer supplies a countable eigenbasis. The
+Fourier transform makes the continuous decomposition rigorous.
 
-### Scientific clients
+### Core theory
 
-- Heat equation on $\mathbb R$: the Gaussian heat kernel and instantaneous
-  smoothing.
-- Wave equation on $\mathbb R$: d'Alembert or a distributional kernel and
-  finite propagation.
-- Choose one as the full whole-line solution. Use the other to contrast
-  propagation, not to repeat the chapter.
+1. Define the transform on \(L^1(\mathbb R)\) and prove boundedness,
+   continuity and the Riemann–Lebesgue lemma if the proof route is
+   economical.
+2. Prove the translation, modulation, dilation and differentiation
+   identities.
+3. Define convolution and prove the convolution theorem, with Fubini
+   hypotheses explicit.
+4. Introduce Schwartz space because it is preserved by differentiation,
+   multiplication and Fourier transformation.
+5. Prove Fourier inversion on a precise class.
+6. Prove Plancherel and extend the transform unitarily to \(L^2(\mathbb R)\).
 
-### Pure mathematics and probability
+The proof route for inversion and Plancherel must be selected before the
+chapter shape is final. Gaussian regularization is particularly attractive
+because it makes the Gaussian a working object rather than a decorative
+example.
 
-- **Poisson summation** and the Dirac comb connect discrete and continuous
-  Fourier analysis. Applied to the Gaussian, they yield the Jacobi theta
-  transformation—a substantial contact with number theory.
-- **Central limit behavior** is an important statistical application:
-  convolution becomes multiplication and the rescaled characteristic
-  functions tend toward a Gaussian. But the old claim of pointwise and
-  $L^1$ density convergence is not justified by transform convergence
-  alone. Include a precise weak CLT only with the necessary probability
-  theorem, or prove a stronger-assumption density version; otherwise keep
-  it as a carefully worded outlook.
-- The Dirichlet and Gaussian integrals remain attractive demonstrations,
-  but the Gaussian integral already has a Part II proof and should return
-  only if the transform proof reveals something new.
+### The Gaussian
+
+With the convention
+
+\[
+\widehat f(\xi)=\int_{\mathbb R}f(x)e^{-ix\xi}\,dx,
+\]
+
+prove
+
+\[
+\widehat{e^{-x^2/2}}(\xi)
+=\sqrt{2\pi}\,e^{-\xi^2/2}.
+\]
+
+The equation \(f'=-xf\) transforms into the same differential equation for
+\(\widehat f\); the Gaussian integral already established earlier fixes the
+constant. This calculation begins a thread that continues through heat
+flow, uncertainty, convolution and the theta function.
+
+### Poisson summation and the theta identity
+
+For a suitable Schwartz function, periodize it, compute the Fourier
+coefficients of the periodic sum, and obtain Poisson summation. Applied to
+the Gaussian, this gives
+
+\[
+\boxed{
+\sum_{n\in\mathbb Z}e^{-\pi t n^2}
+=
+\frac1{\sqrt t}
+\sum_{n\in\mathbb Z}e^{-\pi n^2/t}
+}.
+\]
+
+This is an important pure-mathematics payoff and a precise bridge between
+the Fourier series of Spaces and the Fourier transform on the line.
+
+### Sampling as a substantial application
+
+Sampling remains in the book, but it is not presently a separate final
+chapter and is not presented as the pinnacle of analysis.
+
+Define
+
+\[
+PW_\Omega
+=
+\{f\in L^2(\mathbb R):
+\operatorname{supp}\widehat f\subseteq[-\Omega,\Omega]\}.
+\]
+
+The transform identifies this space with \(L^2[-\Omega,\Omega]\). The
+exponential basis on the frequency interval becomes a shifted sinc basis in
+physical space. A clean Hilbert-space proof should establish:
+
+- bandlimited \(L^2\) functions have continuous representatives and point
+  evaluation is bounded;
+- shifted sinc functions form an orthogonal basis;
+- the sample values are the basis coefficients;
+- Shannon reconstruction holds with precisely stated convergence;
+- Parseval relates \(L^2\) energy to the squared samples;
+- undersampling produces aliasing.
+
+The Dirac-comb argument may explain spectral replication after the rigorous
+proof, but it should not carry the first proof formally.
+
+### Uncertainty and concentration
+
+After centering in position and frequency, the uncertainty principle takes
+the form
+
+\[
+\|(x-x_0)f\|_2
+\|f'-i\xi_0f\|_2
+\geq
+\frac12\|f\|_2^2,
+\]
+
+with equality precisely for translated, modulated and rescaled Gaussians.
+
+If the compact spectral theorem remains, the time-frequency concentration
+operator on \([-T,T]\),
+
+\[
+(Kf)(x)
+=
+\int_{-T}^{T}
+\frac{\sin\Omega(x-y)}{\pi(x-y)}f(y)\,dy,
+\]
+
+is compact, positive and self-adjoint. Its leading eigenfunction maximizes
+the fraction of energy lying in the chosen frequency band. This constructs
+the optimal functions without elementary formulas and gives the spectral
+theorem a second, mathematically different client.
+
+### Classical computations and guided explorations
+
+- Plancherel applied to an interval indicator gives
+  \[
+  \int_0^\infty\left(\frac{\sin x}{x}\right)^2\,dx
+  =\frac{\pi}{2}.
+  \]
+- Fourier inversion with honest regularization gives
+  \[
+  \int_0^\infty\frac{\sin x}{x}\,dx
+  =\frac{\pi}{2}.
+  \]
+- Products of sinc functions become convolutions of interval indicators
+  and explain the Borwein integrals, including the eventual failure of the
+  apparent pattern.
+- Weyl's Fourier criterion plus a geometric sum proves equidistribution of
+  \(n\alpha\pmod1\) for irrational \(\alpha\). This is a low-cost,
+  high-value pure-mathematics exploration, though it may fit as well in
+  Spaces.
+- For a probability density \(f\) with mean zero and variance one, a
+  central-limit theorem for its normalized convolution powers may be
+  proved against Schwartz tests:
+  \[
+  \widehat f(\xi/\sqrt n)^n\longrightarrow e^{-\xi^2/2}.
+  \]
+  Boundedness of characteristic functions and dominated convergence then
+  give distributional convergence. Do not repeat the old notes' unsupported
+  claim of pointwise or \(L^1\) convergence of densities.
+
+This list is not a commitment to include every application. The Gaussian,
+theta identity and sampling are the strongest current core candidates.
+
+### Expansion warning
+
+Fourier inversion, Plancherel, Poisson summation, sampling, uncertainty and
+time-frequency concentration may not fit honestly in one chapter. If this
+material divides, the new chapter should be organized around a mathematical
+problem such as localization and reconstruction, not presented as a final
+catalogue of applications.
 
 ---
 
-## Movement 6 — How Samples Determine a Continuous Signal
+## Chapter 25 — Generalized and Fundamental Solutions
 
-### Narrative
+### Mathematical story
 
-Part II called a function an uncountable table. The sampling theorem gives
-an extraordinary late answer: after imposing a frequency constraint, an
-entire continuous signal is determined exactly by a countable table of
-equally spaced values.
+Fourier transformation turns a constant-coefficient equation into
 
-This is the right rigorous formulation of the “lossless sinc compression”
-story. It is exact discretization/reconstruction of a bandlimited signal;
-it is not automatically finite-bit compression on the whole line. That
-qualification strengthens the narrative, because uncertainty explains the
-price of exact bandlimiting.
+\[
+P(i\xi)\widehat u(\xi)=\widehat f(\xi).
+\]
 
-### The clean Hilbert-space proof
+Division by \(P(i\xi)\) may be singular, and a point source is already the
+distribution \(\delta\). The chapter enlarges the transform to the precise
+generalized objects required by the equation.
 
-Avoid making the Dirac-comb calculation carry the first proof.
+The governing construction is:
 
-1. Define the bandlimited Paley–Wiener space by
-   $\operatorname{supp}\widehat f\subset[-\Omega,\Omega]$.
-2. On the frequency interval, the equally spaced complex exponentials form
-   an orthonormal basis.
-3. Under inverse Fourier transform, those exponentials become shifted sinc
-   functions.
-4. Their coefficients are scaled sample values
-   $f(n\pi/\Omega)$.
-5. The Hilbert basis expansion is exactly Shannon's reconstruction formula,
-   with an accompanying Parseval identity for the samples.
+\[
+LG=\delta.
+\]
 
-Thus the theorem is not a trick with formal deltas: **sinc functions are
-the coordinate basis selected by the bandlimit.** The Dirac comb can then
-explain replication of spectra and aliasing visually.
+Such a \(G\) is a fundamental solution. Whenever the relevant convolution
+is defined,
 
-### Natural companion results
+\[
+u=G*f
+\]
 
-- Nyquist rate and aliasing: undersampling causes shifted copies of the
-  spectrum to overlap.
-- Uncertainty principle: localization in time and localization in
-  frequency cannot both be arbitrarily sharp; Gaussians are extremizers.
-- A stronger uncertainty result says that a nonzero signal cannot be both
-  exactly time-limited and exactly bandlimited. Include this only with an
-  honest proof at the available level (or state it clearly as an outlook);
-  the variance uncertainty inequality alone does not prove it. Exact
-  sampling nevertheless has a real geometric cost.
-- Fourier truncation, wavelet sparsity and PCA answer different compression
-  questions. This is a natural callback to Part III's “no best basis
-  independent of the task.”
-- Noisy samples or blurred measurements lead back to regularization and
-  the instability of small spectral modes.
+solves \(Lu=f\).
 
-### Possible ending experiences
+### Core route
 
-1. **Sampling as the book climax:** an uncountable table reconstructed from
-   countably many values—one of the cleanest callbacks to the Functions
-   chapter and to the book's long infinity story.
-2. **Uncertainty as the final limit:** analysis provides exact
-   reconstruction, then proves the unavoidable price of localization.
-3. **Borwein integrals as a playful coda:** products of sinc functions
-   become convolutions of rectangles; a pattern holds seven times and
-   fails on the eighth for a geometric reason. Memorable, but better as a
-   coda or GE than as the only reason the transform machinery was built.
+1. Introduce tempered distributions as continuous linear functionals on
+   Schwartz space.
+2. Extend the Fourier transform by duality.
+3. Compute the transforms of \(\delta\), constants, exponentials and
+   derivatives.
+4. State carefully when products and convolutions involving distributions
+   are defined.
+5. Find fundamental solutions for a small number of
+   constant-coefficient operators.
+6. Use convolution to pass from a point source to general forcing.
+7. Ask separately about existence, uniqueness, regularity and stability;
+   constructing one distributional solution does not settle all four.
+
+The chapter should not claim a general theory of PDEs or invoke the full
+spectral theory of unbounded operators.
+
+### Primary evolution: the heat equation
+
+The heat equation on \(\mathbb R\),
+
+\[
+u_t=u_{xx},
+\]
+
+gives
+
+\[
+\widehat u(\xi,t)
+=
+e^{-t\xi^2}\widehat f(\xi).
+\]
+
+Inverting the Gaussian multiplier produces
+
+\[
+K_t(x)
+=
+\frac1{\sqrt{4\pi t}}e^{-x^2/(4t)},
+\qquad
+u(\cdot,t)=K_t*f.
+\]
+
+The chapter can prove:
+
+- \(K_s*K_t=K_{s+t}\);
+- \(K_t\to\delta\) as \(t\downarrow0\);
+- recovery of the initial data in the appropriate topology;
+- immediate smoothing for \(t>0\);
+- continuous dependence and uniqueness in the selected solution class.
+
+This closes a long line from the ODE chapter:
+
+\[
+x'(t)=Ax(t)
+\quad\leadsto\quad
+x(t)=e^{tA}x(0),
+\]
+
+while
+
+\[
+u_t=D^2u
+\quad\leadsto\quad
+u(t)=e^{tD^2}u(0)=K_t*u(0).
+\]
+
+The notation should be justified by the already constructed solution, not
+used as a substitute for constructing it.
+
+### Wave comparison
+
+The wave equation provides a sharp contrast:
+
+- heat spreads a point source instantly and smooths it;
+- wave propagation carries singularities at finite speed and conserves
+  energy.
+
+One equation should receive the full proof and the other a carefully chosen
+comparison. The old plans' three separate treatments of the heat equation
+must not return accidentally.
+
+### How the book ends
+
+The final worked application is not declared the final word or highest
+point of analysis. It should leave the reader able to formulate the next
+questions:
+
+- For which operators does a solution exist?
+- In what space?
+- When is it unique?
+- When does rough data produce a smoother solution?
+- When is the map from data to solution stable?
+- What survives for variable coefficients and nonlinear equations?
+
+These questions point toward Sobolev spaces, elliptic regularity, general
+spectral theory, harmonic analysis, inverse problems and nonlinear PDE.
+The endpoint is a way of asking questions and constructing solutions, not
+the claim that one selected application is the pinnacle of the subject.
 
 ---
 
-## Application portfolio
+## Classical-result ledger
 
-The aim is not maximum coverage. It is a balanced set of important clients
-showing the same structures active across disciplines.
+The later book should occasionally look backward and compute something
+concrete with its new theory. The current strongest candidates are:
 
-| Application | Contact | Main theorem/idea | Current assessment |
+| Result | Principal method | Likely home | Status |
 |---|---|---|---|
-| Picard–Lindelöf and Euler stability | ODEs/computation | Banach fixed point, Gronwall | Core candidate; rigorous and accessible. |
-| Weak solution of $-u''=f$ | PDE/variational analysis | Riesz, weak convergence, energy minimization | Core candidate; excellent Part III payoff. |
-| Catenary/brachistochrone/geodesic | mechanics/geometry | Euler–Lagrange | Choose one or two, not all. |
-| Isoperimetric inequality | pure geometry | variation or Fourier/Parseval | Strong climax candidate; proof details need audit. |
-| Compact spectral theorem | functional analysis | compactness, self-adjointness | Core if Sturm–Liouville/PCA remain. |
-| String modes/Sturm–Liouville | physics/PDE | Green operator plus spectral theorem | Important; include only with a real proof path. |
-| PCA/Karhunen–Loève | statistics/data compression | spectral theorem for covariance | Excellent cross-disciplinary candidate; finite ensemble fully accessible. |
-| Inverse problems/regularization | imaging/statistics | small singular modes, Tikhonov | Important modern application; load competes with PCA. |
-| Heat or wave evolution | physics/PDE | spectral/Fourier diagonalization | Core; eliminate repetitions and choose primary home. |
-| Impulse response and linear filtering | signals/control | distributions, convolution, Fourier multipliers | Strong low-cost science client once the transform exists. |
-| Weyl equidistribution | number theory | Fourier criterion, geometric sums | Low-cost, high-value pure-math GE. |
-| Poisson summation/theta | number theory | Fourier transform of a lattice/Gaussian | Strong transform payoff. |
-| Shannon sampling/sinc reconstruction | signals/information | Plancherel and basis expansion | Flagship candidate, possibly final climax. |
-| Uncertainty principle | physics/signals | Plancherel, differentiation, Cauchy–Schwarz | Flagship companion to sampling. |
-| Central limit theorem | statistics/probability | transforms of convolution | Desirable, but old proof overclaims; requires a proof audit. |
-| Borwein integrals | pure analysis | product–convolution geometry | Delightful coda/GE. |
+| Isoperimetric inequality \(4\pi A\leq L^2\) | Fourier/Wirtinger plus area formula | Variational Problems | Strong core candidate. |
+| \(\sum_{n\in\mathbb Z}(n^2+a^2)^{-1}=(\pi/a)\coth(\pi a)\) | Periodic Green function | Eigenfunction Expansion | Strong core candidate; gives a new Basel reprise. |
+| Fourier transform of the Gaussian | Differential identities plus normalization | Fourier Transform | Core. |
+| Jacobi theta transformation | Poisson summation applied to the Gaussian | Fourier Transform | Strong pure-math payoff. |
+| Shannon sampling theorem | Hilbert basis of a bandlimited space | Fourier Transform region | Retain; chapter boundary open. |
+| Uncertainty with Gaussian equality | Integration by parts, Cauchy–Schwarz, Plancherel | Fourier Transform region | Strong companion to sampling. |
+| Heat kernel and Gaussian semigroup | Fourier multiplier and convolution | Fundamental Solutions | Core candidate. |
+| Dirichlet and squared-sinc integrals | Inversion and Plancherel | Exercises or short application | Low cost and memorable. |
+| Borwein sinc products | Products become convolutions of intervals | Guided exploration or coda | Retain as optional. |
+| Weyl equidistribution | Fourier criterion and geometric sums | Guided exploration | Strong pure-math option. |
+| Schwartz-test central limit theorem | Convolution powers and dominated convergence | Guided exploration or optional section | Viable only with precise convergence claim. |
+| Poisson kernel and disk Dirichlet problem | Fourier modes and approximate identities | Possible application | Attractive if the book has enough multivariable calculus. |
 
-## Five chapters versus six
+Basel itself is already planned as a Fourier/Parseval payoff in Spaces. Its
+return through a Green function is worthwhile because it produces a
+strictly stronger identity and changes the meaning of the computation.
 
-### Natural six-chapter realization
+---
 
-Keep the six movements separate. This gives spectral theory time to be a
-real theorem and gives information/reconstruction a coherent final chapter
-rather than a pile of transform applications.
+## Application and scope audit
 
-### Strongest five-chapter compression
+### Applications with strong present claims
 
-Merge Movements 3 and 4:
+- ODE existence, uniqueness and stability;
+- numerical approximation if it remains tied to Grönwall;
+- one genuine minimization/existence theorem;
+- isoperimetric geometry;
+- wave or heat evolution by modes;
+- one regular nonexplicit eigenfunction expansion, if compact spectral
+  theory survives;
+- inverse instability as a consequence of small eigenvalues;
+- Gaussian Fourier analysis and heat flow;
+- Poisson summation and theta;
+- sampling and uncertainty;
+- point sources and fundamental solutions.
 
-1. From Local Law to Global Motion
-2. How Least Energy Selects a Solution
-3. Why Complicated Systems Have Natural Modes / How Periodic Equations
-   Become Arithmetic
-4. How to Solve Equations on the Whole Line
-5. How Samples Determine a Continuous Signal
+### Material not justified merely by naming it
 
-This merge is natural: the compact spectral theorem produces the modes,
-and bounded-domain heat/wave or periodic differential equations spend them
-immediately. Its risk is size, especially if the chapter also carries
-Sturm–Liouville, PCA and inverse problems.
+- full classical Sturm–Liouville theory;
+- singular special-function problems;
+- a survey of Sobolev spaces;
+- the spectral theorem for general unbounded operators;
+- full probability theory for Karhunen–Loève or the central limit theorem;
+- general distribution convolution;
+- a broad PDE course;
+- a catalogue of numerical schemes;
+- a catalogue of signal-processing applications.
 
-### Other possible compressions
+### Corrections to the old notes
 
-- Merge Movements 5 and 6 only if the Fourier-transform construction is
-  unusually lean. The old plan shows the danger: transform theory,
-  tempered distributions, PDEs, sampling, uncertainty, probability and
-  integrals quickly become an overloaded finale.
-- Merge Movements 1 and 3 only at the level of a larger “linear dynamics”
-  story; matrix and compact-operator spectral theories have different
-  technical scales and probably deserve distance.
-- Movement 2 could become a substantial section rather than a chapter if
-  the direct method is cut. Necessary Euler–Lagrange conditions alone do
-  not yet justify a full functional-analysis chapter.
+- Pointwise convergence of Fourier transforms does not imply pointwise or
+  \(L^1\) convergence of densities. Any central-limit result must state and
+  prove its actual mode of convergence.
+- A Dirac-comb sampling computation is an explanation, not by itself a
+  first rigorous proof of Shannon reconstruction.
+- General Sturm–Liouville completeness cannot be stated by analogy with
+  Fourier series. It requires a proof engine.
+- A formal series solution of a PDE is not yet a solution theorem.
+  Convergence, initial or boundary data, uniqueness and regularity must be
+  addressed in a declared solution class.
+- Exact sampling is exact reconstruction from countably many samples, not
+  automatically finite-bit compression of a whole-line signal.
 
-## Dependencies sent backward to Part III
+---
 
-This harvest does not presently reveal a new Parts I–II gap. It does help
-identify what Part III must protect:
+## Live decisions
 
-- complete metric spaces and contraction language;
-- $L^2$ and Hilbert projection/Riesz;
-- weak convergence and preferably weak subsequential compactness;
-- Arzelà–Ascoli if compact integral operators or Peano are clients;
-- task-specific bases and Parseval;
-- one carefully built periodic distribution space and continuous
-  differentiation.
+1. **Compact spectral theorem:** retain the middle route or take the short
+   Fourier-only route?
+2. **ODE chapter:** Peano through Arzelà–Ascoli, numerical Euler, or both?
+3. **Variations:** prove the quadratic existence theorem by Riesz, by weak
+   minimization, or show both descriptions of the same solution?
+4. **Eigenfunction application:** use the wave equation as the principal
+   uniform and variable string problem, reserving heat for the final
+   chapter?
+5. **Spectral clients:** after the regular boundary problem, is the second
+   client inverse instability, time-frequency concentration, or neither?
+6. **Fourier proof route:** which inversion and Plancherel proofs best reuse
+   the book's integral construction?
+7. **Final pair:** can Fourier transform plus sampling remain one chapter
+   before Fundamental Solutions, or must those topics occupy three
+   chapters?
+8. **Pure-math applications:** which of theta, equidistribution, the
+   Poisson kernel and Borwein belong in the main text rather than guided
+   explorations?
+9. **Final worked equation:** heat as the primary full proof with wave as
+   contrast, or the reverse?
 
-Part IV should introduce at need:
+No decision about Question 7 is needed before drafting. The working plan is
+two chapters, with explicit permission to expand.
 
-- derivative-sensitive Hilbert/Sobolev spaces;
-- compact operators and their spectral theorem;
-- Green operators and Sturm–Liouville hypotheses;
-- Schwartz space, tempered distributions and the Fourier transform;
-- bandlimited spaces, sinc bases and statistical covariance operators.
-
-These are solution-driven enlargements, not omissions from Spaces.
-
-## Open decisions for the next discussion
-
-1. Which problem should open Solutions: transformation-generated motion,
-   or a periodic distribution equation that pays off the end of Spaces
-   immediately?
-2. Does the variational movement prove existence via Riesz/direct methods,
-   or remain classical Euler–Lagrange? Only the first clearly earns a full
-   functional-analysis chapter.
-3. Do we want the compact self-adjoint spectral theorem in full? If yes,
-   which two clients justify it: string modes, PCA, Fredholm equations or
-   inverse problems?
-4. Which evolution equation is primary, and where? Avoid another
-   threefold heat-equation repetition.
-5. Is the statistics contact PCA/Karhunen–Loève, a carefully proved CLT,
-   regularization, or more than one?
-6. Which pure-math contact matters most: isoperimetric inequality, Weyl
-   equidistribution, Poisson/theta or Borwein?
-7. Is exact sinc reconstruction the final book climax, the climax of the
-   final chapter, or one of several transform applications?
-8. Five or six chapters? No ruling is needed until the theorem and client
-   audits above are done.
+---
 
 ## Success test
 
-Part IV succeeds if the student can recognize one idea solving problems in
-several worlds:
+Part IV succeeds if a student can see why different equations demand
+different constructions:
 
-- completeness turns iteration into existence;
-- weak convergence turns minimizing sequences into equilibria;
-- self-adjointness turns an operator into orthogonal modes;
-- Fourier analysis turns derivatives and convolutions into arithmetic;
-- distributions let equations accept impulses and nonsmooth limits;
-- basis choice turns a continuous signal into recoverable information.
+- iteration produces a trajectory;
+- minimization selects an equilibrium;
+- an eigenbasis separates coupled evolution;
+- the Fourier transform replaces discrete eigenfunction sums on compact
+  domains by a continuous decomposition on the line;
+- distributions admit rough data and point sources;
+- a fundamental solution turns one point-source calculation into a
+  solution operator.
 
-The desired ending is not “functional analysis can generalize further.” It
-is a result the student could explain to a physicist, engineer,
-statistician or number theorist—and an understanding of why the abstract
-spaces built earlier were what made that result possible.
+It should also leave the student with several theorems they can calculate
+with: the isoperimetric inequality, the Green-function summation identity,
+the Gaussian transform, the theta transformation, exact sinc
+reconstruction, uncertainty, and the heat kernel. The applications are
+evidence that the theory works; none is advertised as the endpoint of
+analysis.

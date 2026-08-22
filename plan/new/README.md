@@ -32,19 +32,37 @@ standing premise), the theory and example ledgers for section-level
 planning, and the architecture questions — several of which
 `part2-chapters.md` now answers, as marked there.
 
-`part3-spaces.md` (2026-08-21) captures the new Part III architecture:
-**Spaces** in seven working chapters, from functions becoming points
-through the Daniell/$L^p$ world, infinite-dimensional escape, bases,
-duality and weak convergence, to periodic distributions as the part's
-climax. It also records the two live compression routes (merge the integral
-pair if the minimal $L^1/L^2$ treatment proves too small, or merge
-Riesz/weak observers into distributions if that route proves compact), the
-strict border with Part IV **Solutions**, the disposition of the old Part
-III material, and all remaining shape-level decisions.
+`part3-spaces.md` (2026-08-21, lean-core ruling 2026-08-22) captures the new
+Part III architecture: functions become points, the integral creates the
+$L^1/L^2$ world, Hilbert coordinates make functions calculable, and the
+shortest viable observer route leads to periodic distributions. Its guiding
+slogan is **complete worlds remain accessible when simple objects are
+dense**, explicitly recalling finite decimals and $\mathbb Q\subset\mathbb
+R$. The former core chapters on Arzelà–Ascoli and weak subsequential
+compactness have been removed. The exact observer-to-distributions joint,
+the order of the density theorems and final chapter numbering remain open.
 
-`part4-solutions.md` (2026-08-21) is the first source harvest and
-provisional landscape for Part IV. It organizes the old ODE, variational,
-spectral, Fourier and distribution material by solution method; proposes
-six movements with a natural five-chapter compression; and audits major
-applications to physics, computation, signals, statistics and pure
-mathematics. It is exploratory rather than a settled chapter plan.
+`part4-solutions.md` (2026-08-21, lean-core ruling 2026-08-22) records the working architecture for
+Part IV, **Solutions**. It presently has five chapters: ODEs, variational
+problems, eigenfunction expansion, Fourier transform, and generalized /
+fundamental solutions. Peano, the general direct method and the proof of the
+compact spectral theorem are no longer core. Fourier is completed
+explicitly; Legendre as a project and the quantum harmonic oscillator are
+the two live possibilities for a second explicit spectral system. The
+variational route keeps one quadratic Riesz existence theorem in the single
+zero-boundary energy completion demanded by the problem, without developing
+the general direct method or a Sobolev scale.
+
+`scope-parts3-4.md` (2026-08-21) is the cross-part difficulty and scope
+charter for **Spaces** and **Solutions**. It fixes the small set of
+load-bearing abstractions and concrete spaces, gives a restricted route for
+each later chapter, separates the core lecture path from the optional
+compact-spectral path, records how broader theories may be acknowledged
+without entering the proofs, and supplies warning signs and a drafting
+audit for preventing the second half from becoming a compressed graduate
+survey.
+
+`decision-lean-second-half.md` (2026-08-22) is the decision record for the
+lean-core ruling. It preserves the discarded compactness architecture,
+explains the reasons for the cuts, records what would justify restoring the
+route, and leaves the exact amount of weak convergence explicitly open.

@@ -7,9 +7,11 @@ blurb: >-
   processes: why we need them, how they fail, and the ideas —
   completeness, convergence, uniformity — that make them safe to use.
 
-# Two parts this year: Numbers (Ch 1-6) and Functions (Ch 7-13); Part III
-# is deferred. Shape authorities: plan/new/part1-chapters.md and
-# plan/new/part2-chapters.md, with per-chapter purpose-chN.md files.
+# Four parts: Numbers (Ch 1-6), Functions (Ch 7-13), Spaces (Ch 14-20),
+# Solutions (Ch 21-25). The one-semester course this year is Parts I-II.
+# Shape authorities: plan/new/part1-chapters.md, part2-chapters.md,
+# part3-spaces.md, part4-solutions.md, with per-chapter purpose-chN.md
+# files for Parts I-II and plan/new/scope-parts3-4.md for the later half.
 # Chapter titles below are the PLAN'S INTERNAL SHORTHANDS, not titles.
 
 # Unnumbered front matter: no chapter number, roman folios in print, its own
@@ -37,3 +39,21 @@ parts:
       - part2/the-calculus/index.md
       - part2/elementary-functions/index.md
       - part2/pi/index.md
+
+  - title: "Spaces"
+    chapters:
+      - part3/functions-become-points/index.md
+      - part3/the-integral-under-limits/index.md
+      - part3/the-world-the-integral-creates/index.md
+      - part3/how-functions-escape/index.md
+      - part3/choosing-the-right-coordinates/index.md
+      - part3/what-every-observer-sees/index.md
+      - part3/beyond-functions/index.md
+
+  - title: "Solutions"
+    chapters:
+      - part4/ordinary-differential-equations/index.md
+      - part4/variational-problems/index.md
+      - part4/eigenfunction-expansion/index.md
+      - part4/fourier-transform/index.md
+      - part4/generalized-and-fundamental-solutions/index.md
