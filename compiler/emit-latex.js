@@ -8,6 +8,7 @@
  */
 
 import { environments, proofLike } from "./registry.js";
+import { mathText } from "./plaintext.js";
 
 const WRAP = 88;
 
@@ -30,6 +31,8 @@ export function emitMain(book, chapters) {
     }
   }
 
+  const front = book.frontmatter.map((ch) => `\\include{${ch.slug}}`);
+
   const includes = [];
   for (const part of book.parts) {
     if (part.figure) includes.push(`\\BookPartFig{figures/${part.figure}.pdf}`);
@@ -43,6 +46,8 @@ export function emitMain(book, chapters) {
 \\documentclass[12pt]{memoir}
 
 \\def\\BookTitle{${escapeText(book.title)}}
+\\def\\BookSubtitle{${escapeText(book.subtitle ?? "")}}
+\\def\\BookDescriptor{${escapeText(book.descriptor ?? "")}}
 \\def\\BookAuthor{${escapeText(book.author)}}
 \\def\\BookBlurb{${escapeText(book.blurb ?? "")}}
 \\def\\BookHeroFig{${book.figure ? `\\includegraphics[width=\\textwidth]{figures/${book.figure}.pdf}` : ""}}
@@ -67,6 +72,8 @@ ${theoremDecls.join("\n")}
 \\BookTitlePage
 \\cleardoublepage
 \\tableofcontents*
+
+${front.join("\n")}
 
 \\mainmatter
 
@@ -131,9 +138,29 @@ const HEADING_CMD = { 1: "chapter", 2: "section", 3: "subsection", 4: "subsubsec
 function heading(node) {
   const cmd = HEADING_CMD[node.depth];
   if (!cmd) throw new Error(`latex emitter: heading depth ${node.depth} unsupported`);
-  const star = node.data?.unnumbered ? "*" : "";
-  const label = node.data?.id ? `\n\\label{${node.data.id}}` : "";
-  return `\\${cmd}${star}{${inline(node.children)}}${label}`;
+  const body = headingInline(node.children);
+  if (!node.data?.unnumbered) {
+    const label = node.data?.id ? `\n\\label{${node.data.id}}` : "";
+    return `\\${cmd}{${body}}${label}`;
+  }
+  // Starred heads take no counter, so they need the contents line written by
+  // hand — and that line is also what gives \nameref its text. \phantomsection
+  // then pins the hyperref anchor the label would otherwise miss.
+  const lines = [`\\${cmd}*{${body}}`, `\\addcontentsline{toc}{${cmd}}{${body}}`];
+  if (node.data?.id) lines.push("\\phantomsection", `\\label{${node.data.id}}`);
+  return lines.join("\n");
+}
+
+/** Headings also become PDF bookmarks, where math cannot go — so every bit of
+ *  math in one carries its plain-text stand-in alongside it. */
+function headingInline(nodes) {
+  return nodes
+    .map((n) =>
+      n.type === "inlineMath"
+        ? `\\texorpdfstring{$${n.value}$}{${escapeText(mathText(n.value))}}`
+        : inlineOne(n)
+    )
+    .join("");
 }
 
 function displayMath(node) {
@@ -203,6 +230,8 @@ function inlineOne(node) {
 
 function ref(node) {
   if (node.resolved?.kind === "equation") return `\\eqref{${node.target}}`;
+  // Front matter has no number to cite, so it is cited by name.
+  if (node.resolved && node.resolved.number === null) return `\\nameref{${node.target}}`;
   return `\\${node.capitalized ? "Cref" : "cref"}{${node.target}}`;
 }
 

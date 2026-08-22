@@ -1,4 +1,5 @@
 title: Reaching for Infinity
+subtitle: a first course in analysis
 author: Steve Trettel
 figure: fig-radius-of-convergence
 blurb: >-
@@ -6,19 +7,33 @@ blurb: >-
   processes: why we need them, how they fail, and the ideas —
   completeness, convergence, uniformity — that make them safe to use.
 
-# Structure follows the Quarto-era plan (see plan/MAP.md for the sorted
-# source material being rebuilt here): Numbers (chs 1-5), Functions
-# (chs 6-10), Function Space (chs 11-15). Chapters are added to the list
-# as they are rebuilt in the new system; only the stub below exists so far.
+# Two parts this year: Numbers (Ch 1-6) and Functions (Ch 7-13); Part III
+# is deferred. Shape authorities: plan/new/part1-chapters.md and
+# plan/new/part2-chapters.md, with per-chapter purpose-chN.md files.
+# Chapter titles below are the PLAN'S INTERNAL SHORTHANDS, not titles.
+
+# Unnumbered front matter: no chapter number, roman folios in print, its own
+# group at the top of the contents. Notation is plan/new/purpose-ch0.md.
+frontmatter:
+  - frontmatter/preface/index.md
+  - frontmatter/notation/index.md
 
 parts:
   - title: "Numbers"
     chapters:
-      - part1/real-line/real-line.md
+      - part1/practice/index.md
+      - part1/the-axiom/index.md
+      - part1/known-endpoints/index.md
+      - part1/workshop/index.md
+      - part1/theory/index.md
+      - part1/arithmetic-of-the-infinite/index.md
 
-  # - title: "Functions"
-  #   chapters: continuity, differentiation, integration, calculus,
-  #             extending-integral
-
-  # - title: "Function Space"
-  #   chapters: metrics, function-space, fourier, diffeq, distributions
+  - title: "Functions"
+    chapters:
+      - part2/functions/index.md
+      - part2/continuity/index.md
+      - part2/differentiation/index.md
+      - part2/integration/index.md
+      - part2/the-calculus/index.md
+      - part2/elementary-functions/index.md
+      - part2/pi/index.md

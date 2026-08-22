@@ -3,12 +3,23 @@
 Status: **decided 2026-08-18** (companion to `axiomatic-functions.md`;
 under the axiomatic-method theme of `thesis.md`). Steve's ruling: we
 axiomatize. **Placement update (second session, Ch 1 split confirmed —
-see `part1-chapters.md`): this design now straddles the new Ch 1/Ch 2
-boundary.** Pre-axiom (Ch 1): the axioms, polygon area as known + the
-homework series, the trapping inequality — and the demonstration that
-the traps close on nothing in ℚ. Post-axiom (Ch 2): the sup/inf
-definitions denote, the forcing theorem (it needs sup-existence), and
-the confirmation obligations. "§1.5" below reads as this Ch 1/Ch 2
+see `part1-chapters.md`; allocation adjudicated in the story
+discussion): this design now straddles the new Ch 1/Ch 2 boundary.**
+Pre-axiom (Ch 1): the axioms with their pedigrees, polygon area as
+known + the homework series **scoped to rational data**, the trapping
+inequality (pure (A2)+(A3)/(L2)–(L4) order work), the rational
+computations (96-gon bounds), and the diagnosis — sup/inf are *named*
+in Ch 1, distilled from the trapping practice, so the chapter can
+close on the unified diagnosis: every gap is a bounded set with no
+least upper bound. Post-axiom (Ch 2): the definitions denote (length
+and inner/outer area exist — "the circle has a circumference" is a
+theorem), trapping restated in sup form (sup-length = minimal
+admissible), the forcing theorem, and the confirmation obligations —
+which double as the chapter's sup-manipulation training ground.
+Homework part (b) (real-sided rectangles via density + sup) migrates
+to Ch 2, where it rehearses the aˣ argument pattern. Ch 2 closes NO
+sandwiches: parabola closes in Ch 3, circle in Ch 4 — existence and
+evaluation deliberately split. "§1.5" below reads as this Ch 1/Ch 2
 pair. Architecture:
 
 > In the main text, polygon area is treated as **known** (school
@@ -99,9 +110,24 @@ headache afflicts only constructions).
 **Named debts (deferral made explicit, per thesis):**
 
 - (L4) for the sup definition — that the sup-length itself satisfies
-  convex monotonicity — is *not* provable with Ch 1 tools; paid in Ch 9
-  via the arc-length integral + convexity. This formalizes the promise
-  the Aug §4.5 already makes.
+  convex monotonicity — is **deferred by design** and paid in the
+  Part II Integration chapter (Ch 10 of the seven-chapter Part II;
+  the tent lemma via the arc-length integral + Ch 9 convexity — see
+  `purpose-ch10.md`). This formalizes the promise the Aug §4.5 makes.
+  **Correction (2026-08-21, fourth session):** the earlier claim here
+  ("not provable with Ch 1 tools") was overstated. The instance
+  Ch 4's computations actually use — polygonal path vs enclosing
+  polygonal path — IS elementary (close up with the chord; nested
+  convex polygons by half-plane cuts + iterated triangle inequality);
+  fiddly but Part-I-legal. The full curved-comparison form is what
+  waits for Part II. Division of labor, precisely: **the polygons pin
+  the number; the axiom pins the concept** — Ch 4's bounds on the sup
+  are unconditional polygon-vs-polygon arithmetic; the axiom's load
+  is conceptual (it is why the sup deserves to be called "length,"
+  via the forcing over all admissible assignments). ⚠ TRAP: never
+  print "the postulate is unprovable without calculus" — the honest
+  sentence: *Archimedes chose an axiom rather than a proof, and so,
+  for eight chapters, do we.*
 - P(θ) existence — see the decided trig treatment below.
 
 ## Trigonometry in §1.5 — decided 2026-08-18
@@ -141,7 +167,7 @@ proof of that.
 - Ch 8: the deliberate reprise — the same axiomatization performed for
   area-under-a-graph, now with the machinery to settle the existence
   question in general (integrability ⟺ forced value; Jordan ↔ Darboux
-  rhyme stated).
+  parallel stated).
 - Ch 10 (book, off the semester path): which regions/functions escape
   forcing — the door to measure.
 
@@ -153,6 +179,10 @@ proof of that.
   states vs defers to the workshop's §4.5 first use.
 - Whether the (L4) debt is named on the page in Ch 1 like the P(θ) debt
   now is (the trig ruling suggests yes, but it's undecided).
+- Whether Part I carries a ★ homework proving the polygonal cutting
+  lemma (nested convex polygons have monotone perimeters) — the house
+  pattern's third use ("payment already possible"). OPEN; the current
+  design keeps the axiom load-bearing until Ch 10 either way.
 - Exact scoping language for polygonal-cut dissections in (A2).
 - Whether the trig subsection needs a perpendicularity/dot-product
   addition to §1.5 (flagged in `axiomatic-functions.md`).

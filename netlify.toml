@@ -19,3 +19,13 @@
   #  publish = "dist" # Folder with the static content for _redirect file
 
   ## more info on configuring this file: https://ntl.fyi/file-based-build-config
+
+# stats.json is read by stevejtrettel.site at ITS build time to render this
+# book's stats line. It must not be cached hard: the site only sees a new
+# number when it rebuilds AND the CDN hands over a fresh copy, so a long
+# max-age here would freeze the numbers on the website. Minutes, not months.
+[[headers]]
+  for = "/stats.json"
+  [headers.values]
+    Content-Type = "application/json"
+    Cache-Control = "public, max-age=300, must-revalidate"

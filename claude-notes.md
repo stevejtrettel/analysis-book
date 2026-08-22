@@ -63,6 +63,45 @@
 - For Ch 11–15: plans are in `plan/overview-part3.qmd` and `plan/part3-ideas/`. Chapter stubs exist but are minimal.
 - General workflow: chapter files → outline (detailed) → refined chapter files → actual writing.
 
+### 2026-08-20 — Part II and the functions chapter
+
+- The current drafting project ends at the Fundamental Theorem of
+  Calculus; the later Daniell/Lebesgue material is outside this year's
+  scope.
+- Part II begins with a standalone chapter about functions. The history
+  and conceptual problem of functions should not be folded into the
+  already long, focused continuity chapter.
+- Governing formulation: **A function is an uncountable table. Analysis
+  begins when the entries of that table are not independent.** Companion:
+  **Construction gives examples; characterization gives structure.**
+- The chapter mirrors Part I. Constants and the identity function,
+  closed under arithmetic, generate rational functions—the analogue of
+  the rationals. Adding roots, transcendental functions, piecewise rules,
+  algorithms, and infinite representations exposes further gaps without
+  producing a principled stopping point.
+- The modern input-output definition responds by admitting every
+  assignment. This is broad enough, but now much too broad for analysis:
+  it guarantees values without imposing relationships among them.
+- Tables, formulas, graphs, relations, algorithms, and infinite
+  representations are overlapping or incomparable presentations, not a
+  ladder of increasingly general definitions. The linear movement is
+  argumentative: practical examples → rival presentations → their
+  common abstraction as an assignment → the need to characterize
+  structure.
+- The narrative therefore moves from construction to characterization.
+  Continuity, differentiability, and integrability formalize three
+  longstanding desired behaviors: coherent variation, tangents/rates,
+  and area/accumulation.
+- Continuity does not guarantee differentiability, but it supplies enough
+  control for this book's initial theory of integration on closed bounded
+  intervals. The later question "what else is integrable?" is deferred.
+  The FTC rejoins local change and accumulation and is the endpoint of the
+  present Part II project.
+- The detailed goals-first proposal is `plan/new/purpose-ch7.md`. Its
+  governing story is approved project memory; section divisions,
+  historical sourcing, examples, and exact mathematical contents still
+  require adjudication.
+
 ## Open Questions
 
 
@@ -138,4 +177,3 @@ Steve notes he previously had metric/function spaces as one chapter and chose to
 - Where exactly does calculus of variations go?
 - Merge Ch 11+12 or not?
 - How to handle Ch 15/16 application overload (some → guided exercises?)
-

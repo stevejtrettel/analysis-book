@@ -1,6 +1,10 @@
 # Axiomatic Elementary Functions — Proposal Under Discussion
 
-Status: **discussion capture, nothing decided.** Records the 2026-08-18
+Status: **discussion capture; the exponential forks are now DECIDED
+elsewhere.** `exponential-thread.md` was rewritten 2026-08-20 as a
+decided design and supersedes forks 1, 2, 4, and 5 below — see the
+per-fork dispositions at the end of this file. What remains genuinely
+open here is trig (fork 3) and fork 6. Records the 2026-08-18
 conversation about characterizing the elementary functions by interface
 (state what the function *should do*, prove uniqueness, pay existence with
 a witness) rather than by construction. Context: both previous editions
@@ -137,18 +141,34 @@ an open fork:
   changes is the *status* of the early objects (practice/witness vs
   definition) and whether the late sections open with the wish.
 
-## Open forks (all undecided)
+## Open forks — dispositions as of 2026-08-20
 
-1. One interface or two for exp — algebraic in Ch 1, analytic in Ch 7,
-   or both with a joining theorem. If algebraic: which regularity axiom.
-2. Naive sup-powers: main text or guided exercise; and is the sup-
-   wrangling *good practice* for Ch 1 students or a slog? (Steve's
-   teaching experience is the evidence; explicitly unknown.)
-3. Trig §9.4: wish-first ceremony vs build-first with characterization
-   capstone.
-4. Restore the Briggs thread as a Ch 2 guided exercise (and does the Ch 9
-   repeated-square-roots exercise return alongside the integral log)?
-5. Whether Ch 1 states any interface explicitly (exp's algebraic, trig's
-   wish) or stays pure practice until the reckonings.
-6. What actually broke in editions 1–2 — Steve to articulate; the timing
-   principle above is inference until then.
+1. ~~One interface or two for exp~~ — **RESOLVED** by the
+   construct-then-reverse design (`exponential-thread.md`). Ch 2
+   constructs aˣ by sups and *proves* the law of exponents as a theorem;
+   no interface is stated early. Part II states the analytic wish and
+   runs the reversal. The regularity question is answered by the
+   dichotomy itself: continuity at a point, monotonicity on an interval,
+   or boundedness on an interval each suffice, and the theorem is that
+   they are equivalent to smoothness.
+2. **Superseded, recommendation on record.** The question is now framed
+   in `purpose-ch2.md`: section or guided exercise. Recommendation:
+   section — the sup-work is filling in Napier's table, not abstract
+   exercise. Still Steve's teaching call.
+3. **STILL OPEN.** Trig §9.4: wish-first ceremony vs build-first with
+   characterization capstone. Note that the exponential's pass 2 now
+   gives trig a late home too — the addition formulas are the same
+   functional equation, and the pathological trig solutions are exp's
+   pulled back. That is a new consideration this fork has not been
+   tested against.
+4. ~~Restore the Briggs thread~~ — **RESOLVED: yes, and it moves to
+   Ch 4** (MCT is what the argument needs), not Ch 2. Guided exercise
+   vs main text remains open as D5; see `purpose-ch4.md`. The Ch 9
+   repeated-square-roots exercise alongside the integral log is
+   untouched and still open.
+5. ~~Whether Ch 1 states any interface~~ — **RESOLVED: pure practice.**
+   Ch 1 carries the four historical stations (AO 6770, Stifel, Oresme,
+   Napier's named debt) and no interface statement. See
+   `purpose-ch1.md`.
+6. **STILL OPEN.** What actually broke in editions 1–2 — Steve to
+   articulate; the timing principle above is inference until then.

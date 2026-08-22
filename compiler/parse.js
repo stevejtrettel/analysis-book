@@ -3,6 +3,14 @@
  *
  * Beyond the stock remark pipeline this adds three small source conventions:
  *
+ *  - TeX's tolerance for display math:  $$ x = 1 $$
+ *    remark treats an opening `$$` as a code fence, so anything after it on
+ *    that line is an info string and is discarded. `$$x = 1$$` therefore
+ *    parses as inline math, and `$$x = 1` + `$$` parses as an EMPTY display
+ *    — the equation disappears with no error anywhere. TeX draws no such
+ *    distinction, so neither does this: every `$$ … $$` is put on its own
+ *    lines before parsing, and all four spellings mean one thing.
+ *
  *  - Quarto-style equation labels:  $$ ... $$ {#eq-name}
  *    remark-math refuses a closing fence with trailing text, so a
  *    preprocessor rewrites the closing line to a bare `$$` and the label is
@@ -33,12 +41,32 @@ const processor = unified()
   .use(remarkMath);
 
 export function parseChapter(source) {
-  const { text, equationLabels } = extractEquationLabels(source);
+  // Before anything else, so the label extractor and the parser agree on
+  // line numbers: both see the normalized text.
+  const { text, equationLabels } = extractEquationLabels(normalizeDisplayMath(source));
   const tree = processor.parse(text);
   attachEquationLabels(tree, equationLabels);
   parseHeadingAttributes(tree);
   splitReferences(tree);
   return tree;
+}
+
+const FENCE = /^(```|~~~)[\s\S]*?^\1[^\n]*$/gm;
+const DISPLAY_MATH = /\$\$([\s\S]*?)\$\$/g;
+
+/**
+ * Put every `$$ … $$` on three lines. Fenced code is masked out first — a
+ * code listing may hold a `$`, and none of it is math. A trailing `{#eq-…}`
+ * stays on the closing line, where the label extractor wants it.
+ */
+function normalizeDisplayMath(source) {
+  const fences = [];
+  const masked = source.replace(FENCE, (m) => {
+    fences.push(m);
+    return `\u0000FENCE${fences.length - 1}\u0000`;
+  });
+  const spaced = masked.replace(DISPLAY_MATH, (_, body) => `$$\n${body.trim()}\n$$`);
+  return spaced.replace(/\u0000FENCE(\d+)\u0000/g, (_, i) => fences[Number(i)]);
 }
 
 /** Rewrite `$$ {#eq-x}` closing lines to `$$`, recording (line, id) pairs. */

@@ -219,18 +219,28 @@
 \newcommand\BookTitlePage{%
   \begin{titlingpage}
     \centering
-    \vspace*{1.6in}
+    \vspace*{1.3in}
     {\kickerfont\small\color{inkfaint}COURSE NOTES\par}
     \vspace{1.4\baselineskip}
     % Plex on purpose: in print, where serif title pages are the expected
     % default, the sans is the bold face — the mirror of the web cover's
     % Garamond-against-sans-chrome. (The author noticed the inversion.)
     {\headfont\fontsize{34}{40}\selectfont \BookTitle\par}
-    \vspace{1.1\baselineskip}
+    % Subtitle and descriptor mirror the web cover: a second title line in
+    % the body serif, then the small sans descriptor, then the author.
+    \ifx\BookSubtitle\empty\else
+      \vspace{0.5\baselineskip}
+      {\normalfont\sffamily\itshape\fontsize{19}{24}\selectfont\color{inkfaint}\BookSubtitle\par}%
+    \fi
+    \ifx\BookDescriptor\empty\else
+      \vspace{0.9\baselineskip}
+      {\kickerfont\footnotesize\color{inkfaint}\BookDescriptor\par}%
+    \fi
+    \vspace{1.9\baselineskip}
     {\kickerfont\small \BookAuthor\par}
-    \vspace{0.9in}
+    \vspace{0.72in}
     \BookHeroFig% hero art from book.yml figure:, defined in main.tex (empty if unset)
-    \vspace{0.9in}
+    \vspace{0.72in}
     {\color{inkfaint}\parbox{4.1in}{\centering\BookBlurb}\par}
     \vfill
   \end{titlingpage}

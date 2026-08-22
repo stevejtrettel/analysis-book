@@ -297,7 +297,19 @@ figcaption .figno { font-family: var(--font-heading); font-weight: 600; font-siz
 .hero-title {
   font-family: var(--font-body); font-weight: 500;
   font-size: 3.6rem; line-height: 1.12; color: var(--text-heading);
-  margin: 0 auto 1.2rem; max-width: 40rem;
+  margin: 0 auto 0.5rem; max-width: 40rem;
+}
+/* Subtitle: the same Garamond, dropped a register — a second line of the
+   title, not a caption. Descriptor below it hands off to the sans chrome. */
+.hero-subtitle {
+  font-family: var(--font-body); font-weight: 400; font-style: italic;
+  font-size: 1.9rem; line-height: 1.2; color: var(--text-secondary);
+  margin: 0 auto 1.7rem; max-width: 34rem;
+}
+.hero-descriptor {
+  font-family: var(--font-heading); font-size: 0.85rem; font-weight: 400;
+  letter-spacing: 0.06em; color: var(--text-tertiary);
+  margin-bottom: 1.3rem;
 }
 .hero-author {
   font-family: var(--font-heading); font-size: 0.95rem; font-weight: 500;
@@ -309,7 +321,7 @@ figcaption .figno { font-family: var(--font-heading); font-weight: 600; font-siz
    the captured figure's own dimensions. */
 .hero-fig {
   margin: 1.7rem auto 2.4rem;
-  max-width: min(100%, calc((100svh - 18rem) * var(--hero-ratio, 4 / 3)));
+  max-width: min(100%, calc((100svh - 22rem) * var(--hero-ratio, 4 / 3)));
 }
 .hero-fig svg { width: 100%; height: auto; display: block; }
 .hero-blurb {
@@ -350,5 +362,6 @@ figcaption .figno { font-family: var(--font-heading); font-weight: 600; font-siz
 .cover-contents .chapno { color: var(--text-tertiary); display: inline-block; min-width: 1.6rem; }
 @media (max-width: 640px) {
   .hero-title { font-size: 2.4rem; }
+  .hero-subtitle { font-size: 1.4rem; }
   .cover { padding-top: 2.5rem; }
 }

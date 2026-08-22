@@ -26,38 +26,54 @@ export function resolveBook(chapters) {
       errors.push(`duplicate id "${id}" in ${ch.file} (first defined in ${labels.get(id).file})`);
       return;
     }
-    labels.set(id, { kind, number, chapter: ch.number, anchor: `/${ch.slug}/#${id}`, file: ch.file });
+    labels.set(id, {
+      kind,
+      number,
+      title: node.type === "heading" ? headingText(node) : null,
+      chapter: ch.number,
+      anchor: `/${ch.slug}/#${id}`,
+      file: ch.file,
+    });
     node.data = { ...node.data, id, kind, number };
   };
 
-  chapters.forEach((ch, i) => {
-    ch.number = i + 1;
+  // Front matter is unnumbered and consumes no chapter number; the numbered
+  // chapters count 1..N straight through it.
+  let counted = 0;
+  chapters.forEach((ch) => {
+    ch.number = ch.unnumbered ? null : `${++counted}`;
     const c = { section: 0, subsection: 0, theorem: 0, equation: 0, figure: 0 };
     let sawChapterHeading = false;
 
     walk(ch.tree, (node) => {
       if (node.type === "heading") {
         if (node.data?.unnumbered) return;
+        // Nothing in an unnumbered chapter carries a number; the heading is
+        // marked so both emitters star it and refs fall back to the title.
+        if (ch.unnumbered) node.data = { ...node.data, unnumbered: true };
+        const n = (numbered) => (ch.unnumbered ? null : numbered);
         if (node.depth === 1) {
           if (sawChapterHeading) errors.push(`${ch.file}: more than one "#" chapter heading`);
           sawChapterHeading = true;
           ch.title = node.children;
-          define(node.data?.id, "chapter", `${ch.number}`, ch, node);
-          node.data = { ...node.data, kind: "chapter", number: `${ch.number}` };
+          define(node.data?.id, "chapter", ch.number, ch, node);
+          node.data = { ...node.data, kind: "chapter", number: ch.number };
         } else if (node.depth === 2) {
           c.section += 1;
           c.subsection = 0;
-          const number = `${ch.number}.${c.section}`;
+          const number = n(`${ch.number}.${c.section}`);
           define(node.data?.id, "section", number, ch, node);
           node.data = { ...node.data, kind: "section", number };
         } else if (node.depth === 3) {
           c.subsection += 1;
-          const number = `${ch.number}.${c.section}.${c.subsection}`;
+          const number = n(`${ch.number}.${c.section}.${c.subsection}`);
           define(node.data?.id, "subsection", number, ch, node);
           node.data = { ...node.data, kind: "subsection", number };
         }
       } else if (node.type === "containerDirective") {
-        if (environments[node.name]) {
+        if (ch.unnumbered && (environments[node.name] || node.name === "figure")) {
+          errors.push(`${ch.file}: :::${node.name} is numbered, and front matter has no numbers`);
+        } else if (environments[node.name]) {
           c.theorem += 1;
           const number = `${ch.number}.${c.theorem}`;
           define(node.attributes?.id, node.name, number, ch, node);
@@ -74,7 +90,9 @@ export function resolveBook(chapters) {
         }
       } else if (node.type === "math") {
         lintMath(node, ch, errors);
-        if (node.data?.id) {
+        if (node.data?.id && ch.unnumbered) {
+          errors.push(`${ch.file}: labeled display math is numbered, and front matter has no numbers`);
+        } else if (node.data?.id) {
           c.equation += 1;
           const number = `${ch.number}.${c.equation}`;
           define(node.data.id, "equation", number, ch, node);
@@ -117,6 +135,17 @@ function suggest(target, labels) {
     (id) => id.includes(target.slice(4)) || target.includes(id.slice(4))
   );
   return near.length ? ` (did you mean ${near.map((s) => `@${s}`).join(", ")}?)` : "";
+}
+
+/** A heading's plain text — what a reference into unnumbered front matter
+ *  shows in place of a number (\nameref in print, the title on the web). */
+function headingText(node) {
+  let out = "";
+  walk(node, (n) => {
+    if (n.type === "text" || n.type === "inlineCode") out += n.value;
+    else if (n.type === "inlineMath") out += `$${n.value}$`;
+  });
+  return out;
 }
 
 /** Depth-first walk in document order. */

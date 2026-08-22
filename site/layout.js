@@ -11,7 +11,19 @@
 
 import { text, figureEmbed } from "../compiler/emit-html.js";
 
-const label = (ch) => `${ch.number} · ${text(ch.title)}`;
+const label = (ch) => (ch.number ? `${ch.number} · ${text(ch.title)}` : text(ch.title));
+
+/** Book nav, front matter first in its own unlabelled group, then the parts.
+ *  `entry` renders one chapter, so the rail and the drawer can differ. */
+const bookNav = (book, entry) =>
+  [
+    book.frontmatter.length ? `\n      <ol>${book.frontmatter.map(entry).join("\n")}</ol>` : "",
+    ...book.parts.map(
+      (part) => `
+      <div class="part">${esc(part.title)}</div>
+      <ol>${part.chapters.map(entry).join("\n")}</ol>`
+    ),
+  ].join("\n");
 
 export function chapterPage(book, ch, fragment) {
   const chapters = book.chapters;
@@ -19,19 +31,11 @@ export function chapterPage(book, ch, fragment) {
   const prev = chapters[i - 1];
   const next = chapters[i + 1];
 
-  const bookNav = book.parts
-    .map(
-      (part) => `
-      <div class="part">${esc(part.title)}</div>
-      <ol>${part.chapters
-        .map((c) =>
-          c === ch
-            ? `<li class="current"><a href="/${c.slug}/">${esc(label(c))}</a></li>`
-            : `<li><a href="/${c.slug}/">${esc(label(c))}</a></li>`
-        )
-        .join("\n")}</ol>`
-    )
-    .join("\n");
+  const railNav = bookNav(book, (c) =>
+    c === ch
+      ? `<li class="current"><a href="/${c.slug}/">${esc(label(c))}</a></li>`
+      : `<li><a href="/${c.slug}/">${esc(label(c))}</a></li>`
+  );
 
   const toc = fragment.sections
     .map(
@@ -41,21 +45,13 @@ export function chapterPage(book, ch, fragment) {
     .join("\n");
 
   // Mobile drawer: the book nav with the current chapter expanded in place.
-  const drawerNav = book.parts
-    .map(
-      (part) => `
-      <div class="part">${esc(part.title)}</div>
-      <ol>${part.chapters
-        .map((c) => {
-          if (c !== ch) return `<li><a href="/${c.slug}/">${esc(label(c))}</a></li>`;
-          const secs = fragment.sections
-            .map((s) => `<li><a href="#${s.id}">${s.number ? s.number + " " : ""}${esc(s.title)}</a></li>`)
-            .join("\n");
-          return `<li class="current"><a href="/${c.slug}/">${esc(label(c))}</a><ol class="drawer-sections">${secs}</ol></li>`;
-        })
-        .join("\n")}</ol>`
-    )
-    .join("\n");
+  const drawerNav = bookNav(book, (c) => {
+    if (c !== ch) return `<li><a href="/${c.slug}/">${esc(label(c))}</a></li>`;
+    const secs = fragment.sections
+      .map((s) => `<li><a href="#${s.id}">${s.number ? s.number + " " : ""}${esc(s.title)}</a></li>`)
+      .join("\n");
+    return `<li class="current"><a href="/${c.slug}/">${esc(label(c))}</a><ol class="drawer-sections">${secs}</ol></li>`;
+  });
 
   const footerNav = `
     <footer class="chapter-footer">
@@ -79,7 +75,7 @@ ${pageTools()}
 <div class="layout">
   <nav class="book-rail"><div class="sticky">
     <div class="book-title"><a href="/">${esc(book.title)}</a></div>
-    ${bookNav}
+    ${railNav}
   </div></nav>
 
   <main class="prose">
@@ -107,7 +103,9 @@ ${pageTools()}
 <main class="cover">
   <div class="hero-kicker">Course Notes</div>
   <h1 class="hero-title">${esc(book.title)}</h1>
-  <div class="hero-author">${esc(book.author)}</div>
+${book.subtitle ? `  <div class="hero-subtitle">${esc(book.subtitle)}</div>\n` : ""}${
+    book.descriptor ? `  <div class="hero-descriptor">${esc(book.descriptor)}</div>\n` : ""
+  }  <div class="hero-author">${esc(book.author)}</div>
 
 ${
     book.figure
@@ -126,17 +124,11 @@ ${
 
   <nav class="cover-contents" aria-label="Contents">
     <div class="contents-kicker">Contents</div>
-${book.parts
-  .map(
-    (part) => `
-    <div class="part">${esc(part.title)}</div>
-    <ol>
-${part.chapters
-  .map((c) => `      <li><a href="/${c.slug}/"><span class="chapno">${c.number}</span>${esc(text(c.title))}</a></li>`)
-  .join("\n")}
-    </ol>`
-  )
-  .join("\n")}
+${bookNav(
+  book,
+  (c) =>
+    `      <li><a href="/${c.slug}/"><span class="chapno">${c.number ?? ""}</span>${esc(text(c.title))}</a></li>`
+)}
   </nav>
 </main>`;
 

@@ -34,7 +34,11 @@ values *together, as a function* — a single object carrying all values
 at once, about which collective questions (continuity, growth, area
 under) first make sense. Policy sentence for the chapter plans: **the
 moment an object is treated as a function — limits of it, continuity of
-it — we are in Part II.**
+it — we are in Part II.** (Steve, 2026-08-18: this rule — like all the
+border rules — is NOT strict. It organizes thought; it does not stifle
+it. Rigid application would be a pedagogical disaster. Previews and
+forward glances across a border are legitimate; the rule flags such
+content for a story justification, it never bans it.)
 
 Reinforcing cuts:
 

@@ -25,6 +25,7 @@ import { emitMain, emitChapter } from "./emit-latex.js";
 import { emitChapterFragment } from "./emit-html.js";
 import { initMath, saveMathCache, mathStylesheet } from "./math.js";
 import { auxCheck } from "./aux-check.js";
+import { bookStats, pdfPageCount } from "./stats.js";
 import { chapterPage, landingPage } from "../site/layout.js";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
@@ -45,16 +46,24 @@ export async function build({ pdf = true } = {}) {
 
   const book = YAML.parse(readFileSync(path.join(ROOT, "book", "book.yml"), "utf8"));
 
+  // A chapter is a folder with an index.md: the folder name is the slug (and
+  // so the URL). A bare foo.md still slugs as "foo".
+  const chapter = (rel, unnumbered) => ({
+    file: rel,
+    unnumbered,
+    slug: path.basename(rel) === "index.md" ? path.basename(path.dirname(rel)) : path.basename(rel, ".md"),
+    tree: parseChapter(readFileSync(path.join(ROOT, "book", rel), "utf8")),
+  });
+
+  // book.yml's frontmatter: — preface, notation. Unnumbered, outside the
+  // parts, and (in print) inside \frontmatter with the roman folios.
+  book.frontmatter = (book.frontmatter ?? []).map((rel) => chapter(rel, true));
   book.parts = book.parts.map((part) => ({
     title: part.title ?? null,
     figure: part.figure ?? null,
-    chapters: part.chapters.map((rel) => ({
-      file: rel,
-      slug: path.basename(rel, ".md"),
-      tree: parseChapter(readFileSync(path.join(ROOT, "book", rel), "utf8")),
-    })),
+    chapters: part.chapters.map((rel) => chapter(rel, false)),
   }));
-  book.chapters = book.parts.flatMap((p) => p.chapters);
+  book.chapters = [...book.frontmatter, ...book.parts.flatMap((p) => p.chapters)];
 
   // --- resolve -------------------------------------------------------------
 
@@ -124,13 +133,30 @@ export async function build({ pdf = true } = {}) {
   const pdfSrc = path.join(TEX_OUT, "main.pdf");
   if (existsSync(pdfSrc)) copyFileSync(pdfSrc, path.join(DIST, "book.pdf"));
 
+  // stats.json for stevejtrettel.site. Written from what this build knows,
+  // so it cannot go stale silently; `pages` is claimed only by a build that
+  // actually compiled the PDF (see compiler/stats.js, design/book-stats.md).
+  const statFigures = [...directiveIds].map((id) => ({ id, live: figures.get(id)?.entry !== undefined }));
+  const writeStats = (pdfPages) =>
+    writeFileSync(
+      path.join(DIST, "stats.json"),
+      JSON.stringify(
+        bookStats({ book, figures: statFigures, pdfPages }),
+        null,
+        2
+      ) + "\n"
+    );
+
   console.log(
     `${labels.size} labels · ${book.chapters.length} chapters → dist/ in ${(performance.now() - t0).toFixed(0)}ms`
   );
 
   // --- compile + verify ----------------------------------------------------
 
-  if (!pdf) return;
+  if (!pdf) {
+    writeStats(null);
+    return;
+  }
 
   console.log("compiling PDF (latexmk, xelatex)...");
   execFileSync("latexmk", ["-xelatex", "-interaction=nonstopmode", "-halt-on-error", "main.tex"], {
@@ -145,6 +171,7 @@ export async function build({ pdf = true } = {}) {
       mismatches.map((m) => `aux check: ${m.id}: resolver says ${m.ours}, LaTeX says ${m.latex}`)
     );
   console.log(`aux check passed: LaTeX agrees with the resolver on all ${labels.size} labels ✓`);
+  writeStats(pdfPageCount(path.join(DIST, "book.pdf")));
   console.log(`PDF at latex/build/main.pdf (and dist/book.pdf)`);
 }
 

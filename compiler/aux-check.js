@@ -14,6 +14,7 @@ export function auxCheck(auxPath, labels) {
 
   const mismatches = [];
   for (const [id, entry] of labels) {
+    if (entry.number === null) continue; // front matter: nothing to agree about
     const latexNumber = seen.get(id);
     if (latexNumber === undefined) mismatches.push({ id, ours: entry.number, latex: "(missing from .aux)" });
     else if (latexNumber !== entry.number) mismatches.push({ id, ours: entry.number, latex: latexNumber });

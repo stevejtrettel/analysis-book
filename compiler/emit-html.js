@@ -11,6 +11,7 @@
 
 import { environments, proofLike, refWords } from "./registry.js";
 import { renderMath } from "./math.js";
+import { mathText } from "./plaintext.js";
 
 /** figures: Map id → {entry, width, height} (resolved + captured by the build) */
 let figureTable = new Map();
@@ -28,9 +29,8 @@ export function emitChapterFragment(ch, figures = new Map()) {
     if (node.type === "yaml") continue;
     if (node.type === "heading" && node.depth === 1) {
       const id = node.data?.id ? ` id="${node.data.id}"` : "";
-      header =
-        `<div class="chapter-number">Chapter ${ch.number}</div>\n` +
-        `<h1${id}>${inline(node.children)}</h1>`;
+      const kicker = ch.number ? `<div class="chapter-number">Chapter ${ch.number}</div>\n` : "";
+      header = kicker + `<h1${id}>${inline(node.children)}</h1>`;
     } else if (node.type === "heading" && node.depth === 2) {
       const id = node.data?.id ?? slugify(text(node.children));
       const number = node.data?.unnumbered ? null : node.data.number;
@@ -172,6 +172,8 @@ function ref(node) {
   if (!r) return `<span class="broken-ref">@${node.target}</span>`;
   const attrs = `class="xref" href="${r.anchor}" data-ref="${node.target}" data-kind="${r.kind}"`;
   if (r.kind === "equation") return `<a ${attrs}>(${r.number})</a>`;
+  // Front matter has no number to cite, so it is cited by name.
+  if (r.number === null) return `<a ${attrs}>${esc(r.title ?? node.target)}</a>`;
   const word = refWords[r.kind];
   const shown = node.capitalized ? word[0].toUpperCase() + word.slice(1) : word;
   return `<a ${attrs}>${shown}&nbsp;${r.number}</a>`;
@@ -192,7 +194,13 @@ export function figureEmbed(id, fig) {
 }
 
 export function text(nodes) {
-  return nodes.map((n) => (n.type === "text" ? n.value : n.children ? text(n.children) : n.value ?? "")).join("");
+  return nodes
+    .map((n) => {
+      if (n.type === "text") return n.value;
+      if (n.type === "inlineMath" || n.type === "math") return mathText(n.value);
+      return n.children ? text(n.children) : n.value ?? "";
+    })
+    .join("");
 }
 
 function slugify(s) {

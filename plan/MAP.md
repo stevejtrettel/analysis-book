@@ -34,7 +34,13 @@ skeleton history stubs. Theorem-block conventions were carried forward to
   `04-convergence/05-archimedes-pi.md` was rewritten the morning of
   Aug 18, 2026 — the newest content in the repo. Ch 10 has only one orphan
   exercise; Ch 11–15 were never outlined.
-- **`new/`** — empty. The new plan gets built here, off the layers above.
+- **`new/`** — the new plan, live since Aug 18, 2026. `thesis.md`
+  (founding document), `part1-philosophy.md`, `part1-chapters.md`
+  (Part I = unnumbered notation opener + six chapters; Ch 1 split,
+  MCT inversion), the two axiomatic designs, `purpose-chN.md` files
+  (Goals/Story/Ledger/Status per chapter, adjudicated before section
+  lists — the goals-first workflow), and `sources/` (research
+  verification with ⚠ VERIFY flags). Start at its `README.md`.
 
 Session decisions from the April campaign are logged in `claude-notes.md`
 (repo root) — its content decisions still stand; its Quarto tooling
